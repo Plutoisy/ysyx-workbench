@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     VerilatedFstC* tfp = new VerilatedFstC;
     Verilated::traceEverOn(true);  
     top->trace(tfp, 99);           
-    tfp->open("waveform.fst");     
+    tfp->open("./waveform/waveform.fst");     
     
     while (!contextp->gotFinish()) {
     	contextp->timeInc(1);
