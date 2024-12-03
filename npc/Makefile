@@ -10,7 +10,7 @@ simvcd:
 simfst:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
-	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace-fst --Mdir ./build/obj_dir --exe --build
+	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace-fst --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/obj_dir/Vtop
 	
 wavevcd:
