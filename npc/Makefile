@@ -1,3 +1,4 @@
+TOPNAME = top
 # rules for NVBoard
 include $(NVBOARD_HOME)/scripts/nvboard.mk
 
