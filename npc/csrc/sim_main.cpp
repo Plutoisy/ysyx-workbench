@@ -1,6 +1,7 @@
 #include "Vtop.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
+#include "verilated_fst_c.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -9,10 +10,16 @@ int main(int argc, char** argv) {
     contextp->commandArgs(argc, argv);
     Vtop* top = new Vtop{contextp};
     
-    VerilatedVcdC *tfp= new VerilatedVcdC;
+    //VerilatedVcdC *tfp= new VerilatedVcdC;
+    //Verilated::traceEverOn(true);  
+    //top->trace(tfp, 99);           
+    //tfp->open("waveform.vcd");   
+    
+    VerilatedFstC* tfp = new VerilatedFstC;
     Verilated::traceEverOn(true);  
     top->trace(tfp, 99);           
-    tfp->open("waveform.vcd");     
+    tfp->open("waveform.fst");    
+
     int i = 10;
     while (i > 0) {
     	
