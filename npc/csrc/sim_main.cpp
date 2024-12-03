@@ -23,12 +23,7 @@ int main(int argc, char** argv) {
     	top->eval(); 
     	printf("a = %d, b = %d, f = %d\n", a, b, top->f);
   	assert(top->f == (a ^ b));
-  	contextp->timeInc(1);
-  	if (contextp->time() >= 60)
-        {
-            break;
-        }
-        tfp->dump(contextp->time()); // dump wave
+        tfp->dump(contextp->time()); 
 
     }
     delete top;
