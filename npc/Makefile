@@ -3,12 +3,14 @@ all: simfst
 
 simvcd:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace --exe --build
+	mkdir -p build
+	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace --Mdir ./build/obj_dir --exe --build
 	obj_dir/Vtop
 	
 simfst:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace-fst --exe --build
+	mkdir -p build
+	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace-fst --Mdir ./build/obj_dir --exe --build
 	obj_dir/Vtop
 	
 wavevcd:
@@ -16,8 +18,12 @@ wavevcd:
 	
 wavefst:
 	gtkwave waveform.fst
+
+pinbind:
+	mkdir -p build
+	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/top.nxdc ./build/auto_bind.cpp
 	
 clean:
-	rm -rf ./obj_dir
+	rm -rf ./build
 	
 include ../Makefile
