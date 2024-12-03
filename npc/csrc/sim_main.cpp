@@ -23,13 +23,13 @@ int main(int argc, char** argv) {
     //top->trace(tfp, 99);           
     //tfp->open("waveform.vcd");   
     
-    VerilatedFstC* tfp = new VerilatedFstC;
-    Verilated::traceEverOn(true);  
-    top->trace(tfp, 99);           
-    tfp->open("waveform.fst");    
+    //VerilatedFstC* tfp = new VerilatedFstC;
+    //Verilated::traceEverOn(true);  
+    //top->trace(tfp, 99);           
+    //tfp->open("waveform.fst");    
 
     int i = 10;
-    while (i > 0) {
+    while (1) {
     	
     	int a = rand() & 1;
   	int b = rand() & 1; 
@@ -37,14 +37,14 @@ int main(int argc, char** argv) {
   	top->b = b;
     	top->eval(); 
     	printf("a = %d, b = %d, f = %d\n", a, b, top->f);
-    	tfp->dump(contextp->time()); 
+    	//tfp->dump(contextp->time()); 
   	assert(top->f == (a ^ b));
   	contextp->timeInc(1);
         i--;
 
     }
     delete top;
-    tfp->close();
+    //tfp->close();
     delete contextp;
     nvboard_quit();
     return 0;
