@@ -3,6 +3,6 @@ all:
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@echo "Write this Makefile by your self."
+	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace-fst --exe --build
 
 include ../Makefile
