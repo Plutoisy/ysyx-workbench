@@ -22,11 +22,14 @@ int main(int argc, char** argv) {
   	top->b = b;
     	top->eval(); 
     	printf("a = %d, b = %d, f = %d\n", a, b, top->f);
+    	tfp->dump(contextp->time()); 
   	assert(top->f == (a ^ b));
-        tfp->dump(contextp->time()); 
+  	context_p->timeInc(1);
+        
 
     }
     delete top;
+    tfp->close();
     delete contextp;
     return 0;
 }
