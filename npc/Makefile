@@ -10,7 +10,8 @@ simvcd:
 simfst:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
-	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main.cpp) --cc --trace-fst --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/top.nxdc ./build/auto_bind.cpp
+	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main.cpp) $(NVBOARD_HOME)/build/nvboard.a --cc --trace-fst --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/obj_dir/Vtop
 	
 wavevcd:
