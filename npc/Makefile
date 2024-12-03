@@ -5,13 +5,13 @@ simvcd:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
 	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace --Mdir ./build/obj_dir --exe --build
-	obj_dir/Vtop
+	./build/obj_dir/Vtop
 	
 simfst:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
 	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace-fst --Mdir ./build/obj_dir --exe --build
-	obj_dir/Vtop
+	./build/obj_dir/Vtop
 	
 wavevcd:
 	gtkwave waveform.vcd
