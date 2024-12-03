@@ -20,7 +20,7 @@ simfst:
 	mkdir -p build
 	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/top.nxdc ./build/auto_bind.cpp
 	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main.cpp) $(abspath ./build/auto_bind.cpp) $(NVBOARD_HOME)/build/nvboard.a --cc --trace-fst $(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
-	./build/obj_dir/Vtop
+	./build/obj_dir/top
 	
 wavevcd:
 	gtkwave waveform.vcd
