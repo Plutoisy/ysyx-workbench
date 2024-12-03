@@ -19,4 +19,5 @@ wavefst:
 	
 clean:
 	rm -rf ./obj_dir
+	
 include ../Makefile
