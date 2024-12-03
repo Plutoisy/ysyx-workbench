@@ -1,4 +1,4 @@
-all:
+all: simfst
 	@echo "Write this Makefile by your self."
 
 simvcd:
