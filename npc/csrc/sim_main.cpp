@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     	printf("a = %d, b = %d, f = %d\n", a, b, top->f);
     	tfp->dump(contextp->time()); 
   	assert(top->f == (a ^ b));
-  	context_p->timeInc(1);
+  	contextp->timeInc(1);
         
 
     }
