@@ -13,7 +13,7 @@ simvcd:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
 	verilator -Wall ./vsrc/top.v ./csrc/sim_main.cpp --cc --trace --Mdir ./build/obj_dir --exe --build
-	./build/obj_dir/top
+	./build/top
 	
 simfst:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
