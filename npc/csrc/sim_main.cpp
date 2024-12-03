@@ -13,8 +13,8 @@ int main(int argc, char** argv) {
     Verilated::traceEverOn(true);  
     top->trace(tfp, 99);           
     tfp->open("waveform.vcd");     
-    
-    while (!contextp->gotFinish()) {
+    int i = 10;
+    while (i > 0) {
     	
     	int a = rand() & 1;
   	int b = rand() & 1; 
@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     	tfp->dump(contextp->time()); 
   	assert(top->f == (a ^ b));
   	contextp->timeInc(1);
-        
+        i--;
 
     }
     delete top;
