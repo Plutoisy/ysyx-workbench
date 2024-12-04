@@ -27,7 +27,15 @@ simswitch_NVBoard:
 	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/top.nxdc ./build/auto_bind.cpp
 	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch_NVBoard.cpp) $(abspath ./build/auto_bind.cpp) $(NVBOARD_HOME)/build/nvboard.a --cc  $(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/top
-	
+
+simlight_NVBoard:
+	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	TOPNAME = light
+	mkdir -p build
+	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/light.nxdc ./build/auto_bind.cpp
+	verilator -Wall $(abspath ./vsrc/light.v) $(abspath ./csrc/sim_main_light_NVBoard.cpp) $(abspath ./build/auto_bind.cpp) $(NVBOARD_HOME)/build/nvboard.a --cc  $(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+	./build/top	
+
 wavevcd:
 	gtkwave waveform.vcd
 	
