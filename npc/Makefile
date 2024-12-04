@@ -6,19 +6,19 @@ include $(NVBOARD_HOME)/scripts/nvboard.mk
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
-all: simfst
+all:
 	@echo "Write this Makefile by your self."
 
-simvcd:
+simswitchvcd:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
-	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch_vcd.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/top
 	
-simswitch:
+simswitchfst:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
-	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch.cpp) --cc --trace-fst --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch_fst.cpp) --cc --trace-fst --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/top
 		
 simswitch_NVBoard:
@@ -40,7 +40,7 @@ pinbind:
 	
 clean:
 	rm -rf ./build
-	rm ./waveform.vcd
-	rm ./waveform.fst
+	rm -rf ./waveform.vcd
+	rm -rf ./waveform.fst
 	
 include ../Makefile
