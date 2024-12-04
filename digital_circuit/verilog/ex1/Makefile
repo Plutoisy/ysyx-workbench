@@ -34,7 +34,7 @@ sim:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--top-module $(TOPNAME) $^ \
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
 		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top)
-		
+	./build/top
 
 	
 clean:
