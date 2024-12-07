@@ -24,8 +24,9 @@ const char *regs[] = {
 };
 
 void isa_reg_display() {
+  printf("Name DEC HEX\n");
   for (int i = 0; i < 32; i++){
-    printf("%s %#x\n", reg_name(i), gpr(i));
+    printf("%s %u %x\n", reg_name(i), gpr(i), gpr(i));
   }
 }
 
