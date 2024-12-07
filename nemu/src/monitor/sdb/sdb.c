@@ -107,13 +107,6 @@ static int cmd_x(char *args) {
       }
       printf("\n");
     }
-    //printf("%C\n",ARG);
-    // if (ARG == 'r'){
-    //   isa_reg_display();
-    // } 
-    // else{
-    //   printf("not support yet\n");
-    // }
   }
   return 0;
 }
