@@ -17,6 +17,7 @@
 #include <cpu/cpu.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <memory/paddr.h>
 #include "sdb.h"
 
 static int is_batch_mode = false;
@@ -85,6 +86,38 @@ static int cmd_info(char *args) {
   return 0;
 }
 
+static int cmd_x(char *args) {
+  int ARG1;
+  paddr_t ARG2;
+  int ARGN;
+  if (args == NULL){
+    printf("args needed\n");
+  }
+  else{
+    ARGN = sscanf(args,"%d %x",&ARG1,&ARG2);
+    //printf("%d\n",ARGN);
+    if (ARGN != 2){
+      printf("wrong arg number\n");
+    }
+    else{
+      //printf("%x\n",ARG2);
+      for(int i = 0; i < ARG1; i++){
+        printf("0x%x: %08x\n",ARG2,paddr_read(ARG2,4));
+        ARG2 += 4;
+      }
+      printf("\n");
+    }
+    //printf("%C\n",ARG);
+    // if (ARG == 'r'){
+    //   isa_reg_display();
+    // } 
+    // else{
+    //   printf("not support yet\n");
+    // }
+  }
+  return 0;
+}
+
 static struct {
   const char *name;
   const char *description;
@@ -95,6 +128,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   { "si","Execute one time", cmd_si},
   { "info", "Show some info", cmd_info},
+  { "x", "Scan ram", cmd_x},
 
   /* TODO: Add more commands */
 
