@@ -75,6 +75,7 @@ typedef struct token {
 
 static Token tokens[32] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
+bool wrong_eval_flag;
 
 static bool make_token(char *e) {
   int position = 0;
@@ -182,14 +183,142 @@ static bool make_token(char *e) {
   return true;
 }
 
+static bool check_parentheses(int p, int q) {
+  if(tokens[p].type != '('){
+    return false;
+  }
+  else{
+    int lnum = 1;
+    int rnum = 0;
+    for(int i = p + 1; i <= q; i++){
+      if(tokens[i].type == '('){
+        lnum++;
+      }
+      if(tokens[i].type == ')'){
+        rnum++;
+        if(rnum > lnum || (rnum == lnum && i < q)){
+          return false;
+        }
+      }
+    }
+    if(lnum == rnum){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
+}
+
+int find_main_op(int p, int q){
+  int lnum = 0;
+  int rnum = 0;
+  int real_op = p;
+  if(tokens[p].type == '-'){
+    return p;
+  }
+  for(int i = p; i <= q; i++){
+    if(rnum > lnum){
+      return -1;
+    }
+    if(tokens[i].type == '('){
+      lnum++;
+    }
+    if(tokens[i].type == ')'){
+      rnum++;
+    }
+    if(lnum == rnum && (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/')){
+      if((tokens[real_op].type == '+' || tokens[real_op].type == '-') && (tokens[i].type == '*' || tokens[i].type == '/')){
+        real_op = real_op;
+      }
+      else if(tokens[i].type == '-' && tokens[i+1].type == TK_NUM && (tokens[i-1].type != TK_NUM && tokens[i-1].type != ')')){
+        real_op = real_op;
+      }
+      else{
+        real_op = i;
+      }
+    }
+  }
+  return real_op;
+}
+
+word_t eval(int p, int q){
+  if (p > q) {
+    /* Bad expression */
+    printf("Bad expression\n");
+    wrong_eval_flag = true;
+    return 0;
+  }
+  else if (p == q) {
+    /* Single token.
+     * For now this token should be a number.
+     * Return the value of the number.
+     */
+    word_t tokens_p_str_int;
+    // printf("%s\n",tokens[p].str);
+    sscanf(tokens[p].str,"%u",&tokens_p_str_int);
+    return tokens_p_str_int;
+  }
+  else if (check_parentheses(p, q) == true) {
+    /* The expression is surrounded by a matched pair of parentheses.
+     * If that is the case, just throw away the parentheses.
+     */
+    return eval(p + 1, q - 1);
+  }
+  else {
+    int op;
+    word_t val1, val2;
+    op = find_main_op(p, q);
+    if(op == -1){
+      printf("parentheses not match\n");
+      wrong_eval_flag = true;
+      return 0;
+    }
+    // op = the position of 主运算符 in the token expression;
+    if(p == op){
+      switch (tokens[op].type) {
+        case '+': val1 = 0; break;
+        case '-': val1 = 0; break;
+        case '*': wrong_eval_flag = true; printf("* need 2 operators\n"); return 0;
+        case '/': wrong_eval_flag = true; printf("- need 2 operators\n"); return 0;
+        default:  wrong_eval_flag = true; printf("error\n"); return 0;
+      }
+    }
+    else{
+      val1 = eval(p, op - 1);
+    }
+    
+    val2 = eval(op + 1, q);
+
+    switch (tokens[op].type) {
+      case '+': return val1 + val2;
+      case '-': return val1 - val2;
+      case '*': return val1 * val2;
+      case '/': return val1 / val2;
+      default: assert(0);
+    }
+    return 0;
+  }
+}
+
+
 
 word_t expr(char *e, bool *success) {
+  word_t eval_result;
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-  *success = true;
   /* TODO: Insert codes to evaluate the expression. */
-
+  wrong_eval_flag = false;
+  eval_result = eval(0, nr_token - 1);
+  if(!wrong_eval_flag){
+    printf("%u\n",eval_result);
+    *success = true;
+  }
+  else{
+    *success = false;
+  }
   return 0;
 }
