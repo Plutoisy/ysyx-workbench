@@ -21,7 +21,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG
 
   /* TODO: Add more token types */
 
@@ -36,15 +36,16 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-  {" +", TK_NOTYPE},    // spaces
-  {"\\+", '+'},         // plus
-  {"==", TK_EQ},        // equal
-  {"\\*", '*'},         // *
-  {"/", '/'},           // /
-  {"\\-", '-'},         // -
-  {"\\(", '('},         // (
-  {"\\)", ')'},         // )
-  {"[0-9]+", TK_NUM},   // NUM
+  {" +", TK_NOTYPE},                  // spaces
+  {"\\+", '+'},                       // plus
+  {"==", TK_EQ},                      // equal
+  {"\\*", '*'},                       // *
+  {"/", '/'},                         // /
+  {"\\-", '-'},                       // -
+  {"\\(", '('},                       // (
+  {"\\)", ')'},                       // )
+  {"\\$[a-zA-Z\\$]*[0-9]*", TK_REG},  //REG
+  {"[0-9]+", TK_NUM},                 // NUM
 };
 
 #define NR_REGEX ARRLEN(rules)
@@ -164,6 +165,27 @@ static bool make_token(char *e) {
           case ')':
             strncpy(tokens[j].str, substr_start, substr_len);
             tokens[j].type = rules[i].token_type;
+            j++;
+            nr_token++;
+            break;
+
+          case TK_REG:
+            strncpy(tokens[j].str, substr_start, substr_len);
+            tokens[j].type = TK_NUM;
+            bool flag = true;
+            uint32_t tmp;
+            // if (tokens[j].str[1] =='0'){
+            //   tmp = isa_reg_str2val(tokens[j].str, &flag);
+            // }
+            // else{
+              tmp = isa_reg_str2val(tokens[j].str+1, &flag);
+            // }
+            if(flag){
+              snprintf(tokens[j].str, sizeof(tokens[j].str), "%u", tmp);
+            }else{
+              printf("isa_reg_str2val error. \n");
+              return false;
+            }
             j++;
             nr_token++;
             break;

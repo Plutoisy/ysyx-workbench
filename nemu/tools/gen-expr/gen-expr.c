@@ -21,6 +21,7 @@
 #include <string.h>
 
 // this should be enough
+int out_of_recursion_depth;
 static char buf[65536] = {0};
 static char buf_without_uint[65536] = {0};
 static char code_buf[65536 + 1024] = {0}; // a little larger than `buf`
@@ -62,14 +63,34 @@ static void gen_num() {
   strncat(buf_without_uint, str, sizeof(buf_without_uint) - strlen(buf_without_uint));
 }
 
+static void gen_rand_blank() {
+  uint32_t num_spaces = choose(3); 
+  for (uint32_t i = 0; i < num_spaces; i++) {
+        strncat(buf, " ", sizeof(buf) - strlen(buf)); 
+        strncat(buf_without_uint, " ", sizeof(buf_without_uint) - strlen(buf_without_uint)); 
+  }
+}
+
 static void gen_rand_expr() {
-  if (recursion_depth > 100) return; 
+  if (recursion_depth > 80) {
+    out_of_recursion_depth = 1;
+    return;
+  } 
   recursion_depth++;
   uint32_t n = 3;
   switch (choose(n)) {
-    case 0: gen_num(); break;
-    case 1: strncat(buf, "(", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "(", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_expr(); strncat(buf_without_uint, ")", sizeof(buf_without_uint) - strlen(buf_without_uint)); strncat(buf, ")", sizeof(buf) - strlen(buf)); break;
-    default: gen_rand_expr(); gen_rand_op(); gen_rand_expr(); break;
+    case 0: gen_num(); gen_rand_blank();
+            break;
+    case 1: strncat(buf, "(", sizeof(buf) - strlen(buf)); gen_rand_blank();
+            strncat(buf_without_uint, "(", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
+            gen_rand_expr(); gen_rand_blank();
+            strncat(buf_without_uint, ")", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
+            strncat(buf, ")", sizeof(buf) - strlen(buf)); gen_rand_blank();
+            break;
+    default: gen_rand_expr(); gen_rand_blank();
+             gen_rand_op(); gen_rand_blank();
+             gen_rand_expr(); gen_rand_blank();
+             break;
   }
   recursion_depth--;
 }
@@ -83,11 +104,13 @@ int main(int argc, char *argv[]) {
   }
   int i;
   for (i = 0; i < loop; i ++) {
+    out_of_recursion_depth = 0;
+    recursion_depth = 0;
     memset(buf, 0, sizeof(buf));
     memset(buf_without_uint, 0, sizeof(buf_without_uint));
     memset(code_buf, 0, sizeof(code_buf));
     gen_rand_expr();
-    if(buf[65535] == '\0'){
+    if(buf[65535] == '\0' && out_of_recursion_depth == 0){
       sprintf(code_buf, code_format, buf);
 
       FILE *fp = fopen("/tmp/.code.c", "w");
@@ -106,6 +129,9 @@ int main(int argc, char *argv[]) {
       pclose(fp);
 
       printf("%u %s\n", result, buf_without_uint);
+    }
+    else{
+      i--;
     }
   }
   return 0;
