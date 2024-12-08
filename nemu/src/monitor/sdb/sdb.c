@@ -125,6 +125,46 @@ static int cmd_p(char *args) {
   return 0;
 }
 
+static int cmd_test_expr(char *args) {
+  FILE *file = fopen("../../../tools/gen-expr/input", "r");
+  if (file == NULL) {
+      perror("无法打开文件");
+      return 1;
+  }
+  
+  char line[10001];
+  char result[500];
+  char expression[65536];
+  int wrong_ans = 0;
+  while (fgets(line, sizeof(line), file)) {
+    if (sscanf(line, "%s %[^\n]", result, expression) == 2) {
+        //printf("结果: %s, 表达式: %s\n", result, expression);
+    } else {
+        printf("行格式不正确: %s", line);
+    }
+    bool success = false;
+    word_t except = 0;
+    word_t actual = 0;
+    
+    sscanf(result,"%u",&except);
+    actual = expr_test(expression,&success);
+    if(except != actual){
+      //printf("结果: %s, 表达式: %s\n", result, expression);
+      wrong_ans ++;
+    }
+    
+  }
+  
+  fclose(file);
+  if(wrong_ans != 0){
+    printf("出现%d次错误\n", wrong_ans);
+  }
+  else{
+    printf("测试全部通过\n");
+  }
+  return 0;
+}
+
 static struct {
   const char *name;
   const char *description;
@@ -137,6 +177,7 @@ static struct {
   { "info", "Show some info", cmd_info},
   { "x", "Scan ram", cmd_x},
   { "p", "Compute", cmd_p},
+  { "test", "Test expr func", cmd_test_expr},
 
   /* TODO: Add more commands */
 

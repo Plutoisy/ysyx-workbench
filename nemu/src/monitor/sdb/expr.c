@@ -73,7 +73,7 @@ typedef struct token {
   char str[32];
 } Token;
 
-static Token tokens[32] __attribute__((used)) = {};
+static Token tokens[65536] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0;
 bool wrong_eval_flag;
 
@@ -81,6 +81,7 @@ static bool make_token(char *e) {
   int position = 0;
   int i;
   int j = 0; //tokens position
+  memset(tokens, 0, sizeof(tokens));//清空tokens数组
   regmatch_t pmatch;
 
   nr_token = 0;
@@ -329,4 +330,29 @@ word_t expr(char *e, bool *success) {
     *success = false;
   }
   return 0;
+}
+
+word_t expr_test(char *e, bool *success) {
+  if (!make_token(e)) {
+    *success = false;
+    return 0;
+  }
+  // for(int i = 0; i < 32; i++){
+  //   printf("%s\n",tokens[i].str);
+  // }
+
+  /* TODO: Insert codes to evaluate the expression. */
+  //TODO();
+  word_t eval_result;
+  wrong_eval_flag = 0;
+  eval_result = eval(0,nr_token-1);
+  if(!wrong_eval_flag){
+    printf("%u\n",eval_result);
+    *success = true;
+    return eval_result;
+  }
+  else{
+    return 0;
+  }
+  
 }
