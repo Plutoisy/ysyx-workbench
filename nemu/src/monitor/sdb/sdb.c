@@ -152,6 +152,7 @@ static int cmd_test_expr(char *args) {
       //printf("结果: %s, 表达式: %s\n", result, expression);
       wrong_ans ++;
     }
+    printf("except: %u, actual: %u, expression: %s\n",except, actual, expression);
     
   }
   
