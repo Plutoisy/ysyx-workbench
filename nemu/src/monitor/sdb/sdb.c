@@ -126,7 +126,7 @@ static int cmd_p(char *args) {
 }
 
 static int cmd_test_expr(char *args) {
-  FILE *file = fopen("../tools/gen-expr/input", "r");
+  FILE *file = fopen("/home/plutoisy/ysyx-workbench/nemu/tools/gen-expr/input", "r");
   if (file == NULL) {
       perror("无法打开文件");
       return 1;
