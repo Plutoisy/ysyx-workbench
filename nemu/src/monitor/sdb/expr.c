@@ -141,8 +141,11 @@ static bool make_token(char *e) {
             break;
           
           case TK_NUM:
-            printf("%ld",sizeof(tokens[j].str)/sizeof(char));
-            //if(substr_len > sizeof(tokens[j].str)/sizeof(char))
+            //printf("%ld",sizeof(tokens[j].str)/sizeof(char));
+            if(substr_len > sizeof(tokens[j].str) / sizeof(char) - 1){
+              printf("str buffer overflow\n");
+              return false;
+            }
             strncpy(tokens[j].str, substr_start, substr_len);
             tokens[j].type = rules[i].token_type;
             j++;
