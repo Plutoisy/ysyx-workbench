@@ -290,7 +290,7 @@ word_t eval(int p, int q){
         case '-': val1 = 0; break;
         case '*': wrong_eval_flag = true; printf("* need 2 operators\n"); return 0;
         case '/': wrong_eval_flag = true; printf("- need 2 operators\n"); return 0;
-        default:  wrong_eval_flag = true; printf("error\n"); return 0;
+        default:  wrong_eval_flag = true; printf("op type error\n"); return 0;
       }
     }
     else{
