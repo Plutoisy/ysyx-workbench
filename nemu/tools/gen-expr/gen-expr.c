@@ -23,7 +23,7 @@
 // this should be enough
 static char buf[65536] = {0};
 static char buf_without_uint[65536] = {0};
-static char code_buf[65536 + 256] = {0}; // a little larger than `buf`
+static char code_buf[65536 + 1024] = {0}; // a little larger than `buf`
 static char *code_format =
 "#include <stdio.h>\n"
 "#include <stdint.h>\n"
@@ -32,6 +32,8 @@ static char *code_format =
 "  printf(\"%%u\", result); "
 "  return 0; "
 "}";
+
+static int recursion_depth = 0;
 
 uint32_t choose(uint32_t n) {
   if (n == 0) {
@@ -44,30 +46,32 @@ static void gen_rand_op() {
   //buf[0] = '\0';
   uint32_t n = 4;
   switch (choose(n)) {
-    case 0:  strcat(buf, "+"); strcat(buf_without_uint, "+"); break;
-    case 1:  strcat(buf, "-"); strcat(buf_without_uint, "-"); break;
-    case 2:  strcat(buf, "*"); strcat(buf_without_uint, "*"); break;
-    default: strcat(buf, "/"); strcat(buf_without_uint, "/"); break;
+    case 0:  strncat(buf, "+", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "+", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 1:  strncat(buf, "-", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "-", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 2:  strncat(buf, "*", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "*", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    default: strncat(buf, "/", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "/", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
   } 
 }
 
 static void gen_num() {
   char * before_str = "(uint32_t)";
-  char str[33];
+  char str[32];
   sprintf(str, "%u", choose(-1));
-  strcat(buf, before_str);
-  strcat(buf, str);
-  strcat(buf_without_uint, str);
+  strncat(buf, before_str, sizeof(buf) - strlen(buf));
+  strncat(buf, str, sizeof(buf) - strlen(buf));
+  strncat(buf_without_uint, str, sizeof(buf_without_uint) - strlen(buf_without_uint));
 }
 
 static void gen_rand_expr() {
-  //buf[0] = '\0';
+  if (recursion_depth > 100) return; 
+  recursion_depth++;
   uint32_t n = 3;
   switch (choose(n)) {
     case 0: gen_num(); break;
-    case 1: strcat(buf, "("); strcat(buf_without_uint, "("); gen_rand_expr(); strcat(buf_without_uint, ")"); strcat(buf, ")"); break;
+    case 1: strncat(buf, "(", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "(", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_expr(); strncat(buf_without_uint, ")", sizeof(buf_without_uint) - strlen(buf_without_uint)); strncat(buf, ")", sizeof(buf) - strlen(buf)); break;
     default: gen_rand_expr(); gen_rand_op(); gen_rand_expr(); break;
   }
+  recursion_depth--;
 }
 
 int main(int argc, char *argv[]) {
@@ -79,8 +83,9 @@ int main(int argc, char *argv[]) {
   }
   int i;
   for (i = 0; i < loop; i ++) {
-    strcpy(buf, "");
-    strcpy(buf_without_uint, "");
+    memset(buf, 0, sizeof(buf));
+    memset(buf_without_uint, 0, sizeof(buf_without_uint));
+    memset(code_buf, 0, sizeof(code_buf));
     gen_rand_expr();
     if(buf[65535] == '\0'){
       sprintf(code_buf, code_format, buf);
