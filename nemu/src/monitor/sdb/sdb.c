@@ -111,6 +111,20 @@ static int cmd_x(char *args) {
   return 0;
 }
 
+static int cmd_p(char *args) {
+  if (args == NULL){
+    printf("args needed\n");
+  }
+  else{
+    bool success = false;
+    expr(args,&success);
+    if (success == false){
+      printf("expr function false\n");
+    }
+  }
+  return 0;
+}
+
 static struct {
   const char *name;
   const char *description;
@@ -122,6 +136,7 @@ static struct {
   { "si","Execute one time", cmd_si},
   { "info", "Show some info", cmd_info},
   { "x", "Scan ram", cmd_x},
+  { "p", "Compute", cmd_p},
 
   /* TODO: Add more commands */
 
