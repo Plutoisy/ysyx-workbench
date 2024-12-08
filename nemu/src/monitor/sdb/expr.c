@@ -175,10 +175,11 @@ static bool make_token(char *e) {
             tokens[j].type = TK_NUM;
             bool flag = true;
             uint32_t tmp;
+            // must be $$0, $0 is wrong.
             // if (tokens[j].str[1] =='0'){
             //   tmp = isa_reg_str2val(tokens[j].str, &flag);
             // }
-            // else{
+            // else{ 
               tmp = isa_reg_str2val(tokens[j].str+1, &flag);
             // }
             if(flag){
@@ -266,7 +267,7 @@ int find_main_op(int p, int q){
       if((tokens[real_op].type == '+' || tokens[real_op].type == '-') && (tokens[i].type == '*' || tokens[i].type == '/')){
         real_op = real_op;
       }
-      else if(tokens[i].type == '-' && tokens[i+1].type == TK_NUM && (tokens[i-1].type != TK_NUM && tokens[i-1].type != ')')){
+      else if(i>=1 && i <= sizeof(tokens)-2 && tokens[i].type == '-' && tokens[i+1].type == TK_NUM && (tokens[i-1].type != TK_NUM && tokens[i-1].type != ')')){
         real_op = real_op;
       }
       else{
