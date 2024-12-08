@@ -21,7 +21,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG, TK_HEX
 
   /* TODO: Add more token types */
 
@@ -45,6 +45,7 @@ static struct rule {
   {"\\(", '('},                       // (
   {"\\)", ')'},                       // )
   {"\\$[a-zA-Z\\$]*[0-9]*", TK_REG},  //REG
+  {"0[xX][0-9a-fA-F]+", TK_HEX},         //HEX
   {"[0-9]+", TK_NUM},                 // NUM
 };
 
@@ -186,6 +187,16 @@ static bool make_token(char *e) {
               printf("isa_reg_str2val error. \n");
               return false;
             }
+            j++;
+            nr_token++;
+            break;
+
+          case TK_HEX:
+            strncpy(tokens[j].str, substr_start, substr_len);
+            uint32_t value;
+            sscanf(tokens[j].str, "%x", &value);
+            snprintf(tokens[j].str, sizeof(tokens[j].str), "%u", value);
+            tokens[j].type = TK_NUM;
             j++;
             nr_token++;
             break;
