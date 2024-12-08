@@ -255,10 +255,18 @@ word_t eval(int p, int q){
      * For now this token should be a number.
      * Return the value of the number.
      */
-    word_t tokens_p_str_int;
-    // printf("%s\n",tokens[p].str);
-    sscanf(tokens[p].str,"%u",&tokens_p_str_int);
-    return tokens_p_str_int;
+    if (tokens[p].type != TK_NUM){
+      printf("grammatical error\n");
+      wrong_eval_flag = true;
+      return 0;
+    }
+    else{
+      word_t tokens_p_str_int;
+      // printf("%s\n",tokens[p].str);
+      sscanf(tokens[p].str,"%u",&tokens_p_str_int);
+      return tokens_p_str_int;
+    }
+    
   }
   else if (check_parentheses(p, q) == true) {
     /* The expression is surrounded by a matched pair of parentheses.
