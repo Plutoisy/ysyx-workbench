@@ -450,7 +450,7 @@ word_t expr_test(char *e, bool *success) {
   //TODO();
   word_t eval_result;
   wrong_eval_flag = 0;
-  eval(0,nr_token-1);
+  eval_result = eval(0,nr_token-1);
   if(!wrong_eval_flag){
     //printf("%u\n",eval_result);
     *success = true;
