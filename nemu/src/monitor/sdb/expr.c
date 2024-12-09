@@ -389,28 +389,32 @@ word_t eval(int p, int q){
     else{
       val1 = eval(p, op - 1);
     }
-    
-    val2 = eval(op + 1, q);
 
-    switch (tokens[op].type) {
-      case '+': return val1 + val2;
-      case '-': return val1 - val2;
-      case '*': return val1 * val2;
-      case '/': return val1 / val2;
-                // if(val2 == 0){
-                //   wrong_eval_flag = true;
-                //   printf("div by 0\n");
-                //   return 0;
-                // }
-                // else{
-                //   return val1 / val2;
-                // }
-      case TK_EQ: return val1 == val2;
-      case TK_NOTEQ: return val1 != val2;
-      case TK_MORETHAN: return val1 >= val2;
-      case TK_LESSTHAN: return val1 <= val2;
-      case TK_AND: return val1 && val2;
-      default: assert(0);
+    if (val1 == 0 && tokens[op].type == TK_AND){
+      return 0;
+    }//逻辑运算符的短路特性
+    else{
+      val2 = eval(op + 1, q);
+      switch (tokens[op].type) {
+        case '+': return val1 + val2;
+        case '-': return val1 - val2;
+        case '*': return val1 * val2;
+        case '/': return val1 / val2;
+                  // if(val2 == 0){
+                  //   wrong_eval_flag = true;
+                  //   printf("div by 0\n");
+                  //   return 0;
+                  // }
+                  // else{
+                  //   return val1 / val2;
+                  // }
+        case TK_EQ: return val1 == val2;
+        case TK_NOTEQ: return val1 != val2;
+        case TK_MORETHAN: return val1 >= val2;
+        case TK_LESSTHAN: return val1 <= val2;
+        case TK_AND: return val1 && val2;
+        default: assert(0);
+      }
     }
     return 0;
   }
