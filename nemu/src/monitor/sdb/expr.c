@@ -19,9 +19,10 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
+#include <memory/paddr.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG, TK_HEX, TK_MORETHAN, TK_LESSTHAN, TK_NOTEQ, TK_AND
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG, TK_HEX, TK_MORETHAN, TK_LESSTHAN, TK_NOTEQ, TK_AND, TK_NEG, TK_POINT
 
   /* TODO: Add more token types */
 
@@ -157,7 +158,12 @@ static bool make_token(char *e) {
 
           case '*':
             strncpy(tokens[j].str, substr_start, substr_len);
-            tokens[j].type = rules[i].token_type;
+            if(j == 0 || tokens[j-1].type == ')' || tokens[j-1].type == TK_NUM){
+              tokens[j].type = TK_POINT;//解指针
+            }
+            else{
+              tokens[j].type = rules[i].token_type;
+            }
             j++;
             nr_token++;
             break;
@@ -171,7 +177,12 @@ static bool make_token(char *e) {
 
           case '-':
             strncpy(tokens[j].str, substr_start, substr_len);
-            tokens[j].type = rules[i].token_type;
+            if(j == 0 || tokens[j-1].type == ')' || tokens[j-1].type == TK_NUM){
+              tokens[j].type = TK_NEG;//负号
+            }
+            else{
+              tokens[j].type = rules[i].token_type;
+            }
             j++;
             nr_token++;
             break;
@@ -279,7 +290,10 @@ static bool check_parentheses(int p, int q) {
 }
 
 int get_prioritization(int token_type){
-  if(token_type == '*' || token_type == '/'){
+  if(token_type == TK_NEG || token_type == TK_HEX){
+    return 6;
+  }
+  else if(token_type == '*' || token_type == '/'){
     return 5;
   }
   else if(token_type == '+' || token_type == '-'){
@@ -303,9 +317,9 @@ int find_main_op(int p, int q){
   int lnum = 0;
   int rnum = 0;
   int real_op = p;
-  if(tokens[p].type == '-'){
-    return p;
-  }
+  // if(tokens[p].type == '-'){
+  //   return p;
+  // }
   for(int i = p; i <= q; i++){
     if(rnum > lnum){
       return -1;
@@ -320,14 +334,15 @@ int find_main_op(int p, int q){
                      || tokens[i].type == '*' || tokens[i].type == '/'
                      || tokens[i].type == TK_MORETHAN || tokens[i].type == TK_LESSTHAN
                      || tokens[i].type == TK_EQ || tokens[i].type == TK_NOTEQ
-                     || tokens[i].type == TK_AND)){
+                     || tokens[i].type == TK_AND
+                     || tokens[i].type == TK_NEG || tokens[i].type == TK_POINT)){
       if(get_prioritization(tokens[real_op].type)<get_prioritization(tokens[i].type)){
       //if((tokens[real_op].type == '+' || tokens[real_op].type == '-') && (tokens[i].type == '*' || tokens[i].type == '/')){
         real_op = real_op;
       }
-      else if(i>=1 && i <= sizeof(tokens)-2 && tokens[i].type == '-' && tokens[i+1].type == TK_NUM && (tokens[i-1].type != TK_NUM && tokens[i-1].type != ')')){
-        real_op = real_op;
-      }
+      // else if(i>=1 && i <= sizeof(tokens)-2 && tokens[i].type == '-' && tokens[i+1].type == TK_NUM && (tokens[i-1].type != TK_NUM && tokens[i-1].type != ')')){
+      //   real_op = real_op;
+      // }
       else{
         real_op = i;
       }
@@ -377,14 +392,20 @@ word_t eval(int p, int q){
       return 0;
     }
     // op = the position of 主运算符 in the token expression;
-    if(p == op){
-      switch (tokens[op].type) {
-        case '+': val1 = 0; break;
-        case '-': val1 = 0; break;
-        // case '*': wrong_eval_flag = true; printf("* need 2 operators\n"); return 0;
-        // case '/': wrong_eval_flag = true; printf("- need 2 operators\n"); return 0;
-        default:  wrong_eval_flag = true; printf("op need 2 operators\n"); return 0;
-      }
+    // if(p == op){
+    //   switch (tokens[op].type) {
+    //     case '+': val1 = 0; break;
+    //     case '-': val1 = 0; break;
+    //     // case '*': wrong_eval_flag = true; printf("* need 2 operators\n"); return 0;
+    //     // case '/': wrong_eval_flag = true; printf("- need 2 operators\n"); return 0;
+    //     default:  wrong_eval_flag = true; printf("op need 2 operators\n"); return 0;
+    //   }
+    // }
+    // else{
+    //      val1 = eval(p, op - 1);
+    // }
+    if (tokens[op].type == TK_NEG || tokens[op].type == TK_POINT){
+      val1 = 0;
     }
     else{
       val1 = eval(p, op - 1);
@@ -398,6 +419,8 @@ word_t eval(int p, int q){
       switch (tokens[op].type) {
         case '+': return val1 + val2;
         case '-': return val1 - val2;
+        case TK_NEG: return val1 - val2;
+        case TK_POINT: return paddr_read(val2,4);
         case '*': return val1 * val2;
         case '/': return val1 / val2;
                   // if(val2 == 0){
