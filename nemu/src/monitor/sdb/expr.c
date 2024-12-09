@@ -158,7 +158,7 @@ static bool make_token(char *e) {
 
           case '*':
             strncpy(tokens[j].str, substr_start, substr_len);
-            if(j == 0 || tokens[j-1].type == ')' || tokens[j-1].type == TK_NUM){
+            if(j == 0 || (tokens[j-1].type != ')' || tokens[j-1].type != TK_NUM)){
               tokens[j].type = TK_POINT;//解指针
             }
             else{
@@ -177,7 +177,7 @@ static bool make_token(char *e) {
 
           case '-':
             strncpy(tokens[j].str, substr_start, substr_len);
-            if(j == 0 || tokens[j-1].type == ')' || tokens[j-1].type == TK_NUM){
+            if(j == 0 || (tokens[j-1].type != ')' && tokens[j-1].type != TK_NUM)){
               tokens[j].type = TK_NEG;//负号
             }
             else{
