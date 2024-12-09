@@ -390,10 +390,10 @@ word_t eval(int p, int q){
       val1 = eval(p, op - 1);
     }
 
-    if (val1 == 0 && tokens[op].type == TK_AND){
-      return 0;
-    }//逻辑运算符的短路特性
-    else{
+    // if (val1 == 0 && tokens[op].type == TK_AND){
+    //   return 0;
+    // }//逻辑运算符的短路特性
+    // else{
       val2 = eval(op + 1, q);
       switch (tokens[op].type) {
         case '+': return val1 + val2;
@@ -414,7 +414,7 @@ word_t eval(int p, int q){
         case TK_LESSTHAN: return val1 <= val2;
         case TK_AND: return val1 && val2;
         default: assert(0);
-      }
+      //}
     }
     return 0;
   }
