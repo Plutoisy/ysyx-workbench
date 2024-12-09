@@ -285,7 +285,7 @@ int get_prioritization(int token_type){
   else if(token_type == '+' || token_type == '-'){
     return 4;
   }
-  else if(token_type == TK_MORETHAN || token_type == TK_MORETHAN){
+  else if(token_type == TK_MORETHAN || token_type == TK_LESSTHAN){
     return 3;
   }
   else if(token_type == TK_EQ || token_type == TK_NOTEQ){
