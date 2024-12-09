@@ -321,7 +321,8 @@ int find_main_op(int p, int q){
                      || tokens[i].type == TK_MORETHAN || tokens[i].type == TK_LESSTHAN
                      || tokens[i].type == TK_EQ || tokens[i].type == TK_NOTEQ
                      || tokens[i].type == TK_AND)){
-      if((tokens[real_op].type == '+' || tokens[real_op].type == '-') && (tokens[i].type == '*' || tokens[i].type == '/')){
+      if(get_prioritization(tokens[real_op].type)<get_prioritization(tokens[i].type)){
+      //if((tokens[real_op].type == '+' || tokens[real_op].type == '-') && (tokens[i].type == '*' || tokens[i].type == '/')){
         real_op = real_op;
       }
       else if(i>=1 && i <= sizeof(tokens)-2 && tokens[i].type == '-' && tokens[i+1].type == TK_NUM && (tokens[i-1].type != TK_NUM && tokens[i-1].type != ')')){
@@ -380,9 +381,9 @@ word_t eval(int p, int q){
       switch (tokens[op].type) {
         case '+': val1 = 0; break;
         case '-': val1 = 0; break;
-        case '*': wrong_eval_flag = true; printf("* need 2 operators\n"); return 0;
-        case '/': wrong_eval_flag = true; printf("- need 2 operators\n"); return 0;
-        default:  wrong_eval_flag = true; printf("op type error\n"); return 0;
+        // case '*': wrong_eval_flag = true; printf("* need 2 operators\n"); return 0;
+        // case '/': wrong_eval_flag = true; printf("- need 2 operators\n"); return 0;
+        default:  wrong_eval_flag = true; printf("op need 2 operators\n"); return 0;
       }
     }
     else{
@@ -396,6 +397,10 @@ word_t eval(int p, int q){
       case '-': return val1 - val2;
       case '*': return val1 * val2;
       case '/': return val1 / val2;
+      case TK_EQ: return val1 == val2;
+      case TK_MORETHAN: return val1 >= val2;
+      case TK_LESSTHAN: return val1 <= val2;
+      case TK_AND: return val1 && val2;
       default: assert(0);
     }
     return 0;
