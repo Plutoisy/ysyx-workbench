@@ -149,10 +149,10 @@ static int cmd_test_expr(char *args) {
     sscanf(result,"%u",&except);
     actual = expr_test(expression,&success);
     if(except != actual){
-      printf("except: %u, actual: %u, expression: %s\n",except, actual, expression);
+      printf("WRONG !!! except: %u, actual: %u, expression: %s\n",except, actual, expression);
       wrong_ans ++;
     }
-    //printf("except: %u, actual: %u, expression: %s\n",except, actual, expression);
+    printf("except: %u, actual: %u, expression: %s\n",except, actual, expression);
     
   }
   

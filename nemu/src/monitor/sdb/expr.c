@@ -452,7 +452,7 @@ word_t expr_test(char *e, bool *success) {
   wrong_eval_flag = 0;
   eval_result = eval(0,nr_token-1);
   if(!wrong_eval_flag){
-    printf("%u\n",eval_result);
+    //printf("%u\n",eval_result);
     *success = true;
     return eval_result;
   }
