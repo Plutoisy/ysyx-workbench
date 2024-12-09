@@ -61,7 +61,7 @@ static void gen_rand_op() {
 static void gen_num() {
   char * before_str = "(uint32_t)";
   char str[32];
-  sprintf(str, "%u", choose(10));
+  sprintf(str, "%u", choose(-1));
   strncat(buf, before_str, sizeof(buf) - strlen(buf));
   strncat(buf, str, sizeof(buf) - strlen(buf));
   strncat(buf_without_uint, str, sizeof(buf_without_uint) - strlen(buf_without_uint));
@@ -76,7 +76,7 @@ static void gen_rand_blank() {
 }
 
 static void gen_rand_expr() {
-  if (recursion_depth > 80) {
+  if (recursion_depth > 60) {
     out_of_recursion_depth = 1;
     return;
   } 
