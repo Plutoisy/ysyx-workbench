@@ -45,11 +45,16 @@ uint32_t choose(uint32_t n) {
 
 static void gen_rand_op() {
   //buf[0] = '\0';
-  uint32_t n = 4;
+  uint32_t n = 9;
   switch (choose(n)) {
     case 0:  strncat(buf, "+", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "+", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
     case 1:  strncat(buf, "-", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "-", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
     case 2:  strncat(buf, "*", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "*", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 3:  strncat(buf, ">=", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, ">=", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 4:  strncat(buf, "<=", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "<=", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 5:  strncat(buf, "==", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "==", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 6:  strncat(buf, "!=", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "!=", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
+    case 7:  strncat(buf, "&&", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "&&", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
     default: strncat(buf, "/", sizeof(buf) - strlen(buf)); strncat(buf_without_uint, "/", sizeof(buf_without_uint) - strlen(buf_without_uint)); break;
   } 
 }
