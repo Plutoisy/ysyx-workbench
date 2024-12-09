@@ -21,7 +21,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG, TK_HEX
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_REG, TK_HEX, TK_MORETHAN, TK_LESSTHAN, TK_NOTEQ, TK_AND
 
   /* TODO: Add more token types */
 
@@ -39,13 +39,17 @@ static struct rule {
   {" +", TK_NOTYPE},                  // spaces
   {"\\+", '+'},                       // plus
   {"==", TK_EQ},                      // equal
+  {">=", TK_MORETHAN},                // >=
+  {"<=", TK_LESSTHAN},                // <=
+  {"!=", TK_NOTEQ},                   // !=
+  {"&&", TK_AND},                     // &&
   {"\\*", '*'},                       // *
   {"/", '/'},                         // /
   {"\\-", '-'},                       // -
   {"\\(", '('},                       // (
   {"\\)", ')'},                       // )
   {"\\$[a-zA-Z\\$]*[0-9]*", TK_REG},  //REG
-  {"0[xX][0-9a-fA-F]+", TK_HEX},         //HEX
+  {"0[xX][0-9a-fA-F]+", TK_HEX},      //HEX
   {"[0-9]+", TK_NUM},                 // NUM
 };
 
@@ -117,6 +121,34 @@ static bool make_token(char *e) {
             break;
 
           case TK_EQ:
+            strncpy(tokens[j].str, substr_start, substr_len);
+            tokens[j].type = rules[i].token_type;
+            j++;
+            nr_token++;
+            break;
+          
+          case TK_MORETHAN:
+            strncpy(tokens[j].str, substr_start, substr_len);
+            tokens[j].type = rules[i].token_type;
+            j++;
+            nr_token++;
+            break;
+          
+          case TK_LESSTHAN:
+            strncpy(tokens[j].str, substr_start, substr_len);
+            tokens[j].type = rules[i].token_type;
+            j++;
+            nr_token++;
+            break;
+
+          case TK_NOTEQ:
+            strncpy(tokens[j].str, substr_start, substr_len);
+            tokens[j].type = rules[i].token_type;
+            j++;
+            nr_token++;
+            break;
+
+          case TK_AND:
             strncpy(tokens[j].str, substr_start, substr_len);
             tokens[j].type = rules[i].token_type;
             j++;
@@ -246,6 +278,27 @@ static bool check_parentheses(int p, int q) {
   }
 }
 
+int get_prioritization(int token_type){
+  if(token_type == '*' || token_type == '/'){
+    return 5;
+  }
+  else if(token_type == '+' || token_type == '-'){
+    return 4;
+  }
+  else if(token_type == TK_MORETHAN || token_type == TK_MORETHAN){
+    return 3;
+  }
+  else if(token_type == TK_EQ || token_type == TK_NOTEQ){
+    return 2;
+  }
+  else if(token_type == TK_AND){
+    return 1;
+  }
+  else{
+    return 0;
+  }
+}
+
 int find_main_op(int p, int q){
   int lnum = 0;
   int rnum = 0;
@@ -263,7 +316,11 @@ int find_main_op(int p, int q){
     if(tokens[i].type == ')'){
       rnum++;
     }
-    if(lnum == rnum && (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/')){
+    if(lnum == rnum && (tokens[i].type == '+' || tokens[i].type == '-' 
+                     || tokens[i].type == '*' || tokens[i].type == '/'
+                     || tokens[i].type == TK_MORETHAN || tokens[i].type == TK_LESSTHAN
+                     || tokens[i].type == TK_EQ || tokens[i].type == TK_NOTEQ
+                     || tokens[i].type == TK_AND)){
       if((tokens[real_op].type == '+' || tokens[real_op].type == '-') && (tokens[i].type == '*' || tokens[i].type == '/')){
         real_op = real_op;
       }
