@@ -295,7 +295,7 @@ int get_prioritization(int token_type){
     return 1;
   }
   else{
-    return 0;
+    return 99;
   }
 }
 
