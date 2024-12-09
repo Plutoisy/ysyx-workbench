@@ -68,7 +68,7 @@ static void gen_num() {
 }
 
 static void gen_rand_blank() {
-  uint32_t num_spaces = choose(0); 
+  uint32_t num_spaces = choose(2); 
   for (uint32_t i = 0; i < num_spaces; i++) {
         strncat(buf, " ", sizeof(buf) - strlen(buf)); 
         strncat(buf_without_uint, " ", sizeof(buf_without_uint) - strlen(buf_without_uint)); 
