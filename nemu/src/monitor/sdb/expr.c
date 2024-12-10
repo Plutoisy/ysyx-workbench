@@ -319,7 +319,7 @@ int find_main_op(int p, int q){
   int real_op = p;
   if(tokens[p].type == TK_NEG || tokens[p].type == TK_POINT){
     return p;
-  }
+  }//fix --1 and **1
   for(int i = p; i <= q; i++){
     if(rnum > lnum){
       return -1;

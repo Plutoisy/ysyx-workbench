@@ -166,6 +166,21 @@ static int cmd_test_expr(char *args) {
   return 0;
 }
 
+static int cmd_w(char* args){
+  bool success = false;
+  int value = expr(args,&success);
+  if (success == false){
+    printf("expr function false while creating wp\n");
+  }
+  else{
+    WP* wp = new_wp();
+    strcpy(wp -> expr, args);
+    wp -> value = value;
+    printf("create wp success\n");
+  }
+  return 0;
+}
+
 static struct {
   const char *name;
   const char *description;
@@ -179,6 +194,7 @@ static struct {
   { "x", "Scan ram", cmd_x},
   { "p", "Compute", cmd_p},
   { "test", "Test expr func", cmd_test_expr},
+  { "w", "Set watchpoint", cmd_w},
 
   /* TODO: Add more commands */
 
