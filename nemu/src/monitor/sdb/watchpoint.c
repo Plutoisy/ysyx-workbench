@@ -83,16 +83,16 @@ void update_wp_value(){
   WP* wp = head;
   while(wp != NULL){
     bool success = false;
-    int update_value = expr(wp -> expr,&success);
+    uint32_t update_value = expr(wp -> expr,&success);
     if (success == false){
       printf("expr function false while updating wp, how can you trigger this?\n");
       assert(0);
     }
     else{
       if(wp->value != update_value){
+        printf("trigger wp, expr:%s, oldvalue:%u, new_value:%u\n",wp->expr, wp->value, update_value);
         nemu_state.state = NEMU_STOP;
         wp->value = update_value;
-        printf("trigger wp, expr:%s, oldvalue:%u, new_value:%u\n",wp->expr, wp->value, update_value);
       }
     }
     wp = wp -> next;
