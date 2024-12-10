@@ -423,14 +423,14 @@ word_t eval(int p, int q){
         case TK_POINT: return paddr_read(val2,4);
         case '*': return val1 * val2;
         case '/': return val1 / val2;
-                  // if(val2 == 0){
-                  //   wrong_eval_flag = true;
-                  //   printf("div by 0\n");
-                  //   return 0;
-                  // }
-                  // else{
-                  //   return val1 / val2;
-                  // }
+                  if(val2 == 0){
+                    wrong_eval_flag = true;
+                    printf("div by 0\n");
+                    return 0;
+                  }
+                  else{
+                    return val1 / val2;
+                  }
         case TK_EQ: return val1 == val2;
         case TK_NOTEQ: return val1 != val2;
         case TK_MORETHAN: return val1 >= val2;
