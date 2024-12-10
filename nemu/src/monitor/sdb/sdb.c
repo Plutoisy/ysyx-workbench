@@ -117,9 +117,12 @@ static int cmd_p(char *args) {
   }
   else{
     bool success = false;
-    expr(args,&success);
+    uint32_t result = expr(args,&success);
     if (success == false){
       printf("expr function false\n");
+    }
+    else{
+      printf("result: %u\n",result);
     }
   }
   return 0;
