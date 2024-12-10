@@ -31,5 +31,7 @@ word_t expr(char *e, bool *success);
 WP* new_wp();
 void free_wp(WP *wp);
 void update_wp_value();
+void delet_wp(int N);
+void wp_display();
 
 #endif

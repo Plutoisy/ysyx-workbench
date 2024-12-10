@@ -75,8 +75,9 @@ void free_wp(WP *wp){
     }
   }
   wp->next = free_;
+  wp->value = 0;
+  wp->expr[0] = '\0';
   free_=wp;
-  
 }
 
 void update_wp_value(){
@@ -95,6 +96,34 @@ void update_wp_value(){
         wp->value = update_value;
       }
     }
+    wp = wp -> next;
+  }
+}
+
+void delet_wp(int N){
+  WP* wp = head;
+  while(wp != NULL){
+    if(wp -> NO == N){
+      free_wp(wp);
+      return;
+    }
+    wp = wp -> next;
+  }
+  printf("can not find NO.%d wp\n",N);
+}
+
+void wp_display(){
+  WP* wp;
+  printf("Used WP:\n");
+  wp = head;
+  while(wp != NULL){
+    printf("NO.%d, expr:%s, value:%u\n",wp->NO, wp->expr, wp->value);
+    wp = wp -> next;
+  }
+  printf("Free WP:\n");
+  wp = free_;
+  while(wp != NULL){
+    printf("NO.%d, expr:%s, value:%u\n",wp->NO, wp->expr, wp->value);
     wp = wp -> next;
   }
 }

@@ -79,6 +79,9 @@ static int cmd_info(char *args) {
     if (ARG == 'r'){
       isa_reg_display();
     }
+    else if (ARG == 'w'){
+      wp_display();
+    }
     else{
       printf("not support yet\n");
     }
@@ -184,6 +187,18 @@ static int cmd_w(char* args){
   return 0;
 }
 
+static int cmd_d(char* args){
+  int N;
+  if (args == NULL){
+    printf("arg is NULL\n");
+  }
+  else{
+    sscanf(args,"%d",&N);
+    delet_wp(N);
+  }
+  return 0;
+}
+
 static struct {
   const char *name;
   const char *description;
@@ -198,6 +213,7 @@ static struct {
   { "p", "Compute", cmd_p},
   { "test", "Test expr func", cmd_test_expr},
   { "w", "Set watchpoint", cmd_w},
+  { "d", "Delete watchpoint", cmd_d},
 
   /* TODO: Add more commands */
 
