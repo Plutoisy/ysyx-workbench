@@ -446,35 +446,11 @@ word_t eval(int p, int q){
 
 
 word_t expr(char *e, bool *success) {
-  word_t eval_result;
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
   /* TODO: Insert codes to evaluate the expression. */
-  wrong_eval_flag = false;
-  eval_result = eval(0, nr_token - 1);
-  if(!wrong_eval_flag){
-    printf("%u\n",eval_result);
-    *success = true;
-  }
-  else{
-    *success = false;
-  }
-  return 0;
-}
-
-word_t expr_test(char *e, bool *success) {
-  if (!make_token(e)) {
-    *success = false;
-    return 0;
-  }
-  // for(int i = 0; i < 32; i++){
-  //   printf("%s\n",tokens[i].str);
-  // }
-
-  /* TODO: Insert codes to evaluate the expression. */
-  //TODO();
   word_t eval_result;
   wrong_eval_flag = 0;
   eval_result = eval(0,nr_token-1);
@@ -486,5 +462,5 @@ word_t expr_test(char *e, bool *success) {
   else{
     return 0;
   }
-  
 }
+

@@ -147,7 +147,7 @@ static int cmd_test_expr(char *args) {
     word_t actual = 0;
     
     sscanf(result,"%u",&except);
-    actual = expr_test(expression,&success);
+    actual = expr(expression,&success);
     if(except != actual){
       printf("WRONG !!! except: %u, actual: %u, expression: %s\n",except, actual, expression);
       wrong_ans ++;
