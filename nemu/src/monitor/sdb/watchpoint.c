@@ -105,11 +105,12 @@ void delet_wp(int N){
   while(wp != NULL){
     if(wp -> NO == N){
       free_wp(wp);
+      printf("delete NO.%d wp success\n",N);
       return;
     }
     wp = wp -> next;
   }
-  printf("can not find NO.%d wp\n",N);
+  printf("can not find NO.%d wp or it is free\n",N);
 }
 
 void wp_display(){
