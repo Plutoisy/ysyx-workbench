@@ -218,12 +218,18 @@ static bool make_token(char *e) {
             tokens[j].type = TK_NUM;
             bool flag = true;
             uint32_t tmp;
+            if(strcmp("pc", tokens[j].str+1) == 0){
+              tmp = cpu.pc;
+            }
+            else{
+              tmp = isa_reg_str2val(tokens[j].str+1, &flag);
+            }
             // must be $$0, $0 is wrong.
             // if (tokens[j].str[1] =='0'){
             //   tmp = isa_reg_str2val(tokens[j].str, &flag);
             // }
             // else{ 
-              tmp = isa_reg_str2val(tokens[j].str+1, &flag);
+            //  tmp = isa_reg_str2val(tokens[j].str+1, &flag);
             // }
             if(flag){
               snprintf(tokens[j].str, sizeof(tokens[j].str), "%u", tmp);
