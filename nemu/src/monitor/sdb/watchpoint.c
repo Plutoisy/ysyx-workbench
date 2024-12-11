@@ -92,7 +92,12 @@ void update_wp_value(){
     else{
       if(wp->value != update_value){
         printf("trigger wp, expr:%s, oldvalue:%u, new_value:%u\n",wp->expr, wp->value, update_value);
-        nemu_state.state = NEMU_STOP;
+        if(nemu_state.state == NEMU_END){
+          printf("the wp triggered is the end of the programe\n");
+        }
+        else{
+          nemu_state.state = NEMU_STOP;
+        }
         wp->value = update_value;
       }
     }
