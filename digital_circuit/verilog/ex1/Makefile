@@ -45,6 +45,7 @@ vcd:$(VSRCS)
 		--cc --trace\
 		--Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top_vcd)
 	./build/top_vcd
+	gtkwave dump.vcd
 
 wave:
 	gtkwave dump.vcd
