@@ -36,11 +36,11 @@ sim:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top)
 	./build/top
 
-vcd:$(VSRCS) $(CSRCS)
+vcd:$(VSRCS) 
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
-		--top-module $(TOPNAME) $^ \
+		--top-module $(TOPNAME) $^ $(abspath ./simcsrc/sim.cpp)\
 		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top_vcd)
 	./build/top_vcd
 wavevcd:
