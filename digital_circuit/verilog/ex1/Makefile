@@ -36,7 +36,14 @@ sim:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top)
 	./build/top
 
-	
+vcd:
+	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	mkdir -p build
+	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top_vcd)
+	./build/top_vcd
+wavevcd:
+	gtkwave waveform.vcd
+
 clean:
 	rm -rf ./build
 	
