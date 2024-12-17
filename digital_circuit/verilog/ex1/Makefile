@@ -46,8 +46,8 @@ vcd:$(VSRCS)
 		--Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top_vcd)
 	./build/top_vcd
 
-wavevcd:
-	gtkwave waveform.vcd
+wave:
+	gtkwave dump.vcd
 
 clean:
 	rm -rf ./build
