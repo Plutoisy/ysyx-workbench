@@ -83,19 +83,21 @@ static void gen_rand_expr() {
   recursion_depth++;
   uint32_t n = 3;
   switch (choose(n)) {
-    case 0: gen_num(); gen_rand_blank();
+    case 0: gen_num();
             break;
     case 1: strncat(buf, "(uint32_t)(", sizeof(buf) - strlen(buf)); 
             strncat(buf_without_uint, "(", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
-            gen_rand_expr(); gen_rand_blank();
+            gen_rand_expr();
             strncat(buf_without_uint, ")", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
             strncat(buf, ")", sizeof(buf) - strlen(buf)); 
             break;
     default: 
              strncat(buf, "(uint32_t)(", sizeof(buf) - strlen(buf)); 
+             strncat(buf_without_uint, "(", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
              gen_rand_expr(); gen_rand_blank();
              gen_rand_op(); gen_rand_blank();
              gen_rand_expr(); gen_rand_blank();
+             strncat(buf_without_uint, ")", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
              strncat(buf, ")", sizeof(buf) - strlen(buf)); gen_rand_blank();
              break;
   }

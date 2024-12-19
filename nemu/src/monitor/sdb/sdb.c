@@ -142,6 +142,7 @@ static int cmd_test_expr(char *args) {
   char result[500];
   char expression[65536];
   int wrong_ans = 0;
+  int test_time = 0;
   while (fgets(line, sizeof(line), file)) {
     if (sscanf(line, "%s %[^\n]", result, expression) == 2) {
         //printf("结果: %s, 表达式: %s\n", result, expression);
@@ -156,13 +157,15 @@ static int cmd_test_expr(char *args) {
     actual = expr(expression,&success);
     if(except != actual){
       printf("WRONG !!! except: %u, actual: %u, expression: %s\n",except, actual, expression);
-      wrong_ans ++;
+      wrong_ans++;
     }
+    test_time++;
     //printf("except: %u, actual: %u, expression: %s\n",except, actual, expression);
     
   }
   
   fclose(file);
+  printf("共完成%d次测试\n", test_time);
   if(wrong_ans != 0){
     printf("出现%d次错误\n", wrong_ans);
   }
