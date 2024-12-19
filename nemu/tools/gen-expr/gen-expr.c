@@ -76,7 +76,7 @@ static void gen_rand_blank() {
 }
 
 static void gen_rand_expr() {
-  if (recursion_depth > 60) {
+  if (recursion_depth > 50) {
     out_of_recursion_depth = 1;
     return;
   } 
@@ -85,15 +85,18 @@ static void gen_rand_expr() {
   switch (choose(n)) {
     case 0: gen_num(); gen_rand_blank();
             break;
-    case 1: strncat(buf, "(", sizeof(buf) - strlen(buf)); gen_rand_blank();
+    case 1: strncat(buf, "(uint32_t)(", sizeof(buf) - strlen(buf)); 
             strncat(buf_without_uint, "(", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
             gen_rand_expr(); gen_rand_blank();
             strncat(buf_without_uint, ")", sizeof(buf_without_uint) - strlen(buf_without_uint)); gen_rand_blank();
-            strncat(buf, ")", sizeof(buf) - strlen(buf)); gen_rand_blank();
+            strncat(buf, ")", sizeof(buf) - strlen(buf)); 
             break;
-    default: gen_rand_expr(); gen_rand_blank();
+    default: 
+             strncat(buf, "(uint32_t)(", sizeof(buf) - strlen(buf)); 
+             gen_rand_expr(); gen_rand_blank();
              gen_rand_op(); gen_rand_blank();
              gen_rand_expr(); gen_rand_blank();
+             strncat(buf, ")", sizeof(buf) - strlen(buf)); gen_rand_blank();
              break;
   }
   recursion_depth--;
