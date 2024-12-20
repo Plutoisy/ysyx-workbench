@@ -123,13 +123,13 @@ void wp_display(){
   printf("Used WP:\n");
   wp = head;
   while(wp != NULL){
-    printf("NO.%d, expr:%s, value:%u\n",wp->NO, wp->expr, wp->value);
+    printf("NO.%d, expr:%s, value: %u(DEC) 0x%08x(HEX)\n",wp->NO, wp->expr, wp->value, wp->value);
     wp = wp -> next;
   }
   printf("Free WP:\n");
   wp = free_;
   while(wp != NULL){
-    printf("NO.%d, expr:%s, value:%u\n",wp->NO, wp->expr, wp->value);
+    printf("NO.%d, expr:%s, value: %u(DEC) 0x%08x(HEX)\n",wp->NO, wp->expr, wp->value, wp->value);
     wp = wp -> next;
   }
 }

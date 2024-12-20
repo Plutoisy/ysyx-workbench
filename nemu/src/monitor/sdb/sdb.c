@@ -185,7 +185,7 @@ static int cmd_w(char* args){
     WP* wp = new_wp();
     strcpy(wp -> expr, args);
     wp -> value = value;
-    printf("create wp success, NO.%d, expr:%s, value:%u\n",wp->NO, wp->expr, wp->value);
+    printf("create wp success, NO.%d, expr:%s, value: %u(DEC) 0x%08x(HEX)\n",wp->NO, wp->expr, wp->value, wp->value);
   }
   return 0;
 }
