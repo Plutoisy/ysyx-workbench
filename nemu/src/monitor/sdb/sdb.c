@@ -105,7 +105,7 @@ static int cmd_x(char *args) {
     else{
       //printf("%x\n",ARG2);
       for(int i = 0; i < ARG1; i++){
-        printf("0x%x: %08x\n",ARG2,paddr_read(ARG2,4));
+        printf("0x%x: 0x%08x\n",ARG2,paddr_read(ARG2,4));
         ARG2 += 4;
       }
       printf("\n");
