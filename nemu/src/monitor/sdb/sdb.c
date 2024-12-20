@@ -125,7 +125,7 @@ static int cmd_p(char *args) {
       printf("expr function false\n");
     }
     else{
-      printf("result: %u\n",result);
+      printf("result: %u(DEC) 0x%08x(HEX)\n",result,result);
     }
   }
   return 0;
