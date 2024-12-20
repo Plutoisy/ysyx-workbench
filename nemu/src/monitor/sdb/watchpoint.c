@@ -91,7 +91,7 @@ void update_wp_value(){
     }
     else{
       if(wp->value != update_value){
-        printf("trigger wp, expr:%s, oldvalue:%u, new_value:%u\n",wp->expr, wp->value, update_value);
+        printf("trigger wp, expr:%s, oldvalue:%u(DEC) 0x%08x(HEX), new_value:%u(DEC) 0x%08x(HEX)\n",wp->expr, wp->value, wp->value, update_value, update_value);
         if(nemu_state.state == NEMU_END){
           printf("the wp triggered is the end of the programe\n");
         }
