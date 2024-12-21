@@ -296,7 +296,7 @@ static bool check_parentheses(int p, int q) {
 }
 
 int get_prioritization(int token_type){
-  if(token_type == TK_NEG || token_type == TK_HEX){
+  if(token_type == TK_NEG || token_type == TK_HEX || token_type == TK_POINT){
     return 6;
   }
   else if(token_type == '*' || token_type == '/'){
@@ -324,7 +324,9 @@ int find_main_op(int p, int q){
   int rnum = 0;
   int real_op = p;
   if(tokens[p].type == TK_NEG || tokens[p].type == TK_POINT){
-    return p;
+    if(tokens[p+1].type != TK_NUM && tokens[p+1].type != '('){
+      return p;
+    }
   }//fix --1 and **1
   for(int i = p; i <= q; i++){
     if(rnum > lnum){
