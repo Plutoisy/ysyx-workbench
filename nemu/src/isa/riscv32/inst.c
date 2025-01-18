@@ -33,8 +33,10 @@ enum {
 #define immU() do { *imm = SEXT(BITS(i, 31, 12), 20) << 12; } while(0)
 #define immS() do { *imm = (SEXT(BITS(i, 31, 25), 7) << 5) | BITS(i, 11, 7); } while(0)
 #define immJ() do { *imm = (SEXT(BITS(i, 31, 31), 1) << 20) | SEXT(BITS(i, 19, 12), 8) << 12 | SEXT(BITS(i, 20, 20), 1) << 11 | SEXT(BITS(i, 30, 21), 10) << 1 | SEXT(BITS(0, 0, 0), 1); } while(0)
-#define immB() do {*imm = SEXT((BITS(i,31,31) << 11 | BITS(i,30,25) << 4 | BITS(i,11,8) | BITS(i,8,7) << 10) << 1,13);} while(0)
+// #define immB() do { *imm = (SEXT(BITS(i, 31, 31), 1) << 12) | SEXT(BITS(i, 7, 7), 1) << 11 | SEXT(BITS(i, 30, 25), 6) << 5 | SEXT(BITS(i, 11, 8), 4) << 1 | SEXT(BITS(0, 0, 0), 1); } while(0)
+// #define immB() do { *imm = SEXT((BITS(i,31,31) << 11 | BITS(i,30,25) << 4 | BITS(i,11,8) | BITS(i,8,7) << 10) << 1,13);} while(0)
 
+#define immB() do { *imm = SEXT(BITS(i, 31, 31), 1) << 11 | ((SEXT(BITS(i, 7, 7), 1) << 63) >> 63) << 10 | ((SEXT(BITS(i, 30, 25), 6) << 58) >> 58) << 4 | ((SEXT(BITS(i, 11, 8), 4) << 60) >> 60); *imm = *imm << 1; } while (0)
 static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_t *imm, int type) {
   uint32_t i = s->isa.inst;
   int rs1 = BITS(i, 19, 15);
