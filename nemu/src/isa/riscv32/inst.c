@@ -35,6 +35,7 @@ enum {
 #define immJ() do { *imm = SEXT(BITS(i,31,31),1)<<20 | BITS(i,19,12)<<12 | BITS(i,20,20)<<11 | BITS(i,30,21)<<1; } while(0)
 #define immB() do { *imm = SEXT(BITS(i,31,31),1)<<12 | BITS(i,7,7)<<11 | BITS(i,30,25)<<5 | BITS(i,11,8)<<1;} while(0)
 #define immRI() do { *imm = BITS(i, 24, 20); } while(0)
+
 static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_t *imm, int type) {
   uint32_t i = s->isa.inst;
   int rs1 = BITS(i, 19, 15);
@@ -106,7 +107,8 @@ static int decode_exec(Decode *s) {
   INSTPAT("0000001 ????? ????? 100 ????? 01100 11", div    , R, if(src1 == 0x80000000 && src2 == 0xffffffff) {R(rd) = 0x80000000;} else {R(rd) = (sword_t)src2 != 0 ? (sword_t)src1 / (sword_t)src2 : 0xffffffff;});
   INSTPAT("0000001 ????? ????? 110 ????? 01100 11", rem    , R, if(src1 == 0x80000000 && src2 == 0xffffffff) {R(rd) = 0x00000000;} else {R(rd) = (sword_t)src2 != 0 ? (sword_t)src1 % (sword_t)src2 : src1;});
   INSTPAT("0000000 ????? ????? 010 ????? 01100 11", slt    , R, R(rd) = ((sword_t)src1 < (sword_t)src2) ? (word_t)1 : (word_t)0);
-  
+  INSTPAT("0000001 ????? ????? 001 ????? 01100 11", mulh   , R, R(rd) = (word_t)(((int64_t)(sword_t)src1 * (int64_t)(sword_t)src2) >> 32));
+
   INSTPAT("0000000 00001 00000 000 00000 11100 11", ebreak , N, NEMUTRAP(s->pc, R(10))); // R(10) is $a0
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
   INSTPAT_END();
