@@ -28,6 +28,9 @@ void sim_exit(){
 }
 
 void system_rst(){
+  top->clk = 0;
+  top->rst = 0;
+  step_and_dump_wave();
   top->clk = 1;
   top->rst = 1;
   step_and_dump_wave();
