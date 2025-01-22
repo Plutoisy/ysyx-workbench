@@ -56,7 +56,7 @@ uint32_t pmem_read(uint32_t pc) {
 int main() {
   sim_init();
   system_rst();
-  while (top->pc <= 0x8000000c) {
+  while (top->pc <= 0x80000010) {
     top->clk ^= 1;
     if (top->clk == 1){
       if(top->pc <= 0x80000008)
