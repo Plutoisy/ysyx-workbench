@@ -54,7 +54,6 @@ pinbind:
 	
 clean:
 	rm -rf ./build
-	rm -rf ./waveform.vcd
-	rm -rf ./waveform.fst
+	rm -rf ./dump.vcd
 	
 include ../Makefile
