@@ -9,6 +9,11 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 all:
 	@echo "Write this Makefile by your self."
 
+sim:
+	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	mkdir -p build
+	verilator -Wall $(abspath ./vsrc/ysyx_24120011_top.v) $(abspath ./vsrc/ysyx_24120011_Reg.v) $(abspath ./csrc/main.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+
 simswitchvcd:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
