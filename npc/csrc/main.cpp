@@ -40,9 +40,7 @@ void system_rst(){
   step_and_dump_wave();
   top->clk = 0;
   step_and_dump_wave();
-  top->clk = 1;
   top->rst = 0;
-  step_and_dump_wave();
 }
 
 uint32_t memory[] = {
@@ -58,7 +56,7 @@ uint32_t pmem_read(uint32_t pc) {
 int main() {
   sim_init();
   system_rst();
-  while (top->pc <= 0x800000c) {
+  while (top->pc <= 0x8000000c) {
     top->clk ^= 1;
     if (top->clk == 1){
       if(top->pc <= 0x80000008)
