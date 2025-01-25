@@ -6,13 +6,14 @@ include $(NVBOARD_HOME)/scripts/nvboard.mk
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
+VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 all:
 	@echo "Write this Makefile by your self."
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
-	verilator -Wall $(abspath ./vsrc/ysyx_24120011_top.v) $(abspath ./vsrc/ysyx_24120011_Reg.v) $(abspath ./csrc/main.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+	verilator -Wall $(VSRC) $(abspath ./csrc/main.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/top
 	
 simswitchvcd:
