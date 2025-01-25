@@ -19,7 +19,6 @@ always @(posedge clk) begin
     end
 end
 
-assign dnpc = pc + 32'h0000_0004;
 assign inst_out = inst;
 
 endmodule
