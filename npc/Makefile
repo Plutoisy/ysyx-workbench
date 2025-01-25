@@ -2,7 +2,7 @@ TOPNAME = ysyx_24120011_top
 
 # rules for verilator
 VERILATOR = verilator
-VERILATOR_CFLAGS += -MMD --build -cc  \
+VERILATOR_CFLAGS += -MMD --build -cc --trace \
 				-O3 --x-assign fast --x-initial fast --noassert
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
