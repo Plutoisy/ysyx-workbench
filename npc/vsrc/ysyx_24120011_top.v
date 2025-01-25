@@ -10,7 +10,7 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (clk, rst, dnpc, pc, 1'b1);
 
 wire [31:0] dnpc;
 
-assign dnpc = rst ? 32'h8000_0000 : pc + 32'h0000_0004;
+assign dnpc = rst ? 32'h8000_0004 : pc + 32'h0000_0004;
 
 assign inst_out = inst;
 
