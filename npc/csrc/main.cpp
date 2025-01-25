@@ -7,7 +7,7 @@
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
-int ebreak = 0;
+int trap = 0;
 void step_and_dump_wave(){
   top->eval();
   contextp->timeInc(1);
@@ -57,14 +57,14 @@ uint32_t pmem_read(uint32_t pc) {
 
 
 extern "C" void ebreak(){
-  ebreak = 1;
+  trap = 1;
   printf("excute the ebreak inst!!!\n");
 }
 
 int main() {
   sim_init();
   system_rst();
-  while (ebreak != 1) {
+  while (trap != 1) {
     top->clk ^= 1;
     if (top->clk == 1){
       top->inst = pmem_read(top->pc);
