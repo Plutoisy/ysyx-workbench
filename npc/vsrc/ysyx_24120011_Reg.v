@@ -10,3 +10,4 @@ module ysyx_24120011_Reg #(WIDTH = 1, RESET_VAL = 0) (
     else if (wen) dout <= din;
   end
 endmodule
+
