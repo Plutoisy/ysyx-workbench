@@ -6,7 +6,7 @@ module ysyx_24120011_IDU (
 );
 
 wire [6:0] opcode;
-wire [2:0] type;
+wire [2:0] opcode_type;
 
 assign opcode = inst[6:0];
 assign rd     = inst[11:7];
@@ -14,12 +14,12 @@ assign rs1    = inst[19:15];
 
 ysyx_24120011_TypeFinder i_TypeFinder(
     .opcode ( opcode ),
-    .type   ( type   )
+    .opcode_type   ( opcode_type   )
 );
 
 ysyx_24120011_ImmeGen i_ImmeGen(
     .inst ( inst ),
-    .type ( type ),
+    .opcode_type ( opcode_type ),
     .imme  ( imme  )
 );
 
