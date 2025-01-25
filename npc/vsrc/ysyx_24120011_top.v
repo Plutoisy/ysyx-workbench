@@ -1,3 +1,5 @@
+import "DPI-C" function void ebreak ();
+
 module ysyx_24120011_top (
     input clk,
     input rst,
@@ -15,6 +17,12 @@ wire [31:0] src1;
 
 assign dnpc = pc + 32'h0000_0004;
 assign inst_out = inst;
+
+always@(posedge clk)begin
+    if (inst == 32'b00000000000100000000000001110011)begin
+        ebreak();
+    end
+end
 
 ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
     .clk   ( clk ), 

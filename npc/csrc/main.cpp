@@ -2,6 +2,7 @@
 #include "verilated_vcd_c.h"
 #include "Vysyx_24120011_top.h"
 #include <cstdint>
+#include <stdio.h>
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -46,11 +47,18 @@ void system_rst(){
 uint32_t memory[] = {
     0x00230293, //addi t0, t1, 2
     0x00328393, //addi t2, t0, 3
+    0x00100073, //ebreak
 };
 
 uint32_t pmem_read(uint32_t pc) {
     uint32_t index = (pc - 0x80000000) / 4; 
     return memory[index];
+}
+
+
+extern "C" void ebreak(){
+  printf("excute the ebreak inst\n");
+  hit_exit(cpu_gpr[10]);
 }
 
 int main() {
@@ -59,7 +67,7 @@ int main() {
   while (top->pc <= 0x8000001c) {
     top->clk ^= 1;
     if (top->clk == 1){
-      if(top->pc <= 0x80000004)
+      if(top->pc <= 0x80000008)
         top->inst = pmem_read(top->pc);
       else
         top->inst = 0xdeadbeef;
