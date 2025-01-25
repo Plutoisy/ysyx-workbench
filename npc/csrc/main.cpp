@@ -44,9 +44,8 @@ void system_rst(){
 }
 
 uint32_t memory[] = {
-    0x12345678, 
-    0x9abcdef0,
-    0x66666666,
+    0x00230293, //addi t0, t1, 2
+    0x00328393, //addi t2, t0, 3
 };
 
 uint32_t pmem_read(uint32_t pc) {
@@ -60,7 +59,7 @@ int main() {
   while (top->pc <= 0x8000001c) {
     top->clk ^= 1;
     if (top->clk == 1){
-      if(top->pc <= 0x80000008)
+      if(top->pc <= 0x80000004)
         top->inst = pmem_read(top->pc);
       else
         top->inst = 0xdeadbeef;
