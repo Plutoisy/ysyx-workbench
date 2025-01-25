@@ -5,7 +5,7 @@ module ysyx_24120011_RegStack(
     input [4:0] rd,
     input [4:0] rs1,
     output [31:0] src1
-)
+);
 
 reg [31:0] Regs [31:0];
 
