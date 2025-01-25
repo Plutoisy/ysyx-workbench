@@ -8,7 +8,7 @@ module ysyx_24120011_top (
 
 ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (clk, rst, dnpc, pc, 1'b1);
 
-wire [31:0] dnpc;
+reg [31:0] dnpc;
 
 always @(posedge clk) begin
     if (rst) begin
