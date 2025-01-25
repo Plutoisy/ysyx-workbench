@@ -1,7 +1,7 @@
 module ysyx_24120011_ImmeGen(
     input  [31:0] inst,
     input  [2:0] opcode_type,
-    output [31:0] imme
+    output reg [31:0] imme
 );
 always@(*)begin
     case(opcode_type)
