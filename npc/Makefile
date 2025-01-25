@@ -1,57 +1,26 @@
-TOPNAME = top
-# rules for NVBoard
-include $(NVBOARD_HOME)/scripts/nvboard.mk
+TOPNAME = ysyx_24120011_top
 
 # rules for verilator
+VERILATOR = verilator
+VERILATOR_CFLAGS += -MMD --build -cc  \
+				-O3 --x-assign fast --x-initial fast --noassert
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
+# rules for src
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
-all:
-	@echo "Write this Makefile by your self."
+CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
-sim:
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	mkdir -p build
-	verilator -Wall $(VSRCS) $(abspath ./csrc/main.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
-	./build/top
-	
-simswitchvcd:
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	mkdir -p build
-	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch_vcd.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
-	./build/top
-	
-simswitchfst:
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	mkdir -p build
-	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch_fst.cpp) --cc --trace-fst --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
-	./build/top
-		
-simswitch_NVBoard:
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	mkdir -p build
-	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/top.nxdc ./build/auto_bind.cpp
-	verilator -Wall $(abspath ./vsrc/top.v) $(abspath ./csrc/sim_main_switch_NVBoard.cpp) $(abspath ./build/auto_bind.cpp) $(NVBOARD_HOME)/build/nvboard.a --cc  $(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
-	./build/top
-	
-# make simlight_NVBoard TOPNAME=light
-simlight_NVBoard:
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	mkdir -p build
-	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/light.nxdc ./build/auto_bind.cpp
-	verilator -Wall $(abspath ./vsrc/light.v) $(abspath ./csrc/sim_main_light_NVBoard.cpp) $(abspath ./build/auto_bind.cpp) $(NVBOARD_HOME)/build/nvboard.a --cc  $(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
-	./build/top	
+$(shell mkdir -p ./build)
 
-wavevcd:
-	gtkwave waveform.vcd
-	
-wavefst:
-	gtkwave waveform.fst
-
-pinbind:
-	mkdir -p build
-	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py ./constr/top.nxdc ./build/auto_bind.cpp
+sim:$(VSRCS) $(CSRCS)
+	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	rm -rf ./build/obj_dir
+	$(VERILATOR) $(VERILATOR_CFLAGS) \
+		--top-module $(TOPNAME) $^ \
+		$(addprefix -CFLAGS , $(CXXFLAGS)) \
+		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top)
+	./build/top
 	
 clean:
 	rm -rf ./build
