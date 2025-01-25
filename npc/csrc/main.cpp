@@ -58,7 +58,6 @@ uint32_t pmem_read(uint32_t pc) {
 
 extern "C" void ebreak(){
   printf("excute the ebreak inst\n");
-  hit_exit(cpu_gpr[10]);
 }
 
 int main() {
