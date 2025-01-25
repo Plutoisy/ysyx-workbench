@@ -8,16 +8,9 @@ module ysyx_24120011_top (
 
 ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (clk, rst, dnpc, pc, 1'b1);
 
-reg [31:0] dnpc;
+wire [31:0] dnpc;
 
-always @(posedge clk) begin
-    if (rst) begin
-        dnpc <= 32'h8000_0000;
-    end
-    else begin
-        dnpc <= pc + 32'h0000_0004;
-    end
-end
+assign dnpc = rst ? 32'h8000_0000 :pc + 32'b0000_0004;
 
 assign inst_out = inst;
 
