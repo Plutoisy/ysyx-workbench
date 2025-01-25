@@ -46,6 +46,7 @@ void system_rst(){
 uint32_t memory[] = {
     0x12345678, 
     0x9abcdef0,
+    0x66666666,
 };
 
 uint32_t pmem_read(uint32_t pc) {
