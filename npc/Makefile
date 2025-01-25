@@ -13,7 +13,7 @@ all:
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	mkdir -p build
-	verilator -Wall $(VSRC) $(abspath ./csrc/main.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
+	verilator -Wall $(VSRCS) $(abspath ./csrc/main.cpp) --cc --trace --Mdir ./build/obj_dir --exe --build -o $(abspath ./build/top)
 	./build/top
 	
 simswitchvcd:
