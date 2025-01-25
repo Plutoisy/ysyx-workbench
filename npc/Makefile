@@ -21,6 +21,7 @@ sim:$(VSRCS) $(CSRCS)
 		$(addprefix -CFLAGS , $(CXXFLAGS)) \
 		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top)
 	./build/top
+	gtkwave dump.vcd
 	
 clean:
 	rm -rf ./build
