@@ -48,7 +48,6 @@ void destroy_ringbuffer(ringbuffer *rb){
 
 void print_ringbuffer(ringbuffer *rb){
 	Node *temp = rb->head;
-    printf("%d",rb->count);
 	for (int i = 0; i < rb->count; i++) {
 		if(i == rb->count - 1) {
 			printf("  --> ");
