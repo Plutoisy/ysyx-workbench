@@ -16,31 +16,56 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 int sprintf(char *out, const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
+    char *current = out;
 
-    const char *p = fmt;
-    char *out_ptr = out;
-
-    while (*p) {
-        if (*p == '%') {
-            p++; // Skip the '%'
-            if (*p == 'd') {
-                int num = va_arg(args, int);
-                out_ptr += sprintf(out_ptr, "%d", num);
-            } else if (*p == 's') {
-                const char *str = va_arg(args, const char *);
-                out_ptr += sprintf(out_ptr, "%s", str);
-            }
-            // Add more format specifiers as needed
+    for (const char *p = fmt; *p != '\0'; p++) {
+        if (*p != '%') {
+            *current++ = *p;
         } else {
-            *out_ptr++ = *p;
+            p++; // 跳过%
+            switch (*p) {
+                case 's': {
+                    char *s = va_arg(args, char *);
+                    while (*s) {
+                        *current++ = *s++;
+                    }
+                    break;
+                }
+                case 'd': {
+                    int num = va_arg(args, int);
+                    unsigned int uvalue;
+                    if (num < 0) {
+                        *current++ = '-';
+                        uvalue = (unsigned int)(-num);
+                    } else {
+                        uvalue = (unsigned int)num;
+                    }
+                    char buffer[16];
+                    int i = 0;
+                    do {
+                        buffer[i++] = '0' + (uvalue % 10);
+                        uvalue /= 10;
+                    } while (uvalue > 0);
+                    // 逆序输出buffer中的字符
+                    while (i > 0) {
+                        *current++ = buffer[--i];
+                    }
+                    break;
+                }
+                default:
+                    // 处理未知格式符或单独的%
+                    *current++ = '%';
+                    if (*p) {
+                        *current++ = *p;
+                    }
+                    break;
+            }
         }
-        p++;
     }
 
-    *out_ptr = '\0'; // Null-terminate the output string
+    *current = '\0'; // 添加字符串结束符
     va_end(args);
-
-    return (int)(out_ptr - out); // Return the number of characters written
+    return current - out; // 返回写入的字符数（不包括\0）
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
