@@ -31,7 +31,7 @@ CPU_state cpu = {};
 uint64_t g_nr_guest_inst = 0;
 static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
-ringbuffer* rb;
+ringbuffer rb;
 
 void device_update();
 
@@ -72,14 +72,14 @@ static void exec_once(Decode *s, vaddr_t pc) {
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p,
       MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.inst, ilen);
-  push_ringbuffer(rb,p);
+  push_ringbuffer(&rb,p);
 #endif
 }
 
 static void execute(uint64_t n) {
   Decode s;
   
-  init_ringbuffer(rb);
+  init_ringbuffer(&rb);
   for (;n > 0; n --) {
     // printf("test");
     exec_once(&s, cpu.pc);
@@ -88,7 +88,7 @@ static void execute(uint64_t n) {
     if (nemu_state.state != NEMU_RUNNING) break;
     IFDEF(CONFIG_DEVICE, device_update());
   }
-  destroy_ringbuffer(rb);
+  destroy_ringbuffer(&rb);
 }
 
 static void statistic() {
@@ -131,7 +131,7 @@ void cpu_exec(uint64_t n) {
            (nemu_state.halt_ret == 0 ? ANSI_FMT("HIT GOOD TRAP", ANSI_FG_GREEN) :
             ANSI_FMT("HIT BAD TRAP", ANSI_FG_RED))),
           nemu_state.halt_pc);
-      print_ringbuffer(rb);
+      print_ringbuffer(&rb);
       // fall through
     case NEMU_QUIT: statistic();
   }
