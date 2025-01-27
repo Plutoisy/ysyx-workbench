@@ -50,7 +50,7 @@ void print_ringbuffer(ringbuffer *rb){
 	Node *temp = rb->head;
 	for (int i = 0; i < rb->count; i++) {
 		if(i == rb->count - 1) {
-			printf("  --> ");
+			printf("----> ");
 		} else {
 			printf("      ");
 		}
