@@ -78,8 +78,6 @@ static void exec_once(Decode *s, vaddr_t pc) {
 
 static void execute(uint64_t n) {
   Decode s;
-  
-  init_ringbuffer(&rb);
   for (;n > 0; n --) {
     // printf("test");
     exec_once(&s, cpu.pc);
@@ -88,7 +86,6 @@ static void execute(uint64_t n) {
     if (nemu_state.state != NEMU_RUNNING) break;
     IFDEF(CONFIG_DEVICE, device_update());
   }
-  destroy_ringbuffer(&rb);
 }
 
 static void statistic() {
@@ -107,6 +104,8 @@ void assert_fail_msg() {
 
 /* Simulate how the CPU works. */
 void cpu_exec(uint64_t n) {
+  init_ringbuffer(&rb);
+
   g_print_step = (n < MAX_INST_TO_PRINT);
   switch (nemu_state.state) {
     case NEMU_END: case NEMU_ABORT: case NEMU_QUIT:
@@ -135,4 +134,5 @@ void cpu_exec(uint64_t n) {
       // fall through
     case NEMU_QUIT: statistic();
   }
+  destroy_ringbuffer(&rb);
 }
