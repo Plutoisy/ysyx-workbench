@@ -51,6 +51,7 @@ void init_mem() {
 }
 
 word_t paddr_read(paddr_t addr, int len) {
+  IFDEF(CONFIG_MTRACE, printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, pmem_read(addr,len)));
   if (likely(in_pmem(addr))) return pmem_read(addr, len);
   IFDEF(CONFIG_DEVICE, return mmio_read(addr, len));
   out_of_bound(addr);
