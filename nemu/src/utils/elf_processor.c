@@ -64,37 +64,6 @@ char* find_function_name(uint32_t addr) {
     return result;
 }
 
-// char* find_function_name(uint32_t addr) {
-
-//     fseek(file, symtab->sh_offset, SEEK_SET);
-//     int num_symbols = symtab->sh_size / symtab->sh_entsize;
-//     Elf32_Sym *symbols = malloc(symtab->sh_size);
-    
-//     if(fread(symbols, symtab->sh_size, 1, file) != 1){
-//         perror("fread");
-//     }
-
-//     char *strtab_data = malloc(strtab->sh_size);
-//     fseek(file, strtab->sh_offset, SEEK_SET);
-
-//     if(fread(strtab_data, strtab->sh_size, 1, file) != 1){
-//         perror("fread");
-//     }
-    
-
-//     char *result = NULL;
-//     for (int i = 0; i < num_symbols; i++) {
-//         if (symbols[i].st_value == addr && symbols[i].st_info != 0) {
-//             result = strdup(&strtab_data[symbols[i].st_name]);
-//             break;
-//         }
-//     }
-
-//     free(symbols);
-//     free(strtab_data);
-//     return result;
-// }
-
 void init_elf(const char *elf_file){
     file = fopen(elf_file, "rb");
     if (!file) {
