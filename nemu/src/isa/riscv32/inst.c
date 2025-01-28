@@ -73,7 +73,7 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? ??? ????? 01101 11", lui    , U, R(rd) = imm);
 
   INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, {s->dnpc = s->pc + imm; R(rd) = s->pc + 4; IFDEF(CONFIG_ITRACE, {
-    printf("0x%x: call:0x%x[%s]\n",s->pc,s->dnpc,find_function_name(s->dnpc));
+    printf("0x%x: call:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);
     // printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
     // spacenum_ftrace++;
   })});
@@ -85,12 +85,12 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, { R(rd) = s->pc + 4; s->dnpc = (src1 + imm) & ~1; IFDEF(CONFIG_ITRACE, {
     if (s->isa.inst == 0x00008067) { // ret: jalr x0, 0(x1)
       // trace_func_ret(s->pc);
-      printf("0x%x: ret:0x%x[%s]\n",s->pc,s->dnpc,find_function_name(s->dnpc));
+      printf("0x%x: ret:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);
       // printf("%*s0x%x: ret\n",spacenum_ftrace,"",s->pc);
       // spacenum_ftrace--;
     }
     else{
-      printf("0x%x: call:0x%x[%s]\n",s->pc,s->dnpc,find_function_name(s->dnpc));
+      printf("0x%x: call:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);
       // printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
       // spacenum_ftrace++;
     }
