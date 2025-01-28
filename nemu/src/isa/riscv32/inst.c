@@ -80,6 +80,9 @@ static int decode_exec(Decode *s) {
       // trace_func_ret(s->pc);
       printf("ret\n");
     }
+    else{
+      printf("call:0x%x\n",s->dnpc);
+    }
   }
   )});
   INSTPAT("??????? ????? ????? 111 ????? 00100 11", andi   , I, R(rd) = src1 & imm);
