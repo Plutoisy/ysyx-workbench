@@ -7,7 +7,7 @@ Elf32_Shdr *symtab = NULL;
 Elf32_Shdr *strtab = NULL;
 FILE *file = NULL;
 
-char* parse_symtab(uint32_t addr) {
+char* find_function_name(uint32_t addr) {
 
     fseek(file, symtab->sh_offset, SEEK_SET);
     int num_symbols = symtab->sh_size / symtab->sh_entsize;

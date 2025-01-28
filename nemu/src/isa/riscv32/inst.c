@@ -37,6 +37,7 @@ enum {
 #define immRI() do { *imm = BITS(i, 24, 20); } while(0)
 
 int spacenum_ftrace = 0;
+char* find_function_name(uint32_t addr);
 
 static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_t *imm, int type) {
   uint32_t i = s->isa.inst;
@@ -72,7 +73,7 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? ??? ????? 01101 11", lui    , U, R(rd) = imm);
 
   INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, {s->dnpc = s->pc + imm; R(rd) = s->pc + 4; IFDEF(CONFIG_ITRACE, {
-    printf("0x%x: call:0x%x\n",s->pc,s->dnpc);
+    printf("0x%x: call:0x%x[%s]\n",s->pc,s->dnpc,find_function_name(s->dnpc));
     // printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
     // spacenum_ftrace++;
   })});
@@ -89,7 +90,7 @@ static int decode_exec(Decode *s) {
       // spacenum_ftrace--;
     }
     else{
-      printf("0x%x: call:0x%x\n",s->pc,s->dnpc);
+      printf("0x%x: call:0x%x[%s]\n",s->pc,s->dnpc,find_function_name(s->dnpc));
       // printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
       // spacenum_ftrace++;
     }
