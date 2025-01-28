@@ -85,7 +85,7 @@ void init_elf(const char *elf_file){
     Elf32_Shdr *shdrs = malloc(ehdr.e_shentsize * ehdr.e_shnum);
 
     if(fread(shdrs, ehdr.e_shentsize, ehdr.e_shnum, file) != 1){
-        perror("fread");
+        //perror("fread");
     }
 
     for (int i = 0; i < ehdr.e_shnum; i++) {
