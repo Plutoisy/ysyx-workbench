@@ -36,6 +36,8 @@ enum {
 #define immB() do { *imm = SEXT(BITS(i,31,31),1)<<12 | BITS(i,7,7)<<11 | BITS(i,30,25)<<5 | BITS(i,11,8)<<1;} while(0)
 #define immRI() do { *imm = BITS(i, 24, 20); } while(0)
 
+int spacenum_ftrace = 0;
+
 static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_t *imm, int type) {
   uint32_t i = s->isa.inst;
   int rs1 = BITS(i, 19, 15);
@@ -70,7 +72,8 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? ??? ????? 01101 11", lui    , U, R(rd) = imm);
 
   INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, {s->dnpc = s->pc + imm; R(rd) = s->pc + 4; IFDEF(CONFIG_ITRACE, {
-    printf("0x%x: call:0x%x\n",s->pc,s->dnpc);
+    printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
+    spacenum_ftrace++;
   })});
   
   INSTPAT("??????? ????? ????? 000 ????? 00100 11", addi   , I, R(rd) = src1 + imm);
@@ -80,10 +83,12 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, { R(rd) = s->pc + 4; s->dnpc = (src1 + imm) & ~1; IFDEF(CONFIG_ITRACE, {
     if (s->isa.inst == 0x00008067) { // ret: jalr x0, 0(x1)
       // trace_func_ret(s->pc);
-      printf("0x%x: ret\n",s->pc);
+      printf("%*s0x%x: ret\n",spacenum_ftrace,"",s->pc);
+      spacenum_ftrace--;
     }
     else{
-      printf("0x%x: call:0x%x\n",s->pc,s->dnpc);
+      printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
+      spacenum_ftrace++;
     }
   }
   )});
