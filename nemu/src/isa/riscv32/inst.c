@@ -78,6 +78,7 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr    , I, { R(rd) = s->pc + 4; s->dnpc = (src1 + imm) & ~1; IFDEF(CONFIG_ITRACE, {
     if (s->isa.inst == 0x00008067) { // ret: jalr x0, 0(x1)
       // trace_func_ret(s->pc);
+      printf("ret\n");
     }
   }
   )});
