@@ -13,6 +13,7 @@ int printf(const char *fmt, ...) {
         if(*p != '%'){
             putch(*p);
         }else{
+            p++;
             putch(*p);
             // p++;
             // if(*p == 'd'){
