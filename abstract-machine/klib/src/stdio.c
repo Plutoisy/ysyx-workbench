@@ -25,7 +25,7 @@ int printf(const char *fmt, ...) {
                 //     s++;
                 // }
             }
-            p++;
+            // p++;
         }
         putch(*p);
     }
