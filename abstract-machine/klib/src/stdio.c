@@ -13,17 +13,16 @@ int printf(const char *fmt, ...) {
 
     for (const char *p = fmt; *p != '\0'; p++) {
         if (*p != '%') {
-            putch(*current);
             *current++ = *p;
+            putch(*current);
         } else {
             p++; // 跳过%
             switch (*p) {
                 case 's': {
                     char *s = va_arg(args, char *);
                     while (*s) {
-                        putch(*current);
                         *current++ = *s++;
-                        
+                        putch(*current);
                     }
                     break;
                 }
@@ -31,8 +30,8 @@ int printf(const char *fmt, ...) {
                     int num = va_arg(args, int);
                     unsigned int uvalue;
                     if (num < 0) {
-                        putch(*current);
                         *current++ = '-';
+                        putch(*current);
                         uvalue = (unsigned int)(-num);
                     } else {
                         uvalue = (unsigned int)num;
@@ -45,24 +44,24 @@ int printf(const char *fmt, ...) {
                     } while (uvalue > 0);
                     // 逆序输出buffer中的字符
                     while (i > 0) {
-                        putch(*current);
                         *current++ = buffer[--i];
+                        putch(*current);
                     }
                     break;
                 }
                 default:
                     // 处理未知格式符或单独的%
-                    putch(*current);
                     *current++ = '%';
+                    putch(*current);
                     if (*p) {
-                        putch(*current);
                         *current++ = *p;
+                        putch(*current);
                     }
                     break;
             }
         }
     }
-    
+
     *current = '\0'; // 添加字符串结束符
     putch(*current);
     va_end(args);
