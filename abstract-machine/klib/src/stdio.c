@@ -5,6 +5,42 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
+void intToStr(int num, char *str) {
+    int i = 0;
+    int isNegative = 0;
+
+    // 处理负数
+    if (num < 0) {
+        isNegative = 1;
+        num = -num;
+    }
+
+    // 提取每一位数字
+    do {
+        str[i++] = (num % 10) + '0';
+        num /= 10;
+    } while (num > 0);
+
+    // 如果是负数，添加负号
+    if (isNegative) {
+        str[i++] = '-';
+    }
+
+    // 添加字符串终止符
+    str[i] = '\0';
+
+    // 反转字符串
+    int start = 0;
+    int end = i - 1;
+    while (start < end) {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        start++;
+        end--;
+    }
+}
+
 int printf(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
@@ -16,20 +52,20 @@ int printf(const char *fmt, ...) {
             p++;
             if(*p == 'd'){
                 int num = va_arg(args, int);
-                num++;
-                putch(*p);
+                char intstr[20];
+                intToStr(num, intstr);
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                }
             }
             if(*p == 's'){
-                // putch(*p);
                 char *s = va_arg(args, char *);
                 while (*s) {
                     putch(*s);
                     s++;
                 }
             }
-            // p++;
         }
-        // putch(*p);
     }
 
     return 1; // 返回写入的字符数（不包括\0）
