@@ -6,6 +6,13 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
+    const char *aaa =
+    "Hello, AbstractMachine!\n";
+
+    for (const char *p = aaa; *p; p++) {
+        putch(*p);
+    }
+    
     char buf[1024];
     int res;
     res = sprintf(buf,fmt);
