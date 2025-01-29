@@ -14,19 +14,17 @@ int printf(const char *fmt, ...) {
             putch(*p);
         }else{
             p++;
-            putch(*p);
-            // p++;
-            // if(*p == 'd'){
-            //     putch(*p);
-            // }
-            // if(*p == 's'){
-            //     putch(*p);
-            //     // char *s = va_arg(args, char *);
-            //     // while (*s) {
-            //     //     putch(*s);
-            //     //     s++;
-            //     // }
-            // }
+            if(*p == 'd'){
+                putch(*p);
+            }
+            if(*p == 's'){
+                putch(*p);
+                // char *s = va_arg(args, char *);
+                // while (*s) {
+                //     putch(*s);
+                //     s++;
+                // }
+            }
             // p++;
         }
         // putch(*p);
