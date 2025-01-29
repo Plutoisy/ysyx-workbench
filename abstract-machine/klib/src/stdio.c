@@ -10,9 +10,9 @@ int printf(const char *fmt, ...) {
     int res;
     res = sprintf(buf,fmt);
     for (const char *p = buf; *p != '\0'; p++) {
-        putch(*p);
+        putch('a');
     }
-    return res-10000;
+    return res;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
