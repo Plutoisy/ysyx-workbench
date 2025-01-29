@@ -18,11 +18,12 @@ int printf(const char *fmt, ...) {
                 putch(*p);
             }
             if(*p == 's'){
-                char *s = va_arg(args, char *);
-                while (*s) {
-                    putch(*s);
-                    s++;
-                }
+                putch(*p);
+                // char *s = va_arg(args, char *);
+                // while (*s) {
+                //     putch(*s);
+                //     s++;
+                // }
             }
             p++;
         }
