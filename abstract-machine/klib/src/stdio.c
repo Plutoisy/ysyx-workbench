@@ -111,8 +111,8 @@ int sprintf(char *out, const char *fmt, ...) {
             }
         }
     }
-
-    return count+1; // 返回写入的字符数（不包括\0）
+    *out = '\0';
+    return count; // 返回写入的字符数（不包括\0）
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
