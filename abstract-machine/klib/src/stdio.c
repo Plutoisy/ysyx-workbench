@@ -10,9 +10,25 @@ int printf(const char *fmt, ...) {
     va_start(args, fmt);
 
     for (const char *p = fmt; *p != '\0'; p++) {
+        if(*p != '%'){
+            putch(*p);
+        }else{
+            p++;
+            if(*p == 'd'){
+                putch(*p);
+            }
+            if(*p == 's'){
+                char *s = va_arg(args, char *);
+                while (*s) {
+                    putch(*s);
+                    s++;
+                }
+            }
+            p++;
+        }
         putch(*p);
     }
-    
+
     return 1; // 返回写入的字符数（不包括\0）
     //panic("Not implemented");
 }
