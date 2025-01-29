@@ -62,6 +62,11 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
+            if(*p == 'c'){
+                char c = (char)va_arg(args, int);
+                putch(c);
+                count++;
+            }
             if(*p == 's'){
                 char *s = va_arg(args, char *);
                 while (*s) {
