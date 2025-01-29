@@ -6,66 +6,14 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-    char buf[1024];
     va_list args;
     va_start(args, fmt);
-    char *current = buf;
 
     for (const char *p = fmt; *p != '\0'; p++) {
-        if (*p != '%') {
-            *current++ = *p;
-            putch(*current);
-        } else {
-            p++; // 跳过%
-            switch (*p) {
-                case 's': {
-                    char *s = va_arg(args, char *);
-                    while (*s) {
-                        *current++ = *s++;
-                        putch(*current);
-                    }
-                    break;
-                }
-                case 'd': {
-                    int num = va_arg(args, int);
-                    unsigned int uvalue;
-                    if (num < 0) {
-                        *current++ = '-';
-                        putch(*current);
-                        uvalue = (unsigned int)(-num);
-                    } else {
-                        uvalue = (unsigned int)num;
-                    }
-                    char buffer[16];
-                    int i = 0;
-                    do {
-                        buffer[i++] = '0' + (uvalue % 10);
-                        uvalue /= 10;
-                    } while (uvalue > 0);
-                    // 逆序输出buffer中的字符
-                    while (i > 0) {
-                        *current++ = buffer[--i];
-                        putch(*current);
-                    }
-                    break;
-                }
-                default:
-                    // 处理未知格式符或单独的%
-                    *current++ = '%';
-                    putch(*current);
-                    if (*p) {
-                        *current++ = *p;
-                        putch(*current);
-                    }
-                    break;
-            }
-        }
+        putch(*p);
     }
-
-    *current = '\0'; // 添加字符串结束符
-    putch(*current);
-    va_end(args);
-    return current - buf; // 返回写入的字符数（不包括\0）
+    
+    return 1; // 返回写入的字符数（不包括\0）
     //panic("Not implemented");
 }
 
