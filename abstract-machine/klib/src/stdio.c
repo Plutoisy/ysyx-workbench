@@ -14,7 +14,7 @@ int printf(const char *fmt, ...) {
     for (const char *p = fmt; *p != '\0'; p++) {
         if (*p != '%') {
             *current++ = *p;
-            putch(*current);
+            putch(*p);
         } else {
             p++; // 跳过%
             switch (*p) {
@@ -22,7 +22,7 @@ int printf(const char *fmt, ...) {
                     char *s = va_arg(args, char *);
                     while (*s) {
                         *current++ = *s++;
-                        putch(*current);
+                        putch(*p);
                     }
                     break;
                 }
@@ -31,7 +31,7 @@ int printf(const char *fmt, ...) {
                     unsigned int uvalue;
                     if (num < 0) {
                         *current++ = '-';
-                        putch(*current);
+                        putch(*p);
                         uvalue = (unsigned int)(-num);
                     } else {
                         uvalue = (unsigned int)num;
@@ -45,7 +45,7 @@ int printf(const char *fmt, ...) {
                     // 逆序输出buffer中的字符
                     while (i > 0) {
                         *current++ = buffer[--i];
-                        putch(*current);
+                        putch(*p);
                     }
                     break;
                 }
@@ -55,7 +55,7 @@ int printf(const char *fmt, ...) {
                     putch(*current);
                     if (*p) {
                         *current++ = *p;
-                        putch(*current);
+                        putch(*p);
                     }
                     break;
             }
