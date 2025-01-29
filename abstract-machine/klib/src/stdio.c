@@ -51,7 +51,8 @@ int printf(const char *fmt, ...) {
         if(*p != '%'){
             putch(*p);
             count++;
-        }else{
+        }
+        if(*p == '%' || width > 0){
             p++;
 
             if(*p == 'd'){
