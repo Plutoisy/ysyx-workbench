@@ -28,7 +28,7 @@ int printf(const char *fmt, ...) {
             // }
             // p++;
         }
-        putch(*p);
+        // putch(*p);
     }
 
     return 1; // 返回写入的字符数（不包括\0）
