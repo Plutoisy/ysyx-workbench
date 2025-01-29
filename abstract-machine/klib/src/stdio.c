@@ -15,15 +15,17 @@ int printf(const char *fmt, ...) {
         }else{
             p++;
             if(*p == 'd'){
+                int num = va_arg(args, int);
+                num++;
                 putch(*p);
             }
             if(*p == 's'){
-                putch(*p);
-                // char *s = va_arg(args, char *);
-                // while (*s) {
-                //     putch(*s);
-                //     s++;
-                // }
+                // putch(*p);
+                char *s = va_arg(args, char *);
+                while (*s) {
+                    putch(*s);
+                    s++;
+                }
             }
             // p++;
         }
