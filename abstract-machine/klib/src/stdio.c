@@ -85,6 +85,23 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
+            if(*(p+2) == 'd'){
+                char fill = *p;
+                p++;
+                int width = *p  - '0';
+                p++;
+                int num = va_arg(args, int);
+                char intstr[20];
+                intToStr(num, intstr);
+                for(int i = 0; i < width - strlen(intstr); i++){
+                    putch(fill);
+                    count++;
+                }
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
+                }
+            }
         }
     }
 
