@@ -93,7 +93,7 @@ int printf(const char *fmt, ...) {
                 int num = va_arg(args, int);
                 char intstr[20];
                 intToStr(num, intstr);
-                for(int i = 0; i < width - 1 - strlen(intstr); i++){
+                for(int i = 0; i < width - strlen(intstr); i++){
                     putch(fill);
                     count++;
                 }
