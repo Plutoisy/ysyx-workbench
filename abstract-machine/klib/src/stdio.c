@@ -45,38 +45,24 @@ int printf(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
     int count = 0;
-    int width = 0;
 
     for (const char *p = fmt; *p != '\0'; p++) {
         if(*p != '%'){
             putch(*p);
             count++;
-        }
-        if(*p == '%' || width > 0){
+        }else{
             p++;
 
             if(*p == 'd'){
                 int num = va_arg(args, int);
                 char intstr[20];
                 intToStr(num, intstr);
-                if(strlen(intstr) >= width){
-                    for (int i = 0; intstr[i] != '\0'; i++){
-                        putch(intstr[i]);
-                        count++;
-                    }
-                }
-                else{
-                    for (int i = 0; i < width - strlen(intstr); i++){
-                        putch(' ');
-                        count++;
-                    }
-                    for (int i = 0; intstr[i] != '\0'; i++){
-                        putch(intstr[i]);
-                        count++;
-                    }
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
                 }
             }
-            else if(*p == 's'){
+            if(*p == 's'){
                 char *s = va_arg(args, char *);
                 while (*s) {
                     putch(*s);
@@ -84,8 +70,20 @@ int printf(const char *fmt, ...) {
                     s++;
                 }
             }
-            else{
-                width = *p - '0';
+            if(*(p+1) == 'd'){
+                int width = *p - '0';
+                p++;
+                int num = va_arg(args, int);
+                char intstr[20];
+                intToStr(num, intstr);
+                for(int i = 0; i < width - strlen(intstr); i++){
+                    putch(' ');
+                    count++;
+                }
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
+                }
             }
         }
     }
