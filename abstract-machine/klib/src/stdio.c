@@ -9,8 +9,9 @@ int printf(const char *fmt, ...) {
     char buf[1024];
     int res;
     res = sprintf(buf,fmt);
+    putch('a');
     for (const char *p = buf; *p != '\0'; p++) {
-        putch('a');
+        putch(*p);
     }
     return res;
 }
