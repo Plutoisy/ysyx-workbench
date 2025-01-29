@@ -13,18 +13,19 @@ int printf(const char *fmt, ...) {
         if(*p != '%'){
             putch(*p);
         }else{
-            p++;
-            if(*p == 'd'){
-                putch(*p);
-            }
-            if(*p == 's'){
-                putch(*p);
-                // char *s = va_arg(args, char *);
-                // while (*s) {
-                //     putch(*s);
-                //     s++;
-                // }
-            }
+            putch(*p);
+            // p++;
+            // if(*p == 'd'){
+            //     putch(*p);
+            // }
+            // if(*p == 's'){
+            //     putch(*p);
+            //     // char *s = va_arg(args, char *);
+            //     // while (*s) {
+            //     //     putch(*s);
+            //     //     s++;
+            //     // }
+            // }
             // p++;
         }
         putch(*p);
