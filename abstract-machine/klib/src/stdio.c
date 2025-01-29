@@ -71,7 +71,6 @@ int printf(const char *fmt, ...) {
                 }
             }
             if(*(p+1) == 'd'){
-                putch('H');
                 int width = *p - '0';
                 p++;
                 int num = va_arg(args, int);
