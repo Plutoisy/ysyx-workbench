@@ -92,7 +92,7 @@ int sprintf(char *out, const char *fmt, ...) {
             p++;
             if(*p == 'd'){
                 int num = va_arg(args, int);
-                char intstr[20];
+                char intstr[40];
                 intToStr(num, intstr);
                 for (int i = 0; intstr[i] != '\0'; i++){
                     *out = intstr[i];
