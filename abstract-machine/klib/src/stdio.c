@@ -45,28 +45,46 @@ int printf(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
     int count = 0;
+    int width = 0;
+
     for (const char *p = fmt; *p != '\0'; p++) {
         if(*p != '%'){
             putch(*p);
             count++;
         }else{
             p++;
+
             if(*p == 'd'){
                 int num = va_arg(args, int);
                 char intstr[20];
                 intToStr(num, intstr);
-                for (int i = 0; intstr[i] != '\0'; i++){
-                    putch(intstr[i]);
-                    count++;
+                if(strlen(intstr) >= width){
+                    for (int i = 0; intstr[i] != '\0'; i++){
+                        putch(intstr[i]);
+                        count++;
+                    }
+                }
+                else{
+                    for (int i = 0; i < width - strlen(intstr); i++){
+                        putch(' ');
+                        count++;
+                    }
+                    for (int i = 0; intstr[i] != '\0'; i++){
+                        putch(intstr[i]);
+                        count++;
+                    }
                 }
             }
-            if(*p == 's'){
+            else if(*p == 's'){
                 char *s = va_arg(args, char *);
                 while (*s) {
                     putch(*s);
                     count++;
                     s++;
                 }
+            }
+            else{
+                width = *p - '0';
             }
         }
     }
