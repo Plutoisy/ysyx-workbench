@@ -6,11 +6,11 @@ const int disp_w = 400, disp_h = 300;
 
 void __am_gpu_init() {
   int i;
-  int w = io_read(AM_GPU_CONFIG).width;
-  int h = io_read(AM_GPU_CONFIG).height;
+  int w = io_read(AM_GPU_CONFIG).width/32;
+  int h = io_read(AM_GPU_CONFIG).height/32;
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (i = 0; i < w * h; i ++) fb[i] = 0x00FFFFFF;
-  // outl(SYNC_ADDR, 1);
+  outl(SYNC_ADDR, 1);
 }
 
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
@@ -22,6 +22,10 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
+  // int x = ctl->x;
+  // int y = ctl->y;
+  // int w = ctl->w;
+  // int h = ctl->h;
   if (ctl->sync) {
     outl(SYNC_ADDR, 1);
   }
