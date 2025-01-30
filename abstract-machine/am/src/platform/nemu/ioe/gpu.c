@@ -29,7 +29,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (int i = 1; i <= 16; i ++){
     for (int j = 1; j <= 16; j ++){
-      fb[400*(i-1)+j] = 0x00000000;
+      fb[400*(i-1)+j-1] = 0x00000000;
     }
   }
   if (ctl->sync) {
