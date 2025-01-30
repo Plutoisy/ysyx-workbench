@@ -62,12 +62,12 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
-            if(*p == 'c'){
+            else if(*p == 'c'){
                 char c = (char)va_arg(args, int);
                 putch(c);
                 count++;
             }
-            if(*p == 's'){
+            else if(*p == 's'){
                 char *s = va_arg(args, char *);
                 while (*s) {
                     putch(*s);
@@ -75,7 +75,7 @@ int printf(const char *fmt, ...) {
                     s++;
                 }
             }
-            if(*(p+1) == 'd'){
+            else if(*(p+1) == 'd'){
                 int width = *p - '0';
                 p++;
                 int num = va_arg(args, int);
@@ -90,7 +90,7 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
-            if(*(p+1) == 's'){
+            else if(*(p+1) == 's'){
                 putch('H');
                 int width = *p - '0';
                 p++;
@@ -106,7 +106,7 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
-            if(*(p+2) == 'd'){
+            else if(*(p+2) == 'd'){
                 char fill = *p;
                 p++;
                 int width = *p  - '0';
@@ -123,10 +123,11 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
-            // else{
-            //     putch(*p);
-            //     count++;
-            // }
+            else{
+                putch(*p);
+                va_arg(args, int);
+                count++;
+            }
         }
     }
 
