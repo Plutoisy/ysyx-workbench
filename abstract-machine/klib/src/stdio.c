@@ -123,10 +123,10 @@ int printf(const char *fmt, ...) {
                     count++;
                 }
             }
-            else{
-                putch(*p);
-                count++;
-            }
+            // else{
+            //     putch(*p);
+            //     count++;
+            // }
         }
     }
 
