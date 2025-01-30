@@ -6,8 +6,8 @@ const int disp_w = 400, disp_h = 300;
 
 void __am_gpu_init() {
   int i;
-  int w = 1;  // TODO: get the correct width
-  int h = 1;  // TODO: get the correct height
+  int w = io_read(AM_GPU_CONFIG).width / 32;
+  int h = io_read(AM_GPU_CONFIG).height / 32;
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (i = 0; i < w * h; i ++) fb[i] = i;
   outl(SYNC_ADDR, 1);
