@@ -9,7 +9,7 @@ void __am_gpu_init() {
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
-  for (i = 0; i < w * h; i ++) fb[i] = 1;
+  for (i = 0; i < w * h; i ++) fb[i] = 0x00FFFFFF;
   outl(SYNC_ADDR, 1);
 }
 
