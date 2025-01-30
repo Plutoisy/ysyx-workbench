@@ -47,84 +47,87 @@ int printf(const char *fmt, ...) {
     int count = 0;
 
     for (const char *p = fmt; *p != '\0'; p++) {
-        putch(*p);
-        // if(*p != '%'){
-        //     putch(*p);
-        //     count++;
-        // }else{
-        //     p++;
+        if(*p != '%'){
+            putch(*p);
+            count++;
+        }else{
+            p++;
 
-        //     if(*p == 'd'){
-        //         int num = va_arg(args, int);
-        //         char intstr[20];
-        //         intToStr(num, intstr);
-        //         for (int i = 0; intstr[i] != '\0'; i++){
-        //             putch(intstr[i]);
-        //             count++;
-        //         }
-        //     }
-        //     if(*p == 'c'){
-        //         char c = (char)va_arg(args, int);
-        //         putch(c);
-        //         count++;
-        //     }
-        //     if(*p == 's'){
-        //         char *s = va_arg(args, char *);
-        //         while (*s) {
-        //             putch(*s);
-        //             count++;
-        //             s++;
-        //         }
-        //     }
-        //     if(*(p+1) == 'd'){
-        //         int width = *p - '0';
-        //         p++;
-        //         int num = va_arg(args, int);
-        //         char intstr[20];
-        //         intToStr(num, intstr);
-        //         for(int i = 0; i < width - strlen(intstr); i++){
-        //             putch(' ');
-        //             count++;
-        //         }
-        //         for (int i = 0; intstr[i] != '\0'; i++){
-        //             putch(intstr[i]);
-        //             count++;
-        //         }
-        //     }
-        //     if(*(p+1) == 's'){
-        //         putch('H');
-        //         int width = *p - '0';
-        //         p++;
-        //         int num = va_arg(args, int);
-        //         char intstr[20];
-        //         intToStr(num, intstr);
-        //         for(int i = 0; i < width - strlen(intstr); i++){
-        //             putch(' ');
-        //             count++;
-        //         }
-        //         for (int i = 0; intstr[i] != '\0'; i++){
-        //             putch(intstr[i]);
-        //             count++;
-        //         }
-        //     }
-        //     if(*(p+2) == 'd'){
-        //         char fill = *p;
-        //         p++;
-        //         int width = *p  - '0';
-        //         p++;
-        //         int num = va_arg(args, int);
-        //         char intstr[20];
-        //         intToStr(num, intstr);
-        //         for(int i = 0; i < width - strlen(intstr); i++){
-        //             putch(fill);
-        //             count++;
-        //         }
-        //         for (int i = 0; intstr[i] != '\0'; i++){
-        //             putch(intstr[i]);
-        //             count++;
-        //         }
-        //     }
-        // }
+            if(*p == 'd'){
+                int num = va_arg(args, int);
+                char intstr[20];
+                intToStr(num, intstr);
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
+                }
+            }
+            else if(*p == 'c'){
+                char c = (char)va_arg(args, int);
+                putch(c);
+                count++;
+            }
+            else if(*p == 's'){
+                char *s = va_arg(args, char *);
+                while (*s) {
+                    putch(*s);
+                    count++;
+                    s++;
+                }
+            }
+            else if(*(p+1) == 'd'){
+                int width = *p - '0';
+                p++;
+                int num = va_arg(args, int);
+                char intstr[20];
+                intToStr(num, intstr);
+                for(int i = 0; i < width - strlen(intstr); i++){
+                    putch(' ');
+                    count++;
+                }
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
+                }
+            }
+            else if(*(p+1) == 's'){
+                putch('H');
+                int width = *p - '0';
+                p++;
+                int num = va_arg(args, int);
+                char intstr[20];
+                intToStr(num, intstr);
+                for(int i = 0; i < width - strlen(intstr); i++){
+                    putch(' ');
+                    count++;
+                }
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
+                }
+            }
+            else if(*(p+2) == 'd'){
+                char fill = *p;
+                p++;
+                int width = *p  - '0';
+                p++;
+                int num = va_arg(args, int);
+                char intstr[20];
+                intToStr(num, intstr);
+                for(int i = 0; i < width - strlen(intstr); i++){
+                    putch(fill);
+                    count++;
+                }
+                for (int i = 0; intstr[i] != '\0'; i++){
+                    putch(intstr[i]);
+                    count++;
+                }
+            }
+            else{
+                putch(*p);
+                count++;
+            }
+        }
     }
 
     return count; // 返回写入的字符数（不包括\0）
