@@ -2,6 +2,7 @@
 #include <nemu.h>
 
 #define SYNC_ADDR (VGACTL_ADDR + 4)
+const int disp_w = 400, disp_h = 300;
 
 void __am_gpu_init() {
   int i;
@@ -15,7 +16,7 @@ void __am_gpu_init() {
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
   *cfg = (AM_GPU_CONFIG_T) {
     .present = true, .has_accel = false,
-    .width = 400, .height = 300,
+    .width = disp_w, .height = disp_h,
     .vmemsz = 0
   };
 }
