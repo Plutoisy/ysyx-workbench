@@ -45,20 +45,4 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   }
   outl(AUDIO_COUNT_ADDR, count);
 }
-// void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
-//   int len = ctl->buf.end - ctl->buf.start;
-//   uint8_t *start = ctl->buf.start;
-//   int count = inl(AUDIO_COUNT_ADDR);
-//   // printf("%d\n",w_idx % inl(AUDIO_SBUF_SIZE_ADDR));
-//   for(int i = 0; i < len; i++){
-//     // if (count != 0x10000)
-//     // {
-//       outb(AUDIO_SBUF_ADDR + count, *(start+i));
-//       // w_idx++;
-//       // start++;
-//       count++;
-//     //}
-//   }
-//   outl(AUDIO_COUNT_ADDR, count);
-// }
 
