@@ -31,6 +31,15 @@ static uint8_t *sbuf = NULL;
 static uint32_t *audio_base = NULL;
 
 static void audio_io_handler(uint32_t offset, int len, bool is_write) {
+  SDL_AudioSpec s = {};
+  s.format = AUDIO_S16SYS;  // 假设系统中音频数据的格式总是使用16位有符号数来表示
+  s.userdata = NULL;        // 不使用
+  s.freq = audio_base[reg_freq];
+  s.channels = audio_base[reg_channels];
+  s.samples = audio_base[reg_samples];
+  SDL_InitSubSystem(SDL_INIT_AUDIO);
+  SDL_OpenAudio(&s, NULL);
+  SDL_PauseAudio(0);
 }
 
 void init_audio() {
