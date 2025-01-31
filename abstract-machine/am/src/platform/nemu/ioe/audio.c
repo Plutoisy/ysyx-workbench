@@ -35,13 +35,11 @@ void __am_audio_status(AM_AUDIO_STATUS_T *stat) {
 void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   int len = ctl->buf.end - ctl->buf.start;
   uint8_t *start = ctl->buf.start;
-  int sbuf_size = inl(AUDIO_SBUF_SIZE_ADDR);
-  assert(sbuf_size > 0);
   int count = inl(AUDIO_COUNT_ADDR);
   for(int i = 0; i < len; i++){
     if (count != 0x10000)
     {
-      outb(AUDIO_SBUF_ADDR + w_idx % sbuf_size, *start);
+      outb(AUDIO_SBUF_ADDR + w_idx % inl(AUDIO_SBUF_SIZE_ADDR), *start);
       w_idx++;
       start++;
       count++;
