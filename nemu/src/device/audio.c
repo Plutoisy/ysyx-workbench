@@ -16,6 +16,7 @@
 #include <common.h>
 #include <device/map.h>
 #include <SDL2/SDL.h>
+#include <unistd.h>
 
 enum {
   reg_freq,
@@ -27,8 +28,27 @@ enum {
   nr_reg
 };
 
+static int rfd = -1; //wfd = -1;
+
 static uint8_t *sbuf = NULL;
 static uint32_t *audio_base = NULL;
+
+static volatile int count = 0;
+
+static void audio_play(void *userdata, uint8_t *stream, int len) {
+  int nread = len;
+  if (count < len) nread = count;
+  int b = 0;
+  while (b < nread) {
+    int n = read(rfd, stream, nread);
+    if (n > 0) b += n;
+  }
+
+  count -= nread;
+  if (len > nread) {
+    memset(stream + nread, 0, len - nread);
+  }
+}
 
 static void audio_io_handler(uint32_t offset, int len, bool is_write) {
   SDL_AudioSpec s = {};
@@ -37,7 +57,7 @@ static void audio_io_handler(uint32_t offset, int len, bool is_write) {
   s.freq = audio_base[reg_freq];
   s.channels = audio_base[reg_freq];
   s.samples = audio_base[reg_freq];
-  // s.callback = audio_play;
+  s.callback = audio_play;
   SDL_InitSubSystem(SDL_INIT_AUDIO);
   SDL_OpenAudio(&s, NULL);
   SDL_PauseAudio(0);
