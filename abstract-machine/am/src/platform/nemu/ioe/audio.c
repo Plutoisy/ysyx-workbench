@@ -10,6 +10,7 @@
 
 
 void __am_audio_init() {
+  outl(AUDIO_SBUF_SIZE_ADDR, 0x10000);
 }
 
 void __am_audio_config(AM_AUDIO_CONFIG_T *cfg) {
