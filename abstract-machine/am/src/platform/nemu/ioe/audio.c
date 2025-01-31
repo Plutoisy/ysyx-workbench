@@ -38,6 +38,7 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   int count = inl(AUDIO_COUNT_ADDR);
   for(int i = 0; i < len ; i++){
     outb(AUDIO_SBUF_ADDR + count, *(start + i));
+    count++;
   }
 }
 // void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
