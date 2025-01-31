@@ -1,5 +1,6 @@
 #include <am.h>
 #include <nemu.h>
+#include <klib.h>
 
 #define AUDIO_FREQ_ADDR      (AUDIO_ADDR + 0x00)
 #define AUDIO_CHANNELS_ADDR  (AUDIO_ADDR + 0x04)
@@ -34,6 +35,7 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   int len = ctl->buf.end - ctl->buf.start;
   uint8_t *start = ctl->buf.start;
   int sbuf_size = inl(AUDIO_SBUF_SIZE_ADDR);
+  assert(sbuf_size > 0);
   for(int i = 0; i < len ; i++){
     outb(AUDIO_SBUF_ADDR + i % sbuf_size, *(start + i));
   }
