@@ -40,6 +40,7 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
     outb(AUDIO_SBUF_ADDR + count, *(start + i));
     count++;
   }
+  outl(AUDIO_COUNT_ADDR, count);
 }
 // void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
 //   int len = ctl->buf.end - ctl->buf.start;
