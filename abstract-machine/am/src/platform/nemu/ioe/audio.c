@@ -39,13 +39,13 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   assert(sbuf_size > 0);
   int count = inl(AUDIO_COUNT_ADDR);
   for(int i = 0; i < len; i++){
-    // if (count != 0x10000)
-    // {
+    if (count != 0x10000)
+    {
       outb(AUDIO_SBUF_ADDR + w_idx % sbuf_size, *start);
       w_idx++;
       start++;
-      // count++;
-    // }
+      count++;
+    }
   }
   outl(AUDIO_COUNT_ADDR, count);
 }
