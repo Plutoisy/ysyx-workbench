@@ -9,6 +9,7 @@
 #define AUDIO_INIT_ADDR      (AUDIO_ADDR + 0x10)
 #define AUDIO_COUNT_ADDR     (AUDIO_ADDR + 0x14)
 
+static int w_idx = 0;
 
 void __am_audio_init() {
   outl(AUDIO_SBUF_SIZE_ADDR, 0x10000);
@@ -36,8 +37,19 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   uint8_t *start = ctl->buf.start;
   int sbuf_size = inl(AUDIO_SBUF_SIZE_ADDR);
   assert(sbuf_size > 0);
-  for(int i = 0; i < len ; i++){
-    outb(AUDIO_SBUF_ADDR + i % sbuf_size, *(start + i));
+  int nwrite = 0;
+  int count = inl(AUDIO_COUNT_ADDR);
+  while (nwrite < len)
+  {
+    if (count != 0x10000)
+    {
+      outb(AUDIO_SBUF_ADDR + w_idx % sbuf_size, *start);
+      w_idx++;
+      nwrite++;
+      start++;
+      count++;
+    }
   }
+  outl(AUDIO_COUNT_ADDR, count);
 }
 
