@@ -47,7 +47,7 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   for(int i = 0; i < len; i++){
     // if (count != 0x10000)
     // {
-      outb(AUDIO_SBUF_ADDR + inl(AUDIO_COUNT_ADDR), *start);
+      outb(AUDIO_SBUF_ADDR + count, *start);
       w_idx++;
       start++;
       count++;
