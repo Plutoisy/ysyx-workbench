@@ -4,8 +4,7 @@ module ysyx_24120011_top (
     input clk,
     input rst,
     input [31:0] inst,
-    output [31:0] pc,
-    output [31:0] inst_out
+    output [31:0] pc
 );
 
 wire [31:0] dnpc;
@@ -16,7 +15,6 @@ wire [31:0] wdata;
 wire [31:0] src1;
 
 assign dnpc = pc + 32'h0000_0004;
-assign inst_out = inst;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
@@ -36,6 +34,7 @@ ysyx_24120011_IDU i_IDU(
     .inst ( inst ),
     .rd   ( rd   ),
     .rs1  ( rs1  ),
+    .rs2  ( rs2  ),
     .imme  ( imme  )
 );
 
@@ -52,7 +51,9 @@ ysyx_24120011_RegStack i_RegStack(
     .wdata ( wdata ),
     .rd    ( rd    ),
     .rs1   ( rs1   ),
-    .src1  ( src1  )
+    .rs2   ( rs2   ),
+    .src1  ( src1  ),
+    .src2  ( src2  )
 );
 
 

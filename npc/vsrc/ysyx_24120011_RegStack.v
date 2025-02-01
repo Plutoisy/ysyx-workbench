@@ -4,12 +4,15 @@ module ysyx_24120011_RegStack(
     input [31:0] wdata,
     input [4:0] rd,
     input [4:0] rs1,
-    output [31:0] src1
+    input [4:0] rs2,
+    output [31:0] src1,
+    output [31:0] src2
 );
 
 reg [31:0] Regs [31:0];
 
 assign src1 = Regs[rs1];
+assign src2 = Regs[rs2];
 
 always@(posedge clk)begin
     if(rst)begin
