@@ -9,10 +9,12 @@ module ysyx_24120011_top (
 
 wire [31:0] dnpc;
 wire [4:0] rs1;
+wire [4:0] rs2;
 wire [4:0] rd;
 wire [31:0] imme;
 wire [31:0] wdata;
 wire [31:0] src1;
+wire [31:0] src2;
 
 assign dnpc = pc + 32'h0000_0004;
 
