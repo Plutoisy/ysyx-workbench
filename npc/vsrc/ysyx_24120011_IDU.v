@@ -6,7 +6,7 @@ module ysyx_24120011_IDU (
     output [31:0] imme,
     output [2:0]  func3,
     output [6:0]  func7,
-    output [1:0]  pc_ctrl
+    output reg [1:0]  pc_ctrl
 );
 
 wire [6:0] opcode;
