@@ -19,6 +19,7 @@ always@(*)begin
         2'd0: dnpc = pc_add_4;
         2'd1: dnpc = pc_add_imme;
         2'd2: dnpc = alu_result;
+        default: dnpc = 32'h8000_0000;
     endcase
 end
 
