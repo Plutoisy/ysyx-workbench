@@ -5,7 +5,7 @@ module ysyx_24120011_PCProcessor(
     input  [1:0]  pc_ctrl,
     output [31:0] pc_add_imme_out,
     output [31:0] pc_add_4_out,
-    output [31:0] dnpc
+    output reg [31:0] dnpc
 );
 
 wire [31:0] pc_add_4;
