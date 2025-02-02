@@ -15,14 +15,28 @@ wire [31:0] imme;
 wire [31:0] wdata;
 wire [31:0] src1;
 wire [31:0] src2;
-
-assign dnpc = pc + 32'h0000_0004;
+wire [31:0] pc_add_imme_out;
+wire [31:0] pc_add_4_out;
+wire [31:0] alu_result;
+wire [1:0]  pc_ctrl;
+wire dnpc_add_4_or_add_imme;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
         ebreak();
     end
 end
+
+ysyx_24120011_PCProcessor i_PCProcessor(
+    .pc              ( pc              ),
+    .imme            ( imme            ),
+    .alu_result      ( alu_result      ),
+    .pc_ctrl         ( pc_ctrl         ),
+    .pc_add_imme_out ( pc_add_imme_out ),
+    .pc_add_4_out    ( pc_add_4_out    ),
+    .dnpc            ( dnpc            )
+);
+
 
 ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
     .clk   ( clk ), 
@@ -33,12 +47,16 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
 );
 
 ysyx_24120011_IDU i_IDU(
-    .inst ( inst ),
-    .rd   ( rd   ),
-    .rs1  ( rs1  ),
-    .rs2  ( rs2  ),
-    .imme  ( imme  )
+    .inst  ( inst  ),
+    .rd    ( rd    ),
+    .rs1   ( rs1   ),
+    .rs2   ( rs2   ),
+    .imme  ( imme  ),
+    .func3 ( func3 ),
+    .func7 ( func7 ),
+    .pc_ctrl  ( pc_ctrl  )
 );
+
 
 ysyx_24120011_ALU i_ALU(
     .A          ( src1       ),
