@@ -30,8 +30,8 @@ wire [31:0] a0;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
-        npc_trap();
-        ebreak(pc,a0);
+        npc_trap(pc,a0);
+        ebreak();
     end
 end
 
