@@ -6,7 +6,9 @@ module ysyx_24120011_IDU (
     output [31:0] imme,
     output [2:0]  func3,
     output [6:0]  func7,
-    output reg [1:0]  pc_ctrl
+    output reg [1:0]  pc_ctrl,
+    output reg [2:0]  rd_ctrl,
+    output reg ALUBctrl
 );
 
 wire [6:0] opcode;
@@ -39,7 +41,6 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 //2'd0: pc_add_4;
 //2'd1: pc_add_imme;
 //2'd2: alu_result;
-
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
@@ -50,8 +51,57 @@ always@(*)begin
                  pc_ctrl = 2'd0;
             end
         end
-        3'd2:    pc_ctrl = 2'd0;//J-Type jal
+        3'd2:    pc_ctrl = 2'd1;//J-Type jal
         default: pc_ctrl = 2'd0;
+    endcase
+end
+
+//3'd0: pc_add_4;
+//3'd1: pc_add_imme;
+//3'd2: alu_result;
+//3'd3: imme;
+always@(*)begin
+    case(opcode_type)
+        3'd0:begin //I-Type
+            if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
+                 rd_ctrl = 3'd0;
+            end
+            else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
+                 rd_ctrl = 3'd2;
+            end
+            else begin
+                 rd_ctrl = 3'd0;
+            end
+        end
+        3'd1:begin //U-Type
+            if(opcode == 7'b0010111)begin//auipc
+                 rd_ctrl = 3'd1;
+            end
+            else if(opcode == 7'b0110111)begin//lui
+                 rd_ctrl = 3'd3;
+            end
+            else begin
+                 rd_ctrl = 3'd0;
+            end
+        end
+        3'd2:    rd_ctrl = 3'd0;//J-Type jal
+        default: rd_ctrl = 3'd0;
+    endcase
+end
+
+//ALUBctrl == 1'd0 -> imme
+//ALUBctrl == 1'd1 -> scr2
+always@(*)begin
+    case(opcode_type)
+        3'd0:begin //I-Type
+            if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
+                 ALUBctrl = 1'd0;
+            end
+            else begin
+                 ALUBctrl = 1'd1;
+            end
+        end
+        default: ALUBctrl = 1'd1;
     endcase
 end
 
