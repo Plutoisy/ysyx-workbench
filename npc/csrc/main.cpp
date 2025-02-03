@@ -3,42 +3,39 @@
 #include "Vysyx_24120011_top.h"
 #include <cstdint>
 #include <stdio.h>
+#include <stdint.h>
 
+#define PMEM_SIZE 0x8000000
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
 int trap = 0;
 
-uint32_t pmem[0x8000000] = {
+uint32_t pmem[PMEM_SIZE] = {
     // 0x00230293, //addi t0, t1, 2
     // 0x00328393, //addi t2, t0, 3
     // 0x00100073, //ebreak
 };
 
+void read_bin_file(const char *filename) {
+    FILE *file = fopen(filename, "rb");
+    if (!file) {
+        perror("Failed to open file");
+        return;
+    }
 
+    size_t index = 0;
+    while (index < PMEM_SIZE && fread(&pmem[index], sizeof(uint32_t), 1, file) == 1) {
+        index++;
+    }
 
-static long load_img() {
-  const char *img_file = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
-  if (img_file == NULL) {
-    printf("No image is given. Use the default build-in image.");
-    return 4096; // built-in image size
-  }
-  
-  FILE *fp = fopen(img_file, "rb");
-  printf("Can not open '%s'", img_file);
+    if (!feof(file)) {
+        perror("Error reading file");
+    }
 
-  fseek(fp, 0, SEEK_END);
-  long size = ftell(fp);
-
-  printf("The image is %s, size = %ld", img_file, size);
-
-  fseek(fp, 0, SEEK_SET);
-  int ret = fread(pmem, size, 1, fp);
-  assert(ret == 1);
-
-  fclose(fp);
-  return size;
+    fclose(file);
 }
+
 
 void step_and_dump_wave(){
   top->eval();
@@ -88,8 +85,8 @@ extern "C" void ebreak(){
 }
 
 int main() {
-  printf("hello");
-  load_img();
+  const char *filename = "your_file.bin";
+  read_bin_file(filename);
   sim_init();
   system_rst();
   while (trap != 1) {
