@@ -94,7 +94,7 @@ int main() {
     if (top->clk == 1){
       top->inst = pmem_read(top->pc);
     }
-    //step_and_dump_wave();
+    step_and_dump_wave();
   }
   sim_exit();
   return 0;
