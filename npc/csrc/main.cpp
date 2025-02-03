@@ -88,6 +88,7 @@ extern "C" void ebreak(){
 }
 
 int main() {
+  printf("hello");
   load_img();
   sim_init();
   system_rst();
