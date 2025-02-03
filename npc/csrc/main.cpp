@@ -18,7 +18,7 @@ uint32_t pmem[] = {
     // 0x00100073, //ebreak
 };
 
-uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
+
 
 static long load_img() {
   const char *img_file = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
@@ -36,7 +36,7 @@ static long load_img() {
   printf("The image is %s, size = %ld", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
-  int ret = fread(guest_to_host(CONFIG_MBASE), size, 1, fp);
+  int ret = fread(pmem, size, 1, fp);
   assert(ret == 1);
 
   fclose(fp);
