@@ -9,7 +9,7 @@ VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
 int trap = 0;
 
-uint32_t pmem[] = {
+uint32_t pmem[0x8000000] = {
     // 0x00230293, //addi t0, t1, 2
     // 0x00328393, //addi t2, t0, 3
     // 0x00100073, //ebreak
@@ -18,7 +18,7 @@ uint32_t pmem[] = {
 
 
 static long load_img() {
-  const char *img_file = NULL;
+  const char *img_file = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.");
     return 4096; // built-in image size
