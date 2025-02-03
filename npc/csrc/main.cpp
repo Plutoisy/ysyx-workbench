@@ -117,7 +117,17 @@ static int parse_args(int argc, char *argv[]) {
 
 extern "C" void ebreak(){
   trap = 1;
-  printf("excute the ebreak inst!!!\n");
+  // printf("excute the ebreak inst!!!\n");
+}
+
+extern "C" void npc_trap(uint32_t pc, uint32_t ret){
+  printf("npc execute ebreak at pc = 0x%08x\n",pc);
+  if(ret == 0){
+    printf("HIT GOOD TRAP!\n");
+  }
+  else{
+    printf("HIT BAD TRAP!\n");
+  }
 }
 
 int main(int argc, char *argv[]) {

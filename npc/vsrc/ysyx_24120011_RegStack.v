@@ -7,12 +7,14 @@ module ysyx_24120011_RegStack(
     input [4:0] rs2,
     output [31:0] src1,
     output [31:0] src2
+    output [31:0] a0;
 );
 
 reg [31:0] Regs [31:0];
 
 assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
+assign a0 = Regs[10];
 
 always@(posedge clk)begin
     if(rst)begin

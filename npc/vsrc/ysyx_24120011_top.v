@@ -1,4 +1,5 @@
 import "DPI-C" function void ebreak ();
+import "DPI-C" function void npc_trap(uint32_t pc, uint32_t ret);
 
 module ysyx_24120011_top (
     input clk,
@@ -25,9 +26,12 @@ wire [1:0]  pc_ctrl;
 wire [2:0]  rd_ctrl;
 wire        ALUBctrl;
 
+wire [31:0] a0;
+
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
-        ebreak();
+        npc_trap();
+        ebreak(pc,a0);
     end
 end
 
@@ -88,7 +92,8 @@ ysyx_24120011_RegStack i_RegStack(
     .rs1   ( rs1   ),
     .rs2   ( rs2   ),
     .src1  ( src1  ),
-    .src2  ( src2  )
+    .src2  ( src2  ),
+    .a0    ( a0    )
 );
 
 ysyx_24120011_ALUCtrl i_ALUCtrl(
