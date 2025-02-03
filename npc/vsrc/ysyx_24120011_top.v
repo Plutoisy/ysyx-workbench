@@ -1,5 +1,5 @@
 import "DPI-C" function void ebreak ();
-import "DPI-C" function void npc_trap(uint32_t pc, uint32_t ret);
+import "DPI-C" function void npc_trap(unsigned int pc, unsigned int ret);
 
 module ysyx_24120011_top (
     input clk,
