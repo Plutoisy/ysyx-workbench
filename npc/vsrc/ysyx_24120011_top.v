@@ -19,6 +19,7 @@ wire [31:0] src1;
 wire [31:0] src2;
 wire [31:0] pc_add_imme_out;
 wire [31:0] pc_add_4_out;
+wire [31:0] ALUB;
 wire [31:0] alu_result;
 wire [1:0]  pc_ctrl;
 wire [2:0]  rd_ctrl;
