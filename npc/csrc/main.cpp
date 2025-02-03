@@ -89,13 +89,13 @@ int main() {
   //read_bin_file(filename);
   sim_init();
   system_rst();
-  // while (trap != 1) {
-  //   top->clk ^= 1;
-  //   if (top->clk == 1){
-  //     top->inst = pmem_read(top->pc);
-  //   }
-  //   //step_and_dump_wave();
-  // }
-  // sim_exit();
+  while (trap != 1) {
+    top->clk ^= 1;
+    if (top->clk == 1){
+      top->inst = pmem_read(top->pc);
+    }
+    step_and_dump_wave();
+  }
+  sim_exit();
   return 0;
 }
