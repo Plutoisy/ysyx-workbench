@@ -68,7 +68,7 @@ ysyx_24120011_ALU i_ALU(
     .A          ( src1       ),
     .B          ( ALUB       ),
     .sub_or_add ( 1'b0       ),
-    .ALUout     ( wdata      )
+    .ALUout     ( alu_result      )
 );
 
 ysyx_24120011_RdProcessor i_RdProcessor(
