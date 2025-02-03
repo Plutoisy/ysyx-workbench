@@ -22,6 +22,7 @@ wire [31:0] pc_add_4_out;
 wire [31:0] alu_result;
 wire [1:0]  pc_ctrl;
 wire [2:0]  rd_ctrl;
+wire        ALUBctrl;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
