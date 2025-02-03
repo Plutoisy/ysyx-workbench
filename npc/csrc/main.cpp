@@ -87,7 +87,7 @@ extern "C" void ebreak(){
 int main() {
   const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
   read_bin_file(filename);
-  // sim_init();
+  sim_init();
   // system_rst();
   // while (trap != 1) {
   //   top->clk ^= 1;
