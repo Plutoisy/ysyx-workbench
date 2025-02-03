@@ -123,10 +123,10 @@ extern "C" void ebreak(){
 extern "C" void npc_trap(int pc, int ret){
   printf("npc execute ebreak at pc = 0x%08x\n",pc);
   if(ret == 0){
-    printf("\33[1;41mHIT GOOD TRAP!\033[0m\n");
+    printf("\33[1;32mHIT GOOD TRAP!\033[0m\n");
   }
   else{
-    printf("HIT BAD TRAP!\n");
+    printf("\33[1;31mHIT BAD TRAP!\033[0m\n");
   }
 }
 
