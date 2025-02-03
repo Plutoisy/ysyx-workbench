@@ -88,8 +88,7 @@ extern "C" void ebreak(){
 }
 
 int main() {
-  printf("No image is given. Use the default build-in image.");
-  load_img();
+  //load_img();
   sim_init();
   system_rst();
   while (trap != 1) {
