@@ -1,7 +1,7 @@
 module ysyx_24120011_ALUCtrl(
     input ALUBctrl,
-    input [32:0] src2,
-    input [32:0] imme,
+    input [31:0] src2,
+    input [31:0] imme,
     output ALUB
 );
 //ALUBctrl == 1'd0 -> imme
