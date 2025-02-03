@@ -18,7 +18,7 @@ uint32_t pmem[] = {
     // 0x00100073, //ebreak
 };
 
-uint8_t* guest_to_host(paddr_t paddr) { return pmem + paddr - CONFIG_MBASE; }
+uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
 
 static long load_img() {
   if (img_file == NULL) {
