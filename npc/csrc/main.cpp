@@ -18,7 +18,7 @@ uint32_t pmem[] = {
 
 
 static long load_img() {
-  const char *img_file = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
+  const char *img_file = NULL;
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.");
     return 4096; // built-in image size
