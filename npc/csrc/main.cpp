@@ -84,7 +84,7 @@ void system_rst(){
 }
 
 uint32_t pmem_read(uint32_t pc) {
-    assert(0)
+    assert(0);
     uint32_t index = (pc - 0x80000000) / 4; 
     return pmem[index];
 }
