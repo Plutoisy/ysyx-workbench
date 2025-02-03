@@ -120,7 +120,7 @@ extern "C" void ebreak(){
   // printf("excute the ebreak inst!!!\n");
 }
 
-extern "C" void npc_trap(unsigned int pc, unsigned int ret){
+extern "C" void npc_trap(int pc, int ret){
   printf("npc execute ebreak at pc = 0x%08x\n",pc);
   if(ret == 0){
     printf("HIT GOOD TRAP!\n");
