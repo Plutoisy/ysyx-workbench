@@ -80,7 +80,7 @@ void system_rst(){
 
 uint32_t pmem_read(uint32_t pc) {
     uint32_t index = (pc - 0x80000000) / 4; 
-    return memory[index];
+    return pmem[index];
 }
 
 
@@ -90,7 +90,7 @@ extern "C" void ebreak(){
 }
 
 int main() {
-  img_file = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin"
+  img_file = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
   load_img();
   sim_init();
   system_rst();
