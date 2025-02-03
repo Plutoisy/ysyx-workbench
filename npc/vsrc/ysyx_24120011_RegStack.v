@@ -6,8 +6,8 @@ module ysyx_24120011_RegStack(
     input [4:0] rs1,
     input [4:0] rs2,
     output [31:0] src1,
-    output [31:0] src2
-    output [31:0] a0;
+    output [31:0] src2,
+    output [31:0] a0
 );
 
 reg [31:0] Regs [31:0];
