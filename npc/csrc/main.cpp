@@ -28,23 +28,28 @@ uint32_t pmem[PMEM_SIZE] = {
   // 0x0000006f,  
 };
 
-void read_bin_file(const char *filename) {
-    FILE *file = fopen(filename, "rb");
-    if (!file) {
-        perror("Failed to open file");
-        return;
-    }
+static long load_img(const char* img_file) {
+  if (img_file == NULL) {
+    printf("No image is given. Use the default build-in image.");
+    return 4096; // built-in image size
+  }
 
-    size_t index = 0;
-    while (index < PMEM_SIZE && fread(&pmem[index], sizeof(uint32_t), 1, file) == 1) {
-        index++;
-    }
+  FILE *fp = fopen(img_file, "rb");
+  if(!fp){
+    assert(0);
+  }
 
-    if (!feof(file)) {
-        perror("Error reading file");
-    }
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
 
-    fclose(file);
+  printf("The image is %s, size = %ld", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(pmem, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
 }
 
 
@@ -103,7 +108,7 @@ extern "C" void ebreak(){
 
 int main() {
   const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
-  read_bin_file(filename);
+  print("size: %l\n",read_bin_file(filename));
   sim_init();
   system_rst();
   while (trap != 1) {
