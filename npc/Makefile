@@ -20,7 +20,7 @@ sim:$(VSRCS) $(CSRCS)
 		--top-module $(TOPNAME) $^ \
 		$(addprefix -CFLAGS , $(CXXFLAGS)) \
 		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top)
-	./build/top
+	./build/top /home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin
 	
 clean:
 	rm -rf ./build

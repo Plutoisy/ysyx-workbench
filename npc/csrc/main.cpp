@@ -10,11 +10,26 @@ VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
 int trap = 0;
+static char *img_file = NULL;
 
 uint32_t pmem[PMEM_SIZE] = {
+  // 0x00000413,
+  // 0x00009117,
+  // 0xffc10113,
+  // 0x00c000ef,
+  // 0x00000513,
+  // 0x00008067,
+  // 0xff410113,
+  // 0x00000517,
+  // 0x01c50513,
+  // 0x00112423,
+  // 0xfe9ff0ef,
+  // 0x00050513,
+  // 0x00100073,
+  // 0x0000006f,  
 };
 
-static long load_img(const char* img_file) {
+static long load_img() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.");
     return 4096; // built-in image size
@@ -80,15 +95,34 @@ uint32_t pmem_read(uint32_t pc) {
     return pmem[index];
 }
 
+static int parse_args(int argc, char *argv[]) {
+  const struct option table[] = {
+    {"help"     , no_argument      , NULL, 'h'},
+    {0          , 0                , NULL,  0 },
+  };
+  int o;
+  while ( (o = getopt_long(argc, argv, "-h", table, NULL)) != -1) {
+    switch (o) {
+      case 1: img_file = optarg; return 0;
+      default:
+        printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
+        printf("\n");
+        exit(0);
+    }
+  }
+  return 0;
+}
 
 extern "C" void ebreak(){
   trap = 1;
   printf("excute the ebreak inst!!!\n");
 }
 
-int main() {
-  const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
-  load_img(filename);
+int main(int argc, char *argv[]) {
+  /* Parse arguments. */
+  parse_args(argc, argv);
+  //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
+  load_img();
   sim_init();
   system_rst();
   while (trap != 1) {
