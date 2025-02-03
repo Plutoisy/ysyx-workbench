@@ -9,8 +9,8 @@ module ysyx_24120011_RdProcessor(
 
 always@(*)begin
     case(rd_ctrl)
-        3'd0: wdata = pc_add_4;
-        3'd1: wdata = pc_add_imme;
+        3'd0: wdata = pc_add_4_out;
+        3'd1: wdata = pc_add_imme_out;
         3'd2: wdata = alu_result;
         3'd3: wdata = imme;
         default: wdata = 32'h0000_0000;
