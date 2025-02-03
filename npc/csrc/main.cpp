@@ -84,7 +84,7 @@ void system_rst(){
 }
 
 uint32_t pmem_read(uint32_t pc) {
-    if((pc - 0x80000000) / 4 > 0x80000000){
+    if((pc - 0x80000000) / 4 > 12){
       printf("Out Of Mem!!!");
       assert(0);
     }
