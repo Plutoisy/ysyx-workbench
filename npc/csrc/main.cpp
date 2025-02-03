@@ -4,11 +4,9 @@
 #include <cstdint>
 #include <stdio.h>
 #include <stdint.h>
+#include <getopt.h>
 
 #define PMEM_SIZE 0x8000000
-#define no_argument		0
-#define required_argument	1
-#define optional_argument	2
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
