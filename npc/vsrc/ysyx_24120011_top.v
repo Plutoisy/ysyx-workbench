@@ -91,9 +91,9 @@ ysyx_24120011_RegStack i_RegStack(
     .src2  ( src2  )
 );
 
-ysyx_24120011_ALUCtrl u_ysyx_24120011_ALUCtrl(
+ysyx_24120011_ALUCtrl i_ALUCtrl(
     .ALUBctrl ( ALUBctrl ),
-    .scr2     ( scr2     ),
+    .src2     ( src2     ),
     .imme     ( imme     ),
     .ALUB     ( ALUB     )
 );

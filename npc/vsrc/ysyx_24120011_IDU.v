@@ -90,7 +90,7 @@ always@(*)begin
 end
 
 //ALUBctrl == 1'd0 -> imme
-//ALUBctrl == 1'd1 -> scr2
+//ALUBctrl == 1'd1 -> src2
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
