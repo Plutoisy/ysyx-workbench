@@ -12,20 +12,6 @@ static Vysyx_24120011_top* top;
 int trap = 0;
 
 uint32_t pmem[PMEM_SIZE] = {
-  // 0x00000413,
-  // 0x00009117,
-  // 0xffc10113,
-  // 0x00c000ef,
-  // 0x00000513,
-  // 0x00008067,
-  // 0xff410113,
-  // 0x00000517,
-  // 0x01c50513,
-  // 0x00112423,
-  // 0xfe9ff0ef,
-  // 0x00050513,
-  // 0x00100073,
-  // 0x0000006f,  
 };
 
 static long load_img(const char* img_file) {
@@ -89,13 +75,7 @@ void system_rst(){
   top->rst = 0;
 }
 
-uint32_t pmem_read(uint32_t pc) {
-  
-    if((pc - 0x80000000) / 4 > 12){
-      printf("Out Of Mem!!!");
-      assert(0);
-    }
-    
+uint32_t pmem_read(uint32_t pc) {   
     uint32_t index = (pc - 0x80000000) / 4; 
     return pmem[index];
 }
