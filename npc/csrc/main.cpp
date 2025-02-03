@@ -23,7 +23,7 @@ static long load_img() {
     printf("No image is given. Use the default build-in image.");
     return 4096; // built-in image size
   }
-  printf("No image is given. Use the default build-in image.");
+  
   FILE *fp = fopen(img_file, "rb");
   printf("Can not open '%s'", img_file);
 
@@ -88,6 +88,7 @@ extern "C" void ebreak(){
 }
 
 int main() {
+  printf("No image is given. Use the default build-in image.");
   load_img();
   sim_init();
   system_rst();
