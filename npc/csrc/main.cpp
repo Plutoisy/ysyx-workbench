@@ -42,7 +42,7 @@ static long load_img(const char* img_file) {
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
 
-  printf("The image is %s, size = %ld", img_file, size);
+  printf("The image is %s, size = %ld\n", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
   int ret = fread(pmem, size, 1, fp);
@@ -108,7 +108,7 @@ extern "C" void ebreak(){
 
 int main() {
   const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
-  printf("size: %l\n",load_img(filename));
+  load_img(filename);
   sim_init();
   system_rst();
   while (trap != 1) {
