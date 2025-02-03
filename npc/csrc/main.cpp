@@ -23,7 +23,7 @@ static long load_img() {
     printf("No image is given. Use the default build-in image.");
     return 4096; // built-in image size
   }
-
+  printf("No image is given. Use the default build-in image.");
   FILE *fp = fopen(img_file, "rb");
   printf("Can not open '%s'", img_file);
 
