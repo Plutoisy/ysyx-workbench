@@ -10,7 +10,7 @@
 
 #define PMEM_SIZE 0x8000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define NR_CMD ARRLEN(cmd_table)
+
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -214,7 +214,7 @@ static struct {
   { "si","Execute one time", cmd_si},
 };
 
-
+#define NR_CMD ARRLEN(cmd_table)
 
 void sdb_mainloop() {
   for (char *str; (str = rl_gets()) != NULL; ) {
