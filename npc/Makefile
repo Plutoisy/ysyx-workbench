@@ -19,7 +19,7 @@ sim:$(VSRCS) $(CSRCS)
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		$(addprefix -CFLAGS , $(CXXFLAGS)) \
-		--Mdir ./build/obj_dir --exe -o $(abspath ./build/top.cpp)
+		--Mdir ./build/obj_dir --exe $(abspath ./build/top.cpp)
 	./build/top /home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin
 	
 clean:
