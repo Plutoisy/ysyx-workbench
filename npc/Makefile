@@ -9,15 +9,13 @@ INCFLAGS = $(addprefix -I, $(INC_PATH))
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
-$(shell mkdir -p ./build)
-
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./build/obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--exe main.cpp
-	
+	make -C obj_dir -f Vysyx_24120011_top.mk.mk Vysyx_24120011_top
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
