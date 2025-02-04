@@ -162,7 +162,7 @@ void cpu_exec(int n){
     }
   }
   else{
-    printf("Program execution has ended. To restart the program, exit NPC and run again.\n")
+    printf("Program execution has ended. To restart the program, exit NPC and run again.\n");
   }
 }
 static int cmd_si(char *args);
