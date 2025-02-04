@@ -155,10 +155,12 @@ void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
       top->clk ^= 1;
-      if (top->clk == 1){
-        top->inst = pmem_read(top->pc);
-        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
+      if (top->clk != 1){
+        step_and_dump_wave();
+        top->clk ^= 1;
       }
+      top->inst = pmem_read(top->pc);
+      printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
       step_and_dump_wave();
     }
     else{
