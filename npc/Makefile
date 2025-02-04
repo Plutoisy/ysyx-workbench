@@ -2,8 +2,7 @@ TOPNAME = ysyx_24120011_top
 
 # rules for verilator
 VERILATOR = verilator
-VERILATOR_CFLAGS += -MMD --build -cc --trace \
-				-O3 --x-assign fast --x-initial fast --noassert
+VERILATOR_CFLAGS += -cc --trace 
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
@@ -20,7 +19,6 @@ sim:$(VSRCS) $(CSRCS)
 		--top-module $(TOPNAME) $^ \
 		$(addprefix -CFLAGS , $(CXXFLAGS)) \
 		--Mdir ./build/obj_dir --exe $(abspath ./build/top.cpp)
-	./build/top /home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin
 	
 clean:
 	rm -rf ./build
