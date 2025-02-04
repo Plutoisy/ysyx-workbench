@@ -157,8 +157,8 @@ void cpu_exec(uint32_t n){
       top->clk ^= 1;
       if (top->clk == 1){
         top->inst = pmem_read(top->pc);
+        printf("npc execute pc = 0x%08x, inst = 0x%08x\n",top->pc, top->inst);
       }
-      printf("npc execute pc = 0x%08x\n",top->pc);
       step_and_dump_wave();
     }
     else{
