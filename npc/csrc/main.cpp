@@ -43,7 +43,7 @@ static char* rl_gets() {
     line_read = NULL;
   }
 
-  line_read = readline("(nemu) ");
+  line_read = readline("(npc) ");
 
   if (line_read && *line_read) {
     add_history(line_read);
@@ -158,6 +158,7 @@ void cpu_exec(uint32_t n){
       if (top->clk == 1){
         top->inst = pmem_read(top->pc);
       }
+      printf("npc execute pc = 0x%08x\n",top->pc);
       step_and_dump_wave();
     }
     else{
