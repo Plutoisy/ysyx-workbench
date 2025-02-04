@@ -169,9 +169,11 @@ void cpu_exec(uint32_t n){
     }
   }
 }
+
 static int cmd_si(char *args);
 static int cmd_c(char *args);
 static int cmd_help(char *args);
+static int cmd_q(char *args);
 
 static struct {
   const char *name;
