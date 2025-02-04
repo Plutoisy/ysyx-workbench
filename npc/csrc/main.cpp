@@ -130,6 +130,18 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
+void execute_n(int n){
+  for(int i = 0; i < n; i++){
+    while (trap != 1) {
+      top->clk ^= 1;
+      if (top->clk == 1){
+        top->inst = pmem_read(top->pc);
+      }
+      step_and_dump_wave();
+    }
+  }
+}
+
 int main(int argc, char *argv[]) {
   /* Parse arguments. */
   parse_args(argc, argv);
@@ -137,13 +149,7 @@ int main(int argc, char *argv[]) {
   load_img();
   sim_init();
   system_rst();
-  while (trap != 1) {
-    top->clk ^= 1;
-    if (top->clk == 1){
-      top->inst = pmem_read(top->pc);
-    }
-    step_and_dump_wave();
-  }
+  execute_n(-1);
   sim_exit();
   return 0;
 }
