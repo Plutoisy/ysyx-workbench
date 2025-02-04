@@ -181,9 +181,14 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "si","Execute one time", cmd_si},
+  { "q", "Exit NEMU", cmd_q },
 };
 
 #define NR_CMD ARRLEN(cmd_table)
+
+static int cmd_q(char *args) {
+  return -1;
+}
 
 static int cmd_si(char *args) {
   int N;
