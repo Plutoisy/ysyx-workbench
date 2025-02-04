@@ -4,7 +4,6 @@ TOPNAME = ysyx_24120011_top
 VERILATOR = verilator
 VERILATOR_CFLAGS += -cc --trace 
 INCFLAGS = $(addprefix -I, $(INC_PATH))
-CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
 # rules for src
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
@@ -17,7 +16,6 @@ sim:$(VSRCS) $(CSRCS)
 	rm -rf ./build/obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
-		$(addprefix -CFLAGS , $(CXXFLAGS)) \
 		--Mdir ./build/obj_dir --exe $(abspath ./build/obj_dir/top.cpp)
 	
 clean:
