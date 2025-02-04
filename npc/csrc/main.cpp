@@ -5,8 +5,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <getopt.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #define PMEM_SIZE 0x8000000
+#define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
+#define NR_CMD ARRLEN(cmd_table)
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -30,6 +34,23 @@ uint32_t pmem[PMEM_SIZE] = {
   // 0x00100073,
   // 0x0000006f,  
 };
+
+static char* rl_gets() {
+  static char *line_read = NULL;
+
+  if (line_read) {
+    free(line_read);
+    line_read = NULL;
+  }
+
+  line_read = readline("(nemu) ");
+
+  if (line_read && *line_read) {
+    add_history(line_read);
+  }
+
+  return line_read;
+}
 
 static long load_img() {
   if (img_file == NULL) {
@@ -130,7 +151,58 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-void execute_n(int n){
+static int cmd_si(char *args) {
+  int N;
+  if (args == NULL){
+    N = 1;
+  }
+  else{
+    sscanf(args,"%d",&N);
+    //printf("%d\n",N);
+  }
+  cpu_exec(N);
+  return 0;
+}
+
+static int cmd_c(char *args) {
+  cpu_exec(-1);
+  return 0;
+}
+
+static int cmd_help(char *args) {
+  /* extract the first argument */
+  char *arg = strtok(NULL, " ");
+  int i;
+
+  if (arg == NULL) {
+    /* no argument given */
+    for (i = 0; i < NR_CMD; i ++) {
+      printf("%s - %s\n", cmd_table[i].name, cmd_table[i].description);
+    }
+  }
+  else {
+    for (i = 0; i < NR_CMD; i ++) {
+      if (strcmp(arg, cmd_table[i].name) == 0) {
+        printf("%s - %s\n", cmd_table[i].name, cmd_table[i].description);
+        return 0;
+      }
+    }
+    printf("Unknown command '%s'\n", arg);
+  }
+  return 0;
+}
+
+static struct {
+  const char *name;
+  const char *description;
+  int (*handler) (char *);
+} cmd_table [] = {
+  { "help", "Display information about all supported commands", cmd_help },
+  { "c", "Continue the execution of the program", cmd_c },
+  { "si","Execute one time", cmd_si},
+};
+
+void cpu_exec(int n){
   for(int i = 0; i < n; i++){
     while (trap != 1) {
       top->clk ^= 1;
@@ -142,6 +214,34 @@ void execute_n(int n){
   }
 }
 
+void sdb_mainloop() {
+  for (char *str; (str = rl_gets()) != NULL; ) {
+    char *str_end = str + strlen(str);
+
+    /* extract the first token as the command */
+    char *cmd = strtok(str, " ");
+    if (cmd == NULL) { continue; }
+
+    /* treat the remaining string as the arguments,
+     * which may need further parsing
+     */
+    char *args = cmd + strlen(cmd) + 1;
+    if (args >= str_end) {
+      args = NULL;
+    }
+
+    int i;
+    for (i = 0; i < NR_CMD; i ++) {
+      if (strcmp(cmd, cmd_table[i].name) == 0) {
+        if (cmd_table[i].handler(args) < 0) { return; }
+        break;
+      }
+    }
+
+    if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
+  }
+}
+
 int main(int argc, char *argv[]) {
   /* Parse arguments. */
   parse_args(argc, argv);
@@ -149,7 +249,7 @@ int main(int argc, char *argv[]) {
   load_img();
   sim_init();
   system_rst();
-  execute_n(-1);
+  sdb_mainloop();
   sim_exit();
   return 0;
 }
