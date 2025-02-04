@@ -151,7 +151,7 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-void cpu_exec(int n){
+void cpu_exec(uint32_t n){
   if(trap != 1){
     for(int i = 0; i < n; i++){
       top->clk ^= 1;
