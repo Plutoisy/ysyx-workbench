@@ -16,7 +16,7 @@ sim:$(VSRCS) $(CSRCS)
 	rm -rf ./build/obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
-		--Mdir ./build/obj_dir --exe $(abspath ./build/obj_dir/top.cpp)
+		--exe $(abspath ./build/obj_dir/top.cpp)
 	
 clean:
 	rm -rf ./build
