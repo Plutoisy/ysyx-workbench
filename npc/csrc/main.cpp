@@ -151,6 +151,18 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
+void cpu_exec(int n){
+  for(int i = 0; i < n; i++){
+    while (trap != 1) {
+      top->clk ^= 1;
+      if (top->clk == 1){
+        top->inst = pmem_read(top->pc);
+      }
+      step_and_dump_wave();
+    }
+  }
+}
+
 static int cmd_si(char *args) {
   int N;
   if (args == NULL){
@@ -202,17 +214,7 @@ static struct {
   { "si","Execute one time", cmd_si},
 };
 
-void cpu_exec(int n){
-  for(int i = 0; i < n; i++){
-    while (trap != 1) {
-      top->clk ^= 1;
-      if (top->clk == 1){
-        top->inst = pmem_read(top->pc);
-      }
-      step_and_dump_wave();
-    }
-  }
-}
+
 
 void sdb_mainloop() {
   for (char *str; (str = rl_gets()) != NULL; ) {
