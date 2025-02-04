@@ -152,14 +152,17 @@ extern "C" void npc_trap(int pc, int ret){
 }
 
 void cpu_exec(int n){
-  for(int i = 0; i < n; i++){
-    while (trap != 1) {
+  if(trap != 1){
+    for(int i = 0; i < n; i++){
       top->clk ^= 1;
       if (top->clk == 1){
         top->inst = pmem_read(top->pc);
       }
       step_and_dump_wave();
     }
+  }
+  else{
+    printf("Program execution has ended. To restart the program, exit NPC and run again.\n")
   }
 }
 static int cmd_si(char *args);
