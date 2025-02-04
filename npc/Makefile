@@ -15,7 +15,7 @@ sim:$(VSRCS) $(CSRCS)
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011_top.mk.mk Vysyx_24120011_top
+	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
