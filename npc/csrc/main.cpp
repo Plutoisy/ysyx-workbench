@@ -157,12 +157,12 @@ void cpu_exec(uint32_t n){
       top->clk ^= 1;
       if (top->clk == 1){
         top->inst = pmem_read(top->pc);
-        printf("npc execute pc = 0x%08x, inst = 0x%08x\n",top->pc, top->inst);
+        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
       }
       step_and_dump_wave();
     }
     else{
-      printf("Program execution has ended. To restart the program, exit npc and run again.\n");
+      printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
       return;
     }
   }
