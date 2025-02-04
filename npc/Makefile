@@ -16,6 +16,7 @@ sim:$(VSRCS) $(CSRCS)
 		--top-module $(TOPNAME) $^ \
 		--exe main.cpp
 	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top LOADLIBES+=-lreadline
+	./obj_dir/Vysyx_24120011_top
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
