@@ -162,7 +162,7 @@ void cpu_exec(uint32_t n){
       step_and_dump_wave();
     }
     else{
-      printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
+      printf("Program execution has ended. To restart the program, exit npc and run again.\n");
       return;
     }
   }
