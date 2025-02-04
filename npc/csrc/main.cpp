@@ -163,6 +163,18 @@ void cpu_exec(int n){
   }
 }
 
+static struct {
+  const char *name;
+  const char *description;
+  int (*handler) (char *);
+} cmd_table [] = {
+  { "help", "Display information about all supported commands", cmd_help },
+  { "c", "Continue the execution of the program", cmd_c },
+  { "si","Execute one time", cmd_si},
+};
+
+#define NR_CMD ARRLEN(cmd_table)
+
 static int cmd_si(char *args) {
   int N;
   if (args == NULL){
@@ -204,17 +216,7 @@ static int cmd_help(char *args) {
   return 0;
 }
 
-static struct {
-  const char *name;
-  const char *description;
-  int (*handler) (char *);
-} cmd_table [] = {
-  { "help", "Display information about all supported commands", cmd_help },
-  { "c", "Continue the execution of the program", cmd_c },
-  { "si","Execute one time", cmd_si},
-};
 
-#define NR_CMD ARRLEN(cmd_table)
 
 void sdb_mainloop() {
   for (char *str; (str = rl_gets()) != NULL; ) {
