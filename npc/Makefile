@@ -27,9 +27,9 @@ sim:$(VSRCS) $(CSRCS)
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
-		-LDFLAGS "-L$(NEMU_HOME)/build -lriscv32-nemu-interpreter"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -lriscv32-nemu-interpreter -lreadline"\
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top LOADLIBES+=$(LOADLIBES) 
+	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top
 	./obj_dir/Vysyx_24120011_top $(IMG)
 clean:
 	rm -rf ./build
