@@ -17,7 +17,7 @@ VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
 int trap = 0;
 static char *img_file = NULL;
-
+int regs[32];
 uint32_t pmem[PMEM_SIZE] = {
   // 0x00000413,
   // 0x00009117,
@@ -153,7 +153,7 @@ extern "C" void npc_trap(int pc, int ret){
 
 extern "C" void reg_out(const int array[32]) {
   for (int i = 0; i < 32; ++i) {
-    printf("array[%d] = %d\n", i, array[i]);
+    regs[i] = array[i];
   }
 }
 
