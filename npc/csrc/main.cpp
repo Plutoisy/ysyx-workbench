@@ -305,35 +305,41 @@ void sdb_mainloop() {
 
 extern "C" void difftest_exec(uint64_t n);
 
+bool capstone_init(csh *handle) {
+    if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
+        printf("Failed to initialize Capstone\n");
+        return false;
+    }
+    return true;
+}
+
+void AssembleDecoder(csh handle, uint32_t instruction) {
+    cs_insn *insn;
+    size_t count;
+
+    count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
+    if (count > 0) {
+        for (size_t i = 0; i < count; i++) {
+            printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+        }
+        cs_free(insn, count);
+    } else {
+        printf("Failed to disassemble given code!\n");
+    }
+}
+
 int main(int argc, char *argv[]) {
   /* Parse arguments. */
   parse_args(argc, argv);
   //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
-  
+
   // 示例 RISC-V 指令
   uint32_t instruction = 0x00000013; // NOP 指令
-
-  // 初始化 Capstone
   csh handle;
-  cs_insn *insn;
-  size_t count;
-
-  if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, &handle) != CS_ERR_OK) {
-      printf("Failed to initialize Capstone\n");
+  if (!initialize_capstone(&handle)) {
       return -1;
   }
-
-  // 反汇编指令
-  count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
-  if (count > 0) {
-      for (size_t i = 0; i < count; i++) {
-          printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
-      }
-      cs_free(insn, count);
-  } else {
-      printf("Failed to disassemble given code!\n");
-  }
-
+  disassemble_instruction(handle, instruction);
   cs_close(&handle);
 
   load_img();
