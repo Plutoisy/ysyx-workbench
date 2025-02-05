@@ -7,7 +7,6 @@
 #include <getopt.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include <riscv32-nemu-interpreter/difftest.h>
 
 #define PMEM_SIZE 0x8000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
