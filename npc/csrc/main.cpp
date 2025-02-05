@@ -336,10 +336,10 @@ int main(int argc, char *argv[]) {
   // 示例 RISC-V 指令
   uint32_t instruction = 0x00000013; // NOP 指令
   csh handle;
-  if (!initialize_capstone(&handle)) {
+  if (!capstone_init(&handle)) {
       return -1;
   }
-  disassemble_instruction(handle, instruction);
+  AssembleDecoder(handle, instruction);
   cs_close(&handle);
 
   load_img();
