@@ -10,7 +10,7 @@ VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
-OPT_FAST += "-I/home/plutoisy/ysyx-workbench/npc/include -I/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include Os"
+OPT_FAST += "-I/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include Os"
 LOADLIBES += -lreadline
 
 csrc/disasm.c: $(LIBCAPSTONE)
