@@ -302,6 +302,8 @@ void sdb_mainloop() {
   }
 }
 
+extern "C" void difftest_exec(uint64_t n);
+
 int main(int argc, char *argv[]) {
   /* Parse arguments. */
   parse_args(argc, argv);
