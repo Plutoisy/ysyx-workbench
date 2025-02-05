@@ -13,14 +13,9 @@ VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 
-LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
 LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
 # LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
-
-csrc/disasm.c: $(LIBCAPSTONE)
-$(LIBCAPSTONE):
-	$(MAKE) -C tools/capstone
 
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
