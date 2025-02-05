@@ -30,10 +30,10 @@ VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_npc_trap_TOP____02
 
 extern "C" void reg_out(const int* array);
 
-VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<VlUnpacked<IData/*31:0*/, 32>, 32> array) {
+VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<IData/*31:0*/, 32> array) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024unit\n"); );
     // Body
-    int array__Vcvt[1024];
-    for (size_t array__Vidx = 0; array__Vidx < 1024; ++array__Vidx) array__Vcvt[array__Vidx] = (&array[0][0])[array__Vidx];
+    int array__Vcvt[32];
+    for (size_t array__Vidx = 0; array__Vidx < 32; ++array__Vidx) array__Vcvt[array__Vidx] = (&array[0])[array__Vidx];
     reg_out(array__Vcvt);
 }

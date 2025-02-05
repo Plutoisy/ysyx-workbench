@@ -151,12 +151,10 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-extern "C" void reg_out(const int array[32][32]) {
-    for (int i = 0; i < 32; ++i) {
-        for (int j = 0; j < 32; ++j) {
-            printf("array[%d][%d] = %d\n", i, j, array[i][j]);
-        }
-    }
+extern "C" void reg_out(const int array[32]) {
+  for (int i = 0; i < 32; ++i) {
+    printf("array[%d] = %d\n", i, array[i]);
+  }
 }
 
 void cpu_exec(uint32_t n){
