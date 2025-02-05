@@ -146,7 +146,7 @@ static int parse_args(int argc, char *argv[]) {
 void isa_reg_display() {
   printf("Name    DEC         HEX\n");
   for (int i = 0; i < 32; i++){
-    printf("%-3s     %-10u  0x%08x\n", regs[i], gpr(i), gpr(i));
+    printf("%-3s     %-10u  0x%08x\n", regs[i], gpr[i], gpr[i]);
   }
 }
 
