@@ -307,7 +307,6 @@ int main(int argc, char *argv[]) {
   parse_args(argc, argv);
   //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
   load_img();
-  difftest_exec(1);
   sim_init();
   system_rst();
   sdb_mainloop();
