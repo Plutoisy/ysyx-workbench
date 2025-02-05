@@ -301,7 +301,7 @@ void sdb_mainloop() {
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
   }
 }
-void difftest_exec(uint64_t n);
+
 int main(int argc, char *argv[]) {
   /* Parse arguments. */
   parse_args(argc, argv);
