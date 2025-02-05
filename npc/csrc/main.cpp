@@ -9,7 +9,8 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 
-#define PMEM_SIZE 0x8000000
+#define PMEM_SIZE    0x8000000
+#define CONFIG_MBASE 0x80000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 
 
@@ -20,7 +21,7 @@ int trap = 0;
 static char *img_file = NULL;
 csh handle;
 int gpr[32];
-uint32_t pmem[PMEM_SIZE] = {
+uint8_t pmem[PMEM_SIZE] = {
   // 0x00000413,
   // 0x00009117,
   // 0xffc10113,
@@ -147,9 +148,21 @@ void system_rst(){
   top->rst = 0;
 }
 
-uint32_t pmem_read(uint32_t pc) {   
-    uint32_t index = (pc - 0x80000000) / 4; 
-    return pmem[index];
+uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
+uint32_t host_to_guest(uint8_t *haddr) { return haddr - pmem + CONFIG_MBASE; }
+
+static inline uint32_t host_read(void *addr, int len) {
+  switch (len) {
+    case 1: return *(uint8_t  *)addr;
+    case 2: return *(uint16_t *)addr;
+    case 4: return *(uint32_t *)addr;
+    default: assert(0) return 0;
+  }
+}
+
+static uint32_t pmem_read(uint32_t addr, int len) {
+  uint32_t ret = host_read(guest_to_host(addr), len);
+  return ret;
 }
 
 static int parse_args(int argc, char *argv[]) {
@@ -206,7 +219,7 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-      top->inst = pmem_read(top->pc);
+      top->inst = pmem_read(top->pc,4);
       // printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
       AssembleDecoder(handle, top->inst, top->pc);
       step_and_dump_wave();
