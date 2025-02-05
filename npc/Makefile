@@ -15,7 +15,7 @@ CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*
 
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
 LOADLIBES += -lreadline
-LDFLAGS = -L$(NEMU_HOME)/build -lriscv32-nemu-interpreter
+LDFLAGS = $(NEMU_HOME)/build/riscv32-nemu-interpreter-so
 
 
 csrc/disasm.c: $(LIBCAPSTONE)
