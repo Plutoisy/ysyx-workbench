@@ -39,7 +39,7 @@ VM_USER_CFLAGS = \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	-L/home/plutoisy/ysyx-workbench/nemu/build -L/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo -lriscv32-nemu-interpreter -lreadline -Wl,-rpath,/home/plutoisy/ysyx-workbench/nemu/build:/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo \
+	-L/home/plutoisy/ysyx-workbench/nemu/build -L/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,/home/plutoisy/ysyx-workbench/nemu/build \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \

@@ -13,7 +13,7 @@ VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 
-LOADLIBES += -lreadline
+# LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
 # LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
 
