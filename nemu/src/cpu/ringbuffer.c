@@ -25,8 +25,8 @@ void push_ringbuffer(ringbuffer* rb, char* s){
     Node *new_node = (Node *) malloc(sizeof(Node));
     new_node->next = NULL;
 
-    strncpy(new_node->message, s, sizeof(new_node->message));
-
+    strncpy(new_node->message, s, sizeof(new_node->message)-1);
+    new_node->message[sizeof(new_node->message) - 1] = '\0';
     if(rb->count == BUFFER_SIZE){
         pop_ringbuffer(rb);
     }
