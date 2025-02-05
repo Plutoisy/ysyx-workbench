@@ -1,4 +1,4 @@
-import "DPI-C" function void reg_out(input int array[31:0][31:0]);
+import "DPI-C" function void reg_out(input int array[31:0]);
 
 module ysyx_24120011_RegStack(
     input clk,
@@ -18,16 +18,14 @@ assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
 assign a0 = Regs[10];
 
-int regout[31:0][31:0];
+int regout[31:0];
 
 genvar i, j;
 generate
   for (i = 0; i < 32; i = i + 1) begin : outer
-    for (j = 0; j < 32; j = j + 1) begin : inner
       always @(*) begin
-        regout[i][j] = Regs[i][j];
+        regout[i] = Regs[i];
       end
-    end
   end
 endgenerate
 
