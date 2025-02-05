@@ -5,12 +5,17 @@ VERILATOR = verilator
 VERILATOR_CFLAGS += -cc --trace 
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 
+# Path to Verilator kit (from $VERILATOR_ROOT)
+VERILATOR_ROOT = /usr/local/share/verilator
+
 # rules for src
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
 LOADLIBES += -lreadline
+
+include $(VERILATOR_ROOT)/include/verilated.mk
 
 csrc/disasm.c: $(LIBCAPSTONE)
 $(LIBCAPSTONE):
