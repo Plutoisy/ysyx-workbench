@@ -12,6 +12,7 @@ CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
 LOADLIBES += -I tools/capstone/repo/include
 LOADLIBES += -lreadline
+LOADLIBES += -lcapstone
 
 csrc/disasm.c: $(LIBCAPSTONE)
 $(LIBCAPSTONE):
