@@ -15,6 +15,8 @@ CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*
 
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
 LOADLIBES += -lreadline
+LDFLAGS = -L$(NEMU_HOME)/build 
+LDFLAGS += -lriscv32-nemu-interpreter
 
 
 csrc/disasm.c: $(LIBCAPSTONE)
@@ -27,7 +29,7 @@ sim:$(VSRCS) $(CSRCS)
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top LOADLIBES+=$(LOADLIBES)
+	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top LOADLIBES+=$(LOADLIBES) LDFLAGS+=$(LDFLAGS)
 	./obj_dir/Vysyx_24120011_top $(IMG)
 clean:
 	rm -rf ./build
