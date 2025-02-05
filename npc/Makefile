@@ -9,13 +9,21 @@ INCFLAGS = $(addprefix -I, $(INC_PATH))
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
+LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
+LOADLIBES += -I tools/capstone/repo/include
+LOADLIBES += -lreadline
+
+csrc/disasm.c: $(LIBCAPSTONE)
+$(LIBCAPSTONE):
+	$(MAKE) -C tools/capstone
+
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top LOADLIBES+=-lreadline
+	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top $(LOADLIBES)
 	./obj_dir/Vysyx_24120011_top $(IMG)
 clean:
 	rm -rf ./build
