@@ -17,7 +17,7 @@ VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
 int trap = 0;
 static char *img_file = NULL;
-int regs[32];
+int gpr[32];
 uint32_t pmem[PMEM_SIZE] = {
   // 0x00000413,
   // 0x00009117,
@@ -33,6 +33,13 @@ uint32_t pmem[PMEM_SIZE] = {
   // 0x00050513,
   // 0x00100073,
   // 0x0000006f,  
+};
+
+const char *regs[] = {
+  "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
+  "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
+  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
 };
 
 static char* rl_gets() {
@@ -136,6 +143,13 @@ static int parse_args(int argc, char *argv[]) {
   return 0;
 }
 
+void isa_reg_display() {
+  printf("Name    DEC         HEX\n");
+  for (int i = 0; i < 32; i++){
+    printf("%-3s     %-10u  0x%08x\n", regs[i], gpr(i), gpr(i));
+  }
+}
+
 extern "C" void ebreak(){
   trap = 1;
   // printf("excute the ebreak inst!!!\n");
@@ -153,7 +167,7 @@ extern "C" void npc_trap(int pc, int ret){
 
 extern "C" void reg_out(const int array[32]) {
   for (int i = 0; i < 32; ++i) {
-    regs[i] = array[i];
+    gpr[i] = array[i];
   }
 }
 
@@ -180,6 +194,7 @@ static int cmd_si(char *args);
 static int cmd_c(char *args);
 static int cmd_help(char *args);
 static int cmd_q(char *args);
+static int cmd_info(char *args);
 
 static struct {
   const char *name;
@@ -190,9 +205,27 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "si","Execute one time", cmd_si},
   { "q", "Exit NEMU", cmd_q },
+  { "info", "Show some info", cmd_info},
 };
 
 #define NR_CMD ARRLEN(cmd_table)
+
+static int cmd_info(char *args) {
+  char ARG;
+  if (args == NULL){
+    printf("args needed\n");
+  }
+  else{
+    sscanf(args,"%c",&ARG);
+    if (ARG == 'r'){
+      isa_reg_display();
+    }
+    else{
+      printf("not support yet\n");
+    }
+  }
+  return 0;
+}
 
 static int cmd_q(char *args) {
   return -1;
