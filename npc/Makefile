@@ -10,6 +10,7 @@ VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
+MY_INCLUDE += "-I/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include"
 LOADLIBES += -lreadline
 
 csrc/disasm.c: $(LIBCAPSTONE)
@@ -22,7 +23,7 @@ sim:$(VSRCS) $(CSRCS)
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top LOADLIBES+=$(LOADLIBES)
+	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top MY_INCLUDE = $(MY_INCLUDE) LOADLIBES+=$(LOADLIBES)
 	./obj_dir/Vysyx_24120011_top $(IMG)
 clean:
 	rm -rf ./build
