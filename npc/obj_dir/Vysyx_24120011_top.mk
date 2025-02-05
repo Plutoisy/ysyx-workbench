@@ -4,7 +4,7 @@
 # Execute this makefile from the object directory:
 #    make -f Vysyx_24120011_top.mk
 
-default: Vysyx_24120011_top__ALL.a
+default: Vysyx_24120011_top
 
 ### Constants...
 # Perl executable (from $PERL)
@@ -39,13 +39,16 @@ VM_USER_CFLAGS = \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
+	-L/home/plutoisy/ysyx-workbench/nemu/build -L/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,/home/plutoisy/ysyx-workbench/nemu/build \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
 	main \
+	main \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
+	. \
 	/home/plutoisy/ysyx-workbench/npc/csrc \
 
 
@@ -54,7 +57,18 @@ VM_USER_DIR = \
 include Vysyx_24120011_top_classes.mk
 # Include global rules
 include $(VERILATOR_ROOT)/include/verilated.mk
+
+### Executable rules... (from --exe)
+VPATH += $(VM_USER_DIR)
+
 main.o: /home/plutoisy/ysyx-workbench/npc/csrc/main.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+main.o: main.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+
+### Link rules... (from --exe)
+Vysyx_24120011_top: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
+	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
+
 
 # Verilated -*- Makefile -*-

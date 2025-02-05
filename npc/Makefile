@@ -28,7 +28,7 @@ sim:$(VSRCS) $(CSRCS)
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build:$(NPC_HOME)/tools/capstone/repo"\
 		--exe main.cpp
 	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top
 	./obj_dir/Vysyx_24120011_top $(IMG)
