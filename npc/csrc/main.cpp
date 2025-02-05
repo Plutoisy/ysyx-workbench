@@ -18,6 +18,7 @@ VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_top* top;
 int trap = 0;
 static char *img_file = NULL;
+csh handle;
 int gpr[32];
 uint32_t pmem[PMEM_SIZE] = {
   // 0x00000413,
@@ -84,6 +85,29 @@ static long load_img() {
   return size;
 }
 
+bool capstone_init(csh *handle) {
+    if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
+        printf("Failed to initialize Capstone\n");
+        return false;
+    }
+    return true;
+}
+
+void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
+    cs_insn *insn;
+    size_t count;
+
+    count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
+    if (count > 0) {
+        for (size_t i = 0; i < count; i++) {
+            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top->pc, top->inst, insn[i].mnemonic, insn[i].op_str);
+            // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+        }
+        cs_free(insn, count);
+    } else {
+        printf("Failed to disassemble given code!\n");
+    }
+}
 
 void step_and_dump_wave(){
   top->eval();
@@ -181,7 +205,8 @@ void cpu_exec(uint32_t n){
         top->clk ^= 1;
       }
       top->inst = pmem_read(top->pc);
-      printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
+      // printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
+      AssembleDecoder(handle, top->inst, top->pc);
       step_and_dump_wave();
     }
     else{
@@ -305,28 +330,7 @@ void sdb_mainloop() {
 
 extern "C" void difftest_exec(uint64_t n);
 
-bool capstone_init(csh *handle) {
-    if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
-        printf("Failed to initialize Capstone\n");
-        return false;
-    }
-    return true;
-}
 
-void AssembleDecoder(csh handle, uint32_t instruction) {
-    cs_insn *insn;
-    size_t count;
-
-    count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
-    if (count > 0) {
-        for (size_t i = 0; i < count; i++) {
-            printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
-        }
-        cs_free(insn, count);
-    } else {
-        printf("Failed to disassemble given code!\n");
-    }
-}
 
 int main(int argc, char *argv[]) {
   /* Parse arguments. */
@@ -335,17 +339,19 @@ int main(int argc, char *argv[]) {
 
   // 示例 RISC-V 指令
   uint32_t instruction = 0x00000013; // NOP 指令
-  csh handle;
+  
   if (!capstone_init(&handle)) {
       return -1;
   }
-  AssembleDecoder(handle, instruction);
-  cs_close(&handle);
+
+  // AssembleDecoder(handle, instruction);
+  
 
   load_img();
   sim_init();
   system_rst();
   sdb_mainloop();
+  cs_close(&handle);
   sim_exit();
   return 0;
 }
