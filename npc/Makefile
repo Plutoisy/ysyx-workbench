@@ -17,7 +17,7 @@ include $(VERILATOR_ROOT)/include/verilated.mk
 
 LIBCAPSTONE = tools/capstone/repo/libcapstone.so.5
 LOADLIBES += -lreadline
-CPPFLAGS += "-I/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include"
+CPPFLAGS += -I/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include
 
 
 csrc/disasm.c: $(LIBCAPSTONE)
