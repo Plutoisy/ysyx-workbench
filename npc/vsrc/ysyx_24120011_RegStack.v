@@ -18,7 +18,7 @@ assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
 assign a0 = Regs[10];
 
-wire [31:0] regout [31:0];
+int regout[31:0][31:0];
 assign regout = Regs;
 
 always@(*)begin
