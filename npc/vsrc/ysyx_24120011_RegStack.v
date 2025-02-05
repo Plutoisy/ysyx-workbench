@@ -19,7 +19,17 @@ assign src2 = Regs[rs2];
 assign a0 = Regs[10];
 
 int regout[31:0][31:0];
-assign regout = Regs;
+
+genvar i, j;
+generate
+  for (i = 0; i < 32; i = i + 1) begin : outer
+    for (j = 0; j < 32; j = j + 1) begin : inner
+      always @(*) begin
+        regout[i][j] = Regs[i][j];
+      end
+    end
+  end
+endgenerate
 
 always@(*)begin
     reg_out(regout);
