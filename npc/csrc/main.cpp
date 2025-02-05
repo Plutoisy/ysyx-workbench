@@ -100,12 +100,14 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
     count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
     if (count > 0) {
         for (size_t i = 0; i < count; i++) {
-            // printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top->pc, top->inst, insn[i].mnemonic, insn[i].op_str);
-            printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top->pc, top->inst, insn[i].mnemonic, insn[i].op_str);
+            // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
         }
         cs_free(insn, count);
     } else {
         printf("Failed to disassemble given code!\n");
+        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
+
     }
 }
 
