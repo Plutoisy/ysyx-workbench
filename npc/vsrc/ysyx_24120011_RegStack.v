@@ -1,3 +1,5 @@
+import "DPI-C" function void reg_out(input int array[31:0][31:0]);
+
 module ysyx_24120011_RegStack(
     input clk,
     input rst,
@@ -15,6 +17,13 @@ reg [31:0] Regs [31:0];
 assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
 assign a0 = Regs[10];
+
+wire [31:0] regout [31:0];
+assign regout = Regs;
+
+always@(*)begin
+    reg_out(regout);
+end
 
 always@(posedge clk)begin
     if(rst)begin

@@ -1,6 +1,7 @@
 import "DPI-C" function void ebreak ();
 import "DPI-C" function void npc_trap(input int pc, input int ret);
 
+
 module ysyx_24120011_top (
     input clk,
     input rst,
