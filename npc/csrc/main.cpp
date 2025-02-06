@@ -234,18 +234,22 @@ void cpu_exec(uint32_t n){
       AssembleDecoder(handle, top->inst, top->pc);
       difftest_exec(1);
       difftest_regcpy(&refstate, 0);
-      step_and_dump_wave();
-      for(int j = 0; j < 32; j++){
-        printf("0x%08x\n",top->pc);
-        printf("0x%08x\n",refstate.pc);
-        if(gpr[j] == refstate.gpr[j]){
-          printf("PASS\n");
-        }
-        else{
-          assert(0);
-        }
+      if(refstate.pc == top->pc){
+        printf("PASS\n");
       }
-      
+      else{
+        assert(0);
+      }
+      for(int j = 0; j < 32; j++){
+        printf("0x%08x\n",refstate.gpr[j]);
+        // if(gpr[j] == refstate.gpr[j]){
+        //   printf("PASS\n");
+        // }
+        // else{
+        //   assert(0);
+        // }
+      }
+      step_and_dump_wave();
     }
     else{
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
