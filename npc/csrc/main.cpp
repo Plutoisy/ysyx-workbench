@@ -236,7 +236,7 @@ void cpu_exec(uint32_t n){
       difftest_regcpy(&refstate, 0);
       for(int j = 0; j < 32; j++){
         if(gpr[j] = refstate.gpr[j]){
-          printf("PASS\n",);
+          printf("PASS\n");
         }
         else{
           assert(0);
