@@ -22,6 +22,8 @@ extern "C" {
     extern void npc_trap(int pc, int ret);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:1:30
     extern void reg_out(const int* array);
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_MemProcessor.v:1:30
+    extern void rtl_pmem_write(int waddr, int wdata, char len);
 
 #ifdef __cplusplus
 }

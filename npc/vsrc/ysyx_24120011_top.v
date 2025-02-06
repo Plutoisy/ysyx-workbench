@@ -26,7 +26,7 @@ wire [31:0] alu_result;
 wire [1:0]  pc_ctrl;
 wire [3:0]  rd_ctrl;
 wire        ALUBctrl;
-wire        wen;
+wire        w_en;
 wire        w_mem_en;
 wire [3:0]  w_mem_len;
 

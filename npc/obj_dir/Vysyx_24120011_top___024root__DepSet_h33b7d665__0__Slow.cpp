@@ -27,7 +27,8 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___eval_triggers__stl(Vysyx_241200
 
 extern const VlUnpacked<CData/*2:0*/, 128> Vysyx_24120011_top__ConstPool__TABLE_h3a54036f_0;
 void Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<IData/*31:0*/, 32> array);
-extern const VlUnpacked<CData/*3:0*/, 128> Vysyx_24120011_top__ConstPool__TABLE_h489b6b96_0;
+extern const VlUnpacked<CData/*3:0*/, 128> Vysyx_24120011_top__ConstPool__TABLE_h16d84e1e_0;
+void Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(IData/*31:0*/ waddr, IData/*31:0*/ wdata, CData/*7:0*/ len);
 
 VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120011_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -139,15 +140,23 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
         = Vysyx_24120011_top__ConstPool__TABLE_h3a54036f_0
         [vlSelf->__Vtableidx2];
     Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout);
-    vlSelf->__Vtableidx1 = (((0x37U == (0x7fU & vlSelf->inst)) 
-                             << 6U) | (((0x17U == (0x7fU 
-                                                   & vlSelf->inst)) 
-                                        << 5U) | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0) 
+    vlSelf->ysyx_24120011_top__DOT__w_mem_en = (3U 
+                                                == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type));
+    vlSelf->__Vtableidx1 = (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0) 
+                             << 6U) | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_hd7d5a5db__0) 
+                                        << 5U) | ((
+                                                   (0x37U 
+                                                    == 
+                                                    (0x7fU 
+                                                     & vlSelf->inst)) 
                                                    << 4U) 
-                                                  | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_hd7d5a5db__0) 
+                                                  | (((0x17U 
+                                                       == 
+                                                       (0x7fU 
+                                                        & vlSelf->inst)) 
                                                       << 3U) 
                                                      | (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type)))));
-    vlSelf->ysyx_24120011_top__DOT__rd_ctrl = Vysyx_24120011_top__ConstPool__TABLE_h489b6b96_0
+    vlSelf->ysyx_24120011_top__DOT__rd_ctrl = Vysyx_24120011_top__ConstPool__TABLE_h16d84e1e_0
         [vlSelf->__Vtableidx1];
     vlSelf->ysyx_24120011_top__DOT__pc_ctrl = ((0U 
                                                 == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
@@ -213,8 +222,12 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                                   + 
                                                   ((1U 
                                                     & ((0U 
-                                                        != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type)) 
-                                                       | (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0))))
+                                                        == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                        ? 
+                                                       (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0))
+                                                        : 
+                                                       (3U 
+                                                        != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))))
                                                     ? 
                                                    vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
                                                    [
@@ -222,6 +235,39 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                                     & (vlSelf->inst 
                                                        >> 0x14U))]
                                                     : vlSelf->ysyx_24120011_top__DOT__imme));
+    if (vlSelf->ysyx_24120011_top__DOT__w_mem_en) {
+        Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__alu_result, 
+                                                                                vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
+                                                                                [
+                                                                                (0x1fU 
+                                                                                & (vlSelf->inst 
+                                                                                >> 0x14U))], 
+                                                                                ((3U 
+                                                                                == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                                                 ? 
+                                                                                ((0U 
+                                                                                == 
+                                                                                (7U 
+                                                                                & (vlSelf->inst 
+                                                                                >> 0xcU)))
+                                                                                 ? 1U
+                                                                                 : 
+                                                                                ((1U 
+                                                                                == 
+                                                                                (7U 
+                                                                                & (vlSelf->inst 
+                                                                                >> 0xcU)))
+                                                                                 ? 2U
+                                                                                 : 
+                                                                                ((2U 
+                                                                                == 
+                                                                                (7U 
+                                                                                & (vlSelf->inst 
+                                                                                >> 0xcU)))
+                                                                                 ? 4U
+                                                                                 : 1U)))
+                                                                                 : 1U));
+    }
     vlSelf->ysyx_24120011_top__DOT__dnpc = ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__pc_ctrl))
                                              ? ((IData)(4U) 
                                                 + vlSelf->pc)
