@@ -28,7 +28,7 @@ wire [3:0]  rd_ctrl;
 wire        ALUBctrl;
 wire        w_en;
 wire        w_mem_en;
-wire [3:0]  w_mem_len;
+wire [7:0]  w_mem_len;
 
 wire [31:0] a0;
 

@@ -30,8 +30,8 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgBit(oldp+3,((1U & ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
                                      ? (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0))
                                      : (3U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))))));
-        bufp->chgBit(oldp+4,(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
-        bufp->chgBit(oldp+5,((4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))));
+        bufp->chgBit(oldp+4,((4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))));
+        bufp->chgBit(oldp+5,(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
         bufp->chgCData(oldp+6,(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type),3);
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
