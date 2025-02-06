@@ -78,12 +78,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                               : ((1U 
                                                   & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
                                                   ? 
-                                                 (((- (IData)(
-                                                              (vlSelf->inst 
-                                                               >> 0x1fU))) 
-                                                   << 0x14U) 
-                                                  | (vlSelf->inst 
-                                                     >> 0xcU))
+                                                 (0xfffff000U 
+                                                  & vlSelf->inst)
                                                   : 
                                                  (((- (IData)(
                                                               (vlSelf->inst 
