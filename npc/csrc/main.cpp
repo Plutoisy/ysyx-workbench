@@ -233,6 +233,7 @@ void cpu_exec(uint32_t n){
 
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
+extern "C" void difftest_regcpy(void *dut, bool direction);
 
 static int cmd_si(char *args);
 static int cmd_c(char *args);
