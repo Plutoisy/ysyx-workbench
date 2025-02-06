@@ -167,7 +167,7 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
                                                         >> 0xcU)))
                                                     ? 4U
                                                     : 1U)))
-                              : 1U)),4);
+                              : 1U)),8);
     bufp->chgCData(oldp+90,((0x7fU & vlSelf->inst)),7);
 }
 

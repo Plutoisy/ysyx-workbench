@@ -164,12 +164,12 @@ static inline uint32_t host_read(void *addr, int len) {
   }
 }
 
-static inline void host_write(void *addr, int len, word_t data) {
+static inline void host_write(void *addr, int len, uint32_t data) {
   switch (len) {
     case 1: *(uint8_t  *)addr = data; return;
     case 2: *(uint16_t *)addr = data; return;
     case 4: *(uint32_t *)addr = data; return;
-    default: assert(0); return 0;
+    default: assert(0); return;
   }
 }
 

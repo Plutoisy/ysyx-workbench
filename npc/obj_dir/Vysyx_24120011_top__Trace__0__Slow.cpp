@@ -39,7 +39,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBit(c+4,"ALUBctrl", false,-1);
     tracep->declBit(c+5,"w_en", false,-1);
     tracep->declBit(c+6,"w_mem_en", false,-1);
-    tracep->declBus(c+90,"w_mem_len", false,-1, 3,0);
+    tracep->declBus(c+90,"w_mem_len", false,-1, 7,0);
     tracep->declBus(c+8,"a0", false,-1, 31,0);
     tracep->pushNamePrefix("i_ALU ");
     tracep->declBus(c+84,"A", false,-1, 31,0);
@@ -69,7 +69,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+3,"rd_ctrl", false,-1, 3,0);
     tracep->declBit(c+4,"ALUBctrl", false,-1);
     tracep->declBit(c+6,"w_mem_en", false,-1);
-    tracep->declBus(c+90,"w_mem_len", false,-1, 3,0);
+    tracep->declBus(c+90,"w_mem_len", false,-1, 7,0);
     tracep->declBus(c+91,"opcode", false,-1, 6,0);
     tracep->declBus(c+7,"opcode_type", false,-1, 2,0);
     tracep->pushNamePrefix("i_ImmeGen ");
@@ -83,7 +83,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->popNamePrefix(2);
     tracep->pushNamePrefix("i_MemProcessor ");
     tracep->declBus(c+89,"waddr", false,-1, 31,0);
-    tracep->declBus(c+90,"w_mem_len", false,-1, 3,0);
+    tracep->declBus(c+90,"w_mem_len", false,-1, 7,0);
     tracep->declBit(c+6,"w_mem_en", false,-1);
     tracep->declBus(c+85,"wdata", false,-1, 31,0);
     tracep->popNamePrefix(1);
@@ -323,7 +323,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
                                               (vlSelf->inst 
                                                >> 0xcU)))
                                              ? 4U : 1U)))
-                               : 1U)),4);
+                               : 1U)),8);
     bufp->fullCData(oldp+91,((0x7fU & vlSelf->inst)),7);
     bufp->fullBit(oldp+92,(0U));
     bufp->fullIData(oldp+93,(4U),32);
