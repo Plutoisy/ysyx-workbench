@@ -238,7 +238,8 @@ void cpu_exec(uint32_t n){
         printf("PASS\n");
       }
       else{
-        assert(0);
+        printf("0x%08x\n",refstate.pc);
+        printf("0x%08x\n",top->pc);
       }
       for(int j = 0; j < 32; j++){
         printf("0x%08x\n",refstate.gpr[j]);
