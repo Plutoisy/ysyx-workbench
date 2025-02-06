@@ -285,11 +285,13 @@ static int cmd_si(char *args) {
     //printf("%d\n",N);
   }
   cpu_exec(N);
+  difftest_exec(N);
   return 0;
 }
 
 static int cmd_c(char *args) {
   cpu_exec(-1);
+  difftest_exec(-1);
   return 0;
 }
 
