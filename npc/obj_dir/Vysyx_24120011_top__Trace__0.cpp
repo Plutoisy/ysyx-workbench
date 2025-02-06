@@ -26,7 +26,7 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[1U])) {
         bufp->chgIData(oldp+0,(vlSelf->ysyx_24120011_top__DOT__imme),32);
         bufp->chgCData(oldp+1,(vlSelf->ysyx_24120011_top__DOT__pc_ctrl),2);
-        bufp->chgCData(oldp+2,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),3);
+        bufp->chgCData(oldp+2,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),4);
         bufp->chgBit(oldp+3,((1U & ((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type)) 
                                     | (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0))))));
         bufp->chgCData(oldp+4,(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type),3);
@@ -118,15 +118,22 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
                                       >> 7U))),5);
     bufp->chgCData(oldp+78,((7U & (vlSelf->inst >> 0xcU))),3);
     bufp->chgCData(oldp+79,((vlSelf->inst >> 0x19U)),7);
-    bufp->chgIData(oldp+80,(((4U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                              ? 0U : ((2U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                                       ? ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                                           ? vlSelf->ysyx_24120011_top__DOT__imme
-                                           : vlSelf->ysyx_24120011_top__DOT__alu_result)
-                                       : ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                                           ? vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out
-                                           : ((IData)(4U) 
-                                              + vlSelf->pc))))),32);
+    bufp->chgIData(oldp+80,(((8U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                              ? 0U : ((4U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                       ? 0U : ((2U 
+                                                & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                                ? (
+                                                   (1U 
+                                                    & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                                    ? vlSelf->ysyx_24120011_top__DOT__imme
+                                                    : vlSelf->ysyx_24120011_top__DOT__alu_result)
+                                                : (
+                                                   (1U 
+                                                    & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                                    ? vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out
+                                                    : 
+                                                   ((IData)(4U) 
+                                                    + vlSelf->pc)))))),32);
     bufp->chgIData(oldp+81,(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
                             [(0x1fU & (vlSelf->inst 
                                        >> 0xfU))]),32);

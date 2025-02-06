@@ -154,13 +154,21 @@ void system_rst(){
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
-uint32_t host_to_guest(uint8_t *haddr) { return haddr - pmem + CONFIG_MBASE; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
     case 1: return *(uint8_t  *)addr;
     case 2: return *(uint16_t *)addr;
     case 4: return *(uint32_t *)addr;
+    default: assert(0); return 0;
+  }
+}
+
+static inline void host_write(void *addr, int len, word_t data) {
+  switch (len) {
+    case 1: *(uint8_t  *)addr = data; return;
+    case 2: *(uint16_t *)addr = data; return;
+    case 4: *(uint32_t *)addr = data; return;
     default: assert(0); return 0;
   }
 }
@@ -214,6 +222,10 @@ extern "C" void reg_out(const int array[32]) {
   for (int i = 0; i < 32; ++i) {
     gpr[i] = array[i];
   }
+}
+
+extern "C" void rtl_pmem_write (int waddr, int wdata, char len) {
+  host_write(guest_to_host(waddr), len, wdata);
 }
 
 extern "C" void difftest_exec(uint64_t n);

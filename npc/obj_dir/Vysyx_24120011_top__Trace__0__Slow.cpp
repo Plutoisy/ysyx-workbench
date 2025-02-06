@@ -35,7 +35,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+86,"ALUB", false,-1, 31,0);
     tracep->declBus(c+87,"alu_result", false,-1, 31,0);
     tracep->declBus(c+2,"pc_ctrl", false,-1, 1,0);
-    tracep->declBus(c+3,"rd_ctrl", false,-1, 2,0);
+    tracep->declBus(c+3,"rd_ctrl", false,-1, 3,0);
     tracep->declBit(c+4,"ALUBctrl", false,-1);
     tracep->declBus(c+6,"a0", false,-1, 31,0);
     tracep->pushNamePrefix("i_ALU ");
@@ -63,7 +63,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+79,"func3", false,-1, 2,0);
     tracep->declBus(c+80,"func7", false,-1, 6,0);
     tracep->declBus(c+2,"pc_ctrl", false,-1, 1,0);
-    tracep->declBus(c+3,"rd_ctrl", false,-1, 2,0);
+    tracep->declBus(c+3,"rd_ctrl", false,-1, 3,0);
     tracep->declBit(c+4,"ALUBctrl", false,-1);
     tracep->declBus(c+88,"opcode", false,-1, 6,0);
     tracep->declBus(c+5,"opcode_type", false,-1, 2,0);
@@ -101,7 +101,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+85,"pc_add_4_out", false,-1, 31,0);
     tracep->declBus(c+87,"alu_result", false,-1, 31,0);
     tracep->declBus(c+1,"imme", false,-1, 31,0);
-    tracep->declBus(c+3,"rd_ctrl", false,-1, 2,0);
+    tracep->declBus(c+3,"rd_ctrl", false,-1, 3,0);
     tracep->declBus(c+81,"wdata", false,-1, 31,0);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("i_RegStack ");
@@ -174,7 +174,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     // Body
     bufp->fullIData(oldp+1,(vlSelf->ysyx_24120011_top__DOT__imme),32);
     bufp->fullCData(oldp+2,(vlSelf->ysyx_24120011_top__DOT__pc_ctrl),2);
-    bufp->fullCData(oldp+3,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),3);
+    bufp->fullCData(oldp+3,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),4);
     bufp->fullBit(oldp+4,((1U & ((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type)) 
                                  | (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0))))));
     bufp->fullCData(oldp+5,(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type),3);
@@ -263,15 +263,22 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
                                        >> 7U))),5);
     bufp->fullCData(oldp+79,((7U & (vlSelf->inst >> 0xcU))),3);
     bufp->fullCData(oldp+80,((vlSelf->inst >> 0x19U)),7);
-    bufp->fullIData(oldp+81,(((4U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                               ? 0U : ((2U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                                        ? ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                                            ? vlSelf->ysyx_24120011_top__DOT__imme
-                                            : vlSelf->ysyx_24120011_top__DOT__alu_result)
-                                        : ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
-                                            ? vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out
-                                            : ((IData)(4U) 
-                                               + vlSelf->pc))))),32);
+    bufp->fullIData(oldp+81,(((8U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                               ? 0U : ((4U & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                        ? 0U : ((2U 
+                                                 & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                                  ? vlSelf->ysyx_24120011_top__DOT__imme
+                                                  : vlSelf->ysyx_24120011_top__DOT__alu_result)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))
+                                                  ? vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out
+                                                  : 
+                                                 ((IData)(4U) 
+                                                  + vlSelf->pc)))))),32);
     bufp->fullIData(oldp+82,(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
                              [(0x1fU & (vlSelf->inst 
                                         >> 0xfU))]),32);

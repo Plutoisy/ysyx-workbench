@@ -3,6 +3,7 @@ import "DPI-C" function void reg_out(input int array[31:0]);
 module ysyx_24120011_RegStack(
     input clk,
     input rst,
+    input w_en,
     input [31:0] wdata,
     input [4:0] rd,
     input [4:0] rs1,
@@ -70,7 +71,9 @@ always@(posedge clk)begin
     end
     else begin
         Regs[0]  <= 32'h0000_0000;
-        Regs[rd] <= wdata;
+        if(w_en)begin
+            Regs[rd] <= wdata;
+        end
     end
 end
 

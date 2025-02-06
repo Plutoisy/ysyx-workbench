@@ -8,7 +8,9 @@ module ysyx_24120011_IDU (
     output [6:0]  func7,
     output reg [1:0]  pc_ctrl,
     output reg [3:0]  rd_ctrl,
-    output reg ALUBctrl
+    output reg ALUBctrl,
+    output reg w_mem_en,
+    output reg [3:0] w_mem_len
 );
 
 wire [6:0] opcode;
@@ -61,6 +63,7 @@ end
 //4'd1: pc_add_imme;
 //4'd2: alu_result;
 //4'd3: imme;
+//4'd4: w_en = 1'd0;
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
@@ -86,6 +89,7 @@ always@(*)begin
             end
         end
         3'd2:    rd_ctrl = 4'd0;//J-Type jal
+        3'd3:    rd_ctrl = 4'd4;//S-Type sw
         default: rd_ctrl = 4'd0;
     endcase
 end
@@ -102,7 +106,32 @@ always@(*)begin
                  ALUBctrl = 1'd1;
             end
         end
+        3'd3:    ALUBctrl = 1'd0;//S-Type sw
         default: ALUBctrl = 1'd1;
+    endcase
+end
+
+always@(*)begin
+    case(opcode_type)
+        3'd3:begin //S-Type
+            w_mem_en = 1'd1;
+            if(func3 == 3'b000)begin//sb
+                 w_mem_len = 4'd1;
+            end
+            else if(func3 == 3'b001)begin//sh
+                 w_mem_len = 4'd2;
+            end
+            else if(func3 == 3'b010)begin//sw
+                 w_mem_len = 4'd4;
+            end
+            else begin
+                 w_mem_len = 4'd1;
+            end
+        end
+        default: begin 
+            w_mem_en = 1'd0;
+            w_mem_len = 4'd1;
+        end
     endcase
 end
 

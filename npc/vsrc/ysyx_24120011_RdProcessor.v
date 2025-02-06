@@ -4,15 +4,17 @@ module ysyx_24120011_RdProcessor(
     input [31:0] alu_result,
     input [31:0] imme,
     input [3:0]  rd_ctrl,
+    output w_en,
     output reg [31:0] wdata
 );
-
+assign w_en = rd_ctrl == 4'd4 ? 1'd0 : 1'd1;
 always@(*)begin
     case(rd_ctrl)
         4'd0: wdata = pc_add_4_out;
         4'd1: wdata = pc_add_imme_out;
         4'd2: wdata = alu_result;
         4'd3: wdata = imme;
+        4'd4: wdata = 32'h0000_0000;
         default: wdata = 32'h0000_0000;
     endcase
 end
