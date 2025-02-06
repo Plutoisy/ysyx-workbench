@@ -36,7 +36,11 @@ __EXPORT void difftest_regcpy(void *dut, bool direction) {
       cpu.gpr[i] = 0x00000000;
     }
   } else {
-    assert(0);
+    CPU_state* ctx = (CPU_state*) dut;
+    for (int i = 0; i < 32; i++) {
+      ctx->gpr[i] = cpu.gpr[i];
+    }
+    ctx->pc = cpu.pc;
   }
 }
 

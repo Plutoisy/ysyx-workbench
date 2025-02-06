@@ -38,6 +38,11 @@ uint8_t pmem[PMEM_SIZE] = {
   // 0x0000006f,  
 };
 
+typedef struct {
+  uint32_t gpr[32];
+  uint32_t pc;
+} CPU_state;
+
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
@@ -211,6 +216,10 @@ extern "C" void reg_out(const int array[32]) {
   }
 }
 
+extern "C" void difftest_exec(uint64_t n);
+extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
+extern "C" void difftest_regcpy(void *dut, bool direction);
+CPU_state refstate;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
@@ -222,6 +231,11 @@ void cpu_exec(uint32_t n){
       top->inst = pmem_read(top->pc,4);
       // printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
       AssembleDecoder(handle, top->inst, top->pc);
+      difftest_exec(1);
+      difftest_regcpy(&refstate, 0);
+      for(int j = 0; j < 32; j++){
+        printf("%d\n",refstate.gpr[j]);
+      }
       step_and_dump_wave();
     }
     else{
@@ -231,9 +245,6 @@ void cpu_exec(uint32_t n){
   }
 }
 
-extern "C" void difftest_exec(uint64_t n);
-extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
-extern "C" void difftest_regcpy(void *dut, bool direction);
 
 static int cmd_si(char *args);
 static int cmd_c(char *args);
@@ -286,13 +297,11 @@ static int cmd_si(char *args) {
     //printf("%d\n",N);
   }
   cpu_exec(N);
-  difftest_exec(N);
   return 0;
 }
 
 static int cmd_c(char *args) {
   cpu_exec(-1);
-  difftest_exec(-1);
   return 0;
 }
 
