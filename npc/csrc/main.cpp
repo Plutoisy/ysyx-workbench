@@ -368,6 +368,8 @@ int main(int argc, char *argv[]) {
 
   load_img();
   difftest_memcpy(CONFIG_MBASE, pmem, PMEM_SIZE, 1);
+  void* dut;
+  difftest_regcpy(dut, 1)
   sim_init();
   system_rst();
   sdb_mainloop();
