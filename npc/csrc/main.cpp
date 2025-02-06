@@ -231,6 +231,9 @@ void cpu_exec(uint32_t n){
   }
 }
 
+extern "C" void difftest_exec(uint64_t n);
+extern "C" void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction);
+
 static int cmd_si(char *args);
 static int cmd_c(char *args);
 static int cmd_help(char *args);
@@ -343,7 +346,6 @@ void sdb_mainloop() {
   }
 }
 
-extern "C" void difftest_exec(uint64_t n);
 
 
 
@@ -363,6 +365,7 @@ int main(int argc, char *argv[]) {
   
 
   load_img();
+  difftest_memcpy(CONFIG_MBASE, pmem, PMEM_SIZE, 1);
   sim_init();
   system_rst();
   sdb_mainloop();
