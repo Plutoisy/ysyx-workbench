@@ -220,6 +220,7 @@ extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
 CPU_state refstate;
+
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
@@ -234,7 +235,12 @@ void cpu_exec(uint32_t n){
       difftest_exec(1);
       difftest_regcpy(&refstate, 0);
       for(int j = 0; j < 32; j++){
-        printf("%d\n",refstate.gpr[j]);
+        if(gpr[j] = refstate.gpr[j]){
+          printf("PASS\n",);
+        }
+        else{
+          assert(0);
+        }
       }
       step_and_dump_wave();
     }
