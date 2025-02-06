@@ -235,13 +235,14 @@ void cpu_exec(uint32_t n){
       difftest_exec(1);
       difftest_regcpy(&refstate, 0);
       for(int j = 0; j < 32; j++){
-        printf("0x%08x\n",refstate.gpr[j]);
-        // if(gpr[j] == refstate.gpr[j]){
-        //   printf("PASS\n");
-        // }
-        // else{
-        //   assert(0);
-        // }
+        printf("0x%08x\n",top->pc);
+        printf("0x%08x\n",refstate.pc);
+        if(gpr[j] == refstate.gpr[j]){
+          printf("PASS\n");
+        }
+        else{
+          assert(0);
+        }
       }
       step_and_dump_wave();
     }
