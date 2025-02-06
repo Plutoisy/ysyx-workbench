@@ -65,33 +65,38 @@ end
 //4'd3: imme;
 //4'd4: w_en = 1'd0;
 always@(*)begin
-    case(opcode_type)
-        3'd0:begin //I-Type
-            if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
-                 rd_ctrl = 4'd0;
+    if(rd == 5'b00000) begin
+        rd_ctrl = 4'd4;
+    end
+    else begin
+        case(opcode_type)
+            3'd0:begin //I-Type
+                if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
+                    rd_ctrl = 4'd0;
+                end
+                else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
+                    rd_ctrl = 4'd2;
+                end
+                else begin
+                    rd_ctrl = 4'd0;
+                end
             end
-            else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
-                 rd_ctrl = 4'd2;
+            3'd1:begin //U-Type
+                if(opcode == 7'b0010111)begin//auipc
+                    rd_ctrl = 4'd1;
+                end
+                else if(opcode == 7'b0110111)begin//lui
+                    rd_ctrl = 4'd3;
+                end
+                else begin
+                    rd_ctrl = 4'd0;
+                end
             end
-            else begin
-                 rd_ctrl = 4'd0;
-            end
-        end
-        3'd1:begin //U-Type
-            if(opcode == 7'b0010111)begin//auipc
-                 rd_ctrl = 4'd1;
-            end
-            else if(opcode == 7'b0110111)begin//lui
-                 rd_ctrl = 4'd3;
-            end
-            else begin
-                 rd_ctrl = 4'd0;
-            end
-        end
-        3'd2:    rd_ctrl = 4'd0;//J-Type jal
-        3'd3:    rd_ctrl = 4'd4;//S-Type sw
-        default: rd_ctrl = 4'd0;
-    endcase
+            3'd2:    rd_ctrl = 4'd0;//J-Type jal
+            3'd3:    rd_ctrl = 4'd4;//S-Type sw
+            default: rd_ctrl = 4'd0;
+        endcase
+    end
 end
 
 //ALUBctrl == 1'd0 -> imme
