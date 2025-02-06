@@ -24,7 +24,7 @@ wire [31:0] pc_add_4_out;
 wire [31:0] ALUB;
 wire [31:0] alu_result;
 wire [1:0]  pc_ctrl;
-wire [2:0]  rd_ctrl;
+wire [3:0]  rd_ctrl;
 wire        ALUBctrl;
 
 wire [31:0] a0;
