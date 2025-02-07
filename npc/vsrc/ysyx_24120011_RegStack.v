@@ -15,8 +15,8 @@ module ysyx_24120011_RegStack(
 
 reg [31:0] Regs [15:0];
 
-assign src1 = Regs[rs1];
-assign src2 = Regs[rs2];
+assign src1 = Regs[rs1[4:0]];
+assign src2 = Regs[rs2[4:0]];
 assign a0 = Regs[10];
 
 int regout[15:0];
@@ -72,7 +72,7 @@ always@(posedge clk)begin
     else begin
         Regs[0]  <= 32'h0000_0000;
         if(w_en)begin
-            Regs[rd] <= wdata;
+            Regs[rd[4:0]] <= wdata;
         end
     end
 end
