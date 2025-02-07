@@ -196,11 +196,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                       | (2U == (7U & (vlSelf->inst 
                                       >> 0xcU)))));
         }
-        if (vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0) {
-            vlSelf->ysyx_24120011_top__DOT__ALUBctrl = 0U;
-        }
-        vlSelf->ysyx_24120011_top__DOT__ALUBctrl = 
-            (3U != (0x7fU & vlSelf->inst));
     } else {
         vlSelf->ysyx_24120011_top__DOT__pc_ctrl = (
                                                    (2U 
@@ -210,8 +205,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
         vlSelf->ysyx_24120011_top__DOT__r_mem_en = 0U;
         vlSelf->ysyx_24120011_top__DOT__r_mem_len = 1U;
         vlSelf->ysyx_24120011_top__DOT__sign_extension = 0U;
-        vlSelf->ysyx_24120011_top__DOT__ALUBctrl = 
-            (3U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type));
     }
     vlSelf->ysyx_24120011_top__DOT__w_mem_en = (3U 
                                                 == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type));
@@ -267,7 +260,17 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                                    & (vlSelf->inst 
                                                       >> 0xfU))] 
                                                   + 
-                                                  ((IData)(vlSelf->ysyx_24120011_top__DOT__ALUBctrl)
+                                                  (((0U 
+                                                     == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                     ? 
+                                                    ((~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0)) 
+                                                     & (3U 
+                                                        != 
+                                                        (0x7fU 
+                                                         & vlSelf->inst)))
+                                                     : 
+                                                    (3U 
+                                                     != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type)))
                                                     ? vlSelf->ysyx_24120011_top__DOT__src2
                                                     : vlSelf->ysyx_24120011_top__DOT__imme));
     vlSelf->ysyx_24120011_top__DOT__dnpc = ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__pc_ctrl))

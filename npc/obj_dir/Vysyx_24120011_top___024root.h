@@ -21,7 +21,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     VL_IN8(rst,0,0);
     CData/*1:0*/ ysyx_24120011_top__DOT__pc_ctrl;
     CData/*3:0*/ ysyx_24120011_top__DOT__rd_ctrl;
-    CData/*0:0*/ ysyx_24120011_top__DOT__ALUBctrl;
     CData/*0:0*/ ysyx_24120011_top__DOT__w_mem_en;
     CData/*0:0*/ ysyx_24120011_top__DOT__r_mem_en;
     CData/*0:0*/ ysyx_24120011_top__DOT__sign_extension;
