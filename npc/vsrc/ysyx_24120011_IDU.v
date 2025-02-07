@@ -114,7 +114,7 @@ always@(*)begin
             if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
                  ALUBctrl = 1'd0;
             end
-            if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
+            else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                  ALUBctrl = 1'd0;
             end
             else begin
