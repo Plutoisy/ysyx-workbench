@@ -1,4 +1,4 @@
-import "DPI-C" function void reg_out(input int array[31:0]);
+import "DPI-C" function void reg_out(input int array[15:0]);
 
 module ysyx_24120011_RegStack(
     input clk,
@@ -13,17 +13,17 @@ module ysyx_24120011_RegStack(
     output [31:0] a0
 );
 
-reg [31:0] Regs [31:0];
+reg [31:0] Regs [15:0];
 
 assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
 assign a0 = Regs[10];
 
-int regout[31:0];
+int regout[15:0];
 
 genvar i, j;
 generate
-  for (i = 0; i < 32; i = i + 1) begin : outer
+  for (i = 0; i < 16; i = i + 1) begin : outer
       always @(*) begin
         regout[i] = Regs[i];
       end
@@ -52,22 +52,22 @@ always@(posedge clk)begin
         Regs[13] <= 32'h0000_0000;
         Regs[14] <= 32'h0000_0000;
         Regs[15] <= 32'h0000_0000;
-        Regs[16] <= 32'h0000_0000;
-        Regs[17] <= 32'h0000_0000;
-        Regs[18] <= 32'h0000_0000;
-        Regs[19] <= 32'h0000_0000;
-        Regs[20] <= 32'h0000_0000;
-        Regs[21] <= 32'h0000_0000;
-        Regs[22] <= 32'h0000_0000;
-        Regs[23] <= 32'h0000_0000;
-        Regs[24] <= 32'h0000_0000;
-        Regs[25] <= 32'h0000_0000;
-        Regs[26] <= 32'h0000_0000;
-        Regs[27] <= 32'h0000_0000;
-        Regs[28] <= 32'h0000_0000;
-        Regs[29] <= 32'h0000_0000;
-        Regs[30] <= 32'h0000_0000;
-        Regs[31] <= 32'h0000_0000;
+        // Regs[16] <= 32'h0000_0000;
+        // Regs[17] <= 32'h0000_0000;
+        // Regs[18] <= 32'h0000_0000;
+        // Regs[19] <= 32'h0000_0000;
+        // Regs[20] <= 32'h0000_0000;
+        // Regs[21] <= 32'h0000_0000;
+        // Regs[22] <= 32'h0000_0000;
+        // Regs[23] <= 32'h0000_0000;
+        // Regs[24] <= 32'h0000_0000;
+        // Regs[25] <= 32'h0000_0000;
+        // Regs[26] <= 32'h0000_0000;
+        // Regs[27] <= 32'h0000_0000;
+        // Regs[28] <= 32'h0000_0000;
+        // Regs[29] <= 32'h0000_0000;
+        // Regs[30] <= 32'h0000_0000;
+        // Regs[31] <= 32'h0000_0000;
     end
     else begin
         Regs[0]  <= 32'h0000_0000;
