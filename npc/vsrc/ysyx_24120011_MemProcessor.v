@@ -13,14 +13,15 @@ module ysyx_24120011_MemProcessor(
 );
 reg [31:0] r_mem_data_tmp;
 always@(*)begin
+
+    r_mem_data_tmp = rtl_pmem_read(r_mem_addr);
+
     if(w_mem_en && !r_mem_en)begin
         rtl_pmem_write(w_mem_addr,w_mem_data,w_mem_len);
-        r_mem_data_tmp = 32'b00000000;
         r_mem_data = 32'b00000000;
     end
     
     else if(r_mem_en && !w_mem_en)begin
-        r_mem_data_tmp = rtl_pmem_read(r_mem_addr);
         if(r_mem_len == 8'd1)begin
             if(sign_extension)begin
                 r_mem_data = {{24{r_mem_data_tmp[7]}},r_mem_data_tmp[7:0]};
