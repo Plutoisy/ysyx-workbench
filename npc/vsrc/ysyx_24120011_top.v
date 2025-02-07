@@ -120,6 +120,7 @@ ysyx_24120011_ALUCtrl i_ALUCtrl(
 
 ysyx_24120011_MemProcessor i_MemProcessor(
     .waddr          ( alu_result     ),
+    .raddr          ( alu_result     ),
     .w_mem_len      ( w_mem_len      ),
     .r_mem_len      ( r_mem_len      ),
     .w_mem_en       ( w_mem_en       ),

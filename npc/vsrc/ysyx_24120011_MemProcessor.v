@@ -2,6 +2,7 @@ import "DPI-C" function void rtl_pmem_write (input int waddr, input int wdata, i
 import "DPI-C" function int rtl_pmem_read(int raddr);
 module ysyx_24120011_MemProcessor(
     input [31:0] waddr,
+    input [31:0] raddr,
     input [7:0] w_mem_len,
     input [7:0] r_mem_len,
     input w_mem_en,
