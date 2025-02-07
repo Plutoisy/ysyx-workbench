@@ -225,13 +225,13 @@ extern "C" void reg_out(const int array[32]) {
 }
 
 extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
-  printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data)
+  printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
 }
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
   uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
-  printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret)
+  printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
   return ret;
 }
 
