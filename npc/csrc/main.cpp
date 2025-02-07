@@ -270,7 +270,7 @@ void cpu_exec(uint32_t n){
         if(refstate.gpr[j] != gpr[j]){
           //assert(0);
         }
-        printf("0x%08x\n",refstate.gpr[j]);
+        printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
       }
       
     }
