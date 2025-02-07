@@ -15,7 +15,7 @@ module ysyx_24120011_RegStack(
 
 reg [31:0] Regs [31:0];
 
-assign src1 = Regs[dang];
+assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
 assign a0 = Regs[10];
 
