@@ -40,7 +40,7 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgIData(oldp+10,(vlSelf->ysyx_24120011_top__DOT__src2),32);
         bufp->chgIData(oldp+11,(vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out),32);
         bufp->chgIData(oldp+12,(vlSelf->ysyx_24120011_top__DOT__alu_result),32);
-        bufp->chgQData(oldp+13,(vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp),34);
+        bufp->chgQData(oldp+13,(vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp),33);
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
         bufp->chgIData(oldp+15,(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs

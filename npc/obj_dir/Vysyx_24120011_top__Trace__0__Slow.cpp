@@ -99,7 +99,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBit(c+7,"sign_extension", false,-1);
     tracep->declBus(c+11,"w_mem_data", false,-1, 31,0);
     tracep->declBus(c+10,"r_mem_data", false,-1, 31,0);
-    tracep->declQuad(c+14,"r_mem_data_tmp", false,-1, 33,0);
+    tracep->declQuad(c+14,"r_mem_data_tmp", false,-1, 32,0);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("i_PCProcessor ");
     tracep->declBus(c+84,"pc", false,-1, 31,0);
@@ -213,7 +213,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+11,(vlSelf->ysyx_24120011_top__DOT__src2),32);
     bufp->fullIData(oldp+12,(vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out),32);
     bufp->fullIData(oldp+13,(vlSelf->ysyx_24120011_top__DOT__alu_result),32);
-    bufp->fullQData(oldp+14,(vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp),34);
+    bufp->fullQData(oldp+14,(vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp),33);
     bufp->fullIData(oldp+16,(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
                              [0xaU]),32);
     bufp->fullIData(oldp+17,(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs[0]),32);
