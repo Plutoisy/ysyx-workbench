@@ -84,6 +84,9 @@ always@(*)begin
                 else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
                     rd_ctrl = 4'd2;
                 end
+                else if(opcode == 7'b0010011 && func3 == 3'b011)begin//sltiu
+                    rd_ctrl = 4'd2;
+                end
                 else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                     rd_ctrl = 4'd5;
                 end
@@ -118,6 +121,9 @@ always@(*)begin
             if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
                  ALUBctrl = 1'd0;
             end
+            else if(opcode == 7'b0010011 && func3 == 3'b011)begin//sltiu
+                 ALUBctrl = 1'd0;
+            end
             else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                  ALUBctrl = 1'd0;
             end
@@ -133,8 +139,12 @@ end
 //ALU_ctrl[0] 0->add,1->sub
 always@(*)begin
     case(opcode_type)
-        3'd0:    ALU_ctrl = 4'd0;//I-Type
-        3'd3:    ALU_ctrl = 4'd0;//S-Type
+        3'd0:begin//I-Type
+            if(func3 == 3'b011 && func7 == 7'b0010011)begin//add
+                ALU_ctrl = 4'b0000;
+            end
+        end
+        3'd3:   ALU_ctrl = 4'd0;//S-Type
         3'd4:begin
             if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
                 ALU_ctrl = 4'b0000;

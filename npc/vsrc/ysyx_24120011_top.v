@@ -85,7 +85,7 @@ ysyx_24120011_IDU i_IDU(
 ysyx_24120011_ALU i_ALU(
     .A          ( src1       ),
     .B          ( ALUB       ),
-    .sub_or_add ( ALU_ctrl[0]   ),
+    .ALU_ctrl   ( ALU_ctrl   ),
     .ALUout     ( alu_result      )
 );
 
