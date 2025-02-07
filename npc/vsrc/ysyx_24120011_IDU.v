@@ -10,7 +10,10 @@ module ysyx_24120011_IDU (
     output reg [3:0]  rd_ctrl,
     output reg ALUBctrl,
     output reg w_mem_en,
-    output reg [7:0] w_mem_len
+    output reg [7:0] w_mem_len,
+    output reg r_mem_en,
+    output reg sign_extension,
+    output reg [7:0] r_mem_len
 );
 
 wire [6:0] opcode;
@@ -64,6 +67,7 @@ end
 //4'd2: alu_result;
 //4'd3: imme;
 //4'd4: w_en = 1'd0;
+//4'd5: rdata;
 always@(*)begin
     if(rd == 5'b00000) begin
         rd_ctrl = 4'd4;
@@ -76,6 +80,9 @@ always@(*)begin
                 end
                 else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
                     rd_ctrl = 4'd2;
+                end
+                else if(opcode == 7'0000011)begin//lb lbu lh lhu lw
+                    rd_ctrl = 4'd5;
                 end
                 else begin
                     rd_ctrl = 4'd0;
@@ -105,6 +112,9 @@ always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
+                 ALUBctrl = 1'd0;
+            end
+            if(opcode == 7'0000011)begin//lb lbu lh lhu lw
                  ALUBctrl = 1'd0;
             end
             else begin
@@ -140,4 +150,42 @@ always@(*)begin
     endcase
 end
 
+always@(*)begin
+    case(opcode_type)
+        3'd0:begin //I-Type
+            if(opcode == 7'0000011)begin//lb lbu lh lhu lw
+                r_mem_en = 1'd1;
+                if(func3 == 3'b000)begin//lb
+                    r_mem_len = 8'd1;
+                    sign_extension = 1'd1;
+                end
+                else if(func3 == 3'b001)begin//lh
+                    r_mem_len = 8'd2;
+                    sign_extension = 1'd1;
+                end
+                else if(func3 == 3'b010)begin//lw
+                    r_mem_len = 8'd4;
+                    sign_extension = 1'd1;
+                end
+                else if(func3 == 3'b100)begin//lbu
+                    r_mem_len = 8'd1;
+                    sign_extension = 1'd0;
+                end
+                else if(func3 == 3'b101)begin//lhu
+                    r_mem_len = 8'd2;
+                    sign_extension = 1'd0;
+                end
+                else begin
+                    r_mem_len = 8'd1;
+                    sign_extension = 1'd0;
+                end
+            end
+        end
+        default: begin 
+            r_mem_en = 1'd0;
+            r_mem_len = 8'd1;
+            sign_extension = 1'd0;
+        end
+    endcase
+end
 endmodule

@@ -228,6 +228,11 @@ extern "C" void rtl_pmem_write (int waddr, int wdata, char len) {
   host_write(guest_to_host(waddr), len, wdata);
 }
 
+extern "C" int rtl_pmem_read(int raddr) {
+  uint32_t ret = host_read(guest_to_host(raddr), 4);
+  return ret;
+}
+
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
