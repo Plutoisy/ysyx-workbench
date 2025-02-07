@@ -11,7 +11,7 @@ module ysyx_24120011_MemProcessor(
     input [31:0] w_mem_data,
     output reg [31:0] r_mem_data
 );
-reg [31:0] r_mem_data_tmp;
+reg [33:0] r_mem_data_tmp;
 always@(*)begin
     if(w_mem_en && !r_mem_en)begin
         rtl_pmem_write(w_mem_addr,w_mem_data,w_mem_len);
