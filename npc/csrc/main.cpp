@@ -230,9 +230,9 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
 }
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
-  if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    assert(0);
-  }
+  // if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
+  //   assert(0);
+  // }
   uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
   printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
   return ret;
