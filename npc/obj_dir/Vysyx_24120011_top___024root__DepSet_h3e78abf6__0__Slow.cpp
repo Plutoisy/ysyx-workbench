@@ -167,7 +167,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
         vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout[__Vi0] = 0;
     }
     vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp = VL_RAND_RESET_I(32);
-    vlSelf->__Vfunc_rtl_pmem_read__4__Vfuncout = 0;
     vlSelf->__Vtableidx1 = 0;
     vlSelf->__Vtableidx2 = 0;
     vlSelf->__Vtableidx3 = 0;
