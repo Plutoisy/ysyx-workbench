@@ -1,4 +1,5 @@
 module ysyx_24120011_PCProcessor(
+    input clk,
     input  [31:0] pc,
     input  [31:0] imme,
     input  [31:0] alu_result,
@@ -14,7 +15,7 @@ wire [31:0] pc_add_imme;
 assign pc_add_imme_out = pc_add_imme;
 assign pc_add_4_out    = pc_add_4;
 
-always@(*)begin
+always@(posedge clk)begin
     case(pc_ctrl)
         2'd0: dnpc = pc_add_4;
         2'd1: dnpc = pc_add_imme;

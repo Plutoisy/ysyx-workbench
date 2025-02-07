@@ -1,4 +1,5 @@
 module ysyx_24120011_IDU (
+    input clk,
     input [31:0]  inst,
     output [4:0]  rd,
     output [4:0]  rs1,
@@ -46,7 +47,7 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 //2'd0: pc_add_4;
 //2'd1: pc_add_imme;
 //2'd2: alu_result;
-always@(*)begin
+always@(posedge clk)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
@@ -68,7 +69,7 @@ end
 //4'd3: imme;
 //4'd4: w_en = 1'd0;
 //4'd5: rdata;
-always@(*)begin
+always@(posedge clk)begin
     if(rd == 5'b00000) begin
         rd_ctrl = 4'd4;
     end
@@ -108,7 +109,7 @@ end
 
 //ALUBctrl == 1'd0 -> imme
 //ALUBctrl == 1'd1 -> src2
-always@(*)begin
+always@(posedge clk)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
@@ -126,7 +127,7 @@ always@(*)begin
     endcase
 end
 
-always@(*)begin
+always@(posedge clk)begin
     case(opcode_type)
         3'd3:begin //S-Type
             w_mem_en = 1'd1;
@@ -150,7 +151,7 @@ always@(*)begin
     endcase
 end
 
-always@(*)begin
+always@(posedge clk)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b0000011)begin//lb lbu lh lhu lw

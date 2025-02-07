@@ -1,4 +1,5 @@
 module ysyx_24120011_RdProcessor(
+    input clk,
     input [31:0] pc_add_imme_out,
     input [31:0] pc_add_4_out,
     input [31:0] alu_result,
@@ -9,7 +10,7 @@ module ysyx_24120011_RdProcessor(
     output reg [31:0] wdata
 );
 assign w_en = rd_ctrl == 4'd4 ? 1'd0 : 1'd1;
-always@(*)begin
+always@(posedge clk)begin
     case(rd_ctrl)
         4'd0: wdata = pc_add_4_out;
         4'd1: wdata = pc_add_imme_out;
