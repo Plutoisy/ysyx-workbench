@@ -133,7 +133,7 @@ end
 //ALU_ctrl[0] 0->add,1->sub
 always@(*)begin
     case(opcode_type)
-        3'd0:    ALU_ctrl = 4'd0//I-Type
+        3'd0:    ALU_ctrl = 4'd0;//I-Type
         3'd3:    ALU_ctrl = 4'd0;//S-Type
         3'd4:begin
             if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
