@@ -84,11 +84,9 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_comb__TOP__0(Vysyx_2412001
         if ((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))) {
             vlSelf->ysyx_24120011_top__DOT__rdata = 
                 ((IData)(vlSelf->ysyx_24120011_top__DOT__sign_extension)
-                  ? ((0xffff00U & ((- (IData)((1U & 
-                                               (vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp 
-                                                >> 7U)))) 
-                                   << 8U)) | (0xffU 
-                                              & vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp))
+                  ? (((- (IData)((1U & (vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp 
+                                        >> 7U)))) << 0x10U) 
+                     | (0xffffU & vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp))
                   : (0xffffU & vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp));
         }
         if ((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))) {

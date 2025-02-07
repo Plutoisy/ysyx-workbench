@@ -16,6 +16,10 @@ always@(*)begin
     if(w_mem_en)begin
         rtl_pmem_write(waddr,wdata,w_mem_len);
     end
+    else begin
+        rdata_tmp = 32'b00000000;
+        rdata = 32'b00000000;
+    end
     if(r_mem_en)begin
         rdata_tmp = rtl_pmem_read(raddr);
         if(r_mem_len == 8'd1)begin
