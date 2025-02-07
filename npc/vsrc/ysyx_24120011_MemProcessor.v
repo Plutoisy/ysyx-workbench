@@ -18,6 +18,10 @@ always@(*)begin
         rdata_tmp = 32'b00000000;
         rdata = 32'b00000000;
     end
+    else begin
+        rdata_tmp = 32'b00000000;
+        rdata = 32'b00000000;
+    end
     if(r_mem_en)begin
         rdata_tmp = rtl_pmem_read(raddr);
         if(r_mem_len == 8'd1)begin

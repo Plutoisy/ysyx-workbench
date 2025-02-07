@@ -68,7 +68,6 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_comb__TOP__0(Vysyx_2412001
                                                                                  ? 4U
                                                                                  : 1U)))
                                                                                  : 1U));
-    } else {
         vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp = 0U;
         vlSelf->ysyx_24120011_top__DOT__rdata = 0U;
     }
