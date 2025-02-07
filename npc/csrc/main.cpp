@@ -20,7 +20,7 @@ static Vysyx_24120011_top* top;
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
-int gpr[16];
+int gpr[32];
 uint8_t pmem[PMEM_SIZE] = {
   // 0x00000413,
   // 0x00009117,
@@ -39,15 +39,15 @@ uint8_t pmem[PMEM_SIZE] = {
 };
 
 typedef struct {
-  uint32_t gpr[16];
+  uint32_t gpr[32];
   uint32_t pc;
 } CPU_state;
 
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
-  // "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
-  // "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
 };
 
 static char* rl_gets() {
@@ -198,7 +198,7 @@ static int parse_args(int argc, char *argv[]) {
 
 void isa_reg_display() {
   printf("Name    DEC         HEX\n");
-  for (int i = 0; i < 16; i++){
+  for (int i = 0; i < 32; i++){
     printf("%-3s     %-10u  0x%08x\n", regs[i], gpr[i], gpr[i]);
   }
 }
@@ -218,8 +218,8 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-extern "C" void reg_out(const int array[16]) {
-  for (int i = 0; i < 16; ++i) {
+extern "C" void reg_out(const int array[32]) {
+  for (int i = 0; i < 32; ++i) {
     gpr[i] = array[i];
   }
 }
@@ -253,7 +253,7 @@ void cpu_exec(uint32_t n){
         //printf("0x%08x\n",refstate.pc );
         //printf("0x%08x\n",top->pc);
       }
-      for(int j = 0; j < 16; j++){
+      for(int j = 0; j < 32; j++){
         if(refstate.gpr[j] != gpr[j]){
           assert(0);
         }
