@@ -81,7 +81,7 @@ always@(*)begin
                 else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
                     rd_ctrl = 4'd2;
                 end
-                else if(opcode == 7'0000011)begin//lb lbu lh lhu lw
+                else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                     rd_ctrl = 4'd5;
                 end
                 else begin
@@ -114,7 +114,7 @@ always@(*)begin
             if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
                  ALUBctrl = 1'd0;
             end
-            if(opcode == 7'0000011)begin//lb lbu lh lhu lw
+            if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                  ALUBctrl = 1'd0;
             end
             else begin
@@ -153,7 +153,7 @@ end
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
-            if(opcode == 7'0000011)begin//lb lbu lh lhu lw
+            if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                 r_mem_en = 1'd1;
                 if(func3 == 3'b000)begin//lb
                     r_mem_len = 8'd1;
