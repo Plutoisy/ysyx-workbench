@@ -20,7 +20,7 @@ always@(*)begin
     end
     
     else if(r_mem_en && !w_mem_en)begin
-        r_mem_data_tmp = 32'b00000001;
+        r_mem_data_tmp = rtl_pmem_read(r_mem_addr);
         if(r_mem_len == 8'd1)begin
             if(sign_extension)begin
                 r_mem_data = {{24{r_mem_data_tmp[7]}},r_mem_data_tmp[7:0]};

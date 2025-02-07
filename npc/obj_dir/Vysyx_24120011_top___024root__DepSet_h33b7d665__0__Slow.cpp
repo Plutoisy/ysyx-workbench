@@ -333,12 +333,12 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
         vlSelf->ysyx_24120011_top__DOT__r_mem_data = 0U;
     } else if (((IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en) 
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en)))) {
-        vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp = 0U;
+        vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp = 1U;
         vlSelf->ysyx_24120011_top__DOT__r_mem_data 
             = ((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
-                ? 0U : ((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
-                         ? 0U : ((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
-                                  ? 0U : 0xffU)));
+                ? 1U : ((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
+                         ? 1U : ((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
+                                  ? 1U : 0xffU)));
     } else {
         vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp = 0xffU;
         vlSelf->ysyx_24120011_top__DOT__r_mem_data = 0xffU;
