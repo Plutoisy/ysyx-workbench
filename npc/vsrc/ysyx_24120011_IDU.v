@@ -180,6 +180,9 @@ always@(*)begin
                     sign_extension = 1'd0;
                 end
             end
+            else begin
+                r_mem_en = 1'd0;
+            end
         end
         default: begin 
             r_mem_en = 1'd0;
