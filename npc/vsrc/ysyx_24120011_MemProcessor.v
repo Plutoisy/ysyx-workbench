@@ -28,7 +28,7 @@ always@(*)begin
         end
         if(r_mem_len == 8'd2)begin
             if(sign_extension)begin
-                rdata = {{16{rdata_tmp[7]}},rdata_tmp[7:0]};
+                rdata = {{16{rdata_tmp[7]}},rdata_tmp[15:0]};
             end
             else begin
                 rdata = {16'b0,rdata_tmp[15:0]};
