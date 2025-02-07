@@ -45,7 +45,6 @@ always@(posedge clk)begin
 end
 
 ysyx_24120011_PCProcessor i_PCProcessor(
-    .clk   ( clk ),
     .pc              ( pc              ),
     .imme            ( imme            ),
     .alu_result      ( alu_result      ),
@@ -90,7 +89,6 @@ ysyx_24120011_ALU i_ALU(
 );
 
 ysyx_24120011_RdProcessor i_RdProcessor(
-    .clk   ( clk ), 
     .pc_add_imme_out ( pc_add_imme_out ),
     .pc_add_4_out    ( pc_add_4_out    ),
     .alu_result      ( alu_result      ),

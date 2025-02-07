@@ -10,7 +10,7 @@ module ysyx_24120011_RdProcessor(
     output reg [31:0] wdata
 );
 assign w_en = rd_ctrl == 4'd4 ? 1'd0 : 1'd1;
-always@(posedge clk)begin
+always@(*)begin
     case(rd_ctrl)
         4'd0: wdata = pc_add_4_out;
         4'd1: wdata = pc_add_imme_out;
