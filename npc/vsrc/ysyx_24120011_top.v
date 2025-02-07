@@ -65,7 +65,6 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
 );
 
 ysyx_24120011_IDU i_IDU(
-    .clk   ( clk ), 
     .inst           ( inst           ),
     .rd             ( rd             ),
     .rs1            ( rs1            ),
