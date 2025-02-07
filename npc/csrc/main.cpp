@@ -266,6 +266,7 @@ void cpu_exec(uint32_t n){
         //printf("0x%08x\n",refstate.pc );
         //printf("0x%08x\n",top->pc);
       }
+      printf("        dut                    | ref                   \n");
       for(int j = 0; j < 32; j++){
         if(refstate.gpr[j] != gpr[j]){
           //assert(0);
