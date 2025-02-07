@@ -15,8 +15,6 @@ reg [31:0] rdata_tmp;
 always@(*)begin
     if(w_mem_en)begin
         rtl_pmem_write(waddr,wdata,w_mem_len);
-    end
-    else begin
         rdata_tmp = 32'b00000000;
         rdata = 32'b00000000;
     end
