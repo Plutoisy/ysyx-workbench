@@ -5,7 +5,7 @@ module ysyx_24120011_ALU(
     output [31:0] ALUout
 );
 wire [31:0] B_in;
-assign B_in = sub_or_add ? B ^ {32{ALU_ctrl[0]}} + 1 : B;
+assign B_in = ALU_ctrl[0] ? B ^ {32{ALU_ctrl[0]}} + 1 : B;
 ysyx_24120011_Adder i_Adder(
     .x ( A ),
     .y ( B_in ),
