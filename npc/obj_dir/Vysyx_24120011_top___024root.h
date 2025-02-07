@@ -28,6 +28,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*2:0*/ ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_hd7d5a5db__0;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0;
+    CData/*0:0*/ ysyx_24120011_top__DOT__i_RdProcessor__DOT__clk;
     CData/*6:0*/ __Vtableidx3;
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;
@@ -37,7 +38,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     VL_OUT(pc,31,0);
     IData/*31:0*/ ysyx_24120011_top__DOT__dnpc;
     IData/*31:0*/ ysyx_24120011_top__DOT__imme;
-    IData/*31:0*/ ysyx_24120011_top__DOT__wdata;
     IData/*31:0*/ ysyx_24120011_top__DOT__rdata;
     IData/*31:0*/ ysyx_24120011_top__DOT__r_mem_data;
     IData/*31:0*/ ysyx_24120011_top__DOT__src2;
