@@ -34,7 +34,7 @@ wire        r_mem_en;
 wire        sign_extension;
 wire [7:0]  w_mem_len;
 wire [7:0]  r_mem_len;
-
+wire [3:0]  ALU_ctrl;
 wire [31:0] a0;
 
 always@(posedge clk)begin
@@ -78,13 +78,14 @@ ysyx_24120011_IDU i_IDU(
     .w_mem_len      ( w_mem_len      ),
     .r_mem_en       ( r_mem_en       ),
     .sign_extension ( sign_extension ),
+    .ALU_ctrl       ( ALU_ctrl       ),
     .r_mem_len      ( r_mem_len      )
 );
 
 ysyx_24120011_ALU i_ALU(
     .A          ( src1       ),
     .B          ( ALUB       ),
-    .sub_or_add ( 1'b0       ),
+    .sub_or_add ( ALU_ctrl[0]   ),
     .ALUout     ( alu_result      )
 );
 
