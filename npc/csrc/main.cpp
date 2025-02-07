@@ -174,6 +174,9 @@ static inline void host_write(void *addr, int len, uint32_t data) {
 }
 
 static uint32_t pmem_read(uint32_t addr, int len) {
+  if(paddr - CONFIG_MBASE > PMEM_SIZE){
+    assert(0);
+  }
   uint32_t ret = host_read(guest_to_host(addr), len);
   return ret;
 }
