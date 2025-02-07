@@ -15,6 +15,7 @@ module ysyx_24120011_TypeFinder(
 
             7'b0100011:opcode_type = 3'd3;//S-Type
 
+            7'b0110011:opcode_type = 3'd4;//R-Type
             default   :opcode_type = 3'd7;//Unknown
         endcase
     end

@@ -41,6 +41,7 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 // 3'd1; U-Type
 // 3'd2; J-Type
 // 3'd3; S-Type
+// 3'd4; R-Type
 // 3'd7; Unknown
 
 //2'd0: pc_add_4;
@@ -58,6 +59,7 @@ always@(*)begin
         end
         3'd2:    pc_ctrl = 2'd1;//J-Type jal
         3'd3:    pc_ctrl = 2'd0;//S-Type sw
+        3'd4:    pc_ctrl = 2'd0;//R-Type
         default: pc_ctrl = 2'd0;
     endcase
 end
@@ -101,6 +103,7 @@ always@(*)begin
             end
             3'd2:    rd_ctrl = 4'd0;//J-Type jal
             3'd3:    rd_ctrl = 4'd4;//S-Type sw
+            3'd4:    rd_ctrl = 4'd2;//R-Type sw
             default: rd_ctrl = 4'd0;
         endcase
     end
@@ -122,6 +125,7 @@ always@(*)begin
             end
         end
         3'd3:    ALUBctrl = 1'd0;//S-Type sw
+        3'd4:    ALUBctrl = 1'd1;//R-Type
         default: ALUBctrl = 1'd1;
     endcase
 end
