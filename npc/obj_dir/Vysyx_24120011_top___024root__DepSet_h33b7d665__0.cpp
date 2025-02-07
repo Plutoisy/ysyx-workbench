@@ -70,6 +70,9 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_comb__TOP__0(Vysyx_2412001
                                                                                  : 1U));
         vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp = 0U;
         vlSelf->ysyx_24120011_top__DOT__rdata = 0U;
+    } else {
+        vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__rdata_tmp = 0U;
+        vlSelf->ysyx_24120011_top__DOT__rdata = 0U;
     }
     if (vlSelf->ysyx_24120011_top__DOT__r_mem_en) {
         Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__alu_result, vlSelf->__Vfunc_rtl_pmem_read__4__Vfuncout);

@@ -18,6 +18,7 @@ wire [6:0]  func7;
 wire [31:0] imme;
 wire [31:0] wdata;
 wire [31:0] rdata;
+wire [31:0] r_mem_data;
 wire [31:0] src1;
 wire [31:0] src2;
 wire [31:0] pc_add_imme_out;
@@ -92,7 +93,7 @@ ysyx_24120011_RdProcessor i_RdProcessor(
     .pc_add_4_out    ( pc_add_4_out    ),
     .alu_result      ( alu_result      ),
     .imme            ( imme            ),
-    .rdata           ( rdata           ),
+    .r_mem_data      ( r_mem_data      ),
     .rd_ctrl         ( rd_ctrl         ),
     .w_en            ( w_en            ),
     .wdata           ( wdata           )
@@ -119,15 +120,15 @@ ysyx_24120011_ALUCtrl i_ALUCtrl(
 );
 
 ysyx_24120011_MemProcessor i_MemProcessor(
-    .waddr          ( alu_result     ),
-    .raddr          ( alu_result     ),
-    .w_mem_len      ( w_mem_len      ),
-    .r_mem_len      ( r_mem_len      ),
-    .w_mem_en       ( w_mem_en       ),
-    .r_mem_en       ( r_mem_en       ),
-    .sign_extension ( sign_extension ),
-    .wdata          ( wdata          ),
-    .rdata          ( rdata          )
+    .w_mem_addr          ( alu_result          ),
+    .r_mem_addr          ( alu_result          ),
+    .w_mem_len           ( w_mem_len           ),
+    .r_mem_len           ( r_mem_len           ),
+    .w_mem_en            ( w_mem_en            ),
+    .r_mem_en            ( r_mem_en            ),
+    .sign_extension      ( sign_extension      ),
+    .w_mem_data          ( src2                ),
+    .r_mem_data          ( r_mem_data          )
 );
 
 endmodule
