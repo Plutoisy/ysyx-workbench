@@ -123,7 +123,6 @@ ysyx_24120011_ALUCtrl i_ALUCtrl(
 );
 
 ysyx_24120011_MemProcessor i_MemProcessor(
-    .clk   ( clk ), 
     .w_mem_addr          ( alu_result          ),
     .r_mem_addr          ( alu_result          ),
     .w_mem_len           ( w_mem_len           ),

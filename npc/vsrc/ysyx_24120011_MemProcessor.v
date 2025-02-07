@@ -1,7 +1,6 @@
 import "DPI-C" function void rtl_pmem_write (input int w_mem_addr, input int w_mem_data, input byte w_mem_len);
 import "DPI-C" function int rtl_pmem_read(int r_mem_addr);
 module ysyx_24120011_MemProcessor(
-    input clk,
     input [31:0] w_mem_addr,
     input [31:0] r_mem_addr,
     input [7:0] w_mem_len,
@@ -13,7 +12,7 @@ module ysyx_24120011_MemProcessor(
     output reg [31:0] r_mem_data
 );
 reg [31:0] r_mem_data_tmp;
-always@(posedge clk)begin
+always@(*)begin
     if(w_mem_en && !r_mem_en)begin
         rtl_pmem_write(w_mem_addr,w_mem_data,w_mem_len);
         r_mem_data_tmp = 32'b00000000;
