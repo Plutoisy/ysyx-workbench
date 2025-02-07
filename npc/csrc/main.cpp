@@ -224,7 +224,7 @@ extern "C" void reg_out(const int array[32]) {
   }
 }
 
-extern "C" void void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
+extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
 }
 
