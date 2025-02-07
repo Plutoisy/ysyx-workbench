@@ -38,28 +38,28 @@ VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024
     reg_out(array__Vcvt);
 }
 
-extern "C" void rtl_pmem_write(int waddr, int wdata, char len);
+extern "C" void rtl_pmem_write(int w_mem_addr, int w_mem_data, char w_mem_len);
 
-VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(IData/*31:0*/ waddr, IData/*31:0*/ wdata, CData/*7:0*/ len) {
+VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(IData/*31:0*/ w_mem_addr, IData/*31:0*/ w_mem_data, CData/*7:0*/ w_mem_len) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit\n"); );
     // Body
-    int waddr__Vcvt;
-    for (size_t waddr__Vidx = 0; waddr__Vidx < 1; ++waddr__Vidx) waddr__Vcvt = waddr;
-    int wdata__Vcvt;
-    for (size_t wdata__Vidx = 0; wdata__Vidx < 1; ++wdata__Vidx) wdata__Vcvt = wdata;
-    char len__Vcvt;
-    for (size_t len__Vidx = 0; len__Vidx < 1; ++len__Vidx) len__Vcvt = len;
-    rtl_pmem_write(waddr__Vcvt, wdata__Vcvt, len__Vcvt);
+    int w_mem_addr__Vcvt;
+    for (size_t w_mem_addr__Vidx = 0; w_mem_addr__Vidx < 1; ++w_mem_addr__Vidx) w_mem_addr__Vcvt = w_mem_addr;
+    int w_mem_data__Vcvt;
+    for (size_t w_mem_data__Vidx = 0; w_mem_data__Vidx < 1; ++w_mem_data__Vidx) w_mem_data__Vcvt = w_mem_data;
+    char w_mem_len__Vcvt;
+    for (size_t w_mem_len__Vidx = 0; w_mem_len__Vidx < 1; ++w_mem_len__Vidx) w_mem_len__Vcvt = w_mem_len;
+    rtl_pmem_write(w_mem_addr__Vcvt, w_mem_data__Vcvt, w_mem_len__Vcvt);
 }
 
-extern "C" int rtl_pmem_read(int raddr);
+extern "C" int rtl_pmem_read(int r_mem_addr);
 
-VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(IData/*31:0*/ raddr, IData/*31:0*/ &rtl_pmem_read__Vfuncrtn) {
+VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(IData/*31:0*/ r_mem_addr, IData/*31:0*/ &rtl_pmem_read__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit\n"); );
     // Body
-    int raddr__Vcvt;
-    for (size_t raddr__Vidx = 0; raddr__Vidx < 1; ++raddr__Vidx) raddr__Vcvt = raddr;
+    int r_mem_addr__Vcvt;
+    for (size_t r_mem_addr__Vidx = 0; r_mem_addr__Vidx < 1; ++r_mem_addr__Vidx) r_mem_addr__Vcvt = r_mem_addr;
     int rtl_pmem_read__Vfuncrtn__Vcvt;
-    rtl_pmem_read__Vfuncrtn__Vcvt = rtl_pmem_read(raddr__Vcvt);
+    rtl_pmem_read__Vfuncrtn__Vcvt = rtl_pmem_read(r_mem_addr__Vcvt);
     rtl_pmem_read__Vfuncrtn = rtl_pmem_read__Vfuncrtn__Vcvt;
 }
