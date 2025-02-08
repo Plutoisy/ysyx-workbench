@@ -122,7 +122,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
                 : ((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
                     ? ((IData)(vlSelf->ysyx_24120011_top__DOT__sign_extension)
                         ? (((- (IData)((1U & (vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp 
-                                              >> 7U)))) 
+                                              >> 0xfU)))) 
                             << 0x10U) | (0xffffU & vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp))
                         : (0xffffU & vlSelf->ysyx_24120011_top__DOT__i_MemProcessor__DOT__r_mem_data_tmp))
                     : ((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
