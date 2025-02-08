@@ -231,7 +231,12 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                           >> 0xcU)))
                              ? 9U : ((5U == (7U & (vlSelf->inst 
                                                    >> 0xcU)))
-                                      ? 7U : 0U)));
+                                      ? 7U : ((7U == 
+                                               (7U 
+                                                & (vlSelf->inst 
+                                                   >> 0xcU)))
+                                               ? 0xfU
+                                               : 0U))));
             vlSelf->ysyx_24120011_top__DOT__imme = 
                 (((- (IData)((vlSelf->inst >> 0x1fU))) 
                   << 0xcU) | ((0x800U & (vlSelf->inst 

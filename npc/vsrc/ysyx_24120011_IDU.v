@@ -167,6 +167,9 @@ always@(*)begin
             else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//srli
                 ALU_ctrl = 4'b0100;
             end
+            else if(func3 == 3'b001 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//slli
+                ALU_ctrl = 4'b0110;
+            end
             else begin
                 ALU_ctrl = 4'b0000;
             end
