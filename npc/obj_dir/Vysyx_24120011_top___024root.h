@@ -28,6 +28,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*3:0*/ ysyx_24120011_top__DOT__ALU_ctrl;
     CData/*2:0*/ ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_hd7d5a5db__0;
+    CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgTmp_h53d597ad__0;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__carry;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__sless;
     CData/*3:0*/ __Vtableidx1;

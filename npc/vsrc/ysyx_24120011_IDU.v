@@ -205,6 +205,9 @@ always@(*)begin
             else if(func3 == 3'b101)begin//bge
                 ALU_ctrl = 4'b0111;
             end
+            else if(func3 == 3'b111)begin//bgeu
+                ALU_ctrl = 4'b1111;
+            end
             else begin
                 ALU_ctrl = 4'b0000;
             end
