@@ -32,7 +32,7 @@ always@(posedge clk)begin
         end
         else if(r_mem_len == 8'd2)begin
             if(sign_extension)begin
-                r_mem_data = {{16{r_mem_data_tmp[7]}},r_mem_data_tmp[15:0]};
+                r_mem_data = {{16{r_mem_data_tmp[15]}},r_mem_data_tmp[15:0]};
             end
             else begin
                 r_mem_data = {16'b0,r_mem_data_tmp[15:0]};
