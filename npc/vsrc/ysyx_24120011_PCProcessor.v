@@ -14,6 +14,9 @@ wire [31:0] pc_add_imme;
 assign pc_add_imme_out = pc_add_imme;
 assign pc_add_4_out    = pc_add_4;
 
+assign pc_add_imme = pc + imme;
+assign pc_add_4 = pc + 32'd4;
+
 always@(*)begin
     case(pc_ctrl)
         2'd0: dnpc = pc_add_4;
@@ -22,18 +25,5 @@ always@(*)begin
         default: dnpc = 32'h8000_0000;
     endcase
 end
-
-ysyx_24120011_Adder i0_Adder(
-    .x ( pc ),
-    .y ( 32'd4 ),
-    .s  ( pc_add_4  )
-);
-
-ysyx_24120011_Adder i1_Adder(
-    .x ( pc ),
-    .y ( imme ),
-    .s  ( pc_add_imme  )
-);
-
 
 endmodule
