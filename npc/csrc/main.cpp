@@ -261,13 +261,14 @@ void cpu_exec(uint32_t n){
       difftest_exec(1);
       difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
-
+      printf("        dut                    | ref                   \n");
       if(refstate.pc != top->pc){
+        printf("0x%08x | 0x%08x\n", top->pc, refstate.pc);
         assert(0);
         //printf("0x%08x\n",refstate.pc );
         //printf("0x%08x\n",top->pc);
       }
-      printf("        dut                    | ref                   \n");
+      
       for(int j = 0; j < 32; j++){
         if(refstate.gpr[j] != gpr[j]){
           printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
