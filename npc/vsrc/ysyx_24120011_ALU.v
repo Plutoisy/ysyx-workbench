@@ -30,8 +30,8 @@ wire sless;
 wire a_is_b;
 wire a_not_b;
 
-assign B_in = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} + 1 : B;
-assign B_in_used_for_overflow = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} : B;
+assign B_in = ALU_ctrl[3] ? B^{32{ALU_ctrl[3]}} + 1 : B;
+assign B_in_used_for_overflow = ALU_ctrl[3] ? B^{32{ALU_ctrl[3]}} : B;
 assign uless = ~carry;//无符号a<b标志
 assign sless = ALUout_tmp[31] ^ overflow;
 assign overflow = (A[31]==B_in_used_for_overflow[31]) && (A[31]!=ALUout_tmp[31]);
