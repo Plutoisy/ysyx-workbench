@@ -9,13 +9,14 @@
 // 1             011             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
 // 0             100             选择移位器输出，逻辑右移
 // 1             100             选择移位器输出，算术右移
+// 0             101             选择逻辑或输出
+// 1             101             选择逻辑与输出
 // 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
 // 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 
 
 
-// 0             110             选择逻辑或输出
-// 1             110             选择逻辑与输出
+
 // x             001             选择移位器输出，左移
 module ysyx_24120011_ALU(
     input  [31:0] A,
@@ -118,6 +119,14 @@ always@(*)begin
             end
             else begin
                 ALUout = A >>> B[4:0];//算术右移
+            end
+        end
+        3'b101:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALUout = A | B;//or
+            end
+            else begin
+                ALUout = A & B;//and
             end
         end
         default: ALUout = ALUout_tmp;

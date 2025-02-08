@@ -140,6 +140,8 @@ end
 // 1             011             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
 // 0             100             选择移位器输出，逻辑右移
 // 1             100             选择移位器输出，算术右移
+// 0             101             选择逻辑或输出
+// 1             101             选择逻辑与输出
 // 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
 // 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 always@(*)begin
@@ -150,6 +152,9 @@ always@(*)begin
             end
             else if(func3 == 3'b011 && opcode == 7'b0010011)begin//sltiu
                 ALU_ctrl = 4'b1011;
+            end
+            else if(func3 == 3'b111 && opcode == 7'b0010011)begin//andi
+                ALU_ctrl = 4'b1101;
             end
             else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
                 ALU_ctrl = 4'b1100;
