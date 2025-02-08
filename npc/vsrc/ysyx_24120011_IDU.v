@@ -150,17 +150,11 @@ end
 //---------------------ALU_ctrl----------------------//
 // ALUctr[3]     ALUctr[2:0]     ALU操作
 // 0             000             选择加法器输出，做加法
-// 1             000             选择加法器输出，做减法
-// x             001             选择移位器输出，左移
-// 0             010             做减法，选择带符号小于置位结果输出, Less按带符号结果设置
-// 1             010             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
-// 0             011             A==B
-// 1             011             A!=B
-// x             100             选择异或输出
-// 0             101             选择移位器输出，逻辑右移
-// 1             101             选择移位器输出，算术右移
-// 0             110             选择逻辑或输出
-// 1             110             选择逻辑与输出
+// 1             000             A==B
+// 0             001             选择加法器输出，做减法
+// 1             001             A!=B
+// 0             011             做减法，选择带符号小于置位结果输出, Less按带符号结果设置
+// 1             011             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
 // 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
 // 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 always@(*)begin
@@ -170,7 +164,7 @@ always@(*)begin
                 ALU_ctrl = 4'b0000;
             end
             else if(func3 == 3'b000 && func7 == 7'b0010011)begin//sltiu
-                ALU_ctrl = 4'b1010;
+                ALU_ctrl = 4'b0011;
             end
             else begin
                 ALU_ctrl = 4'b0000;
@@ -182,7 +176,7 @@ always@(*)begin
                 ALU_ctrl = 4'b0000;
             end
             else if(func3 == 3'b000 && func7 == 7'b0100000)begin//sub
-                ALU_ctrl = 4'b1000;
+                ALU_ctrl = 4'b0001;
             end
             else begin
                 ALU_ctrl = 4'b0000;
@@ -190,10 +184,10 @@ always@(*)begin
         end
         3'd5:begin//B-Type
             if(func3 == 3'b000)begin//beq
-                ALU_ctrl = 4'b0011;
+                ALU_ctrl = 4'b1000;
             end
             else if(func3 == 3'b001)begin//bne
-                ALU_ctrl = 4'b1011;
+                ALU_ctrl = 4'b1001;
             end
             else begin
                 ALU_ctrl = 4'b0000;
