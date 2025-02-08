@@ -73,6 +73,14 @@ always@(*)begin
                 ALUout = {31'b0,uless};
             end
         end
+        3'b111:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALUout = {31'b0,~sless};
+            end
+            else begin
+                ALUout = {31'b0,~uless};
+            end
+        end
         default: ALUout = ALUout_tmp;
     endcase
 end
