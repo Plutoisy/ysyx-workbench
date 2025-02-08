@@ -340,9 +340,13 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
     vlSelf->ysyx_24120011_top__DOT__ALUB = ((IData)(vlSelf->ysyx_24120011_top__DOT__ALUBctrl)
                                              ? vlSelf->ysyx_24120011_top__DOT__src2
                                              : vlSelf->ysyx_24120011_top__DOT__imme);
+    vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not 
+        = (vlSelf->ysyx_24120011_top__DOT__ALUB ^ (- (IData)(
+                                                             (1U 
+                                                              & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))));
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in 
         = ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-            ? ((IData)(1U) + (~ vlSelf->ysyx_24120011_top__DOT__ALUB))
+            ? ((IData)(1U) + vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not)
             : vlSelf->ysyx_24120011_top__DOT__ALUB);
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp 
         = (vlSelf->ysyx_24120011_top__DOT__src1 + vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in);
@@ -394,12 +398,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                                            == 
                                                            (((1U 
                                                               & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                              ? 
-                                                             (vlSelf->ysyx_24120011_top__DOT__ALUB 
-                                                              ^ 
-                                                              (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
+                                                              ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not
                                                               : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                                             >> 0x1fU)) 
                                                           & ((vlSelf->ysyx_24120011_top__DOT__src1 
