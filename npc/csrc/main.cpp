@@ -257,6 +257,7 @@ void cpu_exec(uint32_t n){
       top->inst = pmem_read(top->pc,4);
       // printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
       AssembleDecoder(handle, top->inst, top->pc);
+      printf("exec times: %d\n",n);
       difftest_exec(1);
       difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
