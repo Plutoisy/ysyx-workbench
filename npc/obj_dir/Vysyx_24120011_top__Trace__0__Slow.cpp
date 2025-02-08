@@ -224,9 +224,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+16,(vlSelf->ysyx_24120011_top__DOT__alu_result),32);
     bufp->fullIData(oldp+17,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in),32);
     bufp->fullIData(oldp+18,(((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                               ? (vlSelf->ysyx_24120011_top__DOT__ALUB 
-                                  ^ (- (IData)((1U 
-                                                & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
+                               ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0
                                : vlSelf->ysyx_24120011_top__DOT__ALUB)),32);
     bufp->fullIData(oldp+19,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp),32);
     bufp->fullBit(oldp+20,((1U & (IData)((1ULL & (((QData)((IData)(vlSelf->ysyx_24120011_top__DOT__src1)) 
@@ -234,11 +232,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
                                                   >> 0x20U))))));
     bufp->fullBit(oldp+21,((((vlSelf->ysyx_24120011_top__DOT__src1 
                               >> 0x1fU) == (((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                              ? (vlSelf->ysyx_24120011_top__DOT__ALUB 
-                                                 ^ 
-                                                 (- (IData)(
-                                                            (1U 
-                                                             & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
+                                              ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0
                                               : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                             >> 0x1fU)) 
                             & ((vlSelf->ysyx_24120011_top__DOT__src1 
@@ -254,12 +248,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
                                                  == 
                                                  (((1U 
                                                     & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                    ? 
-                                                   (vlSelf->ysyx_24120011_top__DOT__ALUB 
-                                                    ^ 
-                                                    (- (IData)(
-                                                               (1U 
-                                                                & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
+                                                    ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0
                                                     : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                                   >> 0x1fU)) 
                                                 & ((vlSelf->ysyx_24120011_top__DOT__src1 

@@ -224,10 +224,13 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__ALUB = ((IData)(vlSelf->ysyx_24120011_top__DOT__ALUBctrl)
                                              ? vlSelf->ysyx_24120011_top__DOT__src2
                                              : vlSelf->ysyx_24120011_top__DOT__imme);
+    vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0 
+        = (vlSelf->ysyx_24120011_top__DOT__ALUB ^ (- (IData)(
+                                                             (1U 
+                                                              & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))));
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in 
         = ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-            ? (vlSelf->ysyx_24120011_top__DOT__ALUB 
-               ^ ((IData)(1U) + (- (IData)((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))))))
+            ? ((IData)(1U) + vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0)
             : vlSelf->ysyx_24120011_top__DOT__ALUB);
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp 
         = (vlSelf->ysyx_24120011_top__DOT__src1 + vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in);
@@ -279,12 +282,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                            == 
                                                            (((1U 
                                                               & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                              ? 
-                                                             (vlSelf->ysyx_24120011_top__DOT__ALUB 
-                                                              ^ 
-                                                              (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
+                                                              ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0
                                                               : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                                             >> 0x1fU)) 
                                                           & ((vlSelf->ysyx_24120011_top__DOT__src1 
@@ -340,10 +338,13 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
                                              : vlSelf->ysyx_24120011_top__DOT__imme);
     vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out 
         = (vlSelf->pc + vlSelf->ysyx_24120011_top__DOT__imme);
+    vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0 
+        = (vlSelf->ysyx_24120011_top__DOT__ALUB ^ (- (IData)(
+                                                             (1U 
+                                                              & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))));
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in 
         = ((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-            ? (vlSelf->ysyx_24120011_top__DOT__ALUB 
-               ^ ((IData)(1U) + (- (IData)((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))))))
+            ? ((IData)(1U) + vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0)
             : vlSelf->ysyx_24120011_top__DOT__ALUB);
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp 
         = (vlSelf->ysyx_24120011_top__DOT__src1 + vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in);
@@ -395,12 +396,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
                                                            == 
                                                            (((1U 
                                                               & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                              ? 
-                                                             (vlSelf->ysyx_24120011_top__DOT__ALUB 
-                                                              ^ 
-                                                              (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
+                                                              ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0
                                                               : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                                             >> 0x1fU)) 
                                                           & ((vlSelf->ysyx_24120011_top__DOT__src1 
