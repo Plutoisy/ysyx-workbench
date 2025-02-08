@@ -192,6 +192,9 @@ always@(*)begin
             if(func3 == 3'b000)begin//beq
                 ALU_ctrl = 4'b0011;
             end
+            else if(func3 == 3'b001)begin//bne
+                ALU_ctrl = 4'b1011;
+            end
             else begin
                 ALU_ctrl = 4'b0000;
             end
