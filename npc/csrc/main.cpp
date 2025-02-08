@@ -263,7 +263,7 @@ void cpu_exec(uint32_t n){
       step_and_dump_wave();
 
       if(refstate.pc != top->pc){
-        //assert(0);
+        assert(0);
         //printf("0x%08x\n",refstate.pc );
         //printf("0x%08x\n",top->pc);
       }
@@ -271,7 +271,7 @@ void cpu_exec(uint32_t n){
       for(int j = 0; j < 32; j++){
         if(refstate.gpr[j] != gpr[j]){
           printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-          assert(0);
+          //assert(0);
         }
         printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
       }
