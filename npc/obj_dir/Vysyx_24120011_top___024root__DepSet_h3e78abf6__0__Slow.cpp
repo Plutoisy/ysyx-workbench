@@ -155,6 +155,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__alu_result = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__pc_ctrl = VL_RAND_RESET_I(2);
     vlSelf->ysyx_24120011_top__DOT__rd_ctrl = VL_RAND_RESET_I(4);
+    vlSelf->ysyx_24120011_top__DOT__ALUBctrl = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__w_mem_en = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__r_mem_en = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__sign_extension = VL_RAND_RESET_I(1);
@@ -178,6 +179,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->__Vtableidx3 = 0;
     vlSelf->__Vtableidx4 = 0;
     vlSelf->__Vtableidx5 = 0;
+    vlSelf->__Vtableidx6 = 0;
     vlSelf->__Vtrigrprev__TOP__clk = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;

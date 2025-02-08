@@ -21,6 +21,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     VL_IN8(rst,0,0);
     CData/*1:0*/ ysyx_24120011_top__DOT__pc_ctrl;
     CData/*3:0*/ ysyx_24120011_top__DOT__rd_ctrl;
+    CData/*0:0*/ ysyx_24120011_top__DOT__ALUBctrl;
     CData/*0:0*/ ysyx_24120011_top__DOT__w_mem_en;
     CData/*0:0*/ ysyx_24120011_top__DOT__r_mem_en;
     CData/*0:0*/ ysyx_24120011_top__DOT__sign_extension;
@@ -31,12 +32,13 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h236fc9a3__0;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h2370fa9b__0;
     CData/*3:0*/ __Vtableidx1;
-    CData/*6:0*/ __Vtableidx3;
-    CData/*6:0*/ __Vtableidx5;
+    CData/*5:0*/ __Vtableidx3;
+    CData/*7:0*/ __Vtableidx4;
+    CData/*6:0*/ __Vtableidx6;
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;
     SData/*9:0*/ __Vtableidx2;
-    SData/*8:0*/ __Vtableidx4;
+    SData/*8:0*/ __Vtableidx5;
     VL_IN(inst,31,0);
     VL_OUT(pc,31,0);
     IData/*31:0*/ ysyx_24120011_top__DOT__dnpc;

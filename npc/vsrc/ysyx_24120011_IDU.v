@@ -142,7 +142,7 @@ always@(*)begin
         end
         3'd3:    ALUBctrl = 1'd0;//S-Type sw
         3'd4:    ALUBctrl = 1'd1;//R-Type
-        3'd4:    ALUBctrl = 1'd1;//B-Type
+        3'd5:    ALUBctrl = 1'd1;//B-Type
         default: ALUBctrl = 1'd1;
     endcase
 end

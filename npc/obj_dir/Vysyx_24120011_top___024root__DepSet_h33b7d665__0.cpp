@@ -199,8 +199,6 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs[__Vdlyvdim0__ysyx_24120011_top__DOT__i_RegStack__DOT__Regs__v33] 
             = __Vdlyvval__ysyx_24120011_top__DOT__i_RegStack__DOT__Regs__v33;
     }
-    vlSelf->ysyx_24120011_top__DOT__src1 = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
-        [(0x1fU & (vlSelf->inst >> 0xfU))];
     vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout[0U] 
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [0U];
@@ -297,6 +295,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout[0x1fU] 
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [0x1fU];
+    vlSelf->ysyx_24120011_top__DOT__src1 = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
+        [(0x1fU & (vlSelf->inst >> 0xfU))];
     vlSelf->ysyx_24120011_top__DOT__src2 = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [(0x1fU & (vlSelf->inst >> 0x14U))];
     Vysyx_24120011_top___024unit____Vdpiimwrap_reg_out_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout);
