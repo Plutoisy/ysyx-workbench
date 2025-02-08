@@ -7,7 +7,7 @@
 
 #include "Vysyx_24120011_top___024root.h"
 
-extern const VlUnpacked<CData/*2:0*/, 128> Vysyx_24120011_top__ConstPool__TABLE_hec6dfcb4_0;
+extern const VlUnpacked<CData/*2:0*/, 128> Vysyx_24120011_top__ConstPool__TABLE_he634625a_0;
 extern const VlUnpacked<CData/*3:0*/, 1024> Vysyx_24120011_top__ConstPool__TABLE_hc40cb5f5_0;
 extern const VlUnpacked<CData/*1:0*/, 16> Vysyx_24120011_top__ConstPool__TABLE_hda3af55f_0;
 extern const VlUnpacked<CData/*0:0*/, 512> Vysyx_24120011_top__ConstPool__TABLE_ha061e6c9_0;
@@ -33,7 +33,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
         = (IData)((0x3013U == (0x707fU & vlSelf->inst)));
     vlSelf->__Vtableidx5 = (0x7fU & vlSelf->inst);
     vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type 
-        = Vysyx_24120011_top__ConstPool__TABLE_hec6dfcb4_0
+        = Vysyx_24120011_top__ConstPool__TABLE_he634625a_0
         [vlSelf->__Vtableidx5];
     vlSelf->ysyx_24120011_top__DOT__w_mem_en = (3U 
                                                 == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type));
@@ -133,9 +133,31 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__ALU_ctrl = Vysyx_24120011_top__ConstPool__TABLE_h7dd9727e_0
         [vlSelf->__Vtableidx3];
     vlSelf->ysyx_24120011_top__DOT__imme = ((4U & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
-                                             ? 0U : 
-                                            ((2U & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
-                                              ? ((1U 
+                                             ? ((2U 
+                                                 & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                 ? 0U
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                  ? 
+                                                 (((- (IData)(
+                                                              (vlSelf->inst 
+                                                               >> 0x1fU))) 
+                                                   << 0xcU) 
+                                                  | ((0x800U 
+                                                      & (vlSelf->inst 
+                                                         << 4U)) 
+                                                     | ((0x7e0U 
+                                                         & (vlSelf->inst 
+                                                            >> 0x14U)) 
+                                                        | (0x1eU 
+                                                           & (vlSelf->inst 
+                                                              >> 7U)))))
+                                                  : 0U))
+                                             : ((2U 
+                                                 & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                 ? 
+                                                ((1U 
                                                   & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
                                                   ? 
                                                  (((- (IData)(
@@ -164,7 +186,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                            | (0x7feU 
                                                               & (vlSelf->inst 
                                                                  >> 0x14U)))))))
-                                              : ((1U 
+                                                 : 
+                                                ((1U 
                                                   & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
                                                   ? 
                                                  (0xfffff000U 
