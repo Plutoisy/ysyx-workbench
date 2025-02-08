@@ -87,17 +87,11 @@ always@(*)begin
                 if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
                     rd_ctrl = 4'd0;
                 end
-                else if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
-                    rd_ctrl = 4'd2;
-                end
-                else if(opcode == 7'b0010011 && func3 == 3'b011)begin//sltiu
-                    rd_ctrl = 4'd2;
-                end
                 else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                     rd_ctrl = 4'd5;
                 end
                 else begin
-                    rd_ctrl = 4'd0;
+                    rd_ctrl = 4'd2;
                 end
             end
             3'd1:begin //U-Type
@@ -126,20 +120,7 @@ end
 //ALUBctrl == 1'd1 -> src2
 always@(*)begin
     case(opcode_type)
-        3'd0:begin //I-Type
-            if(opcode == 7'b0010011 && func3 == 3'b000)begin//addi
-                 ALUBctrl = 1'd0;
-            end
-            else if(opcode == 7'b0010011 && func3 == 3'b011)begin//sltiu
-                 ALUBctrl = 1'd0;
-            end
-            else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                 ALUBctrl = 1'd0;
-            end
-            else begin
-                 ALUBctrl = 1'd1;
-            end
-        end
+        3'd0:    ALUBctrl = 1'd0;//I-Type
         3'd3:    ALUBctrl = 1'd0;//S-Type sw
         3'd4:    ALUBctrl = 1'd1;//R-Type
         3'd5:    ALUBctrl = 1'd1;//B-Type
@@ -161,10 +142,13 @@ end
 always@(*)begin
     case(opcode_type)
         3'd0:begin//I-Type
-            if(func3 == 3'b011 && func7 == 7'b0010011)begin//addi
+            if(func3 == 3'b011 && opcode == 7'b0010011)begin//addi
                 ALU_ctrl = 4'b0000;
             end
-            else if(func3 == 3'b000 && func7 == 7'b0010011)begin//sltiu
+            else if(func3 == 3'b000 && opcode == 7'b0010011)begin//sltiu
+                ALU_ctrl = 4'b1011;
+            end
+            else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
                 ALU_ctrl = 4'b1011;
             end
             else begin
