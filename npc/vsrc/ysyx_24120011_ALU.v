@@ -2,7 +2,7 @@ module ysyx_24120011_ALU(
     input  [31:0] A,
     input  [31:0] B,
     input  [3:0]  ALU_ctrl,
-    output [31:0] ALUout
+    output reg [31:0] ALUout
 );
 
 wire [31:0] B_in;
