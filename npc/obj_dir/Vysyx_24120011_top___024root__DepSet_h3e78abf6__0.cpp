@@ -174,8 +174,9 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                 & vlSelf->inst);
     } else {
         vlSelf->ysyx_24120011_top__DOT__ALU_ctrl = 
-            ((IData)((0x3013U == (0x707fU & vlSelf->inst)))
-              ? 0U : ((IData)((0x13U == (0x707fU & vlSelf->inst)))
+            ((IData)((0x13U == (0x707fU & vlSelf->inst)))
+              ? 0U : ((IData)((0x3013U == (0x707fU 
+                                           & vlSelf->inst)))
                        ? 0xbU : ((IData)((0x40005013U 
                                           == (0xfe00707fU 
                                               & vlSelf->inst)))
