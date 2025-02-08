@@ -38,6 +38,7 @@ always@(*)begin
                 ALUout = {31'b0,uless};
             end
         end
+        default: ALUout = ALUout_tmp
     endcase
 end
 endmodule
