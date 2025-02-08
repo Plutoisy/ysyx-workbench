@@ -208,7 +208,13 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                       (0xfe00707fU 
                                                        & vlSelf->inst)))
                                               ? 0xcU
-                                              : 0U)))));
+                                              : ((IData)(
+                                                         (0x6013U 
+                                                          == 
+                                                          (0xfe00707fU 
+                                                           & vlSelf->inst)))
+                                                  ? 4U
+                                                  : 0U))))));
         vlSelf->ysyx_24120011_top__DOT__imme = (((- (IData)(
                                                             (vlSelf->inst 
                                                              >> 0x1fU))) 
