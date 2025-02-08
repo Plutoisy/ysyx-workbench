@@ -262,7 +262,7 @@ void cpu_exec(uint32_t n){
       difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
       printf("        dut                    | ref                   \n");
-      printf("        0x%08x             | 0x%08x\n", top->pc, refstate.pc);
+      printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
       if(refstate.pc != top->pc){
         //printf("        0x%08x             | 0x%08x\n", top->pc, refstate.pc);
         assert(0);
