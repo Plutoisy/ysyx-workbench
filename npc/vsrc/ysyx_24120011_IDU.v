@@ -153,6 +153,7 @@ end
 // 1             000             A==B
 // 0             001             选择加法器输出，做减法
 // 1             001             A!=B
+// 0             010             选择异或输出
 // 0             011             做减法，选择带符号小于置位结果输出, Less按带符号结果设置
 // 1             011             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
 // 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
@@ -180,6 +181,9 @@ always@(*)begin
             end
             else if(func3 == 3'b011 && func7 == 7'b0000000)begin//sltu
                 ALU_ctrl = 4'b1011;
+            end
+            else if(func3 == 3'b100 && func7 == 7'b0000000)begin//xor
+                ALU_ctrl = 4'b0010;
             end
             else begin
                 ALU_ctrl = 4'b0000;

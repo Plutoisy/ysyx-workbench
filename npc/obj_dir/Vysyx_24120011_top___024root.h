@@ -33,7 +33,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*0:0*/ ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h2370fa9b__0;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__carry;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__sless;
-    CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b;
     CData/*3:0*/ __Vtableidx1;
     CData/*5:0*/ __Vtableidx3;
     CData/*6:0*/ __Vtableidx6;

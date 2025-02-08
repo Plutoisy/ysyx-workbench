@@ -3,12 +3,13 @@
 // 1             000             A==B
 // 0             001             选择加法器输出，做减法
 // 1             001             A!=B
+// 0             010             选择异或输出
 // 0             011             做减法，选择带符号小于置位结果输出, Less按带符号结果设置
 // 1             011             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
 // 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
 // 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 
-// x             100             选择异或输出
+
 // 0             101             选择移位器输出，逻辑右移
 // 1             101             选择移位器输出，算术右移
 // 0             110             选择逻辑或输出
@@ -99,6 +100,14 @@ always@(*)begin
                 else begin
                     ALUout = {31'b0,~uless};
                 end
+            end
+        end
+        3'b010:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALUout = A^B;
+            end
+            else begin
+                ALUout = ALUout_tmp;//useless
             end
         end
         default: ALUout = ALUout_tmp;
