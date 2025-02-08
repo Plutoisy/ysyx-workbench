@@ -182,6 +182,9 @@ always@(*)begin
             else if(func3 == 3'b001 && func7 == 7'b0000000)begin//sll
                 ALU_ctrl = 4'b0110;
             end
+            else if(func3 == 3'b111 && func7 == 7'b0000000)begin//and
+                ALU_ctrl = 4'b1101;
+            end
             else begin
                 ALU_ctrl = 4'b0000;
             end
