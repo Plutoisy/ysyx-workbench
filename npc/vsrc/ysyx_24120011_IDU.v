@@ -140,7 +140,13 @@ end
 always@(*)begin
     case(opcode_type)
         3'd0:begin//I-Type
-            if(func3 == 3'b011 && func7 == 7'b0010011)begin//add
+            if(func3 == 3'b011 && func7 == 7'b0010011)begin//addi
+                ALU_ctrl = 4'b0000;
+            end
+            else if(func3 == 3'b000 && func7 == 7'b0010011)begin//sltiu
+                ALU_ctrl = 4'b1010;
+            end
+            else begin
                 ALU_ctrl = 4'b0000;
             end
         end
