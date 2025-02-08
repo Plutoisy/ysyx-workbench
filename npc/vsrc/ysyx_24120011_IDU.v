@@ -142,6 +142,8 @@ end
 // 1             100             选择移位器输出，算术右移
 // 0             101             选择逻辑或输出
 // 1             101             选择逻辑与输出
+// 0             110             选择移位器输出，左移
+// 1             110             
 // 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
 // 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 always@(*)begin
@@ -176,6 +178,9 @@ always@(*)begin
             end
             else if(func3 == 3'b100 && func7 == 7'b0000000)begin//xor
                 ALU_ctrl = 4'b0010;
+            end
+            else if(func3 == 3'b001 && func7 == 7'b0000000)begin//sll
+                ALU_ctrl = 4'b0110;
             end
             else begin
                 ALU_ctrl = 4'b0000;
