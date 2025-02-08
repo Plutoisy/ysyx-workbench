@@ -230,6 +230,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__ALUB = ((IData)(vlSelf->ysyx_24120011_top__DOT__ALUBctrl)
                                              ? vlSelf->ysyx_24120011_top__DOT__src2
                                              : vlSelf->ysyx_24120011_top__DOT__imme);
+    vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b 
+        = (vlSelf->ysyx_24120011_top__DOT__src1 == vlSelf->ysyx_24120011_top__DOT__ALUB);
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0 
         = (vlSelf->ysyx_24120011_top__DOT__ALUB ^ (- (IData)(
                                                              (1U 
@@ -266,10 +268,16 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                      ? 
                                                     ((8U 
                                                       & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                      ? (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry)
+                                                      ? 
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 1U
+                                                       : (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry))
                                                       : 
-                                                     (1U 
-                                                      & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless))))
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 1U
+                                                       : 
+                                                      (1U 
+                                                       & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless)))))
                                                      : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp)
                                                     : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp)
                                                    : 
@@ -282,9 +290,15 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                     ((8U 
                                                       & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
                                                       ? 
-                                                     (1U 
-                                                      & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry)))
-                                                      : (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless))
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 0U
+                                                       : 
+                                                      (1U 
+                                                       & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry))))
+                                                      : 
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 0U
+                                                       : (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless)))
                                                      : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp)
                                                     : 
                                                    ((1U 
@@ -299,9 +313,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                                      : 
                                                     ((8U 
                                                       & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                      ? 
-                                                     (vlSelf->ysyx_24120011_top__DOT__src1 
-                                                      == vlSelf->ysyx_24120011_top__DOT__ALUB)
+                                                      ? (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
                                                       : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp))));
     vlSelf->ysyx_24120011_top__DOT__dnpc = ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__pc_ctrl))
                                              ? (((0x63U 
@@ -350,6 +362,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
                                              : vlSelf->ysyx_24120011_top__DOT__imme);
     vlSelf->ysyx_24120011_top__DOT__pc_add_imme_out 
         = (vlSelf->pc + vlSelf->ysyx_24120011_top__DOT__imme);
+    vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b 
+        = (vlSelf->ysyx_24120011_top__DOT__src1 == vlSelf->ysyx_24120011_top__DOT__ALUB);
     vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0 
         = (vlSelf->ysyx_24120011_top__DOT__ALUB ^ (- (IData)(
                                                              (1U 
@@ -386,10 +400,16 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
                                                      ? 
                                                     ((8U 
                                                       & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                      ? (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry)
+                                                      ? 
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 1U
+                                                       : (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry))
                                                       : 
-                                                     (1U 
-                                                      & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless))))
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 1U
+                                                       : 
+                                                      (1U 
+                                                       & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless)))))
                                                      : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp)
                                                     : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp)
                                                    : 
@@ -402,9 +422,15 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
                                                     ((8U 
                                                       & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
                                                       ? 
-                                                     (1U 
-                                                      & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry)))
-                                                      : (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless))
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 0U
+                                                       : 
+                                                      (1U 
+                                                       & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__carry))))
+                                                      : 
+                                                     ((IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
+                                                       ? 0U
+                                                       : (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__sless)))
                                                      : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp)
                                                     : 
                                                    ((1U 
@@ -419,9 +445,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
                                                      : 
                                                     ((8U 
                                                       & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                      ? 
-                                                     (vlSelf->ysyx_24120011_top__DOT__src1 
-                                                      == vlSelf->ysyx_24120011_top__DOT__ALUB)
+                                                      ? (IData)(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__a_is_b)
                                                       : vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp))));
     vlSelf->ysyx_24120011_top__DOT__dnpc = ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__pc_ctrl))
                                              ? (((0x63U 

@@ -67,7 +67,7 @@ always@(*)begin
         end
         3'b011:begin
             if(ALU_ctrl[3] == 1'b0)begin
-                if(a_is_b)begin
+                if(B == 32'b0)begin
                     ALUout = {31'b0,1'b0};
                 end
                 else begin
@@ -75,7 +75,7 @@ always@(*)begin
                 end
             end
             else begin
-                if(a_is_b)begin
+                if(B == 32'b0)begin
                     ALUout = {31'b0,1'b0};
                 end
                 else begin
@@ -85,7 +85,7 @@ always@(*)begin
         end
         3'b111:begin
             if(ALU_ctrl[3] == 1'b0)begin
-                if(a_is_b)begin
+                if(B == 32'b0)begin
                     ALUout = {31'b0,1'b1};
                 end
                 else begin
@@ -93,7 +93,7 @@ always@(*)begin
                 end
             end
             else begin
-                if(a_is_b)begin
+                if(B == 32'b0)begin
                     ALUout = {31'b0,1'b1};
                 end
                 else begin
