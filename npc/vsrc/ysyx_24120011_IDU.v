@@ -43,7 +43,10 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 // 3'd2; J-Type
 // 3'd3; S-Type
 // 3'd4; R-Type
+// 3'd5; B-Type
 // 3'd7; Unknown
+
+//--------------------PC---------------------//
 
 //2'd0: pc_add_4;
 //2'd1: pc_add_imme;
@@ -61,9 +64,12 @@ always@(*)begin
         3'd2:    pc_ctrl = 2'd1;//J-Type jal
         3'd3:    pc_ctrl = 2'd0;//S-Type sw
         3'd4:    pc_ctrl = 2'd0;//R-Type
+        3'd5:    pc_ctrl = 2'd0;//B-Type
         default: pc_ctrl = 2'd0;
     endcase
 end
+
+//---------------------Rd----------------------//
 
 //4'd0: pc_add_4;
 //4'd1: pc_add_imme;
@@ -107,11 +113,14 @@ always@(*)begin
             end
             3'd2:    rd_ctrl = 4'd0;//J-Type jal
             3'd3:    rd_ctrl = 4'd4;//S-Type sw
-            3'd4:    rd_ctrl = 4'd2;//R-Type sw
+            3'd4:    rd_ctrl = 4'd2;//R-Type
+            3'd5:    rd_ctrl = 4'd4;//B-Type
             default: rd_ctrl = 4'd0;
         endcase
     end
 end
+
+//---------------------ALUB----------------------//
 
 //ALUBctrl == 1'd0 -> imme
 //ALUBctrl == 1'd1 -> src2
@@ -133,10 +142,27 @@ always@(*)begin
         end
         3'd3:    ALUBctrl = 1'd0;//S-Type sw
         3'd4:    ALUBctrl = 1'd1;//R-Type
+        3'd4:    ALUBctrl = 1'd1;//B-Type
         default: ALUBctrl = 1'd1;
     endcase
 end
-//ALU_ctrl[0] 0->add,1->sub
+
+//---------------------ALU_ctrl----------------------//
+// ALUctr[3]     ALUctr[2:0]     ALU操作
+// 0             000             选择加法器输出，做加法
+// 1             000             选择加法器输出，做减法
+// x             001             选择移位器输出，左移
+// 0             010             做减法，选择带符号小于置位结果输出, Less按带符号结果设置
+// 1             010             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
+// 0             011             A==B
+// 1             011             A!=B
+// x             100             选择异或输出
+// 0             101             选择移位器输出，逻辑右移
+// 1             101             选择移位器输出，算术右移
+// 0             110             选择逻辑或输出
+// 1             110             选择逻辑与输出
+// 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
+// 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 always@(*)begin
     case(opcode_type)
         3'd0:begin//I-Type
@@ -151,7 +177,7 @@ always@(*)begin
             end
         end
         3'd3:   ALU_ctrl = 4'd0;//S-Type
-        3'd4:begin
+        3'd4:begin//R-Type
             if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
                 ALU_ctrl = 4'b0000;
             end
@@ -162,9 +188,19 @@ always@(*)begin
                 ALU_ctrl = 4'b0000;
             end
         end
+        3'd5:begin//B-Type
+            if(func3 == 3'b000)begin//beq
+                ALU_ctrl = 4'b0011;
+            end
+            else begin
+                ALU_ctrl = 4'b0000;
+            end
+        end
         default: ALU_ctrl = 4'd0;
     endcase
 end
+
+//---------------------w_mem----------------------//
 
 always@(*)begin
     case(opcode_type)
@@ -189,6 +225,8 @@ always@(*)begin
         end
     endcase
 end
+
+//---------------------r_mem----------------------//
 
 always@(*)begin
     case(opcode_type)

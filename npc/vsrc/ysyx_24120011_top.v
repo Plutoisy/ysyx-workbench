@@ -32,6 +32,7 @@ wire        w_en;
 wire        w_mem_en;
 wire        r_mem_en;
 wire        sign_extension;
+wire        b_type_enter_if;
 wire [7:0]  w_mem_len;
 wire [7:0]  r_mem_len;
 wire [3:0]  ALU_ctrl;
@@ -44,11 +45,14 @@ always@(posedge clk)begin
     end
 end
 
+assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
+
 ysyx_24120011_PCProcessor i_PCProcessor(
     .pc              ( pc              ),
     .imme            ( imme            ),
     .alu_result      ( alu_result      ),
     .pc_ctrl         ( pc_ctrl         ),
+    .b_type_enter_if ( b_type_enter_if ),
     .pc_add_imme_out ( pc_add_imme_out ),
     .pc_add_4_out    ( pc_add_4_out    ),
     .dnpc            ( dnpc            )

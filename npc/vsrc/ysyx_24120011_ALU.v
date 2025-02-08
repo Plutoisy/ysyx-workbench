@@ -1,3 +1,18 @@
+// ALUctr[3]     ALUctr[2:0]     ALU操作
+// 0             000             选择加法器输出，做加法
+// 1             000             选择加法器输出，做减法
+// x             001             选择移位器输出，左移
+// 0             010             做减法，选择带符号小于置位结果输出, Less按带符号结果设置
+// 1             010             做减法，选择无符号小于置位结果输出, Less按无符号结果设置
+// 0             011             A==B
+// 1             011             A!=B
+// x             100             选择异或输出
+// 0             101             选择移位器输出，逻辑右移
+// 1             101             选择移位器输出，算术右移
+// 0             110             选择逻辑或输出
+// 1             110             选择逻辑与输出
+// 0             111             做减法，选择带符号大于等于置位结果输出, Less按带符号结果设置
+// 1             111             做减法，选择无符号大于等于置位结果输出, Less按无符号结果设置
 module ysyx_24120011_ALU(
     input  [31:0] A,
     input  [31:0] B,
@@ -12,12 +27,16 @@ wire carry;
 wire overflow;
 wire uless;
 wire sless;
+wire a_is_b;
+wire a_not_b;
 
 assign B_in = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} + 1 : B;
 assign B_in_used_for_overflow = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} : B;
 assign uless = ~carry;//无符号a<b标志
 assign sless = ALUout_tmp[31] ^ overflow;
 assign overflow = (A[31]==B_in_used_for_overflow[31]) && (A[31]!=ALUout_tmp[31]);
+assign a_is_b  = A == B ? 1 : 0;
+assign a_not_b = A != B ? 1 : 0;
 
 ysyx_24120011_Adder i_Adder(
     .x ( A ),
@@ -36,6 +55,14 @@ always@(*)begin
 
             else begin
                 ALUout = {31'b0,uless};
+            end
+        end
+        3'b011:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALUout = {31'b0,a_is_b};
+            end
+            else begin
+                ALUout = {31'b0,a_not_b};
             end
         end
         default: ALUout = ALUout_tmp;
