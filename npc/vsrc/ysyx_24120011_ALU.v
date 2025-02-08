@@ -22,7 +22,6 @@ module ysyx_24120011_ALU(
 );
 
 wire [31:0] B_in;
-wire [31:0] B_not;
 wire [31:0] B_in_used_for_overflow;
 wire [31:0] ALUout_tmp;
 wire carry;
@@ -31,7 +30,6 @@ wire uless;
 wire sless;
 wire a_is_b;
 wire a_not_b;
-assign B_not = B^{32{ALU_ctrl[0]}};
 assign B_in = ALU_ctrl[0] ? (B^{32{ALU_ctrl[0]}} + 1'b1) : B;
 assign B_in_used_for_overflow = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} : B;
 assign uless = ~carry;//无符号a<b标志

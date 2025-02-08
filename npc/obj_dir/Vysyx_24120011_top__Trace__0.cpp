@@ -44,9 +44,12 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgIData(oldp+14,(vlSelf->ysyx_24120011_top__DOT__ALUB),32);
         bufp->chgIData(oldp+15,(vlSelf->ysyx_24120011_top__DOT__alu_result),32);
         bufp->chgIData(oldp+16,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in),32);
-        bufp->chgIData(oldp+17,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not),32);
+        bufp->chgIData(oldp+17,((vlSelf->ysyx_24120011_top__DOT__ALUB 
+                                 ^ (- (IData)((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))),32);
         bufp->chgIData(oldp+18,(((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                  ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not
+                                  ? (vlSelf->ysyx_24120011_top__DOT__ALUB 
+                                     ^ (- (IData)((1U 
+                                                   & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
                                   : vlSelf->ysyx_24120011_top__DOT__ALUB)),32);
         bufp->chgIData(oldp+19,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp),32);
         bufp->chgBit(oldp+20,((1U & (IData)((1ULL & 
@@ -56,7 +59,12 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgBit(oldp+21,((((vlSelf->ysyx_24120011_top__DOT__src1 
                                  >> 0x1fU) == (((1U 
                                                  & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                 ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not
+                                                 ? 
+                                                (vlSelf->ysyx_24120011_top__DOT__ALUB 
+                                                 ^ 
+                                                 (- (IData)(
+                                                            (1U 
+                                                             & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
                                                  : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                                >> 0x1fU)) 
                                & ((vlSelf->ysyx_24120011_top__DOT__src1 
@@ -73,7 +81,12 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
                                                     == 
                                                     (((1U 
                                                        & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
-                                                       ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_not
+                                                       ? 
+                                                      (vlSelf->ysyx_24120011_top__DOT__ALUB 
+                                                       ^ 
+                                                       (- (IData)(
+                                                                  (1U 
+                                                                   & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl)))))
                                                        : vlSelf->ysyx_24120011_top__DOT__ALUB) 
                                                      >> 0x1fU)) 
                                                    & ((vlSelf->ysyx_24120011_top__DOT__src1 
