@@ -164,7 +164,7 @@ always@(*)begin
                 ALU_ctrl = 4'b0000;
             end
             else if(func3 == 3'b000 && func7 == 7'b0010011)begin//sltiu
-                ALU_ctrl = 4'b0011;
+                ALU_ctrl = 4'b1011;
             end
             else begin
                 ALU_ctrl = 4'b0000;
@@ -177,6 +177,9 @@ always@(*)begin
             end
             else if(func3 == 3'b000 && func7 == 7'b0100000)begin//sub
                 ALU_ctrl = 4'b0001;
+            end
+            else if(func3 == 3'b011 && func7 == 7'b0000000)begin//sltu
+                ALU_ctrl = 4'b1011;
             end
             else begin
                 ALU_ctrl = 4'b0000;
