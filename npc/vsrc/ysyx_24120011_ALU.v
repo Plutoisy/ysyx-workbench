@@ -106,7 +106,7 @@ always@(*)begin
                 ALUout = A >> B[4:0]; //逻辑右移
             end
             else begin
-                ALUout = A >>> B[4:0];//算术右移
+                ALUout = (A >> B[4:0]) | (32{A[31]} << (32-B[4:0]));//算术右移
             end
         end
         3'b101:begin
