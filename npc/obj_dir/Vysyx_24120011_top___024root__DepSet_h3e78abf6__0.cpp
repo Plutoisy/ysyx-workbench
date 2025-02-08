@@ -151,26 +151,33 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
                                               == (0xfe007000U 
                                                   & vlSelf->inst)))
                                       ? 0xbU : ((IData)(
-                                                        (0x4000U 
+                                                        (0x2000U 
                                                          == 
                                                          (0xfe007000U 
                                                           & vlSelf->inst)))
-                                                 ? 2U
+                                                 ? 3U
                                                  : 
                                                 ((IData)(
-                                                         (0x1000U 
+                                                         (0x4000U 
                                                           == 
                                                           (0xfe007000U 
                                                            & vlSelf->inst)))
-                                                  ? 6U
+                                                  ? 2U
                                                   : 
                                                  ((IData)(
-                                                          (0x7000U 
+                                                          (0x1000U 
                                                            == 
                                                            (0xfe007000U 
                                                             & vlSelf->inst)))
-                                                   ? 0xdU
-                                                   : 0U))))));
+                                                   ? 6U
+                                                   : 
+                                                  ((IData)(
+                                                           (0x7000U 
+                                                            == 
+                                                            (0xfe007000U 
+                                                             & vlSelf->inst)))
+                                                    ? 0xdU
+                                                    : 0U)))))));
             vlSelf->ysyx_24120011_top__DOT__imme = 0U;
         }
     } else if ((2U & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))) {
