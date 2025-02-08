@@ -27,7 +27,11 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgIData(oldp+0,(vlSelf->ysyx_24120011_top__DOT__imme),32);
         bufp->chgCData(oldp+1,(vlSelf->ysyx_24120011_top__DOT__pc_ctrl),2);
         bufp->chgCData(oldp+2,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),4);
-        bufp->chgBit(oldp+3,(vlSelf->ysyx_24120011_top__DOT__ALUBctrl));
+        bufp->chgBit(oldp+3,((1U & (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type) 
+                                     >> 2U) | ((2U 
+                                                & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                ? (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))
+                                                : (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))))));
         bufp->chgBit(oldp+4,((4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))));
         bufp->chgBit(oldp+5,(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
         bufp->chgBit(oldp+6,(vlSelf->ysyx_24120011_top__DOT__r_mem_en));
