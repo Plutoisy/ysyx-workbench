@@ -16,7 +16,7 @@ wire sless;
 assign B_in = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} + 1 : B;
 assign B_in_used_for_overflow = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} : B;
 assign uless = ~carry;//无符号a<b标志
-assign sless = ALUout_tmp[31] ^ B_in_used_for_overflow;
+assign sless = ALUout_tmp[31] ^ overflow;
 assign overflow = (A[31]==B_in_used_for_overflow[31]) && (A[31]!=ALUout_tmp[31]);
 
 ysyx_24120011_Adder i_Adder(
@@ -33,7 +33,7 @@ always@(*)begin
             if(ALU_ctrl[3] == 1'b0)begin
                 ALUout = {31'b0,sless};
             end
-            
+
             else begin
                 ALUout = {31'b0,uless};
             end
