@@ -14,7 +14,7 @@ extern const VlUnpacked<CData/*0:0*/, 512> Vysyx_24120011_top__ConstPool__TABLE_
 extern const VlUnpacked<CData/*2:0*/, 512> Vysyx_24120011_top__ConstPool__TABLE_h583ea66c_0;
 extern const VlUnpacked<CData/*7:0*/, 512> Vysyx_24120011_top__ConstPool__TABLE_h22689654_0;
 extern const VlUnpacked<CData/*0:0*/, 512> Vysyx_24120011_top__ConstPool__TABLE_h2795e812_0;
-extern const VlUnpacked<CData/*3:0*/, 512> Vysyx_24120011_top__ConstPool__TABLE_hc46d9b9e_0;
+extern const VlUnpacked<CData/*3:0*/, 1024> Vysyx_24120011_top__ConstPool__TABLE_h0b100d95_0;
 extern const VlUnpacked<CData/*0:0*/, 64> Vysyx_24120011_top__ConstPool__TABLE_h6fc1e05b_0;
 
 VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_24120011_top___024root* vlSelf) {
@@ -114,36 +114,42 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___ico_sequent__TOP__0(Vysyx_2412
     vlSelf->__Vtableidx4 = (((IData)((0x26000000U == 
                                       (0xfe007000U 
                                        & vlSelf->inst))) 
-                             << 8U) | (((IData)((0x26003000U 
+                             << 9U) | (((IData)((0x26003000U 
                                                  == 
                                                  (0xfe007000U 
                                                   & vlSelf->inst))) 
-                                        << 7U) | (((IData)(
-                                                           (0x40000000U 
+                                        << 8U) | (((IData)(
+                                                           (0x3000U 
                                                             == 
                                                             (0xfe007000U 
                                                              & vlSelf->inst))) 
-                                                   << 6U) 
+                                                   << 7U) 
                                                   | (((IData)(
-                                                              (0U 
+                                                              (0x40000000U 
                                                                == 
                                                                (0xfe007000U 
                                                                 & vlSelf->inst))) 
-                                                      << 5U) 
-                                                     | (((1U 
-                                                          == 
-                                                          (7U 
-                                                           & (vlSelf->inst 
-                                                              >> 0xcU))) 
-                                                         << 4U) 
-                                                        | (((0U 
+                                                      << 6U) 
+                                                     | (((IData)(
+                                                                 (0U 
+                                                                  == 
+                                                                  (0xfe007000U 
+                                                                   & vlSelf->inst))) 
+                                                         << 5U) 
+                                                        | (((1U 
                                                              == 
                                                              (7U 
                                                               & (vlSelf->inst 
                                                                  >> 0xcU))) 
-                                                            << 3U) 
-                                                           | (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type)))))));
-    vlSelf->ysyx_24120011_top__DOT__ALU_ctrl = Vysyx_24120011_top__ConstPool__TABLE_hc46d9b9e_0
+                                                            << 4U) 
+                                                           | (((0U 
+                                                                == 
+                                                                (7U 
+                                                                 & (vlSelf->inst 
+                                                                    >> 0xcU))) 
+                                                               << 3U) 
+                                                              | (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))))))));
+    vlSelf->ysyx_24120011_top__DOT__ALU_ctrl = Vysyx_24120011_top__ConstPool__TABLE_h0b100d95_0
         [vlSelf->__Vtableidx4];
     vlSelf->__Vtableidx3 = (((3U == (0x7fU & vlSelf->inst)) 
                              << 5U) | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT____VdfgExtracted_h2370fa9b__0) 

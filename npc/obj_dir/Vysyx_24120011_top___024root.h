@@ -39,7 +39,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;
     SData/*9:0*/ __Vtableidx2;
-    SData/*8:0*/ __Vtableidx4;
+    SData/*9:0*/ __Vtableidx4;
     SData/*8:0*/ __Vtableidx5;
     VL_IN(inst,31,0);
     VL_OUT(pc,31,0);

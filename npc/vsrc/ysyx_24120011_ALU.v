@@ -67,18 +67,38 @@ always@(*)begin
         end
         3'b011:begin
             if(ALU_ctrl[3] == 1'b0)begin
-                ALUout = {31'b0,sless};
+                if(a_is_b)begin
+                    ALUout = {31'b0,1'b0};
+                end
+                else begin
+                    ALUout = {31'b0,sless};
+                end
             end
             else begin
-                ALUout = {31'b0,uless};
+                if(a_is_b)begin
+                    ALUout = {31'b0,1'b0};
+                end
+                else begin
+                    ALUout = {31'b0,uless};
+                end
             end
         end
         3'b111:begin
             if(ALU_ctrl[3] == 1'b0)begin
-                ALUout = {31'b0,~sless};
+                if(a_is_b)begin
+                    ALUout = {31'b0,1'b1};
+                end
+                else begin
+                    ALUout = {31'b0,~sless};
+                end
             end
             else begin
-                ALUout = {31'b0,~uless};
+                if(a_is_b)begin
+                    ALUout = {31'b0,1'b1};
+                end
+                else begin
+                    ALUout = {31'b0,~uless};
+                end
             end
         end
         default: ALUout = ALUout_tmp;
