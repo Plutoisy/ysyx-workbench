@@ -120,8 +120,8 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 
 void step_and_dump_wave(){
   top->eval();
-  contextp->timeInc(1);
-  tfp->dump(contextp->time());
+  //contextp->timeInc(1);
+  //tfp->dump(contextp->time());
 }
 
 void sim_init(){
