@@ -226,7 +226,10 @@ extern "C" void reg_out(const int array[32]) {
 
 extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    assert(0);
+    if (w_mem_addr == 0xa00003f8) { printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data); }
+    else{
+      assert(0);
+    }
   }
   //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
