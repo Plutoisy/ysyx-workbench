@@ -469,7 +469,9 @@ int main(int argc, char *argv[]) {
   difftest_regcpy(dut, 1);
   sim_init();
   system_rst();
-  sdb_mainloop();
+  // sdb_mainloop();
+  cmd_si(-1);
+  cmd_q();
   cs_close(&handle);
   sim_exit();
   return 0;
