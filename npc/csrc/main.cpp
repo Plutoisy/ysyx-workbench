@@ -8,6 +8,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <capstone/capstone.h>
+#include <sys/time.h>
 
 #define PMEM_SIZE    0x8000000
 #define CONFIG_MBASE 0x80000000
@@ -237,12 +238,41 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   }
 }
 
+static uint64_t get_time_internal() {
+  struct timeval now;
+  gettimeofday(&now, NULL);
+  uint64_t us = now.tv_sec * 1000000 + now.tv_usec;
+  return us;
+}
+
+uint64_t get_time() {
+  if (boot_time == 0) boot_time = get_time_internal();
+  uint64_t now = get_time_internal();
+  return now - boot_time;
+}
+
+static uint32_t *rtc_port_base = NULL;
+
 extern "C" int rtl_pmem_read(int r_mem_addr){
+  //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
   if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    assert(0);
+    if (r_mem_addr == 0xa0000048 + 4) { 
+      uint64_t us = get_time();
+      rtc_port_base[0] = (uint32_t)us;
+      rtc_port_base[1] = us >> 32;
+      return rtc_port_base[1]
+    }
+    else if (r_mem_addr == 0xa0000048) { 
+      if(rtc_port_base == NULL){
+        assert(0)
+      }
+      return rtc_port_base[0]
+    }
+    else{
+      assert(0);
+    }
   }
   uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
-  //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
   return ret;
 }
 
