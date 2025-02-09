@@ -226,7 +226,7 @@ extern "C" void reg_out(const int array[32]) {
 }
 
 extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
-  //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+  printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
     if (w_mem_addr == 0xa00003f8) { 
       //putchar((char)(w_mem_data & 0xFF)); 
@@ -236,7 +236,7 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
     }
   }
   else{
-    printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
     host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
   }
 }
@@ -261,6 +261,7 @@ static uint32_t rtc_port_base[2];
 extern "C" int rtl_pmem_read(int r_mem_addr){
   //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
   if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
+    printf("R->addr: 0x%x, len: %d\n", r_mem_addr, 4);
     if (r_mem_addr == 0xa0000048 + 4) { 
       uint64_t us = get_time();
       rtc_port_base[0] = (uint32_t)us;
@@ -307,7 +308,7 @@ void cpu_exec(uint32_t n){
       //printf("        dut                    | ref                   \n");
       //printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
       if(refstate.pc != top->pc){
-        AssembleDecoder(handle, top->inst, top->pc);
+        //AssembleDecoder(handle, top->inst, top->pc);
         assert(0);
         //printf("0x%08x\n",refstate.pc );
         //printf("0x%08x\n",top->pc);
