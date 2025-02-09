@@ -274,8 +274,11 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
       assert(0);
     }
   }
-  uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
-  return ret;
+  else{
+    uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
+    return ret;
+  }
+  
 }
 
 extern "C" void difftest_exec(uint64_t n);
