@@ -253,7 +253,7 @@ uint64_t get_time() {
   return now - boot_time;
 }
 
-static uint32_t *rtc_port_base[2];
+static uint32_t rtc_port_base[2];
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
   //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
