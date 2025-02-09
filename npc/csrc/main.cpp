@@ -253,8 +253,7 @@ uint64_t get_time() {
   return now - boot_time;
 }
 
-static uint32_t *rtc_port_base = NULL;
-rtc_port_base = (uint32_t *)new_space(8);
+static uint32_t *rtc_port_base[2];
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
   //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
@@ -265,10 +264,7 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
       rtc_port_base[1] = us >> 32;
       return rtc_port_base[1];
     }
-    else if (r_mem_addr == 0xa0000048) { 
-      if(rtc_port_base == NULL){
-        assert(0);
-      }
+    else if (r_mem_addr == 0xa0000048) {
       return rtc_port_base[0];
     }
     else{
