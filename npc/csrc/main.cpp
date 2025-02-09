@@ -261,9 +261,10 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
     if (r_mem_addr == 0xa0000048 + 4) { 
       
       uint64_t us = get_time();
-      printf("debug\n");
+      
       rtc_port_base[0] = (uint32_t)us;
       rtc_port_base[1] = us >> 32;
+      printf("debug\n");
       return rtc_port_base[1];
     }
     else if (r_mem_addr == 0xa0000048) { 
