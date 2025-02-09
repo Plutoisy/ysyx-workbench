@@ -231,8 +231,10 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
       assert(0);
     }
   }
-  //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
-  host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
+  else{
+    //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
+  }
 }
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
