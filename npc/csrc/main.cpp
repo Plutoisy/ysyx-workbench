@@ -238,6 +238,8 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   }
 }
 
+static uint64_t boot_time = 0;
+
 static uint64_t get_time_internal() {
   struct timeval now;
   gettimeofday(&now, NULL);
