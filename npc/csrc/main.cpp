@@ -296,8 +296,8 @@ void cpu_exec(uint32_t n){
       top->inst = pmem_read(top->pc,4);
 
 
-      //ssembleDecoder(handle, top->inst, top->pc);
-      //printf("exec times: %d\n",i+1);
+      AssembleDecoder(handle, top->inst, top->pc);
+      printf("exec times: %d\n",i+1);
       difftest_exec(1);
       difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
@@ -314,7 +314,7 @@ void cpu_exec(uint32_t n){
         //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
         if(refstate.gpr[j] != gpr[j]){
           AssembleDecoder(handle, top->inst, top->pc);
-          printf("exec times: %d\n",i+1);
+          //printf("exec times: %d\n",i+1);
           printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
           assert(0);
         }
