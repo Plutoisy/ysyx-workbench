@@ -314,7 +314,7 @@ void cpu_exec(uint32_t n){
         //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
         if(refstate.gpr[j] != gpr[j]){
           AssembleDecoder(handle, top->inst, top->pc);
-          //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+          printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
           assert(0);
         }
       }
