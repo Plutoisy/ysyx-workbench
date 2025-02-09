@@ -200,6 +200,9 @@ always@(*)begin
             else if(func3 == 3'b101 && func7 == 7'b0100000)begin//sra
                 ALU_ctrl = 4'b1100;
             end
+            else if(func3 == 3'b110 && func7 == 7'b0000000)begin//or
+                ALU_ctrl = 4'b0101;
+            end
             else if(func3 == 3'b101 && func7 == 7'b0000000)begin//srl
                 ALU_ctrl = 4'b0100;
             end
