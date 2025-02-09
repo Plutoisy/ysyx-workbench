@@ -260,13 +260,13 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
       uint64_t us = get_time();
       rtc_port_base[0] = (uint32_t)us;
       rtc_port_base[1] = us >> 32;
-      return rtc_port_base[1]
+      return rtc_port_base[1];
     }
     else if (r_mem_addr == 0xa0000048) { 
       if(rtc_port_base == NULL){
-        assert(0)
+        assert(0);
       }
-      return rtc_port_base[0]
+      return rtc_port_base[0];
     }
     else{
       assert(0);
