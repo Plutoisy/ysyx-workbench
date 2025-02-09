@@ -228,7 +228,7 @@ extern "C" void reg_out(const int array[32]) {
 extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    if (w_mem_addr == 0xa00003f8) { putchar((char)(w_mem_data & 0xFF)); }
+    if (w_mem_addr == 0xa00003f8) { //putchar((char)(w_mem_data & 0xFF)); }
     else{
       assert(0);
     }
@@ -292,30 +292,30 @@ void cpu_exec(uint32_t n){
         top->clk ^= 1;
       }
       top->inst = pmem_read(top->pc,4);
-      // printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
+      printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
 
 
-      // AssembleDecoder(handle, top->inst, top->pc);
-      // printf("exec times: %d\n",i+1);
-      // difftest_exec(1);
-      // difftest_regcpy(&refstate, 0);
+      AssembleDecoder(handle, top->inst, top->pc);
+      printf("exec times: %d\n",i+1);
+      difftest_exec(1);
+      difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
-      // printf("        dut                    | ref                   \n");
-      // printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
-      // if(refstate.pc != top->pc){
-      //   //printf("        0x%08x             | 0x%08x\n", top->pc, refstate.pc);
-      //   assert(0);
-      //   //printf("0x%08x\n",refstate.pc );
-      //   //printf("0x%08x\n",top->pc);
-      // }
+      printf("        dut                    | ref                   \n");
+      printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
+      if(refstate.pc != top->pc){
+        //printf("        0x%08x             | 0x%08x\n", top->pc, refstate.pc);
+        assert(0);
+        //printf("0x%08x\n",refstate.pc );
+        //printf("0x%08x\n",top->pc);
+      }
       
-      // for(int j = 0; j < 32; j++){
-      //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-      //   if(refstate.gpr[j] != gpr[j]){
-      //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-      //     assert(0);
-      //   }
-      // }
+      for(int j = 0; j < 32; j++){
+        printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+        if(refstate.gpr[j] != gpr[j]){
+          //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+          assert(0);
+        }
+      }
       
     }
     else{
