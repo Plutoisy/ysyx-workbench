@@ -254,17 +254,15 @@ uint64_t get_time() {
 }
 
 static uint32_t *rtc_port_base = NULL;
+rtc_port_base = (uint32_t *)new_space(8);
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
   //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
   if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
     if (r_mem_addr == 0xa0000048 + 4) { 
-      
       uint64_t us = get_time();
-      
       rtc_port_base[0] = (uint32_t)us;
       rtc_port_base[1] = us >> 32;
-      printf("debug\n");
       return rtc_port_base[1];
     }
     else if (r_mem_addr == 0xa0000048) { 
