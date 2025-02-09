@@ -302,12 +302,19 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                                      ? 0xcU
                                                      : 
                                                     ((IData)(
-                                                             (0x5000U 
+                                                             (0x6000U 
                                                               == 
                                                               (0xfe007000U 
                                                                & vlSelf->inst)))
-                                                      ? 4U
-                                                      : 0U)))))))));
+                                                      ? 5U
+                                                      : 
+                                                     ((IData)(
+                                                              (0x5000U 
+                                                               == 
+                                                               (0xfe007000U 
+                                                                & vlSelf->inst)))
+                                                       ? 4U
+                                                       : 0U))))))))));
             vlSelf->ysyx_24120011_top__DOT__imme = 0U;
         }
     } else if ((2U & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IDU__DOT__opcode_type))) {
