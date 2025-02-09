@@ -161,6 +161,9 @@ always@(*)begin
             else if(func3 == 3'b100 && opcode == 7'b0010011)begin//xori
                 ALU_ctrl = 4'b0010;
             end
+            else if(func3 == 3'b110 && opcode == 7'b0010011)begin//ori
+                ALU_ctrl = 4'b0101;
+            end
             else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
                 ALU_ctrl = 4'b1100;
             end
