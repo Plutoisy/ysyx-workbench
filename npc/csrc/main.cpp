@@ -275,8 +275,9 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
     }
   }
   else{
-    printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
+    
     uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
+    printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
     return ret;
   }
   
