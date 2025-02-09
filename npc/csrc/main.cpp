@@ -236,6 +236,7 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
     }
   }
   else{
+    printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
     host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
   }
 }
@@ -274,6 +275,7 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
     }
   }
   else{
+    printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
     uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
     return ret;
   }
@@ -313,7 +315,7 @@ void cpu_exec(uint32_t n){
       for(int j = 0; j < 32; j++){
         //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
         if(refstate.gpr[j] != gpr[j]){
-          AssembleDecoder(handle, top->inst, top->pc);
+          //AssembleDecoder(handle, top->inst, top->pc);
           //printf("exec times: %d\n",i+1);
           printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
           assert(0);
