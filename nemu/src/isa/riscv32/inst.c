@@ -66,6 +66,9 @@ uint32_t csr_read(uint32_t csr_addr){
   else if(csr_addr == 0x300){
     return cpu.csr.mstatus;
   }
+  else if(csr_addr == 0x341){
+    return cpu.csr.mepc;
+  }
   else{
     panic("unsupported csr_addr = %x", csr_addr);
   }
@@ -80,6 +83,9 @@ void csr_write(uint32_t csr_addr, uint32_t csr_wdata){
   }
   else if(csr_addr == 0x300){
     cpu.csr.mstatus = csr_wdata;
+  }
+  else if(csr_addr == 0x341){
+    cpu.csr.mepc = csr_wdata;
   }
   else{
     panic("unsupported csr_addr = %x", csr_addr);
