@@ -56,6 +56,23 @@ static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_
     default: panic("unsupported type = %d", type);
   }
 }
+uint32_t csr_read(uint32_t csr_addr){
+  if(csr_addr == 0x305){
+    return cpu.csr.mtvec;
+  }
+  else{
+    panic("unsupported csr_addr = %x", csr_addr);
+  }
+}
+
+void csr_write(uint32_t csr_addr, uint32_t csr_wdata){
+  if(csr_addr == 0x305){
+    cpu.csr.mtvec = csr_wdata;
+  }
+  else{
+    panic("unsupported csr_addr = %x", csr_addr);
+  }
+}
 
 static int decode_exec(Decode *s) {
   s->dnpc = s->snpc;
@@ -103,6 +120,12 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 110 ????? 00100 11", ori    , I, R(rd) = src1 | imm);
   INSTPAT("??????? ????? ????? 001 ????? 00000 11", lh     , I, R(rd) = SEXT(Mr(src1 + imm, 2),16));
   INSTPAT("??????? ????? ????? 101 ????? 00000 11", lhu    , I, R(rd) = Mr(src1 + imm, 2));
+  INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw  , I, {
+    if(rd != 0){
+      R(rd) = csr_read(imm);
+    }
+    csr_write(imm,src1);
+  });
   
 
   INSTPAT("0000000 ????? ????? 001 ????? 00100 11", slli   ,RI, R(rd) = src1 << imm);
