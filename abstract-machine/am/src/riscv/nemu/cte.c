@@ -38,7 +38,7 @@ bool cte_init(Context*(*handler)(Event, Context*)) {
 
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg) {
   Context *c = (Context*)kstack.end - 1;
-  c->mstatus = 0;
+  c->mstatus = 0x1800;
   c->mcause = 0;
   c->mepc = (uint32_t)entry;
   c->pdir = NULL;
