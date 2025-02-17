@@ -51,11 +51,18 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 //2'd0: pc_add_4;
 //2'd1: pc_add_imme;
 //2'd2: alu_result;
+//2'd3: r_csr_data;
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
                  pc_ctrl = 2'd2;
+            end
+            else if(inst == 32'b00110000001000000000000001110011)begin//mret
+                 pc_ctrl = 2'd3;
+            end
+            else if(inst == 32'b00000000000000000000000001110011)begin//ecall
+                 pc_ctrl = 2'd3;
             end
             else begin
                  pc_ctrl = 2'd0;

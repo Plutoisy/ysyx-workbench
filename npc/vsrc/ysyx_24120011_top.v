@@ -37,6 +37,12 @@ wire [7:0]  w_mem_len;
 wire [7:0]  r_mem_len;
 wire [3:0]  ALU_ctrl;
 wire [31:0] a0;
+wire [11:0] w_csr_addr;
+wire [11:0] r_csr_addr;
+wire w_csr_en;  
+wire r_csr_en;  
+wire [31:0] w_csr_data;
+wire [31:0] r_csr_data;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
@@ -51,6 +57,7 @@ ysyx_24120011_PCProcessor i_PCProcessor(
     .pc              ( pc              ),
     .imme            ( imme            ),
     .alu_result      ( alu_result      ),
+    .r_csr_data      ( r_csr_data      ),
     .pc_ctrl         ( pc_ctrl         ),
     .b_type_enter_if ( b_type_enter_if ),
     .pc_add_imme_out ( pc_add_imme_out ),
@@ -135,6 +142,17 @@ ysyx_24120011_MemProcessor i_MemProcessor(
     .sign_extension      ( sign_extension      ),
     .w_mem_data          ( src2                ),
     .r_mem_data          ( r_mem_data          )
+);
+
+ysyx_24120011_Csr i_Csr(
+    .clk        ( clk        ),
+    .rst        ( rst        ),
+    .w_csr_addr ( w_csr_addr ),
+    .r_csr_addr ( r_csr_addr ),
+    .w_csr_en   ( w_csr_en   ),
+    .r_csr_en   ( r_csr_en   ),
+    .w_csr_data ( w_csr_data ),
+    .r_csr_data  ( r_csr_data  )
 );
 
 endmodule
