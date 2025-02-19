@@ -3,7 +3,7 @@ module ysyx_24120011_ALUCtrl(
     input [31:0] src2,
     input [31:0] imme,
     input [31:0] r_csr_data,
-    output [31:0] ALUB
+    output reg [31:0] ALUB
 );
 //ALUBctrl == 2'd0 -> imme
 //ALUBctrl == 2'd1 -> src2
