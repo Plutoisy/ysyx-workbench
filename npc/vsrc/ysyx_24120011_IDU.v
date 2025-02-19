@@ -109,6 +109,7 @@ always@(*)begin
                 end
                 else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
                     rd_ctrl = 4'd6;
+                end
                 else begin
                     rd_ctrl = 4'd2;
                 end
