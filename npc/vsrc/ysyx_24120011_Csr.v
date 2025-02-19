@@ -15,14 +15,28 @@ reg [31:0] mepc;
 reg [31:0] mstatus;
 reg [31:0] mcause;
 reg [31:0] mtvec; 
-
+always@(*)begin
+    if(r_csr_en)begin
+        case(r_csr_addr)
+            12'h341: r_csr_data <= mepc;
+            12'h300: r_csr_data <= mstatus;
+            12'h342: r_csr_data <= mcause;
+            12'h305: r_csr_data <= mtvec;
+            default: begin
+                r_csr_data   <=  32'b0;
+            end
+        endcase
+    end
+    if(w_csr_ecall)begin
+        r_csr_data   <=  mtvec;
+    end
+end
 always@(posedge clk)begin
     if(rst)begin
         mepc     <= 32'h0000_0000;
         mstatus  <= 32'h0000_0000;
         mcause   <= 32'h0000_0000;
         mtvec    <= 32'h0000_0000;
-        r_csr_data   <=  32'b0;
     end
     else begin
         if(w_csr_en)begin
@@ -38,23 +52,10 @@ always@(posedge clk)begin
                     mtvec    <=  mtvec;    
                 end
             endcase
-            r_csr_data   <=  32'b0;
-        end
-        if(r_csr_en)begin
-            case(r_csr_addr)
-                12'h341: r_csr_data <= mepc;
-                12'h300: r_csr_data <= mstatus;
-                12'h342: r_csr_data <= mcause;
-                12'h305: r_csr_data <= mtvec;
-                default: begin
-                    r_csr_data   <=  32'b0;
-                end
-            endcase
         end
         if(w_csr_ecall)begin
             mepc         <=  pc;     
             mstatus      <=  32'h000b;//11 
-            r_csr_data   <=  mtvec;
         end
     end
 end
