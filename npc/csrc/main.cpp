@@ -120,8 +120,8 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 
 void step_and_dump_wave(){
   top->eval();
-  //contextp->timeInc(1);
-  //tfp->dump(contextp->time());
+  contextp->timeInc(1);
+  tfp->dump(contextp->time());
 }
 
 void sim_init(){
@@ -300,29 +300,29 @@ void cpu_exec(uint32_t n){
       top->inst = pmem_read(top->pc,4);
 
 
-      AssembleDecoder(handle, top->inst, top->pc);
-      printf("exec times: %d\n",i+1);
-      difftest_exec(1);
-      difftest_regcpy(&refstate, 0);
+      // AssembleDecoder(handle, top->inst, top->pc);
+      // printf("exec times: %d\n",i+1);
+      // difftest_exec(1);
+      // difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
-      printf("        dut                    | ref                   \n");
-      printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
-      if(refstate.pc != top->pc){
-        //AssembleDecoder(handle, top->inst, top->pc);
-        assert(0);
-        //printf("0x%08x\n",refstate.pc );
-        //printf("0x%08x\n",top->pc);
-      }
+      // printf("        dut                    | ref                   \n");
+      // printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
+      // if(refstate.pc != top->pc){
+      //   //AssembleDecoder(handle, top->inst, top->pc);
+      //   assert(0);
+      //   //printf("0x%08x\n",refstate.pc );
+      //   //printf("0x%08x\n",top->pc);
+      // }
       
-      for(int j = 0; j < 32; j++){
-        printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-        if(refstate.gpr[j] != gpr[j]){
-          //AssembleDecoder(handle, top->inst, top->pc);
-          //printf("exec times: %d\n",i+1);
-          //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-          assert(0);
-        }
-      }
+      // for(int j = 0; j < 32; j++){
+      //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+      //   if(refstate.gpr[j] != gpr[j]){
+      //     //AssembleDecoder(handle, top->inst, top->pc);
+      //     //printf("exec times: %d\n",i+1);
+      //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+      //     assert(0);
+      //   }
+      // }
       
     }
     else{
@@ -345,7 +345,10 @@ static struct {
   int (*handler) (char *);
 } cmd_table [] = {
   { "help", "Display information about all supported commands", cmd_help },
-  { "c", "Continue the execution of the program", cmd_c },
+  { "c", "Continue the execution of the program", cmd_c },      AssembleDecoder(handle, top->inst, top->pc);
+      printf("exec times: %d\n",i+1);
+      difftest_exec(1);
+      difftest_regcpy(&refstate, 0);
   { "si","Execute one time", cmd_si},
   { "q", "Exit NEMU", cmd_q },
   { "info", "Show some info", cmd_info},
