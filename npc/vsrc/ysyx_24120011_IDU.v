@@ -15,11 +15,11 @@ module ysyx_24120011_IDU (
     output reg sign_extension,
     output reg [3:0] ALU_ctrl,
     output reg [7:0] r_mem_len,
-    output reg w_csr_addr,
+    output reg [11:0] w_csr_addr,
     output reg w_csr_en,
     output reg [3:0] w_csr_data_ctrl,
     output reg w_csr_ecall,
-    output reg r_csr_addr,
+    output reg [11:0] r_csr_addr,
     output reg r_csr_en
 );
 
