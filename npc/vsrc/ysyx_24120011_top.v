@@ -115,6 +115,7 @@ ysyx_24120011_RdProcessor i_RdProcessor(
     .alu_result      ( alu_result      ),
     .imme            ( imme            ),
     .r_mem_data      ( r_mem_data      ),
+    .r_csr_data      ( r_csr_data      ),
     .rd_ctrl         ( rd_ctrl         ),
     .w_en            ( w_en            ),
     .wdata           ( wdata           )

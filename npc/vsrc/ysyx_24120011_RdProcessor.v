@@ -4,6 +4,7 @@ module ysyx_24120011_RdProcessor(
     input [31:0] alu_result,
     input [31:0] imme,
     input [31:0] r_mem_data,
+    input [31:0] r_csr_data,
     input [3:0]  rd_ctrl,
     output w_en,
     output reg [31:0] wdata
@@ -17,6 +18,7 @@ always@(*)begin
         4'd3: wdata = imme;
         4'd4: wdata = 32'h0000_0000;
         4'd5: wdata = r_mem_data;
+        4'd6: wdata = r_csr_data;
         default: wdata = 32'h0000_0000;
     endcase
 end

@@ -90,6 +90,7 @@ end
 //4'd3: imme;
 //4'd4: w_en = 1'd0;
 //4'd5: rdata;
+//4'd6: r_csr_data;
 always@(*)begin
     if(rd == 5'b00000) begin
         rd_ctrl = 4'd4;
@@ -103,6 +104,11 @@ always@(*)begin
                 else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
                     rd_ctrl = 4'd5;
                 end
+                else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
+                    rd_ctrl = 4'd6;
+                end
+                else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                    rd_ctrl = 4'd6;
                 else begin
                     rd_ctrl = 4'd2;
                 end
