@@ -345,10 +345,7 @@ static struct {
   int (*handler) (char *);
 } cmd_table [] = {
   { "help", "Display information about all supported commands", cmd_help },
-  { "c", "Continue the execution of the program", cmd_c },      AssembleDecoder(handle, top->inst, top->pc);
-      printf("exec times: %d\n",i+1);
-      difftest_exec(1);
-      difftest_regcpy(&refstate, 0);
+  { "c", "Continue the execution of the program", cmd_c },
   { "si","Execute one time", cmd_si},
   { "q", "Exit NEMU", cmd_q },
   { "info", "Show some info", cmd_info},
