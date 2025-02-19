@@ -5,6 +5,8 @@ module ysyx_24120011_Csr(
     input [11:0] r_csr_addr,
     input w_csr_en,
     input r_csr_en,
+    input w_csr_ecall,
+    input pc,
     input [31:0] w_csr_data,
     output reg [31:0] r_csr_data
 );
@@ -48,6 +50,11 @@ always@(posedge clk)begin
                     r_csr_data   <=  32'b0;
                 end
             endcase
+        end
+        if(w_csr_ecall)begin
+            mepc         <=  pc;     
+            mstatus      <=  32'h000b;//11 
+            r_csr_data   <=  mtvec;
         end
     end
 end

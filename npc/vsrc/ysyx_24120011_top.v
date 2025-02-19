@@ -27,7 +27,7 @@ wire [31:0] ALUB;
 wire [31:0] alu_result;
 wire [1:0]  pc_ctrl;
 wire [3:0]  rd_ctrl;
-wire        ALUBctrl;
+wire [1:0]  ALUBctrl;
 wire        w_en;
 wire        w_mem_en;
 wire        r_mem_en;
@@ -36,11 +36,13 @@ wire        b_type_enter_if;
 wire [7:0]  w_mem_len;
 wire [7:0]  r_mem_len;
 wire [3:0]  ALU_ctrl;
+wire [3:0]  w_csr_data_ctrl;
 wire [31:0] a0;
 wire [11:0] w_csr_addr;
 wire [11:0] r_csr_addr;
 wire w_csr_en;  
 wire r_csr_en;  
+wire w_csr_ecall;
 wire [31:0] w_csr_data;
 wire [31:0] r_csr_data;
 
@@ -74,7 +76,7 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
     .wen   ( 1'b1 )
 );
 
-ysyx_24120011_IDU i_IDU(
+ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .inst           ( inst           ),
     .rd             ( rd             ),
     .rs1            ( rs1            ),
@@ -90,8 +92,15 @@ ysyx_24120011_IDU i_IDU(
     .r_mem_en       ( r_mem_en       ),
     .sign_extension ( sign_extension ),
     .ALU_ctrl       ( ALU_ctrl       ),
-    .r_mem_len      ( r_mem_len      )
+    .r_mem_len      ( r_mem_len      ),
+    .w_csr_addr     ( w_csr_addr     ),
+    .w_csr_en       ( w_csr_en       ),
+    .w_csr_data_ctrl( w_csr_data_ctrl),
+    .w_csr_ecall    ( w_csr_ecall    ),
+    .r_csr_addr     ( r_csr_addr     ),
+    .r_csr_en       ( r_csr_en       )
 );
+
 
 ysyx_24120011_ALU i_ALU(
     .A          ( src1       ),
@@ -125,11 +134,13 @@ ysyx_24120011_RegStack i_RegStack(
 );
 
 ysyx_24120011_ALUCtrl i_ALUCtrl(
-    .ALUBctrl ( ALUBctrl ),
-    .src2     ( src2     ),
-    .imme     ( imme     ),
-    .ALUB     ( ALUB     )
+    .ALUBctrl   ( ALUBctrl   ),
+    .src2       ( src2       ),
+    .imme       ( imme       ),
+    .r_csr_data ( r_csr_data ),
+    .ALUB       ( ALUB       )
 );
+
 
 ysyx_24120011_MemProcessor i_MemProcessor(
     .clk   ( clk   ),
@@ -145,14 +156,23 @@ ysyx_24120011_MemProcessor i_MemProcessor(
 );
 
 ysyx_24120011_Csr i_Csr(
-    .clk        ( clk        ),
-    .rst        ( rst        ),
-    .w_csr_addr ( w_csr_addr ),
-    .r_csr_addr ( r_csr_addr ),
-    .w_csr_en   ( w_csr_en   ),
-    .r_csr_en   ( r_csr_en   ),
-    .w_csr_data ( w_csr_data ),
+    .clk         ( clk         ),
+    .rst         ( rst         ),
+    .w_csr_addr  ( w_csr_addr  ),
+    .r_csr_addr  ( r_csr_addr  ),
+    .w_csr_en    ( w_csr_en    ),
+    .r_csr_en    ( r_csr_en    ),
+    .w_csr_ecall ( w_csr_ecall ),
+    .pc          ( pc          ),
+    .w_csr_data  ( w_csr_data  ),
     .r_csr_data  ( r_csr_data  )
+);
+
+ysyx_24120011_CsrProcessor i_CsrProcessor(
+    .alu_result      ( alu_result      ),
+    .src1            ( src1            ),
+    .w_csr_data_ctrl ( w_csr_data_ctrl ),
+    .w_csr_data      ( w_csr_data      )
 );
 
 endmodule

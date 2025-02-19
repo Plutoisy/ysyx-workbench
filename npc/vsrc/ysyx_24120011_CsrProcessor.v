@@ -1,0 +1,18 @@
+module ysyx_24120011_CsrProcessor(
+    input alu_result,
+    input src1,
+    input [3:0] w_csr_data_ctrl,
+    output [31:0] w_csr_data
+);
+//4'b0 => 32'b0
+//4'b1 => src1
+//4'b2 => alu_result
+always@(*)begin
+    case(w_csr_data_ctrl)
+        4'b0:    w_csr_data = 32'b0;
+        4'b1:    w_csr_data = src1;
+        4'b2:    w_csr_data = alu_result;
+        default: w_csr_data = 32'b0;
+    endcase
+end
+endmodule

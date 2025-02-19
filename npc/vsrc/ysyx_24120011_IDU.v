@@ -8,13 +8,19 @@ module ysyx_24120011_IDU (
     output [6:0]  func7,
     output reg [1:0]  pc_ctrl,
     output reg [3:0]  rd_ctrl,
-    output reg ALUBctrl,
+    output reg [1:0] ALUBctrl,
     output reg w_mem_en,
     output reg [7:0] w_mem_len,
     output reg r_mem_en,
     output reg sign_extension,
     output reg [3:0] ALU_ctrl,
-    output reg [7:0] r_mem_len
+    output reg [7:0] r_mem_len,
+    output reg w_csr_addr,
+    output reg w_csr_en,
+    output reg [3:0] w_csr_data_ctrl,
+    output reg w_csr_ecall,
+    output reg r_csr_addr,
+    output reg r_csr_en
 );
 
 wire [6:0] opcode;
@@ -123,15 +129,23 @@ end
 
 //---------------------ALUB----------------------//
 
-//ALUBctrl == 1'd0 -> imme
-//ALUBctrl == 1'd1 -> src2
+//ALUBctrl == 2'd0 -> imme
+//ALUBctrl == 2'd1 -> src2
+//ALUBctrl == 2'd2 -> r_csr_data
 always@(*)begin
-    case(opcode_type)
-        3'd0:    ALUBctrl = 1'd0;//I-Type
-        3'd3:    ALUBctrl = 1'd0;//S-Type sw
-        3'd4:    ALUBctrl = 1'd1;//R-Type
-        3'd5:    ALUBctrl = 1'd1;//B-Type
-        default: ALUBctrl = 1'd1;
+    case(opcode_type)//I-Type
+        3'd0:begin
+            if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                ALUBctrl = 2'd2;
+            end
+            else begin
+                ALUBctrl = 2'd0;
+            end
+        end
+        3'd3:    ALUBctrl = 2'd0;//S-Type sw
+        3'd4:    ALUBctrl = 2'd1;//R-Type
+        3'd5:    ALUBctrl = 2'd1;//B-Type
+        default: ALUBctrl = 2'd1;
     endcase
 end
 
@@ -179,6 +193,9 @@ always@(*)begin
             end
             else if(func3 == 3'b001 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//slli
                 ALU_ctrl = 4'b0110;
+            end
+            else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                ALU_ctrl = 4'b0101;
             end
             else begin
                 ALU_ctrl = 4'b0000;
@@ -316,4 +333,55 @@ always@(*)begin
         end
     endcase
 end
+
+//---------------------CSR----------------------//
+always@(*)begin
+    case(opcode_type)
+        3'd0:begin //I-Type
+            if(inst == 32'b00110000001000000000000001110011)begin//mret
+                w_csr_addr  <= 12'b0;
+                w_csr_en    <= 1'b0;
+                w_csr_data_ctrl  <= 4'b0;//32'b0;
+                w_csr_ecall <= 1'b0;
+                r_csr_addr  <= 12'h341;//mepc
+                r_csr_en    <= 1'b1;
+            end
+            else if(inst == 32'b00000000000000000000000001110011)begin//ecall
+                w_csr_addr  <= 12'b0;
+                w_csr_en    <= 1'b0;
+                w_csr_data_ctrl  <= 4'b0;//32'b0;
+                w_csr_ecall <= 1'b1;
+                r_csr_addr  <= 12'b0;
+                r_csr_en    <= 1'b0;
+            end
+            else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
+                w_csr_addr  <= imme;
+                w_csr_en    <= 1'b1;
+                w_csr_data_ctrl  <= 4'b1;//"src1";
+                w_csr_ecall <= 1'b0;
+                r_csr_addr  <= imme;
+                r_csr_en    <= 1'b1;
+            end
+            else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                w_csr_addr  <= imme;
+                w_csr_en    <= 1'b1;
+                w_csr_data_ctrl  <= 4'b2;//"initial_csr_value | src1";
+                w_csr_ecall <= 1'b0;
+                r_csr_addr  <= imme;
+                r_csr_en    <= 1'b1;
+            end
+            else begin
+                w_csr_addr  <= 12'b0;
+                w_csr_en    <= 1'b0;
+                w_csr_data_ctrl  <= 4'b0;//32'b0;
+                w_csr_ecall <= 1'b0;
+                r_csr_addr  <= 12'b0;
+                r_csr_en    <= 1'b0;
+            end
+        end
+        default: begin 
+        end
+    endcase
+end
+
 endmodule
