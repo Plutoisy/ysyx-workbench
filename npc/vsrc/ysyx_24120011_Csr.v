@@ -6,7 +6,7 @@ module ysyx_24120011_Csr(
     input w_csr_en,
     input r_csr_en,
     input w_csr_ecall,
-    input pc,
+    input [31:0] pc,
     input [31:0] w_csr_data,
     output reg [31:0] r_csr_data
 );
