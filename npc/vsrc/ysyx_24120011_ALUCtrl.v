@@ -8,7 +8,6 @@ module ysyx_24120011_ALUCtrl(
 //ALUBctrl == 2'd0 -> imme
 //ALUBctrl == 2'd1 -> src2
 //ALUBctrl == 2'd2 -> r_csr_data
-assign ALUB = ALUBctrl ? src2 : imme;
 always@(*)begin
     case(ALUBctrl)
         2'd0: ALUB = imme;
