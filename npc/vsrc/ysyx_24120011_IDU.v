@@ -341,7 +341,7 @@ always@(*)begin
             if(inst == 32'b00110000001000000000000001110011)begin//mret
                 w_csr_addr  <= 12'b0;
                 w_csr_en    <= 1'b0;
-                w_csr_data_ctrl  <= 4'b0;//32'b0;
+                w_csr_data_ctrl  <= 4'd0;//32'b0;
                 w_csr_ecall <= 1'b0;
                 r_csr_addr  <= 12'h341;//mepc
                 r_csr_en    <= 1'b1;
@@ -349,7 +349,7 @@ always@(*)begin
             else if(inst == 32'b00000000000000000000000001110011)begin//ecall
                 w_csr_addr  <= 12'b0;
                 w_csr_en    <= 1'b0;
-                w_csr_data_ctrl  <= 4'b0;//32'b0;
+                w_csr_data_ctrl  <= 4'd0;//32'b0;
                 w_csr_ecall <= 1'b1;
                 r_csr_addr  <= 12'b0;
                 r_csr_en    <= 1'b0;
@@ -357,7 +357,7 @@ always@(*)begin
             else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
                 w_csr_addr  <= imme;
                 w_csr_en    <= 1'b1;
-                w_csr_data_ctrl  <= 4'b1;//"src1";
+                w_csr_data_ctrl  <= 4'd1;//"src1";
                 w_csr_ecall <= 1'b0;
                 r_csr_addr  <= imme;
                 r_csr_en    <= 1'b1;
@@ -365,7 +365,7 @@ always@(*)begin
             else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
                 w_csr_addr  <= imme;
                 w_csr_en    <= 1'b1;
-                w_csr_data_ctrl  <= 4'b2;//"initial_csr_value | src1";
+                w_csr_data_ctrl  <= 4'd2;//"initial_csr_value | src1";
                 w_csr_ecall <= 1'b0;
                 r_csr_addr  <= imme;
                 r_csr_en    <= 1'b1;
@@ -373,7 +373,7 @@ always@(*)begin
             else begin
                 w_csr_addr  <= 12'b0;
                 w_csr_en    <= 1'b0;
-                w_csr_data_ctrl  <= 4'b0;//32'b0;
+                w_csr_data_ctrl  <= 4'd0;//32'b0;
                 w_csr_ecall <= 1'b0;
                 r_csr_addr  <= 12'b0;
                 r_csr_en    <= 1'b0;
