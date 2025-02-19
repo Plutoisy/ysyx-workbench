@@ -56,7 +56,7 @@ always@(posedge clk)begin
         end
         if(w_csr_ecall)begin
             mepc         <=  pc;     
-            mstatus      <=  32'h000b;//11 
+            mcause       <=  32'h000b;//11 
         end
     end
 end
