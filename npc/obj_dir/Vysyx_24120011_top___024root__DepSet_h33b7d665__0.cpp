@@ -78,10 +78,10 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     // Body
     __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mtvec 
         = vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mtvec;
-    __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause 
-        = vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mcause;
     __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mstatus 
         = vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mstatus;
+    __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause 
+        = vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mcause;
     __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mepc 
         = vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mepc;
     if ((0x100073U == vlSelf->inst)) {
@@ -150,8 +150,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     }
     if (vlSelf->rst) {
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mtvec = 0U;
-        __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause = 0U;
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mstatus = 0U;
+        __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause = 0U;
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mepc = 0U;
         __Vdlyvset__ysyx_24120011_top__DOT__i_RegStack__DOT__Regs__v0 = 1U;
         vlSelf->pc = 0x80000000U;
@@ -196,7 +196,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
             }
         }
         if (vlSelf->ysyx_24120011_top__DOT__w_csr_ecall) {
-            __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mstatus = 0xbU;
+            __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause = 0xbU;
             __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mepc 
                 = vlSelf->pc;
         }
@@ -232,10 +232,10 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     }
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mtvec 
         = __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mtvec;
-    vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mcause 
-        = __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause;
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mstatus 
         = __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mstatus;
+    vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mcause 
+        = __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause;
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mepc 
         = __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mepc;
     if (__Vdlyvset__ysyx_24120011_top__DOT__i_RegStack__DOT__Regs__v0) {
