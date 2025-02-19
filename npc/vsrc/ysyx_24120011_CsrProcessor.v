@@ -1,5 +1,5 @@
 module ysyx_24120011_CsrProcessor(
-    input alu_result,
+    input [31:0] alu_result,
     input [31:0] src1,
     input [3:0] w_csr_data_ctrl,
     output [31:0] w_csr_data
