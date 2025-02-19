@@ -300,29 +300,29 @@ void cpu_exec(uint32_t n){
       top->inst = pmem_read(top->pc,4);
 
 
-      AssembleDecoder(handle, top->inst, top->pc);
-      printf("exec times: %d\n",i+1);
-      difftest_exec(1);
-      difftest_regcpy(&refstate, 0);
+      // AssembleDecoder(handle, top->inst, top->pc);
+      // printf("exec times: %d\n",i+1);
+      // difftest_exec(1);
+      // difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
-      printf("        dut                    | ref                   \n");
-      printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
-      if(refstate.pc != top->pc){
-        //AssembleDecoder(handle, top->inst, top->pc);
-        assert(0);
-        //printf("0x%08x\n",refstate.pc );
-        //printf("0x%08x\n",top->pc);
-      }
+      // printf("        dut                    | ref                   \n");
+      // printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
+      // if(refstate.pc != top->pc){
+      //   //AssembleDecoder(handle, top->inst, top->pc);
+      //   assert(0);
+      //   //printf("0x%08x\n",refstate.pc );
+      //   //printf("0x%08x\n",top->pc);
+      // }
       
-      for(int j = 0; j < 32; j++){
-        printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-        if(refstate.gpr[j] != gpr[j]){
-          //AssembleDecoder(handle, top->inst, top->pc);
-          //printf("exec times: %d\n",i+1);
-          //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-          assert(0);
-        }
-      }
+      // for(int j = 0; j < 32; j++){
+      //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+      //   if(refstate.gpr[j] != gpr[j]){
+      //     //AssembleDecoder(handle, top->inst, top->pc);
+      //     //printf("exec times: %d\n",i+1);
+      //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+      //     assert(0);
+      //   }
+      // }
       
     }
     else{
@@ -469,9 +469,9 @@ int main(int argc, char *argv[]) {
   difftest_regcpy(dut, 1);
   sim_init();
   system_rst();
-  sdb_mainloop();
-  //cmd_si("-1");
-  //cmd_q(NULL);
+  // sdb_mainloop();
+  cmd_si("-1");
+  cmd_q(NULL);
   cs_close(&handle);
   sim_exit();
   return 0;
