@@ -301,7 +301,7 @@ void cpu_exec(uint32_t n){
 
 
       // AssembleDecoder(handle, top->inst, top->pc);
-      printf("exec times: %d\n",i+1);
+      //printf("exec times: %d\n",i+1);
       // difftest_exec(1);
       // difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
@@ -327,6 +327,7 @@ void cpu_exec(uint32_t n){
     }
     else{
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
+      printf("exec times: %d\n",i+1);
       return;
     }
   }
