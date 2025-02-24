@@ -25,6 +25,7 @@ int gpr[32];
 int top_pc;
 int top_inst;
 int top_IFU_valid_int;
+
 uint8_t pmem[PMEM_SIZE] = {
   0x13,0x04,0x00,0x00,
   0x17,0x91,0x00,0x00,
@@ -225,7 +226,7 @@ extern "C" void npc_trap(int pc, int ret){
 extern "C" void get_pc_inst(int pc, int inst, int IFU_valid_int){
   top_pc = pc;
   top_inst = inst;
-  top_IFU_valid_int = IFU_valid_int
+  top_IFU_valid_int = IFU_valid_int;
 }
 
 extern "C" void reg_out(const int array[32]) {
