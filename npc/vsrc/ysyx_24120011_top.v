@@ -64,9 +64,9 @@ always@(posedge clk) begin
     if(IFU_valid) begin
         get_pc_inst(pc,inst,1'b1);
     end
-    else{
+    else begin
         get_pc_inst(pc,inst,1'b0);
-    }
+    end
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
