@@ -312,9 +312,9 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-      
+
       AssembleDecoder(handle, top_inst, top_pc);
-      printf("exec times: %d\n",i+1);
+      //printf("exec times: %d\n",i+1);
       //difftest_exec(1);
       //difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
