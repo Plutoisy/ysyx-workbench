@@ -307,8 +307,9 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-
+      
       while(top_IFU_valid_int == 0){
+        printf("top_IFU_valid_int: %d\n",top_IFU_valid_int);
         step_and_dump_wave();
         top->clk ^= 1;
       }
