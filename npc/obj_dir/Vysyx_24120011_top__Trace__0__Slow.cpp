@@ -185,7 +185,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("u_ysyx_24120011_IDU ");
     tracep->declBus(c+94,"inst", false,-1, 31,0);
-    tracep->declBit(c+127,"IFU_valid", false,-1);
+    tracep->declBit(c+95,"IFU_valid", false,-1);
     tracep->declBus(c+74,"rd", false,-1, 4,0);
     tracep->declBus(c+72,"rs1", false,-1, 4,0);
     tracep->declBus(c+73,"rs2", false,-1, 4,0);
@@ -436,5 +436,4 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+124,(0x20U),32);
     bufp->fullIData(oldp+125,(0x80000000U),32);
     bufp->fullBit(oldp+126,(1U));
-    bufp->fullBit(oldp+127,(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__IFU_valid));
 }
