@@ -18,6 +18,8 @@ extern "C" {
     // DPI IMPORTS
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:1:30
     extern void ebreak();
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:3:30
+    extern void get_pc_inst(int pc, int inst);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:2:30
     extern void npc_trap(int pc, int ret);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:1:30
