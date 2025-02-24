@@ -4,9 +4,7 @@ import "DPI-C" function void npc_trap(input int pc, input int ret);
 
 module ysyx_24120011_top (
     input clk,
-    input rst,
-    input [31:0] inst,
-    output [31:0] pc
+    input rst
 );
 
 wire [31:0] dnpc;
@@ -45,6 +43,8 @@ wire r_csr_en;
 wire w_csr_ecall;
 wire [31:0] w_csr_data;
 wire [31:0] r_csr_data;
+reg [31:0] pc;
+reg [31:0] inst;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
@@ -54,6 +54,21 @@ always@(posedge clk)begin
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
+
+always@(posedge clk) begin
+    if(rst) begin
+        pc <= 32'h8000_0000;
+    end
+end
+
+ysyx_24120011_IFU i_IFU(
+    .clk       ( clk       ),
+    .rst       ( rst       ),
+    .pc        ( pc        ),
+    .inst      ( inst      ),
+    .IFU_valid ( IFU_valid )
+);
+
 
 ysyx_24120011_PCProcessor i_PCProcessor(
     .pc              ( pc              ),

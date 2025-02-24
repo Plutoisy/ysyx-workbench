@@ -297,7 +297,7 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-      top->inst = pmem_read(top->pc,4);
+      //top->inst = pmem_read(top->pc,4);
 
 
       // AssembleDecoder(handle, top->inst, top->pc);
