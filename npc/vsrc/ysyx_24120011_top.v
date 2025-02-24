@@ -54,11 +54,11 @@ always@(posedge clk)begin
     end
 end
 
-always@(posedge clk) begin
-    if(rst) begin
-        pc <= 32'h8000_0000;
-    end
-end
+// always@(posedge clk) begin
+//     if(rst) begin
+//         pc <= 32'h8000_0000;
+//     end
+// end
 
 always@(posedge clk) begin
     if(IFU_valid) begin
