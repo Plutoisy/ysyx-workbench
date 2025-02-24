@@ -41,13 +41,12 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__carry;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__sless;
     CData/*3:0*/ __Vtableidx2;
-    CData/*6:0*/ __Vtableidx4;
+    CData/*6:0*/ __Vtableidx3;
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;
     SData/*11:0*/ ysyx_24120011_top__DOT__w_csr_addr;
     SData/*11:0*/ ysyx_24120011_top__DOT__r_csr_addr;
     SData/*9:0*/ __Vtableidx1;
-    SData/*8:0*/ __Vtableidx3;
     IData/*31:0*/ ysyx_24120011_top__DOT__dnpc;
     IData/*31:0*/ ysyx_24120011_top__DOT__imme;
     IData/*31:0*/ ysyx_24120011_top__DOT__rdata;
