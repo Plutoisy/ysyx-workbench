@@ -308,17 +308,15 @@ void cpu_exec(uint32_t n){
         top->clk ^= 1;
       }
 
-      if(top_IFU_valid_int){
-        AssembleDecoder(handle, top_inst, top_pc);
-        printf("exec times: %d\n",i+1);
-        //difftest_exec(1);
-        //difftest_regcpy(&refstate, 0);
-      }
-      else{
+      while(top_IFU_valid_int == 0){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-
+      
+      AssembleDecoder(handle, top_inst, top_pc);
+      printf("exec times: %d\n",i+1);
+      //difftest_exec(1);
+      //difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
 
       //printf("        dut                    | ref                   \n");
