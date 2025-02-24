@@ -86,7 +86,6 @@ always@(*)begin
         endcase
     end
 end
-/* verilator lint_on LATCH */
 
 //---------------------Rd----------------------//
 
@@ -97,6 +96,7 @@ end
 //4'd4: w_en = 1'd0;
 //4'd5: rdata;
 //4'd6: r_csr_data;
+
 always@(*)begin
     if(IFU_valid) begin
         if(rd == 5'b00000) begin
@@ -408,5 +408,5 @@ always@(*)begin
         endcase
     end
 end
-
+/* verilator lint_on LATCH */
 endmodule
