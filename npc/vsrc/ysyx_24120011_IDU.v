@@ -83,6 +83,7 @@ always@(*)begin
             default: pc_ctrl = 2'd0;
         endcase
     end
+    else;
 end
 
 //---------------------Rd----------------------//
