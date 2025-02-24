@@ -313,31 +313,36 @@ void cpu_exec(uint32_t n){
       //   step_and_dump_wave();
       //   top->clk ^= 1;
       // }
-      printf("top_IFU_valid_int: %d\n",top_IFU_valid_int);
-      AssembleDecoder(handle, top_inst, top_pc);
-      //printf("exec times: %d\n",i+1);
-      //difftest_exec(1);
-      //difftest_regcpy(&refstate, 0);
-      step_and_dump_wave();
+      if(top_IFU_valid_int){
+        AssembleDecoder(handle, top_inst, top_pc);
+        //printf("exec times: %d\n",i+1);
+        //difftest_exec(1);
+        //difftest_regcpy(&refstate, 0);
+        step_and_dump_wave();
 
-      //printf("        dut                    | ref                   \n");
-      //printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
-      //if(refstate.pc != top_pc){
-      //  //AssembleDecoder(handle, top_inst, top_pc);
-      //  assert(0);
-      //  //printf("0x%08x\n",refstate.pc );
-      //  //printf("0x%08x\n",top_pc);
-      //}
+        //printf("        dut                    | ref                   \n");
+        //printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+        //if(refstate.pc != top_pc){
+        //  //AssembleDecoder(handle, top_inst, top_pc);
+        //  assert(0);
+        //  //printf("0x%08x\n",refstate.pc );
+        //  //printf("0x%08x\n",top_pc);
+        //}
+        
+        // for(int j = 0; j < 32; j++){
+        //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+        //   if(refstate.gpr[j] != gpr[j]){
+        //     //AssembleDecoder(handle, top_inst, top_pc);
+        //     //printf("exec times: %d\n",i+1);
+        //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+        //     assert(0);
+        //   }
+        // }
+      }
+      else{
+        step_and_dump_wave();
+      }
       
-      // for(int j = 0; j < 32; j++){
-      //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-      //   if(refstate.gpr[j] != gpr[j]){
-      //     //AssembleDecoder(handle, top_inst, top_pc);
-      //     //printf("exec times: %d\n",i+1);
-      //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-      //     assert(0);
-      //   }
-      // }
       
     }
     else{
