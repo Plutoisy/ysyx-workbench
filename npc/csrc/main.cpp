@@ -22,6 +22,8 @@ int trap = 0;
 static char *img_file = NULL;
 csh handle;
 int gpr[32];
+int top_pc;
+int top_inst;
 uint8_t pmem[PMEM_SIZE] = {
   0x00,0x00,0x04,0x13,
   0x00,0x00,0x91,0x17,
@@ -107,13 +109,13 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
     count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
     if (count > 0) {
         for (size_t i = 0; i < count; i++) {
-            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top->pc, top->inst, insn[i].mnemonic, insn[i].op_str);
+            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
             // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
         }
         cs_free(insn, count);
     } else {
         printf("Failed to disassemble given code!\n");
-        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top->pc, top->inst);
+        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
 
     }
 }
@@ -219,6 +221,11 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
+extern "C" void get_pc_inst(int pc, int inst){
+  top_pc = pc;
+  top_inst = inst;
+}
+
 extern "C" void reg_out(const int array[32]) {
   for (int i = 0; i < 32; ++i) {
     gpr[i] = array[i];
@@ -297,27 +304,27 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-      //top->inst = pmem_read(top->pc,4);
+      //top_inst = pmem_read(top_pc,4);
 
 
-      // AssembleDecoder(handle, top->inst, top->pc);
+      // AssembleDecoder(handle, top_inst, top_pc);
       //printf("exec times: %d\n",i+1);
       // difftest_exec(1);
       // difftest_regcpy(&refstate, 0);
       step_and_dump_wave();
       // printf("        dut                    | ref                   \n");
-      // printf("pc      0x%08x             | 0x%08x\n", top->pc, refstate.pc);
-      // if(refstate.pc != top->pc){
-      //   //AssembleDecoder(handle, top->inst, top->pc);
+      // printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+      // if(refstate.pc != top_pc){
+      //   //AssembleDecoder(handle, top_inst, top_pc);
       //   assert(0);
       //   //printf("0x%08x\n",refstate.pc );
-      //   //printf("0x%08x\n",top->pc);
+      //   //printf("0x%08x\n",top_pc);
       // }
       
       // for(int j = 0; j < 32; j++){
       //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
       //   if(refstate.gpr[j] != gpr[j]){
-      //     //AssembleDecoder(handle, top->inst, top->pc);
+      //     //AssembleDecoder(handle, top_inst, top_pc);
       //     //printf("exec times: %d\n",i+1);
       //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
       //     assert(0);
