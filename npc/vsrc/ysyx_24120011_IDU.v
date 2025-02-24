@@ -59,6 +59,8 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 //2'd1: pc_add_imme;
 //2'd2: alu_result;
 //2'd3: r_csr_data;
+
+/* verilator lint_off LATCH */
 always@(*)begin
     if(IFU_valid) begin
         case(opcode_type)
@@ -83,10 +85,8 @@ always@(*)begin
             default: pc_ctrl = 2'd0;
         endcase
     end
-    else begin
-        pc_ctrl = pc_ctrl;
-    end
 end
+/* verilator lint_on LATCH */
 
 //---------------------Rd----------------------//
 
