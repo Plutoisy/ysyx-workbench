@@ -6,10 +6,11 @@ module ysyx_24120011_RdProcessor(
     input [31:0] r_mem_data,
     input [31:0] r_csr_data,
     input [3:0]  rd_ctrl,
+    input IFU_valid,
     output w_en,
     output reg [31:0] wdata
 );
-assign w_en = rd_ctrl == 4'd4 ? 1'd0 : 1'd1;
+assign w_en = IFU_valid ? (rd_ctrl == 4'd4 ? 1'd0 : 1'd1) : 1'd0;
 always@(*)begin
     case(rd_ctrl)
         4'd0: wdata = pc_add_4_out;

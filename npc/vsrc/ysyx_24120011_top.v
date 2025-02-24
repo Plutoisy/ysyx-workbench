@@ -93,7 +93,7 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
     .rst   ( rst ), 
     .din   ( dnpc ), 
     .dout  ( pc ), 
-    .wen   ( 1'b1 )
+    .wen   ( IFU_valid )
 );
 
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
@@ -138,6 +138,7 @@ ysyx_24120011_RdProcessor i_RdProcessor(
     .r_mem_data      ( r_mem_data      ),
     .r_csr_data      ( r_csr_data      ),
     .rd_ctrl         ( rd_ctrl         ),
+    .IFU_valid       ( IFU_valid       ),
     .w_en            ( w_en            ),
     .wdata           ( wdata           )
 );

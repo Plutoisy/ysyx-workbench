@@ -28,18 +28,16 @@ VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_npc_trap_TOP____02
     npc_trap(pc__Vcvt, ret__Vcvt);
 }
 
-extern "C" void get_pc_inst(int pc, int inst, svBit IFU_valid);
+extern "C" void get_pc_inst(int pc, int inst);
 
-VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit(IData/*31:0*/ pc, IData/*31:0*/ inst, CData/*0:0*/ IFU_valid) {
+VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit(IData/*31:0*/ pc, IData/*31:0*/ inst) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit\n"); );
     // Body
     int pc__Vcvt;
     for (size_t pc__Vidx = 0; pc__Vidx < 1; ++pc__Vidx) pc__Vcvt = pc;
     int inst__Vcvt;
     for (size_t inst__Vidx = 0; inst__Vidx < 1; ++inst__Vidx) inst__Vcvt = inst;
-    svBit IFU_valid__Vcvt;
-    for (size_t IFU_valid__Vidx = 0; IFU_valid__Vidx < 1; ++IFU_valid__Vidx) IFU_valid__Vcvt = IFU_valid;
-    get_pc_inst(pc__Vcvt, inst__Vcvt, IFU_valid__Vcvt);
+    get_pc_inst(pc__Vcvt, inst__Vcvt);
 }
 
 extern "C" void reg_out(const int* array);
