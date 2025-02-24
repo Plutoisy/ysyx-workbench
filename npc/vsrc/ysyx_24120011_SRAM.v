@@ -8,7 +8,7 @@ module SRAM (
 
     reg [31:0] data_reg;
     reg read_request;
-    always @(posedge clk or posedge rst) begin
+    always @(posedge clk) begin
         if (rst) begin
             sram_rd_data_out <= 32'b0;
             data_reg <= 32'b0;
