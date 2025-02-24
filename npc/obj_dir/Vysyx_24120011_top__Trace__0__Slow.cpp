@@ -153,6 +153,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+9,"r_mem_data", false,-1, 31,0);
     tracep->declBus(c+35,"r_csr_data", false,-1, 31,0);
     tracep->declBus(c+17,"rd_ctrl", false,-1, 3,0);
+    tracep->declBit(c+38,"IFU_valid", false,-1);
     tracep->declBit(c+19,"w_en", false,-1);
     tracep->declBus(c+8,"wdata", false,-1, 31,0);
     tracep->popNamePrefix(1);
@@ -181,7 +182,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBit(c+122,"rst", false,-1);
     tracep->declBus(c+1,"din", false,-1, 31,0);
     tracep->declBus(c+36,"dout", false,-1, 31,0);
-    tracep->declBit(c+126,"wen", false,-1);
+    tracep->declBit(c+38,"wen", false,-1);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("u_ysyx_24120011_IDU ");
     tracep->declBus(c+37,"inst", false,-1, 31,0);
@@ -310,13 +311,26 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullCData(oldp+16,(vlSelf->ysyx_24120011_top__DOT__pc_ctrl),2);
     bufp->fullCData(oldp+17,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),4);
     bufp->fullCData(oldp+18,(vlSelf->ysyx_24120011_top__DOT__ALUBctrl),2);
-    bufp->fullBit(oldp+19,((4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))));
+    bufp->fullBit(oldp+19,(((IData)(vlSelf->ysyx_24120011_top__DOT__IFU_valid) 
+                            & (4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl)))));
     bufp->fullBit(oldp+20,(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
     bufp->fullBit(oldp+21,(vlSelf->ysyx_24120011_top__DOT__r_mem_en));
     bufp->fullBit(oldp+22,(vlSelf->ysyx_24120011_top__DOT__sign_extension));
     bufp->fullBit(oldp+23,(((0x63U == (0x7fU & vlSelf->ysyx_24120011_top__DOT__inst)) 
                             & vlSelf->ysyx_24120011_top__DOT__alu_result)));
-    bufp->fullCData(oldp+24,(vlSelf->ysyx_24120011_top__DOT__w_mem_len),8);
+    bufp->fullCData(oldp+24,(((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))
+                               ? ((0U == (7U & (vlSelf->ysyx_24120011_top__DOT__inst 
+                                                >> 0xcU)))
+                                   ? 1U : ((1U == (7U 
+                                                   & (vlSelf->ysyx_24120011_top__DOT__inst 
+                                                      >> 0xcU)))
+                                            ? 2U : 
+                                           ((2U == 
+                                             (7U & 
+                                              (vlSelf->ysyx_24120011_top__DOT__inst 
+                                               >> 0xcU)))
+                                             ? 4U : 1U)))
+                               : 1U)),8);
     bufp->fullCData(oldp+25,(vlSelf->ysyx_24120011_top__DOT__r_mem_len),8);
     bufp->fullCData(oldp+26,(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl),4);
     bufp->fullCData(oldp+27,(vlSelf->ysyx_24120011_top__DOT__w_csr_data_ctrl),4);
@@ -430,5 +444,4 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+123,(vlSelf->ysyx_24120011_top__DOT__rdata),32);
     bufp->fullIData(oldp+124,(0x20U),32);
     bufp->fullIData(oldp+125,(0x80000000U),32);
-    bufp->fullBit(oldp+126,(1U));
 }

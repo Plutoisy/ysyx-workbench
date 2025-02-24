@@ -79,13 +79,29 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgCData(oldp+15,(vlSelf->ysyx_24120011_top__DOT__pc_ctrl),2);
         bufp->chgCData(oldp+16,(vlSelf->ysyx_24120011_top__DOT__rd_ctrl),4);
         bufp->chgCData(oldp+17,(vlSelf->ysyx_24120011_top__DOT__ALUBctrl),2);
-        bufp->chgBit(oldp+18,((4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl))));
+        bufp->chgBit(oldp+18,(((IData)(vlSelf->ysyx_24120011_top__DOT__IFU_valid) 
+                               & (4U != (IData)(vlSelf->ysyx_24120011_top__DOT__rd_ctrl)))));
         bufp->chgBit(oldp+19,(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
         bufp->chgBit(oldp+20,(vlSelf->ysyx_24120011_top__DOT__r_mem_en));
         bufp->chgBit(oldp+21,(vlSelf->ysyx_24120011_top__DOT__sign_extension));
         bufp->chgBit(oldp+22,(((0x63U == (0x7fU & vlSelf->ysyx_24120011_top__DOT__inst)) 
                                & vlSelf->ysyx_24120011_top__DOT__alu_result)));
-        bufp->chgCData(oldp+23,(vlSelf->ysyx_24120011_top__DOT__w_mem_len),8);
+        bufp->chgCData(oldp+23,(((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))
+                                  ? ((0U == (7U & (vlSelf->ysyx_24120011_top__DOT__inst 
+                                                   >> 0xcU)))
+                                      ? 1U : ((1U == 
+                                               (7U 
+                                                & (vlSelf->ysyx_24120011_top__DOT__inst 
+                                                   >> 0xcU)))
+                                               ? 2U
+                                               : ((2U 
+                                                   == 
+                                                   (7U 
+                                                    & (vlSelf->ysyx_24120011_top__DOT__inst 
+                                                       >> 0xcU)))
+                                                   ? 4U
+                                                   : 1U)))
+                                  : 1U)),8);
         bufp->chgCData(oldp+24,(vlSelf->ysyx_24120011_top__DOT__r_mem_len),8);
         bufp->chgCData(oldp+25,(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl),4);
         bufp->chgCData(oldp+26,(vlSelf->ysyx_24120011_top__DOT__w_csr_data_ctrl),4);
