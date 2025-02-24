@@ -1,5 +1,6 @@
 module ysyx_24120011_IDU (
     input [31:0]  inst,
+    input IFU_valid,
     output [4:0]  rd,
     output [4:0]  rs1,
     output [4:0]  rs2,
@@ -59,27 +60,29 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 //2'd2: alu_result;
 //2'd3: r_csr_data;
 always@(*)begin
-    case(opcode_type)
-        3'd0:begin //I-Type
-            if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
-                 pc_ctrl = 2'd2;
+    if(IFU_valid) begin
+        case(opcode_type)
+            3'd0:begin //I-Type
+                if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
+                    pc_ctrl = 2'd2;
+                end
+                else if(inst == 32'b00110000001000000000000001110011)begin//mret
+                    pc_ctrl = 2'd3;
+                end
+                else if(inst == 32'b00000000000000000000000001110011)begin//ecall
+                    pc_ctrl = 2'd3;
+                end
+                else begin
+                    pc_ctrl = 2'd0;
+                end
             end
-            else if(inst == 32'b00110000001000000000000001110011)begin//mret
-                 pc_ctrl = 2'd3;
-            end
-            else if(inst == 32'b00000000000000000000000001110011)begin//ecall
-                 pc_ctrl = 2'd3;
-            end
-            else begin
-                 pc_ctrl = 2'd0;
-            end
-        end
-        3'd2:    pc_ctrl = 2'd1;//J-Type jal
-        3'd3:    pc_ctrl = 2'd0;//S-Type sw
-        3'd4:    pc_ctrl = 2'd0;//R-Type
-        3'd5:    pc_ctrl = 2'd0;//B-Type
-        default: pc_ctrl = 2'd0;
-    endcase
+            3'd2:    pc_ctrl = 2'd1;//J-Type jal
+            3'd3:    pc_ctrl = 2'd0;//S-Type sw
+            3'd4:    pc_ctrl = 2'd0;//R-Type
+            3'd5:    pc_ctrl = 2'd0;//B-Type
+            default: pc_ctrl = 2'd0;
+        endcase
+    end
 end
 
 //---------------------Rd----------------------//
@@ -92,45 +95,47 @@ end
 //4'd5: rdata;
 //4'd6: r_csr_data;
 always@(*)begin
-    if(rd == 5'b00000) begin
-        rd_ctrl = 4'd4;
-    end
-    else begin
-        case(opcode_type)
-            3'd0:begin //I-Type
-                if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
-                    rd_ctrl = 4'd0;
+    if(IFU_valid) begin
+        if(rd == 5'b00000) begin
+            rd_ctrl = 4'd4;
+        end
+        else begin
+            case(opcode_type)
+                3'd0:begin //I-Type
+                    if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
+                        rd_ctrl = 4'd0;
+                    end
+                    else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
+                        rd_ctrl = 4'd5;
+                    end
+                    else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
+                        rd_ctrl = 4'd6;
+                    end
+                    else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                        rd_ctrl = 4'd6;
+                    end
+                    else begin
+                        rd_ctrl = 4'd2;
+                    end
                 end
-                else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                    rd_ctrl = 4'd5;
+                3'd1:begin //U-Type
+                    if(opcode == 7'b0010111)begin//auipc
+                        rd_ctrl = 4'd1;
+                    end
+                    else if(opcode == 7'b0110111)begin//lui
+                        rd_ctrl = 4'd3;
+                    end
+                    else begin
+                        rd_ctrl = 4'd0;
+                    end
                 end
-                else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
-                    rd_ctrl = 4'd6;
-                end
-                else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                    rd_ctrl = 4'd6;
-                end
-                else begin
-                    rd_ctrl = 4'd2;
-                end
-            end
-            3'd1:begin //U-Type
-                if(opcode == 7'b0010111)begin//auipc
-                    rd_ctrl = 4'd1;
-                end
-                else if(opcode == 7'b0110111)begin//lui
-                    rd_ctrl = 4'd3;
-                end
-                else begin
-                    rd_ctrl = 4'd0;
-                end
-            end
-            3'd2:    rd_ctrl = 4'd0;//J-Type jal
-            3'd3:    rd_ctrl = 4'd4;//S-Type sw
-            3'd4:    rd_ctrl = 4'd2;//R-Type
-            3'd5:    rd_ctrl = 4'd4;//B-Type
-            default: rd_ctrl = 4'd0;
-        endcase
+                3'd2:    rd_ctrl = 4'd0;//J-Type jal
+                3'd3:    rd_ctrl = 4'd4;//S-Type sw
+                3'd4:    rd_ctrl = 4'd2;//R-Type
+                3'd5:    rd_ctrl = 4'd4;//B-Type
+                default: rd_ctrl = 4'd0;
+            endcase
+        end
     end
 end
 
@@ -140,20 +145,22 @@ end
 //ALUBctrl == 2'd1 -> src2
 //ALUBctrl == 2'd2 -> r_csr_data
 always@(*)begin
-    case(opcode_type)//I-Type
-        3'd0:begin
-            if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                ALUBctrl = 2'd2;
+    if(IFU_valid) begin
+        case(opcode_type)//I-Type
+            3'd0:begin
+                if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                    ALUBctrl = 2'd2;
+                end
+                else begin
+                    ALUBctrl = 2'd0;
+                end
             end
-            else begin
-                ALUBctrl = 2'd0;
-            end
-        end
-        3'd3:    ALUBctrl = 2'd0;//S-Type sw
-        3'd4:    ALUBctrl = 2'd1;//R-Type
-        3'd5:    ALUBctrl = 2'd1;//B-Type
-        default: ALUBctrl = 2'd1;
-    endcase
+            3'd3:    ALUBctrl = 2'd0;//S-Type sw
+            3'd4:    ALUBctrl = 2'd1;//R-Type
+            3'd5:    ALUBctrl = 2'd1;//B-Type
+            default: ALUBctrl = 2'd1;
+        endcase
+    end
 end
 
 //---------------------ALU_ctrl----------------------//
@@ -175,220 +182,228 @@ end
 // 0             111             带符号大于等于
 // 1             111             无符号大于等于
 always@(*)begin
-    case(opcode_type)
-        3'd0:begin//I-Type
-            if(func3 == 3'b000 && opcode == 7'b0010011)begin//addi
-                ALU_ctrl = 4'b0000;
+    if(IFU_valid) begin
+        case(opcode_type)
+            3'd0:begin//I-Type
+                if(func3 == 3'b000 && opcode == 7'b0010011)begin//addi
+                    ALU_ctrl = 4'b0000;
+                end
+                else if(func3 == 3'b011 && opcode == 7'b0010011)begin//sltiu
+                    ALU_ctrl = 4'b1011;
+                end
+                else if(func3 == 3'b111 && opcode == 7'b0010011)begin//andi
+                    ALU_ctrl = 4'b1101;
+                end
+                else if(func3 == 3'b100 && opcode == 7'b0010011)begin//xori
+                    ALU_ctrl = 4'b0010;
+                end
+                else if(func3 == 3'b110 && opcode == 7'b0010011)begin//ori
+                    ALU_ctrl = 4'b0101;
+                end
+                else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
+                    ALU_ctrl = 4'b1100;
+                end
+                else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//srli
+                    ALU_ctrl = 4'b0100;
+                end
+                else if(func3 == 3'b001 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//slli
+                    ALU_ctrl = 4'b0110;
+                end
+                else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                    ALU_ctrl = 4'b0101;
+                end
+                else begin
+                    ALU_ctrl = 4'b0000;
+                end
             end
-            else if(func3 == 3'b011 && opcode == 7'b0010011)begin//sltiu
-                ALU_ctrl = 4'b1011;
+            3'd3:   ALU_ctrl = 4'd0;//S-Type
+            3'd4:begin//R-Type
+                if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
+                    ALU_ctrl = 4'b0000;
+                end
+                else if(func3 == 3'b000 && func7 == 7'b0100000)begin//sub
+                    ALU_ctrl = 4'b0001;
+                end
+                else if(func3 == 3'b011 && func7 == 7'b0000000)begin//sltu
+                    ALU_ctrl = 4'b1011;
+                end
+                else if(func3 == 3'b010 && func7 == 7'b0000000)begin//slt
+                    ALU_ctrl = 4'b0011;
+                end
+                else if(func3 == 3'b100 && func7 == 7'b0000000)begin//xor
+                    ALU_ctrl = 4'b0010;
+                end
+                else if(func3 == 3'b001 && func7 == 7'b0000000)begin//sll
+                    ALU_ctrl = 4'b0110;
+                end
+                else if(func3 == 3'b111 && func7 == 7'b0000000)begin//and
+                    ALU_ctrl = 4'b1101;
+                end
+                else if(func3 == 3'b101 && func7 == 7'b0100000)begin//sra
+                    ALU_ctrl = 4'b1100;
+                end
+                else if(func3 == 3'b110 && func7 == 7'b0000000)begin//or
+                    ALU_ctrl = 4'b0101;
+                end
+                else if(func3 == 3'b101 && func7 == 7'b0000000)begin//srl
+                    ALU_ctrl = 4'b0100;
+                end
+                else begin
+                    ALU_ctrl = 4'b0000;
+                end
             end
-            else if(func3 == 3'b111 && opcode == 7'b0010011)begin//andi
-                ALU_ctrl = 4'b1101;
+            3'd5:begin//B-Type
+                if(func3 == 3'b000)begin//beq
+                    ALU_ctrl = 4'b1000;
+                end
+                else if(func3 == 3'b001)begin//bne
+                    ALU_ctrl = 4'b1001;
+                end
+                else if(func3 == 3'b101)begin//bge
+                    ALU_ctrl = 4'b0111;
+                end
+                else if(func3 == 3'b111)begin//bgeu
+                    ALU_ctrl = 4'b1111;
+                end
+                else if(func3 == 3'b100)begin//blt
+                    ALU_ctrl = 4'b0011;
+                end
+                else if(func3 == 3'b110)begin//bltu
+                    ALU_ctrl = 4'b1011;
+                end
+                else begin
+                    ALU_ctrl = 4'b0000;
+                end
             end
-            else if(func3 == 3'b100 && opcode == 7'b0010011)begin//xori
-                ALU_ctrl = 4'b0010;
-            end
-            else if(func3 == 3'b110 && opcode == 7'b0010011)begin//ori
-                ALU_ctrl = 4'b0101;
-            end
-            else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
-                ALU_ctrl = 4'b1100;
-            end
-            else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//srli
-                ALU_ctrl = 4'b0100;
-            end
-            else if(func3 == 3'b001 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//slli
-                ALU_ctrl = 4'b0110;
-            end
-            else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                ALU_ctrl = 4'b0101;
-            end
-            else begin
-                ALU_ctrl = 4'b0000;
-            end
-        end
-        3'd3:   ALU_ctrl = 4'd0;//S-Type
-        3'd4:begin//R-Type
-            if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
-                ALU_ctrl = 4'b0000;
-            end
-            else if(func3 == 3'b000 && func7 == 7'b0100000)begin//sub
-                ALU_ctrl = 4'b0001;
-            end
-            else if(func3 == 3'b011 && func7 == 7'b0000000)begin//sltu
-                ALU_ctrl = 4'b1011;
-            end
-            else if(func3 == 3'b010 && func7 == 7'b0000000)begin//slt
-                ALU_ctrl = 4'b0011;
-            end
-            else if(func3 == 3'b100 && func7 == 7'b0000000)begin//xor
-                ALU_ctrl = 4'b0010;
-            end
-            else if(func3 == 3'b001 && func7 == 7'b0000000)begin//sll
-                ALU_ctrl = 4'b0110;
-            end
-            else if(func3 == 3'b111 && func7 == 7'b0000000)begin//and
-                ALU_ctrl = 4'b1101;
-            end
-            else if(func3 == 3'b101 && func7 == 7'b0100000)begin//sra
-                ALU_ctrl = 4'b1100;
-            end
-            else if(func3 == 3'b110 && func7 == 7'b0000000)begin//or
-                ALU_ctrl = 4'b0101;
-            end
-            else if(func3 == 3'b101 && func7 == 7'b0000000)begin//srl
-                ALU_ctrl = 4'b0100;
-            end
-            else begin
-                ALU_ctrl = 4'b0000;
-            end
-        end
-        3'd5:begin//B-Type
-            if(func3 == 3'b000)begin//beq
-                ALU_ctrl = 4'b1000;
-            end
-            else if(func3 == 3'b001)begin//bne
-                ALU_ctrl = 4'b1001;
-            end
-            else if(func3 == 3'b101)begin//bge
-                ALU_ctrl = 4'b0111;
-            end
-            else if(func3 == 3'b111)begin//bgeu
-                ALU_ctrl = 4'b1111;
-            end
-            else if(func3 == 3'b100)begin//blt
-                ALU_ctrl = 4'b0011;
-            end
-            else if(func3 == 3'b110)begin//bltu
-                ALU_ctrl = 4'b1011;
-            end
-            else begin
-                ALU_ctrl = 4'b0000;
-            end
-        end
-        default: ALU_ctrl = 4'd0;
-    endcase
+            default: ALU_ctrl = 4'd0;
+        endcase
+    end
 end
 
 //---------------------w_mem----------------------//
 
 always@(*)begin
-    case(opcode_type)
-        3'd3:begin //S-Type
-            w_mem_en = 1'd1;
-            if(func3 == 3'b000)begin//sb
-                 w_mem_len = 8'd1;
+    if(IFU_valid) begin
+        case(opcode_type)
+            3'd3:begin //S-Type
+                w_mem_en = 1'd1;
+                if(func3 == 3'b000)begin//sb
+                    w_mem_len = 8'd1;
+                end
+                else if(func3 == 3'b001)begin//sh
+                    w_mem_len = 8'd2;
+                end
+                else if(func3 == 3'b010)begin//sw
+                    w_mem_len = 8'd4;
+                end
+                else begin
+                    w_mem_len = 8'd1;
+                end
             end
-            else if(func3 == 3'b001)begin//sh
-                 w_mem_len = 8'd2;
+            default: begin 
+                w_mem_en = 1'd0;
+                w_mem_len = 8'd1;
             end
-            else if(func3 == 3'b010)begin//sw
-                 w_mem_len = 8'd4;
-            end
-            else begin
-                 w_mem_len = 8'd1;
-            end
-        end
-        default: begin 
-            w_mem_en = 1'd0;
-            w_mem_len = 8'd1;
-        end
-    endcase
+        endcase
+    end
 end
 
 //---------------------r_mem----------------------//
 
 always@(*)begin
-    case(opcode_type)
-        3'd0:begin //I-Type
-            if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                r_mem_en = 1'd1;
-                if(func3 == 3'b000)begin//lb
-                    r_mem_len = 8'd1;
-                    sign_extension = 1'd1;
-                end
-                else if(func3 == 3'b001)begin//lh
-                    r_mem_len = 8'd2;
-                    sign_extension = 1'd1;
-                end
-                else if(func3 == 3'b010)begin//lw
-                    r_mem_len = 8'd4;
-                    sign_extension = 1'd1;
-                end
-                else if(func3 == 3'b100)begin//lbu
-                    r_mem_len = 8'd1;
-                    sign_extension = 1'd0;
-                end
-                else if(func3 == 3'b101)begin//lhu
-                    r_mem_len = 8'd2;
-                    sign_extension = 1'd0;
+    if(IFU_valid) begin
+        case(opcode_type)
+            3'd0:begin //I-Type
+                if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
+                    r_mem_en = 1'd1;
+                    if(func3 == 3'b000)begin//lb
+                        r_mem_len = 8'd1;
+                        sign_extension = 1'd1;
+                    end
+                    else if(func3 == 3'b001)begin//lh
+                        r_mem_len = 8'd2;
+                        sign_extension = 1'd1;
+                    end
+                    else if(func3 == 3'b010)begin//lw
+                        r_mem_len = 8'd4;
+                        sign_extension = 1'd1;
+                    end
+                    else if(func3 == 3'b100)begin//lbu
+                        r_mem_len = 8'd1;
+                        sign_extension = 1'd0;
+                    end
+                    else if(func3 == 3'b101)begin//lhu
+                        r_mem_len = 8'd2;
+                        sign_extension = 1'd0;
+                    end
+                    else begin
+                        r_mem_len = 8'd1;
+                        sign_extension = 1'd0;
+                    end
                 end
                 else begin
-                    r_mem_len = 8'd1;
-                    sign_extension = 1'd0;
+                    r_mem_en = 1'd0;
                 end
             end
-            else begin
+            default: begin 
                 r_mem_en = 1'd0;
+                r_mem_len = 8'd1;
+                sign_extension = 1'd0;
             end
-        end
-        default: begin 
-            r_mem_en = 1'd0;
-            r_mem_len = 8'd1;
-            sign_extension = 1'd0;
-        end
-    endcase
+        endcase
+    end
 end
 
 //---------------------CSR----------------------//
 always@(*)begin
-    case(opcode_type)
-        3'd0:begin //I-Type
-            if(inst == 32'b00110000001000000000000001110011)begin//mret
-                w_csr_addr  = 12'b0;
-                w_csr_en    = 1'b0;
-                w_csr_data_ctrl  = 4'd0;//32'b0;
-                w_csr_ecall = 1'b0;
-                r_csr_addr  = 12'h341;//mepc
-                r_csr_en    = 1'b1;
+    if(IFU_valid) begin
+        case(opcode_type)
+            3'd0:begin //I-Type
+                if(inst == 32'b00110000001000000000000001110011)begin//mret
+                    w_csr_addr  = 12'b0;
+                    w_csr_en    = 1'b0;
+                    w_csr_data_ctrl  = 4'd0;//32'b0;
+                    w_csr_ecall = 1'b0;
+                    r_csr_addr  = 12'h341;//mepc
+                    r_csr_en    = 1'b1;
+                end
+                else if(inst == 32'b00000000000000000000000001110011)begin//ecall
+                    w_csr_addr  = 12'b0;
+                    w_csr_en    = 1'b0;
+                    w_csr_data_ctrl  = 4'd0;//32'b0;
+                    w_csr_ecall = 1'b1;
+                    r_csr_addr  = 12'b0;
+                    r_csr_en    = 1'b0;
+                end
+                else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
+                    w_csr_addr  = imme[11:0];
+                    w_csr_en    = 1'b1;
+                    w_csr_data_ctrl  = 4'd1;//"src1";
+                    w_csr_ecall = 1'b0;
+                    r_csr_addr  = imme[11:0];
+                    r_csr_en    = 1'b1;
+                end
+                else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                    w_csr_addr  = imme[11:0];
+                    w_csr_en    = 1'b1;
+                    w_csr_data_ctrl  = 4'd2;//"initial_csr_value | src1";
+                    w_csr_ecall = 1'b0;
+                    r_csr_addr  = imme[11:0];
+                    r_csr_en    = 1'b1;
+                end
+                else begin
+                    w_csr_addr  = 12'b0;
+                    w_csr_en    = 1'b0;
+                    w_csr_data_ctrl  = 4'd0;//32'b0;
+                    w_csr_ecall = 1'b0;
+                    r_csr_addr  = 12'b0;
+                    r_csr_en    = 1'b0;
+                end
             end
-            else if(inst == 32'b00000000000000000000000001110011)begin//ecall
-                w_csr_addr  = 12'b0;
-                w_csr_en    = 1'b0;
-                w_csr_data_ctrl  = 4'd0;//32'b0;
-                w_csr_ecall = 1'b1;
-                r_csr_addr  = 12'b0;
-                r_csr_en    = 1'b0;
+            default: begin 
             end
-            else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
-                w_csr_addr  = imme[11:0];
-                w_csr_en    = 1'b1;
-                w_csr_data_ctrl  = 4'd1;//"src1";
-                w_csr_ecall = 1'b0;
-                r_csr_addr  = imme[11:0];
-                r_csr_en    = 1'b1;
-            end
-            else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                w_csr_addr  = imme[11:0];
-                w_csr_en    = 1'b1;
-                w_csr_data_ctrl  = 4'd2;//"initial_csr_value | src1";
-                w_csr_ecall = 1'b0;
-                r_csr_addr  = imme[11:0];
-                r_csr_en    = 1'b1;
-            end
-            else begin
-                w_csr_addr  = 12'b0;
-                w_csr_en    = 1'b0;
-                w_csr_data_ctrl  = 4'd0;//32'b0;
-                w_csr_ecall = 1'b0;
-                r_csr_addr  = 12'b0;
-                r_csr_en    = 1'b0;
-            end
-        end
-        default: begin 
-        end
-    endcase
+        endcase
+    end
 end
 
 endmodule

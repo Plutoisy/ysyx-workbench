@@ -1,4 +1,3 @@
-import "DPI-C" function int rtl_pmem_read(int r_mem_addr);
 module SRAM (
     input wire clk,
     input wire rst,

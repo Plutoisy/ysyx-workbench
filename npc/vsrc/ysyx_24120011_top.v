@@ -45,6 +45,7 @@ wire [31:0] w_csr_data;
 wire [31:0] r_csr_data;
 reg [31:0] pc;
 reg [31:0] inst;
+wire IFU_valid;
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
