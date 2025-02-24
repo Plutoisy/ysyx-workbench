@@ -1,6 +1,6 @@
 import "DPI-C" function void ebreak ();
 import "DPI-C" function void npc_trap(input int pc, input int ret);
-import "DPI-C" function void get_pc_inst(input int pc, input int inst, input unsigned char IFU_valid);
+import "DPI-C" function void get_pc_inst(input int pc, input int inst, input bit IFU_valid);
 
 module ysyx_24120011_top (
     input clk,
