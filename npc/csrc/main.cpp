@@ -307,7 +307,9 @@ void cpu_exec(uint32_t n){
         top->clk ^= 1;
       }
       //top_inst = pmem_read(top_pc,4);
+      printf("top_IFU_valid: %d\n",top_IFU_valid);
       if(top_IFU_valid){
+        
         AssembleDecoder(handle, top_inst, top_pc);
         printf("exec times: %d\n",i+1);
         //difftest_exec(1);
