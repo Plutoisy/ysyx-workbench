@@ -6,21 +6,19 @@ module SRAM (
     output reg sram_valid
 );
 
-    reg [31:0] data_reg;
     reg read_request;
+
     always @(posedge clk) begin
         if (rst) begin
             sram_rd_data_out <= 32'b0;
-            data_reg <= 32'b0;
             sram_valid <= 1'b0;
             read_request <= 1'b0;
         end else begin
             if (read_request) begin
-                sram_rd_data_out <= data_reg;
                 sram_valid <= 1'b1;
                 read_request <= 1'b0;
             end else begin
-                data_reg <= rtl_pmem_read(sram_rd_addr);
+                sram_rd_data_out <= rtl_pmem_read(sram_rd_addr);
                 sram_valid <= 1'b0;
                 read_request <= 1'b1;
             end
