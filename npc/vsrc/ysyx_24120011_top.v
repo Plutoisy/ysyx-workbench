@@ -94,6 +94,7 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
 
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .inst           ( inst           ),
+    .IFU_valid      ( IFU_valid      ),
     .rd             ( rd             ),
     .rs1            ( rs1            ),
     .rs2            ( rs2            ),
