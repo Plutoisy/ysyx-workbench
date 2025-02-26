@@ -64,7 +64,8 @@ always@(posedge clk)begin
         end
     end
 
-    else begin//shouldn't in
+    else begin
+        LSU_valid = 1'b1;
         //r_mem_data_tmp = 32'b11111111;
         //r_mem_data = 32'b11111111;
     end
