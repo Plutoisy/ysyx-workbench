@@ -1,7 +1,6 @@
 module SRAM (
     input wire clk,
     input wire rst,
-    input wire en,
     input wire [31:0] sram_rd_addr,
     output reg [31:0] sram_rd_data_out,
     output reg sram_valid
@@ -14,7 +13,7 @@ module SRAM (
             sram_rd_data_out <= 32'b0;
             sram_valid <= 1'b0;
             read_request <= 1'b0;
-        end else if(en) begin
+        end else begin
             if (read_request) begin
                 sram_valid <= 1'b0;
                 read_request <= 1'b0;
