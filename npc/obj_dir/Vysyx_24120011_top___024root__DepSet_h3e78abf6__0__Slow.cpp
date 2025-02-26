@@ -155,7 +155,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__inst = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__IFU_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__LSU_valid = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__LSU_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__i_SRAM__DOT__read_request = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0 = VL_RAND_RESET_I(1);

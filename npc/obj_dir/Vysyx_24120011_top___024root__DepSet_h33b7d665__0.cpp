@@ -399,7 +399,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         vlSelf->ysyx_24120011_top__DOT__inst = 0U;
         vlSelf->ysyx_24120011_top__DOT__IFU_valid = 0U;
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__i_SRAM__DOT__read_request = 0U;
-    } else if (vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__LSU_valid) {
+    } else if (vlSelf->ysyx_24120011_top__DOT__LSU_valid) {
         if (vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__i_SRAM__DOT__read_request) {
             vlSelf->ysyx_24120011_top__DOT__IFU_valid = 0U;
             __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__i_SRAM__DOT__read_request = 0U;
