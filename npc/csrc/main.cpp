@@ -307,10 +307,10 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-      printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
-      AssembleDecoder(handle, top_inst, top_pc);
+      //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
+      
       if(top_IFU_valid_int){
-        
+        AssembleDecoder(handle, top_inst, top_pc);
         printf("exec times: %d\n",i+1);
         difftest_exec(1);
         difftest_regcpy(&refstate, 0);
@@ -332,7 +332,7 @@ void cpu_exec(uint32_t n){
             //AssembleDecoder(handle, top_inst, top_pc);
             //printf("exec times: %d\n",i+1);
             //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-            //assert(0);
+            assert(0);
           }
         }
       }
