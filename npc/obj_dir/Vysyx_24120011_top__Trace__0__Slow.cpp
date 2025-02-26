@@ -107,7 +107,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+34,"w_csr_data", false,-1, 31,0);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("i_IFU ");
-    tracep->declBit(c+39,"LSU_valid", false,-1);
     tracep->declBit(c+124,"clk", false,-1);
     tracep->declBit(c+125,"rst", false,-1);
     tracep->declBus(c+36,"pc", false,-1, 31,0);
@@ -116,7 +115,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->pushNamePrefix("i_SRAM ");
     tracep->declBit(c+124,"clk", false,-1);
     tracep->declBit(c+125,"rst", false,-1);
-    tracep->declBit(c+39,"en", false,-1);
     tracep->declBus(c+36,"sram_rd_addr", false,-1, 31,0);
     tracep->declBus(c+37,"sram_rd_data_out", false,-1, 31,0);
     tracep->declBit(c+38,"sram_valid", false,-1);
@@ -141,7 +139,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->pushNamePrefix("i_SRAM ");
     tracep->declBit(c+124,"clk", false,-1);
     tracep->declBit(c+125,"rst", false,-1);
-    tracep->declBit(c+38,"en", false,-1);
     tracep->declBus(c+15,"sram_rd_addr", false,-1, 31,0);
     tracep->declBus(c+55,"sram_rd_data_out", false,-1, 31,0);
     tracep->declBit(c+56,"sram_valid", false,-1);
