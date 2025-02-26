@@ -321,7 +321,7 @@ void cpu_exec(uint32_t n){
         printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
         if(refstate.pc != top_pc){
          //AssembleDecoder(handle, top_inst, top_pc);
-         //assert(0);
+         assert(0);
          //printf("0x%08x\n",refstate.pc );
          //printf("0x%08x\n",top_pc);
         }
@@ -332,7 +332,7 @@ void cpu_exec(uint32_t n){
             //AssembleDecoder(handle, top_inst, top_pc);
             //printf("exec times: %d\n",i+1);
             //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-            //assert(0);
+            assert(0);
           }
         }
       }
