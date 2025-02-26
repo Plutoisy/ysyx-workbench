@@ -306,7 +306,7 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-
+      printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       if(top_IFU_valid_int){
         AssembleDecoder(handle, top_inst, top_pc);
         printf("exec times: %d\n",i+1);
