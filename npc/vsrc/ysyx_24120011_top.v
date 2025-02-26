@@ -73,6 +73,7 @@ assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 
 ysyx_24120011_IFU i_IFU(
     .clk       ( clk       ),
     .rst       ( rst       ),
+    .LSU_valid ( LSU_valid ),
     .pc        ( pc        ),
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid )
