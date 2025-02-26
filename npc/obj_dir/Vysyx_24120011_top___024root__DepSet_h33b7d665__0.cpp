@@ -139,6 +139,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
                     : ((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_len))
                         ? vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__r_mem_data_tmp
                         : 0xffU)));
+    } else {
+        vlSelf->ysyx_24120011_top__DOT__LSU_valid = 1U;
     }
     if (vlSelf->rst) {
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mtvec = 0U;

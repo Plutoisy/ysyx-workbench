@@ -173,6 +173,7 @@ ysyx_24120011_ALUCtrl i_ALUCtrl(
 ysyx_24120011_LSU i_LSU(
     .clk   ( clk   ),
     .rst   ( rst   ),
+    .IFU_valid           ( IFU_valid           ),
     .w_mem_addr          ( alu_result          ),
     .r_mem_addr          ( alu_result          ),
     .w_mem_len           ( w_mem_len           ),

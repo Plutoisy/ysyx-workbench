@@ -3,6 +3,7 @@ import "DPI-C" function int rtl_pmem_read(int r_mem_addr);
 module ysyx_24120011_LSU(
     input clk,
     input rst,
+    input IFU_valid,
     input [31:0] w_mem_addr,
     input [31:0] r_mem_addr,
     input [7:0] w_mem_len,
@@ -31,14 +32,24 @@ SRAM i_SRAM(
 always@(posedge clk)begin
     if(w_mem_en && !r_mem_en)begin
         rtl_pmem_write(w_mem_addr,w_mem_data,w_mem_len);
-        LSU_valid = 1'b1;
+        if(IFU_valid) begin
+            LSU_valid = 1'b1;
+        end
+        else begin
+            LSU_valid = 1'b0;
+        end
         //r_mem_data_tmp = 32'b00000000;
         //r_mem_data = 32'b00000000;
     end
     
     else if(r_mem_en && !w_mem_en)begin
         //r_mem_data_tmp = rtl_pmem_read(r_mem_addr);
-        LSU_valid = LSU_valid_tmp;
+        if(IFU_valid) begin
+            LSU_valid = LSU_valid_tmp;
+        end
+        else begin
+            LSU_valid = 1'b0;
+        end
         if(r_mem_len == 8'd1)begin
             if(sign_extension)begin
                 r_mem_data = {{24{r_mem_data_tmp[7]}},r_mem_data_tmp[7:0]};
@@ -65,7 +76,12 @@ always@(posedge clk)begin
     end
 
     else begin
-        LSU_valid = 1'b1;
+        if(IFU_valid) begin
+            LSU_valid = 1'b1;
+        end
+        else begin
+            LSU_valid = 1'b0;
+        end
         //r_mem_data_tmp = 32'b11111111;
         //r_mem_data = 32'b11111111;
     end
