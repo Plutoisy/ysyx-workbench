@@ -488,9 +488,9 @@ int main(int argc, char *argv[]) {
   difftest_regcpy(dut, 1);
   sim_init();
   system_rst();
-  sdb_mainloop();
-  //cmd_si("-1");
-  //cmd_q(NULL);
+  //sdb_mainloop();
+  cmd_si("-1");
+  cmd_q(NULL);
   cs_close(&handle);
   sim_exit();
   return 0;
