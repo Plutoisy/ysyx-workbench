@@ -281,7 +281,8 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
       return rtc_port_base[0];
     }
     else{
-      assert(0);
+      //assert(0);
+      return 0;
     }
   }
   else{
