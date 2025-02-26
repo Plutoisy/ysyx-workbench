@@ -1,6 +1,7 @@
 module ysyx_24120011_IDU (
     input [31:0]  inst,
     input IFU_valid,
+    input LSU_valid,
     output [4:0]  rd,
     output [4:0]  rs1,
     output [4:0]  rs2,
@@ -362,7 +363,7 @@ always@(*)begin
                 w_csr_data_ctrl  = 4'd0;//32'b0;
                 w_csr_ecall = 1'b0;
                 r_csr_addr  = 12'h341;//mepc
-                if(IFU_valid) begin
+                if(LSU_valid) begin
                     r_csr_en    = 1'b1;
                 end
                 else begin
@@ -379,7 +380,7 @@ always@(*)begin
             end
             else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
                 w_csr_addr  = imme[11:0];
-                if(IFU_valid) begin
+                if(LSU_valid) begin
                     w_csr_en    = 1'b1;
                 end
                 else begin
@@ -388,7 +389,7 @@ always@(*)begin
                 w_csr_data_ctrl  = 4'd1;//"src1";
                 w_csr_ecall = 1'b0;
                 r_csr_addr  = imme[11:0];
-                if(IFU_valid) begin
+                if(LSU_valid) begin
                     r_csr_en    = 1'b1;
                 end
                 else begin
@@ -397,7 +398,7 @@ always@(*)begin
             end
             else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
                 w_csr_addr  = imme[11:0];
-                if(IFU_valid) begin
+                if(LSU_valid) begin
                     w_csr_en    = 1'b1;
                 end
                 else begin
@@ -406,7 +407,7 @@ always@(*)begin
                 w_csr_data_ctrl  = 4'd2;//"initial_csr_value | src1";
                 w_csr_ecall = 1'b0;
                 r_csr_addr  = imme[11:0];
-                if(IFU_valid) begin
+                if(LSU_valid) begin
                     r_csr_en    = 1'b1;
                 end
                 else begin

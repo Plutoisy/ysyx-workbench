@@ -46,9 +46,10 @@ wire [31:0] r_csr_data;
 reg [31:0] pc;
 reg [31:0] inst;
 wire IFU_valid;
-wire [31:0] IFU_valid_int;
+wire LSU_valid;
+wire [31:0] LSU_valid_int;
 
-assign IFU_valid_int = {31'b0,IFU_valid};
+assign LSU_valid_int = {31'b0,LSU_valid};
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
@@ -64,7 +65,7 @@ always@(posedge clk) begin
 end
 
 always@(posedge clk) begin
-    get_pc_inst(pc,inst,IFU_valid_int);
+    get_pc_inst(pc,inst,LSU_valid_int);
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
@@ -96,12 +97,13 @@ ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
     .rst   ( rst ), 
     .din   ( dnpc ), 
     .dout  ( pc ), 
-    .wen   ( IFU_valid )
+    .wen   ( LSU_valid )
 );
 
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .inst           ( inst           ),
     .IFU_valid      ( IFU_valid      ),
+    .LSU_valid      ( LSU_valid      ),
     .rd             ( rd             ),
     .rs1            ( rs1            ),
     .rs2            ( rs2            ),
@@ -133,7 +135,7 @@ ysyx_24120011_ALU i_ALU(
     .ALUout     ( alu_result      )
 );
 
-ysyx_24120011_RdProcessor i_RdProcessor(
+ysyx_24120011_WBU i_WBU(
     .pc_add_imme_out ( pc_add_imme_out ),
     .pc_add_4_out    ( pc_add_4_out    ),
     .alu_result      ( alu_result      ),
@@ -141,7 +143,7 @@ ysyx_24120011_RdProcessor i_RdProcessor(
     .r_mem_data      ( r_mem_data      ),
     .r_csr_data      ( r_csr_data      ),
     .rd_ctrl         ( rd_ctrl         ),
-    .IFU_valid       ( IFU_valid       ),
+    .LSU_valid       ( LSU_valid       ),
     .w_en            ( w_en            ),
     .wdata           ( wdata           )
 );
@@ -168,8 +170,9 @@ ysyx_24120011_ALUCtrl i_ALUCtrl(
 );
 
 
-ysyx_24120011_MemProcessor i_MemProcessor(
+ysyx_24120011_LSU i_LSU(
     .clk   ( clk   ),
+    .rst   ( rst   ),
     .w_mem_addr          ( alu_result          ),
     .r_mem_addr          ( alu_result          ),
     .w_mem_len           ( w_mem_len           ),
@@ -178,7 +181,8 @@ ysyx_24120011_MemProcessor i_MemProcessor(
     .r_mem_en            ( r_mem_en            ),
     .sign_extension      ( sign_extension      ),
     .w_mem_data          ( src2                ),
-    .r_mem_data          ( r_mem_data          )
+    .r_mem_data          ( r_mem_data          ),
+    .LSU_valid           ( LSU_valid           )
 );
 
 ysyx_24120011_Csr i_Csr(
