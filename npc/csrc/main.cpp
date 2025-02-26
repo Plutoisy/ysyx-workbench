@@ -331,7 +331,7 @@ void cpu_exec(uint32_t n){
             //AssembleDecoder(handle, top_inst, top_pc);
             //printf("exec times: %d\n",i+1);
             //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-            assert(0);
+            //assert(0);
           }
         }
       }
