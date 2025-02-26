@@ -22,6 +22,7 @@ reg LSU_valid_tmp;
 SRAM i_SRAM(
     .clk              ( clk              ),
     .rst              ( rst              ),
+    .sram_rd_en       ( r_mem_en         ),      
     .sram_rd_addr     ( r_mem_addr       ),
     .sram_rd_data_out ( r_mem_data_tmp   ),
     .sram_valid       ( LSU_valid_tmp    )
