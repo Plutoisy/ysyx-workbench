@@ -63,6 +63,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     IData/*31:0*/ ysyx_24120011_top__DOT__r_csr_data;
     IData/*31:0*/ ysyx_24120011_top__DOT__pc;
     IData/*31:0*/ ysyx_24120011_top__DOT__inst;
+    IData/*31:0*/ ysyx_24120011_top__DOT__LSU_valid_int;
     IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__B_in;
     IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp;
     IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0;

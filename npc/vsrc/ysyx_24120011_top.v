@@ -47,7 +47,7 @@ reg [31:0] pc;
 reg [31:0] inst;
 wire IFU_valid;
 wire LSU_valid;
-wire [31:0] LSU_valid_int;
+wire [31:0] IFU_valid_int;
 
 assign IFU_valid_int = {31'b0,IFU_valid};
 
