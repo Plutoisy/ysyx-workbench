@@ -32,7 +32,7 @@ module SRAM (
     parameter ysyx_24120011_S_AXI_WDATA = 3'b100;
     parameter ysyx_24120011_S_AXI_WRESP = 3'b101;
     parameter ysyx_24120011_S_AXI_RESP_OKAY = 2'b00;
-    
+
     reg [2:0] state;
     reg [2:0] next_state;
     reg [31:0] addr;
@@ -71,7 +71,8 @@ module SRAM (
     // always@(posedge clk)begin
     //     if (state == ysyx_24120011_S_AXI_WDATA) "rtl_pmem_write(addr,wdata)";
     // end
-
+    
+    /* verilator lint_off LATCH */
     always@(*)begin
         case(state)
             ysyx_24120011_S_AXI_IDLE  : next_state = (arvalid) ? ysyx_24120011_S_AXI_RADDR : (awvalid) ? ysyx_24120011_S_AXI_WADDR : ysyx_24120011_S_AXI_IDLE;
@@ -83,6 +84,7 @@ module SRAM (
 			default : next_state = ysyx_24120011_S_AXI_IDLE;
         endcase
     end
+    /* verilator lint_on LATCH */
 
     always@(posedge clk)begin
         if(rst)begin
