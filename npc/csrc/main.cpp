@@ -124,8 +124,8 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 
 void step_and_dump_wave(){
   top->eval();
-  //contextp->timeInc(1);
-  //tfp->dump(contextp->time());
+  contextp->timeInc(1);
+  tfp->dump(contextp->time());
 }
 
 void sim_init(){
@@ -270,7 +270,7 @@ static uint32_t rtc_port_base[2];
 
 extern "C" int rtl_pmem_read(int r_mem_addr){
   if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    //printf("R->addr: 0x%x, len: %d\n", r_mem_addr, 4);
+    printf("R->addr: 0x%x, len: %d\n", r_mem_addr, 4);
     if (r_mem_addr == 0xa0000048 + 4) { 
       uint64_t us = get_time();
       rtc_port_base[0] = (uint32_t)us;
@@ -281,7 +281,7 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
       return rtc_port_base[0];
     }
     else{
-      assert(0);
+      //assert(0);
       return 0;
     }
   }
@@ -307,34 +307,34 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
         top->clk ^= 1;
       }
-      //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
+      printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       
       if(top_IFU_valid_int){
-        // AssembleDecoder(handle, top_inst, top_pc);
-        // printf("exec times: %d\n",i+1);
-        // difftest_exec(1);
-        // difftest_regcpy(&refstate, 0);
+        AssembleDecoder(handle, top_inst, top_pc);
+        printf("exec times: %d\n",i+1);
+        difftest_exec(1);
+        difftest_regcpy(&refstate, 0);
 
         step_and_dump_wave();
 
-        // printf("        dut                    | ref                   \n");
-        // printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
-        // if(refstate.pc != top_pc){
-        //  //AssembleDecoder(handle, top_inst, top_pc);
-        //  assert(0);
-        //  //printf("0x%08x\n",refstate.pc );
-        //  //printf("0x%08x\n",top_pc);
-        // }
+        printf("        dut                    | ref                   \n");
+        printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+        if(refstate.pc != top_pc){
+         //AssembleDecoder(handle, top_inst, top_pc);
+         assert(0);
+         //printf("0x%08x\n",refstate.pc );
+         //printf("0x%08x\n",top_pc);
+        }
         
-        // for(int j = 0; j < 32; j++){
-        //   printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-        //   if(refstate.gpr[j] != gpr[j]){
-        //     //AssembleDecoder(handle, top_inst, top_pc);
-        //     //printf("exec times: %d\n",i+1);
-        //     //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-        //     assert(0);
-        //   }
-        // }
+        for(int j = 0; j < 32; j++){
+          printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+          if(refstate.gpr[j] != gpr[j]){
+            //AssembleDecoder(handle, top_inst, top_pc);
+            //printf("exec times: %d\n",i+1);
+            //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+            assert(0);
+          }
+        }
       }
       else{
         step_and_dump_wave();
@@ -488,9 +488,9 @@ int main(int argc, char *argv[]) {
   difftest_regcpy(dut, 1);
   sim_init();
   system_rst();
-  //sdb_mainloop();
-  cmd_si("-1");
-  cmd_q(NULL);
+  sdb_mainloop();
+  //cmd_si("-1");
+  //cmd_q(NULL);
   cs_close(&handle);
   sim_exit();
   return 0;
