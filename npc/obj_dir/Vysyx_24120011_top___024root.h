@@ -32,7 +32,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*0:0*/ ysyx_24120011_top__DOT__r_csr_en;
     CData/*0:0*/ ysyx_24120011_top__DOT__w_csr_ecall;
     CData/*0:0*/ ysyx_24120011_top__DOT__LSU_valid;
-    CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__rready;
     CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state;
     CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__next_state;
     CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type;
@@ -44,7 +43,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     CData/*0:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__sless;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__LSU_valid_tmp;
     CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__i_SRAMold__DOT__read_request;
-    CData/*6:0*/ __Vtableidx1;
+    CData/*5:0*/ __Vtableidx1;
     CData/*3:0*/ __Vtableidx3;
     CData/*6:0*/ __Vtableidx4;
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
