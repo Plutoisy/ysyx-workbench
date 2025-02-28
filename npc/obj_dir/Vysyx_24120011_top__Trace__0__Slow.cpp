@@ -56,7 +56,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+37,"inst", false,-1, 31,0);
     tracep->declBit(c+38,"IFU_valid", false,-1);
     tracep->declBit(c+39,"LSU_valid", false,-1);
-    tracep->declBus(c+40,"LSU_valid_int", false,-1, 31,0);
+    tracep->declBus(c+40,"IFU_valid_int", false,-1, 31,0);
     tracep->pushNamePrefix("i_ALU ");
     tracep->declBus(c+10,"A", false,-1, 31,0);
     tracep->declBus(c+14,"B", false,-1, 31,0);
@@ -389,7 +389,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+37,(vlSelf->ysyx_24120011_top__DOT__inst),32);
     bufp->fullBit(oldp+38,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
     bufp->fullBit(oldp+39,(vlSelf->ysyx_24120011_top__DOT__LSU_valid));
-    bufp->fullIData(oldp+40,(vlSelf->ysyx_24120011_top__DOT__LSU_valid),32);
+    bufp->fullIData(oldp+40,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))),32);
     bufp->fullIData(oldp+41,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in),32);
     bufp->fullIData(oldp+42,(((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))
                                ? vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0

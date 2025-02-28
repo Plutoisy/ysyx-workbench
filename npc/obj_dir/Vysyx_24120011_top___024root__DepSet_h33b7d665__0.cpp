@@ -961,5 +961,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__1(Vysyx_2412
     Vysyx_24120011_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_24120011_top___024root___nba_sequent__TOP__1\n"); );
     // Body
-    Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__pc, vlSelf->ysyx_24120011_top__DOT__inst, (IData)(vlSelf->ysyx_24120011_top__DOT__LSU_valid));
+    Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__pc, vlSelf->ysyx_24120011_top__DOT__inst, 
+                                                                          (2U 
+                                                                           == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)));
 }
