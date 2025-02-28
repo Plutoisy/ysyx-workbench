@@ -47,9 +47,9 @@ reg [31:0] pc;
 reg [31:0] inst;
 wire IFU_valid;
 wire LSU_valid;
-wire [31:0] LSU_valid_int;
+wire [31:0] IFU_valid_int;
 
-assign LSU_valid_int = {31'b0,LSU_valid};
+assign IFU_valid_int = {31'b0,IFU_valid};
 
 always@(posedge clk)begin
     if (inst == 32'b00000000000100000000000001110011)begin
@@ -65,7 +65,7 @@ always@(posedge clk) begin
 end
 
 always@(negedge clk) begin
-    get_pc_inst(pc,inst,LSU_valid_int);
+    get_pc_inst(pc,inst,IFU_valid_int);
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
