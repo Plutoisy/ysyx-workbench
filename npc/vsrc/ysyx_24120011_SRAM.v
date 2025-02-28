@@ -1,10 +1,10 @@
-`define ysyx_24120011_S_AXI_IDLE  3'b000
-`define ysyx_24120011_S_AXI_RADDR 3'b001
-`define ysyx_24120011_S_AXI_RDATA 3'b010
-`define ysyx_24120011_S_AXI_WADDR 3'b011
-`define ysyx_24120011_S_AXI_WDATA 3'b100
-`define ysyx_24120011_S_AXI_WRESP 3'b101
-`define ysyx_24120011_S_AXI_RESP_OKAY 2'b000
+parameter ysyx_24120011_S_AXI_IDLE  = 3'b000
+parameter ysyx_24120011_S_AXI_RADDR = 3'b001
+parameter ysyx_24120011_S_AXI_RDATA = 3'b010
+parameter ysyx_24120011_S_AXI_WADDR = 3'b011
+parameter ysyx_24120011_S_AXI_WDATA = 3'b100
+parameter ysyx_24120011_S_AXI_WRESP = 3'b101
+parameter ysyx_24120011_S_AXI_RESP_OKAY = 2'b00
 
 module SRAM (
     input wire clk,
