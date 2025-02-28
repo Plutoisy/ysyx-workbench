@@ -18,7 +18,6 @@ wire arready;
 wire [1:0] rresp;
 wire awready;
 wire wready;
-wire rready;
 wire [1:0] bresp;
 wire bvalid;
 
@@ -31,7 +30,7 @@ SRAM u_SRAM(
     .rdata   ( inst    ),
     .rresp   ( rresp   ),
     .rvalid  ( IFU_valid  ),
-    .rready  ( rready  ),
+    .rready  ( 1'b1  ),
     .awaddr  ( 32'b0  ),
     .awvalid ( 1'b0 ),
     .awready ( awready ),
