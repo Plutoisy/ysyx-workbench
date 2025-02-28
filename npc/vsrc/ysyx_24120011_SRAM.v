@@ -7,7 +7,7 @@ module SRAM (
     input         arvalid,
     output        arready,
     //R//
-    output [31:0] rdata,
+    output reg [31:0] rdata,
     output [1:0]  rresp,
     output        rvalid,
     input         rready,
