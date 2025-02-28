@@ -19,7 +19,7 @@ module ysyx_24120011_LSU(
 reg [31:0] r_mem_data_tmp;
 reg LSU_valid_tmp;
 
-SRAM i_SRAM(
+SRAMold i_SRAMold(
     .clk              ( clk              ),
     .rst              ( rst              ),
     .sram_rd_en       ( r_mem_en         ),      
