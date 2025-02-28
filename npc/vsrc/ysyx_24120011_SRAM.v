@@ -42,14 +42,14 @@ module SRAM (
 
 	// R
 	//assign rdata  = (state == ysyx_24120011_S_AXI_RDATA) ? rtl_pmem_read(addr) : 0;
+    
+    /* verilator lint_off LATCH */
     always@(*)begin
         if(state == ysyx_24120011_S_AXI_RDATA)begin
             rdata = rtl_pmem_read(addr);
         end
-        else begin
-            rdata = 0;
-        end
     end
+
 	assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
 	assign rvalid = (state == ysyx_24120011_S_AXI_RDATA) ? 1 : 0;
 
@@ -80,7 +80,7 @@ module SRAM (
     //     if (state == ysyx_24120011_S_AXI_WDATA) "rtl_pmem_write(addr,wdata)";
     // end
 
-    /* verilator lint_off LATCH */
+    
     always@(*)begin
         case(state)
             ysyx_24120011_S_AXI_IDLE  : next_state = (arvalid) ? ysyx_24120011_S_AXI_RADDR : (awvalid) ? ysyx_24120011_S_AXI_WADDR : ysyx_24120011_S_AXI_IDLE;
