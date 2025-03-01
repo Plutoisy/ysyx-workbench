@@ -1,6 +1,6 @@
 import "DPI-C" function void ebreak ();
 import "DPI-C" function void npc_trap(input int pc, input int ret);
-import "DPI-C" function void get_pc_inst(input int pc, input int inst, input int IFU_valid_int);
+import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
 
 module ysyx_24120011_top (
     input clk,
@@ -65,7 +65,7 @@ always@(posedge clk) begin
 end
 
 always@(negedge clk) begin
-    get_pc_inst(pc,inst,LSU_valid_int);
+    get_pc_inst(pc,dnpc,inst,LSU_valid_int);
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
