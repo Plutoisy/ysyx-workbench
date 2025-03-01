@@ -106,25 +106,25 @@ module ysyx_24120011_LSU(
             if(state == ysyx_24120011_M_AXI_RDATA) begin
                 if(r_mem_len == 8'd1)begin
                     if(sign_extension)begin
-                        r_mem_data = {{24{rdata[7]}},rdata[7:0]};
+                        r_mem_data <= {{24{rdata[7]}},rdata[7:0]};
                     end
                     else begin
-                        r_mem_data = {24'b0,rdata[7:0]};
+                        r_mem_data <= {24'b0,rdata[7:0]};
                     end
                 end
                 else if(r_mem_len == 8'd2)begin
                     if(sign_extension)begin
-                        r_mem_data = {{16{rdata[15]}},rdata[15:0]};
+                        r_mem_data <= {{16{rdata[15]}},rdata[15:0]};
                     end
                     else begin
-                        r_mem_data = {16'b0,rdata[15:0]};
+                        r_mem_data <= {16'b0,rdata[15:0]};
                     end
                 end
                 else if(r_mem_len == 8'd4)begin
-                    r_mem_data = rdata;
+                    r_mem_data <= rdata;
                 end
                 else begin//shouldn't in
-                    r_mem_data = 32'b11111111;
+                    r_mem_data <= 32'b11111111;
                 end
             end
         end
