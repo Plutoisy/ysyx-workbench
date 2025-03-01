@@ -13,7 +13,7 @@ module ysyx_24120011_LSU(
     input sign_extension,
     input [31:0] w_mem_data,
     output reg [31:0] r_mem_data,
-    output LSU_valid
+    output reg LSU_valid
 );
 
     SRAM u_SRAM(
@@ -92,9 +92,9 @@ module ysyx_24120011_LSU(
     assign bready = (state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
 
 /* verilator lint_off LATCH */
-    always@(*)begin
-        if(next_state == ysyx_24120011_M_AXI_IDLE)begin
-            LSU_valid = 1;
+    always@(posedge clk)begin
+        if(IFU_valid)begin
+            LSU_valid <= 1;
         end
     end
 
@@ -136,10 +136,8 @@ module ysyx_24120011_LSU(
             start_write_delay <= 0;
         end
         else begin
-            if(IFU_valid) begin
-                start_read_delay <= r_mem_en;
-                start_write_delay <= w_mem_en;
-            end
+            start_read_delay <= r_mem_en;
+            start_write_delay <= w_mem_en;
         end
     end
 
