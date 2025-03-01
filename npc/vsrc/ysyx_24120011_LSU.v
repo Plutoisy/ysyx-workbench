@@ -67,6 +67,7 @@ module ysyx_24120011_LSU(
     wire [3:0] wstrb;
     wire bready;
     wire [31:0] rdata;
+    wire bvalid;
 
     assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     
