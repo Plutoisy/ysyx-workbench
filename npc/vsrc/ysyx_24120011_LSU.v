@@ -96,6 +96,9 @@ module ysyx_24120011_LSU(
         if(IFU_valid)begin
             LSU_valid <= 1;
         end
+        else begin
+            LSU_valid <= 0;
+        end
     end
 
     always@(posedge clk)begin
