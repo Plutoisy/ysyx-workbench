@@ -17,7 +17,7 @@ module SRAM (
     output        awready,
     //W//
     input  [31:0] wdata,
-    //input  [3:0]  wstrb,
+    input  [3:0]  wstrb,
     input         wvalid,
     output        wready,
     //B//
@@ -42,7 +42,7 @@ module SRAM (
 
 	// R
 	//assign rdata  = (state == ysyx_24120011_S_AXI_RDATA) ? rtl_pmem_read(addr) : 0;
-    
+
     /* verilator lint_off LATCH */
     always@(*)begin
         if(state == ysyx_24120011_S_AXI_RDATA)begin
@@ -76,9 +76,20 @@ module SRAM (
         end
     end
 
-    // always@(posedge clk)begin
-    //     if (state == ysyx_24120011_S_AXI_WDATA) "rtl_pmem_write(addr,wdata)";
-    // end
+    always@(posedge clk)begin
+        if (state == ysyx_24120011_S_AXI_WDATA) begin
+            if(wstrb == 4'b1111) begin
+                rtl_pmem_write(addr,wdata,4);
+            end
+            else if(wstrb == 4'b0011) begin
+                rtl_pmem_write(addr,wdata,2);
+            end
+            else if(wstrb == 4'b0001) begin
+                rtl_pmem_write(addr,wdata,1);
+            end
+            else ;
+        end
+    end
 
     
     always@(*)begin
