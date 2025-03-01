@@ -68,7 +68,7 @@ module ysyx_24120011_LSU(
     wire bready;
     wire [31:0] rdata;
     wire bvalid;
-
+    reg LSU_working;
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     
     //AR
@@ -94,7 +94,16 @@ module ysyx_24120011_LSU(
 /* verilator lint_off LATCH */
     always@(posedge clk)begin
         if(IFU_valid)begin
-            LSU_valid <= 1;
+            if(w_mem_en == 1 || r_mem_en == 1) begin
+                LSU_working <= 1;
+            end
+            else if(LSU_working == 0)begin
+                LSU_valid <= 1;
+            end
+            else if(LSU_working == 1 && next_state == ysyx_24120011_M_AXI_IDLE)begin
+                LSU_working <= 0;
+                LSU_valid <= 1;
+            end
         end
         else begin
             LSU_valid <= 0;
