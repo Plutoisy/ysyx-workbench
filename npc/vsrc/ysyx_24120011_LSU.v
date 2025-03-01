@@ -91,6 +91,7 @@ module ysyx_24120011_LSU(
     //B
     assign bready = (state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
 
+/* verilator lint_off LATCH */
     always@(*)begin
         if(next_state == ysyx_24120011_M_AXI_IDLE)begin
             LSU_valid = 1;
@@ -164,6 +165,7 @@ module ysyx_24120011_LSU(
             state <= next_state;
         end
     end
+/* verilator lint_on LATCH */
 
 // always@(posedge clk)begin
 //     if(w_mem_en && !r_mem_en)begin
