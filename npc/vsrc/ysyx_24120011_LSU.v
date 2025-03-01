@@ -95,6 +95,7 @@ module ysyx_24120011_LSU(
 /* verilator lint_off LATCH */
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_IDLE) LSU_ready <= 1'b1;
+        else LSU_ready <= 1'b0;
     end
     always@(posedge clk)begin
         if(IFU_valid)begin

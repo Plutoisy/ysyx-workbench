@@ -103,7 +103,7 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgIData(oldp+36,(vlSelf->ysyx_24120011_top__DOT__inst),32);
         bufp->chgBit(oldp+37,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
         bufp->chgBit(oldp+38,(vlSelf->ysyx_24120011_top__DOT__LSU_valid));
-        bufp->chgBit(oldp+39,((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
+        bufp->chgBit(oldp+39,(vlSelf->ysyx_24120011_top__DOT__LSU_ready));
         bufp->chgIData(oldp+40,(vlSelf->ysyx_24120011_top__DOT__LSU_valid),32);
         bufp->chgIData(oldp+41,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in),32);
         bufp->chgIData(oldp+42,(((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))

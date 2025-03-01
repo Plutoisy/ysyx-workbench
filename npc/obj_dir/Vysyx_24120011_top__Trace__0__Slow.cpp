@@ -430,7 +430,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+37,(vlSelf->ysyx_24120011_top__DOT__inst),32);
     bufp->fullBit(oldp+38,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
     bufp->fullBit(oldp+39,(vlSelf->ysyx_24120011_top__DOT__LSU_valid));
-    bufp->fullBit(oldp+40,((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
+    bufp->fullBit(oldp+40,(vlSelf->ysyx_24120011_top__DOT__LSU_ready));
     bufp->fullIData(oldp+41,(vlSelf->ysyx_24120011_top__DOT__LSU_valid),32);
     bufp->fullIData(oldp+42,(vlSelf->ysyx_24120011_top__DOT__i_ALU__DOT__B_in),32);
     bufp->fullIData(oldp+43,(((1U & (IData)(vlSelf->ysyx_24120011_top__DOT__ALU_ctrl))

@@ -110,7 +110,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
             = vlSelf->__Vfunc_rtl_pmem_read__6__Vfuncout;
     }
     vlSelf->__Vtableidx1 = (((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-                             << 6U) | (((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
+                             << 6U) | (((IData)(vlSelf->ysyx_24120011_top__DOT__LSU_ready) 
                                         << 5U) | ((
                                                    (2U 
                                                     == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
