@@ -53,11 +53,17 @@ module ysyx_24120011_LSU(
 
     wire [31:0] araddr;
     wire arvalid;
+    wire arready;
     wire rready;
+    wire [1:0] rresp;
+    wire rvalid;
     wire awvalid;
+    wire awready;
     wire [31:0] awaddr;
     wire wvalid;
+    wire wready;
     wire [31:0] wdata;
+    wire [1:0] bresp;
     wire [3:0] wstrb;
     wire bready;
     wire [31:0] rdata;
