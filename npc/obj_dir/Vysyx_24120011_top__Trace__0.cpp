@@ -133,7 +133,7 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgBit(oldp+54,((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
         bufp->chgBit(oldp+55,((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
         bufp->chgBit(oldp+56,((5U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
-        bufp->chgBit(oldp+57,(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__rready));
+        bufp->chgBit(oldp+57,(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__arvalid));
         bufp->chgCData(oldp+58,(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state),3);
         bufp->chgCData(oldp+59,(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__next_state),3);
         bufp->chgIData(oldp+60,(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__addr),32);

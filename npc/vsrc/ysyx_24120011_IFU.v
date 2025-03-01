@@ -2,7 +2,6 @@ module ysyx_24120011_IFU(
     input clk,
     input rst,
     input [31:0] pc,
-    input LSU_valid,
     output [31:0] inst,
     output IFU_valid
 );
@@ -21,21 +20,12 @@ wire awready;
 wire wready;
 wire [1:0] bresp;
 wire bvalid;
-reg arvalid;
-always@(posedge clk)begin
-    if(rst)begin
-        arvalid <= 1'b1;
-    end
-    else begin
-        arvalid <= LSU_valid;
-    end
-end
 
 SRAM u_SRAM(
     .clk     ( clk     ),
     .rst     ( rst     ),
     .araddr  ( pc      ),
-    .arvalid ( arvalid    ),
+    .arvalid ( 1'b1    ),
     .arready ( arready ),
     .rdata   ( inst    ),
     .rresp   ( rresp   ),
@@ -45,7 +35,7 @@ SRAM u_SRAM(
     .awvalid ( 1'b0 ),
     .awready ( awready ),
     .wdata   ( 32'b0   ),
-    .wstrb   ( 4'b1111 ),
+    .wstrb   ( 4'b1111 )
     .wvalid  ( 1'b0  ),
     .wready  ( wready  ),
     .bresp   ( bresp   ),
