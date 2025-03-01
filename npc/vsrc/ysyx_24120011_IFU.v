@@ -35,7 +35,7 @@ SRAM u_SRAM(
     .awvalid ( 1'b0 ),
     .awready ( awready ),
     .wdata   ( 32'b0   ),
-    .wstrb   ( 4'b1111 )
+    .wstrb   ( 4'b1111 ),
     .wvalid  ( 1'b0  ),
     .wready  ( wready  ),
     .bresp   ( bresp   ),
