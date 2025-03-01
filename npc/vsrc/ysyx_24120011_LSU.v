@@ -13,7 +13,8 @@ module ysyx_24120011_LSU(
     input sign_extension,
     input [31:0] w_mem_data,
     output reg [31:0] r_mem_data,
-    output reg LSU_valid
+    output reg LSU_valid,
+    output  LSU_ready
 );
 
     SRAM u_SRAM(
@@ -71,6 +72,7 @@ module ysyx_24120011_LSU(
     wire LSU_working;
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
+    assign LSU_ready = ~LSU_working;
     //AR
     assign araddr = (state == ysyx_24120011_M_AXI_RADDR) ? r_mem_addr : 32'b0;
     assign arvalid = (state == ysyx_24120011_M_AXI_RADDR) ? 1 : 0;

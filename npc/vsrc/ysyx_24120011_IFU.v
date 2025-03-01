@@ -3,7 +3,8 @@ module ysyx_24120011_IFU(
     input rst,
     input [31:0] pc,
     output [31:0] inst,
-    output IFU_valid
+    output IFU_valid,
+    input LSU_ready
 );
 
 // SRAM i_SRAM(
@@ -25,7 +26,7 @@ SRAM u_SRAM(
     .clk     ( clk     ),
     .rst     ( rst     ),
     .araddr  ( pc      ),
-    .arvalid ( 1'b1    ),
+    .arvalid ( LSU_ready    ),
     .arready ( arready ),
     .rdata   ( inst    ),
     .rresp   ( rresp   ),

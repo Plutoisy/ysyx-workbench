@@ -407,11 +407,12 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
              & ((~ (IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en)) 
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en))))) {
             vlSelf->ysyx_24120011_top__DOT__LSU_valid = 1U;
+        } else if (((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
+                    & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__next_state)))) {
+            vlSelf->ysyx_24120011_top__DOT__LSU_valid = 1U;
         }
     } else {
-        vlSelf->ysyx_24120011_top__DOT__LSU_valid = 
-            ((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
-             & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__next_state)));
+        vlSelf->ysyx_24120011_top__DOT__LSU_valid = 0U;
     }
     if (vlSelf->rst) {
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state = 0U;

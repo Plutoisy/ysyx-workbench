@@ -47,6 +47,7 @@ reg [31:0] pc;
 reg [31:0] inst;
 wire IFU_valid;
 wire LSU_valid;
+wire LSU_ready;
 wire [31:0] LSU_valid_int;
 
 assign LSU_valid_int = {31'b0,LSU_valid};
@@ -75,7 +76,8 @@ ysyx_24120011_IFU i_IFU(
     .rst       ( rst       ),
     .pc        ( pc        ),
     .inst      ( inst      ),
-    .IFU_valid ( IFU_valid )
+    .IFU_valid ( IFU_valid ),
+    .LSU_ready ( LSU_ready )
 );
 
 
@@ -183,7 +185,8 @@ ysyx_24120011_LSU i_LSU(
     .sign_extension      ( sign_extension      ),
     .w_mem_data          ( src2                ),
     .r_mem_data          ( r_mem_data          ),
-    .LSU_valid           ( LSU_valid           )
+    .LSU_valid           ( LSU_valid           ),
+    .LSU_ready           ( LSU_ready           )
 );
 
 ysyx_24120011_Csr i_Csr(
