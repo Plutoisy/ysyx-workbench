@@ -244,7 +244,7 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
       putchar((char)(w_mem_data & 0xFF)); 
     }
     else{
-      //assert(0);
+      assert(0);
     }
   }
   else{
