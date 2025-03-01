@@ -310,9 +310,9 @@ void cpu_exec(uint32_t n){
         top->clk ^= 1;
       }
       printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
-      AssembleDecoder(handle, top_inst, top_pc);
+      //AssembleDecoder(handle, top_inst, top_pc);
       if(top_IFU_valid_int){
-        //AssembleDecoder(handle, top_inst, top_pc);
+        AssembleDecoder(handle, top_inst, top_pc);
         printf("exec times: %d\n",i+1);
         difftest_exec(1);
         difftest_regcpy(&refstate, 0);
