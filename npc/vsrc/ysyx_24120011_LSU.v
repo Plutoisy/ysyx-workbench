@@ -69,7 +69,7 @@ module ysyx_24120011_LSU(
     wire [31:0] rdata;
     wire bvalid;
 
-    assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
+    //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     
     //AR
     assign araddr = (state == ysyx_24120011_M_AXI_RADDR) ? r_mem_addr : 32'b0;
