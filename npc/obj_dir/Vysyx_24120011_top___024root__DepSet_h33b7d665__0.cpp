@@ -115,9 +115,8 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = ((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__start_read_delay 
         = ((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en));
-    if ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))) {
-        vlSelf->ysyx_24120011_top__DOT__LSU_ready = 1U;
-    }
+    vlSelf->ysyx_24120011_top__DOT__LSU_ready = (0U 
+                                                 == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state));
     if (vlSelf->rst) {
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mtvec = 0U;
         vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mtvec 
