@@ -23,7 +23,7 @@ static char *img_file = NULL;
 csh handle;
 int gpr[32];
 int top_pc;
-int dnpc_pc;
+int top_dnpc;
 int top_inst;
 int top_IFU_valid_int;
 
@@ -224,7 +224,7 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-extern "C" void get_pc_inst(int pc, int inst, int IFU_valid_int){
+extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int){
   top_pc = pc;
   top_dnpc = dnpc;
   top_inst = inst;
@@ -320,7 +320,7 @@ void cpu_exec(uint32_t n){
         step_and_dump_wave();
 
         printf("        dut                    | ref                   \n");
-        printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+        printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
         if(refstate.pc != top_dnpc){
          //AssembleDecoder(handle, top_inst, top_pc);
          //assert(0);

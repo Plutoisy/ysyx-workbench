@@ -28,18 +28,20 @@ VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_npc_trap_TOP____02
     npc_trap(pc__Vcvt, ret__Vcvt);
 }
 
-extern "C" void get_pc_inst(int pc, int inst, int IFU_valid_int);
+extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int);
 
-VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit(IData/*31:0*/ pc, IData/*31:0*/ inst, IData/*31:0*/ IFU_valid_int) {
+VL_INLINE_OPT void Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit(IData/*31:0*/ pc, IData/*31:0*/ dnpc, IData/*31:0*/ inst, IData/*31:0*/ IFU_valid_int) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011_top___024unit____Vdpiimwrap_get_pc_inst_TOP____024unit\n"); );
     // Body
     int pc__Vcvt;
     for (size_t pc__Vidx = 0; pc__Vidx < 1; ++pc__Vidx) pc__Vcvt = pc;
+    int dnpc__Vcvt;
+    for (size_t dnpc__Vidx = 0; dnpc__Vidx < 1; ++dnpc__Vidx) dnpc__Vcvt = dnpc;
     int inst__Vcvt;
     for (size_t inst__Vidx = 0; inst__Vidx < 1; ++inst__Vidx) inst__Vcvt = inst;
     int IFU_valid_int__Vcvt;
     for (size_t IFU_valid_int__Vidx = 0; IFU_valid_int__Vidx < 1; ++IFU_valid_int__Vidx) IFU_valid_int__Vcvt = IFU_valid_int;
-    get_pc_inst(pc__Vcvt, inst__Vcvt, IFU_valid_int__Vcvt);
+    get_pc_inst(pc__Vcvt, dnpc__Vcvt, inst__Vcvt, IFU_valid_int__Vcvt);
 }
 
 extern "C" void reg_out(const int* array);
