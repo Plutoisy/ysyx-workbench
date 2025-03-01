@@ -21,14 +21,13 @@ wire awready;
 wire wready;
 wire [1:0] bresp;
 wire bvalid;
-reg rready;
-
+reg arvalid;
 always@(posedge clk)begin
     if(rst)begin
-        rready <= 1'b1;
+        arvalid <= 1'b1;
     end
     else begin
-        rready <= LSU_valid;
+        arvalid <= LSU_valid;
     end
 end
 
@@ -36,12 +35,12 @@ SRAM u_SRAM(
     .clk     ( clk     ),
     .rst     ( rst     ),
     .araddr  ( pc      ),
-    .arvalid ( 1'b1    ),
+    .arvalid ( arvalid    ),
     .arready ( arready ),
     .rdata   ( inst    ),
     .rresp   ( rresp   ),
     .rvalid  ( IFU_valid  ),
-    .rready  ( rready  ),
+    .rready  ( 1'b1  ),
     .awaddr  ( 32'b0  ),
     .awvalid ( 1'b0 ),
     .awready ( awready ),
