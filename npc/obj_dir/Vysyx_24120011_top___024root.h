@@ -50,7 +50,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__start_write_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
-        CData/*5:0*/ __Vtableidx1;
+        CData/*6:0*/ __Vtableidx1;
         CData/*3:0*/ __Vtableidx3;
         CData/*6:0*/ __Vtableidx4;
         CData/*0:0*/ __Vtrigrprev__TOP__clk;
