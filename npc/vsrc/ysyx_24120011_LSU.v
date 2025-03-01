@@ -97,14 +97,12 @@ module ysyx_24120011_LSU(
             if(LSU_working == 0 && (w_mem_en == 0 && r_mem_en == 0) )begin
                 LSU_valid <= 1;
             end
-        end
-        else begin
-            if(LSU_working == 1 && next_state == ysyx_24120011_M_AXI_IDLE)begin
+            else if(LSU_working == 1 && next_state == ysyx_24120011_M_AXI_IDLE)begin
                 LSU_valid <= 1;
             end
-            else begin
-                LSU_valid <= 0;
-            end
+        end
+        else begin
+            LSU_valid <= 0;
         end
     end
 
