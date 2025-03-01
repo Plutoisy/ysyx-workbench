@@ -94,7 +94,7 @@ module ysyx_24120011_LSU(
 /* verilator lint_off LATCH */
     always@(posedge clk)begin
         if(IFU_valid)begin
-            if(start_read_delay == 1 || start_write_delay == 1) begin
+            if(w_mem_en == 1 || r_mem_en == 1) begin
                 LSU_working <= 1;
             end
             else if(LSU_working == 0)begin
