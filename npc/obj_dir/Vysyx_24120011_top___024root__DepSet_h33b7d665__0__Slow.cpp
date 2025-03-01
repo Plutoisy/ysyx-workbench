@@ -71,10 +71,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                 ? 1U : ((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))
                          ? 3U : 0U));
     }
-    vlSelf->ysyx_24120011_top__DOT__LSU_valid = ((2U 
-                                                  == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
-                                                 | (5U 
-                                                    == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)));
     if ((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))) {
         Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr, vlSelf->__Vfunc_rtl_pmem_read__6__Vfuncout);
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata 
