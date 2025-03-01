@@ -74,6 +74,7 @@ ysyx_24120011_IFU i_IFU(
     .clk       ( clk       ),
     .rst       ( rst       ),
     .pc        ( pc        ),
+    .LSU_valid ( LSU_valid )
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid )
 );
