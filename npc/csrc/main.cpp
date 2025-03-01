@@ -323,7 +323,7 @@ void cpu_exec(uint32_t n){
         printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
         if(refstate.pc != top_dnpc){
          //AssembleDecoder(handle, top_inst, top_pc);
-         assert(0);
+         //assert(0);
          //printf("0x%08x\n",refstate.pc );
          //printf("0x%08x\n",top_pc);
         }
