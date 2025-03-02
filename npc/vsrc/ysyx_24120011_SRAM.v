@@ -48,11 +48,11 @@ module SRAM (
     /* verilator lint_off LATCH */
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt != 32'd0)begin
-            rdata_delay <= rdata_delay - 1;
+            read_dalay_cnt <= read_dalay_cnt - 1;
             rvalid <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt == 32'd0)begin
-            rdata_delay <= rtl_pmem_read(addr);
+            rdata <= rtl_pmem_read(addr);
             rvalid <= 1;
         end
     end
