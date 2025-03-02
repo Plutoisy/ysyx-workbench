@@ -15,7 +15,7 @@
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 #define M_R_TRACE 1
 #define M_W_TRACE 1
-#define M_R_ASSERT 1
+#define M_R_ASSERT 0
 #define M_W_ASSERT 1
 #define PC_ASSERT 1
 #define REG_ASSERT 1
