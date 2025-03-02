@@ -9,7 +9,7 @@ module SRAM (
     //R//
     output reg [31:0] rdata,
     output [1:0]  rresp,
-    output        rvalid,
+    output reg       rvalid,
     input         rready,
     //AW//
     input  [31:0] awaddr,
@@ -49,9 +49,14 @@ module SRAM (
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt != 32'd0)begin
             read_dalay_cnt <= read_dalay_cnt - 1;
+            rvalid <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt == 32'd0)begin
+        else if(read_dalay_cnt == 32'd0)begin
             rdata <= rtl_pmem_read(addr);
+            rvalid <= 1;
+        end
+        else begin
+            rvalid <= 0;
         end
     end
 
@@ -62,7 +67,7 @@ module SRAM (
     end
 
 	assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
-	assign rvalid = (next_state == ysyx_24120011_S_AXI_IDLE) ? 1 : 0;
+	//assign rvalid = (state == ysyx_24120011_S_AXI_RDATA) ? 1 : 0;
 
 	// AW
 	assign awready = (state == ysyx_24120011_S_AXI_WADDR) ? 1 : 0;

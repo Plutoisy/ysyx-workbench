@@ -56,7 +56,11 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*6:0*/ __Vtableidx1;
         CData/*3:0*/ __Vtableidx3;
         CData/*6:0*/ __Vtableidx4;
+        CData/*2:0*/ __Vtrigrprev__TOP__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__next_state;
+        CData/*2:0*/ __Vtrigrprev__TOP__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
+        CData/*0:0*/ __VstlDidInit;
         CData/*0:0*/ __Vtrigrprev__TOP__clk;
+        CData/*0:0*/ __VactDidInit;
         CData/*0:0*/ __VactContinue;
         SData/*11:0*/ ysyx_24120011_top__DOT__w_csr_addr;
         SData/*11:0*/ ysyx_24120011_top__DOT__r_csr_addr;
@@ -79,12 +83,12 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_dalay_cnt;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__B_in;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp;
+    };
+    struct {
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rdata;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_dalay;
-    };
-    struct {
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_dalay_cnt;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mepc;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mstatus;
@@ -94,11 +98,11 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ __VactIterCount;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__Regs;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__regout;
-        VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+        VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     };
-    VlTriggerVec<1> __VstlTriggered;
-    VlTriggerVec<2> __VactTriggered;
-    VlTriggerVec<2> __VnbaTriggered;
+    VlTriggerVec<3> __VstlTriggered;
+    VlTriggerVec<4> __VactTriggered;
+    VlTriggerVec<4> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vysyx_24120011_top__Syms* const vlSymsp;
