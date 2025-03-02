@@ -55,6 +55,9 @@ module SRAM (
             rdata <= rtl_pmem_read(addr);
             rvalid <= 1;
         end
+        else begin
+            rvalid <= 0;
+        end
     end
 
     always@(posedge clk)begin
