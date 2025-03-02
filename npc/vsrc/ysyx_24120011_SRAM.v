@@ -50,6 +50,7 @@ module SRAM (
             rvalid <= 1;
         end
         else begin
+            rdata <= rdata;
             rvalid <= 0;
         end
     end
