@@ -160,6 +160,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__r_csr_data = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__inst = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_24120011_top__DOT__IFU_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__LSU_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__LSU_ready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state = VL_RAND_RESET_I(3);
@@ -185,6 +186,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__next_state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__start_read_delay = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__start_write_delay = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state = VL_RAND_RESET_I(3);
@@ -193,8 +195,6 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mstatus = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mcause = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mtvec = VL_RAND_RESET_I(32);
-    vlSelf->__Vfunc_rtl_pmem_read__3__Vfuncout = 0;
-    vlSelf->__Vfunc_rtl_pmem_read__6__Vfuncout = 0;
     vlSelf->__Vtableidx1 = 0;
     vlSelf->__Vtableidx2 = 0;
     vlSelf->__Vtableidx3 = 0;

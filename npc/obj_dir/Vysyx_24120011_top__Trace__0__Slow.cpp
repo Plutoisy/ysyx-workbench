@@ -428,7 +428,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+35,(vlSelf->ysyx_24120011_top__DOT__r_csr_data),32);
     bufp->fullIData(oldp+36,(vlSelf->ysyx_24120011_top__DOT__pc),32);
     bufp->fullIData(oldp+37,(vlSelf->ysyx_24120011_top__DOT__inst),32);
-    bufp->fullBit(oldp+38,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))));
+    bufp->fullBit(oldp+38,(vlSelf->ysyx_24120011_top__DOT__IFU_valid));
     bufp->fullBit(oldp+39,(vlSelf->ysyx_24120011_top__DOT__LSU_valid));
     bufp->fullBit(oldp+40,(vlSelf->ysyx_24120011_top__DOT__LSU_ready));
     bufp->fullIData(oldp+41,(vlSelf->ysyx_24120011_top__DOT__LSU_valid),32);
@@ -473,7 +473,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullBit(oldp+67,((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
     bufp->fullBit(oldp+68,((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))));
     bufp->fullBit(oldp+69,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
-    bufp->fullBit(oldp+70,((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))));
+    bufp->fullBit(oldp+70,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid));
     bufp->fullBit(oldp+71,((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
     bufp->fullBit(oldp+72,((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))));
     bufp->fullIData(oldp+73,(((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))

@@ -34,6 +34,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__w_csr_en;
         CData/*0:0*/ ysyx_24120011_top__DOT__r_csr_en;
         CData/*0:0*/ ysyx_24120011_top__DOT__w_csr_ecall;
+        CData/*0:0*/ ysyx_24120011_top__DOT__IFU_valid;
         CData/*0:0*/ ysyx_24120011_top__DOT__LSU_valid;
         CData/*0:0*/ ysyx_24120011_top__DOT__LSU_ready;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state;
@@ -49,6 +50,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__next_state;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__start_read_delay;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__start_write_delay;
+        CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rvalid;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
         CData/*6:0*/ __Vtableidx1;
@@ -81,11 +83,9 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mepc;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mstatus;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mcause;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mtvec;
-        IData/*31:0*/ __Vfunc_rtl_pmem_read__3__Vfuncout;
     };
     struct {
-        IData/*31:0*/ __Vfunc_rtl_pmem_read__6__Vfuncout;
+        IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mtvec;
         IData/*31:0*/ __VstlIterCount;
         IData/*31:0*/ __VactIterCount;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__Regs;
