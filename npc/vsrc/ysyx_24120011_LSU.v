@@ -55,7 +55,7 @@ module ysyx_24120011_LSU(
     wire [31:0] araddr;
     reg arvalid;
     wire arready;
-    wire rready;
+    reg rready;
     wire [1:0] rresp;
     wire rvalid;
     reg awvalid;
@@ -90,7 +90,7 @@ module ysyx_24120011_LSU(
     //assign arvalid = (state == ysyx_24120011_M_AXI_RADDR) ? 1 : 0;
 
     //R
-    assign rready = (state == ysyx_24120011_M_AXI_RDATA) ? 1 : 0;
+    //assign rready = (state == ysyx_24120011_M_AXI_RDATA) ? 1 : 0;
 
     //AW
     //assign awvalid = (state == ysyx_24120011_M_AXI_WADDR) ? 1 : 0;
