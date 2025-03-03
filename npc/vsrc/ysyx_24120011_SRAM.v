@@ -159,7 +159,7 @@ module SRAM (
         if(rst)begin
             state <= ysyx_24120011_S_AXI_IDLE;
             read_delay <= 32'd3;
-            write_delay
+            write_delay <= 32'd3;
         end
         else begin
             state <= next_state;
