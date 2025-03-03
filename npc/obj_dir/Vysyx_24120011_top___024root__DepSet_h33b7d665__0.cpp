@@ -422,7 +422,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         [0x1fU];
     if (vlSelf->rst) {
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_dalay = 5U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay = 5U;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay = 3U;
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_dalay = 5U;
         vlSelf->ysyx_24120011_top__DOT__r_mem_data = 0U;
         vlSelf->ysyx_24120011_top__DOT__pc = 0x80000000U;
