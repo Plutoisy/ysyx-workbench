@@ -105,7 +105,7 @@ module ysyx_24120011_LSU(
         end
         else if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt == 32'd0)begin
             arvalid <= 1;
-            arvalid_delay_cnt <= 32'hFFFFFFFF
+            arvalid_delay_cnt <= 32'hFFFFFFFF;
         end
         else if(state == ysyx_24120011_M_AXI_RADDR && arready == 1)begin
             arvalid <= 0;
