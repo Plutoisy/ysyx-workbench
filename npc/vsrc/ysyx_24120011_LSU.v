@@ -71,8 +71,8 @@ module ysyx_24120011_LSU(
     wire bvalid;
     wire LSU_working;
 
-    reg arvalid_delay;
-    reg arvalid_delay_cnt;
+    reg [31:0] arvalid_delay;
+    reg [31:0] arvalid_delay_cnt;
 
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
