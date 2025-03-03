@@ -61,7 +61,7 @@ module ysyx_24120011_LSU(
     reg awvalid;
     wire awready;
     wire [31:0] awaddr;
-    wire wvalid;
+    reg wvalid;
     wire wready;
     wire [31:0] wdata;
     wire [1:0] bresp;
@@ -77,6 +77,9 @@ module ysyx_24120011_LSU(
     reg [31:0] awvalid_delay;
     reg [31:0] awvalid_delay_cnt;
 
+    reg [31:0] wvalid_delay;
+    reg [31:0] wvalid_delay_cnt;
+
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
     //AR
@@ -91,7 +94,7 @@ module ysyx_24120011_LSU(
     assign awaddr = (state == ysyx_24120011_M_AXI_WADDR) ? w_mem_addr : 32'b0;
 
     //W
-    assign wvalid = (state == ysyx_24120011_M_AXI_WDATA) ? 1 : 0;
+    //assign wvalid = (state == ysyx_24120011_M_AXI_WDATA) ? 1 : 0;
     assign wdata = (state == ysyx_24120011_M_AXI_WDATA) ? w_mem_data : 32'b0;
     assign wstrb = (w_mem_len == 8'd4) ? 
                     4'b1111 :
@@ -149,7 +152,29 @@ module ysyx_24120011_LSU(
         end
     end
 
+    //wvalid_delay
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt != 32'd0 )begin
+            wvalid_delay_cnt <= wvalid_delay_cnt - 1;
+        end
+        else if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt == 32'd0)begin
+            if(wready == 1) begin
+                wvalid <= 0;
+            end
+            else begin
+                wvalid <= 1;
+            end
+        end
+        else begin
+            wvalid <= 0;
+        end
+    end
 
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_WADDR)begin
+            wvalid_delay_cnt <= wvalid_delay;
+        end
+    end
 
 
 
@@ -236,6 +261,7 @@ module ysyx_24120011_LSU(
             state <= ysyx_24120011_M_AXI_IDLE;
             arvalid_delay <= 32'd3;
             awvalid_delay <= 32'd3;
+            wvalid_delay  <= 32'd3;
         end
         else begin
             state <= next_state;
