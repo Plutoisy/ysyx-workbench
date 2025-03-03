@@ -53,7 +53,7 @@ module ysyx_24120011_LSU(
     reg start_write_delay;
 
     wire [31:0] araddr;
-    wire arvalid;
+    reg arvalid;
     wire arready;
     wire rready;
     wire [1:0] rresp;
@@ -70,11 +70,15 @@ module ysyx_24120011_LSU(
     wire [31:0] rdata;
     wire bvalid;
     wire LSU_working;
+
+    reg arvalid_delay;
+    reg arvalid_delay_cnt;
+
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
     //AR
     assign araddr = (state == ysyx_24120011_M_AXI_RADDR) ? r_mem_addr : 32'b0;
-    assign arvalid = (state == ysyx_24120011_M_AXI_RADDR) ? 1 : 0;
+    //assign arvalid = (state == ysyx_24120011_M_AXI_RADDR) ? 1 : 0;
 
     //R
     assign rready = (state == ysyx_24120011_M_AXI_RDATA) ? 1 : 0;
@@ -93,6 +97,27 @@ module ysyx_24120011_LSU(
     assign bready = (state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
 
 /* verilator lint_off LATCH */
+
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt != 32'd0)begin
+            arvalid_delay_cnt <= arvalid_delay_cnt - 1;
+            arvalid <= 0;
+        end
+        else if(state == ysyx_24120011_S_AXI_RDATA && arvalid_delay_cnt == 32'd0)begin
+            arvalid <= 1;
+            arvalid_delay_cnt <= 32'b11111111111111111111111111111111;
+        end
+        else begin
+            arvalid <= 0;
+        end
+    end
+
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_S_AXI_RADDR)begin
+            read_dalay_cnt <= read_dalay;
+        end
+    end
+
     always@(posedge clk)begin
         if(w_mem_en == 1 || r_mem_en == 1) LSU_ready <= 1'b0;
         else if(next_state == ysyx_24120011_M_AXI_IDLE) LSU_ready <= 1'b1;
@@ -173,68 +198,11 @@ module ysyx_24120011_LSU(
     always@(posedge clk)begin
         if(rst) begin
             state <= ysyx_24120011_M_AXI_IDLE;
+            arvalid_delay <= 32'd5;
         end
         else begin
             state <= next_state;
         end
     end
 /* verilator lint_on LATCH */
-
-// always@(posedge clk)begin
-//     if(w_mem_en && !r_mem_en)begin
-//         rtl_pmem_write(w_mem_addr,w_mem_data,w_mem_len);
-//         if(IFU_valid) begin
-//             LSU_valid = 1'b1;
-//         end
-//         else begin
-//             LSU_valid = 1'b0;
-//         end
-//         //r_mem_data_tmp = 32'b00000000;
-//         //r_mem_data = 32'b00000000;
-//     end
-    
-//     else if(r_mem_en && !w_mem_en)begin
-//         //r_mem_data_tmp = rtl_pmem_read(r_mem_addr);
-//         if(IFU_valid) begin
-//             LSU_valid = LSU_valid_tmp;
-//         end
-//         else begin
-//             LSU_valid = 1'b0;
-//         end
-//         if(r_mem_len == 8'd1)begin
-//             if(sign_extension)begin
-//                 r_mem_data = {{24{r_mem_data_tmp[7]}},r_mem_data_tmp[7:0]};
-//             end
-//             else begin
-//                 r_mem_data = {24'b0,r_mem_data_tmp[7:0]};
-//             end
-//         end
-//         else if(r_mem_len == 8'd2)begin
-//             if(sign_extension)begin
-//                 r_mem_data = {{16{r_mem_data_tmp[15]}},r_mem_data_tmp[15:0]};
-//             end
-//             else begin
-//                 r_mem_data = {16'b0,r_mem_data_tmp[15:0]};
-//             end
-//         end
-//         else if(r_mem_len == 8'd4)begin
-//             r_mem_data = r_mem_data_tmp;
-//         end
-
-//         else begin//shouldn't in
-//             r_mem_data = 32'b11111111;
-//         end
-//     end
-
-//     else begin
-//         if(IFU_valid) begin
-//             LSU_valid = 1'b1;
-//         end
-//         else begin
-//             LSU_valid = 1'b0;
-//         end
-//         //r_mem_data_tmp = 32'b11111111;
-//         //r_mem_data = 32'b11111111;
-//     end
-// end
 endmodule
