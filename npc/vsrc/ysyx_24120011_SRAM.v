@@ -125,7 +125,7 @@ module SRAM (
     always@(posedge clk)begin
         if(rst)begin
             state <= ysyx_24120011_S_AXI_IDLE;
-            read_dalay <= 32'd0;
+            read_dalay <= 32'd7;
         end
         else begin
             state <= next_state;
