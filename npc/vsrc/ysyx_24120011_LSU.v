@@ -187,7 +187,7 @@ module ysyx_24120011_LSU(
         end
         else if(state == ysyx_24120011_M_AXI_WDATA && rready_delay_cnt == 32'd0)begin
             rready <= 1;
-            read_delay_cnt <= 32'hFFFFFFFF;
+            rready_delay_cnt <= 32'hFFFFFFFF;
         end
         else begin
             rready <= 0;
