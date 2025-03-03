@@ -276,13 +276,13 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     } else {
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__wready = 0U;
     }
-    if (((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
+    if (((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
          & (0U != vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt 
             = (vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt 
                - (IData)(1U));
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready = 0U;
-    } else if (((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
+    } else if (((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt = 0xffffffffU;
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready = 1U;
