@@ -87,7 +87,7 @@ module ysyx_24120011_LSU(
     assign rready = (state == ysyx_24120011_M_AXI_RDATA) ? 1 : 0;
 
     //AW
-    assign awvalid = (state == ysyx_24120011_M_AXI_WADDR) ? 1 : 0;
+    //assign awvalid = (state == ysyx_24120011_M_AXI_WADDR) ? 1 : 0;
     assign awaddr = (state == ysyx_24120011_M_AXI_WADDR) ? w_mem_addr : 32'b0;
 
     //W
@@ -118,13 +118,14 @@ module ysyx_24120011_LSU(
             arvalid <= 0;
         end
     end
-    //awvalid_delay
+    
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_IDLE)begin
-            awvalid_delay_cnt <= awvalid_delay;
+            arvalid_delay_cnt <= arvalid_delay;
         end
     end
 
+    //awvalid_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt != 32'd0 )begin
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
@@ -147,6 +148,11 @@ module ysyx_24120011_LSU(
             awvalid_delay_cnt <= awvalid_delay;
         end
     end
+
+
+
+
+
 
     always@(posedge clk)begin
         if(w_mem_en == 1 || r_mem_en == 1) LSU_ready <= 1'b0;
