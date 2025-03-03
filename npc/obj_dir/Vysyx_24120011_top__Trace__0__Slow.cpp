@@ -197,8 +197,8 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     tracep->declBus(c+81,"rdata", false,-1, 31,0);
     tracep->declBit(c+82,"bvalid", false,-1);
     tracep->declBit(c+83,"LSU_working", false,-1);
-    tracep->declBit(c+84,"arvalid_delay", false,-1);
-    tracep->declBit(c+85,"arvalid_delay_cnt", false,-1);
+    tracep->declBus(c+84,"arvalid_delay", false,-1, 31,0);
+    tracep->declBus(c+85,"arvalid_delay_cnt", false,-1, 31,0);
     tracep->pushNamePrefix("u_SRAM ");
     tracep->declBit(c+157,"clk", false,-1);
     tracep->declBit(c+158,"rst", false,-1);
@@ -499,8 +499,8 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
     bufp->fullIData(oldp+81,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata),32);
     bufp->fullBit(oldp+82,((5U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))));
     bufp->fullBit(oldp+83,((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
-    bufp->fullBit(oldp+84,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay));
-    bufp->fullBit(oldp+85,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt));
+    bufp->fullIData(oldp+84,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay),32);
+    bufp->fullIData(oldp+85,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt),32);
     bufp->fullCData(oldp+86,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state),3);
     bufp->fullCData(oldp+87,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state),3);
     bufp->fullIData(oldp+88,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr),32);

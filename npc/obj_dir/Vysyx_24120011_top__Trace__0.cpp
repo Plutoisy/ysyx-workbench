@@ -167,8 +167,8 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgIData(oldp+80,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata),32);
         bufp->chgBit(oldp+81,((5U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))));
         bufp->chgBit(oldp+82,((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
-        bufp->chgBit(oldp+83,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay));
-        bufp->chgBit(oldp+84,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt));
+        bufp->chgIData(oldp+83,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay),32);
+        bufp->chgIData(oldp+84,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt),32);
         bufp->chgCData(oldp+85,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state),3);
         bufp->chgCData(oldp+86,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state),3);
         bufp->chgIData(oldp+87,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr),32);

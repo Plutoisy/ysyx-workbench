@@ -52,8 +52,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__start_write_delay;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rvalid;
-        CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay;
-        CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
         CData/*6:0*/ __Vtableidx1;
@@ -83,9 +81,11 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__B_in;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0;
+        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rdata;
+        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay;
     };
     struct {
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rdata;
+        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_dalay;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_dalay_cnt;
