@@ -181,11 +181,11 @@ module ysyx_24120011_LSU(
 
     //rready_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RADDR && rready_delay_cnt != 32'd0 )begin
+        if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt != 32'd0 )begin
             rready_delay_cnt <= rready_delay_cnt - 1;
             rready <= 0;
         end
-        else if(state == ysyx_24120011_M_AXI_WDATA && rready_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt == 32'd0)begin
             rready <= 1;
             rready_delay_cnt <= 32'hFFFFFFFF;
         end
