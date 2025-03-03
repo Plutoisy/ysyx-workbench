@@ -58,7 +58,7 @@ module ysyx_24120011_LSU(
     wire rready;
     wire [1:0] rresp;
     wire rvalid;
-    wire awvalid;
+    reg awvalid;
     wire awready;
     wire [31:0] awaddr;
     wire wvalid;
@@ -73,6 +73,9 @@ module ysyx_24120011_LSU(
 
     reg [31:0] arvalid_delay;
     reg [31:0] arvalid_delay_cnt;
+
+    reg [31:0] awvalid_delay;
+    reg [31:0] awvalid_delay_cnt;
 
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
@@ -98,6 +101,7 @@ module ysyx_24120011_LSU(
 
 /* verilator lint_off LATCH */
 
+    //arvalid_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt != 32'd0 )begin
             arvalid_delay_cnt <= arvalid_delay_cnt - 1;
@@ -114,10 +118,33 @@ module ysyx_24120011_LSU(
             arvalid <= 0;
         end
     end
+    //awvalid_delay
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_IDLE)begin
+            awvalid_delay_cnt <= awvalid_delay;
+        end
+    end
+
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt != 32'd0 )begin
+            awvalid_delay_cnt <= awvalid_delay_cnt - 1;
+        end
+        else if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt == 32'd0)begin
+            if(awready == 1) begin
+                awvalid <= 0;
+            end
+            else begin
+                awvalid <= 1;
+            end
+        end
+        else begin
+            awvalid <= 0;
+        end
+    end
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_IDLE)begin
-            arvalid_delay_cnt <= arvalid_delay;
+            awvalid_delay_cnt <= awvalid_delay;
         end
     end
 
@@ -202,6 +229,7 @@ module ysyx_24120011_LSU(
         if(rst) begin
             state <= ysyx_24120011_M_AXI_IDLE;
             arvalid_delay <= 32'd3;
+            awvalid_delay <= 32'd3;
         end
         else begin
             state <= next_state;
