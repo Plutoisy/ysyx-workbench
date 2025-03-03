@@ -113,7 +113,7 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RADDR)begin
+        if(state == ysyx_24120011_M_AXI_IDLE)begin
             arvalid_delay_cnt <= arvalid_delay;
         end
     end
