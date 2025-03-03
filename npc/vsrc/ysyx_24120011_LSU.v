@@ -99,7 +99,7 @@ module ysyx_24120011_LSU(
 /* verilator lint_off LATCH */
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt != 32'd0 && arvalid_delay_cnt != 32'hFFFFFFFF)begin
+        if(state == ysyx_24120011_M_AXI_RADDR && (arvalid_delay_cnt != 32'd0 || arvalid_delay_cnt != 32'hFFFFFFFF))begin
             arvalid_delay_cnt <= arvalid_delay_cnt - 1;
             arvalid <= 0;
         end
