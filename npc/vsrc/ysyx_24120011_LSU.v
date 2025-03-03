@@ -103,7 +103,7 @@ module ysyx_24120011_LSU(
             arvalid_delay_cnt <= arvalid_delay_cnt - 1;
             arvalid <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_RDATA && arvalid_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt == 32'd0)begin
             arvalid <= 1;
             arvalid_delay_cnt <= 32'b11111111111111111111111111111111;
         end
@@ -113,8 +113,8 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_S_AXI_RADDR)begin
-            read_dalay_cnt <= read_dalay;
+        if(state == ysyx_24120011_M_AXI_RADDR)begin
+            arvalid_delay_cnt <= arvalid_delay;
         end
     end
 
