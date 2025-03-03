@@ -19,7 +19,7 @@ module SRAM (
     input  [31:0] wdata,
     input  [3:0]  wstrb,
     input         wvalid,
-    output        wready,
+    output reg      wready,
     //B//
     output [1:0]  bresp,
     output        bvalid,
@@ -36,8 +36,10 @@ module SRAM (
     reg [2:0] state;
     reg [2:0] next_state;
     reg [31:0] addr;
-    reg [31:0] read_dalay;
-    reg [31:0] read_dalay_cnt;
+    reg [31:0] read_delay;
+    reg [31:0] read_delay_cnt;
+    reg [31:0] write_delay;
+    reg [31:0] write_delay_cnt;
 
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;
@@ -46,6 +48,7 @@ module SRAM (
 	//assign rdata  = (state == ysyx_24120011_S_AXI_RDATA) ? rtl_pmem_read(addr) : 0;
 
     /* verilator lint_off LATCH */
+    //read_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt != 32'd0)begin
             read_dalay_cnt <= read_dalay_cnt - 1;
@@ -67,6 +70,36 @@ module SRAM (
         end
     end
 
+    //write_delay
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_S_AXI_WDATA && write_dalay_cnt != 32'd0)begin
+            write_dalay_cnt <= write_dalay_cnt - 1;
+            wready <= 0;
+        end
+        else if(state == ysyx_24120011_S_AXI_WDATA && write_dalay_cnt == 32'd0)begin
+            if(wstrb == 4'b1111) begin
+                rtl_pmem_write(addr,wdata,4);
+            end
+            else if(wstrb == 4'b0011) begin
+                rtl_pmem_write(addr,wdata,2);
+            end
+            else if(wstrb == 4'b0001) begin
+                rtl_pmem_write(addr,wdata,1);
+            end
+            else ;
+            wready <= 1;
+            write_dalay_cnt <= 32'b11111111111111111111111111111111;
+        end
+        else begin
+            wready <= 0;
+        end
+    end
+
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_S_AXI_RADDR)begin
+            read_dalay_cnt <= read_dalay;
+        end
+    end
 	assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
 	//assign rvalid = (state == ysyx_24120011_S_AXI_RDATA) ? 1 : 0;
 
@@ -74,7 +107,7 @@ module SRAM (
 	assign awready = (state == ysyx_24120011_S_AXI_WADDR) ? 1 : 0;
 
 	// W
-	assign wready = (state == ysyx_24120011_S_AXI_WDATA) ? 1 : 0;
+	//assign wready = (state == ysyx_24120011_S_AXI_WDATA) ? 1 : 0;
 
 	// B
 	assign bvalid = (state == ysyx_24120011_S_AXI_WRESP) ? 1 : 0;
@@ -93,20 +126,20 @@ module SRAM (
         end
     end
 
-    always@(posedge clk)begin
-        if (state == ysyx_24120011_S_AXI_WDATA) begin
-            if(wstrb == 4'b1111) begin
-                rtl_pmem_write(addr,wdata,4);
-            end
-            else if(wstrb == 4'b0011) begin
-                rtl_pmem_write(addr,wdata,2);
-            end
-            else if(wstrb == 4'b0001) begin
-                rtl_pmem_write(addr,wdata,1);
-            end
-            else ;
-        end
-    end
+    // always@(posedge clk)begin
+    //     if (state == ysyx_24120011_S_AXI_WDATA) begin
+    //         if(wstrb == 4'b1111) begin
+    //             rtl_pmem_write(addr,wdata,4);
+    //         end
+    //         else if(wstrb == 4'b0011) begin
+    //             rtl_pmem_write(addr,wdata,2);
+    //         end
+    //         else if(wstrb == 4'b0001) begin
+    //             rtl_pmem_write(addr,wdata,1);
+    //         end
+    //         else ;
+    //     end
+    // end
 
     
     always@(*)begin
@@ -125,7 +158,8 @@ module SRAM (
     always@(posedge clk)begin
         if(rst)begin
             state <= ysyx_24120011_S_AXI_IDLE;
-            read_dalay <= 32'd3;
+            read_delay <= 32'd3;
+            write_delay
         end
         else begin
             state <= next_state;
