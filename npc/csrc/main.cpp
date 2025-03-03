@@ -20,7 +20,7 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 1
-#define BMODE 0
+#define BMODE 1
 #define WAVE 1
 
 VerilatedContext* contextp = NULL;
