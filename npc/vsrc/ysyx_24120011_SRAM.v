@@ -50,14 +50,14 @@ module SRAM (
     /* verilator lint_off LATCH */
     //read_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt != 32'd0)begin
-            read_dalay_cnt <= read_dalay_cnt - 1;
+        if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt != 32'd0)begin
+            read_delay_cnt <= read_delay_cnt - 1;
             rvalid <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_RDATA && read_dalay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 32'd0)begin
             rdata <= rtl_pmem_read(addr);
             rvalid <= 1;
-            read_dalay_cnt <= 32'b11111111111111111111111111111111;
+            read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
             rvalid <= 0;
@@ -66,17 +66,17 @@ module SRAM (
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RADDR)begin
-            read_dalay_cnt <= read_dalay;
+            read_delay_cnt <= read_delay;
         end
     end
 
     //write_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_S_AXI_WDATA && write_dalay_cnt != 32'd0)begin
-            write_dalay_cnt <= write_dalay_cnt - 1;
+        if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt != 32'd0)begin
+            write_delay_cnt <= write_delay_cnt - 1;
             wready <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_WDATA && write_dalay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0)begin
             if(wstrb == 4'b1111) begin
                 rtl_pmem_write(addr,wdata,4);
             end
@@ -88,7 +88,7 @@ module SRAM (
             end
             else ;
             wready <= 1;
-            write_dalay_cnt <= 32'b11111111111111111111111111111111;
+            write_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
             wready <= 0;
@@ -96,10 +96,15 @@ module SRAM (
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_S_AXI_RADDR)begin
-            read_dalay_cnt <= read_dalay;
+        if(state == ysyx_24120011_S_AXI_WADDR)begin
+            write_delay_cnt <= write_delay;
         end
     end
+
+
+
+
+
 	assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
 	//assign rvalid = (state == ysyx_24120011_S_AXI_RDATA) ? 1 : 0;
 
