@@ -80,6 +80,9 @@ module ysyx_24120011_LSU(
     reg [31:0] wvalid_delay;
     reg [31:0] wvalid_delay_cnt;
 
+    reg [31:0] rready_delay;
+    reg [31:0] rready_delay_cnt;
+
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
     //AR
@@ -176,6 +179,29 @@ module ysyx_24120011_LSU(
         end
     end
 
+    //rready_delay
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_RADDR && rready_delay_cnt != 32'd0 )begin
+            rready_delay_cnt <= rready_delay_cnt - 1;
+            rready <= 0;
+        end
+        else if(state == ysyx_24120011_M_AXI_WDATA && rready_delay_cnt == 32'd0)begin
+            rready <= 1;
+            read_delay_cnt <= 32'hFFFFFFFF;
+        end
+        else begin
+            rready <= 0;
+        end
+    end
+
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_RADDR)begin
+            rready_delay_cnt <= rready_delay;
+        end
+    end
+
+
+
 
 
 
@@ -262,6 +288,7 @@ module ysyx_24120011_LSU(
             arvalid_delay <= 32'd3;
             awvalid_delay <= 32'd3;
             wvalid_delay  <= 32'd3;
+            rready_delay  <= 32'd3;
         end
         else begin
             state <= next_state;
