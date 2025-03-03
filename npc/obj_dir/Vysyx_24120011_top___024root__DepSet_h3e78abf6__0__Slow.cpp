@@ -191,11 +191,14 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr = VL_RAND_RESET_I(32);
