@@ -52,12 +52,12 @@ module SRAM (
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt != 32'd0)begin
             read_delay_cnt <= read_delay_cnt - 1;
-            rvalid <= 0;
+            //rvalid <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 32'd0)begin
             rdata <= rtl_pmem_read(addr);
             rvalid <= 1;
-            read_delay_cnt <= 32'b11111111111111111111111111111111;
+            //read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
             rvalid <= 0;
