@@ -187,11 +187,17 @@ module ysyx_24120011_LSU(
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt != 32'd0 )begin
             rready_delay_cnt <= rready_delay_cnt - 1;
-            rready <= 0;
+            // rready <= 0;
         end
         else if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt == 32'd0)begin
-            rready <= 1;
-            rready_delay_cnt <= 32'hFFFFFFFF;
+            // rready <= 1;
+            // rready_delay_cnt <= 32'hFFFFFFFF;
+            if(rvalid == 1) begin
+                rready <= 0;
+            end
+            else begin
+                rready <= 1;
+            end
         end
         else begin
             rready <= 0;
@@ -208,11 +214,17 @@ module ysyx_24120011_LSU(
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt != 32'd0 )begin
             bready_delay_cnt <= bready_delay_cnt - 1;
-            bready <= 0;
+            //bready <= 0;
         end
         else if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt == 32'd0)begin
-            bready <= 1;
-            bready_delay_cnt <= 32'hFFFFFFFF;
+            //bready <= 1;
+            //bready_delay_cnt <= 32'hFFFFFFFF;
+            if(bvalid == 1) begin
+                bready <= 0;
+            end
+            else begin
+                bready <= 1;
+            end
         end
         else begin
             bready <= 0;
