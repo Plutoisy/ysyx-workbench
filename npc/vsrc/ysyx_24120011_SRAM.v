@@ -42,6 +42,7 @@ module SRAM (
     reg [31:0] write_delay_cnt;
 
     reg pmem_readed;
+    reg pmem_writed;
 
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;
@@ -84,8 +85,9 @@ module SRAM (
         if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt != 32'd0)begin
             write_delay_cnt <= write_delay_cnt - 1;
             //wready <= 0;
+            pmem_writed <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0 && pmem_writed == 0)begin
             if(wstrb == 4'b1111) begin
                 rtl_pmem_write(addr,wdata,4);
             end
@@ -97,10 +99,17 @@ module SRAM (
             end
             else ;
             wready <= 1;
+            pmem_writed <= 1;
+            //write_delay_cnt <= 32'b11111111111111111111111111111111;
+        end
+        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0 && pmem_writed == 1)begin
+            wready <= 1;
+            pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
             wready <= 0;
+            pmem_writed <= 0;
         end
     end
 
