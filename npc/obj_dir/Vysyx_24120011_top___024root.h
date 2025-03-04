@@ -43,6 +43,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__next_state;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed;
+        CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0;
@@ -65,6 +66,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed;
+        CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed;
         CData/*7:0*/ __Vtableidx1;
         CData/*3:0*/ __Vtableidx3;
         CData/*6:0*/ __Vtableidx4;
@@ -81,10 +83,10 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__src2;
         IData/*31:0*/ ysyx_24120011_top__DOT__pc_add_imme_out;
         IData/*31:0*/ ysyx_24120011_top__DOT__ALUB;
-        IData/*31:0*/ ysyx_24120011_top__DOT__alu_result;
-        IData/*31:0*/ ysyx_24120011_top__DOT__w_csr_data;
     };
     struct {
+        IData/*31:0*/ ysyx_24120011_top__DOT__alu_result;
+        IData/*31:0*/ ysyx_24120011_top__DOT__w_csr_data;
         IData/*31:0*/ ysyx_24120011_top__DOT__r_csr_data;
         IData/*31:0*/ ysyx_24120011_top__DOT__pc;
         IData/*31:0*/ ysyx_24120011_top__DOT__inst;

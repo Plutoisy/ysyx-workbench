@@ -174,6 +174,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0 = VL_RAND_RESET_I(1);
@@ -222,6 +223,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mepc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mstatus = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_Csr__DOT__mcause = VL_RAND_RESET_I(32);
