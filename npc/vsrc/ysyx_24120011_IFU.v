@@ -23,6 +23,7 @@ wire [1:0] bresp;
 wire bvalid;
 wire rvalid;
 reg rready;
+reg rvalid_prev;
 
 assign IFU_valid = rready;
 
@@ -49,13 +50,12 @@ SRAM u_SRAM(
 );
 
 always@(posedge clk)begin
-    if(rvalid == 1) begin
+    if (rvalid && !rvalid_prev) begin
         rready <= 1;
-    end
-    else begin
+    end else begin
         rready <= 0;
     end
-    
+    rvalid_prev <= rvalid;
 end
 
 endmodule
