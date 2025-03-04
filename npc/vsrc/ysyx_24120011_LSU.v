@@ -220,7 +220,7 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RDATA)begin
+        if(state == ysyx_24120011_M_AXI_WDATA)begin
             bready_delay_cnt <= bready_delay;
         end
     end
