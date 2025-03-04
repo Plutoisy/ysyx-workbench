@@ -21,6 +21,10 @@ wire awready;
 wire wready;
 wire [1:0] bresp;
 wire bvalid;
+wire rvalid;
+reg rready;
+
+assign rready = IFU_valid;
 
 SRAM u_SRAM(
     .clk     ( clk     ),
@@ -30,8 +34,8 @@ SRAM u_SRAM(
     .arready ( arready ),
     .rdata   ( inst    ),
     .rresp   ( rresp   ),
-    .rvalid  ( IFU_valid  ),
-    .rready  ( 1'b1  ),
+    .rvalid  ( rvalid  ),
+    .rready  ( rready ),
     .awaddr  ( 32'b0  ),
     .awvalid ( 1'b0 ),
     .awready ( awready ),
@@ -43,5 +47,15 @@ SRAM u_SRAM(
     .bvalid  ( bvalid  ),
     .bready  ( 1'b1  )
 );
+
+always@(posedge clk)begin
+    if(rvalid == 1) begin
+        rready <= 1;
+    end
+    else begin
+        rready <= 0;
+    end
+    
+end
 
 endmodule
