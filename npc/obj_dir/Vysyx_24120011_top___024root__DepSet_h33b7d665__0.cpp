@@ -326,7 +326,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready 
             = (((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt)) 
-               & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid)));
+               & (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid));
     }
     if (((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
          & (0U != vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt))) {
