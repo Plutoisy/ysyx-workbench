@@ -21,7 +21,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
-#define WAVE 0
+#define WAVE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
