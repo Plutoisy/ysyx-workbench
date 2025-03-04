@@ -63,6 +63,10 @@ module SRAM (
             rvalid <= 1;
             //read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
+        else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 32'd0 && pmem_readed == 1)begin
+            pmem_readed <= 1;
+            rvalid <= 1;
+        end
         else begin
             pmem_readed <= 0;
             rvalid <= 0;
