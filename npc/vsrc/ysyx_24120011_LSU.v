@@ -220,10 +220,10 @@ module ysyx_24120011_LSU(
             //bready <= 1;
             //bready_delay_cnt <= 32'hFFFFFFFF;
             if(bvalid == 1) begin
-                bready <= 0;
+                bready <= 1;
             end
             else begin
-                bready <= 1;
+                bready <= 0;
             end
         end
         else begin
