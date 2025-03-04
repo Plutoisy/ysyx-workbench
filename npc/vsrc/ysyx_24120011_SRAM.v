@@ -163,8 +163,8 @@ module SRAM (
     always@(posedge clk)begin
         if(rst)begin
             state <= ysyx_24120011_S_AXI_IDLE;
-            read_delay <= 32'd3;
-            write_delay <= 32'd3;
+            read_delay <= 32'd2;
+            write_delay <= 32'd9;
         end
         else begin
             state <= next_state;

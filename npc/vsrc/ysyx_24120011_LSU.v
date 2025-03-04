@@ -309,11 +309,11 @@ module ysyx_24120011_LSU(
     always@(posedge clk)begin
         if(rst) begin
             state <= ysyx_24120011_M_AXI_IDLE;
-            arvalid_delay <= 32'd3;
-            awvalid_delay <= 32'd3;
-            wvalid_delay  <= 32'd3;
+            arvalid_delay <= 32'd10;
+            awvalid_delay <= 32'd1;
+            wvalid_delay  <= 32'd5;
             rready_delay  <= 32'd3;
-            bready_delay  <= 32'd3;
+            bready_delay  <= 32'd8;
         end
         else begin
             state <= next_state;
