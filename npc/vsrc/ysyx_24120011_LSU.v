@@ -142,10 +142,10 @@ module ysyx_24120011_LSU(
         end
         else if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt == 32'd0)begin
             if(awready == 1) begin
-                awvalid <= 0;
+                awvalid <= 1;
             end
             else begin
-                awvalid <= 1;
+                awvalid <= 0;
             end
         end
         else begin
@@ -166,10 +166,10 @@ module ysyx_24120011_LSU(
         end
         else if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt == 32'd0)begin
             if(wready == 1) begin
-                wvalid <= 0;
+                wvalid <= 1;
             end
             else begin
-                wvalid <= 1;
+                wvalid <= 0;
             end
         end
         else begin

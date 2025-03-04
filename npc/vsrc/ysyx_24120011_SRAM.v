@@ -74,7 +74,7 @@ module SRAM (
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt != 32'd0)begin
             write_delay_cnt <= write_delay_cnt - 1;
-            wready <= 0;
+            //wready <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0)begin
             if(wstrb == 4'b1111) begin
@@ -88,7 +88,7 @@ module SRAM (
             end
             else ;
             wready <= 1;
-            write_delay_cnt <= 32'b11111111111111111111111111111111;
+            //write_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
             wready <= 0;
