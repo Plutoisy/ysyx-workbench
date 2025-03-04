@@ -313,7 +313,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid 
             = (((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt)) 
-               & (1U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)));
+               & (1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)));
     }
     if (((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state)) 
          & (0U != vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt))) {
