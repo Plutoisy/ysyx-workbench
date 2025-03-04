@@ -501,15 +501,15 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [0x1fU];
     if (vlSelf->rst) {
-        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay = 3U;
+        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay = 9U;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay = 8U;
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay = 3U;
-        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay = 3U;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay = 2U;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay = 9U;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay = 1U;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay = 0xaU;
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay = 5U;
+        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay = 2U;
         vlSelf->ysyx_24120011_top__DOT__r_mem_data = 0U;
         vlSelf->ysyx_24120011_top__DOT__pc = 0x80000000U;
         vlSelf->ysyx_24120011_top__DOT__pc = 0x80000000U;
