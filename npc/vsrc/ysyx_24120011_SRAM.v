@@ -64,7 +64,7 @@ module SRAM (
             //read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
-            pmem_readed <= 0
+            pmem_readed <= 0;
             rvalid <= 0;
         end
     end
