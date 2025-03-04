@@ -66,7 +66,7 @@ module ysyx_24120011_LSU(
     wire [31:0] wdata;
     wire [1:0] bresp;
     wire [3:0] wstrb;
-    wire bready;
+    reg bready;
     wire [31:0] rdata;
     wire bvalid;
     wire LSU_working;
