@@ -24,7 +24,7 @@ wire bvalid;
 wire rvalid;
 reg rready;
 
-assign rready = IFU_valid;
+assign IFU_valid = rready;
 
 SRAM u_SRAM(
     .clk     ( clk     ),
