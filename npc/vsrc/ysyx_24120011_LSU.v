@@ -83,6 +83,10 @@ module ysyx_24120011_LSU(
     reg [31:0] rready_delay;
     reg [31:0] rready_delay_cnt;
 
+    reg [31:0] bready_delay;
+    reg [31:0] bready_delay_cnt;
+
+
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
     //AR
@@ -103,7 +107,7 @@ module ysyx_24120011_LSU(
                     4'b1111 :
                     ((w_mem_len == 8'd2) ? 4'b0011 : 4'b0001);
     //B
-    assign bready = (state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
+    //assign bready = (state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
 
 /* verilator lint_off LATCH */
 
@@ -200,6 +204,26 @@ module ysyx_24120011_LSU(
         end
     end
 
+    //bready_delay
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt != 32'd0 )begin
+            bready_delay_cnt <= bready_delay_cnt - 1;
+            bready <= 0;
+        end
+        else if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt == 32'd0)begin
+            bready <= 1;
+            bready_delay_cnt <= 32'hFFFFFFFF;
+        end
+        else begin
+            bready <= 0;
+        end
+    end
+
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_M_AXI_RDATA)begin
+            bready_delay_cnt <= bready_delay;
+        end
+    end
 
 
 
@@ -289,6 +313,7 @@ module ysyx_24120011_LSU(
             awvalid_delay <= 32'd3;
             wvalid_delay  <= 32'd3;
             rready_delay  <= 32'd3;
+            bready_delay  <= 32'd3;
         end
         else begin
             state <= next_state;
