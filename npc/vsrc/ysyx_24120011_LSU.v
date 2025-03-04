@@ -193,10 +193,10 @@ module ysyx_24120011_LSU(
             // rready <= 1;
             // rready_delay_cnt <= 32'hFFFFFFFF;
             if(rvalid == 1) begin
-                rready <= 0;
+                rready <= 1;
             end
             else begin
-                rready <= 1;
+                rready <= 0;
             end
         end
         else begin
