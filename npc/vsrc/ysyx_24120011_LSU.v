@@ -140,10 +140,10 @@ module ysyx_24120011_LSU(
 
     //awvalid_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt != 32'd0 )begin
+        if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
             awvalid <= 1;
         end
         else begin
@@ -159,10 +159,10 @@ module ysyx_24120011_LSU(
 
     //wvalid_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt != 32'd0 )begin
+        if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt != 0 )begin
             wvalid_delay_cnt <= wvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
             if(wready == 1) begin
                 wvalid <= 1;
             end
@@ -183,11 +183,11 @@ module ysyx_24120011_LSU(
 
     //rready_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt != 32'd0 )begin
+        if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt != 0 )begin
             rready_delay_cnt <= rready_delay_cnt - 1;
             // rready <= 0;
         end
-        else if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt == 0)begin
             // rready <= 1;
             // rready_delay_cnt <= 32'hFFFFFFFF;
             if(rvalid == 1) begin
@@ -210,11 +210,11 @@ module ysyx_24120011_LSU(
 
     //bready_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt != 32'd0 )begin
+        if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt != 0 )begin
             bready_delay_cnt <= bready_delay_cnt - 1;
             //bready <= 0;
         end
-        else if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt == 32'd0)begin
+        else if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt == 0)begin
             //bready <= 1;
             //bready_delay_cnt <= 32'hFFFFFFFF;
             if(bvalid == 1) begin

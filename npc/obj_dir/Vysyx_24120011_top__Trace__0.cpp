@@ -169,11 +169,11 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgIData(oldp+86,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata),32);
         bufp->chgBit(oldp+87,((5U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))));
         bufp->chgBit(oldp+88,((0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))));
-        bufp->chgIData(oldp+89,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt),32);
-        bufp->chgIData(oldp+90,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt),32);
-        bufp->chgIData(oldp+91,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt),32);
-        bufp->chgIData(oldp+92,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt),32);
-        bufp->chgIData(oldp+93,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt),32);
+        bufp->chgCData(oldp+89,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt),8);
+        bufp->chgCData(oldp+90,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt),8);
+        bufp->chgCData(oldp+91,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt),8);
+        bufp->chgCData(oldp+92,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt),8);
+        bufp->chgCData(oldp+93,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt),8);
         bufp->chgCData(oldp+94,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in),8);
         bufp->chgCData(oldp+95,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay),8);
         bufp->chgCData(oldp+96,(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state),3);

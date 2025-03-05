@@ -63,6 +63,11 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wready;
         CData/*3:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wstrb;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__bready;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt;
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in;
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
@@ -78,13 +83,13 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         SData/*11:0*/ ysyx_24120011_top__DOT__r_csr_addr;
         SData/*9:0*/ __Vtableidx2;
         IData/*31:0*/ ysyx_24120011_top__DOT__dnpc;
+    };
+    struct {
         IData/*31:0*/ ysyx_24120011_top__DOT__imme;
         IData/*31:0*/ ysyx_24120011_top__DOT__rdata;
         IData/*31:0*/ ysyx_24120011_top__DOT__r_mem_data;
         IData/*31:0*/ ysyx_24120011_top__DOT__src1;
         IData/*31:0*/ ysyx_24120011_top__DOT__src2;
-    };
-    struct {
         IData/*31:0*/ ysyx_24120011_top__DOT__pc_add_imme_out;
         IData/*31:0*/ ysyx_24120011_top__DOT__ALUB;
         IData/*31:0*/ ysyx_24120011_top__DOT__alu_result;
@@ -102,16 +107,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wdata;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rdata;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
