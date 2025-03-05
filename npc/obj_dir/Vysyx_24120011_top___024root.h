@@ -42,8 +42,12 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__rvalid_prev;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__next_state;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__LSFR_in;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__random_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT__opcode_type;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0;
@@ -72,9 +76,15 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__LSFR_in;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__random_delay;
         CData/*7:0*/ __Vtableidx1;
+    };
+    struct {
         CData/*3:0*/ __Vtableidx3;
         CData/*6:0*/ __Vtableidx4;
         CData/*0:0*/ __Vtrigrprev__TOP__clk;
@@ -83,8 +93,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         SData/*11:0*/ ysyx_24120011_top__DOT__r_csr_addr;
         SData/*9:0*/ __Vtableidx2;
         IData/*31:0*/ ysyx_24120011_top__DOT__dnpc;
-    };
-    struct {
         IData/*31:0*/ ysyx_24120011_top__DOT__imme;
         IData/*31:0*/ ysyx_24120011_top__DOT__rdata;
         IData/*31:0*/ ysyx_24120011_top__DOT__r_mem_data;
@@ -98,20 +106,12 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__pc;
         IData/*31:0*/ ysyx_24120011_top__DOT__inst;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__addr;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__B_in;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT__ALUout_tmp;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_ALU__DOT____VdfgTmp_h6c4bfc22__0;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wdata;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rdata;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay;
-        IData/*31:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mepc;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mstatus;
         IData/*31:0*/ ysyx_24120011_top__DOT__i_Csr__DOT__mcause;

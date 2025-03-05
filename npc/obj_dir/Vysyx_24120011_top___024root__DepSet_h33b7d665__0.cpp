@@ -49,11 +49,11 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     __Vfunc_rtl_pmem_read__3__Vfuncout = 0;
     IData/*31:0*/ __Vfunc_rtl_pmem_read__6__Vfuncout;
     __Vfunc_rtl_pmem_read__6__Vfuncout = 0;
-    IData/*31:0*/ __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt;
+    CData/*7:0*/ __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt = 0;
     CData/*0:0*/ __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed;
     __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed = 0;
-    IData/*31:0*/ __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt;
+    CData/*7:0*/ __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt = 0;
     CData/*0:0*/ __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed;
     __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed = 0;
@@ -79,11 +79,11 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt = 0;
     CData/*7:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt = 0;
-    IData/*31:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
+    CData/*7:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt = 0;
     CData/*0:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed = 0;
-    IData/*31:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
+    CData/*7:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt = 0;
     CData/*0:0*/ __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed = 0;
@@ -108,14 +108,14 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr 
         = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr;
-    __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt 
-        = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
-    __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
-        = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt 
         = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt 
         = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt;
+    __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt 
+        = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt;
+    __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
+        = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt 
         = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt 
@@ -147,21 +147,21 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     __Vdlyvset__ysyx_24120011_top__DOT__i_RegStack__DOT__Regs__v33 = 0U;
     if ((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))) {
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt 
-            = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay;
-    }
-    if ((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))) {
-        __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt 
-            = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay;
-    }
-    if ((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))) {
-        __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
-            = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay;
+            = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__random_delay;
     }
     if ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt 
             = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__arvalid_delay_cnt 
             = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
+    }
+    if ((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))) {
+        __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt 
+            = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__random_delay;
+    }
+    if ((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state))) {
+        __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
+            = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__random_delay;
     }
     if ((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt 
@@ -173,7 +173,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     }
     if ((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state))) {
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt 
-            = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay;
+            = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__random_delay;
     }
     if (((IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en) 
          | (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en))) {
@@ -287,19 +287,19 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
             = vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
     }
     if (((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-         & (0U != vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt))) {
+         & (0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt)))) {
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt 
-            = (vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt 
-               - (IData)(1U));
+            = (0xffU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt) 
+                        - (IData)(1U)));
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed = 0U;
     } else if ((((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt))) 
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed)))) {
         Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__addr, 0U, 4U);
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__wready = 1U;
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed = 1U;
     } else if ((((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay_cnt))) 
                 & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed))) {
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__wready = 1U;
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_writed = 1U;
@@ -423,9 +423,17 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt;
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt 
         = __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__wvalid_delay_cnt;
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__LSFR_in) 
+                                         >> 1U)));
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay 
         = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in))) 
                      << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in) 
+                                         >> 1U)));
+    vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__LSFR_in) 
                                          >> 1U)));
     vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout[0U] 
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
@@ -524,10 +532,6 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [0x1fU];
     if (vlSelf->rst) {
-        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__write_delay = 1U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay = 1U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay = 1U;
-        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay = 1U;
         vlSelf->ysyx_24120011_top__DOT__r_mem_data = 0U;
         vlSelf->ysyx_24120011_top__DOT__pc = 0x80000000U;
         vlSelf->ysyx_24120011_top__DOT__pc = 0x80000000U;
@@ -556,13 +560,13 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         }
     }
     if (((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)) 
-         & (0U != vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt))) {
+         & (0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt)))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
-            = (vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
-               - (IData)(1U));
+            = (0xffU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt) 
+                        - (IData)(1U)));
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed = 0U;
     } else if ((((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt))) 
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed)))) {
         if ((0xfU == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wstrb))) {
             Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr, vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wdata, 4U);
@@ -574,7 +578,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wready = 1U;
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed = 1U;
     } else if ((((4U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt))) 
                 & (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed))) {
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__wready = 1U;
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_writed = 1U;
@@ -588,16 +592,18 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt 
         = __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__write_delay_cnt;
     if (vlSelf->rst) {
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__LSFR_in = 1U;
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in = 1U;
+        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__LSFR_in = 1U;
     }
     if (((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)) 
-         & (0U != vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt))) {
+         & (0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt)))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt 
-            = (vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt 
-               - (IData)(1U));
+            = (0xffU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt) 
+                        - (IData)(1U)));
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed = 0U;
     } else if ((((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt))) 
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed)))) {
         Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr, __Vfunc_rtl_pmem_read__6__Vfuncout);
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rdata 
@@ -605,7 +611,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed = 1U;
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid = 1U;
     } else if ((((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__read_delay_cnt))) 
                 & (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed))) {
         __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed = 1U;
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rvalid = 1U;
@@ -706,20 +712,20 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__rvalid_prev 
         = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__rvalid;
     if (((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-         & (0U != vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt))) {
+         & (0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt)))) {
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt 
-            = (vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt 
-               - (IData)(1U));
+            = (0xffU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt) 
+                        - (IData)(1U)));
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed = 0U;
     } else if ((((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt))) 
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed)))) {
         Vysyx_24120011_top___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__addr, __Vfunc_rtl_pmem_read__3__Vfuncout);
         vlSelf->ysyx_24120011_top__DOT__inst = __Vfunc_rtl_pmem_read__3__Vfuncout;
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed = 1U;
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__rvalid = 1U;
     } else if ((((2U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__state)) 
-                 & (0U == vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt)) 
+                 & (0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__read_delay_cnt))) 
                 & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed))) {
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__u_SRAM__DOT__pmem_readed = 1U;
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__rvalid = 1U;

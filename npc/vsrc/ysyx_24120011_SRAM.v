@@ -62,18 +62,18 @@ module SRAM (
     /* verilator lint_off LATCH */
     //read_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt != 32'd0)begin
+        if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt != 0)begin
             read_delay_cnt <= read_delay_cnt - 1;
             pmem_readed <= 0;
             //rvalid <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 32'd0 && pmem_readed == 0)begin
+        else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 0)begin
             rdata <= rtl_pmem_read(addr);
             pmem_readed <= 1;
             rvalid <= 1;
             //read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
-        else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 32'd0 && pmem_readed == 1)begin
+        else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 1)begin
             pmem_readed <= 1;
             rvalid <= 1;
         end
@@ -91,12 +91,12 @@ module SRAM (
 
     //write_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt != 32'd0)begin
+        if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt != 0)begin
             write_delay_cnt <= write_delay_cnt - 1;
             //wready <= 0;
             pmem_writed <= 0;
         end
-        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0 && pmem_writed == 0)begin
+        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 0)begin
             if(wstrb == 4'b1111) begin
                 rtl_pmem_write(addr,wdata,4);
             end
@@ -111,7 +111,7 @@ module SRAM (
             pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
         end
-        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 32'd0 && pmem_writed == 1)begin
+        else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 1)begin
             wready <= 1;
             pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
