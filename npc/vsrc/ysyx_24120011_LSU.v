@@ -86,6 +86,14 @@ module ysyx_24120011_LSU(
     reg [31:0] bready_delay;
     reg [31:0] bready_delay_cnt;
 
+    reg [7:0] LSFR_in;
+    reg [7:0] random_delay;
+
+    ysyx_24120011_LFSR u_ysyx_24120011_LFSR(
+        .clk ( clk           ),
+        .in  ( LSFR_in       ),
+        .out ( random_delay  )
+    );
 
     //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
     assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
@@ -126,7 +134,7 @@ module ysyx_24120011_LSU(
     
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_IDLE)begin
-            arvalid_delay_cnt <= arvalid_delay;
+            arvalid_delay_cnt <= random_delay;
         end
     end
 
@@ -145,7 +153,7 @@ module ysyx_24120011_LSU(
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_IDLE)begin
-            awvalid_delay_cnt <= awvalid_delay;
+            awvalid_delay_cnt <= random_delay;
         end
     end
 
@@ -169,7 +177,7 @@ module ysyx_24120011_LSU(
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_WADDR)begin
-            wvalid_delay_cnt <= wvalid_delay;
+            wvalid_delay_cnt <= random_delay;
         end
     end
 
@@ -196,7 +204,7 @@ module ysyx_24120011_LSU(
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_RADDR)begin
-            rready_delay_cnt <= rready_delay;
+            rready_delay_cnt <= random_delay;
         end
     end
 
@@ -223,7 +231,7 @@ module ysyx_24120011_LSU(
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_M_AXI_WDATA)begin
-            bready_delay_cnt <= bready_delay;
+            bready_delay_cnt <= random_delay;
         end
     end
 
@@ -311,11 +319,12 @@ module ysyx_24120011_LSU(
     always@(posedge clk)begin
         if(rst) begin
             state <= ysyx_24120011_M_AXI_IDLE;
-            arvalid_delay <= 32'd1;
-            awvalid_delay <= 32'd1;
-            wvalid_delay  <= 32'd1;
-            rready_delay  <= 32'd1;
-            bready_delay  <= 32'd1;
+            // arvalid_delay <= 32'd1;
+            // awvalid_delay <= 32'd1;
+            // wvalid_delay  <= 32'd1;
+            // rready_delay  <= 32'd1;
+            // bready_delay  <= 32'd1;
+            LSFR_in <= 8'h01;
         end
         else begin
             state <= next_state;
