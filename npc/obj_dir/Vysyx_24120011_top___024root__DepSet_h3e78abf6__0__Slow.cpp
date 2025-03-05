@@ -215,6 +215,8 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___ctor_var_reset(Vysyx_24120011_t
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in = VL_RAND_RESET_I(8);
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay = VL_RAND_RESET_I(8);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__addr = VL_RAND_RESET_I(32);

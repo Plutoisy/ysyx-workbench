@@ -71,20 +71,20 @@ module ysyx_24120011_LSU(
     wire bvalid;
     wire LSU_working;
 
-    reg [31:0] arvalid_delay;
-    reg [31:0] arvalid_delay_cnt;
+    //reg [31:0] arvalid_delay;
+    reg [7:0] arvalid_delay_cnt;
 
-    reg [31:0] awvalid_delay;
-    reg [31:0] awvalid_delay_cnt;
+    //reg [31:0] awvalid_delay;
+    reg [7:0] awvalid_delay_cnt;
 
-    reg [31:0] wvalid_delay;
-    reg [31:0] wvalid_delay_cnt;
+    //reg [31:0] wvalid_delay;
+    reg [7:0] wvalid_delay_cnt;
 
-    reg [31:0] rready_delay;
-    reg [31:0] rready_delay_cnt;
+    //reg [31:0] rready_delay;
+    reg [7:0] rready_delay_cnt;
 
-    reg [31:0] bready_delay;
-    reg [31:0] bready_delay_cnt;
+    //reg [31:0] bready_delay;
+    reg [7:0] bready_delay_cnt;
 
     reg [7:0] LSFR_in;
     reg [7:0] random_delay;

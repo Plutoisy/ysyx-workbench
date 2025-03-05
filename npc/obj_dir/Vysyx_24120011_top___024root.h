@@ -63,6 +63,8 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wready;
         CData/*3:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__wstrb;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__bready;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in;
+        CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__state;
         CData/*2:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__next_state;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__u_SRAM__DOT__pmem_readed;
@@ -81,10 +83,10 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011_top__DOT__r_mem_data;
         IData/*31:0*/ ysyx_24120011_top__DOT__src1;
         IData/*31:0*/ ysyx_24120011_top__DOT__src2;
-        IData/*31:0*/ ysyx_24120011_top__DOT__pc_add_imme_out;
-        IData/*31:0*/ ysyx_24120011_top__DOT__ALUB;
     };
     struct {
+        IData/*31:0*/ ysyx_24120011_top__DOT__pc_add_imme_out;
+        IData/*31:0*/ ysyx_24120011_top__DOT__ALUB;
         IData/*31:0*/ ysyx_24120011_top__DOT__alu_result;
         IData/*31:0*/ ysyx_24120011_top__DOT__w_csr_data;
         IData/*31:0*/ ysyx_24120011_top__DOT__r_csr_data;
