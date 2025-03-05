@@ -89,7 +89,7 @@ module ysyx_24120011_LSU(
     reg [7:0] LSFR_in;
     reg [7:0] random_delay;
 
-    ysyx_24120011_LFSR u_ysyx_24120011_LFSR(
+    ysyx_24120011_LFSR i0_LFSR(
         .clk ( clk           ),
         .in  ( LSFR_in       ),
         .out ( random_delay  )

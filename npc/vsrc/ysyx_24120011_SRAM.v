@@ -36,13 +36,22 @@ module SRAM (
     reg [2:0] state;
     reg [2:0] next_state;
     reg [31:0] addr;
-    reg [31:0] read_delay;
-    reg [31:0] read_delay_cnt;
-    reg [31:0] write_delay;
-    reg [31:0] write_delay_cnt;
+    //reg [31:0] read_delay;
+    reg [7:0] read_delay_cnt;
+    //reg [31:0] write_delay;
+    reg [7:0] write_delay_cnt;
 
     reg pmem_readed;
     reg pmem_writed;
+
+    reg [7:0] LSFR_in;
+    reg [7:0] random_delay;
+
+    ysyx_24120011_LFSR i1_LFSR(
+        .clk ( clk           ),
+        .in  ( LSFR_in       ),
+        .out ( random_delay  )
+    );
 
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;
@@ -76,7 +85,7 @@ module SRAM (
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RADDR)begin
-            read_delay_cnt <= read_delay;
+            read_delay_cnt <= random_delay;
         end
     end
 
@@ -115,7 +124,7 @@ module SRAM (
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_WADDR)begin
-            write_delay_cnt <= write_delay;
+            write_delay_cnt <= random_delay;
         end
     end
 
@@ -181,8 +190,9 @@ module SRAM (
     always@(posedge clk)begin
         if(rst)begin
             state <= ysyx_24120011_S_AXI_IDLE;
-            read_delay <= 32'd1;
-            write_delay <= 32'd1;
+            //read_delay <= 32'd1;
+            //write_delay <= 32'd1;
+            LSFR_in <= 8'h01;
         end
         else begin
             state <= next_state;
