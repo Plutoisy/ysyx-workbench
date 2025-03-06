@@ -39,13 +39,13 @@ module ysyx_24120011_LSU(
         .bready  ( bready  )
     );
 
-    parameter ysyx_24120011_M_AXI_IDLE  = 3'b000;
-    parameter ysyx_24120011_M_AXI_RADDR = 3'b001;
-    parameter ysyx_24120011_M_AXI_RDATA = 3'b010;
-    parameter ysyx_24120011_M_AXI_WADDR = 3'b011;
-    parameter ysyx_24120011_M_AXI_WDATA = 3'b100;
-    parameter ysyx_24120011_M_AXI_WRESP = 3'b101;
-    parameter ysyx_24120011_M_AXI_RESP_OKAY = 2'b00;
+    parameter ysyx_24120011_LSU_M_AXI_IDLE  = 3'b000;
+    parameter ysyx_24120011_LSU_M_AXI_RADDR = 3'b001;
+    parameter ysyx_24120011_LSU_M_AXI_RDATA = 3'b010;
+    parameter ysyx_24120011_LSU_M_AXI_WADDR = 3'b011;
+    parameter ysyx_24120011_LSU_M_AXI_WDATA = 3'b100;
+    parameter ysyx_24120011_LSU_M_AXI_WRESP = 3'b101;
+    parameter ysyx_24120011_LSU_M_AXI_RESP_OKAY = 2'b00;
 
     reg [2:0] state;
     reg [2:0] next_state;
@@ -95,36 +95,36 @@ module ysyx_24120011_LSU(
         .out ( random_delay  )
     );
 
-    //assign LSU_valid = (state == ysyx_24120011_M_AXI_RDATA || state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
-    assign LSU_working = (state == ysyx_24120011_M_AXI_IDLE) ? 0 : 1;
+    //assign LSU_valid = (state == ysyx_24120011_LSU_M_AXI_RDATA || state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
+    assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
     //AR
-    assign araddr = (state == ysyx_24120011_M_AXI_RADDR) ? r_mem_addr : 32'b0;
-    //assign arvalid = (state == ysyx_24120011_M_AXI_RADDR) ? 1 : 0;
+    assign araddr = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? r_mem_addr : 32'b0;
+    //assign arvalid = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? 1 : 0;
 
     //R
-    //assign rready = (state == ysyx_24120011_M_AXI_RDATA) ? 1 : 0;
+    //assign rready = (state == ysyx_24120011_LSU_M_AXI_RDATA) ? 1 : 0;
 
     //AW
-    //assign awvalid = (state == ysyx_24120011_M_AXI_WADDR) ? 1 : 0;
-    assign awaddr = (state == ysyx_24120011_M_AXI_WADDR) ? w_mem_addr : 32'b0;
+    //assign awvalid = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? 1 : 0;
+    assign awaddr = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? w_mem_addr : 32'b0;
 
     //W
-    //assign wvalid = (state == ysyx_24120011_M_AXI_WDATA) ? 1 : 0;
-    assign wdata = (state == ysyx_24120011_M_AXI_WDATA) ? w_mem_data : 32'b0;
+    //assign wvalid = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
+    assign wdata = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
     assign wstrb = (w_mem_len == 8'd4) ? 
                     4'b1111 :
                     ((w_mem_len == 8'd2) ? 4'b0011 : 4'b0001);
     //B
-    //assign bready = (state == ysyx_24120011_M_AXI_WRESP) ? 1 : 0;
+    //assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
 
 /* verilator lint_off LATCH */
 
     //arvalid_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
+        if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
             arvalid_delay_cnt <= arvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
+        else if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
             arvalid <= 1;
         end
         else begin
@@ -133,17 +133,17 @@ module ysyx_24120011_LSU(
     end
     
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_IDLE)begin
+        if(state == ysyx_24120011_LSU_M_AXI_IDLE)begin
             arvalid_delay_cnt <= random_delay;
         end
     end
 
     //awvalid_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
+        if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
+        else if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
             awvalid <= 1;
         end
         else begin
@@ -152,17 +152,17 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_IDLE)begin
+        if(state == ysyx_24120011_LSU_M_AXI_IDLE)begin
             awvalid_delay_cnt <= random_delay;
         end
     end
 
     //wvalid_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt != 0 )begin
+        if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt != 0 )begin
             wvalid_delay_cnt <= wvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
+        else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
             if(wready == 1) begin
                 wvalid <= 1;
             end
@@ -176,18 +176,18 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WADDR)begin
+        if(state == ysyx_24120011_LSU_M_AXI_WADDR)begin
             wvalid_delay_cnt <= random_delay;
         end
     end
 
     //rready_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt != 0 )begin
+        if(state == ysyx_24120011_LSU_M_AXI_RDATA && rready_delay_cnt != 0 )begin
             rready_delay_cnt <= rready_delay_cnt - 1;
             // rready <= 0;
         end
-        else if(state == ysyx_24120011_M_AXI_RDATA && rready_delay_cnt == 0)begin
+        else if(state == ysyx_24120011_LSU_M_AXI_RDATA && rready_delay_cnt == 0)begin
             // rready <= 1;
             // rready_delay_cnt <= 32'hFFFFFFFF;
             if(rvalid == 1) begin
@@ -203,18 +203,18 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_RADDR)begin
+        if(state == ysyx_24120011_LSU_M_AXI_RADDR)begin
             rready_delay_cnt <= random_delay;
         end
     end
 
     //bready_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt != 0 )begin
+        if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
             bready_delay_cnt <= bready_delay_cnt - 1;
             //bready <= 0;
         end
-        else if(state == ysyx_24120011_M_AXI_WRESP && bready_delay_cnt == 0)begin
+        else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
             //bready <= 1;
             //bready_delay_cnt <= 32'hFFFFFFFF;
             if(bvalid == 1) begin
@@ -230,7 +230,7 @@ module ysyx_24120011_LSU(
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_M_AXI_WDATA)begin
+        if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
             bready_delay_cnt <= random_delay;
         end
     end
@@ -241,7 +241,7 @@ module ysyx_24120011_LSU(
 
     always@(posedge clk)begin
         if(w_mem_en == 1 || r_mem_en == 1) LSU_ready <= 1'b0;
-        else if(next_state == ysyx_24120011_M_AXI_IDLE) LSU_ready <= 1'b1;
+        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE) LSU_ready <= 1'b1;
     end
     always@(posedge clk)begin
         if(IFU_valid)begin
@@ -250,7 +250,7 @@ module ysyx_24120011_LSU(
             end
         end
         else begin
-            if(LSU_working == 1 && next_state == ysyx_24120011_M_AXI_IDLE)begin
+            if(LSU_working == 1 && next_state == ysyx_24120011_LSU_M_AXI_IDLE)begin
                 LSU_valid <= 1;
             end
             else begin
@@ -264,7 +264,7 @@ module ysyx_24120011_LSU(
             r_mem_data <= 32'b0;
         end
         else begin
-            if(state == ysyx_24120011_M_AXI_RDATA) begin
+            if(state == ysyx_24120011_LSU_M_AXI_RDATA) begin
                 if(r_mem_len == 8'd1)begin
                     if(sign_extension)begin
                         r_mem_data <= {{24{rdata[7]}},rdata[7:0]};
@@ -304,21 +304,21 @@ module ysyx_24120011_LSU(
 
     always@(*)begin
         case(state)
-            ysyx_24120011_M_AXI_IDLE: next_state = (start_read_delay) ? 
-                                                    ysyx_24120011_M_AXI_RADDR : 
-                                                    ((start_write_delay) ? ysyx_24120011_M_AXI_WADDR : ysyx_24120011_M_AXI_IDLE);
-            ysyx_24120011_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_M_AXI_RDATA;
-            ysyx_24120011_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_M_AXI_IDLE;
-            ysyx_24120011_M_AXI_WADDR: if (awvalid && awready) next_state = ysyx_24120011_M_AXI_WDATA;
-            ysyx_24120011_M_AXI_WDATA: if (wvalid  && wready ) next_state = ysyx_24120011_M_AXI_WRESP;
-            ysyx_24120011_M_AXI_WRESP: if (bvalid  && bready ) next_state = ysyx_24120011_M_AXI_IDLE;
-            default : next_state = ysyx_24120011_M_AXI_IDLE;
+            ysyx_24120011_LSU_M_AXI_IDLE: next_state = (start_read_delay) ? 
+                                                    ysyx_24120011_LSU_M_AXI_RADDR : 
+                                                    ((start_write_delay) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE);
+            ysyx_24120011_LSU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
+            ysyx_24120011_LSU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
+            ysyx_24120011_LSU_M_AXI_WADDR: if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
+            ysyx_24120011_LSU_M_AXI_WDATA: if (wvalid  && wready ) next_state = ysyx_24120011_LSU_M_AXI_WRESP;
+            ysyx_24120011_LSU_M_AXI_WRESP: if (bvalid  && bready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
+            default : next_state = ysyx_24120011_LSU_M_AXI_IDLE;
         endcase
     end
 
     always@(posedge clk)begin
         if(rst) begin
-            state <= ysyx_24120011_M_AXI_IDLE;
+            state <= ysyx_24120011_LSU_M_AXI_IDLE;
             // arvalid_delay <= 32'd1;
             // awvalid_delay <= 32'd1;
             // wvalid_delay  <= 32'd1;
