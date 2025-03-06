@@ -106,12 +106,13 @@ always@(posedge clk)begin
         rready_delay_cnt <= rready_delay_cnt - 1;
     end
     else if(state == ysyx_24120011_IFU_M_AXI_RDATA && rready_delay_cnt == 0)begin
-        if(rvalid == 1) begin
+        if(rvalid && !rvalid_prev) begin
             rready <= 1;
         end
         else begin
             rready <= 0;
         end
+        rvalid_prev <= rvalid;
     end
     else begin
         rready <= 0;
