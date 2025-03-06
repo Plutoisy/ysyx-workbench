@@ -26,6 +26,10 @@ reg rready;
 reg rvalid_prev;
 reg arvalid;
 
+reg [2:0] state;
+reg [2:0] next_state;
+reg start_read_delay;
+
 reg [7:0] arvalid_delay_cnt;
 reg [7:0] rready_delay_cnt;
 
