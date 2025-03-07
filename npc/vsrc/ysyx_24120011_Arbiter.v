@@ -230,16 +230,14 @@ module ysyx_24120011_Arbiter (
                     end
                 end
                 else if(last_write_master == 3'd0)begin
-                    if(write_done) begin
-                        if(M1_awvalid)begin
-                            write_next_state = ysyx_24120011_Arbiter_M1;
-                        end
-                        else if(M0_awvalid)begin
-                            write_next_state = ysyx_24120011_Arbiter_M0;
-                        end
-                        else begin
-                            write_next_state = ysyx_24120011_Arbiter_IDLE;
-                        end
+                    if(M1_awvalid)begin
+                        write_next_state = ysyx_24120011_Arbiter_M1;
+                    end
+                    else if(M0_awvalid)begin
+                        write_next_state = ysyx_24120011_Arbiter_M0;
+                    end
+                    else begin
+                        write_next_state = ysyx_24120011_Arbiter_IDLE;
                     end
                 end
             end

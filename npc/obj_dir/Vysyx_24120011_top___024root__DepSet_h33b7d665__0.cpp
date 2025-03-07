@@ -165,12 +165,16 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__read_delay_cnt 
             = vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__random_delay;
     }
+    if (((IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en) 
+         | (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en))) {
+        vlSelf->ysyx_24120011_top__DOT__LSU_ready = 0U;
+    } else if ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__next_state))) {
+        vlSelf->ysyx_24120011_top__DOT__LSU_ready = 1U;
+    }
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__start_write_delay 
         = ((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en));
     vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__start_read_delay 
         = ((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en));
-    vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__start_read_delay 
-        = ((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->ysyx_24120011_top__DOT__LSU_ready));
     if (((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__state)) 
          & (0U != (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__arvalid_delay_cnt)))) {
         __Vdly__ysyx_24120011_top__DOT__i_IFU__DOT__arvalid_delay_cnt 
@@ -576,12 +580,6 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
     vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout[0x1fU] 
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [0x1fU];
-    if (((IData)(vlSelf->ysyx_24120011_top__DOT__w_mem_en) 
-         | (IData)(vlSelf->ysyx_24120011_top__DOT__r_mem_en))) {
-        vlSelf->ysyx_24120011_top__DOT__LSU_ready = 0U;
-    } else if ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__next_state))) {
-        vlSelf->ysyx_24120011_top__DOT__LSU_ready = 1U;
-    }
     if (vlSelf->rst) {
         vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__last_read_master = 1U;
         vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__last_read_master = 1U;
@@ -1214,7 +1212,7 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
                                                    << 5U) 
                                                   | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__arvalid) 
                                                       << 4U) 
-                                                     | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__start_read_delay) 
+                                                     | (((IData)(vlSelf->ysyx_24120011_top__DOT__LSU_ready) 
                                                          << 3U) 
                                                         | (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__state))))));
     if (Vysyx_24120011_top__ConstPool__TABLE_hd9fd978c_0

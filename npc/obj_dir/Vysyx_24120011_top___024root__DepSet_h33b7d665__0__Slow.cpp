@@ -179,7 +179,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___stl_sequent__TOP__0(Vysyx_24120
                                                    << 5U) 
                                                   | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__arvalid) 
                                                       << 4U) 
-                                                     | (((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__start_read_delay) 
+                                                     | (((IData)(vlSelf->ysyx_24120011_top__DOT__LSU_ready) 
                                                          << 3U) 
                                                         | (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__state))))));
     if (Vysyx_24120011_top__ConstPool__TABLE_hd9fd978c_0
