@@ -174,18 +174,18 @@ end
 
 
 
-always@(posedge clk)begin
-    if(rst) begin
-        start_read_delay <= 0;
-    end
-    else begin
-        start_read_delay <= LSU_ready;
-    end
-end
+// always@(posedge clk)begin
+//     if(rst) begin
+//         start_read_delay <= 0;
+//     end
+//     else begin
+//         start_read_delay <= LSU_ready;
+//     end
+// end
 
 always@(*)begin
     case(state)
-        ysyx_24120011_IFU_M_AXI_IDLE: next_state = (start_read_delay) ? ysyx_24120011_IFU_M_AXI_RADDR : ysyx_24120011_IFU_M_AXI_IDLE;
+        ysyx_24120011_IFU_M_AXI_IDLE: next_state = (LSU_ready) ? ysyx_24120011_IFU_M_AXI_RADDR : ysyx_24120011_IFU_M_AXI_IDLE;
         ysyx_24120011_IFU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_IFU_M_AXI_RDATA;
         ysyx_24120011_IFU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_IFU_M_AXI_IDLE;
         default : next_state = ysyx_24120011_IFU_M_AXI_IDLE;
