@@ -15,29 +15,29 @@ module ysyx_24120011_LSU(
     output reg [31:0] r_mem_data,
     output reg LSU_valid,
     output reg LSU_ready,
-    //============M1=============//         
+    //============M1=============//        
     //AR
-    input  [31:0]     M1_araddr,
-    input             M1_arvalid,
-    output            M1_arready,
+    output  [31:0]     M1_araddr,
+    output             M1_arvalid,
+    input            M1_arready,
     //R               
-    output [31:0]     M1_rdata,
-    output [1:0]      M1_rresp,
-    output            M1_rvalid,
-    input             M1_rready,
+    input [31:0]     M1_rdata,
+    input [1:0]      M1_rresp,
+    input            M1_rvalid,
+    output             M1_rready,
     //AW
-    input  [31:0]     M1_awaddr,
-    input             M1_awvalid,
-    output            M1_awready,
+    output  [31:0]     M1_awaddr,
+    output             M1_awvalid,
+    input            M1_awready,
     //W
-    input  [31:0]     M1_wdata,
-    input  [3:0]      M1_wstrb,
-    input             M1_wvalid,
-    output            M1_wready,
+    output  [31:0]     M1_wdata,
+    output  [3:0]      M1_wstrb,
+    output             M1_wvalid,
+    input            M1_wready,
     //B
-    output [1:0]      M1_bresp,
-    output            M1_bvalid,
-    input             M1_bready
+    input [1:0]      M1_bresp,
+    input            M1_bvalid,
+    output             M1_bready
 );
     assign M1_araddr  = araddr    ;
     assign M1_arvalid = arvalid   ;
