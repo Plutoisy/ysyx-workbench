@@ -50,6 +50,76 @@ wire LSU_valid;
 wire LSU_ready;
 wire [31:0] LSU_valid_int;
 
+//============M0=============//        
+//AR
+wire  [31:0]     M0_araddr;
+wire             M0_arvalid;
+wire            M0_arready;
+//R               
+wire [31:0]     M0_rdata;
+wire [1:0]      M0_rresp;
+wire            M0_rvalid;
+wire             M0_rready;
+//AW
+wire  [31:0]     M0_awaddr;
+wire             M0_awvalid;
+wire            M0_awready;
+//W
+wire  [31:0]     M0_wdata;
+wire  [3:0]      M0_wstrb;
+wire             M0_wvalid;
+wire            M0_wready;
+//B
+wire [1:0]      M0_bresp;
+wire            M0_bvalid;
+wire             M0_bready;
+//============M1=============//         
+//AR
+wire  [31:0]     M1_araddr;
+wire             M1_arvalid;
+wire            M1_arready;
+//R               
+wire [31:0]     M1_rdata;
+wire [1:0]      M1_rresp;
+wire            M1_rvalid;
+wire             M1_rready;
+//AW
+wire  [31:0]     M1_awaddr;
+wire             M1_awvalid;
+wire            M1_awready;
+//W
+wire  [31:0]     M1_wdata;
+wire  [3:0]      M1_wstrb;
+wire             M1_wvalid;
+wire            M1_wready;
+//B
+wire [1:0]      M1_bresp;
+wire            M1_bvalid;
+wire             M1_bready;
+//============S1=============// 
+//AR
+wire [31:0]     S0_araddr;
+wire            S0_arvalid;
+wire             S0_arready;
+//R                
+wire  [31:0]     S0_rdata;
+wire  [1:0]      S0_rresp;
+wire             S0_rvalid;
+wire            S0_rready;
+//AW 
+wire [31:0]     S0_awaddr;
+wire            S0_awvalid;
+wire             S0_awready;
+//W 
+wire [31:0]     S0_wdata;
+wire [3:0]      S0_wstrb;
+wire            S0_wvalid;
+wire             S0_wready;
+//B 
+wire [1:0]       S0_bresp;
+wire             S0_bvalid;
+wire            S0_bready;
+
 assign LSU_valid_int = {31'b0,LSU_valid};
 
 always@(posedge clk)begin
@@ -77,7 +147,24 @@ ysyx_24120011_IFU i_IFU(
     .pc        ( pc        ),
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid ),
-    .LSU_ready ( LSU_ready )
+    .LSU_ready ( LSU_ready ),
+    .M0_araddr ( M0_araddr  ),
+    .M0_arvalid( M0_arvalid ),
+    .M0_arready( M0_arready ),          
+    .M0_rdata  ( M0_rdata   ),
+    .M0_rresp  ( M0_rresp   ),
+    .M0_rvalid ( M0_rvalid  ),
+    .M0_rready ( M0_rready  ),
+    .M0_awaddr ( M0_awaddr  ),
+    .M0_awvalid( M0_awvalid ),
+    .M0_awready( M0_awready ),
+    .M0_wdata  ( M0_wdata   ),
+    .M0_wstrb  ( M0_wstrb   ),
+    .M0_wvalid ( M0_wvalid  ),
+    .M0_wready ( M0_wready  ),
+    .M0_bresp  ( M0_bresp   ),
+    .M0_bvalid ( M0_bvalid  ),
+    .M0_bready ( M0_bready  )
 );
 
 
@@ -186,7 +273,24 @@ ysyx_24120011_LSU i_LSU(
     .w_mem_data          ( src2                ),
     .r_mem_data          ( r_mem_data          ),
     .LSU_valid           ( LSU_valid           ),
-    .LSU_ready           ( LSU_ready           )
+    .LSU_ready           ( LSU_ready           ),
+    .M1_araddr           ( M1_araddr  ),
+    .M1_arvalid          ( M1_arvalid ),
+    .M1_arready          ( M1_arready ),          
+    .M1_rdata            ( M1_rdata   ),
+    .M1_rresp            ( M1_rresp   ),
+    .M1_rvalid           ( M1_rvalid  ),
+    .M1_rready           ( M1_rready  ),
+    .M1_awaddr           ( M1_awaddr  ),
+    .M1_awvalid          ( M1_awvalid ),
+    .M1_awready          ( M1_awready ),
+    .M1_wdata            ( M1_wdata   ),
+    .M1_wstrb            ( M1_wstrb   ),
+    .M1_wvalid           ( M1_wvalid  ),
+    .M1_wready           ( M1_wready  ),
+    .M1_bresp            ( M1_bresp   ),
+    .M1_bvalid           ( M1_bvalid  ),
+    .M1_bready           ( M1_bready  )
 );
 
 ysyx_24120011_Csr i_Csr(
@@ -207,6 +311,84 @@ ysyx_24120011_CsrProcessor i_CsrProcessor(
     .src1            ( src1            ),
     .w_csr_data_ctrl ( w_csr_data_ctrl ),
     .w_csr_data      ( w_csr_data      )
+);
+
+ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
+    .clk        ( clk        ),
+    .rst        ( rst        ),
+    .M0_araddr  ( M0_araddr  ),
+    .M0_arvalid ( M0_arvalid ),
+    .M0_arready ( M0_arready ),
+    .M0_rdata   ( M0_rdata   ),
+    .M0_rresp   ( M0_rresp   ),
+    .M0_rvalid  ( M0_rvalid  ),
+    .M0_rready  ( M0_rready  ),
+    .M0_awaddr  ( M0_awaddr  ),
+    .M0_awvalid ( M0_awvalid ),
+    .M0_awready ( M0_awready ),
+    .M0_wdata   ( M0_wdata   ),
+    .M0_wstrb   ( M0_wstrb   ),
+    .M0_wvalid  ( M0_wvalid  ),
+    .M0_wready  ( M0_wready  ),
+    .M0_bresp   ( M0_bresp   ),
+    .M0_bvalid  ( M0_bvalid  ),
+    .M0_bready  ( M0_bready  ),
+    .M1_araddr  ( M1_araddr  ),
+    .M1_arvalid ( M1_arvalid ),
+    .M1_arready ( M1_arready ),
+    .M1_rdata   ( M1_rdata   ),
+    .M1_rresp   ( M1_rresp   ),
+    .M1_rvalid  ( M1_rvalid  ),
+    .M1_rready  ( M1_rready  ),
+    .M1_awaddr  ( M1_awaddr  ),
+    .M1_awvalid ( M1_awvalid ),
+    .M1_awready ( M1_awready ),
+    .M1_wdata   ( M1_wdata   ),
+    .M1_wstrb   ( M1_wstrb   ),
+    .M1_wvalid  ( M1_wvalid  ),
+    .M1_wready  ( M1_wready  ),
+    .M1_bresp   ( M1_bresp   ),
+    .M1_bvalid  ( M1_bvalid  ),
+    .M1_bready  ( M1_bready  ),
+    .S0_araddr  ( S0_araddr  ),
+    .S0_arvalid ( S0_arvalid ),
+    .S0_arready ( S0_arready ),
+    .S0_rdata   ( S0_rdata   ),
+    .S0_rresp   ( S0_rresp   ),
+    .S0_rvalid  ( S0_rvalid  ),
+    .S0_rready  ( S0_rready  ),
+    .S0_awaddr  ( S0_awaddr  ),
+    .S0_awvalid ( S0_awvalid ),
+    .S0_awready ( S0_awready ),
+    .S0_wdata   ( S0_wdata   ),
+    .S0_wstrb   ( S0_wstrb   ),
+    .S0_wvalid  ( S0_wvalid  ),
+    .S0_wready  ( S0_wready  ),
+    .S0_bresp   ( S0_bresp   ),
+    .S0_bvalid  ( S0_bvalid  ),
+    .S0_bready  ( S0_bready  )
+);
+
+ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
+    .clk     ( clk     ),
+    .rst     ( rst     ),
+    .araddr  ( S0_araddr  ),
+    .arvalid ( S0_arvalid ),
+    .arready ( S0_arready ),
+    .rdata   ( S0_rdata   ),
+    .rresp   ( S0_rresp   ),
+    .rvalid  ( S0_rvalid  ),
+    .rready  ( S0_rready  ),
+    .awaddr  ( S0_awaddr  ),
+    .awvalid ( S0_awvalid ),
+    .awready ( S0_awready ),
+    .wdata   ( S0_wdata   ),
+    .wstrb   ( S0_wstrb   ),
+    .wvalid  ( S0_wvalid  ),
+    .wready  ( S0_wready  ),
+    .bresp   ( S0_bresp   ),
+    .bvalid  ( S0_bvalid  ),
+    .bready  ( S0_bready  )
 );
 
 endmodule

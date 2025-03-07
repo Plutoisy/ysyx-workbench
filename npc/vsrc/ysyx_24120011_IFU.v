@@ -4,7 +4,30 @@ module ysyx_24120011_IFU(
     input [31:0] pc,
     output [31:0] inst,
     output IFU_valid,
-    input LSU_ready
+    input LSU_ready,
+    //============M0=============//        
+    //AR
+    input  [31:0]     M0_araddr,
+    input             M0_arvalid,
+    output            M0_arready,
+    //R               
+    output [31:0]     M0_rdata,
+    output [1:0]      M0_rresp,
+    output            M0_rvalid,
+    input             M0_rready,
+    //AW
+    input  [31:0]     M0_awaddr,
+    input             M0_awvalid,
+    output            M0_awready,
+    //W
+    input  [31:0]     M0_wdata,
+    input  [3:0]      M0_wstrb,
+    input             M0_wvalid,
+    output            M0_wready,
+    //B
+    output [1:0]      M0_bresp,
+    output            M0_bvalid,
+    input             M0_bready
 );
 
 // SRAM i_SRAM(
@@ -44,27 +67,45 @@ ysyx_24120011_LFSR i1_LFSR(
     .out ( random_delay  )
 );
 
-ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
-    .clk     ( clk     ),
-    .rst     ( rst     ),
-    .araddr  ( pc      ),
-    .arvalid ( arvalid    ),
-    .arready ( arready ),
-    .rdata   ( inst    ),
-    .rresp   ( rresp   ),
-    .rvalid  ( rvalid  ),
-    .rready  ( rready ),
-    .awaddr  ( 32'b0  ),
-    .awvalid ( 1'b0 ),
-    .awready ( awready ),
-    .wdata   ( 32'b0   ),
-    .wstrb   ( 4'b1111 ),
-    .wvalid  ( 1'b0  ),
-    .wready  ( wready  ),
-    .bresp   ( bresp   ),
-    .bvalid  ( bvalid  ),
-    .bready  ( 1'b1  )
-);
+assign M0_araddr  = pc      ;
+assign M0_arvalid = arvalid ;
+assign M0_arready = arready ;
+assign M0_rdata   = inst    ;
+assign M0_rresp   = rresp   ;
+assign M0_rvalid  = rvalid  ;
+assign M0_rready  = rready  ;
+assign M0_awaddr  = 32'b0   ;
+assign M0_awvalid = 1'b0    ;
+assign M0_awready = awready ;
+assign M0_wdata   = 32'b0   ;
+assign M0_wstrb   = 4'b1111 ;
+assign M0_wvalid  = 1'b0    ;
+assign M0_wready  = wready  ;
+assign M0_bresp   = bresp   ;
+assign M0_bvalid  = bvalid  ;
+assign M0_bready  = 1'b1    ;
+
+// ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
+//     .clk     ( clk     ),
+//     .rst     ( rst     ),
+//     .araddr  ( pc      ),
+//     .arvalid ( arvalid    ),
+//     .arready ( arready ),
+//     .rdata   ( inst    ),
+//     .rresp   ( rresp   ),
+//     .rvalid  ( rvalid  ),
+//     .rready  ( rready ),
+//     .awaddr  ( 32'b0  ),
+//     .awvalid ( 1'b0 ),
+//     .awready ( awready ),
+//     .wdata   ( 32'b0   ),
+//     .wstrb   ( 4'b1111 ),
+//     .wvalid  ( 1'b0  ),
+//     .wready  ( wready  ),
+//     .bresp   ( bresp   ),
+//     .bvalid  ( bvalid  ),
+//     .bready  ( 1'b1  )
+// );
 
 parameter ysyx_24120011_IFU_M_AXI_IDLE  = 3'b000;
 parameter ysyx_24120011_IFU_M_AXI_RADDR = 3'b001;

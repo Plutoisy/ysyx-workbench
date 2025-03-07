@@ -14,30 +14,70 @@ module ysyx_24120011_LSU(
     input [31:0] w_mem_data,
     output reg [31:0] r_mem_data,
     output reg LSU_valid,
-    output reg LSU_ready
+    output reg LSU_ready,
+    //============M1=============//         
+    //AR
+    input  [31:0]     M1_araddr,
+    input             M1_arvalid,
+    output            M1_arready,
+    //R               
+    output [31:0]     M1_rdata,
+    output [1:0]      M1_rresp,
+    output            M1_rvalid,
+    input             M1_rready,
+    //AW
+    input  [31:0]     M1_awaddr,
+    input             M1_awvalid,
+    output            M1_awready,
+    //W
+    input  [31:0]     M1_wdata,
+    input  [3:0]      M1_wstrb,
+    input             M1_wvalid,
+    output            M1_wready,
+    //B
+    output [1:0]      M1_bresp,
+    output            M1_bvalid,
+    input             M1_bready
 );
-
-    ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
-        .clk     ( clk     ),
-        .rst     ( rst     ),
-        .araddr  ( araddr  ),
-        .arvalid ( arvalid ),
-        .arready ( arready ),
-        .rdata   ( rdata   ),
-        .rresp   ( rresp   ),
-        .rvalid  ( rvalid  ),
-        .rready  ( rready  ),
-        .awaddr  ( awaddr  ),
-        .awvalid ( awvalid ),
-        .awready ( awready ),
-        .wdata   ( wdata   ),
-        .wstrb   ( wstrb   ),
-        .wvalid  ( wvalid  ),
-        .wready  ( wready  ),
-        .bresp   ( bresp   ),
-        .bvalid  ( bvalid  ),
-        .bready  ( bready  )
-    );
+    assign araddr  = araddr  ;
+    assign arvalid = arvalid ;
+    assign arready = arready ;
+    assign rdata   = rdata   ;
+    assign rresp   = rresp   ;
+    assign rvalid  = rvalid  ;
+    assign rready  = rready  ;
+    assign awaddr  = awaddr  ;
+    assign awvalid = awvalid ;
+    assign awready = awready ;
+    assign wdata   = wdata   ;
+    assign wstrb   = wstrb   ;
+    assign wvalid  = wvalid  ;
+    assign wready  = wready  ;
+    assign bresp   = bresp   ;
+    assign bvalid  = bvalid  ;
+    assign bready  = bready  ;    
+    
+    // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
+    //     .clk     ( clk     ),
+    //     .rst     ( rst     ),
+    //     .araddr  ( araddr  ),
+    //     .arvalid ( arvalid ),
+    //     .arready ( arready ),
+    //     .rdata   ( rdata   ),
+    //     .rresp   ( rresp   ),
+    //     .rvalid  ( rvalid  ),
+    //     .rready  ( rready  ),
+    //     .awaddr  ( awaddr  ),
+    //     .awvalid ( awvalid ),
+    //     .awready ( awready ),
+    //     .wdata   ( wdata   ),
+    //     .wstrb   ( wstrb   ),
+    //     .wvalid  ( wvalid  ),
+    //     .wready  ( wready  ),
+    //     .bresp   ( bresp   ),
+    //     .bvalid  ( bvalid  ),
+    //     .bready  ( bready  )
+    // );
 
     parameter ysyx_24120011_LSU_M_AXI_IDLE  = 3'b000;
     parameter ysyx_24120011_LSU_M_AXI_RADDR = 3'b001;
