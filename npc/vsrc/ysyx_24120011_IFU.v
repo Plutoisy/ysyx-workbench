@@ -44,7 +44,7 @@ ysyx_24120011_LFSR i1_LFSR(
     .out ( random_delay  )
 );
 
-SRAM u_SRAM(
+ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
     .clk     ( clk     ),
     .rst     ( rst     ),
     .araddr  ( pc      ),

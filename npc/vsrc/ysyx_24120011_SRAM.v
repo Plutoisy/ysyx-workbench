@@ -1,4 +1,4 @@
-module SRAM (
+module ysyx_24120011_SRAM (
     input wire clk,
     input wire rst,
 
@@ -7,9 +7,9 @@ module SRAM (
     input         arvalid,
     output        arready,
     //R//
-    output reg [31:0] rdata,
+    output [31:0] rdata,
     output [1:0]  rresp,
-    output reg       rvalid,
+    output        rvalid,
     input         rready,
     //AW//
     input  [31:0] awaddr,
@@ -19,7 +19,7 @@ module SRAM (
     input  [31:0] wdata,
     input  [3:0]  wstrb,
     input         wvalid,
-    output reg      wready,
+    output        wready,
     //B//
     output [1:0]  bresp,
     output        bvalid,
@@ -43,9 +43,13 @@ module SRAM (
 
     reg pmem_readed;
     reg pmem_writed;
-
+    
     reg [7:0] LSFR_in;
     reg [7:0] random_delay;
+
+    reg [31:0] rdata_reg;
+    reg rvalid_reg;
+    reg wready_reg;
 
     ysyx_24120011_LFSR i1_LFSR(
         .clk ( clk           ),
@@ -55,9 +59,18 @@ module SRAM (
 
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;
-
 	// R
-	//assign rdata  = (state == ysyx_24120011_S_AXI_RDATA) ? rtl_pmem_read(addr) : 0;
+	assign rdata  = rdata_reg;
+    assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
+	assign rvalid = rvalid_reg;
+	// AW
+	assign awready = (state == ysyx_24120011_S_AXI_WADDR) ? 1 : 0;
+	// W
+	assign wready = wready_reg;
+	// B
+	assign bvalid = (state == ysyx_24120011_S_AXI_WRESP) ? 1 : 0;
+	assign bresp  = ysyx_24120011_S_AXI_RESP_OKAY;
+
 
     /* verilator lint_off LATCH */
     //read_delay
@@ -65,21 +78,21 @@ module SRAM (
         if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt != 0)begin
             read_delay_cnt <= read_delay_cnt - 1;
             pmem_readed <= 0;
-            //rvalid <= 0;
+            //rvalid_reg <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 0)begin
-            rdata <= rtl_pmem_read(addr);
+            rdata_reg <= rtl_pmem_read(addr);
             pmem_readed <= 1;
-            rvalid <= 1;
+            rvalid_reg <= 1;
             //read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 1)begin
             pmem_readed <= 1;
-            rvalid <= 1;
+            rvalid_reg <= 1;
         end
         else begin
             pmem_readed <= 0;
-            rvalid <= 0;
+            rvalid_reg <= 0;
         end
     end
 
@@ -93,7 +106,7 @@ module SRAM (
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt != 0)begin
             write_delay_cnt <= write_delay_cnt - 1;
-            //wready <= 0;
+            //wready_reg <= 0;
             pmem_writed <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 0)begin
@@ -107,17 +120,17 @@ module SRAM (
                 rtl_pmem_write(addr,wdata,1);
             end
             else ;
-            wready <= 1;
+            wready_reg <= 1;
             pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 1)begin
-            wready <= 1;
+            wready_reg <= 1;
             pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else begin
-            wready <= 0;
+            wready_reg <= 0;
             pmem_writed <= 0;
         end
     end
@@ -132,18 +145,7 @@ module SRAM (
 
 
 
-	assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
-	//assign rvalid = (state == ysyx_24120011_S_AXI_RDATA) ? 1 : 0;
-
-	// AW
-	assign awready = (state == ysyx_24120011_S_AXI_WADDR) ? 1 : 0;
-
-	// W
-	//assign wready = (state == ysyx_24120011_S_AXI_WDATA) ? 1 : 0;
-
-	// B
-	assign bvalid = (state == ysyx_24120011_S_AXI_WRESP) ? 1 : 0;
-	assign bresp  = ysyx_24120011_S_AXI_RESP_OKAY;
+	
 
     always@(posedge clk)begin
         if(rst)begin

@@ -17,7 +17,7 @@ module ysyx_24120011_LSU(
     output reg LSU_ready
 );
 
-    SRAM u_SRAM(
+    ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
         .clk     ( clk     ),
         .rst     ( rst     ),
         .araddr  ( araddr  ),
