@@ -723,11 +723,9 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
                 = ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid)
                     ? 2U : 0U);
         } else if ((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__last_write_master))) {
-            if (vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_done) {
-                vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_next_state 
-                    = ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid)
-                        ? 2U : 0U);
-            }
+            vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_next_state 
+                = ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__awvalid)
+                    ? 2U : 0U);
         }
     } else if ((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_state))) {
         if (vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_done) {
