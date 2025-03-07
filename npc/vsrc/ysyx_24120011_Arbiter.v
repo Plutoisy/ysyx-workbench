@@ -97,14 +97,14 @@ module ysyx_24120011_Arbiter (
                        (read_state == ysyx_24120011_Arbiter_M1 ? M1_araddr : 'b0));
     assign S0_arvalid = (read_state == ysyx_24120011_Arbiter_M0 ? M0_arvalid :
                        (read_state == ysyx_24120011_Arbiter_M1 ? M1_arvalid : 'b0));
-    assign S0_arready = (read_state == ysyx_24120011_Arbiter_M0 ? M0_arready :
-                       (read_state == ysyx_24120011_Arbiter_M1 ? M1_arready : 'b0));
-    assign S0_rdata = (read_state == ysyx_24120011_Arbiter_M0 ? M0_rdata :
-                       (read_state == ysyx_24120011_Arbiter_M1 ? M1_rdata : 'b0));        
-    assign S0_rresp = (read_state == ysyx_24120011_Arbiter_M0 ? M0_rresp :
-                       (read_state == ysyx_24120011_Arbiter_M1 ? M1_rresp : 'b0));
-    assign S0_rvalid = (read_state == ysyx_24120011_Arbiter_M0 ? M0_rvalid :
-                       (read_state == ysyx_24120011_Arbiter_M1 ? M1_rvalid : 'b0));
+    assign M0_arready = (read_state == ysyx_24120011_Arbiter_M0 ? S0_arready :'b0);
+    assign M1_arready = (read_state == ysyx_24120011_Arbiter_M1 ? S0_arready :'b0);
+    assign M0_rdata = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rdata :'b0);
+    assign M1_rdata = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rdata :'b0);       
+    assign M0_rresp = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rresp :'b0);
+    assign M1_rresp = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rresp :'b0); 
+    assign M0_rvalid = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rvalid :'b0);
+    assign M1_rvalid = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rvalid :'b0); 
     assign S0_rready = (read_state == ysyx_24120011_Arbiter_M0 ? M0_rready :
                        (read_state == ysyx_24120011_Arbiter_M1 ? M1_rready : 'b0));
     
@@ -112,20 +112,20 @@ module ysyx_24120011_Arbiter (
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_awaddr : 'b0));
     assign S0_awvalid = (write_state == ysyx_24120011_Arbiter_M0 ? M0_awvalid :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_awvalid : 'b0));
-    assign S0_awready = (write_state == ysyx_24120011_Arbiter_M0 ? M0_awready :
-                       (write_state == ysyx_24120011_Arbiter_M1 ? M1_awready : 'b0));
+    assign M0_awready = (write_state == ysyx_24120011_Arbiter_M0 ? S0_awready :'b0);
+    assign M1_awready = (write_state == ysyx_24120011_Arbiter_M1 ? S0_awready :'b0); 
     assign S0_wdata = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wdata :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_wdata : 'b0));
     assign S0_wstrb = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wstrb :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_wstrb : 'b0));
     assign S0_wvalid = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wvalid :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_wvalid : 'b0));
-    assign S0_wready = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wready :
-                       (write_state == ysyx_24120011_Arbiter_M1 ? M1_wready : 'b0));
-    assign S0_bresp = (write_state == ysyx_24120011_Arbiter_M0 ? M0_bresp :
-                       (write_state == ysyx_24120011_Arbiter_M1 ? M1_bresp : 'b0));
-    assign S0_bvalid = (write_state == ysyx_24120011_Arbiter_M0 ? M0_bvalid :
-                       (write_state == ysyx_24120011_Arbiter_M1 ? M1_bvalid : 'b0));
+    assign M0_wready = (write_state == ysyx_24120011_Arbiter_M0 ? S0_wready :'b0);
+    assign M1_wready = (write_state == ysyx_24120011_Arbiter_M1 ? S0_wready :'b0);
+    assign M0_bresp = (write_state == ysyx_24120011_Arbiter_M0 ? S0_bresp :'b0);
+    assign M1_bresp = (write_state == ysyx_24120011_Arbiter_M1 ? S0_bresp :'b0);
+    assign M0_bvalid = (write_state == ysyx_24120011_Arbiter_M0 ? S0_bvalid :'b0);
+    assign M1_bvalid = (write_state == ysyx_24120011_Arbiter_M1 ? S0_bvalid :'b0);
     assign S0_bready = (write_state == ysyx_24120011_Arbiter_M0 ? M0_bready :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_bready : 'b0));
     /* verilator lint_off LATCH */
