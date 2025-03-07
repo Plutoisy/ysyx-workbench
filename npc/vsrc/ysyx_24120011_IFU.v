@@ -2,7 +2,7 @@ module ysyx_24120011_IFU(
     input clk,
     input rst,
     input [31:0] pc,
-    output [31:0] inst,
+    output reg [31:0] inst,
     output IFU_valid,
     input LSU_ready,
     //============M0=============//        
@@ -70,7 +70,7 @@ ysyx_24120011_LFSR i1_LFSR(
 assign M0_araddr  = pc      ;
 assign M0_arvalid = arvalid ;
 assign arready    = M0_arready;
-assign inst       = M0_rdata;
+// assign inst       = M0_rdata;
 assign rresp      = M0_rresp ;
 assign rvalid     = M0_rvalid;
 assign M0_rready  = rready  ;
@@ -121,7 +121,11 @@ parameter ysyx_24120011_IFU_M_AXI_RDATA = 3'b010;
 // end
 
 /* verilator lint_off LATCH */
-
+always@(*)begin
+    if(rdata_reg != 'd0)begin
+        inst = rdata_reg;
+    end
+end
 //arvalid_delay
 always@(posedge clk)begin
     if(state == ysyx_24120011_IFU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
