@@ -149,15 +149,15 @@ module ysyx_24120011_Arbiter (
         else begin
             if (write_done) begin
                 if (write_state == ysyx_24120011_Arbiter_M0)
-                    last_write_master <= 1'b0;
+                    last_write_master <= 'd0;
                 else if (write_state == ysyx_24120011_Arbiter_M1)
-                    last_write_master <= 1'b1;
+                    last_write_master <= 'd1;
             end
             if (read_done) begin
                 if (read_state == ysyx_24120011_Arbiter_M0)
-                    last_read_master <= 1'b0;
+                    last_read_master <= 'd0;
                 else if (read_state == ysyx_24120011_Arbiter_M1)
-                    last_read_master <= 1'b1;
+                    last_read_master <= 'd1;
             end
         end
     end
