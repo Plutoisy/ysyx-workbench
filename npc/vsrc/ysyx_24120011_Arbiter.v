@@ -69,7 +69,7 @@ module ysyx_24120011_Arbiter (
     //B 
     input [1:0]       S0_bresp,
     input             S0_bvalid,
-    output            S0_bready,
+    output            S0_bready
 );
 
     parameter ysyx_24120011_Arbiter_IDLE = 3'b000;
