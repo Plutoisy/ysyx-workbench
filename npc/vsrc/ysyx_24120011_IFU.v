@@ -7,27 +7,27 @@ module ysyx_24120011_IFU(
     input LSU_ready,
     //============M0=============//        
     //AR
-    input  [31:0]     M0_araddr,
-    input             M0_arvalid,
-    output            M0_arready,
+    output  [31:0]     M0_araddr,
+    output             M0_arvalid,
+    input            M0_arready,
     //R               
-    output [31:0]     M0_rdata,
-    output [1:0]      M0_rresp,
-    output            M0_rvalid,
-    input             M0_rready,
+    input [31:0]     M0_rdata,
+    input [1:0]      M0_rresp,
+    input            M0_rvalid,
+    output             M0_rready,
     //AW
-    input  [31:0]     M0_awaddr,
-    input             M0_awvalid,
-    output            M0_awready,
+    output  [31:0]     M0_awaddr,
+    output             M0_awvalid,
+    input            M0_awready,
     //W
-    input  [31:0]     M0_wdata,
-    input  [3:0]      M0_wstrb,
-    input             M0_wvalid,
-    output            M0_wready,
+    output  [31:0]     M0_wdata,
+    output  [3:0]      M0_wstrb,
+    output             M0_wvalid,
+    input            M0_wready,
     //B
-    output [1:0]      M0_bresp,
-    output            M0_bvalid,
-    input             M0_bready
+    input [1:0]      M0_bresp,
+    input            M0_bvalid,
+    output             M0_bready
 );
 
 // SRAM i_SRAM(
@@ -69,20 +69,20 @@ ysyx_24120011_LFSR i1_LFSR(
 
 assign M0_araddr  = pc      ;
 assign M0_arvalid = arvalid ;
-assign M0_arready = arready ;
-assign M0_rdata   = inst    ;
-assign M0_rresp   = rresp   ;
-assign M0_rvalid  = rvalid  ;
+assign arready    = M0_arready;
+assign inst       = M0_rdata;
+assign rresp      = M0_rresp ;
+assign rvalid     = M0_rvalid;
 assign M0_rready  = rready  ;
 assign M0_awaddr  = 32'b0   ;
 assign M0_awvalid = 1'b0    ;
-assign M0_awready = awready ;
+assign awready    = M0_awready;
 assign M0_wdata   = 32'b0   ;
 assign M0_wstrb   = 4'b1111 ;
 assign M0_wvalid  = 1'b0    ;
-assign M0_wready  = wready  ;
-assign M0_bresp   = bresp   ;
-assign M0_bvalid  = bvalid  ;
+assign wready     = M0_wready;
+assign bresp      = M0_bresp;
+assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 
 // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
