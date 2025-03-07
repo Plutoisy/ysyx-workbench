@@ -39,23 +39,23 @@ module ysyx_24120011_LSU(
     output            M1_bvalid,
     input             M1_bready
 );
-    assign araddr  = araddr  ;
-    assign arvalid = arvalid ;
-    assign arready = arready ;
-    assign rdata   = rdata   ;
-    assign rresp   = rresp   ;
-    assign rvalid  = rvalid  ;
-    assign rready  = rready  ;
-    assign awaddr  = awaddr  ;
-    assign awvalid = awvalid ;
-    assign awready = awready ;
-    assign wdata   = wdata   ;
-    assign wstrb   = wstrb   ;
-    assign wvalid  = wvalid  ;
-    assign wready  = wready  ;
-    assign bresp   = bresp   ;
-    assign bvalid  = bvalid  ;
-    assign bready  = bready  ;    
+    assign M1_araddr  = araddr    ;
+    assign M1_arvalid = arvalid   ;
+    assign arready    = M1_arready;
+    assign rdata       = M1_rdata ;
+    assign rresp      = M1_rresp  ;
+    assign rvalid     = M1_rvalid ;
+    assign M1_rready  = rready    ;
+    assign M1_awaddr  = awaddr    ;
+    assign M1_awvalid = awvalid   ;
+    assign awready    = M1_awready;
+    assign M1_wdata   = wdata     ;
+    assign M1_wstrb   = wstrb     ;
+    assign M1_wvalid  = wvalid    ;
+    assign wready     = M1_wready ;
+    assign bresp      = M1_bresp  ;
+    assign bvalid     = M1_bvalid ;
+    assign M1_bready  = bready    ;   
     
     // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
     //     .clk     ( clk     ),
