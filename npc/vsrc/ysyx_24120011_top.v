@@ -96,7 +96,7 @@ wire            M1_wready;
 wire [1:0]      M1_bresp;
 wire            M1_bvalid;
 wire             M1_bready;
-//============S1=============// 
+//============S0=============// 
 //AR
 wire [31:0]     S0_araddr;
 wire            S0_arvalid;
@@ -119,6 +119,54 @@ wire             S0_wready;
 wire [1:0]       S0_bresp;
 wire             S0_bvalid;
 wire            S0_bready;
+//============sram=============// 
+//AR
+wire [31:0]     sram_araddr;
+wire            sram_arvalid;
+wire             sram_arready;
+//R                
+wire  [31:0]     sram_rdata;
+wire  [1:0]      sram_rresp;
+wire             sram_rvalid;
+wire            sram_rready;
+//AW 
+wire [31:0]     sram_awaddr;
+wire            sram_awvalid;
+wire             sram_awready;
+//W 
+wire [31:0]     sram_wdata;
+wire [3:0]      sram_wstrb;
+wire            sram_wvalid;
+wire             sram_wready;
+//B 
+wire [1:0]       sram_bresp;
+wire             sram_bvalid;
+wire            sram_bready;
+//============uart=============// 
+//AR
+wire [31:0]     uart_araddr;
+wire            uart_arvalid;
+wire             uart_arready;
+//R                
+wire  [31:0]     uart_rdata;
+wire  [1:0]      uart_rresp;
+wire             uart_rvalid;
+wire            uart_rready;
+//AW 
+wire [31:0]     uart_awaddr;
+wire            uart_awvalid;
+wire             uart_awready;
+//W 
+wire [31:0]     uart_wdata;
+wire [3:0]      uart_wstrb;
+wire            uart_wvalid;
+wire             uart_wready;
+//B 
+wire [1:0]       uart_bresp;
+wire             uart_bvalid;
+wire            uart_bready;
+
+
 
 assign LSU_valid_int = {31'b0,LSU_valid};
 
@@ -372,23 +420,101 @@ ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
 ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
     .clk     ( clk     ),
     .rst     ( rst     ),
-    .araddr  ( S0_araddr  ),
-    .arvalid ( S0_arvalid ),
-    .arready ( S0_arready ),
-    .rdata   ( S0_rdata   ),
-    .rresp   ( S0_rresp   ),
-    .rvalid  ( S0_rvalid  ),
-    .rready  ( S0_rready  ),
-    .awaddr  ( S0_awaddr  ),
-    .awvalid ( S0_awvalid ),
-    .awready ( S0_awready ),
-    .wdata   ( S0_wdata   ),
-    .wstrb   ( S0_wstrb   ),
-    .wvalid  ( S0_wvalid  ),
-    .wready  ( S0_wready  ),
-    .bresp   ( S0_bresp   ),
-    .bvalid  ( S0_bvalid  ),
-    .bready  ( S0_bready  )
+    .araddr  ( sram_araddr  ),
+    .arvalid ( sram_arvalid ),
+    .arready ( sram_arready ),
+    .rdata   ( sram_rdata   ),
+    .rresp   ( sram_rresp   ),
+    .rvalid  ( sram_rvalid  ),
+    .rready  ( sram_rready  ),
+    .awaddr  ( sram_awaddr  ),
+    .awvalid ( sram_awvalid ),
+    .awready ( sram_awready ),
+    .wdata   ( sram_wdata   ),
+    .wstrb   ( sram_wstrb   ),
+    .wvalid  ( sram_wvalid  ),
+    .wready  ( sram_wready  ),
+    .bresp   ( sram_bresp   ),
+    .bvalid  ( sram_bvalid  ),
+    .bready  ( sram_bready  )
+);
+
+ysyx_24120011_Uart u_ysyx_24120011_Uart(
+    .clk     ( clk     ),
+    .rst     ( rst     ),
+    .araddr  ( uart_araddr  ),
+    .arvalid ( uart_arvalid ),
+    .arready ( uart_arready ),
+    .rdata   ( uart_rdata   ),
+    .rresp   ( uart_rresp   ),
+    .rvalid  ( uart_rvalid  ),
+    .rready  ( uart_rready  ),
+    .awaddr  ( uart_awaddr  ),
+    .awvalid ( uart_awvalid ),
+    .awready ( uart_awready ),
+    .wdata   ( uart_wdata   ),
+    .wstrb   ( uart_wstrb   ),
+    .wvalid  ( uart_wvalid  ),
+    .wready  ( uart_wready  ),
+    .bresp   ( uart_bresp   ),
+    .bvalid  ( uart_bvalid  ),
+    .bready  ( uart_bready  )
+);
+
+ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
+    .clk             ( clk             ),
+    .rst             ( rst             ),
+    .Xbar_araddr     ( S0_araddr       ),
+    .Xbar_arvalid    ( S0_arvalid      ),
+    .Xbar_arready    ( S0_arready      ),
+    .Xbar_rdata      ( S0_rdata        ),
+    .Xbar_rresp      ( S0_rresp        ),
+    .Xbar_rvalid     ( S0_rvalid       ),
+    .Xbar_rready     ( S0_rready       ),
+    .Xbar_awaddr     ( S0_awaddr       ),
+    .Xbar_awvalid    ( S0_awvalid      ),
+    .Xbar_awready    ( S0_awready      ),
+    .Xbar_wdata      ( S0_wdata        ),
+    .Xbar_wstrb      ( S0_wstrb        ),
+    .Xbar_wvalid     ( S0_wvalid       ),
+    .Xbar_wready     ( S0_wready       ),
+    .Xbar_bresp      ( S0_bresp        ),
+    .Xbar_bvalid     ( S0_bvalid       ),
+    .Xbar_bready     ( S0_bready       ),
+    .Xbar_S0_araddr  ( sram_araddr     ),
+    .Xbar_S0_arvalid ( sram_arvalid    ),
+    .Xbar_S0_arready ( sram_arready    ),
+    .Xbar_S0_rdata   ( sram_rdata      ),
+    .Xbar_S0_rresp   ( sram_rresp      ),
+    .Xbar_S0_rvalid  ( sram_rvalid     ),
+    .Xbar_S0_rready  ( sram_rready     ),
+    .Xbar_S0_awaddr  ( sram_awaddr     ),
+    .Xbar_S0_awvalid ( sram_awvalid    ),
+    .Xbar_S0_awready ( sram_awready    ),
+    .Xbar_S0_wdata   ( sram_wdata      ),
+    .Xbar_S0_wstrb   ( sram_wstrb      ),
+    .Xbar_S0_wvalid  ( sram_wvalid     ),
+    .Xbar_S0_wready  ( sram_wready     ),
+    .Xbar_S0_bresp   ( sram_bresp      ),
+    .Xbar_S0_bvalid  ( sram_bvalid     ),
+    .Xbar_S0_bready  ( sram_bready     ),
+    .Xbar_S1_araddr  ( uart_araddr     ),
+    .Xbar_S1_arvalid ( uart_arvalid    ),
+    .Xbar_S1_arready ( uart_arready    ),
+    .Xbar_S1_rdata   ( uart_rdata      ),
+    .Xbar_S1_rresp   ( uart_rresp      ),
+    .Xbar_S1_rvalid  ( uart_rvalid     ),
+    .Xbar_S1_rready  ( uart_rready     ),
+    .Xbar_S1_awaddr  ( uart_awaddr     ),
+    .Xbar_S1_awvalid ( uart_awvalid    ),
+    .Xbar_S1_awready ( uart_awready    ),
+    .Xbar_S1_wdata   ( uart_wdata      ),
+    .Xbar_S1_wstrb   ( uart_wstrb      ),
+    .Xbar_S1_wvalid  ( uart_wvalid     ),
+    .Xbar_S1_wready  ( uart_wready     ),
+    .Xbar_S1_bresp   ( uart_bresp      ),
+    .Xbar_S1_bvalid  ( uart_bvalid     ),
+    .Xbar_S1_bready  ( uart_bready     )
 );
 
 endmodule
