@@ -484,8 +484,8 @@ ysyx_24120011_Uart u_ysyx_24120011_Uart(
 );
 
 ysyx_24120011_Clint u_ysyx_24120011_Clint(
-    .clk     ( clint_clk     ),
-    .rst     ( clint_rst     ),
+    .clk     ( clk     ),
+    .rst     ( rst     ),
     .araddr  ( clint_araddr  ),
     .arvalid ( clint_arvalid ),
     .arready ( clint_arready ),
