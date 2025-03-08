@@ -136,10 +136,10 @@ module ysyx_24120011_Xbar(
     wire read_S1_done;
     wire write_S1_done;
 
-    assign read_S0_done = S0_rready && S0_rvalid;
-    assign write_S0_done = S0_bready && S0_bvalid;
-    assign read_S1_done = S1_rready && S1_rvalid;
-    assign write_S1_done = S1_bready && S1_bvalid;
+    assign read_S0_done = Xbar_S0_rready && Xbar_S0_rvalid;
+    assign write_S0_done = Xbar_S0_bready && Xbar_S0_bvalid;
+    assign read_S1_done = Xbar_S1_rready && Xbar_S1_rvalid;
+    assign write_S1_done = Xbar_S1_bready && Xbar_S1_bvalid;
 
     assign Xbar_S0_araddr  = reg_Xbar_S0_araddr ;
     assign Xbar_S0_arvalid = reg_Xbar_S0_arvalid;
