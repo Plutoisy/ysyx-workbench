@@ -1,4 +1,4 @@
-module ysyx_24120011_Uart (
+module ysyx_24120011_Clint (
     input wire clk,
     input wire rst,
 
@@ -81,7 +81,7 @@ module ysyx_24120011_Uart (
             //rvalid_reg <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 0)begin
-            rdata_reg <= 32'b0;
+            rdata_reg <= rtl_pmem_read(addr);
             pmem_readed <= 1;
             rvalid_reg <= 1;
             //read_delay_cnt <= 32'b11111111111111111111111111111111;
@@ -110,18 +110,16 @@ module ysyx_24120011_Uart (
             pmem_writed <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 0)begin
-            if(addr == 32'ha00003f8) begin
-                if(wstrb == 4'b1111) begin
-                    $write("%c", wdata[7:0]);
-                end
-                else if(wstrb == 4'b0011) begin
-                    $write("%c", wdata[7:0]);
-                end
-                else if(wstrb == 4'b000l) begin
-                    $write("%c", wdata[7:0]);
-                end
-                else ;
+            if(wstrb == 4'b1111) begin
+                //rtl_pmem_write(addr,wdata,4);
             end
+            else if(wstrb == 4'b0011) begin
+                //rtl_pmem_write(addr,wdata,2);
+            end
+            else if(wstrb == 4'b0001) begin
+                //rtl_pmem_write(addr,wdata,1);
+            end
+            else ;
             wready_reg <= 1;
             pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
