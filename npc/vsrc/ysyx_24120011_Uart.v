@@ -118,7 +118,7 @@ module ysyx_24120011_Uart (
                     $write("hello2");
                 end
                 else if(wstrb == 4'b0001) begin
-                    $write("%c", {4'b0,4'b1111});
+                    $write("%h", {4'b0,4'b1111});
                 end
                 else ;
             end
