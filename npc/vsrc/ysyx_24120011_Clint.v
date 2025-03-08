@@ -110,16 +110,16 @@ module ysyx_24120011_Clint (
             pmem_writed <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 0)begin
-            if(wstrb == 4'b1111) begin
-                rtl_pmem_write(addr,wdata,4);
-            end
-            else if(wstrb == 4'b0011) begin
-                rtl_pmem_write(addr,wdata,2);
-            end
-            else if(wstrb == 4'b0001) begin
-                rtl_pmem_write(addr,wdata,1);
-            end
-            else ;
+            // if(wstrb == 4'b1111) begin
+            //     rtl_pmem_write(addr,wdata,4);
+            // end
+            // else if(wstrb == 4'b0011) begin
+            //     rtl_pmem_write(addr,wdata,2);
+            // end
+            // else if(wstrb == 4'b0001) begin
+            //     rtl_pmem_write(addr,wdata,1);
+            // end
+            // else ;
             wready_reg <= 1;
             pmem_writed <= 1;
             //write_delay_cnt <= 32'b11111111111111111111111111111111;
