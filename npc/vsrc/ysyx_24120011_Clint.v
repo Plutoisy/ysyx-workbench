@@ -50,7 +50,9 @@ module ysyx_24120011_Clint (
     reg [31:0] rdata_reg;
     reg rvalid_reg;
     reg wready_reg;
-
+    
+    reg [63:0] mtime;
+    
     ysyx_24120011_LFSR i1_LFSR(
         .clk ( clk           ),
         .in  ( LSFR_in       ),
@@ -73,6 +75,15 @@ module ysyx_24120011_Clint (
 
 
     /* verilator lint_off LATCH */
+    always@(posedge clk)begin
+        if(rst) begin
+            mtime <= 64'b0;
+        end
+        else begin
+            mtime <= mtime + 1;
+        end
+    end
+
     //read_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt != 0)begin
@@ -81,7 +92,16 @@ module ysyx_24120011_Clint (
             //rvalid_reg <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 0)begin
-            rdata_reg <= rtl_pmem_read(addr);
+            if(addr == 32'ha0000048) begin
+                rdata_reg <= mtime[31:0];
+            end
+            else if(addr == 32'ha000004c) begin
+                rdata_reg <= mtime[63:32];
+            end
+            else begin
+                rdata_reg <= 32'b0;
+            end
+            //rdata_reg <= rtl_pmem_read(addr);
             pmem_readed <= 1;
             rvalid_reg <= 1;
             //read_delay_cnt <= 32'b11111111111111111111111111111111;

@@ -165,7 +165,29 @@ wire             uart_wready;
 wire [1:0]       uart_bresp;
 wire             uart_bvalid;
 wire            uart_bready;
-
+//============clint=============// 
+//AR
+wire [31:0]     clint_araddr;
+wire            clint_arvalid;
+wire             clint_arready;
+//R                
+wire  [31:0]     clint_rdata;
+wire  [1:0]      clint_rresp;
+wire             clint_rvalid;
+wire            clint_rready;
+//AW 
+wire [31:0]     clint_awaddr;
+wire            clint_awvalid;
+wire             clint_awready;
+//W 
+wire [31:0]     clint_wdata;
+wire [3:0]      clint_wstrb;
+wire            clint_wvalid;
+wire             clint_wready;
+//B 
+wire [1:0]       clint_bresp;
+wire             clint_bvalid;
+wire            clint_bready;
 
 
 assign LSU_valid_int = {31'b0,LSU_valid};
@@ -461,6 +483,28 @@ ysyx_24120011_Uart u_ysyx_24120011_Uart(
     .bready  ( uart_bready  )
 );
 
+ysyx_24120011_Clint u_ysyx_24120011_Clint(
+    .clk     ( clint_clk     ),
+    .rst     ( clint_rst     ),
+    .araddr  ( clint_araddr  ),
+    .arvalid ( clint_arvalid ),
+    .arready ( clint_arready ),
+    .rdata   ( clint_rdata   ),
+    .rresp   ( clint_rresp   ),
+    .rvalid  ( clint_rvalid  ),
+    .rready  ( clint_rready  ),
+    .awaddr  ( clint_awaddr  ),
+    .awvalid ( clint_awvalid ),
+    .awready ( clint_awready ),
+    .wdata   ( clint_wdata   ),
+    .wstrb   ( clint_wstrb   ),
+    .wvalid  ( clint_wvalid  ),
+    .wready  ( clint_wready  ),
+    .bresp   ( clint_bresp   ),
+    .bvalid  ( clint_bvalid  ),
+    .bready  ( clint_bready  )
+);
+
 ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
     .clk             ( clk             ),
     .rst             ( rst             ),
@@ -514,7 +558,24 @@ ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
     .Xbar_S1_wready  ( uart_wready     ),
     .Xbar_S1_bresp   ( uart_bresp      ),
     .Xbar_S1_bvalid  ( uart_bvalid     ),
-    .Xbar_S1_bready  ( uart_bready     )
+    .Xbar_S1_bready  ( uart_bready     ),
+    .Xbar_S2_araddr  ( clint_araddr     ),
+    .Xbar_S2_arvalid ( clint_arvalid    ),
+    .Xbar_S2_arready ( clint_arready    ),
+    .Xbar_S2_rdata   ( clint_rdata      ),
+    .Xbar_S2_rresp   ( clint_rresp      ),
+    .Xbar_S2_rvalid  ( clint_rvalid     ),
+    .Xbar_S2_rready  ( clint_rready     ),
+    .Xbar_S2_awaddr  ( clint_awaddr     ),
+    .Xbar_S2_awvalid ( clint_awvalid    ),
+    .Xbar_S2_awready ( clint_awready    ),
+    .Xbar_S2_wdata   ( clint_wdata      ),
+    .Xbar_S2_wstrb   ( clint_wstrb      ),
+    .Xbar_S2_wvalid  ( clint_wvalid     ),
+    .Xbar_S2_wready  ( clint_wready     ),
+    .Xbar_S2_bresp   ( clint_bresp      ),
+    .Xbar_S2_bvalid  ( clint_bvalid     ),
+    .Xbar_S2_bready  ( clint_bready     )
 );
 
 endmodule
