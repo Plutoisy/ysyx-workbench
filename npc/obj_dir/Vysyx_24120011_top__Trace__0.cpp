@@ -359,7 +359,7 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgCData(oldp+235,(((0U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__w_Xbar_state))
                                    ? ((IData)(vlSelf->ysyx_24120011_top__DOT__S0_awvalid)
                                        ? ((0xa00003f8U 
-                                           == vlSelf->ysyx_24120011_top__DOT__S0_araddr)
+                                           == vlSelf->ysyx_24120011_top__DOT__S0_awaddr)
                                            ? 2U : 1U)
                                        : 0U) : ((1U 
                                                  == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__w_Xbar_state))
