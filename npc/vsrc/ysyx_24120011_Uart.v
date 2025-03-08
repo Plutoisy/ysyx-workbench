@@ -81,10 +81,10 @@ module ysyx_24120011_Uart (
             //rvalid_reg <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 0)begin
+            //rdata_reg <= rtl_pmem_read(addr);
             rdata_reg <= 32'b0;
             pmem_readed <= 1;
             rvalid_reg <= 1;
-            //read_delay_cnt <= 32'b11111111111111111111111111111111;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 1)begin
             pmem_readed <= 1;
@@ -117,7 +117,7 @@ module ysyx_24120011_Uart (
                 else if(wstrb == 4'b0011) begin
                     $write("%c", wdata[7:0]);
                 end
-                else if(wstrb == 4'b000l) begin
+                else if(wstrb == 4'b0001) begin
                     $write("%c", wdata[7:0]);
                 end
                 else ;
