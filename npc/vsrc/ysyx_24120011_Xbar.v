@@ -339,7 +339,7 @@ module ysyx_24120011_Xbar(
         case(w_Xbar_state)
             ysyx_24120011_Xbar_IDLE:begin
                 if(Xbar_awvalid) begin
-                    if(awaddr == 32'ha00003f8) begin
+                    if(Xbar_araddr == 32'ha00003f8) begin
                         w_Xbar_next_state = ysyx_24120011_Xbar_S1;
                     end
                     else begin
