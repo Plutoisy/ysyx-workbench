@@ -47,7 +47,7 @@ module ysyx_24120011_Arbiter (
     output [1:0]      M1_bresp,
     output            M1_bvalid,
     input             M1_bready,
-    //============S1=============// 
+    //============S0=============// 
     //AR
     output [31:0]     S0_araddr,
     output            S0_arvalid,
@@ -99,34 +99,34 @@ module ysyx_24120011_Arbiter (
                        (read_state == ysyx_24120011_Arbiter_M1 ? M1_arvalid : 'b0));
     assign M0_arready = (read_state == ysyx_24120011_Arbiter_M0 ? S0_arready :'b0);
     assign M1_arready = (read_state == ysyx_24120011_Arbiter_M1 ? S0_arready :'b0);
-    assign M0_rdata = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rdata :'b0);
-    assign M1_rdata = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rdata :'b0);       
-    assign M0_rresp = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rresp :'b0);
-    assign M1_rresp = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rresp :'b0); 
-    assign M0_rvalid = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rvalid :'b0);
-    assign M1_rvalid = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rvalid :'b0); 
-    assign S0_rready = (read_state == ysyx_24120011_Arbiter_M0 ? M0_rready :
+    assign M0_rdata   = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rdata :'b0);
+    assign M1_rdata   = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rdata :'b0);       
+    assign M0_rresp   = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rresp :'b0);
+    assign M1_rresp   = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rresp :'b0); 
+    assign M0_rvalid  = (read_state == ysyx_24120011_Arbiter_M0 ? S0_rvalid :'b0);
+    assign M1_rvalid  = (read_state == ysyx_24120011_Arbiter_M1 ? S0_rvalid :'b0); 
+    assign S0_rready  = (read_state == ysyx_24120011_Arbiter_M0 ? M0_rready :
                        (read_state == ysyx_24120011_Arbiter_M1 ? M1_rready : 'b0));
     
-    assign S0_awaddr = (write_state == ysyx_24120011_Arbiter_M0 ? M0_awaddr :
+    assign S0_awaddr  = (write_state == ysyx_24120011_Arbiter_M0 ? M0_awaddr :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_awaddr : 'b0));
     assign S0_awvalid = (write_state == ysyx_24120011_Arbiter_M0 ? M0_awvalid :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_awvalid : 'b0));
     assign M0_awready = (write_state == ysyx_24120011_Arbiter_M0 ? S0_awready :'b0);
     assign M1_awready = (write_state == ysyx_24120011_Arbiter_M1 ? S0_awready :'b0); 
-    assign S0_wdata = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wdata :
+    assign S0_wdata   = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wdata :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_wdata : 'b0));
-    assign S0_wstrb = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wstrb :
+    assign S0_wstrb   = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wstrb :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_wstrb : 'b0));
-    assign S0_wvalid = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wvalid :
+    assign S0_wvalid  = (write_state == ysyx_24120011_Arbiter_M0 ? M0_wvalid :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_wvalid : 'b0));
-    assign M0_wready = (write_state == ysyx_24120011_Arbiter_M0 ? S0_wready :'b0);
-    assign M1_wready = (write_state == ysyx_24120011_Arbiter_M1 ? S0_wready :'b0);
-    assign M0_bresp = (write_state == ysyx_24120011_Arbiter_M0 ? S0_bresp :'b0);
-    assign M1_bresp = (write_state == ysyx_24120011_Arbiter_M1 ? S0_bresp :'b0);
-    assign M0_bvalid = (write_state == ysyx_24120011_Arbiter_M0 ? S0_bvalid :'b0);
-    assign M1_bvalid = (write_state == ysyx_24120011_Arbiter_M1 ? S0_bvalid :'b0);
-    assign S0_bready = (write_state == ysyx_24120011_Arbiter_M0 ? M0_bready :
+    assign M0_wready  = (write_state == ysyx_24120011_Arbiter_M0 ? S0_wready :'b0);
+    assign M1_wready  = (write_state == ysyx_24120011_Arbiter_M1 ? S0_wready :'b0);
+    assign M0_bresp   = (write_state == ysyx_24120011_Arbiter_M0 ? S0_bresp :'b0);
+    assign M1_bresp   = (write_state == ysyx_24120011_Arbiter_M1 ? S0_bresp :'b0);
+    assign M0_bvalid  = (write_state == ysyx_24120011_Arbiter_M0 ? S0_bvalid :'b0);
+    assign M1_bvalid  = (write_state == ysyx_24120011_Arbiter_M1 ? S0_bvalid :'b0);
+    assign S0_bready  = (write_state == ysyx_24120011_Arbiter_M0 ? M0_bready :
                        (write_state == ysyx_24120011_Arbiter_M1 ? M1_bready : 'b0));
     /* verilator lint_off LATCH */
     //状态跳转
