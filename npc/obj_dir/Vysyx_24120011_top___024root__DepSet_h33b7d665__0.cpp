@@ -106,10 +106,10 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__arvalid_delay_cnt;
     __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__addr 
         = vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__addr;
-    __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__addr 
-        = vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__addr;
     __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__pmem_writed 
         = vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__pmem_writed;
+    __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__addr 
+        = vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__addr;
     __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__pmem_writed 
         = vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__pmem_writed;
     __Vdly__ysyx_24120011_top__DOT__i_LSU__DOT__awvalid_delay_cnt 
@@ -378,11 +378,11 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
                 & (~ (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__pmem_writed)))) {
         if ((0xa00003f8U == vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__addr)) {
             if (VL_UNLIKELY((0xfU == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wstrb)))) {
-                VL_WRITEF("%c",8,(0xffU & vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wdata));
+                VL_WRITEF("hello4");
             } else if (VL_UNLIKELY((3U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wstrb)))) {
-                VL_WRITEF("%c",8,(0xffU & vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wdata));
+                VL_WRITEF("hello2");
             } else if (VL_UNLIKELY((1U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wstrb)))) {
-                VL_WRITEF("%c",8,(0xfU & vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wdata));
+                VL_WRITEF("hello1");
             }
         }
         vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__wready_reg = 1U;
