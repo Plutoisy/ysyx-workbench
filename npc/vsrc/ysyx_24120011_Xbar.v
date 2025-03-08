@@ -309,7 +309,7 @@ module ysyx_24120011_Xbar(
     always@(*) begin
         case(r_Xbar_state)
             ysyx_24120011_Xbar_IDLE:begin
-                if(arvalid) begin
+                if(Xbar_arvalid) begin
                     r_Xbar_next_state = ysyx_24120011_Xbar_S0;
                 end
                 else begin
@@ -338,7 +338,7 @@ module ysyx_24120011_Xbar(
         endcase
         case(w_Xbar_state)
             ysyx_24120011_Xbar_IDLE:begin
-                if(awvalid) begin
+                if(Xbar_awvalid) begin
                     if(awaddr == 32'ha00003f8) begin
                         w_Xbar_next_state = ysyx_24120011_Xbar_S1;
                     end
