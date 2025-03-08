@@ -20,7 +20,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
     // Anonymous structures to workaround compiler member-count bugs
     struct {
         VL_IN8(clk,0,0);
-        CData/*0:0*/ ysyx_24120011_top__DOT__clint_clk;
         VL_IN8(rst,0,0);
         CData/*1:0*/ ysyx_24120011_top__DOT__pc_ctrl;
         CData/*3:0*/ ysyx_24120011_top__DOT__rd_ctrl;
@@ -47,7 +46,6 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*3:0*/ ysyx_24120011_top__DOT__S0_wstrb;
         CData/*0:0*/ ysyx_24120011_top__DOT__S0_wvalid;
         CData/*0:0*/ ysyx_24120011_top__DOT__S0_bready;
-        CData/*0:0*/ ysyx_24120011_top__DOT__clint_rst;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__rready;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__rvalid_prev;
         CData/*0:0*/ ysyx_24120011_top__DOT__i_IFU__DOT__arvalid;
@@ -83,10 +81,10 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__read_state;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__read_next_state;
-    };
-    struct {
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_state;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_next_state;
+    };
+    struct {
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__last_read_master;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__last_write_master;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__read_done;
@@ -149,12 +147,11 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_wvalid;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_bready;
         CData/*7:0*/ __Vtableidx1;
-    };
-    struct {
         CData/*3:0*/ __Vtableidx3;
         CData/*6:0*/ __Vtableidx4;
+    };
+    struct {
         CData/*0:0*/ __Vtrigrprev__TOP__clk;
-        CData/*0:0*/ __Vtrigrprev__TOP__ysyx_24120011_top__DOT__clint_clk;
         CData/*0:0*/ __VactContinue;
         SData/*11:0*/ ysyx_24120011_top__DOT__w_csr_addr;
         SData/*11:0*/ ysyx_24120011_top__DOT__r_csr_addr;
@@ -205,11 +202,11 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         QData/*63:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__mtime;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__Regs;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__regout;
-        VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
+        VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
     };
     VlTriggerVec<1> __VstlTriggered;
-    VlTriggerVec<3> __VactTriggered;
-    VlTriggerVec<3> __VnbaTriggered;
+    VlTriggerVec<2> __VactTriggered;
+    VlTriggerVec<2> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vysyx_24120011_top__Syms* const vlSymsp;
