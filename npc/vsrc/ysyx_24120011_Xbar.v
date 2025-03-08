@@ -99,10 +99,10 @@ module ysyx_24120011_Xbar(
     parameter ysyx_24120011_Xbar_S1 = 3'b010;
     parameter ysyx_24120011_Xbar_S2 = 3'b011;
 
-    reg r_Xbar_state;
-    reg r_Xbar_next_state;
-    reg w_Xbar_state;
-    reg w_Xbar_next_state;
+    reg [2:0] r_Xbar_state;
+    reg [2:0] r_Xbar_next_state;
+    reg [2:0] w_Xbar_state;
+    reg [2:0] w_Xbar_next_state;
 
     reg [31:0] reg_Xbar_S0_araddr ;
     reg        reg_Xbar_S0_arvalid;
