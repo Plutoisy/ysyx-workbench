@@ -22,7 +22,7 @@ sim:$(VSRCS) $(CSRCS)
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
-		--timescale-override 1fs/1fs \
+		--timescale-override 1ps/1ps \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
