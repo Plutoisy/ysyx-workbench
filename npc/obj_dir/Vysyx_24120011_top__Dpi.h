@@ -22,11 +22,11 @@ extern "C" {
     extern void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:3:30
     extern void npc_trap(int pc, int ret);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:1:30
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:2:30
     extern void reg_out(const int* array);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_LSU.v:2:29
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_LSU.v:3:29
     extern int rtl_pmem_read(int r_mem_addr);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_LSU.v:1:30
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_LSU.v:2:30
     extern void rtl_pmem_write(int w_mem_addr, int w_mem_data, char w_mem_len);
 
 #ifdef __cplusplus
