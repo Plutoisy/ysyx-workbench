@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ysyx_24120011_CsrProcessor(
     input [31:0] alu_result,
     input [31:0] src1,

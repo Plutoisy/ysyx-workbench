@@ -69,7 +69,7 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root___eval_settle(Vysyx_24120011_top_
 #ifdef VL_DEBUG
                 Vysyx_24120011_top___024root___dump_triggers__stl(vlSelf);
 #endif
-                VL_FATAL_MT("/home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v", 5, "", "Settle region did not converge.");
+                VL_FATAL_MT("/home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v", 6, "", "Settle region did not converge.");
             }
             vlSelf->__VstlIterCount = ((IData)(1U) 
                                        + vlSelf->__VstlIterCount);

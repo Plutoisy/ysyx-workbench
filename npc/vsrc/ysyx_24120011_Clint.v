@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ysyx_24120011_Clint (
     input wire clk,
     input wire rst,

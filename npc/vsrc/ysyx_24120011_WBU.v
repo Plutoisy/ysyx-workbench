@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ysyx_24120011_WBU(
     input [31:0] pc_add_imme_out,
     input [31:0] pc_add_4_out,

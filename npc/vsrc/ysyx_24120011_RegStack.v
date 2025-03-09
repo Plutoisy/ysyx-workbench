@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 import "DPI-C" function void reg_out(input int array[31:0]);
 
 module ysyx_24120011_RegStack(

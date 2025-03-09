@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ysyx_24120011_Reg #(WIDTH = 1, RESET_VAL = 0) (
   input clk,
   input rst,

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // ALUctr[3]     ALUctr[2:0]     ALU操作
 // 0             000             选择加法器输出，做加法
 // 1             000             A==B
