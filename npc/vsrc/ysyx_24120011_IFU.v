@@ -122,7 +122,7 @@ parameter ysyx_24120011_IFU_M_AXI_RDATA = 3'b010;
 // end
 
 /* verilator lint_off LATCH */
-always@(*)begin
+always@(posedge clk)begin
     if(M0_rdata != 'd0)begin
         inst = M0_rdata;
     end
