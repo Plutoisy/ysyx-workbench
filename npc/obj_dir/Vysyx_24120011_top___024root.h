@@ -37,9 +37,7 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__LSU_valid;
         CData/*0:0*/ ysyx_24120011_top__DOT__LSU_ready;
         CData/*0:0*/ ysyx_24120011_top__DOT__M0_rvalid;
-        CData/*2:0*/ ysyx_24120011_top__DOT__M0_awsize;
         CData/*0:0*/ ysyx_24120011_top__DOT__M1_rvalid;
-        CData/*2:0*/ ysyx_24120011_top__DOT__M1_awsize;
         CData/*0:0*/ ysyx_24120011_top__DOT__M1_wready;
         CData/*0:0*/ ysyx_24120011_top__DOT__M1_bvalid;
         CData/*0:0*/ ysyx_24120011_top__DOT__S0_arvalid;
@@ -83,10 +81,10 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__rready_delay_cnt;
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__bready_delay_cnt;
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in;
-    };
-    struct {
         CData/*7:0*/ ysyx_24120011_top__DOT__i_LSU__DOT__random_delay;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__read_state;
+    };
+    struct {
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__read_next_state;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_state;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Arbiter__DOT__write_next_state;
@@ -149,10 +147,10 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wvalid;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_bready;
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_arsize;
-    };
-    struct {
         CData/*2:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_awsize;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wlast;
+    };
+    struct {
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_arvalid;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_rready;
         CData/*0:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_awvalid;
@@ -215,10 +213,10 @@ class Vysyx_24120011_top___024root final : public VerilatedModule {
         IData/*31:0*/ __VstlIterCount;
         IData/*31:0*/ __VactIterCount;
         QData/*63:0*/ ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__mtime;
-    };
-    struct {
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__Regs;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011_top__DOT__i_RegStack__DOT__regout;
+    };
+    struct {
         VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
     };
     VlTriggerVec<1> __VstlTriggered;
