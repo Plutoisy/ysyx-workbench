@@ -52,143 +52,245 @@ wire LSU_ready;
 wire [31:0] LSU_valid_int;
 
 //============M0=============//        
-//AR
+//AR-axi4lite
 wire  [31:0]     M0_araddr;
 wire             M0_arvalid;
-wire            M0_arready;
-//R               
-wire [31:0]     M0_rdata;
-wire [1:0]      M0_rresp;
-wire            M0_rvalid;
+wire              M0_arready;
+//AR-axi4
+wire  [3:0]      M0_arid;
+wire  [7:0]      M0_arlen;
+wire  [2:0]      M0_arsize;
+wire  [1:0]      M0_arburst;
+//R-axi4lite            
+wire   [31:0]     M0_rdata;
+wire   [1:0]      M0_rresp;
+wire              M0_rvalid;
 wire             M0_rready;
-//AW
+//R-axi4
+wire              M0_rlast;
+wire   [3:0]      M0_rid;
+//AW-axi4lite
 wire  [31:0]     M0_awaddr;
 wire             M0_awvalid;
-wire            M0_awready;
-//W
+wire              M0_awready;
+//AW-axi4
+wire  [3:0]      M0_awid;
+wire  [7:0]      M0_awlen;
+wire  [2:0]      M0_awsize;
+wire  [1:0]      M0_awburst;
+//W-axi4lite
 wire  [31:0]     M0_wdata;
 wire  [3:0]      M0_wstrb;
 wire             M0_wvalid;
-wire            M0_wready;
-//B
-wire [1:0]      M0_bresp;
-wire            M0_bvalid;
+wire              M0_wready;
+//W-axi4
+wire             M0_wlast;
+//B-axi4lite
+wire   [1:0]      M0_bresp;
+wire              M0_bvalid;
 wire             M0_bready;
-//============M1=============//         
-//AR
+//B-axi4
+wire	[3:0]	   M0_bid;
+//============M1=============//        
+//AR-axi4lite
 wire  [31:0]     M1_araddr;
 wire             M1_arvalid;
-wire            M1_arready;
-//R               
-wire [31:0]     M1_rdata;
-wire [1:0]      M1_rresp;
-wire            M1_rvalid;
+wire              M1_arready;
+//AR-axi4
+wire  [3:0]      M1_arid;
+wire  [7:0]      M1_arlen;
+wire  [2:0]      M1_arsize;
+wire  [1:0]      M1_arburst;
+//R-axi4lite            
+wire   [31:0]     M1_rdata;
+wire   [1:0]      M1_rresp;
+wire              M1_rvalid;
 wire             M1_rready;
-//AW
+//R-axi4
+wire              M1_rlast;
+wire   [3:0]      M1_rid;
+//AW-axi4lite
 wire  [31:0]     M1_awaddr;
 wire             M1_awvalid;
-wire            M1_awready;
-//W
+wire              M1_awready;
+//AW-axi4
+wire  [3:0]      M1_awid;
+wire  [7:0]      M1_awlen;
+wire  [2:0]      M1_awsize;
+wire  [1:0]      M1_awburst;
+//W-axi4lite
 wire  [31:0]     M1_wdata;
 wire  [3:0]      M1_wstrb;
 wire             M1_wvalid;
-wire            M1_wready;
-//B
-wire [1:0]      M1_bresp;
-wire            M1_bvalid;
+wire              M1_wready;
+//W-axi4
+wire             M1_wlast;
+//B-axi4lite
+wire   [1:0]      M1_bresp;
+wire              M1_bvalid;
 wire             M1_bready;
+//B-axi4
+wire	[3:0]	   M1_bid;
 //============S0=============// 
-//AR
-wire [31:0]     S0_araddr;
-wire            S0_arvalid;
-wire             S0_arready;
-//R                
-wire  [31:0]     S0_rdata;
-wire  [1:0]      S0_rresp;
-wire             S0_rvalid;
-wire            S0_rready;
-//AW 
-wire [31:0]     S0_awaddr;
-wire            S0_awvalid;
-wire             S0_awready;
-//W 
-wire [31:0]     S0_wdata;
-wire [3:0]      S0_wstrb;
-wire            S0_wvalid;
-wire             S0_wready;
-//B 
-wire [1:0]       S0_bresp;
-wire             S0_bvalid;
-wire            S0_bready;
+//AR-axi4lite
+wire  [31:0]     S0_araddr;
+wire             S0_arvalid;
+wire            S0_arready;
+//AR-axi4
+wire  [3:0]      S0_arid;
+wire  [7:0]      S0_arlen;
+wire  [2:0]      S0_arsize;
+wire  [1:0]      S0_arburst;
+//R-axi4lite              
+wire [31:0]     S0_rdata;
+wire [1:0]      S0_rresp;
+wire            S0_rvalid;
+wire             S0_rready;
+//R-axi4
+wire            S0_rlast;
+wire [3:0]      S0_rid;
+//AW-axi4lite
+wire  [31:0]     S0_awaddr;
+wire             S0_awvalid;
+wire            S0_awready;
+//AW-axi4
+wire  [3:0]      S0_awid;
+wire  [7:0]      S0_awlen;
+wire  [2:0]      S0_awsize;
+wire  [1:0]      S0_awburst;
+//W-axi4lite
+wire  [31:0]     S0_wdata;
+wire  [3:0]      S0_wstrb;
+wire             S0_wvalid;
+wire            S0_wready;
+//W-axi4
+wire             S0_wlast;
+//B-axi4lite
+wire [1:0]      S0_bresp;
+wire            S0_bvalid;
+wire             S0_bready;
+//B-axi4
+wire [3:0]	  S0_bid;
 //============sram=============// 
-//AR
-wire [31:0]     sram_araddr;
-wire            sram_arvalid;
-wire             sram_arready;
-//R                
-wire  [31:0]     sram_rdata;
-wire  [1:0]      sram_rresp;
-wire             sram_rvalid;
-wire            sram_rready;
-//AW 
-wire [31:0]     sram_awaddr;
-wire            sram_awvalid;
-wire             sram_awready;
-//W 
-wire [31:0]     sram_wdata;
-wire [3:0]      sram_wstrb;
-wire            sram_wvalid;
-wire             sram_wready;
-//B 
-wire [1:0]       sram_bresp;
-wire             sram_bvalid;
-wire            sram_bready;
+//AR-axi4lite
+wire  [31:0]     sram_araddr;
+wire             sram_arvalid;
+wire            sram_arready;
+//AR-axi4
+wire  [3:0]      sram_arid;
+wire  [7:0]      sram_arlen;
+wire  [2:0]      sram_arsize;
+wire  [1:0]      sram_arburst;
+//R-axi4lite              
+wire [31:0]     sram_rdata;
+wire [1:0]      sram_rresp;
+wire            sram_rvalid;
+wire             sram_rready;
+//R-axi4
+wire            sram_rlast;
+wire [3:0]      sram_rid;
+//AW-axi4lite
+wire  [31:0]     sram_awaddr;
+wire             sram_awvalid;
+wire            sram_awready;
+//AW-axi4
+wire  [3:0]      sram_awid;
+wire  [7:0]      sram_awlen;
+wire  [2:0]      sram_awsize;
+wire  [1:0]      sram_awburst;
+//W-axi4lite
+wire  [31:0]     sram_wdata;
+wire  [3:0]      sram_wstrb;
+wire             sram_wvalid;
+wire            sram_wready;
+//W-axi4
+wire             sram_wlast;
+//B-axi4lite
+wire [1:0]      sram_bresp;
+wire            sram_bvalid;
+wire             sram_bready;
+//B-axi4
+wire [3:0]	  sram_bid;
 //============uart=============// 
-//AR
-wire [31:0]     uart_araddr;
-wire            uart_arvalid;
-wire             uart_arready;
-//R                
-wire  [31:0]     uart_rdata;
-wire  [1:0]      uart_rresp;
-wire             uart_rvalid;
-wire            uart_rready;
-//AW 
-wire [31:0]     uart_awaddr;
-wire            uart_awvalid;
-wire             uart_awready;
-//W 
-wire [31:0]     uart_wdata;
-wire [3:0]      uart_wstrb;
-wire            uart_wvalid;
-wire             uart_wready;
-//B 
-wire [1:0]       uart_bresp;
-wire             uart_bvalid;
-wire            uart_bready;
+//AR-axi4lite
+wire  [31:0]     uart_araddr;
+wire             uart_arvalid;
+wire            uart_arready;
+//AR-axi4
+wire  [3:0]      uart_arid;
+wire  [7:0]      uart_arlen;
+wire  [2:0]      uart_arsize;
+wire  [1:0]      uart_arburst;
+//R-axi4lite              
+wire [31:0]     uart_rdata;
+wire [1:0]      uart_rresp;
+wire            uart_rvalid;
+wire             uart_rready;
+//R-axi4
+wire            uart_rlast;
+wire [3:0]      uart_rid;
+//AW-axi4lite
+wire  [31:0]     uart_awaddr;
+wire             uart_awvalid;
+wire            uart_awready;
+//AW-axi4
+wire  [3:0]      uart_awid;
+wire  [7:0]      uart_awlen;
+wire  [2:0]      uart_awsize;
+wire  [1:0]      uart_awburst;
+//W-axi4lite
+wire  [31:0]     uart_wdata;
+wire  [3:0]      uart_wstrb;
+wire             uart_wvalid;
+wire            uart_wready;
+//W-axi4
+wire             uart_wlast;
+//B-axi4lite
+wire [1:0]      uart_bresp;
+wire            uart_bvalid;
+wire             uart_bready;
+//B-axi4
+wire [3:0]	  uart_bid;
 //============clint=============// 
-//AR
-wire [31:0]     clint_araddr;
-wire            clint_arvalid;
-wire             clint_arready;
-//R                
-wire  [31:0]     clint_rdata;
-wire  [1:0]      clint_rresp;
-wire             clint_rvalid;
-wire            clint_rready;
-//AW 
-wire [31:0]     clint_awaddr;
-wire            clint_awvalid;
-wire             clint_awready;
-//W 
-wire [31:0]     clint_wdata;
-wire [3:0]      clint_wstrb;
-wire            clint_wvalid;
-wire             clint_wready;
-//B 
-wire [1:0]       clint_bresp;
-wire             clint_bvalid;
-wire            clint_bready;
+//AR-axi4lite
+wire  [31:0]     clint_araddr;
+wire             clint_arvalid;
+wire            clint_arready;
+//AR-axi4
+wire  [3:0]      clint_arid;
+wire  [7:0]      clint_arlen;
+wire  [2:0]      clint_arsize;
+wire  [1:0]      clint_arburst;
+//R-axi4lite              
+wire [31:0]     clint_rdata;
+wire [1:0]      clint_rresp;
+wire            clint_rvalid;
+wire             clint_rready;
+//R-axi4
+wire            clint_rlast;
+wire [3:0]      clint_rid;
+//AW-axi4lite
+wire  [31:0]     clint_awaddr;
+wire             clint_awvalid;
+wire            clint_awready;
+//AW-axi4
+wire  [3:0]      clint_awid;
+wire  [7:0]      clint_awlen;
+wire  [2:0]      clint_awsize;
+wire  [1:0]      clint_awburst;
+//W-axi4lite
+wire  [31:0]     clint_wdata;
+wire  [3:0]      clint_wstrb;
+wire             clint_wvalid;
+wire            clint_wready;
+//W-axi4
+wire             clint_wlast;
+//B-axi4lite
+wire [1:0]      clint_bresp;
+wire            clint_bvalid;
+wire             clint_bready;
+//B-axi4
+wire [3:0]	  clint_bid;
 
 
 assign LSU_valid_int = {31'b0,LSU_valid};
@@ -219,25 +321,36 @@ ysyx_24120011_IFU i_IFU(
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid ),
     .LSU_ready ( LSU_ready ),
-    .M0_araddr ( M0_araddr  ),
-    .M0_arvalid( M0_arvalid ),
-    .M0_arready( M0_arready ),          
-    .M0_rdata  ( M0_rdata   ),
-    .M0_rresp  ( M0_rresp   ),
-    .M0_rvalid ( M0_rvalid  ),
-    .M0_rready ( M0_rready  ),
-    .M0_awaddr ( M0_awaddr  ),
-    .M0_awvalid( M0_awvalid ),
-    .M0_awready( M0_awready ),
-    .M0_wdata  ( M0_wdata   ),
-    .M0_wstrb  ( M0_wstrb   ),
-    .M0_wvalid ( M0_wvalid  ),
-    .M0_wready ( M0_wready  ),
-    .M0_bresp  ( M0_bresp   ),
-    .M0_bvalid ( M0_bvalid  ),
-    .M0_bready ( M0_bready  )
+    .M0_araddr  ( M0_araddr  ),
+    .M0_arvalid ( M0_arvalid ),
+    .M0_arready ( M0_arready ),
+    .M0_arid    ( M0_arid    ),
+    .M0_arlen   ( M0_arlen   ),
+    .M0_arsize  ( M0_arsize  ),
+    .M0_arburst ( M0_arburst ),
+    .M0_rdata   ( M0_rdata   ),
+    .M0_rresp   ( M0_rresp   ),
+    .M0_rvalid  ( M0_rvalid  ),
+    .M0_rready  ( M0_rready  ),
+    .M0_rlast   ( M0_rlast   ),
+    .M0_rid     ( M0_rid     ),
+    .M0_awaddr  ( M0_awaddr  ),
+    .M0_awvalid ( M0_awvalid ),
+    .M0_awready ( M0_awready ),
+    .M0_awid    ( M0_awid    ),
+    .M0_awlen   ( M0_awlen   ),
+    .M0_awsize  ( M0_awsize  ),
+    .M0_awburst ( M0_awburst ),
+    .M0_wdata   ( M0_wdata   ),
+    .M0_wstrb   ( M0_wstrb   ),
+    .M0_wvalid  ( M0_wvalid  ),
+    .M0_wready  ( M0_wready  ),
+    .M0_wlast   ( M0_wlast   ),
+    .M0_bresp   ( M0_bresp   ),
+    .M0_bvalid  ( M0_bvalid  ),
+    .M0_bready  ( M0_bready  ),
+    .M0_bid     ( M0_bid     )
 );
-
 
 ysyx_24120011_PCProcessor i_PCProcessor(
     .pc              ( pc              ),
@@ -345,23 +458,35 @@ ysyx_24120011_LSU i_LSU(
     .r_mem_data          ( r_mem_data          ),
     .LSU_valid           ( LSU_valid           ),
     .LSU_ready           ( LSU_ready           ),
-    .M1_araddr           ( M1_araddr  ),
-    .M1_arvalid          ( M1_arvalid ),
-    .M1_arready          ( M1_arready ),          
-    .M1_rdata            ( M1_rdata   ),
-    .M1_rresp            ( M1_rresp   ),
-    .M1_rvalid           ( M1_rvalid  ),
-    .M1_rready           ( M1_rready  ),
-    .M1_awaddr           ( M1_awaddr  ),
-    .M1_awvalid          ( M1_awvalid ),
-    .M1_awready          ( M1_awready ),
-    .M1_wdata            ( M1_wdata   ),
-    .M1_wstrb            ( M1_wstrb   ),
-    .M1_wvalid           ( M1_wvalid  ),
-    .M1_wready           ( M1_wready  ),
-    .M1_bresp            ( M1_bresp   ),
-    .M1_bvalid           ( M1_bvalid  ),
-    .M1_bready           ( M1_bready  )
+    .M1_araddr           ( M1_araddr      ),
+    .M1_arvalid          ( M1_arvalid     ),
+    .M1_arready          ( M1_arready     ),
+    .M1_arid             ( M1_arid        ),
+    .M1_arlen            ( M1_arlen       ),
+    .M1_arsize           ( M1_arsize      ),
+    .M1_arburst          ( M1_arburst     ),
+    .M1_rdata            ( M1_rdata       ),
+    .M1_rresp            ( M1_rresp       ),
+    .M1_rvalid           ( M1_rvalid      ),
+    .M1_rready           ( M1_rready      ),
+    .M1_rlast            ( M1_rlast       ),
+    .M1_rid              ( M1_rid         ),
+    .M1_awaddr           ( M1_awaddr      ),
+    .M1_awvalid          ( M1_awvalid     ),
+    .M1_awready          ( M1_awready     ),
+    .M1_awid             ( M1_awid        ),
+    .M1_awlen            ( M1_awlen       ),
+    .M1_awsize           ( M1_awsize      ),
+    .M1_awburst          ( M1_awburst     ),
+    .M1_wdata            ( M1_wdata       ),
+    .M1_wstrb            ( M1_wstrb       ),
+    .M1_wvalid           ( M1_wvalid      ),
+    .M1_wready           ( M1_wready      ),
+    .M1_wlast            ( M1_wlast       ),
+    .M1_bresp            ( M1_bresp       ),
+    .M1_bvalid           ( M1_bvalid      ),
+    .M1_bready           ( M1_bready      ),
+    .M1_bid              ( M1_bid         )
 );
 
 ysyx_24120011_Csr i_Csr(
@@ -390,55 +515,92 @@ ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
     .M0_araddr  ( M0_araddr  ),
     .M0_arvalid ( M0_arvalid ),
     .M0_arready ( M0_arready ),
+    .M0_arid    ( M0_arid    ),
+    .M0_arlen   ( M0_arlen   ),
+    .M0_arsize  ( M0_arsize  ),
+    .M0_arburst ( M0_arburst ),
     .M0_rdata   ( M0_rdata   ),
     .M0_rresp   ( M0_rresp   ),
     .M0_rvalid  ( M0_rvalid  ),
     .M0_rready  ( M0_rready  ),
+    .M0_rlast   ( M0_rlast   ),
+    .M0_rid     ( M0_rid     ),
     .M0_awaddr  ( M0_awaddr  ),
     .M0_awvalid ( M0_awvalid ),
     .M0_awready ( M0_awready ),
+    .M0_awid    ( M0_awid    ),
+    .M0_awlen   ( M0_awlen   ),
+    .M0_awsize  ( M0_awsize  ),
+    .M0_awburst ( M0_awburst ),
     .M0_wdata   ( M0_wdata   ),
     .M0_wstrb   ( M0_wstrb   ),
     .M0_wvalid  ( M0_wvalid  ),
     .M0_wready  ( M0_wready  ),
+    .M0_wlast   ( M0_wlast   ),
     .M0_bresp   ( M0_bresp   ),
     .M0_bvalid  ( M0_bvalid  ),
     .M0_bready  ( M0_bready  ),
+    .M0_bid     ( M0_bid     ),
     .M1_araddr  ( M1_araddr  ),
     .M1_arvalid ( M1_arvalid ),
     .M1_arready ( M1_arready ),
+    .M1_arid    ( M1_arid    ),
+    .M1_arlen   ( M1_arlen   ),
+    .M1_arsize  ( M1_arsize  ),
+    .M1_arburst ( M1_arburst ),
     .M1_rdata   ( M1_rdata   ),
     .M1_rresp   ( M1_rresp   ),
     .M1_rvalid  ( M1_rvalid  ),
     .M1_rready  ( M1_rready  ),
+    .M1_rlast   ( M1_rlast   ),
+    .M1_rid     ( M1_rid     ),
     .M1_awaddr  ( M1_awaddr  ),
     .M1_awvalid ( M1_awvalid ),
     .M1_awready ( M1_awready ),
+    .M1_awid    ( M1_awid    ),
+    .M1_awlen   ( M1_awlen   ),
+    .M1_awsize  ( M1_awsize  ),
+    .M1_awburst ( M1_awburst ),
     .M1_wdata   ( M1_wdata   ),
     .M1_wstrb   ( M1_wstrb   ),
     .M1_wvalid  ( M1_wvalid  ),
     .M1_wready  ( M1_wready  ),
+    .M1_wlast   ( M1_wlast   ),
     .M1_bresp   ( M1_bresp   ),
     .M1_bvalid  ( M1_bvalid  ),
     .M1_bready  ( M1_bready  ),
+    .M1_bid     ( M1_bid     ),
     .S0_araddr  ( S0_araddr  ),
     .S0_arvalid ( S0_arvalid ),
     .S0_arready ( S0_arready ),
+    .S0_arid    ( S0_arid    ),
+    .S0_arlen   ( S0_arlen   ),
+    .S0_arsize  ( S0_arsize  ),
+    .S0_arburst ( S0_arburst ),
     .S0_rdata   ( S0_rdata   ),
     .S0_rresp   ( S0_rresp   ),
     .S0_rvalid  ( S0_rvalid  ),
     .S0_rready  ( S0_rready  ),
+    .S0_rlast   ( S0_rlast   ),
+    .S0_rid     ( S0_rid     ),
     .S0_awaddr  ( S0_awaddr  ),
     .S0_awvalid ( S0_awvalid ),
     .S0_awready ( S0_awready ),
+    .S0_awid    ( S0_awid    ),
+    .S0_awlen   ( S0_awlen   ),
+    .S0_awsize  ( S0_awsize  ),
+    .S0_awburst ( S0_awburst ),
     .S0_wdata   ( S0_wdata   ),
     .S0_wstrb   ( S0_wstrb   ),
     .S0_wvalid  ( S0_wvalid  ),
     .S0_wready  ( S0_wready  ),
+    .S0_wlast   ( S0_wlast   ),
     .S0_bresp   ( S0_bresp   ),
     .S0_bvalid  ( S0_bvalid  ),
-    .S0_bready  ( S0_bready  )
+    .S0_bready  ( S0_bready  ),
+    .S0_bid     ( S0_bid     )
 );
+
 
 ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
     .clk     ( clk     ),
@@ -446,20 +608,32 @@ ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
     .araddr  ( sram_araddr  ),
     .arvalid ( sram_arvalid ),
     .arready ( sram_arready ),
+    .arid    ( sram_arid    ),
+    .arlen   ( sram_arlen   ),
+    .arsize  ( sram_arsize  ),
+    .arburst ( sram_arburst ),
     .rdata   ( sram_rdata   ),
     .rresp   ( sram_rresp   ),
     .rvalid  ( sram_rvalid  ),
     .rready  ( sram_rready  ),
+    .rlast   ( sram_rlast   ),
+    .rid     ( sram_rid     ),
     .awaddr  ( sram_awaddr  ),
     .awvalid ( sram_awvalid ),
     .awready ( sram_awready ),
+    .awid    ( sram_awid    ),
+    .awlen   ( sram_awlen   ),
+    .awsize  ( sram_awsize  ),
+    .awburst ( sram_awburst ),
     .wdata   ( sram_wdata   ),
     .wstrb   ( sram_wstrb   ),
     .wvalid  ( sram_wvalid  ),
     .wready  ( sram_wready  ),
+    .wlast   ( sram_wlast   ),
     .bresp   ( sram_bresp   ),
     .bvalid  ( sram_bvalid  ),
-    .bready  ( sram_bready  )
+    .bready  ( sram_bready  ),
+    .bid     ( sram_bid     )
 );
 
 ysyx_24120011_Uart u_ysyx_24120011_Uart(
@@ -468,20 +642,32 @@ ysyx_24120011_Uart u_ysyx_24120011_Uart(
     .araddr  ( uart_araddr  ),
     .arvalid ( uart_arvalid ),
     .arready ( uart_arready ),
+    .arid    ( uart_arid    ),
+    .arlen   ( uart_arlen   ),
+    .arsize  ( uart_arsize  ),
+    .arburst ( uart_arburst ),
     .rdata   ( uart_rdata   ),
     .rresp   ( uart_rresp   ),
     .rvalid  ( uart_rvalid  ),
     .rready  ( uart_rready  ),
+    .rlast   ( uart_rlast   ),
+    .rid     ( uart_rid     ),
     .awaddr  ( uart_awaddr  ),
     .awvalid ( uart_awvalid ),
     .awready ( uart_awready ),
+    .awid    ( uart_awid    ),
+    .awlen   ( uart_awlen   ),
+    .awsize  ( uart_awsize  ),
+    .awburst ( uart_awburst ),
     .wdata   ( uart_wdata   ),
     .wstrb   ( uart_wstrb   ),
     .wvalid  ( uart_wvalid  ),
     .wready  ( uart_wready  ),
+    .wlast   ( uart_wlast   ),
     .bresp   ( uart_bresp   ),
     .bvalid  ( uart_bvalid  ),
-    .bready  ( uart_bready  )
+    .bready  ( uart_bready  ),
+    .bid     ( uart_bid     )
 );
 
 ysyx_24120011_Clint u_ysyx_24120011_Clint(
@@ -490,93 +676,154 @@ ysyx_24120011_Clint u_ysyx_24120011_Clint(
     .araddr  ( clint_araddr  ),
     .arvalid ( clint_arvalid ),
     .arready ( clint_arready ),
+    .arid    ( clint_arid    ),
+    .arlen   ( clint_arlen   ),
+    .arsize  ( clint_arsize  ),
+    .arburst ( clint_arburst ),
     .rdata   ( clint_rdata   ),
     .rresp   ( clint_rresp   ),
     .rvalid  ( clint_rvalid  ),
     .rready  ( clint_rready  ),
+    .rlast   ( clint_rlast   ),
+    .rid     ( clint_rid     ),
     .awaddr  ( clint_awaddr  ),
     .awvalid ( clint_awvalid ),
     .awready ( clint_awready ),
+    .awid    ( clint_awid    ),
+    .awlen   ( clint_awlen   ),
+    .awsize  ( clint_awsize  ),
+    .awburst ( clint_awburst ),
     .wdata   ( clint_wdata   ),
     .wstrb   ( clint_wstrb   ),
     .wvalid  ( clint_wvalid  ),
     .wready  ( clint_wready  ),
+    .wlast   ( clint_wlast   ),
     .bresp   ( clint_bresp   ),
     .bvalid  ( clint_bvalid  ),
-    .bready  ( clint_bready  )
+    .bready  ( clint_bready  ),
+    .bid     ( clint_bid     )
 );
 
 ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
     .clk             ( clk             ),
     .rst             ( rst             ),
-    .Xbar_araddr     ( S0_araddr       ),
-    .Xbar_arvalid    ( S0_arvalid      ),
-    .Xbar_arready    ( S0_arready      ),
-    .Xbar_rdata      ( S0_rdata        ),
-    .Xbar_rresp      ( S0_rresp        ),
-    .Xbar_rvalid     ( S0_rvalid       ),
-    .Xbar_rready     ( S0_rready       ),
-    .Xbar_awaddr     ( S0_awaddr       ),
-    .Xbar_awvalid    ( S0_awvalid      ),
-    .Xbar_awready    ( S0_awready      ),
-    .Xbar_wdata      ( S0_wdata        ),
-    .Xbar_wstrb      ( S0_wstrb        ),
-    .Xbar_wvalid     ( S0_wvalid       ),
-    .Xbar_wready     ( S0_wready       ),
-    .Xbar_bresp      ( S0_bresp        ),
-    .Xbar_bvalid     ( S0_bvalid       ),
-    .Xbar_bready     ( S0_bready       ),
-    .Xbar_S0_araddr  ( sram_araddr     ),
-    .Xbar_S0_arvalid ( sram_arvalid    ),
-    .Xbar_S0_arready ( sram_arready    ),
-    .Xbar_S0_rdata   ( sram_rdata      ),
-    .Xbar_S0_rresp   ( sram_rresp      ),
-    .Xbar_S0_rvalid  ( sram_rvalid     ),
-    .Xbar_S0_rready  ( sram_rready     ),
-    .Xbar_S0_awaddr  ( sram_awaddr     ),
-    .Xbar_S0_awvalid ( sram_awvalid    ),
-    .Xbar_S0_awready ( sram_awready    ),
-    .Xbar_S0_wdata   ( sram_wdata      ),
-    .Xbar_S0_wstrb   ( sram_wstrb      ),
-    .Xbar_S0_wvalid  ( sram_wvalid     ),
-    .Xbar_S0_wready  ( sram_wready     ),
-    .Xbar_S0_bresp   ( sram_bresp      ),
-    .Xbar_S0_bvalid  ( sram_bvalid     ),
-    .Xbar_S0_bready  ( sram_bready     ),
-    .Xbar_S1_araddr  ( uart_araddr     ),
-    .Xbar_S1_arvalid ( uart_arvalid    ),
-    .Xbar_S1_arready ( uart_arready    ),
-    .Xbar_S1_rdata   ( uart_rdata      ),
-    .Xbar_S1_rresp   ( uart_rresp      ),
-    .Xbar_S1_rvalid  ( uart_rvalid     ),
-    .Xbar_S1_rready  ( uart_rready     ),
-    .Xbar_S1_awaddr  ( uart_awaddr     ),
-    .Xbar_S1_awvalid ( uart_awvalid    ),
-    .Xbar_S1_awready ( uart_awready    ),
-    .Xbar_S1_wdata   ( uart_wdata      ),
-    .Xbar_S1_wstrb   ( uart_wstrb      ),
-    .Xbar_S1_wvalid  ( uart_wvalid     ),
-    .Xbar_S1_wready  ( uart_wready     ),
-    .Xbar_S1_bresp   ( uart_bresp      ),
-    .Xbar_S1_bvalid  ( uart_bvalid     ),
-    .Xbar_S1_bready  ( uart_bready     ),
-    .Xbar_S2_araddr  ( clint_araddr     ),
-    .Xbar_S2_arvalid ( clint_arvalid    ),
-    .Xbar_S2_arready ( clint_arready    ),
-    .Xbar_S2_rdata   ( clint_rdata      ),
-    .Xbar_S2_rresp   ( clint_rresp      ),
-    .Xbar_S2_rvalid  ( clint_rvalid     ),
-    .Xbar_S2_rready  ( clint_rready     ),
-    .Xbar_S2_awaddr  ( clint_awaddr     ),
-    .Xbar_S2_awvalid ( clint_awvalid    ),
-    .Xbar_S2_awready ( clint_awready    ),
-    .Xbar_S2_wdata   ( clint_wdata      ),
-    .Xbar_S2_wstrb   ( clint_wstrb      ),
-    .Xbar_S2_wvalid  ( clint_wvalid     ),
-    .Xbar_S2_wready  ( clint_wready     ),
-    .Xbar_S2_bresp   ( clint_bresp      ),
-    .Xbar_S2_bvalid  ( clint_bvalid     ),
-    .Xbar_S2_bready  ( clint_bready     )
+    .Xbar_araddr     ( S0_araddr     ),
+    .Xbar_arvalid    ( S0_arvalid    ),
+    .Xbar_arready    ( S0_arready    ),
+    .Xbar_arid       ( S0_arid       ),
+    .Xbar_arlen      ( S0_arlen      ),
+    .Xbar_arsize     ( S0_arsize     ),
+    .Xbar_arburst    ( S0_arburst    ),
+    .Xbar_rdata      ( S0_rdata      ),
+    .Xbar_rresp      ( S0_rresp      ),
+    .Xbar_rvalid     ( S0_rvalid     ),
+    .Xbar_rready     ( S0_rready     ),
+    .Xbar_rlast      ( S0_rlast      ),
+    .Xbar_rid        ( S0_rid        ),
+    .Xbar_awaddr     ( S0_awaddr     ),
+    .Xbar_awvalid    ( S0_awvalid    ),
+    .Xbar_awready    ( S0_awready    ),
+    .Xbar_awid       ( S0_awid       ),
+    .Xbar_awlen      ( S0_awlen      ),
+    .Xbar_awsize     ( S0_awsize     ),
+    .Xbar_awburst    ( S0_awburst    ),
+    .Xbar_wdata      ( S0_wdata      ),
+    .Xbar_wstrb      ( S0_wstrb      ),
+    .Xbar_wvalid     ( S0_wvalid     ),
+    .Xbar_wready     ( S0_wready     ),
+    .Xbar_wlast      ( S0_wlast      ),
+    .Xbar_bresp      ( S0_bresp      ),
+    .Xbar_bvalid     ( S0_bvalid     ),
+    .Xbar_bready     ( S0_bready     ),
+    .Xbar_bid        ( S0_bid        ),
+    .Xbar_S0_araddr  ( sram_S0_araddr  ),
+    .Xbar_S0_arvalid ( sram_S0_arvalid ),
+    .Xbar_S0_arready ( sram_S0_arready ),
+    .Xbar_S0_arid    ( sram_S0_arid    ),
+    .Xbar_S0_arlen   ( sram_S0_arlen   ),
+    .Xbar_S0_arsize  ( sram_S0_arsize  ),
+    .Xbar_S0_arburst ( sram_S0_arburst ),
+    .Xbar_S0_rdata   ( sram_S0_rdata   ),
+    .Xbar_S0_rresp   ( sram_S0_rresp   ),
+    .Xbar_S0_rvalid  ( sram_S0_rvalid  ),
+    .Xbar_S0_rready  ( sram_S0_rready  ),
+    .Xbar_S0_rlast   ( sram_S0_rlast   ),
+    .Xbar_S0_rid     ( sram_S0_rid     ),
+    .Xbar_S0_awaddr  ( sram_S0_awaddr  ),
+    .Xbar_S0_awvalid ( sram_S0_awvalid ),
+    .Xbar_S0_awready ( sram_S0_awready ),
+    .Xbar_S0_awid    ( sram_S0_awid    ),
+    .Xbar_S0_awlen   ( sram_S0_awlen   ),
+    .Xbar_S0_awsize  ( sram_S0_awsize  ),
+    .Xbar_S0_awburst ( sram_S0_awburst ),
+    .Xbar_S0_wdata   ( sram_S0_wdata   ),
+    .Xbar_S0_wstrb   ( sram_S0_wstrb   ),
+    .Xbar_S0_wvalid  ( sram_S0_wvalid  ),
+    .Xbar_S0_wready  ( sram_S0_wready  ),
+    .Xbar_S0_wlast   ( sram_S0_wlast   ),
+    .Xbar_S0_bresp   ( sram_S0_bresp   ),
+    .Xbar_S0_bvalid  ( sram_S0_bvalid  ),
+    .Xbar_S0_bready  ( sram_S0_bready  ),
+    .Xbar_S0_bid     ( sram_S0_bid     ),
+    .Xbar_S1_araddr  ( uart_S1_araddr  ),
+    .Xbar_S1_arvalid ( uart_S1_arvalid ),
+    .Xbar_S1_arready ( uart_S1_arready ),
+    .Xbar_S1_arid    ( uart_S1_arid    ),
+    .Xbar_S1_arlen   ( uart_S1_arlen   ),
+    .Xbar_S1_arsize  ( uart_S1_arsize  ),
+    .Xbar_S1_arburst ( uart_S1_arburst ),
+    .Xbar_S1_rdata   ( uart_S1_rdata   ),
+    .Xbar_S1_rresp   ( uart_S1_rresp   ),
+    .Xbar_S1_rvalid  ( uart_S1_rvalid  ),
+    .Xbar_S1_rready  ( uart_S1_rready  ),
+    .Xbar_S1_rlast   ( uart_S1_rlast   ),
+    .Xbar_S1_rid     ( uart_S1_rid     ),
+    .Xbar_S1_awaddr  ( uart_S1_awaddr  ),
+    .Xbar_S1_awvalid ( uart_S1_awvalid ),
+    .Xbar_S1_awready ( uart_S1_awready ),
+    .Xbar_S1_awid    ( uart_S1_awid    ),
+    .Xbar_S1_awlen   ( uart_S1_awlen   ),
+    .Xbar_S1_awsize  ( uart_S1_awsize  ),
+    .Xbar_S1_awburst ( uart_S1_awburst ),
+    .Xbar_S1_wdata   ( uart_S1_wdata   ),
+    .Xbar_S1_wstrb   ( uart_S1_wstrb   ),
+    .Xbar_S1_wvalid  ( uart_S1_wvalid  ),
+    .Xbar_S1_wready  ( uart_S1_wready  ),
+    .Xbar_S1_wlast   ( uart_S1_wlast   ),
+    .Xbar_S1_bresp   ( uart_S1_bresp   ),
+    .Xbar_S1_bvalid  ( uart_S1_bvalid  ),
+    .Xbar_S1_bready  ( uart_S1_bready  ),
+    .Xbar_S1_bid     ( uart_S1_bid     ),
+    .Xbar_S2_araddr  ( clint_S2_araddr  ),
+    .Xbar_S2_arvalid ( clint_S2_arvalid ),
+    .Xbar_S2_arready ( clint_S2_arready ),
+    .Xbar_S2_arid    ( clint_S2_arid    ),
+    .Xbar_S2_arlen   ( clint_S2_arlen   ),
+    .Xbar_S2_arsize  ( clint_S2_arsize  ),
+    .Xbar_S2_arburst ( clint_S2_arburst ),
+    .Xbar_S2_rdata   ( clint_S2_rdata   ),
+    .Xbar_S2_rresp   ( clint_S2_rresp   ),
+    .Xbar_S2_rvalid  ( clint_S2_rvalid  ),
+    .Xbar_S2_rready  ( clint_S2_rready  ),
+    .Xbar_S2_rlast   ( clint_S2_rlast   ),
+    .Xbar_S2_rid     ( clint_S2_rid     ),
+    .Xbar_S2_awaddr  ( clint_S2_awaddr  ),
+    .Xbar_S2_awvalid ( clint_S2_awvalid ),
+    .Xbar_S2_awready ( clint_S2_awready ),
+    .Xbar_S2_awid    ( clint_S2_awid    ),
+    .Xbar_S2_awlen   ( clint_S2_awlen   ),
+    .Xbar_S2_awsize  ( clint_S2_awsize  ),
+    .Xbar_S2_awburst ( clint_S2_awburst ),
+    .Xbar_S2_wdata   ( clint_S2_wdata   ),
+    .Xbar_S2_wstrb   ( clint_S2_wstrb   ),
+    .Xbar_S2_wvalid  ( clint_S2_wvalid  ),
+    .Xbar_S2_wready  ( clint_S2_wready  ),
+    .Xbar_S2_wlast   ( clint_S2_wlast   ),
+    .Xbar_S2_bresp   ( clint_S2_bresp   ),
+    .Xbar_S2_bvalid  ( clint_S2_bvalid  ),
+    .Xbar_S2_bready  ( clint_S2_bready  ),
+    .Xbar_S2_bid     ( clint_S2_bid     )
 );
+
 
 endmodule
