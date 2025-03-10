@@ -110,7 +110,7 @@ assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
 assign M0_awlen   = 'd0       ;
 assign M0_awburst = 'd0       ;
-assign M0_arsize  = 3'b010    ;
+assign M0_awsize  = 3'b010    ;
 assign M0_wlast   = M0_wvalid ;
 
 // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
