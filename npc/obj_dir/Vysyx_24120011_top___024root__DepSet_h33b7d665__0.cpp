@@ -275,11 +275,6 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mcause = 0U;
         __Vdly__ysyx_24120011_top__DOT__i_Csr__DOT__mepc = 0U;
         __Vdlyvset__ysyx_24120011_top__DOT__i_RegStack__DOT__Regs__v0 = 1U;
-        vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__LSFR_in = 1U;
-        vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__LSFR_in = 1U;
-        vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__LSFR_in = 1U;
-        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in = 1U;
-        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__LSFR_in = 1U;
     } else {
         __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__mtime 
             = (1ULL + vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__mtime);
@@ -659,11 +654,26 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         = __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__read_delay_cnt;
     vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__addr 
         = __Vdly__ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__addr;
-    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay = 0U;
-    vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__random_delay = 0U;
-    vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__random_delay = 0U;
-    vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__random_delay = 0U;
-    vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__random_delay = 0U;
+    vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in) 
+                                         >> 1U)));
+    vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__LSFR_in) 
+                                         >> 1U)));
+    vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__LSFR_in) 
+                                         >> 1U)));
+    vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__LSFR_in) 
+                                         >> 1U)));
+    vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__random_delay 
+        = ((0x80U & (VL_REDXOR_8((0x1dU & (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__LSFR_in))) 
+                     << 7U)) | (0x7fU & ((IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__LSFR_in) 
+                                         >> 1U)));
     vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__regout[0U] 
         = vlSelf->ysyx_24120011_top__DOT__i_RegStack__DOT__Regs
         [0U];
@@ -963,6 +973,11 @@ VL_INLINE_OPT void Vysyx_24120011_top___024root___nba_sequent__TOP__0(Vysyx_2412
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__rready = 0U;
     }
     if (vlSelf->rst) {
+        vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__LSFR_in = 1U;
+        vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__LSFR_in = 1U;
+        vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Uart__DOT__LSFR_in = 1U;
+        vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__LSFR_in = 1U;
+        vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_SRAM__DOT__LSFR_in = 1U;
         vlSelf->ysyx_24120011_top__DOT__i_LSU__DOT__state = 0U;
         vlSelf->ysyx_24120011_top__DOT__i_IFU__DOT__state = 0U;
     } else {
