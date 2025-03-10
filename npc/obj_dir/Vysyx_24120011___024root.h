@@ -33,7 +33,7 @@ class Vysyx_24120011___024root final : public VerilatedModule {
         VL_OUT8(io_master_wlast,0,0);
         VL_OUT8(io_master_bready,0,0);
         VL_IN8(io_master_bvalid,0,0);
-        VL_IN8(io_master_bres,1,0);
+        VL_IN8(io_master_bresp,1,0);
         VL_IN8(io_master_bid,3,0);
         VL_IN8(io_master_arready,0,0);
         VL_OUT8(io_master_arvalid,0,0);
@@ -152,7 +152,6 @@ class Vysyx_24120011___024root final : public VerilatedModule {
     };
     struct {
         CData/*3:0*/ ysyx_24120011__DOT__uart_bid;
-        CData/*0:0*/ ysyx_24120011__DOT__io_master_bresp;
         CData/*0:0*/ ysyx_24120011__DOT__i_IFU__DOT__rready;
         CData/*0:0*/ ysyx_24120011__DOT__i_IFU__DOT__rvalid_prev;
         CData/*0:0*/ ysyx_24120011__DOT__i_IFU__DOT__arvalid;
@@ -215,9 +214,9 @@ class Vysyx_24120011___024root final : public VerilatedModule {
         CData/*0:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__Xbar_S1_wready;
         CData/*1:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__Xbar_S1_bresp;
         CData/*0:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__Xbar_S1_bvalid;
+        CData/*3:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__Xbar_S1_bid;
     };
     struct {
-        CData/*3:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__Xbar_S1_bid;
         CData/*2:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__r_Xbar_state;
         CData/*2:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__r_Xbar_next_state;
         CData/*2:0*/ ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__w_Xbar_state;
@@ -281,9 +280,9 @@ class Vysyx_24120011___024root final : public VerilatedModule {
         IData/*31:0*/ ysyx_24120011__DOT__pc;
         IData/*31:0*/ ysyx_24120011__DOT__inst;
         IData/*31:0*/ ysyx_24120011__DOT__M0_rdata;
+        IData/*31:0*/ ysyx_24120011__DOT__M1_rdata;
     };
     struct {
-        IData/*31:0*/ ysyx_24120011__DOT__M1_rdata;
         IData/*31:0*/ ysyx_24120011__DOT__S0_araddr;
         IData/*31:0*/ ysyx_24120011__DOT__S0_awaddr;
         IData/*31:0*/ ysyx_24120011__DOT__S0_wdata;

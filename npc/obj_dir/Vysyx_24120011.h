@@ -42,7 +42,7 @@ class Vysyx_24120011 VL_NOT_FINAL : public VerilatedModel {
     VL_OUT8(&io_master_wlast,0,0);
     VL_OUT8(&io_master_bready,0,0);
     VL_IN8(&io_master_bvalid,0,0);
-    VL_IN8(&io_master_bres,1,0);
+    VL_IN8(&io_master_bresp,1,0);
     VL_IN8(&io_master_bid,3,0);
     VL_IN8(&io_master_arready,0,0);
     VL_OUT8(&io_master_arvalid,0,0);

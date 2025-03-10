@@ -219,6 +219,9 @@ void isa_reg_display() {
   }
 }
 
+extern "C" void flash_read(int32_t addr, int32_t *data) { assert(0); }
+extern "C" void mrom_read(int32_t addr, int32_t *data) { assert(0); }
+
 extern "C" void ebreak(){
   trap = 1;
   // printf("excute the ebreak inst!!!\n");
@@ -324,6 +327,7 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
+
 CPU_state refstate;
 
 void cpu_exec(uint32_t n){
@@ -504,6 +508,7 @@ void sdb_mainloop() {
 
 
 int main(int argc, char *argv[]) {
+  Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
   //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";

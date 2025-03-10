@@ -1,4 +1,4 @@
-TOPNAME = ysyx_24120011
+TOPNAME = ysyxSoCFull
 
 # rules for verilator
 VERILATOR = verilator
@@ -10,6 +10,8 @@ VERILATOR_ROOT = /usr/local/share/verilator
 
 # rules for src
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
+VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
+VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 
@@ -24,7 +26,7 @@ sim:$(VSRCS) $(CSRCS)
 		--top-module $(TOPNAME) $^ \
 		--timescale "1ns/1ns" \
 		--no-timing \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
+		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" $(YSYXSOC_HOME)/perip/uart16550/rtl $(YSYXSOC_HOME)/perip/spi/rtl"\
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)

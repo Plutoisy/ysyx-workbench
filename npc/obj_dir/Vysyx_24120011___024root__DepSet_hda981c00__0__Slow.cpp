@@ -189,7 +189,7 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->io_master_wlast = VL_RAND_RESET_I(1);
     vlSelf->io_master_bready = VL_RAND_RESET_I(1);
     vlSelf->io_master_bvalid = VL_RAND_RESET_I(1);
-    vlSelf->io_master_bres = VL_RAND_RESET_I(2);
+    vlSelf->io_master_bresp = VL_RAND_RESET_I(2);
     vlSelf->io_master_bid = VL_RAND_RESET_I(4);
     vlSelf->io_master_arready = VL_RAND_RESET_I(1);
     vlSelf->io_master_arvalid = VL_RAND_RESET_I(1);
@@ -337,7 +337,6 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->ysyx_24120011__DOT__uart_bvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__uart_bready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__uart_bid = VL_RAND_RESET_I(4);
-    vlSelf->ysyx_24120011__DOT__io_master_bresp = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_IFU__DOT__rready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_IFU__DOT__rvalid_prev = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_IFU__DOT__arvalid = VL_RAND_RESET_I(1);
