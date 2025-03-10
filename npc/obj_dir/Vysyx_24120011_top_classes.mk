@@ -2,7 +2,7 @@
 # DESCRIPTION: Verilator output: Make include file with class lists
 #
 # This file lists generated Verilated files, for including in higher level makefiles.
-# See VysyxSoCFull.mk for the caller.
+# See Vysyx_24120011_top.mk for the caller.
 
 ### Switches...
 # C11 constructs required?  0/1 (always on now)
@@ -23,29 +23,29 @@ VM_TRACE_FST = 0
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	VysyxSoCFull \
-	VysyxSoCFull___024root__DepSet_h4d156741__0 \
-	VysyxSoCFull___024root__DepSet_h0188974b__0 \
-	VysyxSoCFull___024unit__DepSet_h308b0958__0 \
+	Vysyx_24120011_top \
+	Vysyx_24120011_top___024root__DepSet_h33b7d665__0 \
+	Vysyx_24120011_top___024root__DepSet_h3e78abf6__0 \
+	Vysyx_24120011_top___024unit__DepSet_h38392e76__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	VysyxSoCFull__ConstPool_0 \
-	VysyxSoCFull___024root__Slow \
-	VysyxSoCFull___024root__DepSet_h4d156741__0__Slow \
-	VysyxSoCFull___024root__DepSet_h0188974b__0__Slow \
-	VysyxSoCFull___024unit__Slow \
-	VysyxSoCFull___024unit__DepSet_h460a3d32__0__Slow \
+	Vysyx_24120011_top__ConstPool_0 \
+	Vysyx_24120011_top___024root__Slow \
+	Vysyx_24120011_top___024root__DepSet_h33b7d665__0__Slow \
+	Vysyx_24120011_top___024root__DepSet_h3e78abf6__0__Slow \
+	Vysyx_24120011_top___024unit__Slow \
+	Vysyx_24120011_top___024unit__DepSet_h38ef8407__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	VysyxSoCFull__Dpi \
-	VysyxSoCFull__Trace__0 \
+	Vysyx_24120011_top__Dpi \
+	Vysyx_24120011_top__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	VysyxSoCFull__Syms \
-	VysyxSoCFull__Trace__0__Slow \
+	Vysyx_24120011_top__Syms \
+	Vysyx_24120011_top__Trace__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

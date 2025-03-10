@@ -5,8 +5,8 @@
 // Manually include this file where DPI .c import functions are declared to ensure
 // the C functions match the expectations of the DPI imports.
 
-#ifndef VERILATED_VYSYXSOCFULL__DPI_H_
-#define VERILATED_VYSYXSOCFULL__DPI_H_  // guard
+#ifndef VERILATED_VYSYX_24120011_TOP__DPI_H_
+#define VERILATED_VYSYX_24120011_TOP__DPI_H_  // guard
 
 #include "svdpi.h"
 
@@ -16,15 +16,11 @@ extern "C" {
 
 
     // DPI IMPORTS
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011.v:2:30
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:2:30
     extern void ebreak();
-    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/flash/flash.v:84:30
-    extern void flash_read(int addr, int* data);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011.v:4:30
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:4:30
     extern void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int);
-    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v:4617:30
-    extern void mrom_read(int raddr, int* rdata);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011.v:3:30
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_top.v:3:30
     extern void npc_trap(int pc, int ret);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:2:30
     extern void reg_out(const int* array);

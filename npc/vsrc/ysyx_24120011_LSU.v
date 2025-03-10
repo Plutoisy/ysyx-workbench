@@ -17,45 +17,28 @@ module ysyx_24120011_LSU(
     output reg LSU_valid,
     output reg LSU_ready,
     //============M1=============//        
-    //AR-axi4lite
+    //AR
     output  [31:0]     M1_araddr,
     output             M1_arvalid,
-    input              M1_arready,
-    //AR-axi4
-    output  [3:0]      M1_arid,
-    output  [7:0]      M1_arlen,
-    output  [2:0]      M1_arsize,
-    output  [1:0]      M1_arburst,
-    //R-axi4lite            
-    input   [31:0]     M1_rdata,
-    input   [1:0]      M1_rresp,
-    input              M1_rvalid,
+    input            M1_arready,
+    //R               
+    input [31:0]     M1_rdata,
+    input [1:0]      M1_rresp,
+    input            M1_rvalid,
     output             M1_rready,
-    //R-axi4
-    input              M1_rlast,
-    input   [3:0]      M1_rid,
-    //AW-axi4lite
+    //AW
     output  [31:0]     M1_awaddr,
     output             M1_awvalid,
-    input              M1_awready,
-    //AW-axi4
-    output  [3:0]      M1_awid,
-    output  [7:0]      M1_awlen,
-    output  [2:0]      M1_awsize,
-    output  [1:0]      M1_awburst,
-    //W-axi4lite
+    input            M1_awready,
+    //W
     output  [31:0]     M1_wdata,
     output  [3:0]      M1_wstrb,
     output             M1_wvalid,
-    input              M1_wready,
-    //W-axi4
-    output             M1_wlast,
-    //B-axi4lite
-    input   [1:0]      M1_bresp,
-    input              M1_bvalid,
-    output             M1_bready,
-    //B-axi4
-    input	[3:0]	   M1_bid
+    input            M1_wready,
+    //B
+    input [1:0]      M1_bresp,
+    input            M1_bvalid,
+    output             M1_bready
 );
     assign M1_araddr  = araddr    ;
     assign M1_arvalid = arvalid   ;
@@ -74,27 +57,6 @@ module ysyx_24120011_LSU(
     assign bresp      = M1_bresp  ;
     assign bvalid     = M1_bvalid ;
     assign M1_bready  = bready    ;   
-
-    assign M1_arid    = 'd0       ;
-    assign M1_arlen   = 'd0       ;
-    assign M1_arburst = 'd0       ;
-    assign M1_arsize  = M1_arvalid ? 3'b010 : (
-           ({3{r_mem_len == 8'd1}} & 3'b000) |
-           ({3{r_mem_len == 8'd2}} & 3'b001) |
-           ({3{r_mem_len == 8'd4}} & 3'b010) |
-           (3'b000)
-         );
-    assign M1_awid    = 'd0       ;
-    assign M1_awlen   = 'd0       ;
-    assign M1_awburst = 'd0       ;
-    assign M1_awsize  = M1_awvalid ? 3'b010 : (
-           ({3{w_mem_len == 8'd1}} & 3'b000) |
-           ({3{w_mem_len == 8'd2}} & 3'b001) |
-           ({3{w_mem_len == 8'd4}} & 3'b010) |
-           (3'b000)
-         );
-    assign M1_wlast   = M1_wvalid ;
-
     
     // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
     //     .clk     ( clk     ),

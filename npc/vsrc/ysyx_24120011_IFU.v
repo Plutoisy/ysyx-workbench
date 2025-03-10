@@ -7,45 +7,28 @@ module ysyx_24120011_IFU(
     output IFU_valid,
     input LSU_ready,
     //============M0=============//        
-    //AR-axi4lite
+    //AR
     output  [31:0]     M0_araddr,
     output             M0_arvalid,
     input            M0_arready,
-    //AR-axi4
-    output  [3:0]      M0_arid,
-    output  [7:0]      M0_arlen,
-    output  [2:0]      M0_arsize,
-    output  [1:0]      M0_arburst,
-    //R-axi4lite               
+    //R               
     input [31:0]     M0_rdata,
     input [1:0]      M0_rresp,
     input            M0_rvalid,
     output             M0_rready,
-    //R-axi4
-    input              M0_rlast,
-    input   [3:0]      M0_rid,
-    //AW-axi4lite
+    //AW
     output  [31:0]     M0_awaddr,
     output             M0_awvalid,
     input            M0_awready,
-    //AW-axi4
-    output  [3:0]      M0_awid,
-    output  [7:0]      M0_awlen,
-    output  [2:0]      M0_awsize,
-    output  [1:0]      M0_awburst,
-    //W-axi4lite
+    //W
     output  [31:0]     M0_wdata,
     output  [3:0]      M0_wstrb,
     output             M0_wvalid,
     input            M0_wready,
-    //W-axi4
-    output             M0_wlast,
-    //B-axi4lite
+    //B
     input [1:0]      M0_bresp,
     input            M0_bvalid,
-    output             M0_bready,
-    //B-axi4
-    input	[3:0]	   M0_bid
+    output             M0_bready
 );
 
 // SRAM i_SRAM(
@@ -103,16 +86,6 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 
-assign M0_arid    = 'd0       ;
-assign M0_arlen   = 'd0       ;
-assign M0_arburst = 'd0       ;
-assign M0_arsize  = 3'b010    ;
-assign M0_awid    = 'd0       ;
-assign M0_awlen   = 'd0       ;
-assign M0_awburst = 'd0       ;
-assign M0_awsize  = 3'b010    ;
-assign M0_wlast   = M0_wvalid ;
-
 // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
 //     .clk     ( clk     ),
 //     .rst     ( rst     ),
@@ -149,7 +122,7 @@ parameter ysyx_24120011_IFU_M_AXI_RDATA = 3'b010;
 // end
 
 /* verilator lint_off LATCH */
-always@(posedge clk)begin
+always@(*)begin
     if(M0_rdata != 'd0)begin
         inst = M0_rdata;
     end

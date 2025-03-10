@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "VysyxSoCFull.h"
+#include "Vysyx_24120011_top.h"
 #include <cstdint>
 #include <stdio.h>
 #include <stdint.h>
@@ -20,12 +20,12 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 0
-#define WAVE 1
+#define BMODE 1
+#define WAVE 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-static VysyxSoCFull* top;
+static Vysyx_24120011_top* top;
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
@@ -142,7 +142,7 @@ void step_and_dump_wave(){
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  top = new VysyxSoCFull;
+  top = new Vysyx_24120011_top;
   contextp->traceEverOn(true);
   top->trace(tfp, 99);
   tfp->open("dump.vcd");
@@ -154,19 +154,19 @@ void sim_exit(){
 }
 
 void system_rst(){
-  top->clock = 0;
-  top->reset = 0;
+  top->clk = 0;
+  top->rst = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  top->reset = 1;
+  top->clk = 1;
+  top->rst = 1;
   step_and_dump_wave();
-  top->clock = 0;
+  top->clk = 0;
   step_and_dump_wave();
-  top->clock = 1;
+  top->clk = 1;
   step_and_dump_wave();
-  top->clock = 0;
+  top->clk = 0;
   step_and_dump_wave();
-  top->reset = 0;
+  top->rst = 0;
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
@@ -218,9 +218,6 @@ void isa_reg_display() {
     printf("%-3s     %-10u  0x%08x\n", regs[i], gpr[i], gpr[i]);
   }
 }
-
-extern "C" void flash_read(int32_t addr, int32_t *data) { assert(0); }
-extern "C" void mrom_read(int32_t addr, int32_t *data) { assert(0); }
 
 extern "C" void ebreak(){
   trap = 1;
@@ -327,16 +324,15 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
-
 CPU_state refstate;
 
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
-      top->clock ^= 1;
-      if (top->clock != 1){
+      top->clk ^= 1;
+      if (top->clk != 1){
         step_and_dump_wave();
-        top->clock ^= 1;
+        top->clk ^= 1;
       }
       //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       //AssembleDecoder(handle, top_inst, top_pc);
@@ -508,7 +504,6 @@ void sdb_mainloop() {
 
 
 int main(int argc, char *argv[]) {
-  Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
   //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
