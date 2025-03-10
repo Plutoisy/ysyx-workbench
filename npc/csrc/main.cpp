@@ -154,19 +154,19 @@ void sim_exit(){
 }
 
 void system_rst(){
-  top->clk = 0;
-  top->rst = 0;
+  top->clock = 0;
+  top->reset = 0;
   step_and_dump_wave();
-  top->clk = 1;
-  top->rst = 1;
+  top->clock = 1;
+  top->reset = 1;
   step_and_dump_wave();
-  top->clk = 0;
+  top->clock = 0;
   step_and_dump_wave();
-  top->clk = 1;
+  top->clock = 1;
   step_and_dump_wave();
-  top->clk = 0;
+  top->clock = 0;
   step_and_dump_wave();
-  top->rst = 0;
+  top->reset = 0;
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
@@ -329,10 +329,10 @@ CPU_state refstate;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
-      top->clk ^= 1;
-      if (top->clk != 1){
+      top->clock ^= 1;
+      if (top->clock != 1){
         step_and_dump_wave();
-        top->clk ^= 1;
+        top->clock ^= 1;
       }
       //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       //AssembleDecoder(handle, top_inst, top_pc);

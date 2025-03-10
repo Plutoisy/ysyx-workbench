@@ -4,8 +4,8 @@ import "DPI-C" function void npc_trap(input int pc, input int ret);
 import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
 
 module ysyx_24120011_top (
-    input clk,
-    input rst
+    input clock,
+    input reset
 );
 
 wire [31:0] dnpc;
@@ -295,28 +295,28 @@ wire [3:0]	  clint_bid;
 
 assign LSU_valid_int = {31'b0,LSU_valid};
 
-always@(posedge clk)begin
+always@(posedge clock)begin
     if (inst == 32'b00000000000100000000000001110011)begin
         npc_trap(pc,a0);
         ebreak();
     end
 end
 
-always@(posedge clk) begin
-    if(rst) begin
+always@(posedge clock) begin
+    if(reset) begin
         pc <= 32'h8000_0000;
     end
 end
 
-always@(negedge clk) begin
+always@(negedge clock) begin
     get_pc_inst(pc,dnpc,inst,LSU_valid_int);
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
 
 ysyx_24120011_IFU i_IFU(
-    .clk       ( clk       ),
-    .rst       ( rst       ),
+    .clk       ( clock       ),
+    .rst       ( reset       ),
     .pc        ( pc        ),
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid ),
@@ -366,8 +366,8 @@ ysyx_24120011_PCProcessor i_PCProcessor(
 
 
 ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
-    .clk   ( clk ), 
-    .rst   ( rst ), 
+    .clk   ( clock ), 
+    .rst   ( reset ), 
     .din   ( dnpc ), 
     .dout  ( pc ), 
     .wen   ( LSU_valid )
@@ -422,8 +422,8 @@ ysyx_24120011_WBU i_WBU(
 );
 
 ysyx_24120011_RegStack i_RegStack(
-    .clk   ( clk   ),
-    .rst   ( rst   ),
+    .clk   ( clock   ),
+    .rst   ( reset   ),
     .w_en  ( w_en  ),
     .wdata ( wdata ),
     .rd    ( rd    ),
@@ -444,8 +444,8 @@ ysyx_24120011_ALUCtrl i_ALUCtrl(
 
 
 ysyx_24120011_LSU i_LSU(
-    .clk   ( clk   ),
-    .rst   ( rst   ),
+    .clk   ( clock   ),
+    .rst   ( reset   ),
     .IFU_valid           ( IFU_valid           ),
     .w_mem_addr          ( alu_result          ),
     .r_mem_addr          ( alu_result          ),
@@ -490,8 +490,8 @@ ysyx_24120011_LSU i_LSU(
 );
 
 ysyx_24120011_Csr i_Csr(
-    .clk         ( clk         ),
-    .rst         ( rst         ),
+    .clk         ( clock         ),
+    .rst         ( reset         ),
     .w_csr_addr  ( w_csr_addr  ),
     .r_csr_addr  ( r_csr_addr  ),
     .w_csr_en    ( w_csr_en    ),
@@ -510,8 +510,8 @@ ysyx_24120011_CsrProcessor i_CsrProcessor(
 );
 
 ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
-    .clk        ( clk        ),
-    .rst        ( rst        ),
+    .clk        ( clock        ),
+    .rst        ( reset        ),
     .M0_araddr  ( M0_araddr  ),
     .M0_arvalid ( M0_arvalid ),
     .M0_arready ( M0_arready ),
@@ -603,8 +603,8 @@ ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
 
 
 ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
-    .clk     ( clk     ),
-    .rst     ( rst     ),
+    .clk     ( clock     ),
+    .rst     ( reset     ),
     .araddr  ( sram_araddr  ),
     .arvalid ( sram_arvalid ),
     .arready ( sram_arready ),
@@ -637,8 +637,8 @@ ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
 );
 
 ysyx_24120011_Uart u_ysyx_24120011_Uart(
-    .clk     ( clk     ),
-    .rst     ( rst     ),
+    .clk     ( clock     ),
+    .rst     ( reset     ),
     .araddr  ( uart_araddr  ),
     .arvalid ( uart_arvalid ),
     .arready ( uart_arready ),
@@ -671,8 +671,8 @@ ysyx_24120011_Uart u_ysyx_24120011_Uart(
 );
 
 ysyx_24120011_Clint u_ysyx_24120011_Clint(
-    .clk     ( clk     ),
-    .rst     ( rst     ),
+    .clk     ( clock     ),
+    .rst     ( reset     ),
     .araddr  ( clint_araddr  ),
     .arvalid ( clint_arvalid ),
     .arready ( clint_arready ),
@@ -705,8 +705,8 @@ ysyx_24120011_Clint u_ysyx_24120011_Clint(
 );
 
 ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
-    .clk             ( clk             ),
-    .rst             ( rst             ),
+    .clk             ( clock             ),
+    .rst             ( reset             ),
     .Xbar_araddr     ( S0_araddr     ),
     .Xbar_arvalid    ( S0_arvalid    ),
     .Xbar_arready    ( S0_arready    ),
