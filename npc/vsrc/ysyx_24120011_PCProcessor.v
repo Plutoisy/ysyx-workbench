@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 module ysyx_24120011_PCProcessor(
     input  [31:0] pc,
     input  [31:0] imme,

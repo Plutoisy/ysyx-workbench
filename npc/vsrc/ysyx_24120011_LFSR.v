@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 module ysyx_24120011_LFSR(
   input clk,
   input  [7:0] in,

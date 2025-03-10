@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 module ysyx_24120011_ALUCtrl(
     input [1:0] ALUBctrl,
     input [31:0] src2,

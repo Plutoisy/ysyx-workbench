@@ -1,30 +1,47 @@
-`timescale 1ns/1ps
+
 module ysyx_24120011_Clint (
     input wire clk,
     input wire rst,
 
-    //AR//
-    input  [31:0] araddr,
-    input         arvalid,
-    output        arready,
-    //R//
-    output [31:0] rdata,
-    output [1:0]  rresp,
-    output        rvalid,
-    input         rready,
-    //AW//
-    input  [31:0] awaddr,
-    input         awvalid,
-    output        awready,
-    //W//
-    input  [31:0] wdata,
-    input  [3:0]  wstrb,
-    input         wvalid,
-    output        wready,
-    //B//
-    output [1:0]  bresp,
-    output        bvalid,
-    input         bready
+    //AR-axi4lite
+    input  [31:0]     araddr,
+    input             arvalid,
+    output            arready,
+    //AR-axi4
+    input  [3:0]      arid,
+    input  [7:0]      arlen,
+    input  [2:0]      arsize,
+    input  [1:0]      arburst,
+    //R-axi4lite               
+    output [31:0]     rdata,
+    output [1:0]      rresp,
+    output            rvalid,
+    input             rready,
+    //R-axi4
+    output            rlast,
+    output [3:0]      rid,
+    //AW-axi4lite
+    input  [31:0]     awaddr,
+    input             awvalid,
+    output            awready,
+    //AW-axi4
+    input  [3:0]      awid,
+    input  [7:0]      awlen,
+    input  [2:0]      awsize,
+    input  [1:0]      awburst,
+    //W-axi4lite
+    input  [31:0]     wdata,
+    input  [3:0]      wstrb,
+    input             wvalid,
+    output            wready,
+    //W-axi4
+    input             wlast,
+    //B-axi4lite
+    output [1:0]      bresp,
+    output            bvalid,
+    input             bready,
+    //B-axi4
+    output [3:0]	  bid
 );
     parameter ysyx_24120011_S_AXI_IDLE  = 3'b000;
     parameter ysyx_24120011_S_AXI_RADDR = 3'b001;
@@ -63,16 +80,19 @@ module ysyx_24120011_Clint (
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;
 	// R
-	assign rdata  = rdata_reg;
-    assign rresp  = ysyx_24120011_S_AXI_RESP_OKAY;
-	assign rvalid = rvalid_reg;
-	// AW
+	assign rdata   = rdata_reg;
+    assign rresp   = ysyx_24120011_S_AXI_RESP_OKAY;
+	assign rvalid  = rvalid_reg;
+    assign rid     = 'd0;
+    assign rlast   = rvalid;
+	// AW 
 	assign awready = (state == ysyx_24120011_S_AXI_WADDR) ? 1 : 0;
-	// W
-	assign wready = wready_reg;
-	// B
-	assign bvalid = (state == ysyx_24120011_S_AXI_WRESP) ? 1 : 0;
-	assign bresp  = ysyx_24120011_S_AXI_RESP_OKAY;
+	// W 
+	assign wready  = wready_reg;
+	// B 
+	assign bvalid  = (state == ysyx_24120011_S_AXI_WRESP) ? 1 : 0;
+	assign bresp   = ysyx_24120011_S_AXI_RESP_OKAY;
+    assign bid     = 'd0;
 
 
     /* verilator lint_off LATCH */

@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 module ysyx_24120011_TypeFinder(
     input [6:0] opcode,
     output reg [2:0] opcode_type

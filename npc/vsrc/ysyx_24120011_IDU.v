@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 module ysyx_24120011_IDU (
     input [31:0]  inst,
     input IFU_valid,
