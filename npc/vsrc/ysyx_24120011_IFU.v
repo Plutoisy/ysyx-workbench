@@ -43,7 +43,7 @@ module ysyx_24120011_IFU(
     //B-axi4lite
     input [1:0]      M0_bresp,
     input            M0_bvalid,
-    output             M0_bready.
+    output             M0_bready,
     //B-axi4
     input	[3:0]	   M0_bid
 );
