@@ -540,8 +540,8 @@ void Vysyx_24120011_top___024root__trace_chg_sub_0(Vysyx_24120011_top___024root*
         bufp->chgBit(oldp+284,(((5U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__state)) 
                                 & (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_bready))));
     }
-    bufp->chgBit(oldp+285,(vlSelf->clk));
-    bufp->chgBit(oldp+286,(vlSelf->rst));
+    bufp->chgBit(oldp+285,(vlSelf->clock));
+    bufp->chgBit(oldp+286,(vlSelf->reset));
 }
 
 void Vysyx_24120011_top___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

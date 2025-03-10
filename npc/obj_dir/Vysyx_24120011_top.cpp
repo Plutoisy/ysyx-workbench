@@ -12,8 +12,8 @@
 Vysyx_24120011_top::Vysyx_24120011_top(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vysyx_24120011_top__Syms(contextp(), _vcname__, this)}
-    , clk{vlSymsp->TOP.clk}
-    , rst{vlSymsp->TOP.rst}
+    , clock{vlSymsp->TOP.clock}
+    , reset{vlSymsp->TOP.reset}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , rootp{&(vlSymsp->TOP)}
 {

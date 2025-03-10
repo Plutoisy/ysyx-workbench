@@ -92,9 +92,9 @@ void Vysyx_24120011_top___024root___eval_debug_assertions(Vysyx_24120011_top___0
     Vysyx_24120011_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_24120011_top___024root___eval_debug_assertions\n"); );
     // Body
-    if (VL_UNLIKELY((vlSelf->clk & 0xfeU))) {
-        Verilated::overWidthError("clk");}
-    if (VL_UNLIKELY((vlSelf->rst & 0xfeU))) {
-        Verilated::overWidthError("rst");}
+    if (VL_UNLIKELY((vlSelf->clock & 0xfeU))) {
+        Verilated::overWidthError("clock");}
+    if (VL_UNLIKELY((vlSelf->reset & 0xfeU))) {
+        Verilated::overWidthError("reset");}
 }
 #endif  // VL_DEBUG

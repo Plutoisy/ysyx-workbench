@@ -11,11 +11,11 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_init_sub__TOP__0(Vysyx_241
     // Init
     const int c = vlSymsp->__Vm_baseCode;
     // Body
-    tracep->declBit(c+286,"clk", false,-1);
-    tracep->declBit(c+287,"rst", false,-1);
+    tracep->declBit(c+286,"clock", false,-1);
+    tracep->declBit(c+287,"reset", false,-1);
     tracep->pushNamePrefix("ysyx_24120011_top ");
-    tracep->declBit(c+286,"clk", false,-1);
-    tracep->declBit(c+287,"rst", false,-1);
+    tracep->declBit(c+286,"clock", false,-1);
+    tracep->declBit(c+287,"reset", false,-1);
     tracep->declBus(c+1,"dnpc", false,-1, 31,0);
     tracep->declBus(c+2,"rs1", false,-1, 4,0);
     tracep->declBus(c+3,"rs2", false,-1, 4,0);
@@ -1511,8 +1511,8 @@ VL_ATTR_COLD void Vysyx_24120011_top___024root__trace_full_sub_0(Vysyx_24120011_
                              & (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_rready))));
     bufp->fullBit(oldp+285,(((5U == (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Clint__DOT__state)) 
                              & (IData)(vlSelf->ysyx_24120011_top__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S2_bready))));
-    bufp->fullBit(oldp+286,(vlSelf->clk));
-    bufp->fullBit(oldp+287,(vlSelf->rst));
+    bufp->fullBit(oldp+286,(vlSelf->clock));
+    bufp->fullBit(oldp+287,(vlSelf->reset));
     bufp->fullIData(oldp+288,(vlSelf->ysyx_24120011_top__DOT__rdata),32);
     bufp->fullCData(oldp+289,(0U),4);
     bufp->fullCData(oldp+290,(0U),8);
