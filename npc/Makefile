@@ -27,7 +27,7 @@ sim:$(VSRCS) $(CSRCS)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
-		-I$(YSYXSOC_HOME)/perip/uart16550/rtl $(YSYXSOC_HOME)/perip/spi/rtl\
+		-I"$(YSYXSOC_HOME)/perip/uart16550/rtl $(YSYXSOC_HOME)/perip/spi/rtl"\
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
