@@ -1184,8 +1184,8 @@ void Vysyx_24120011___024root___eval_debug_assertions(Vysyx_24120011___024root* 
         Verilated::overWidthError("io_master_wready");}
     if (VL_UNLIKELY((vlSelf->io_master_bvalid & 0xfeU))) {
         Verilated::overWidthError("io_master_bvalid");}
-    if (VL_UNLIKELY((vlSelf->io_master_bresp & 0xfcU))) {
-        Verilated::overWidthError("io_master_bresp");}
+    if (VL_UNLIKELY((vlSelf->io_master_bres & 0xfcU))) {
+        Verilated::overWidthError("io_master_bres");}
     if (VL_UNLIKELY((vlSelf->io_master_bid & 0xf0U))) {
         Verilated::overWidthError("io_master_bid");}
     if (VL_UNLIKELY((vlSelf->io_master_arready & 0xfeU))) {

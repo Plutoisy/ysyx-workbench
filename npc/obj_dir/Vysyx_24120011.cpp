@@ -26,7 +26,7 @@ Vysyx_24120011::Vysyx_24120011(VerilatedContext* _vcontextp__, const char* _vcna
     , io_master_wlast{vlSymsp->TOP.io_master_wlast}
     , io_master_bready{vlSymsp->TOP.io_master_bready}
     , io_master_bvalid{vlSymsp->TOP.io_master_bvalid}
-    , io_master_bresp{vlSymsp->TOP.io_master_bresp}
+    , io_master_bres{vlSymsp->TOP.io_master_bres}
     , io_master_bid{vlSymsp->TOP.io_master_bid}
     , io_master_arready{vlSymsp->TOP.io_master_arready}
     , io_master_arvalid{vlSymsp->TOP.io_master_arvalid}

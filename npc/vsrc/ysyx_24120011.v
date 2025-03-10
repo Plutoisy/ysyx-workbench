@@ -21,7 +21,7 @@ module ysyx_24120011 (
     output		    io_master_wlast	    ,
     output		    io_master_bready	,
     input		    io_master_bvalid	,
-    input	[1:0]	io_master_bres	    ,
+    input	[1:0]	io_master_bresp	    ,
     input	[3:0]	io_master_bid	    ,
     input		    io_master_arready	,
     output		    io_master_arvalid	,
