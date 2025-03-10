@@ -27,8 +27,8 @@ sim:$(VSRCS) $(CSRCS)
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011_top.mk Vysyx_24120011_top
-	./obj_dir/Vysyx_24120011_top $(IMG)
+	make -C obj_dir -f Vysyx_24120011.mk Vysyx_24120011
+	./obj_dir/Vysyx_24120011 $(IMG)
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
