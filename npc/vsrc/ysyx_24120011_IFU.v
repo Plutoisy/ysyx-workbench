@@ -106,21 +106,11 @@ assign M0_bready  = 1'b1    ;
 assign M0_arid    = 'd0       ;
 assign M0_arlen   = 'd0       ;
 assign M0_arburst = 'd0       ;
-assign M0_arsize  = M0_arvalid ? 3'b010 : (
-       ({3{r_mem_len == 8'd1}} & 3'b000) |
-       ({3{r_mem_len == 8'd2}} & 3'b001) |
-       ({3{r_mem_len == 8'd4}} & 3'b010) |
-       (3'b000)
-     );
+assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
 assign M0_awlen   = 'd0       ;
 assign M0_awburst = 'd0       ;
-assign M0_arsize  = M0_awvalid ? 3'b010 : (
-       ({3{w_mem_len == 8'd1}} & 3'b000) |
-       ({3{w_mem_len == 8'd2}} & 3'b001) |
-       ({3{w_mem_len == 8'd4}} & 3'b010) |
-       (3'b000)
-     );
+assign M0_arsize  = 3'b010    ;
 assign M0_wlast   = M0_wvalid ;
 
 // ysyx_24120011_SRAM u_ysyx_24120011_SRAM(
