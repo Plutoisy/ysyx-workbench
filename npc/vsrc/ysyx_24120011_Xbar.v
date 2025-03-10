@@ -583,11 +583,11 @@ module ysyx_24120011_Xbar(
                 reg_Xbar_S2_wlast  = 'd0;
             end
             ysyx_24120011_Xbar_S1:begin
-                reg_Xbar_awready    = Xbar_S0_awready;
-                reg_Xbar_wready     = Xbar_S0_wready ;
-                reg_Xbar_bresp      = Xbar_S0_bresp  ;
-                reg_Xbar_bvalid     = Xbar_S0_bvalid ;
-                reg_Xbar_bid        = Xbar_S0_bid    ;
+                reg_Xbar_awready    = Xbar_S1_awready;
+                reg_Xbar_wready     = Xbar_S1_wready ;
+                reg_Xbar_bresp      = Xbar_S1_bresp  ;
+                reg_Xbar_bvalid     = Xbar_S1_bvalid ;
+                reg_Xbar_bid        = Xbar_S1_bid    ;
 
                 reg_Xbar_S0_wdata   = 'd0;
                 reg_Xbar_S0_wstrb   = 'd0;
@@ -626,11 +626,11 @@ module ysyx_24120011_Xbar(
                 reg_Xbar_S2_wlast  = 'd0;
             end
             ysyx_24120011_Xbar_S2:begin
-                reg_Xbar_awready    = Xbar_S0_awready;
-                reg_Xbar_wready     = Xbar_S0_wready ;
-                reg_Xbar_bresp      = Xbar_S0_bresp  ;
-                reg_Xbar_bvalid     = Xbar_S0_bvalid ;
-                reg_Xbar_bid        = Xbar_S0_bid    ;
+                reg_Xbar_awready    = Xbar_S2_awready;
+                reg_Xbar_wready     = Xbar_S2_wready ;
+                reg_Xbar_bresp      = Xbar_S2_bresp  ;
+                reg_Xbar_bvalid     = Xbar_S2_bvalid ;
+                reg_Xbar_bid        = Xbar_S2_bid    ;
 
                 reg_Xbar_S0_wdata   = 'd0;
                 reg_Xbar_S0_wstrb   = 'd0;
