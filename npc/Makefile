@@ -1,4 +1,4 @@
-TOPNAME = ysyx_24120011_top
+TOPNAME = ysyx_24120011
 
 # rules for verilator
 VERILATOR = verilator
