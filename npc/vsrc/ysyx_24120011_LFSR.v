@@ -6,7 +6,7 @@ module ysyx_24120011_LFSR(
 );
 
 always@(posedge clk) begin
-    out <= 'd0;
+    out <= {in[4]^in[3]^in[2]^in[0],in[7:1]};
 end
 
 endmodule
