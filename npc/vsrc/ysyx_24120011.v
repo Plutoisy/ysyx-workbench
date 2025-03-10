@@ -377,7 +377,7 @@ end
 
 always@(posedge clock) begin
     if(reset) begin
-        pc <= 32'h8000_0000;
+        pc <= 32'h2000_0000;
     end
 end
 
