@@ -356,7 +356,6 @@ wire [3:0]	  clint_bid;
 
 assign LSU_valid_int    = {31'b0,LSU_valid};
 
-assign io_interrupt     = 'd0;
 assign io_slave_awready = 'd0;    
 assign io_slave_wready  = 'd0;    
 assign io_slave_bvalid  = 'd0;    
