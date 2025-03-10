@@ -6,7 +6,7 @@ import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int
 module ysyx_24120011 (
     input clock,
     input reset,
-
+    input           io_interrupt        ,
     input		    io_master_awready	,
     output		    io_master_awvalid	,
     output	[31:0]	io_master_awaddr	,
@@ -354,8 +354,9 @@ wire             clint_bready;
 wire [3:0]	  clint_bid;
 
 
-assign LSU_valid_int = {31'b0,LSU_valid};
+assign LSU_valid_int    = {31'b0,LSU_valid};
 
+assign io_interrupt     = 'd0;
 assign io_slave_awready = 'd0;    
 assign io_slave_wready  = 'd0;    
 assign io_slave_bvalid  = 'd0;    
