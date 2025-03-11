@@ -20,7 +20,7 @@
 #define M_W_ASSERT 1
 #define PC_ASSERT 1
 #define REG_ASSERT 1
-#define DIFFTESE 0
+#define DIFFTESE 1
 #define BMODE 0
 #define WAVE 1
 
@@ -234,7 +234,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
   }
   else{
     *data = host_read(guest_to_host_soc(addr), 4);
-    printf("R->data: 0x%x, len: %d\n", *data, 4);
+    // printf("R->data: 0x%x, len: %d\n", *data, 4);
     return;
   }
 }
