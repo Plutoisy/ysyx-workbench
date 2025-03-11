@@ -2,7 +2,7 @@
 #include <klib-macros.h>
 #include <riscv/riscv.h>
 
-#define SERIAL_PORT     (0xa0000000 + 0x00003f8)
+#define SERIAL_PORT     (0x10000000 + 0x0000000)
 
 extern char _heap_start;
 int main(const char *args);
