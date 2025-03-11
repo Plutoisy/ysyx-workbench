@@ -233,7 +233,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
     return;
   }
   else{
-    *data = host_read(guest_to_host_soc(addr), 4);
+    *data = (int32_t)host_read(guest_to_host_soc(addr), 4);
     printf("R->data: 0x%x, len: %d\n", pmem[addr-CONFIG_MBASE_SOC], 4);
     return;
   }
