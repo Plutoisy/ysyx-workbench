@@ -223,11 +223,10 @@ void isa_reg_display() {
 
 extern "C" void flash_read(int32_t addr, int32_t *data) { assert(0); }
 extern "C" void mrom_read(int32_t addr, int32_t *data) { 
-  printf("R->addr: 0x%x, len: %d\n", addr, 4);
+  if(M_R_TRACE){
+    printf("R->addr: 0x%x, len: %d\n", addr, 4);
+  }
   if(addr - CONFIG_MBASE_SOC > 0xfff){
-    if(M_R_TRACE){
-      printf("R->addr: 0x%x, len: %d\n", addr, 4);
-    }
     if(M_R_ASSERT){
       assert(0);
     }
@@ -235,6 +234,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
   }
   else{
     *data = host_read(guest_to_host_soc(addr), 4);
+    printf("R->data: 0x%x, len: %d\n", data, 4);
     return;
   }
 }
