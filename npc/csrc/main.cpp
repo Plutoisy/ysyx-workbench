@@ -233,7 +233,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
     return;
   }
   else{
-    uint32_t *data = host_read(guest_to_host_soc(addr), 4);
+    *data = host_read(guest_to_host_soc(addr), 4);
     return;
   }
 }
