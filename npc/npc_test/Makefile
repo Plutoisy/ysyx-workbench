@@ -3,7 +3,7 @@ LD = riscv64-linux-gnu-ld
 OBJDUMP = riscv64-linux-gnu-objdump
 OBJCOPY = riscv64-linux-gnu-objcopy
 
-CFLAGS = -std=gnu11 -MMD -Wall -Werror -fno-asynchronous-unwind-tables \
+CFLAGS = -std=gnu11 -O2 -MMD -Wall -Werror -fno-asynchronous-unwind-tables \
          -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE \
          -fvisibility=hidden -fno-pic -march=rv32e_zicsr -mabi=ilp32e \
          -static -fdata-sections -ffunction-sections
@@ -30,7 +30,7 @@ $(ELF): $(OBJ)
 $(DUMP): $(ELF)
 	$(OBJDUMP) $(OBJDUMPFLAGS) $< > $@
 
-$(BIN): $(ELF)
+$(BIN): $(ELF) $(DUMP)
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
 
 $(BUILD_DIR):
