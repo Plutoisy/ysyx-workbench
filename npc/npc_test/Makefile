@@ -1,5 +1,41 @@
-all:
-	riscv64-linux-gnu-gcc -std=gnu11 -MMD -Wall -Werror -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -fvisibility=hidden -fno-pic -march=rv64g -mcmodel=medany -mstrict-align -march=rv32e_zicsr -mabi=ilp32e   -static -fdata-sections -ffunction-sections -c -o char_test.o char_test.c
-	riscv64-linux-gnu-ld -m elf32lriscv -Ttext=0x80000000 -o char_test.elf char_test.o
-	riscv64-linux-gnu-objdump -m riscv:rv32 -d char_test.elf > char_test.txt
-	riscv64-linux-gnu-objcopy -S --set-section-flags .bss=alloc,contents -O binary char_test.elf char_test.bin								
+CC = riscv64-linux-gnu-gcc
+LD = riscv64-linux-gnu-ld
+OBJDUMP = riscv64-linux-gnu-objdump
+OBJCOPY = riscv64-linux-gnu-objcopy
+
+CFLAGS = -std=gnu11 -MMD -Wall -Werror -fno-asynchronous-unwind-tables \
+         -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE \
+         -fvisibility=hidden -fno-pic -march=rv32e_zicsr -mabi=ilp32e \
+         -static -fdata-sections -ffunction-sections
+
+LDFLAGS = -m elf32lriscv -Ttext=0x20000000
+OBJDUMPFLAGS = -m riscv:rv32 -d
+OBJCOPYFLAGS = -S --set-section-flags .bss=alloc,contents -O binary
+
+BUILD_DIR = ./build
+SRC = char_test.c
+OBJ = $(BUILD_DIR)/char_test.o
+ELF = $(BUILD_DIR)/char_test.elf
+BIN = $(BUILD_DIR)/char_test.bin
+DUMP = $(BUILD_DIR)/char_test.txt
+
+all: $(BIN)
+
+$(OBJ): $(SRC) | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(ELF): $(OBJ)
+	$(LD) $(LDFLAGS) -o $@ $<
+
+$(DUMP): $(ELF)
+	$(OBJDUMP) $(OBJDUMPFLAGS) $< > $@
+
+$(BIN): $(ELF)
+	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
+
+$(BUILD_DIR):
+	mkdir -p $@
+
+clean:
+	rm -rf $(BUILD_DIR)
+
