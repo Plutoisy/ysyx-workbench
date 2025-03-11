@@ -228,7 +228,12 @@ module ysyx_24120011_LSU(
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
-            awvalid <= 1;
+            if(awready)begin
+                awvalid <= 0;
+            end
+            else begin
+                awvalid <= 1;
+            end
         end
         else begin
             awvalid <= 0;
