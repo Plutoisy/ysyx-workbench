@@ -14,7 +14,7 @@
 #define CONFIG_MBASE 0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define M_R_TRACE 0
+#define M_R_TRACE 1
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
 #define M_W_ASSERT 1
