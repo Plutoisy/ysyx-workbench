@@ -252,7 +252,7 @@ module ysyx_24120011_LSU(
             wvalid_delay_cnt <= wvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
-            if(wready == 1) begin
+            if(wready == 1 && wvalid == 0) begin
                 wvalid <= 1;
             end
             else begin
