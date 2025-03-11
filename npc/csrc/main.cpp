@@ -225,7 +225,7 @@ extern "C" void flash_read(int32_t addr, int32_t *data) { assert(0); }
 extern "C" void mrom_read(int32_t addr, int32_t *data) { 
   if(addr - CONFIG_MBASE_SOC > 0xfff){
     if(M_R_TRACE){
-      printf("R->addr: 0x%x, len: %d\n", r_mem_addr, 4);
+      printf("R->addr: 0x%x, len: %d\n", addr, 4);
     }
     if(M_R_ASSERT){
       assert(0);
