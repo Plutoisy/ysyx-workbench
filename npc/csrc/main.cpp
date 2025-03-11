@@ -230,7 +230,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
     if(M_R_ASSERT){
       assert(0);
     }
-    return 0;
+    return;
   }
   else{
     uint32_t *data = host_read(guest_to_host_soc(addr), 4);
