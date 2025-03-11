@@ -104,7 +104,7 @@ assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 
 assign M0_arid    = 'd0       ;
-assign M0_arlen   = 'd1       ;
+assign M0_arlen   = 'd0       ;
 assign M0_arburst = 'd0       ;
 assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
