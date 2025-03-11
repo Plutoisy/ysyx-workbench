@@ -103,7 +103,7 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 
-assign M0_arid    = 'd1       ;
+assign M0_arid    = 'd0       ;
 assign M0_arlen   = 'd0       ;
 assign M0_arburst = 'd0       ;
 assign M0_arsize  = 3'b010    ;
@@ -160,7 +160,12 @@ always@(posedge clk)begin
         arvalid_delay_cnt <= arvalid_delay_cnt - 1;
     end
     else if(state == ysyx_24120011_IFU_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
-        arvalid <= 1;
+        if(arready)begin
+            arvalid <= 0;
+        end
+        else begin
+            arvalid <= 1;
+        end
     end
     else begin
         arvalid <= 0;

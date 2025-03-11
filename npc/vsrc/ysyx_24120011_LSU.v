@@ -75,7 +75,7 @@ module ysyx_24120011_LSU(
     assign bvalid     = M1_bvalid ;
     assign M1_bready  = bready    ;   
 
-    assign M1_arid    = 'd1       ;
+    assign M1_arid    = 'd0       ;
     assign M1_arlen   = 'd0       ;
     assign M1_arburst = 'd0       ;
     assign M1_arsize  = M1_arvalid ? 3'b010 : (
