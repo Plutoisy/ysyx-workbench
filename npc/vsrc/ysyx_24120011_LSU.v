@@ -294,21 +294,27 @@ module ysyx_24120011_LSU(
 
     //bready_delay
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
-            bready_delay_cnt <= bready_delay_cnt - 1;
-            //bready <= 0;
+        // if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
+        //     bready_delay_cnt <= bready_delay_cnt - 1;
+        //     //bready <= 0;
+        // end
+        // else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
+        //     //bready <= 1;
+        //     //bready_delay_cnt <= 32'hFFFFFFFF;
+        //     if(bvalid == 1) begin
+        //         bready <= 1;
+        //     end
+        //     else begin
+        //         bready <= 0;
+        //     end
+        // end
+        // else begin
+        //     bready <= 0;
+        // end
+        if(awready) begin
+            bready <= 1;
         end
-        else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
-            //bready <= 1;
-            //bready_delay_cnt <= 32'hFFFFFFFF;
-            if(bvalid == 1) begin
-                bready <= 1;
-            end
-            else begin
-                bready <= 0;
-            end
-        end
-        else begin
+        else if(bvalid) begin
             bready <= 0;
         end
     end
