@@ -21,9 +21,9 @@ word_t vaddr_ifetch(vaddr_t addr, int len) {
 }
 
 word_t vaddr_read(vaddr_t addr, int len) {
-  return sram_read(addr, len);
+  return sramaddr_read(addr, len);
 }
 
 void vaddr_write(vaddr_t addr, int len, word_t data) {
-  sram_write(addr, len, data);
+  sramaddr_write(addr, len, data);
 }
