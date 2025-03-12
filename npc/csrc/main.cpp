@@ -541,7 +541,7 @@ int main(int argc, char *argv[]) {
   
 
   load_img();
-  difftest_memcpy(CONFIG_MBASE, pmem, PMEM_SIZE, 1);
+  difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE, 1);
   void* dut;
   difftest_regcpy(dut, 1);
   sim_init();
