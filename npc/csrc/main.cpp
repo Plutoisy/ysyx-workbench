@@ -20,7 +20,7 @@
 #define M_W_ASSERT 1
 #define PC_ASSERT 0
 #define REG_ASSERT 0
-#define DIFFTESE 0
+#define DIFFTESE 1
 #define BMODE 1
 #define WAVE 0
 
