@@ -41,13 +41,11 @@ static void pmem_write(paddr_t addr, int len, word_t data) {
 }
 
 static word_t sram_read(paddr_t addr, int len) {
-  printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, sram_read(addr,len));
   word_t ret = host_read(guest_to_host_sram(addr), len);
   return ret;
 }
 
 static void sram_write(paddr_t addr, int len, word_t data) {
-  printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, data);
   host_write(guest_to_host_sram(addr), len, data);
 }
 
