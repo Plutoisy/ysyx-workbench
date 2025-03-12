@@ -54,6 +54,11 @@ static void out_of_bound(paddr_t addr) {
       addr, PMEM_LEFT, PMEM_RIGHT, cpu.pc);
 }
 
+static void sram_out_of_bound(paddr_t addr) {
+  panic("address = " FMT_PADDR " is out of bound of sram [" FMT_PADDR ", " FMT_PADDR "] at pc = " FMT_WORD,
+      addr, 0x0f000000, 0x0f001fff, cpu.pc);
+}
+
 void init_mem() {
 #if   defined(CONFIG_PMEM_MALLOC)
   pmem = malloc(CONFIG_MSIZE);
@@ -82,7 +87,7 @@ word_t sramaddr_read(paddr_t addr, int len) {
   IFDEF(CONFIG_MTRACE, printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, sram_read(addr,len)));
   if (likely(in_sram(addr))) return sram_read(addr, len);
   IFDEF(CONFIG_DEVICE, return mmio_read(addr, len));
-  out_of_bound(addr);
+  sram_out_of_bound(addr);
   return 0;
 }
 
@@ -90,5 +95,5 @@ void sramaddr_write(paddr_t addr, int len, word_t data) {
   IFDEF(CONFIG_MTRACE, printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, data));
   if (likely(in_sram(addr))) { sram_write(addr, len, data); return; }
   IFDEF(CONFIG_DEVICE, mmio_write(addr, len, data); return);
-  out_of_bound(addr);
+  sram_out_of_bound(addr);
 }
