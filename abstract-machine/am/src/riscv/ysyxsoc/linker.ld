@@ -20,7 +20,7 @@ SECTIONS {
   _data = .;
   .bss : {
 	_bss_start = .;
-    *(.bss*)k
+    *(.bss*)
     *(.sbss*)
     *(.scommon)
   }
