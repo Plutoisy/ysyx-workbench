@@ -18,8 +18,8 @@
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
 #define M_W_ASSERT 1
-#define PC_ASSERT 0
-#define REG_ASSERT 0
+#define PC_ASSERT 1
+#define REG_ASSERT 1
 #define DIFFTESE 1
 #define BMODE 1
 #define WAVE 0
