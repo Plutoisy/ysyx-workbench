@@ -25,7 +25,7 @@ SECTIONS {
     *(.scommon)
   }
   _stack_top = 0x0f001fff; 
-  _stack_pointer = _stack_top - 0x1000;
+  _stack_pointer = 0x0f000fff;
   _heap_start = 0x0f000000;
-  _heap_end = _stack_pointer;
+  _heap_end = 0x0f000fff;
 }
