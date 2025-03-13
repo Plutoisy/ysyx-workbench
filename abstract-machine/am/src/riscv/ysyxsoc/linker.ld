@@ -27,6 +27,9 @@ SECTIONS {
     *(.sbss*)
     *(.scommon)
   }
+  /* 设置程序结束位置 */
+  end = .;
+  _end = .;
   /* 堆区起始地址 */
   _heap_start = ORIGIN(SRAM);
 
@@ -42,7 +45,5 @@ SECTIONS {
   /* 设置堆区结束地址（即栈区的起始地址） */
   _heap_end = _stack_top;
 
-  /* 设置程序结束位置 */
-  end = .;
-  _end = .;
+  
 }
