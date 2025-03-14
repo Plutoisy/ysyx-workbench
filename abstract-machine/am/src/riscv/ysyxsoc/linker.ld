@@ -18,13 +18,13 @@ SECTIONS {
   } : data
   edata = .;
   _data = .;
-  . = 0x0f000000;
   .bss : {
 	_bss_start = .;
     *(.bss*)
     *(.sbss*)
     *(.scommon)
   }
+  . = 0x0f000000;
   _heap_start = .;
   . = _heap_start + 0x100;
   _stack_top = .;
