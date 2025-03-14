@@ -145,7 +145,7 @@ module ysyx_24120011_LSU(
     wire [31:0] wdata;
     wire [1:0] bresp;
     wire [3:0] wstrb;
-    reg bready;
+    wire bready;
     wire [31:0] rdata;
     wire bvalid;
     wire LSU_working;
@@ -194,7 +194,7 @@ module ysyx_24120011_LSU(
                     4'b1111 :
                     ((w_mem_len == 8'd2) ? 4'b0011 : 4'b0001);
     //B
-    //assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
+    assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
 
 /* verilator lint_off LATCH */
 
@@ -298,34 +298,34 @@ module ysyx_24120011_LSU(
     end
 
     //bready_delay
-    always@(posedge clk)begin
-        // if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
-        //     bready_delay_cnt <= bready_delay_cnt - 1;
-        //     //bready <= 0;
-        // end
-        // else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
-        //     //bready <= 1;
-        //     //bready_delay_cnt <= 32'hFFFFFFFF;
-        //     if(bvalid == 1) begin
-        //         bready <= 1;
-        //     end
-        //     else begin
-        //         bready <= 0;
-        //     end
-        // end
-        // else begin
-        //     bready <= 0;
-        // end
-        if(awready) begin
-            bready <= 1;
-        end
-        else if(bvalid) begin
-            bready <= 0;
-        end
-        else begin
-            bready <= 0;
-        end
-    end
+    // always@(posedge clk)begin
+    //     // if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
+    //     //     bready_delay_cnt <= bready_delay_cnt - 1;
+    //     //     //bready <= 0;
+    //     // end
+    //     // else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
+    //     //     //bready <= 1;
+    //     //     //bready_delay_cnt <= 32'hFFFFFFFF;
+    //     //     if(bvalid == 1) begin
+    //     //         bready <= 1;
+    //     //     end
+    //     //     else begin
+    //     //         bready <= 0;
+    //     //     end
+    //     // end
+    //     // else begin
+    //     //     bready <= 0;
+    //     // end
+    //     if(awready) begin
+    //         bready <= 1;
+    //     end
+    //     else if(bvalid) begin
+    //         bready <= 0;
+    //     end
+    //     else begin
+    //         bready <= 0;
+    //     end
+    // end
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
