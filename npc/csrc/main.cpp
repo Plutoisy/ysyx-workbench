@@ -20,7 +20,7 @@
 #define M_R_ASSERT 1
 #define M_W_ASSERT 1
 #define PC_ASSERT 1
-#define REG_ASSERT 0
+#define REG_ASSERT 1
 #define DIFFTESE 1
 #define BMODE 0
 #define WAVE 1
@@ -290,7 +290,11 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
     host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
   }
 }
-
+extern "C" void sram_write_print (int w_mem_addr, int w_mem_data, char w_mem_len){
+  if(M_W_TRACE){
+    printf("sramW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+  }
+}
 static uint64_t boot_time = 0;
 
 static uint64_t get_time_internal() {
