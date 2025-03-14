@@ -11,7 +11,7 @@
 #include <sys/time.h>
 
 #define PMEM_SIZE    0x8000000
-#define PMEM_SIZE_SOC    0x8000000
+#define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
