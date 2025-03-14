@@ -170,7 +170,7 @@ module ysyx_24120011_LSU(
 
     reg [3:0] reg_wstrb;
     reg [31:0] reg_wdata;
-    reg [2:0] wdata_format;
+    reg [5:0] wdata_format;
     reg [31:0] rdata_mask;
     ysyx_24120011_LFSR i0_LFSR(
         .clk ( clk           ),
@@ -217,6 +217,18 @@ module ysyx_24120011_LSU(
         end
         else if(r_mem_len == 8'd2)begin
             rdata_mask = rdata;
+            if(araddr[1:0] == 2'd0)begin
+                rdata_mask = {16'b0,rdata[15:0]};
+            end
+            else if(araddr[1:0] == 2'd1)begin
+                rdata_mask = {16'b0,rdata[23:8]};
+            end
+            else if(araddr[1:0] == 2'd2)begin
+                rdata_mask = {16'b0,rdata[31:16]};
+            end
+            else begin
+                rdata_mask = 32'hdeadbeef;
+            end
         end
         else if(r_mem_len == 8'd4) begin
             rdata_mask = rdata;
@@ -231,7 +243,11 @@ module ysyx_24120011_LSU(
         'd1:reg_wdata = {16'b0,w_mem_data[7:0],8'b0};
         'd2:reg_wdata = {8'b0,w_mem_data[7:0],16'b0};
         'd3:reg_wdata = {w_mem_data[7:0],24'b0};
-        default:reg_wdata = w_mem_data;
+        'd4:reg_wdata = {16'b0,w_mem_data[15:0]};
+        'd5:reg_wdata = {8'b0,w_mem_data[15:0],8'b0};
+        'd6:reg_wdata = {w_mem_data[15:0],16'b0};
+        'd7:reg_wdata = w_mem_data;
+        default:reg_wdata = 32'hdeadbeef;
         endcase
     end
     always@(*)begin
@@ -254,16 +270,30 @@ module ysyx_24120011_LSU(
             end
         end
         else if(w_mem_len == 8'd2)begin
-            reg_wstrb = 4'b0011;
-            wdata_format = 'd4;
+            if(awaddr[1:0] == 2'd0)begin
+                reg_wstrb = 4'b0011;
+                wdata_format = 'd4;
+            end
+            else if(awaddr[1:0] == 2'd1)begin
+                reg_wstrb = 4'b0110;
+                wdata_format = 'd5;
+            end
+            else if(awaddr[1:0] == 2'd2)begin
+                reg_wstrb = 4'b1100;
+                wdata_format = 'd6;
+            end
+            else begin
+                reg_wstrb = 4'b0000;
+                wdata_format = 'd63;
+            end
         end
         else if(w_mem_len == 8'd4) begin
             reg_wstrb = 4'b1111;
-            wdata_format = 'd5;
+            wdata_format = 'd7;
         end
         else begin
             reg_wstrb = 4'b0000;//shouldnt enter
-            wdata_format = 'd5;
+            wdata_format = 'd63;
         end
     end
     //arvalid_delay
