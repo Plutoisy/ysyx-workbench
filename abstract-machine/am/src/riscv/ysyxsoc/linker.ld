@@ -13,6 +13,7 @@ SECTIONS {
   .rodata : {
     *(.rodata*)
   }
+  . = 0x0f000000;
   .data : {
     *(.data)
   } : data
@@ -24,10 +25,9 @@ SECTIONS {
     *(.sbss*)
     *(.scommon)
   }
-  . = 0x0f000000;
   _heap_start = .;
-  . = _heap_start + 0x100;
+  . = _heap_start + 0x50;
   _stack_top = .;
-  . = _stack_top +0x100;
+  . = _stack_top +0x50;
   _stack_pointer = .;
 }
