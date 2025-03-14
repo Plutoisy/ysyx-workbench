@@ -192,7 +192,7 @@ module ysyx_24120011_LSU(
 
     //W
     //assign wvalid = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
-    assign wdata = reg_wdata //(state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
+    assign wdata = reg_wdata; //(state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
     assign wstrb = reg_wstrb;
     //B
     assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
