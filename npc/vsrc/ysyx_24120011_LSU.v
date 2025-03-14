@@ -239,14 +239,6 @@ module ysyx_24120011_LSU(
             wdata_format = 'd5;
         end
     end
-    else if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-        reg_wstrb = reg_wstrb;
-        reg_wdata = reg_wdata;
-    end
-    else begin
-        reg_wstrb = 4'b0000;
-        reg_wdata = 'b0;
-    end
     //arvalid_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
