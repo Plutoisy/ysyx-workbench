@@ -188,7 +188,8 @@ module ysyx_24120011_LSU(
 
     //AW
     //assign awvalid = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? 1 : 0;
-    assign awaddr = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? w_mem_addr : 32'b0;
+    //assign awaddr = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? w_mem_addr : 32'b0;
+    assign awaddr = (state == ysyx_24120011_LSU_M_AXI_WADDR);
 
     //W
     //assign wvalid = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
