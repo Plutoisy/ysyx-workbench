@@ -8,10 +8,10 @@ extern char _heap_start;
 int main(const char *args);
 
 extern char _pmem_start;
-#define PMEM_SIZE (128 * 1024 * 1024)
+#define PMEM_SIZE (0xfff)
 #define PMEM_END  ((uintptr_t)&_pmem_start + PMEM_SIZE)
 
-Area heap = RANGE(&_heap_start, PMEM_END);
+Area heap = RANGE(&_heap_start, &_heap_start + 0x100);
 static const char mainargs[MAINARGS_MAX_LEN] = MAINARGS_PLACEHOLDER; // defined in CFLAGS
 
 void putch(char ch) {
