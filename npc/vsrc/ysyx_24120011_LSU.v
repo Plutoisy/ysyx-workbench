@@ -203,7 +203,7 @@ module ysyx_24120011_LSU(
             if(awaddr[1:0] == 2'd0)begin
                 reg_wstrb = 4'b0001;
                 if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-                    reg_wdata = {12'b0,w_mem_data[3:0]};
+                    reg_wdata = {24'b0,w_mem_data[7:0]};
                 end
                 else begin
                     reg_wdata = 'b0;
@@ -212,7 +212,7 @@ module ysyx_24120011_LSU(
             else if(awaddr[1:0] == 2'd1)begin
                 reg_wstrb = 4'b0010;
                 if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-                    reg_wdata = {8'b0,w_mem_data[3:0],4'b0};
+                    reg_wdata = {16'b0,w_mem_data[7:0],8'b0};
                 end
                 else begin
                     reg_wdata = 'b0;
@@ -221,7 +221,7 @@ module ysyx_24120011_LSU(
             else if(awaddr[1:0] == 2'd2)begin
                 reg_wstrb = 4'b0100;
                 if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-                    reg_wdata = {4'b0,w_mem_data[3:0],8'b0};
+                    reg_wdata = {8'b0,w_mem_data[7:0],16'b0};
                 end
                 else begin
                     reg_wdata = 'b0;
@@ -230,7 +230,7 @@ module ysyx_24120011_LSU(
             else begin
                 reg_wstrb = 4'b1000;
                 if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-                    reg_wdata = {w_mem_data[3:0],12'b0};
+                    reg_wdata = {w_mem_data[7:0],24'b0};
                 end
                 else begin
                     reg_wdata = 'b0;
