@@ -194,7 +194,7 @@ module ysyx_24120011_LSU(
                     4'b1111 :
                     ((w_mem_len == 8'd2) ? 4'b0011 : 4'b0001);
     //B
-    assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
+    assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
 
 /* verilator lint_off LATCH */
 
