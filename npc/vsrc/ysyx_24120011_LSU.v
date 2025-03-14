@@ -171,6 +171,7 @@ module ysyx_24120011_LSU(
     reg [3:0] reg_wstrb;
     reg [31:0] reg_wdata;
     reg [2:0] wdata_format;
+    reg [31:0] rdata_mask;
     ysyx_24120011_LFSR i0_LFSR(
         .clk ( clk           ),
         .in  ( LSFR_in       ),
@@ -199,6 +200,31 @@ module ysyx_24120011_LSU(
     assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
 
 /* verilator lint_off LATCH */
+    always@(*)begin
+        if(r_mem_len == 8'd1) begin
+            if(rwaddr[1:0] == 2'd0)begin
+                rdata_mask = {24'b0,rdata[7:0]};
+            end
+            else if(rwaddr[1:0] == 2'd1)begin
+                rdata_mask = {24'b0,rdata[15:8]};
+            end
+            else if(rwaddr[1:0] == 2'd2)begin
+                rdata_mask = {24'b0,rdata[23:16]};
+            end
+            else begin
+                rdata_mask = {24'b0,rdata[31:24]};
+            end
+        end
+        else if(r_mem_len == 8'd2)begin
+            rdata_mask = rdata;
+        end
+        else if(r_mem_len == 8'd4) begin
+            rdata_mask = rdata;
+        end
+        else begin
+            rdata_mask = rdata;
+        end
+    end
     always@(*)begin
         case(wdata_format)
         'd0:reg_wdata = {24'b0,w_mem_data[7:0]};
@@ -407,22 +433,22 @@ module ysyx_24120011_LSU(
             if(state == ysyx_24120011_LSU_M_AXI_RDATA) begin
                 if(r_mem_len == 8'd1)begin
                     if(sign_extension)begin
-                        r_mem_data <= {{24{rdata[7]}},rdata[7:0]};
+                        r_mem_data <= {{24{rdata_mask[7]}},rdata_mask[7:0]};
                     end
                     else begin
-                        r_mem_data <= {24'b0,rdata[7:0]};
+                        r_mem_data <= {24'b0,rdata_mask[7:0]};
                     end
                 end
                 else if(r_mem_len == 8'd2)begin
                     if(sign_extension)begin
-                        r_mem_data <= {{16{rdata[15]}},rdata[15:0]};
+                        r_mem_data <= {{16{rdata_mask[15]}},rdata_mask[15:0]};
                     end
                     else begin
-                        r_mem_data <= {16'b0,rdata[15:0]};
+                        r_mem_data <= {16'b0,rdata_mask[15:0]};
                     end
                 end
                 else if(r_mem_len == 8'd4)begin
-                    r_mem_data <= rdata;
+                    r_mem_data <= rdata_mask;
                 end
                 else begin//shouldn't in
                     r_mem_data <= 32'b11111111;
