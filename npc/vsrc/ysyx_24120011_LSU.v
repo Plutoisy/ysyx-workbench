@@ -202,13 +202,13 @@ module ysyx_24120011_LSU(
 /* verilator lint_off LATCH */
     always@(*)begin
         if(r_mem_len == 8'd1) begin
-            if(rwaddr[1:0] == 2'd0)begin
+            if(araddr[1:0] == 2'd0)begin
                 rdata_mask = {24'b0,rdata[7:0]};
             end
-            else if(rwaddr[1:0] == 2'd1)begin
+            else if(araddr[1:0] == 2'd1)begin
                 rdata_mask = {24'b0,rdata[15:8]};
             end
-            else if(rwaddr[1:0] == 2'd2)begin
+            else if(araddr[1:0] == 2'd2)begin
                 rdata_mask = {24'b0,rdata[23:16]};
             end
             else begin
