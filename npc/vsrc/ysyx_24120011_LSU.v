@@ -78,7 +78,7 @@ module ysyx_24120011_LSU(
     assign M1_arid    = 'd0       ;
     assign M1_arlen   = 'd0       ;
     assign M1_arburst = 'd0       ;
-    assign M1_arsize  = ~M1_arvalid ? 3'b000 : (
+    assign M1_arsize  = ~M1_arvalid ? 3'b010 : (
            ({3{r_mem_len == 8'd1}} & 3'b000) |
            ({3{r_mem_len == 8'd2}} & 3'b001) |
            ({3{r_mem_len == 8'd4}} & 3'b010) |
