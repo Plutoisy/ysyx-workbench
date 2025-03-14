@@ -168,6 +168,9 @@ module ysyx_24120011_LSU(
     reg [7:0] LSFR_in;
     reg [7:0] random_delay;
 
+    reg [3:0] reg_wstrb;
+    reg [31:0] reg_wdata;
+    
     ysyx_24120011_LFSR i0_LFSR(
         .clk ( clk           ),
         .in  ( LSFR_in       ),
@@ -189,15 +192,91 @@ module ysyx_24120011_LSU(
 
     //W
     //assign wvalid = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
-    assign wdata = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
-    assign wstrb = (w_mem_len == 8'd4) ? 
-                    4'b1111 :
-                    ((w_mem_len == 8'd2) ? 4'b0011 : 4'b0001);
+    assign wdata = reg_wdata //(state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
+    assign wstrb = reg_wstrb;
     //B
     assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
 
 /* verilator lint_off LATCH */
-
+    always@(*)begin
+        if(w_mem_len == 8'd1) begin
+            if(awaddr[1:0] == 2'd0)begin
+                reg_wstrb = 4'b0001;
+                if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                    reg_wdata = {12'b0,w_mem_data[3:0]};
+                end
+                else begin
+                    reg_wdata = 'b0;
+                end
+            end
+            else if(awaddr[1:0] == 2'd1)begin
+                reg_wstrb = 4'b0010;
+                if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                    reg_wdata = {8'b0,w_mem_data[3:0],4'b0};
+                end
+                else begin
+                    reg_wdata = 'b0;
+                end
+            end
+            else if(awaddr[1:0] == 2'd2)begin
+                reg_wstrb = 4'b0100;
+                if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                    reg_wdata = {4'b0,w_mem_data[3:0],8'b0};
+                end
+                else begin
+                    reg_wdata = 'b0;
+                end
+            end
+            else begin
+                reg_wstrb = 4'b1000;
+                if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                    reg_wdata = {w_mem_data[3:0],12'b0};
+                end
+                else begin
+                    reg_wdata = 'b0;
+                end
+            end
+        end
+        else if(w_mem_len == 8'd2)begin
+            reg_wstrb = 4'b0011;
+            // if(awaddr[1:0] == 2'd0)begin
+            //     reg_wstrb = 4'b0001;
+            // end
+            // else if(awaddr[1:0] == 2'd1)begin
+            //     reg_wstrb = 4'b0010;
+            // end
+            // else if(awaddr[1:0] == 2'd2)begin
+            //     reg_wstrb = 4'b0100;
+            // end
+            // else begin
+            //     reg_wstrb = 4'b1000;
+            // end
+            if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                reg_wdata = w_mem_data;
+            end
+            else begin
+                reg_wdata = 'b0;
+            end
+        end
+        else if(w_mem_len == 8'd4) begin
+            reg_wstrb = 4'b1111;
+            if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                reg_wdata = w_mem_data;
+            end
+            else begin
+                reg_wdata = 'b0;
+            end
+        end
+        else begin
+            reg_wstrb = 4'b0000;//shouldnt enter
+            if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+                reg_wdata = w_mem_data;
+            end
+            else begin
+                reg_wdata = 'b0;
+            end
+        end
+    end
     //arvalid_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
