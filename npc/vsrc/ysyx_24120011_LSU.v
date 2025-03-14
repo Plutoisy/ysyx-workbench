@@ -322,6 +322,9 @@ module ysyx_24120011_LSU(
         else if(bvalid) begin
             bready <= 0;
         end
+        else begin
+            bready <= 0;
+        end
     end
 
     always@(posedge clk)begin
