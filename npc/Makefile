@@ -26,6 +26,7 @@ sim:$(VSRCS) $(CSRCS)
 		--top-module $(TOPNAME) $^ \
 		--timescale "1ns/1ns" \
 		--no-timing \
+		--autoflush \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
 		-I$(YSYXSOC_HOME)/perip/uart16550/rtl\
 		-I$(YSYXSOC_HOME)/perip/spi/rtl\

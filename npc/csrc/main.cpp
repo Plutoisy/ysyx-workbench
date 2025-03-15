@@ -11,7 +11,9 @@
 #include <sys/time.h>
 
 #define PMEM_SIZE    0x8000000
+#define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
+#define CONFIG_MBASE_SOC 0x20000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 #define M_R_TRACE 0
 #define M_W_TRACE 0
@@ -20,8 +22,8 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 0
-#define WAVE 1
+#define BMODE 1
+#define WAVE 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -170,6 +172,7 @@ void system_rst(){
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
+uint8_t* guest_to_host_soc(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE_SOC; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
@@ -221,7 +224,20 @@ void isa_reg_display() {
 
 extern "C" void flash_read(int32_t addr, int32_t *data) { assert(0); }
 extern "C" void mrom_read(int32_t addr, int32_t *data) { 
-  *data = 0x00100073;
+  
+  if(addr - CONFIG_MBASE_SOC > 0xfff){
+    if(M_R_ASSERT){
+      assert(0);
+    }
+    return;
+  }
+  else{
+    *data = host_read(guest_to_host_soc(addr & ~0x3), 4);
+    if(M_R_TRACE){
+      printf("npcR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+    }
+    return;
+  }
 }
 
 extern "C" void ebreak(){
@@ -254,7 +270,7 @@ extern "C" void reg_out(const int array[32]) {
 
 extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   if(M_W_TRACE){
-    printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   }
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
     if (w_mem_addr == 0xa00003f8) { 
@@ -270,11 +286,15 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
     }
   }
   else{
-    //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    //printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
     host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
   }
 }
-
+extern "C" void sram_write_print (int w_mem_addr, int w_mem_data, char w_mem_len){
+  if(M_W_TRACE){
+    printf("sramW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+  }
+}
 static uint64_t boot_time = 0;
 
 static uint64_t get_time_internal() {
@@ -295,7 +315,7 @@ static uint32_t rtc_port_base[2];
 extern "C" int rtl_pmem_read(int r_mem_addr){
   if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
     if(M_R_TRACE){
-      printf("R->addr: 0x%x, len: %d\n", r_mem_addr, 4);
+      printf("npcR->addr: 0x%x, len: %d\n", r_mem_addr, 4);
     }
     // if (r_mem_addr == 0xa0000048 + 4) { 
     //   uint64_t us = get_time();
@@ -320,7 +340,7 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
   else{
     
     uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
-    //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
+    //printf("npcR->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
     return ret;
   }
   
@@ -526,7 +546,7 @@ int main(int argc, char *argv[]) {
   
 
   load_img();
-  difftest_memcpy(CONFIG_MBASE, pmem, PMEM_SIZE, 1);
+  difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
   void* dut;
   difftest_regcpy(dut, 1);
   sim_init();

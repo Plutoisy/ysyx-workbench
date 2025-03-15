@@ -160,7 +160,12 @@ always@(posedge clk)begin
         arvalid_delay_cnt <= arvalid_delay_cnt - 1;
     end
     else if(state == ysyx_24120011_IFU_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
-        arvalid <= 1;
+        if(arready)begin
+            arvalid <= 0;
+        end
+        else begin
+            arvalid <= 1;
+        end
     end
     else begin
         arvalid <= 0;
@@ -177,6 +182,7 @@ end
 always@(posedge clk)begin
     if(state == ysyx_24120011_IFU_M_AXI_RDATA && rready_delay_cnt != 0 )begin
         rready_delay_cnt <= rready_delay_cnt - 1;
+        rvalid_prev <= 'd0;
     end
     else if(state == ysyx_24120011_IFU_M_AXI_RDATA && rready_delay_cnt == 0)begin
         if(rvalid && !rvalid_prev) begin
@@ -189,6 +195,7 @@ always@(posedge clk)begin
     end
     else begin
         rready <= 0;
+        rvalid_prev <= 'd0;
     end
 end
 
