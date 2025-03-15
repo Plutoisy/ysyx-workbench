@@ -9,6 +9,7 @@
 #define UART_REG_LC      0x10000003L
 #define UART_REG_DL1     0x10000000L
 #define UART_REG_DL2     0x10000001L
+#define UART_REG_LSR     0x10000005L
 
 extern char _heap_start;
 int main(const char *args);
@@ -23,7 +24,9 @@ Area heap = RANGE(&_heap_start, &_heap_start + 0xfff);
 static const char mainargs[MAINARGS_MAX_LEN] = MAINARGS_PLACEHOLDER; // defined in CFLAGS
 
 void putch(char ch) {
-  outb(SERIAL_PORT, ch);
+  while (!(inb(UART_REG_LSR) & 0x20)) {
+    outb(SERIAL_PORT, ch);
+  }
 }
 
 void halt(int code) {
