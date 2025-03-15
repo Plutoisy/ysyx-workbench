@@ -46,6 +46,7 @@ static word_t sram_read(paddr_t addr, int len) {
 }
 
 static void sram_write(paddr_t addr, int len, word_t data) {
+  printf("ddddbug\n");
   host_write(guest_to_host_sram(addr), len, data);
 }
 
