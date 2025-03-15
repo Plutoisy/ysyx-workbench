@@ -243,7 +243,7 @@ void isa_reg_display() {
 }
 
 extern "C" void flash_read(int32_t addr, int32_t *data) { 
-  printf("flashR->addr: 0x%08x, len: %d\n", addr);
+  printf("flashR->addr: 0x%08x\n", addr);
   // if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
   //   if(M_R_ASSERT){
   //     assert(0);
