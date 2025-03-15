@@ -232,9 +232,9 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
     return;
   }
   else{
-    *data = host_read(guest_to_host_soc(addr), 4);
+    *data = host_read(guest_to_host_soc(addr & ~0x3), 4);
     if(M_R_TRACE){
-      printf("npcR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, *data);
+      printf("npcR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
     }
     return;
   }
