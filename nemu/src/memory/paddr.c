@@ -46,8 +46,6 @@ static word_t sram_read(paddr_t addr, int len) {
 }
 
 static void sram_write(paddr_t addr, int len, word_t data) {
-  printf("mrom 0x%x, mem: 0x%08x\n", 0x0f001048, *(sram + 0x0f001048 - 0x0f000000));
-  printf("sram 0x%x, mem: 0x%08x\n", 0x20000048, *(pmem + 0x20000048 - CONFIG_MBASE));
   host_write(guest_to_host_sram(addr), len, data);
 }
 
