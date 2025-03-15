@@ -36,7 +36,7 @@ void halt(int code) {
 
 void _trm_init() {
   memcpy(&_data_vma_start,&_data_lma_start,&_bss_start-&_data_vma_start);
-  int divisor = 300;
+  int divisor = 1;
   outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
   outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
   outb(UART_REG_DL1, divisor & 0xFF);
