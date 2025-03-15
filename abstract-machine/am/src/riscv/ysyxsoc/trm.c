@@ -11,7 +11,7 @@ extern char _pmem_start;
 #define PMEM_SIZE (0xfff)
 #define PMEM_END  ((uintptr_t)&_pmem_start + PMEM_SIZE)
 
-Area heap = RANGE(&_heap_start, &_heap_start + 0x100);
+Area heap = RANGE(&_heap_start, &_heap_start + 0xfff);
 static const char mainargs[MAINARGS_MAX_LEN] = MAINARGS_PLACEHOLDER; // defined in CFLAGS
 
 void putch(char ch) {
