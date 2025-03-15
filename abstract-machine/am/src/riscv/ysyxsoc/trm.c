@@ -3,7 +3,12 @@
 #include <riscv/riscv.h>
 #include <string.h>
 
-#define SERIAL_PORT     (0x10000000 + 0x0000000)
+#define UART_BASE 0x10000000L
+#define UART_TX   0
+#define SERIAL_PORT     (UART_BASE + UART_TX)
+#define UART_REG_LC      0x10000003L
+#define UART_REG_DL1     0x10000000L
+#define UART_REG_DL2     0x10000001L
 
 extern char _heap_start;
 int main(const char *args);
@@ -28,6 +33,12 @@ void halt(int code) {
 
 void _trm_init() {
   memcpy(&_data_vma_start,&_data_lma_start,&_bss_start-&_data_vma_start);
+  int divisor = 150;
+  outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
+  outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
+  outb(UART_REG_DL1, divisor & 0xFF);
+  outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+
   int ret = main(mainargs);
   halt(ret);
 }
