@@ -26,8 +26,8 @@ SECTIONS {
   }
   . = 0x0f000000;
   _heap_start = .;
-  . = _heap_start + 0x150;
+  . = _heap_start + 0xfff;
   _stack_top = .;
-  . = _stack_top +0x50;
+  . = _stack_top +0xfff;
   _stack_pointer = .;
 }
