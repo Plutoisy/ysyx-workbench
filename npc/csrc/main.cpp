@@ -243,19 +243,20 @@ void isa_reg_display() {
 }
 
 extern "C" void flash_read(int32_t addr, int32_t *data) { 
-  if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
-    if(M_R_ASSERT){
-      assert(0);
-    }
-    return;
-  }
-  else{
-    *data = host_read(guest_to_host_flash(addr & ~0x3), 4);
-    if(M_R_TRACE){
-      printf("flashR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
-    }
-    return;
-  }
+  assert(0);
+  // if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
+  //   if(M_R_ASSERT){
+  //     assert(0);
+  //   }
+  //   return;
+  // }
+  // else{
+  //   *data = host_read(guest_to_host_flash(addr & ~0x3), 4);
+  //   if(M_R_TRACE){
+  //     printf("flashR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+  //   }
+  //   return;
+  // }
 }
 
 extern "C" void mrom_read(int32_t addr, int32_t *data) { 
