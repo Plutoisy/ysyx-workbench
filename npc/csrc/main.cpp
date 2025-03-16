@@ -17,6 +17,7 @@
 #define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
+#define LOAD_FLASH_IMG 1
 #define M_R_TRACE 1
 #define M_W_TRACE 1
 #define M_R_ASSERT 1
@@ -120,6 +121,30 @@ static long load_img() {
 
   fseek(fp, 0, SEEK_SET);
   int ret = fread(pmem, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+static long load_img_to_flash(char* img) {
+  if (img == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(flash, size, 1, fp);
   assert(ret == 1);
 
   fclose(fp);
@@ -581,9 +606,14 @@ int main(int argc, char *argv[]) {
   
 
   load_img();
-  difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
-  void* dut;
-  difftest_regcpy(dut, 1);
+  if(LOAD_FLASH_IMG){
+    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char-test.bin")
+  }
+  if(DIFFTESE){
+    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
+    void* dut;
+    difftest_regcpy(dut, 1);
+  }
   sim_init();
   system_rst();
   if(BMODE){
