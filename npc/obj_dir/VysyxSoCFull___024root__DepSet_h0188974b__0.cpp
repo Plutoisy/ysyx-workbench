@@ -2060,46 +2060,46 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__7(VysyxSoCFull___0
                                                       == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt)))) 
                                                | ((8U 
                                                    == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
-                                                   ? 
-                                                  ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                   >> 7U)
+                                                   ? (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data)
                                                    : 
                                                   ((9U 
                                                     == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
                                                     ? 
                                                    ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                    >> 6U)
+                                                    >> 1U)
                                                     : 
                                                    ((0xaU 
                                                      == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
                                                      ? 
                                                     ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                     >> 5U)
+                                                     >> 2U)
                                                      : 
                                                     ((0xbU 
                                                       == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
                                                       ? 
                                                      ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                      >> 4U)
+                                                      >> 3U)
                                                       : 
                                                      ((0xcU 
                                                        == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
                                                        ? 
                                                       ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                       >> 3U)
+                                                       >> 4U)
                                                        : 
                                                       ((0xdU 
                                                         == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
                                                         ? 
                                                        ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                        >> 2U)
+                                                        >> 5U)
                                                         : 
                                                        ((0xeU 
                                                          == (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt))
                                                          ? 
                                                         ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
-                                                         >> 1U)
-                                                         : (IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data))))))))));
+                                                         >> 6U)
+                                                         : 
+                                                        ((IData)(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data) 
+                                                         >> 7U))))))))));
 }
 
 VL_INLINE_OPT void VysyxSoCFull___024root___nba_comb__TOP__0(VysyxSoCFull___024root* vlSelf) {
