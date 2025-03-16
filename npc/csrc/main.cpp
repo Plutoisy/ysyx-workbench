@@ -607,7 +607,7 @@ int main(int argc, char *argv[]) {
 
   load_img();
   if(LOAD_FLASH_IMG){
-    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char-test.bin")
+    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char-test.bin");
   }
   if(DIFFTESE){
     difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
