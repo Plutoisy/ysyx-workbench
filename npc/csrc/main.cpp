@@ -17,7 +17,7 @@
 #define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define LOAD_FLASH_IMG 1
+#define LOAD_FLASH_IMG 0
 #define M_R_TRACE 0
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
