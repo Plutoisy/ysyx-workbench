@@ -26,7 +26,7 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 1
+#define BMODE 0
 #define WAVE 0
 
 VerilatedContext* contextp = NULL;
@@ -130,7 +130,7 @@ static long load_img_mrom() {
 
 static long load_img_flash() {
   if (img_file == NULL) {
-    printf("Start from flash No image is given. Use the default build-in image.\n");
+    printf("No image is given. Use the default build-in image.\n");
     return 4096; // built-in image size
   }
 
@@ -142,7 +142,7 @@ static long load_img_flash() {
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
 
-  printf("The image is %s, size = %ld\n", img_file, size);
+  printf("Start from flash The image is %s, size = %ld\n", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
   int ret = fread(flash, size, 1, fp);
