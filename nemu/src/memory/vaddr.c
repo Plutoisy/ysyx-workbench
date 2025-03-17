@@ -15,7 +15,7 @@
 
 #include <isa.h>
 #include <memory/paddr.h>
-#define SOC 1
+#define SOC 0
 word_t vaddr_ifetch(vaddr_t addr, int len) {
   return paddr_read(addr, len);
 }
