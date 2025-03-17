@@ -11,10 +11,14 @@
 #include <sys/time.h>
 
 #define PMEM_SIZE    0x8000000
+#define FLASH_SIZE    0x10000000
 #define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
+#define CONFIG_FLASHBASE 0x30000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
+#define LOAD_IMG_TO_FLASH 0
+#define START_FROM_MROM 0
 #define M_R_TRACE 0
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
@@ -38,6 +42,23 @@ int top_inst;
 int top_IFU_valid_int;
 
 uint8_t pmem[PMEM_SIZE] = {
+  0x13,0x04,0x00,0x00,
+  0x17,0x91,0x00,0x00,
+  0x13,0x01,0xc1,0xff,
+  0xef,0x00,0xc0,0x00,
+  0x13,0x05,0x00,0x00,
+  0x67,0x80,0x00,0x00,
+  0x13,0x01,0x41,0xff,
+  0x17,0x05,0x00,0x00,
+  0x13,0x05,0xc5,0x01,
+  0x23,0x24,0x11,0x00,
+  0xef,0xf0,0x9f,0xfe,
+  0x13,0x05,0x05,0x00,
+  0x73,0x00,0x10,0x00,
+  0x6f,0x00,0x00,0x00,  
+};
+
+uint8_t flash[FLASH_SIZE] = {
   0x13,0x04,0x00,0x00,
   0x17,0x91,0x00,0x00,
   0x13,0x01,0xc1,0xff,
@@ -83,7 +104,7 @@ static char* rl_gets() {
   return line_read;
 }
 
-static long load_img() {
+static long load_img_mrom() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.\n");
     return 4096; // built-in image size
@@ -97,10 +118,58 @@ static long load_img() {
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
 
-  printf("The image is %s, size = %ld\n", img_file, size);
+  printf("Start from mrom The image is %s, size = %ld\n", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
   int ret = fread(pmem, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+static long load_img_flash() {
+  if (img_file == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img_file, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("Start from flash The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(flash, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+static long load_img_to_flash(char *img) {
+  if (img == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(flash, size, 1, fp);
   assert(ret == 1);
 
   fclose(fp);
@@ -173,6 +242,7 @@ void system_rst(){
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
 uint8_t* guest_to_host_soc(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE_SOC; }
+uint8_t* guest_to_host_flash(uint32_t paddr) { return flash + paddr - CONFIG_FLASHBASE; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
@@ -222,9 +292,24 @@ void isa_reg_display() {
   }
 }
 
-extern "C" void flash_read(int32_t addr, int32_t *data) { assert(0); }
+extern "C" void flash_read(int32_t addr, int32_t *data) { 
+  addr += CONFIG_FLASHBASE;
+  if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
+    if(M_R_ASSERT){
+      assert(0);
+    }
+    return;
+  }
+  else{
+    *data = host_read(guest_to_host_flash(addr & ~0x3), 4);
+    if(M_R_TRACE){
+      printf("flashR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+    }
+    return;
+  }
+}
+
 extern "C" void mrom_read(int32_t addr, int32_t *data) { 
-  
   if(addr - CONFIG_MBASE_SOC > 0xfff){
     if(M_R_ASSERT){
       assert(0);
@@ -234,7 +319,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
   else{
     *data = host_read(guest_to_host_soc(addr & ~0x3), 4);
     if(M_R_TRACE){
-      printf("npcR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+      printf("mromR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
     }
     return;
   }
@@ -544,11 +629,21 @@ int main(int argc, char *argv[]) {
 
   // AssembleDecoder(handle, instruction);
   
-
-  load_img();
-  difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
-  void* dut;
-  difftest_regcpy(dut, 1);
+  if(START_FROM_MROM){
+    load_img_mrom();
+  }
+  else{
+    load_img_flash();
+  }
+  
+  if(LOAD_IMG_TO_FLASH){
+    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+  }
+  if(DIFFTESE){
+    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
+    void* dut;
+    difftest_regcpy(dut, 1);
+  }
   sim_init();
   system_rst();
   if(BMODE){
