@@ -46,7 +46,7 @@ void _trm_init() {
   uint32_t mvendorid, marchid;
   asm volatile ("csrr %0, mvendorid" : "=r" (mvendorid): : );
   asm volatile ("csrr %0, marchid" : "=r" (marchid) : : );
-  printf("mvendorid = %d\n", mvendorid);
+  printf("mvendorid = %s\n", mvendorid);
   printf("marchid   = %d\n", marchid);
 
   int ret = main(mainargs);
