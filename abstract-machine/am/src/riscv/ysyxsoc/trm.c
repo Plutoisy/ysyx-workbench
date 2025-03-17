@@ -2,6 +2,7 @@
 #include <klib-macros.h>
 #include <riscv/riscv.h>
 #include <string.h>
+#include <stdio.h>
 
 #define UART_BASE 0x10000000L
 #define UART_TX   0
@@ -41,6 +42,12 @@ void _trm_init() {
   outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
   outb(UART_REG_DL1, divisor & 0xFF);
   outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+
+  uint32_t mvendorid, marchid;
+  asm volatile ("csrr %0, mvendorid" : "=r" (mvendorid): : );
+  asm volatile ("csrr %0, marchid" : "=r" (marchid) : : );
+  printf("mvendorid = %d\n", mvendorid);
+  printf("marchid   = %d\n", marchid);
 
   int ret = main(mainargs);
   halt(ret);
