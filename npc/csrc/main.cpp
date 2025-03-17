@@ -17,7 +17,8 @@
 #define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define LOAD_FLASH_IMG 0
+#define LOAD_IMG_TO_FLASH 0
+#define START_FROM_MROM 0
 #define M_R_TRACE 0
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
@@ -103,9 +104,33 @@ static char* rl_gets() {
   return line_read;
 }
 
-static long load_img() {
+static long load_img_mrom() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img_file, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("Start from mrom The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(pmem, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+static long load_img_flash() {
+  if (img_file == NULL) {
+    printf("Start from flash No image is given. Use the default build-in image.\n");
     return 4096; // built-in image size
   }
 
@@ -120,7 +145,7 @@ static long load_img() {
   printf("The image is %s, size = %ld\n", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
-  int ret = fread(pmem, size, 1, fp);
+  int ret = fread(flash, size, 1, fp);
   assert(ret == 1);
 
   fclose(fp);
@@ -604,9 +629,14 @@ int main(int argc, char *argv[]) {
 
   // AssembleDecoder(handle, instruction);
   
-
-  load_img();
-  if(LOAD_FLASH_IMG){
+  if(START_FROM_MROM){
+    load_img_mrom();
+  }
+  else{
+    load_img_flash();
+  }
+  
+  if(LOAD_IMG_TO_FLASH){
     load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
   }
   if(DIFFTESE){
