@@ -2732,7 +2732,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1253,"ysyx_24120011_SPITOPAPB_FLASH_CTRL", false,-1, 3,0);
     tracep->declBus(c+1249,"ysyx_24120011_SPITOPAPB_FLASH_WAIT", false,-1, 3,0);
     tracep->declBus(c+1257,"ysyx_24120011_SPITOPAPB_FLASH_SS0", false,-1, 3,0);
-    tracep->declBus(c+1257,"ysyx_24120011_SPITOPAPB_FLASH_RECV", false,-1, 3,0);
+    tracep->declBus(c+1258,"ysyx_24120011_SPITOPAPB_FLASH_RECV", false,-1, 3,0);
     tracep->declBus(c+574,"spi_top_apb_state", false,-1, 3,0);
     tracep->declBus(c+1079,"spi_top_apb_nextstate", false,-1, 3,0);
     tracep->declBus(c+1080,"reg_in_paddr", false,-1, 31,0);
@@ -5529,11 +5529,11 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_sub_0(VysyxSoCFull___024roo
                                                      | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__reg_dat8_r))))
                                  : 0U)),32);
     bufp->fullBit(oldp+1120,((((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state)) 
-                               | (8U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state))) 
+                               | (9U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state))) 
                               & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__reg_in_pready))));
     bufp->fullIData(oldp+1121,(((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state))
                                  ? vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__reg_in_prdata
-                                 : ((8U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state))
+                                 : ((9U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state))
                                      ? ((vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__reg_in_prdata 
                                          << 0x18U) 
                                         | ((0xff0000U 
