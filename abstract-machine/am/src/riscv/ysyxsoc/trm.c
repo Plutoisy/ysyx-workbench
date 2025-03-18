@@ -63,9 +63,9 @@ void bss_init(){
 }
 void _trm_init() {
   //memcpy(&_data_vma_start,&_data_lma_start,&_bss_start-&_data_vma_start);
-  fsbl();
-  ssbl();
-  bss_init();
+  //fsbl();
+  //ssbl();
+  //bss_init();
   int divisor = 1;
   outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
   outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
