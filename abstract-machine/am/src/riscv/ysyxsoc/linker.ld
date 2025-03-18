@@ -39,5 +39,5 @@ SECTIONS {
   end = .;
   _end = .;
   _heap_start = 0x90002000;
-  _heap_end   = 0x10000000;
+  _heap_end   = 0x9fffffff;
 }
