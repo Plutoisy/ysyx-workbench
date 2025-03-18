@@ -28,9 +28,6 @@ extern char _bss_start,_bss_end;
 Area heap = RANGE(&_heap_start, &_heap_start + 0xfff);
 static const char mainargs[MAINARGS_MAX_LEN] = MAINARGS_PLACEHOLDER; // defined in CFLAGS
 
-#pragma GCC push_options
-#pragma GCC optimize("O0")
-
 void putch(char ch) {
   while (!(inb(UART_REG_LSR) & 0x20)) {
   }
