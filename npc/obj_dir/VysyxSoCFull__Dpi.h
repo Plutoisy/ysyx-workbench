@@ -26,9 +26,9 @@ extern "C" {
     extern void mrom_read(int raddr, int* rdata);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011.v:3:30
     extern void npc_trap(int pc, int ret);
-    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/psram/psram.v:125:32
+    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/psram/psram.v:161:32
     extern void psram_read(int addr, int* data);
-    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/psram/psram.v:126:32
+    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/psram/psram.v:162:32
     extern void psram_write(int addr, int data, int mask);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:2:30
     extern void reg_out(const int* array);
