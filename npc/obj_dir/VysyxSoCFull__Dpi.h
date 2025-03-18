@@ -26,12 +26,12 @@ extern "C" {
     extern void mrom_read(int raddr, int* rdata);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011.v:3:30
     extern void npc_trap(int pc, int ret);
+    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/psram/psram.v:125:32
+    extern void psram_read(int addr, int* data);
+    // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/psram/psram.v:126:32
+    extern void psram_write(int addr, int data, int mask);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_RegStack.v:2:30
     extern void reg_out(const int* array);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_LSU.v:3:29
-    extern int rtl_pmem_read(int r_mem_addr);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_LSU.v:2:30
-    extern void rtl_pmem_write(int w_mem_addr, int w_mem_data, char w_mem_len);
 
 #ifdef __cplusplus
 }
