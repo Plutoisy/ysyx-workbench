@@ -3,6 +3,7 @@ MEMORY {
   mrom : ORIGIN = 0x20000000, LENGTH = 4K
   sram : ORIGIN = 0x0f000000, LENGTH = 8K
   flash : ORIGIN = 0x30000000, LENGTH = 256M
+  psram : ORIGIN = 0x80000000, LENGTH = 4M
 }
 
 SECTIONS {
@@ -21,7 +22,7 @@ SECTIONS {
   } > flash AT> flash
   .data : {
     *(.data)
-  } > sram AT> flash
+  } > sram AT> psram
   _data_lma_start = LOADADDR(.data);
   _data_lma_end   = .;
   _data_vma_start = ORIGIN(sram);
@@ -31,7 +32,7 @@ SECTIONS {
     *(.bss*)
     *(.sbss*)
     *(.scommon)
-  } > sram AT> flash
+  } > sram AT> psram
   _stack_top = 0x0f001400;
   . = _stack_top + 0x00000400;
   _stack_pointer = .;
