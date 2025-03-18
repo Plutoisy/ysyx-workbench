@@ -1,43 +1,72 @@
 ENTRY(_start)
 MEMORY {
   mrom : ORIGIN = 0x20000000, LENGTH = 4K
-  sram : ORIGIN = 0x0f000000, LENGTH = 8K
   flash : ORIGIN = 0x30000000, LENGTH = 256M
   psram : ORIGIN = 0x80000000, LENGTH = 4M
+  sram : ORIGIN = 0x0f000000, LENGTH = 8K
 }
 
 SECTIONS {
-  /* _pmem_start and _entry_offset are defined in LDFLAGS */
- /* . = _pmem_start + _entry_offset; */
   . = ORIGIN(flash);
-  .text : {
+
+  .fsbl :{
     *(entry)
+    *(.text._trm_init)
+    *(.text.fsbl)
+    . = ALIGN(8);
+  } > flash
+
+  _ssbl_origin = .;
+  .ssbl : {
+    _ssbl_ram_start = .;
+    *(.text.ssbl)
+    . = ALIGN(8);
+    _ssbl_ram_end = .;
+  } > psram AT> flash
+
+  _test_origin = LOADADDR(.text);
+  .text : {
+    _text_ram_start = .;
     *(.text*)
-  } > flash AT> flash
+    . = ALIGN(8);
+  } > psram AT> flash
   etext = .;
   _etext = .;
+
   .rodata : {
     *(.rodata*)
-    _rodata_end = .;
-  } > flash AT> flash
+    *(.srodata)
+    *(.srodata.*)
+    . = ALIGN(8);
+  } > psram AT> flash
+
   .data : {
     *(.data)
-  } > sram AT> psram
-  _data_lma_start = LOADADDR(.data);
-  _data_lma_end   = .;
-  _data_vma_start = ORIGIN(sram);
+    *(.data.*)
+    *(.sdata)
+    *(.sdata.*)
+    . = ALIGN(8);
+    _data_ram_end = .;
+  } > psram AT> flash
+
   edata = .;
+  _data = .;
+
   .bss : {
-	_bss_start = .;
+	  _bss_start = .;
     *(.bss*)
     *(.sbss*)
     *(.scommon)
-  } > sram AT> psram
-  _stack_top = 0x0f001400;
-  . = _stack_top + 0x00000400;
+    . = ALIGN(8);
+    _bss_end = .;
+  } > psram AT> flash
+
+
+  _stack_top = ALIGN(0x30000);
+  . = _stack_top + 0x20000;
   _stack_pointer = .;
   end = .;
   _end = .;
-  _heap_start = 0x0f001000;
-  _heap_end   = 0x0f001400;
+  _heap_start = ALIGN(0x70000);
+  _heap_end = _heap_start  + 0x20000;
 }
