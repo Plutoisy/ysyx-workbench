@@ -21,15 +21,16 @@ SECTIONS {
 
   .bl.f : ALIGN(4) {
     *(.bl.f*)
-
+    *(.text._trm_init)
+    *(.text.fsbl)
     . = ALIGN(4);
   } > flash
 
   .bl.s : ALIGN(4) {
     _bl_s = .;
-
+    
     *(.bl.s*)
-
+    *(.text.ssbl)
     . = ALIGN(4);
     _ebl_s = .;
   } > sram AT> flash
