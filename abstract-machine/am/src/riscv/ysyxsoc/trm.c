@@ -79,6 +79,7 @@ void ssbl() {
 }
 
 void _trm_init() {
+  printf("debug\n");
   fsbl();
   ssbl();
   printf("debuguart\n");
