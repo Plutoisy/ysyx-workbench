@@ -5,4 +5,4 @@
 _start:
   mv s0, zero
   la sp, _stack_pointer
-  call _do_bl_fs
+  call fsbl

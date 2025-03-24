@@ -46,9 +46,9 @@ extern uint32_t _stack_pointer;
 
 void _trm_init(void);
 void _bl_ss_load_align4(uint32_t *dst, uint32_t *src, uint32_t *end);
-void _do_bl_ss(void);
+void ssbl(void);
 
-void _do_bl_fs(void) {
+void fsbl(void) {
   uint32_t *dst = _bl_s;
   uint32_t *src = _bl_s_load;
   uint32_t *end = _ebl_s;
@@ -59,10 +59,10 @@ void _do_bl_fs(void) {
       dst[i] = src[i];
   }
 
-  _do_bl_ss();
+  ssbl();
 }
 
-void _do_bl_ss(void) {
+void ssbl(void) {
     _bl_ss_load_align4(_text, _text_load, _etext);
     _bl_ss_load_align4(_data, _data_load, _edata);
     _bl_ss_load_align4(_data_extra, _data_extra_load, _edata_extra);

@@ -21,7 +21,7 @@ SECTIONS {
 
   .bl.f : ALIGN(4) {
     *(.bl.f*)
-    *(.text._do_bl_fs)
+    *(.text.fsbl)
     . = ALIGN(4);
   } > flash
 
@@ -29,7 +29,7 @@ SECTIONS {
     _bl_s = .;
 
     *(.bl.s*)
-    *(.text._do_bl_ss)
+    *(.text.ssbl)
     . = ALIGN(4);
     _ebl_s = .;
   } > sram AT> flash
