@@ -42,7 +42,8 @@ Area heap = RANGE(&_heap_start, &_psram_end);
 
 static const char mainargs[] = MAINARGS;
 
-
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
 
 void _trm_init(void);
 
@@ -55,7 +56,7 @@ void bl_memory_copy(uint32_t *dst, uint32_t *src, uint32_t *end) {
   }
 }
 
-volatile void ssbl(void) {
+void ssbl(void) {
   bl_memory_copy(_text, _text_load, _etext);
   bl_memory_copy(_data, _data_load, _edata);
   bl_memory_copy(_data_extra, _data_extra_load, _edata_extra);
