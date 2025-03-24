@@ -46,7 +46,7 @@ static const char mainargs[] = MAINARGS;
 
 void _trm_init(void);
 
-void _bl_ss_load_align4(uint32_t *dst, uint32_t *src, uint32_t *end) {
+void bl_memory_copy(uint32_t *dst, uint32_t *src, uint32_t *end) {
   uint32_t size = end - dst;
   uint32_t i;
   
@@ -56,9 +56,9 @@ void _bl_ss_load_align4(uint32_t *dst, uint32_t *src, uint32_t *end) {
 }
 
 void ssbl(void) {
-  _bl_ss_load_align4(_text, _text_load, _etext);
-  _bl_ss_load_align4(_data, _data_load, _edata);
-  _bl_ss_load_align4(_data_extra, _data_extra_load, _edata_extra);
+  bl_memory_copy(_text, _text_load, _etext);
+  bl_memory_copy(_data, _data_load, _edata);
+  bl_memory_copy(_data_extra, _data_extra_load, _edata_extra);
 
   uint32_t *dst = _bss_start;
   uint32_t size = _ebss - _bss_start;
@@ -72,7 +72,7 @@ void ssbl(void) {
 }
 
 void fsbl(void) {
-  _bl_ss_load_align4(_bl_s, _bl_s_load, _ebl_s);
+  bl_memory_copy(_bl_s, _bl_s_load, _ebl_s);
   ssbl();
 }
 
