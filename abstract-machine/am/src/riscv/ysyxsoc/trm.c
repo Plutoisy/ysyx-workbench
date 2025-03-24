@@ -14,12 +14,11 @@
 
 extern char _heap_start;
 extern char _psram_end;
-extern char *_bl_s, *_bl_s_load, *_ebl_s;
-extern char *_text, *_text_load, *_etext;
-extern char *_data, *_data_load, *_edata;
-extern char *_data_extra, *_data_extra_load, *_edata_extra;
-extern char *_bss_start, *_ebss;
-extern char *_stack_pointer;
+extern char _bl_s, _bl_s_load, _ebl_s;
+extern char _text, _text_load, _etext;
+extern char _data, _data_load, _edata;
+extern char _data_extra, _data_extra_load, _edata_extra;
+extern char _bss_start, _ebss;
 
 int main(const char *args);
 
@@ -66,23 +65,19 @@ void print_csr() {
 }
 
 void fsbl() {
-  printf("debugfsbl\n");
-  memcpy(_bl_s, _bl_s_load, (_ebl_s - _bl_s) * sizeof(uint32_t));
+  memcpy(&_bl_s, &_bl_s_load, (&_ebl_s - &_bl_s));
 }
 
 void ssbl() {
-  printf("debugssbl\n");
-  memcpy(_text, _text_load, (_etext - _text) * sizeof(uint32_t));
-  memcpy(_data, _data_load, (_edata - _data) * sizeof(uint32_t));
-  memcpy(_data_extra, _data_extra_load, (_edata_extra - _data_extra) * sizeof(uint32_t));
-  memset(_bss_start, 0, (_ebss - _bss_start) * sizeof(uint32_t));
+  memcpy(&_text, &_text_load, (&_etext - &_text));
+  memcpy(&_data, &_data_load, (&_edata - &_data));
+  memcpy(&_data_extra, &_data_extra_load, (&_edata_extra - &_data_extra));
+  memset(&_bss_start, 0, (&_ebss - &_bss_start));
 }
 
 void _trm_init() {
-  printf("debug\n");
   fsbl();
   ssbl();
-  printf("debuguart\n");
   uart_init();
   print_csr();
   int ret = main(mainargs);
