@@ -55,7 +55,7 @@ void bl_memory_copy(uint32_t *dst, uint32_t *src, uint32_t *end) {
   }
 }
 
-void ssbl(void) {
+volatile void ssbl(void) {
   bl_memory_copy(_text, _text_load, _etext);
   bl_memory_copy(_data, _data_load, _edata);
   bl_memory_copy(_data_extra, _data_extra_load, _edata_extra);
