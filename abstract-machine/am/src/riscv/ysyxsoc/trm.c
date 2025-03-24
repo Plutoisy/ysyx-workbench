@@ -66,10 +66,12 @@ void print_csr() {
 }
 
 void fsbl() {
+  printf("debugfsbl\n");
   memcpy(_bl_s, _bl_s_load, (_ebl_s - _bl_s) * sizeof(uint32_t));
 }
 
 void ssbl() {
+  printf("debugssbl\n");
   memcpy(_text, _text_load, (_etext - _text) * sizeof(uint32_t));
   memcpy(_data, _data_load, (_edata - _data) * sizeof(uint32_t));
   memcpy(_data_extra, _data_extra_load, (_edata_extra - _data_extra) * sizeof(uint32_t));
@@ -79,6 +81,7 @@ void ssbl() {
 void _trm_init() {
   fsbl();
   ssbl();
+  printf("debuguart\n");
   uart_init();
   print_csr();
   int ret = main(mainargs);
