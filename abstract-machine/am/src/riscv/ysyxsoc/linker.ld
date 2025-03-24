@@ -25,7 +25,7 @@ SECTIONS {
     *(.text.putch)
     . = ALIGN(4);
     _ssbl_ram_end = .;
-  } > psram AT> flash
+  } > flash
 
   _test_origin = LOADADDR(.text);
   .text : {
