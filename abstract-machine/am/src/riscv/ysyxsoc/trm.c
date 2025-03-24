@@ -49,16 +49,7 @@ void _bl_ss_load_align4(uint32_t *dst, uint32_t *src, uint32_t *end);
 void ssbl(void);
 
 void fsbl(void) {
-  uint32_t *dst = _bl_s;
-  uint32_t *src = _bl_s_load;
-  uint32_t *end = _ebl_s;
-  uint32_t size = end - dst;
-  uint32_t i;
-  
-  for (i = 0; i < size; i++) {
-      dst[i] = src[i];
-  }
-
+  _bl_ss_load_align4(_bl_s, _bl_s_load, _ebl_s);
   ssbl();
 }
 
