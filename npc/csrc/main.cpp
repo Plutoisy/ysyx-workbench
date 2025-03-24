@@ -252,10 +252,12 @@ void system_rst(){
   step_and_dump_wave();
   top->clock = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  step_and_dump_wave();
-  top->clock = 0;
-  step_and_dump_wave();
+  for(int i = 0; i < 20; i++){
+	top->clock = 1;
+	step_and_dump_wave();
+	top->clock = 0;
+	step_and_dump_wave();
+  }
   top->reset = 0;
 }
 
