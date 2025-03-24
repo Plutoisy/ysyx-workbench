@@ -5,6 +5,7 @@ MEMORY {
   mrom  (r x) : ORIGIN = 0x20000000, LENGTH = 4K
   flash (rwx) : ORIGIN = 0x30000000, LENGTH = 16M
   psram (rwx) : ORIGIN = 0x80000000, LENGTH = 4M
+  sdram (rwx) : ORIGIN = 0xa0000000, LENGTH = 32M
 }
 
 SECTIONS {
@@ -16,6 +17,8 @@ SECTIONS {
   _flash_end = _flash_start + LENGTH(flash);
   _psram_start = ORIGIN(psram);
   _psram_end = _psram_start + LENGTH(psram);
+  _sdram_start = ORIGIN(sdram);
+  _sdram_end = _sdram_start + LENGTH(sdram);
 
   . = _flash_start;
 
@@ -47,7 +50,7 @@ SECTIONS {
     . = ALIGN(4);
     PROVIDE(etext = .);
     _etext = .;
-  } > psram AT> flash
+  } > sdram AT> flash
   _text_load = LOADADDR(.text);
   _etext_load = _text_load + SIZEOF(.text);
 
@@ -65,7 +68,7 @@ SECTIONS {
     . = ALIGN(4);
     PROVIDE(edata = .);
     _edata = .;
-  } > psram AT> flash
+  } > sdram AT> flash
   _data_load = LOADADDR(.data);
   _edata_load = _data_load + SIZEOF(.data);
 
@@ -83,7 +86,7 @@ SECTIONS {
 
     . = ALIGN(4);
     _ebss = .;
-  } > psram
+  } > sdram
 
   _bss_extra_start = DEFINED(_bss_extra_start) ? _bss_extra_start : 0;
   _ebss_extra = DEFINED(_ebss_extra) ? _ebss_extra : 0;
