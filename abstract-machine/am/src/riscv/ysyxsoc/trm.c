@@ -53,18 +53,20 @@ void bl_memory_copy(uint32_t *dst, uint32_t *src, uint32_t *end) {
   }
 }
 
-void ssbl(void) {
-  bl_memory_copy(_text, _text_load, _etext);
-  bl_memory_copy(_data, _data_load, _edata);
-  bl_memory_copy(_data_extra, _data_extra_load, _edata_extra);
-
-  uint32_t *dst = _bss_start;
-  uint32_t size = _ebss - _bss_start;
+void bl_memory_set(uint32_t *dst, uint32_t value, uint32_t size) {
   uint32_t i;
 
   for (i = 0; i < size; i++) {
       dst[i] = 0;
   }
+}
+
+void ssbl(void) {
+  bl_memory_copy(_text, _text_load, _etext);
+  bl_memory_copy(_data, _data_load, _edata);
+  bl_memory_copy(_data_extra, _data_extra_load, _edata_extra);
+
+  bl_memory_set(_bss_start, 0, _ebss - _bss_start);
 
   _trm_init();
 }

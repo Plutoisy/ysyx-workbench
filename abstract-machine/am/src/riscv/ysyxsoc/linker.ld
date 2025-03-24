@@ -31,7 +31,8 @@ SECTIONS {
     *(.bl.s*)
     *(.text.ssbl)
     *(.text.bl_memory_copy)
-
+    *(.text.bl_memory_set)
+    
     . = ALIGN(4);
     _ebl_s = .;
   } > sram AT> flash
