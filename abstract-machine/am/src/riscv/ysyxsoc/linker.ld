@@ -1,11 +1,11 @@
 ENTRY(_start)
 
-/* MEMORY {
+MEMORY {
   sram  (rwx) : ORIGIN = 0x0f000000, LENGTH = 8K
   mrom  (r x) : ORIGIN = 0x20000000, LENGTH = 4K
   flash (rwx) : ORIGIN = 0x30000000, LENGTH = 16M
   psram (rwx) : ORIGIN = 0x80000000, LENGTH = 4M
-} */
+}
 
 SECTIONS {
   _sram_start = ORIGIN(sram);
