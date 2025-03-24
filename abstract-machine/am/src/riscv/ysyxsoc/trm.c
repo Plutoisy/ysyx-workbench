@@ -63,33 +63,35 @@ void print_csr() {
     (char)mvendorid);
   printf("marchid   = %d\n", marchid);
 }
-#pragma GCC push_options
-#pragma GCC optimize ("O0")
-void _bl_ss_load_align4(char *dest, char *src, char *dest_end) {
-  // 计算大小
-  unsigned int size = (unsigned int)(dest_end - dest);
-  
-  // 如果大小为0，直接返回
-  if (size == 0) {
-      return;
-  }
-  
-  // 以4字节为单位复制内存
-  for (unsigned int i = 0; i < size; i += 4) {
-      // 在C中，我们不能像汇编那样直接操作4字节，所以使用指针转换
-      *((unsigned int*)(dest + i)) = *((unsigned int*)(src + i));
-  }
-}
 
 void ssbl() {
+  char *dest;
+  char *src;
+  unsigned int size;
   // 复制.text段
-  _bl_ss_load_align4(_text, _text_load, _etext);
+  dest = _text;
+  src = _text_load;
+  size = (unsigned int)(_etext - _text);
+  
+  for (unsigned int i = 0; i < size; i += 4) {
+      *((unsigned int*)(dest + i)) = *((unsigned int*)(src + i));
+  }
     
   // 复制.data段
-  _bl_ss_load_align4(_data, _data_load, _edata);
+  dest = _data;
+  src = _data_load;
+  size = (unsigned int)(_edata - _data);
+  for (unsigned int i = 0; i < size; i += 4) {
+    *((unsigned int*)(dest + i)) = *((unsigned int*)(src + i));
+  }
   
   // 复制额外数据段
-  _bl_ss_load_align4(_data_extra, _data_extra_load, _edata_extra);
+  dest = _data_extra;
+  src = _data_extra_load;
+  size = (unsigned int)(_edata_extra - _data_extra);
+  for (unsigned int i = 0; i < size; i += 4) {
+    *((unsigned int*)(dest + i)) = *((unsigned int*)(src + i));
+  }
   
   // 初始化.bss段(清零)
   unsigned int bss_size = (unsigned int)(_ebss - _bss_start);
@@ -102,7 +104,6 @@ void ssbl() {
   int ret = main(mainargs);
   halt(ret);
 }
-#pragma GCC pop_options
 
 void fsbl() {
   char *dest = _bl_s;
