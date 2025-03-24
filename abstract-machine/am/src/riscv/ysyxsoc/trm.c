@@ -112,8 +112,8 @@ void fsbl(){
 
 void _trm_init() {
   //memcpy(&_data_vma_start,&_data_lma_start,&_bss_start-&_data_vma_start);
-  fsbl();
-  ssbl();
+  //fsbl();
+  //ssbl();
   //bss_init();
   uart_init();
   print_csr();
