@@ -52,6 +52,7 @@ void uart_init(){
   outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
   outb(UART_REG_DL1, divisor & 0xFF);
   outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+  return;
 }
 
 void print_csr(){
@@ -64,6 +65,7 @@ void print_csr(){
     (char)(mvendorid >> 8),
     (char)mvendorid);
   printf("marchid   = %d\n", marchid);
+  return;
 }
 
 void _bl_ss_load_align4(char *dest, char *src, char *dest_end) {
@@ -80,6 +82,7 @@ void _bl_ss_load_align4(char *dest, char *src, char *dest_end) {
       // 在C中，我们不能像汇编那样直接操作4字节，所以使用指针转换
       *((unsigned int*)(dest + i)) = *((unsigned int*)(src + i));
   }
+  return;
 }
 
 void ssbl(){
@@ -93,6 +96,7 @@ void ssbl(){
   for (unsigned int i = 0; i < bss_size; i += 4) {
       *((unsigned int*)(_bss_start + i)) = 0;
   }
+  return;
 }
 
 void fsbl(){
@@ -103,6 +107,7 @@ void fsbl(){
   for (unsigned int i = 0; i < size; i += 4) {
       *((unsigned int*)(dest + i)) = *((unsigned int*)(src + i));
   }
+  return;
 }
 
 void _trm_init() {
