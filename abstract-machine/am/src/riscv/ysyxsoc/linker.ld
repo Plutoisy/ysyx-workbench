@@ -18,7 +18,7 @@ SECTIONS {
   _psram_start = ORIGIN(psram);
   _psram_end = _psram_start + LENGTH(psram);
   _sdram_start = ORIGIN(sdram);
-  _sdram_end = _sdram_start + LENGTH(sdram);
+  _sdram_end = _sdram_start + LENGTH(psram);
 
   . = _flash_start;
 
