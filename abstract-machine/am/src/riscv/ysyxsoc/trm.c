@@ -25,8 +25,67 @@ Area heap = RANGE(&_heap_start, &_psram_end);
 #ifndef MAINARGS
 #define MAINARGS ""
 #endif
+
 static const char mainargs[] = MAINARGS;
 
+extern uint32_t _bl_s[];
+extern uint32_t _bl_s_load[];
+extern uint32_t _ebl_s[];
+extern uint32_t _text[];
+extern uint32_t _text_load[];
+extern uint32_t _etext[];
+extern uint32_t _data[];
+extern uint32_t _data_load[];
+extern uint32_t _edata[];
+extern uint32_t _data_extra[];
+extern uint32_t _data_extra_load[];
+extern uint32_t _edata_extra[];
+extern uint32_t _bss_start[];
+extern uint32_t _ebss[];
+extern uint32_t _stack_pointer;
+
+void _trm_init(void);
+void _bl_ss_load_align4(uint32_t *dst, uint32_t *src, uint32_t *end);
+void _do_bl_ss(void);
+
+void _do_bl_fs(void) {
+  uint32_t *dst = _bl_s;
+  uint32_t *src = _bl_s_load;
+  uint32_t *end = _ebl_s;
+  uint32_t size = end - dst;
+  uint32_t i;
+  
+  for (i = 0; i < size; i++) {
+      dst[i] = src[i];
+  }
+
+  _do_bl_ss();
+}
+
+void _do_bl_ss(void) {
+    _bl_ss_load_align4(_text, _text_load, _etext);
+    _bl_ss_load_align4(_data, _data_load, _edata);
+    _bl_ss_load_align4(_data_extra, _data_extra_load, _edata_extra);
+
+    uint32_t *dst = _bss_start;
+    uint32_t size = _ebss - _bss_start;
+    uint32_t i;
+
+    for (i = 0; i < size; i++) {
+        dst[i] = 0;
+    }
+
+    _trm_init();
+}
+
+void _bl_ss_load_align4(uint32_t *dst, uint32_t *src, uint32_t *end) {
+    uint32_t size = end - dst;
+    uint32_t i;
+    
+    for (i = 0; i < size; i++) {
+        dst[i] = src[i];
+    }
+}
 
 void putch(char ch) {
   while (!(inb(UART_REG_LSR) & 0x20)) {
