@@ -47,17 +47,15 @@ void halt(int code) {
   while (1);
 }
 
-void _trm_init() {
-  //memcpy(&_data_vma_start,&_data_lma_start,&_bss_start-&_data_vma_start);
-  //fsbl();
-  //ssbl();
-  //bss_init();
+void uart_init() {
   int divisor = 1;
   outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
   outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
   outb(UART_REG_DL1, divisor & 0xFF);
   outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+}
 
+void print_csr() {
   uint32_t mvendorid, marchid;
   asm volatile ("csrr %0, mvendorid" : "=r" (mvendorid): : );
   asm volatile ("csrr %0, marchid" : "=r" (marchid) : : );
@@ -67,7 +65,11 @@ void _trm_init() {
     (char)(mvendorid >> 8),
     (char)mvendorid);
   printf("marchid   = %d\n", marchid);
+}
 
+void _trm_init() {
+  uart_init();
+  print_csr();
   int ret = main(mainargs);
   halt(ret);
 }
