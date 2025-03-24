@@ -63,7 +63,8 @@ void print_csr() {
     (char)mvendorid);
   printf("marchid   = %d\n", marchid);
 }
-
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
 void _bl_ss_load_align4(char *dest, char *src, char *dest_end) {
   // 计算大小
   unsigned int size = (unsigned int)(dest_end - dest);
@@ -101,6 +102,7 @@ void ssbl() {
   int ret = main(mainargs);
   halt(ret);
 }
+#pragma GCC pop_options
 
 void fsbl() {
   char *dest = _bl_s;
