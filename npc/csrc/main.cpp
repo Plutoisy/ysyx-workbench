@@ -12,10 +12,12 @@
 
 #define PMEM_SIZE    0x8000000
 #define FLASH_SIZE    0x10000000
+#define PSRAM_SIZE    0x20000000
 #define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
+#define CONFIG_PSRAMBASE 0x80000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 #define LOAD_IMG_TO_FLASH 0
 #define START_FROM_MROM 0
@@ -59,6 +61,23 @@ uint8_t pmem[PMEM_SIZE] = {
 };
 
 uint8_t flash[FLASH_SIZE] = {
+  0x13,0x04,0x00,0x00,
+  0x17,0x91,0x00,0x00,
+  0x13,0x01,0xc1,0xff,
+  0xef,0x00,0xc0,0x00,
+  0x13,0x05,0x00,0x00,
+  0x67,0x80,0x00,0x00,
+  0x13,0x01,0x41,0xff,
+  0x17,0x05,0x00,0x00,
+  0x13,0x05,0xc5,0x01,
+  0x23,0x24,0x11,0x00,
+  0xef,0xf0,0x9f,0xfe,
+  0x13,0x05,0x05,0x00,
+  0x73,0x00,0x10,0x00,
+  0x6f,0x00,0x00,0x00,  
+};
+
+uint8_t psram[PSRAM_SIZE] = {
   0x13,0x04,0x00,0x00,
   0x17,0x91,0x00,0x00,
   0x13,0x01,0xc1,0xff,
@@ -233,16 +252,19 @@ void system_rst(){
   step_and_dump_wave();
   top->clock = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  step_and_dump_wave();
-  top->clock = 0;
-  step_and_dump_wave();
+  for(int i = 0; i < 20; i++){
+	top->clock = 1;
+	step_and_dump_wave();
+	top->clock = 0;
+	step_and_dump_wave();
+  }
   top->reset = 0;
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
 uint8_t* guest_to_host_soc(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE_SOC; }
 uint8_t* guest_to_host_flash(uint32_t paddr) { return flash + paddr - CONFIG_FLASHBASE; }
+uint8_t* guest_to_host_psram(uint32_t paddr) { return psram + paddr - CONFIG_PSRAMBASE; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
@@ -290,6 +312,32 @@ void isa_reg_display() {
   for (int i = 0; i < 32; i++){
     printf("%-3s     %-10u  0x%08x\n", regs[i], gpr[i], gpr[i]);
   }
+}
+
+extern "C" void psram_read(uint32_t addr, uint32_t *data) {
+	if(addr >= 0 && addr <= PSRAM_SIZE){
+		*data = host_read(psram+addr,4);
+    if(M_R_TRACE){
+      printf("psramR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, *data);
+    }
+	}else{
+    if(M_R_ASSERT){
+      assert(0);
+    }
+	}
+}
+extern "C" void psram_write(uint32_t addr, uint32_t data,uint32_t mask) {
+	if(addr >= 0 && addr <= PSRAM_SIZE){
+		uint32_t wdata = data >> ((8-mask)*4);
+		host_write(psram+addr,mask/2,wdata);
+    if(M_R_TRACE){
+      printf("psramW->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, data);
+    }
+	}else{
+		if(M_W_ASSERT){
+      assert(0);
+    }
+	}
 }
 
 extern "C" void flash_read(int32_t addr, int32_t *data) { 

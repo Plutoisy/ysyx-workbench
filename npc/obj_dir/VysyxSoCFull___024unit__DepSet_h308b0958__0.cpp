@@ -54,32 +54,6 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_get_pc_inst_TOP____024un
     get_pc_inst(pc__Vcvt, dnpc__Vcvt, inst__Vcvt, IFU_valid_int__Vcvt);
 }
 
-extern "C" void rtl_pmem_write(int w_mem_addr, int w_mem_data, char w_mem_len);
-
-VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(IData/*31:0*/ w_mem_addr, IData/*31:0*/ w_mem_data, CData/*7:0*/ w_mem_len) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit\n"); );
-    // Body
-    int w_mem_addr__Vcvt;
-    for (size_t w_mem_addr__Vidx = 0; w_mem_addr__Vidx < 1; ++w_mem_addr__Vidx) w_mem_addr__Vcvt = w_mem_addr;
-    int w_mem_data__Vcvt;
-    for (size_t w_mem_data__Vidx = 0; w_mem_data__Vidx < 1; ++w_mem_data__Vidx) w_mem_data__Vcvt = w_mem_data;
-    char w_mem_len__Vcvt;
-    for (size_t w_mem_len__Vidx = 0; w_mem_len__Vidx < 1; ++w_mem_len__Vidx) w_mem_len__Vcvt = w_mem_len;
-    rtl_pmem_write(w_mem_addr__Vcvt, w_mem_data__Vcvt, w_mem_len__Vcvt);
-}
-
-extern "C" int rtl_pmem_read(int r_mem_addr);
-
-VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit(IData/*31:0*/ r_mem_addr, IData/*31:0*/ &rtl_pmem_read__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_rtl_pmem_read_TOP____024unit\n"); );
-    // Body
-    int r_mem_addr__Vcvt;
-    for (size_t r_mem_addr__Vidx = 0; r_mem_addr__Vidx < 1; ++r_mem_addr__Vidx) r_mem_addr__Vcvt = r_mem_addr;
-    int rtl_pmem_read__Vfuncrtn__Vcvt;
-    rtl_pmem_read__Vfuncrtn__Vcvt = rtl_pmem_read(r_mem_addr__Vcvt);
-    rtl_pmem_read__Vfuncrtn = rtl_pmem_read__Vfuncrtn__Vcvt;
-}
-
 extern "C" void flash_read(int addr, int* data);
 
 VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_flash_read_TOP____024unit(IData/*31:0*/ addr, IData/*31:0*/ &data) {

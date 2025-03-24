@@ -16,6 +16,9 @@ reg [31:0] mepc;
 reg [31:0] mstatus;
 reg [31:0] mcause;
 reg [31:0] mtvec; 
+reg [31:0] mvendorid;
+reg [31:0] marchid;
+
 always@(*)begin
     if(r_csr_en)begin
         case(r_csr_addr)
@@ -23,6 +26,8 @@ always@(*)begin
             12'h300: r_csr_data = mstatus;
             12'h342: r_csr_data = mcause;
             12'h305: r_csr_data = mtvec;
+            12'hf11: r_csr_data = mvendorid;
+            12'hf12: r_csr_data = marchid;
             default: begin
                 r_csr_data   =  32'b0;
             end
@@ -35,10 +40,12 @@ end
 
 always@(posedge clk)begin
     if(rst)begin
-        mepc     <= 32'h0000_0000;
-        mstatus  <= 32'h0000_0000;
-        mcause   <= 32'h0000_0000;
-        mtvec    <= 32'h0000_0000;
+        mepc         <= 32'h0000_0000;
+        mstatus      <= 32'h0000_0000;
+        mcause       <= 32'h0000_0000;
+        mtvec        <= 32'h0000_0000;
+        mvendorid    <= 32'h7973_7978;
+        marchid      <= 32'h0170_0ACB;
     end
     else begin
         if(w_csr_en)begin
@@ -48,10 +55,12 @@ always@(posedge clk)begin
                 12'h342: mcause   <= w_csr_data;
                 12'h305: mtvec    <= w_csr_data;
                 default: begin
-                    mepc     <=  mepc;     
-                    mstatus  <=  mstatus;  
-                    mcause   <=  mcause;   
-                    mtvec    <=  mtvec;    
+                    mepc      <=  mepc;     
+                    mstatus   <=  mstatus;  
+                    mcause    <=  mcause;   
+                    mtvec     <=  mtvec;  
+                    mvendorid <= mvendorid;
+                    marchid   <= marchid;
                 end
             endcase
         end
