@@ -29,7 +29,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
-#define WAVE 1
+#define WAVE 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -406,7 +406,7 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
     printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   }
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    if (w_mem_addr == 0xa00003f8) { 
+    if (w_mem_addr == 0x000003f8) { 
       //putchar((char)(w_mem_data & 0xFF)); 
       if(M_W_ASSERT){
         assert(0);
