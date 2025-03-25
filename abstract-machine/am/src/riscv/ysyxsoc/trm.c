@@ -14,6 +14,7 @@
 
 extern char _heap_start;
 extern char _psram_end;
+extern char _sdram_end;
 extern uint32_t _bl_s[];
 extern uint32_t _bl_s_load[];
 extern uint32_t _ebl_s[];
@@ -35,7 +36,7 @@ extern char _sram_start;
 #define SRAM_SIZE (8 * 1024)
 #define SRAM_END ((uintptr_t)&_sram_start + SRAM_SIZE)
 
-Area heap = RANGE(&_heap_start, &_psram_end);
+Area heap = RANGE(&_heap_start, &_sdram_end);
 #ifndef MAINARGS
 #define MAINARGS ""
 #endif

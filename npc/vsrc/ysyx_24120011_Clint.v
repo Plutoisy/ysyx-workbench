@@ -113,10 +113,10 @@ module ysyx_24120011_Clint (
             //rvalid_reg <= 0;
         end
         else if(state == ysyx_24120011_S_AXI_RDATA && read_delay_cnt == 0 && pmem_readed == 0)begin
-            if(addr == 32'ha0000048) begin
+            if(addr == 32'h02000048) begin
                 rdata_reg <= mtime[31:0];
             end
-            else if(addr == 32'ha000004c) begin
+            else if(addr == 32'h0200004c) begin
                 rdata_reg <= mtime[63:32];
             end
             else begin

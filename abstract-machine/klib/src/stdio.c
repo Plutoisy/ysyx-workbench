@@ -67,6 +67,14 @@ int printf(const char *fmt, ...) {
                 putch(c);
                 count++;
             }
+            else if(*p == 'x'){
+                uint8_t x = (uint8_t)va_arg(args, int);
+                putch('0');
+                putch('x');
+                putch((x >> 4) < 10 ? (x >> 4) + '0' : (x >> 4) - 10 + 'a');
+                putch((x & 0x0F) < 10 ? (x & 0x0F) + '0' : (x & 0x0F) - 10 + 'a');
+                count++;
+            }
             else if(*p == 's'){
                 char *s = va_arg(args, char *);
                 while (*s) {
