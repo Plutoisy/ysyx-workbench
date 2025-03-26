@@ -673,6 +673,7 @@ void sdb_mainloop() {
 
 
 int main(int argc, char *argv[]) {
+  sim_init();
   if(NVBOARD){
     nvboard_bind_all_pins(&dut);
     nvboard_init();
@@ -706,7 +707,7 @@ int main(int argc, char *argv[]) {
     void* dut;
     difftest_regcpy(dut, 1);
   }
-  sim_init();
+  
   system_rst();
   if(BMODE){
     cmd_si("-1");
