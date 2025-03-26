@@ -670,7 +670,7 @@ void sdb_mainloop() {
 
 int main(int argc, char *argv[]) {
   if(NVBOARD){
-    nvboard_bind_all_pins(*top);
+    nvboard_bind_all_pins(top);
     nvboard_init();
   }
   Verilated::commandArgs(argc, argv);
