@@ -90,7 +90,7 @@ void halt(int code) {
 }
 
 void uart_init() {
-  uint16_t divisor =  1000000000/(16 * 115200);
+  uint16_t divisor =  500000000/(16 * 115200);
   outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
   outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
   outb(UART_REG_DL1, divisor & 0xFF);
