@@ -35,6 +35,7 @@
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
+static VysyxSoCFull* top;
 static VysyxSoCFull dut;
 void nvboard_bind_all_pins(VysyxSoCFull* top);
 
@@ -241,7 +242,7 @@ void step_and_dump_wave(){
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  &dut = new VysyxSoCFull;
+  // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
   tfp->open("dump.vcd");
