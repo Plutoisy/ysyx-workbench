@@ -31,7 +31,7 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WAVE 0
-#define NVBOARD 1
+#define NVBOARD 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
