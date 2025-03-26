@@ -9,6 +9,7 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
+#include <nvboard.h>
 
 #define PMEM_SIZE    0x8000000
 #define FLASH_SIZE    0x10000000
@@ -30,10 +31,12 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WAVE 0
+#define NVBOARD 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static VysyxSoCFull* top;
+void nvboard_bind_all_pins(VysyxSoCFull* top);
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
@@ -222,6 +225,9 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 }
 
 void step_and_dump_wave(){
+  if(NVBOARD){
+    nvboard_update();
+  }
   top->eval();
   if(WAVE){
     contextp->timeInc(1);
@@ -663,6 +669,10 @@ void sdb_mainloop() {
 
 
 int main(int argc, char *argv[]) {
+  if(NVBOARD){
+    nvboard_bind_all_pins(top);
+    nvboard_init();
+  }
   Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
