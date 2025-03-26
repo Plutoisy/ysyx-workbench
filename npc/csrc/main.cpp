@@ -244,7 +244,7 @@ void sim_init(){
   tfp = new VerilatedVcdC;
   top = new VysyxSoCFull;
   contextp->traceEverOn(true);
-  dut.trace(tfp, 99);
+  top->trace(tfp, 99);
   tfp->open("dump.vcd");
 }
 
