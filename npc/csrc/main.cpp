@@ -35,8 +35,12 @@
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-VysyxSoCFull* top;
+static VysyxSoCFull* top;
+static VysyxSoCFull dut;
 void nvboard_bind_all_pins(VysyxSoCFull* top);
+
+
+
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
@@ -670,49 +674,49 @@ void sdb_mainloop() {
 
 int main(int argc, char *argv[]) {
   if(NVBOARD){
-    nvboard_bind_all_pins(top);
+    nvboard_bind_all_pins(&dut);
     nvboard_init();
   }
-  Verilated::commandArgs(argc, argv);
-  /* Parse arguments. */
-  parse_args(argc, argv);
-  //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
+  // Verilated::commandArgs(argc, argv);
+  // /* Parse arguments. */
+  // parse_args(argc, argv);
+  // //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
 
-  // 示例 RISC-V 指令
-  //uint32_t instruction = 0x00000013; // NOP 指令
+  // // 示例 RISC-V 指令
+  // //uint32_t instruction = 0x00000013; // NOP 指令
   
-  if (!capstone_init(&handle)) {
-      return -1;
-  }
+  // if (!capstone_init(&handle)) {
+  //     return -1;
+  // }
 
-  // AssembleDecoder(handle, instruction);
+  // // AssembleDecoder(handle, instruction);
   
-  if(START_FROM_MROM){
-    load_img_mrom();
-  }
-  else{
-    load_img_flash();
-  }
+  // if(START_FROM_MROM){
+  //   load_img_mrom();
+  // }
+  // else{
+  //   load_img_flash();
+  // }
   
-  if(LOAD_IMG_TO_FLASH){
-    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
-  }
-  if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
-    void* dut;
-    difftest_regcpy(dut, 1);
-  }
-  sim_init();
-  system_rst();
-  if(BMODE){
-    cmd_si("-1");
-    cmd_q(NULL);
-  }
-  else{
-    sdb_mainloop();
-  }
-  cs_close(&handle);
-  sim_exit();
+  // if(LOAD_IMG_TO_FLASH){
+  //   load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+  // }
+  // if(DIFFTESE){
+  //   difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
+  //   void* dut;
+  //   difftest_regcpy(dut, 1);
+  // }
+  // sim_init();
+  // system_rst();
+  // if(BMODE){
+  //   cmd_si("-1");
+  //   cmd_q(NULL);
+  // }
+  // else{
+  //   sdb_mainloop();
+  // }
+  // cs_close(&handle);
+  // sim_exit();
   return 0;
 }
 
