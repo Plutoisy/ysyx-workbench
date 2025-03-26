@@ -241,9 +241,9 @@ void step_and_dump_wave(){
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  top = new VysyxSoCFull;
+  &dut = new VysyxSoCFull;
   contextp->traceEverOn(true);
-  top->trace(tfp, 99);
+  dut.trace(tfp, 99);
   tfp->open("dump.vcd");
 }
 
