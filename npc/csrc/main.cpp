@@ -232,7 +232,7 @@ void step_and_dump_wave(){
   if(NVBOARD){
     nvboard_update();
   }
-  top->eval();
+  dut.eval();
   if(WAVE){
     contextp->timeInc(1);
     tfp->dump(contextp->time());
@@ -244,7 +244,7 @@ void sim_init(){
   tfp = new VerilatedVcdC;
   top = new VysyxSoCFull;
   contextp->traceEverOn(true);
-  top->trace(tfp, 99);
+  dut.trace(tfp, 99);
   tfp->open("dump.vcd");
 }
 
@@ -254,21 +254,21 @@ void sim_exit(){
 }
 
 void system_rst(){
-  top->clock = 0;
-  top->reset = 0;
+  dut.clock = 0;
+  dut.reset = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  top->reset = 1;
+  dut.clock = 1;
+  dut.reset = 1;
   step_and_dump_wave();
-  top->clock = 0;
+  dut.clock = 0;
   step_and_dump_wave();
   for(int i = 0; i < 20; i++){
-	top->clock = 1;
+	dut.clock = 1;
 	step_and_dump_wave();
-	top->clock = 0;
+	dut.clock = 0;
 	step_and_dump_wave();
   }
-  top->reset = 0;
+  dut.reset = 0;
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
@@ -498,10 +498,10 @@ CPU_state refstate;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
-      top->clock ^= 1;
-      if (top->clock != 1){
+      dut.clock ^= 1;
+      if (dut.clock != 1){
         step_and_dump_wave();
-        top->clock ^= 1;
+        dut.clock ^= 1;
       }
       //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       //AssembleDecoder(handle, top_inst, top_pc);
@@ -677,46 +677,46 @@ int main(int argc, char *argv[]) {
     nvboard_bind_all_pins(&dut);
     nvboard_init();
   }
-  // Verilated::commandArgs(argc, argv);
-  // /* Parse arguments. */
-  // parse_args(argc, argv);
-  // //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
+  Verilated::commandArgs(argc, argv);
+  /* Parse arguments. */
+  parse_args(argc, argv);
+  //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
 
-  // // 示例 RISC-V 指令
-  // //uint32_t instruction = 0x00000013; // NOP 指令
+  // 示例 RISC-V 指令
+  //uint32_t instruction = 0x00000013; // NOP 指令
   
-  // if (!capstone_init(&handle)) {
-  //     return -1;
-  // }
+  if (!capstone_init(&handle)) {
+      return -1;
+  }
 
-  // // AssembleDecoder(handle, instruction);
+  // AssembleDecoder(handle, instruction);
   
-  // if(START_FROM_MROM){
-  //   load_img_mrom();
-  // }
-  // else{
-  //   load_img_flash();
-  // }
+  if(START_FROM_MROM){
+    load_img_mrom();
+  }
+  else{
+    load_img_flash();
+  }
   
-  // if(LOAD_IMG_TO_FLASH){
-  //   load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
-  // }
-  // if(DIFFTESE){
-  //   difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
-  //   void* dut;
-  //   difftest_regcpy(dut, 1);
-  // }
-  // sim_init();
-  // system_rst();
-  // if(BMODE){
-  //   cmd_si("-1");
-  //   cmd_q(NULL);
-  // }
-  // else{
-  //   sdb_mainloop();
-  // }
-  // cs_close(&handle);
-  // sim_exit();
+  if(LOAD_IMG_TO_FLASH){
+    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+  }
+  if(DIFFTESE){
+    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
+    void* dut;
+    difftest_regcpy(dut, 1);
+  }
+  sim_init();
+  system_rst();
+  if(BMODE){
+    cmd_si("-1");
+    cmd_q(NULL);
+  }
+  else{
+    sdb_mainloop();
+  }
+  cs_close(&handle);
+  sim_exit();
   return 0;
 }
 
