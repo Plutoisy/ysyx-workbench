@@ -47,7 +47,7 @@ sim:$(VSRCS) $(CSRCS)
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)
 
-nvboard:$(VSRCS) $(CSRCS)
+nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \

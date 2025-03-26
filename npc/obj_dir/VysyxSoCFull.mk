@@ -36,20 +36,31 @@ VM_MODPREFIX = VysyxSoCFull
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
 	-I /home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include \
+	-MMD \
+	-O3 \
+	-I/usr/include/SDL2 \
+	-D_REENTRANT \
+	-I/home/plutoisy/ysyx-workbench/nvboard/usr/include \
+	-DTOP_NAME="VysyxSoCFull" \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
+	-lSDL2 \
+	-lSDL2_image \
+	-lSDL2_ttf \
 	-L/home/plutoisy/ysyx-workbench/nemu/build -L/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,/home/plutoisy/ysyx-workbench/nemu/build \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
 	main \
+	auto_bind \
 	main \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
 	. \
 	/home/plutoisy/ysyx-workbench/npc/csrc \
+	/home/plutoisy/ysyx-workbench/ysyxSoC/constr \
 
 
 ### Default rules...
@@ -62,6 +73,8 @@ include $(VERILATOR_ROOT)/include/verilated.mk
 VPATH += $(VM_USER_DIR)
 
 main.o: /home/plutoisy/ysyx-workbench/npc/csrc/main.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+auto_bind.o: /home/plutoisy/ysyx-workbench/ysyxSoC/constr/auto_bind.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 main.o: main.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
