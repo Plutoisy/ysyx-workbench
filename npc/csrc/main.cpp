@@ -29,7 +29,7 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 0
+#define BMODE 1
 #define WAVE 0
 #define NVBOARD 1
 
@@ -670,7 +670,7 @@ void sdb_mainloop() {
 
 int main(int argc, char *argv[]) {
   if(NVBOARD){
-    nvboard_bind_all_pins(top);
+    //nvboard_bind_all_pins(top);
     nvboard_init();
   }
   Verilated::commandArgs(argc, argv);
