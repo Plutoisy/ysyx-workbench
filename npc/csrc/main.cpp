@@ -35,7 +35,6 @@
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-static VysyxSoCFull* top;
 static VysyxSoCFull dut;
 void nvboard_bind_all_pins(VysyxSoCFull* top);
 
