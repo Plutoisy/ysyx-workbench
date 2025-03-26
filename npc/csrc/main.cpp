@@ -35,7 +35,7 @@
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-static VysyxSoCFull* top;
+VysyxSoCFull* top;
 void nvboard_bind_all_pins(VysyxSoCFull* top);
 int trap = 0;
 static char *img_file = NULL;
