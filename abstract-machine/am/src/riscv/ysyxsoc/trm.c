@@ -90,11 +90,12 @@ void halt(int code) {
 }
 
 void uart_init() {
-  uint16_t divisor = 1000;
-  outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
-  outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
-  outb(UART_REG_DL1, divisor & 0xFF);
-  outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+  outb(SERIAL_PORT+3,0x80); //设置LCR i 7th DLAB 为1
+  outb(SERIAL_PORT  ,0x01);
+  outb(SERIAL_PORT+1,0x00);
+  outb(SERIAL_PORT+3,0x03); // 重新设置LCR
+  outb(SERIAL_PORT+2,0x01); // FCR寄存器，
+  outb(SERIAL_PORT+1,0x01); // 使能接收中断
 }
 
 void print_csr() {
