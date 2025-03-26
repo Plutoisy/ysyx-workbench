@@ -29,9 +29,9 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 1
+#define BMODE 0
 #define WAVE 0
-#define NVBOARD 0
+#define NVBOARD 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
