@@ -7,7 +7,7 @@ uint8_t up_recv = 0;
 
 void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
   uint32_t kbd_out = inl(KBD_ADDR) ;
-  if(kbd_out == 0xf0000000){
+  if(kbd_out == 0x000000f0){
     up_recv = 1;
   }
   else {
