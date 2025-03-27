@@ -2425,7 +2425,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBit(c+818,"nextdata_n", false,-1);
     tracep->pushNamePrefix("u_ps2_keyboard ");
     tracep->declBit(c+1213,"clk", false,-1);
-    tracep->declBit(c+1214,"clrn", false,-1);
+    tracep->declBit(c+1247,"clrn", false,-1);
     tracep->declBit(c+1225,"ps2_clk", false,-1);
     tracep->declBit(c+1226,"ps2_data", false,-1);
     tracep->declBit(c+818,"nextdata_n", false,-1);
@@ -2500,7 +2500,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1236,"din", false,-1, 3,0);
     tracep->declBus(c+335,"dout", false,-1, 3,0);
     tracep->declBus(c+336,"douten", false,-1, 3,0);
-    tracep->declBit(c+1247,"ack", false,-1);
+    tracep->declBit(c+1248,"ack", false,-1);
     tracep->pushNamePrefix("u0 ");
     tracep->declBit(c+1213,"clk_i", false,-1);
     tracep->declBit(c+1214,"rst_i", false,-1);
@@ -2510,7 +2510,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+22,"sel_i", false,-1, 3,0);
     tracep->declBit(c+196,"cyc_i", false,-1);
     tracep->declBit(c+196,"stb_i", false,-1);
-    tracep->declBit(c+1247,"ack_o", false,-1);
+    tracep->declBit(c+1248,"ack_o", false,-1);
     tracep->declBit(c+21,"we_i", false,-1);
     tracep->declBit(c+228,"sck", false,-1);
     tracep->declBit(c+229,"ce_n", false,-1);
@@ -2528,7 +2528,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBit(c+885,"mw_sck", false,-1);
     tracep->declBit(c+886,"mw_ce_n", false,-1);
     tracep->declBus(c+1236,"mw_din", false,-1, 3,0);
-    tracep->declBus(c+1248,"mw_dout", false,-1, 3,0);
+    tracep->declBus(c+1249,"mw_dout", false,-1, 3,0);
     tracep->declBit(c+887,"mw_doe", false,-1);
     tracep->declBit(c+888,"init_start", false,-1);
     tracep->declBit(c+889,"init_done", false,-1);
@@ -2539,7 +2539,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBit(c+337,"mr_rd", false,-1);
     tracep->declBit(c+893,"mr_done", false,-1);
     tracep->declBit(c+338,"mw_wr", false,-1);
-    tracep->declBit(c+1249,"mw_done", false,-1);
+    tracep->declBit(c+1250,"mw_done", false,-1);
     tracep->declBit(c+196,"wb_valid", false,-1);
     tracep->declBit(c+212,"wb_we", false,-1);
     tracep->declBit(c+213,"wb_re", false,-1);
@@ -2553,7 +2553,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+188,"wdata", false,-1, 31,0);
     tracep->pushNamePrefix("INIT ");
     tracep->declBit(c+1213,"clk", false,-1);
-    tracep->declBit(c+1250,"rst_n", false,-1);
+    tracep->declBit(c+1247,"rst_n", false,-1);
     tracep->declBit(c+888,"start", false,-1);
     tracep->declBit(c+889,"done", false,-1);
     tracep->declBit(c+890,"sck", false,-1);
@@ -2565,7 +2565,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("MR ");
     tracep->declBit(c+1213,"clk", false,-1);
-    tracep->declBit(c+1250,"rst_n", false,-1);
+    tracep->declBit(c+1247,"rst_n", false,-1);
     tracep->declBus(c+214,"addr", false,-1, 23,0);
     tracep->declBit(c+337,"rd", false,-1);
     tracep->declBus(c+1357,"size", false,-1, 2,0);
@@ -2591,16 +2591,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("MW ");
     tracep->declBit(c+1213,"clk", false,-1);
-    tracep->declBit(c+1250,"rst_n", false,-1);
+    tracep->declBit(c+1247,"rst_n", false,-1);
     tracep->declBus(c+215,"addr", false,-1, 23,0);
     tracep->declBus(c+188,"line", false,-1, 31,0);
     tracep->declBus(c+114,"size", false,-1, 2,0);
     tracep->declBit(c+338,"wr", false,-1);
-    tracep->declBit(c+1249,"done", false,-1);
+    tracep->declBit(c+1250,"done", false,-1);
     tracep->declBit(c+885,"sck", false,-1);
     tracep->declBit(c+886,"ce_n", false,-1);
     tracep->declBus(c+1236,"din", false,-1, 3,0);
-    tracep->declBus(c+1248,"dout", false,-1, 3,0);
+    tracep->declBus(c+1249,"dout", false,-1, 3,0);
     tracep->declBit(c+887,"douten", false,-1);
     tracep->declBus(c+1377,"IDLE", false,-1, 0,0);
     tracep->declBus(c+1378,"WRITE", false,-1, 0,0);
@@ -6007,12 +6007,12 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_sub_0(VysyxSoCFull___024roo
                                                       : 3U)
                                                      : 0U))
                                               : 0U)))),2);
-    bufp->fullBit(oldp+1247,(((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__wb_we)
+    bufp->fullBit(oldp+1247,((1U & (~ (IData)(vlSelf->reset)))));
+    bufp->fullBit(oldp+1248,(((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__wb_we)
                                ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__mw_done)
                                : (0x16U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__MR__DOT__counter)))));
-    bufp->fullCData(oldp+1248,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__mw_dout),4);
-    bufp->fullBit(oldp+1249,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__mw_done));
-    bufp->fullBit(oldp+1250,((1U & (~ (IData)(vlSelf->reset)))));
+    bufp->fullCData(oldp+1249,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__mw_dout),4);
+    bufp->fullBit(oldp+1250,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__mw_done));
     bufp->fullBit(oldp+1251,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__reg_in_pwrite));
     bufp->fullBit(oldp+1252,(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__reg_we));
     bufp->fullBit(oldp+1253,(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__reg_re));
