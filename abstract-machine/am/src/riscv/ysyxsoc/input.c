@@ -7,7 +7,7 @@
 void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
   uint32_t kbd_out = inl(KBD_ADDR) ;
   if(kbd_out == 0x000000f0){
-    kbd->keydown = false;
+    kbd->keydown = true;
     kbd->keycode = 0x00000011;
   }
   else {
