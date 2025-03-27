@@ -8,7 +8,7 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
 }
 
 void __am_uart_rx(AM_UART_RX_T *rx) {
-  while (!(inb(UART_REG_LSR) & 0x20)) {
+  while (!(inb(UART_REG_LSR) & 0x01)) {
     rx->data = 0xff;
   }
   uint8_t rx_data = inb(SERIAL_PORT);
