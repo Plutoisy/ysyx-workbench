@@ -1,6 +1,7 @@
 #include <am.h>
 #include <riscv/riscv.h>
 #include "soc.h"
+#include <stdio.h>
 
 #define KEYDOWN_MASK 0x0008
 uint8_t up_recv = 0;
@@ -18,6 +19,7 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
     else{
       kbd->keydown = true;
     }
+    printf("%x\n",kbd_out&0xff);
     kbd->keycode = kbd_out;
   }
   
