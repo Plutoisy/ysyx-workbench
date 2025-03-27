@@ -9,6 +9,7 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
+#include <nvboard.h>
 
 #define PMEM_SIZE    0x8000000
 #define FLASH_SIZE    0x10000000
@@ -30,10 +31,15 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WAVE 0
+#define NVBOARD 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-static VysyxSoCFull* top;
+static VysyxSoCFull dut;
+void nvboard_bind_all_pins(VysyxSoCFull* top);
+
+
+
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
@@ -222,7 +228,10 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 }
 
 void step_and_dump_wave(){
-  top->eval();
+  if(NVBOARD){
+    nvboard_update();
+  }
+  dut.eval();
   if(WAVE){
     contextp->timeInc(1);
     tfp->dump(contextp->time());
@@ -232,9 +241,9 @@ void step_and_dump_wave(){
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  top = new VysyxSoCFull;
+  // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
-  top->trace(tfp, 99);
+  dut.trace(tfp, 99);
   tfp->open("dump.vcd");
 }
 
@@ -244,21 +253,21 @@ void sim_exit(){
 }
 
 void system_rst(){
-  top->clock = 0;
-  top->reset = 0;
+  dut.clock = 0;
+  dut.reset = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  top->reset = 1;
+  dut.clock = 1;
+  dut.reset = 1;
   step_and_dump_wave();
-  top->clock = 0;
+  dut.clock = 0;
   step_and_dump_wave();
   for(int i = 0; i < 20; i++){
-	top->clock = 1;
+	dut.clock = 1;
 	step_and_dump_wave();
-	top->clock = 0;
+	dut.clock = 0;
 	step_and_dump_wave();
   }
-  top->reset = 0;
+  dut.reset = 0;
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
@@ -488,10 +497,10 @@ CPU_state refstate;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
-      top->clock ^= 1;
-      if (top->clock != 1){
+      dut.clock ^= 1;
+      if (dut.clock != 1){
         step_and_dump_wave();
-        top->clock ^= 1;
+        dut.clock ^= 1;
       }
       //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       //AssembleDecoder(handle, top_inst, top_pc);
@@ -663,6 +672,12 @@ void sdb_mainloop() {
 
 
 int main(int argc, char *argv[]) {
+  Verilated::traceEverOn(true);
+  sim_init();
+  if(NVBOARD){
+    nvboard_bind_all_pins(&dut);
+    nvboard_init();
+  }
   Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
@@ -692,7 +707,7 @@ int main(int argc, char *argv[]) {
     void* dut;
     difftest_regcpy(dut, 1);
   }
-  sim_init();
+  
   system_rst();
   if(BMODE){
     cmd_si("-1");
