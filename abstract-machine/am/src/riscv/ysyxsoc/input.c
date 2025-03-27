@@ -8,5 +8,11 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
 }
 
 void __am_uart_rx(AM_UART_RX_T *rx) {
-  rx->data = inb(SERIAL_PORT);
+  uint8_t rx_data = inb(SERIAL_PORT);
+  if(rx_data){
+    rx->data = rx_data;
+  }
+  else{
+    rx->data = 0xff;
+  }
 }
