@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define SCANCODE(key, scancode) [scancode] = AM_KEY_##key
-
+//
 static const int LUT[256] = {
     SCANCODE(GRAVE, 0x0E),
     SCANCODE(1, 0x16),
