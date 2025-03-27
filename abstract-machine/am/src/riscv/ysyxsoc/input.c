@@ -6,8 +6,15 @@
 
 void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
   uint32_t kbd_out = inl(KBD_ADDR) ;
-  kbd->keydown = (kbd_out & KEYDOWN_MASK ? true : false);
-  kbd->keycode = kbd_out;
+  if(kbd_out == 0x000000f0){
+    kbd->keydown = false;
+    kbd->keycode = 0x00000011;
+  }
+  else {
+    kbd->keydown = true;
+    kbd->keycode = kbd_out;
+  }
+  
 }
 
 void __am_uart_rx(AM_UART_RX_T *rx) {
