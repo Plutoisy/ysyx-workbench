@@ -77,12 +77,31 @@ static const int LUT[256] = {
     SCANCODE(F12, 0x07),
 };
 
+static const int LUT_EXTEND[256] = {
+    SCANCODE(RALT, 0x11),
+    SCANCODE(RCTRL, 0x14),
+    SCANCODE(DELETE, 0x71),
+    SCANCODE(END, 0x69),
+    SCANCODE(HOME, 0x6C),
+    SCANCODE(INSERT, 0x70),
+    SCANCODE(PAGEDOWN, 0x7A),
+    SCANCODE(PAGEUP, 0x7D),
+    SCANCODE(DOWN, 0x72),
+    SCANCODE(LEFT, 0x6B),
+    SCANCODE(RIGHT, 0x74),
+    SCANCODE(UP, 0x75),
+};
+
 uint8_t up_recv = 0;
+uint8_t extend = 0;
 
 void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
   uint32_t kbd_out = inl(KBD_ADDR) ;
   if(kbd_out == 0x000000f0){
     up_recv = 1;
+  }
+  else if(kbd_out == 0x000000e0){
+    extend = 1;
   }
   else {
     if(up_recv){
@@ -93,7 +112,13 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
       kbd->keydown = true;
     }
     //printf("%x\n",kbd_out&0xff);
-    kbd->keycode = LUT[kbd_out];
+    if(extend){
+      kbd->keycode = LUT_EXTEND[kbd_out];
+      extend = 0;
+    }
+    else{
+      kbd->keycode = LUT[kbd_out];
+    }
   }
   
 }
