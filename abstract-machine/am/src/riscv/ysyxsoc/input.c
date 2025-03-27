@@ -1,6 +1,12 @@
 #include <am.h>
+#include <riscv/riscv.h>
+#include "soc.h"
 
 void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
   kbd->keydown = 0;
   kbd->keycode = AM_KEY_NONE;
+}
+
+void __am_uart_rx(AM_UART_RX_T *rx) {
+  rx->data = inb(SERIAL_PORT);
 }
