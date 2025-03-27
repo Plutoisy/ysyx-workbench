@@ -19,7 +19,7 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
     else{
       kbd->keydown = true;
     }
-    printf("%x\n",kbd_out&0xff);
+    //printf("%x\n",kbd_out&0xff);
     kbd->keycode = kbd_out;
   }
   
