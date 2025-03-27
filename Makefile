@@ -1,6 +1,6 @@
 STUID = ysyx_22040000
 STUNAME = 喻炳尧
-
+M ?= "default commit message"
 # DO NOT modify the following code!!!
 
 TRACER = tracer-ysyx
@@ -41,4 +41,15 @@ endef
 _default:
 	@echo "Please run 'make' under subprojects."
 
+github:
+	cd ysyxSoC && \
+	git add . && \
+	git commit -m "$(M)" && \
+	git push origin ysyxsocdev && \
+	cd .. && \
+	git add ysyxSoC && \
+	git add . && \
+	git commit -m "$(M)" && \
+	git push my_origin dev
+	
 .PHONY: .git_commit .clean_index _default
