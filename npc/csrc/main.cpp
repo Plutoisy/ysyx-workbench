@@ -32,6 +32,7 @@
 #define BMODE 1
 #define WAVE 0
 #define NVBOARD 1
+#define PC_NO_CHANGE_DECETE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -493,7 +494,8 @@ extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool directi
 extern "C" void difftest_regcpy(void *dut, bool direction);
 
 CPU_state refstate;
-
+uint32_t old_pc = 0;
+uint32_t pc_count = 0;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
@@ -513,7 +515,19 @@ void cpu_exec(uint32_t n){
         }
         
         step_and_dump_wave();
-
+        if(PC_NO_CHANGE_DECETE){
+          if(top_dnpc == old_pc){
+            pc_count++;
+            if(pc_count > 15000){
+              printf("\33[1;34mProgram pc has not change for 1.5w clk.\033[0m\n");
+              return
+            }
+          }
+          else{
+            pc_count = 0;
+          }
+          old_pc = top_dnpc;  
+        }
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
           printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
