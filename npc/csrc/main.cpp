@@ -520,7 +520,7 @@ void cpu_exec(uint32_t n){
             pc_count++;
             if(pc_count > 15000){
               printf("\33[1;34mProgram pc has not change for 1.5w clk.\033[0m\n");
-              return
+              return;
             }
           }
           else{
