@@ -29,7 +29,7 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 1
+#define BMODE 0
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -516,6 +516,8 @@ void cpu_exec(uint32_t n){
         
         step_and_dump_wave();
         if(PC_NO_CHANGE_DECETE){
+          printf("old_pc: %d\n",old_pc);
+          printf("top_dnpc: %d\n",top_dnpc);
           if(pc_count != 0){
             printf("pc count: %d\n",pc_count);
           }
