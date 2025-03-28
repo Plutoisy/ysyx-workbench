@@ -516,6 +516,7 @@ void cpu_exec(uint32_t n){
         
         step_and_dump_wave();
         if(PC_NO_CHANGE_DECETE){
+          printf("pc count: %d\n",pc_count);
           if(top_dnpc == old_pc){
             pc_count++;
             if(pc_count > 150){
