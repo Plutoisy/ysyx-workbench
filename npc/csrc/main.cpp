@@ -32,7 +32,7 @@
 #define BMODE 1
 #define WAVE 0
 #define NVBOARD 1
-#define PC_NO_CHANGE_DECETE 1
+#define PC_NO_CHANGE_DECETE 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
