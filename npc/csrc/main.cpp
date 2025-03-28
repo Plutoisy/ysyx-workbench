@@ -506,6 +506,7 @@ void cpu_exec(uint32_t n){
       }
       //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       //AssembleDecoder(handle, top_inst, top_pc);
+
       if(top_IFU_valid_int){
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
@@ -515,24 +516,7 @@ void cpu_exec(uint32_t n){
         }
         
         step_and_dump_wave();
-        if(PC_NO_CHANGE_DECETE){
-          printf("old_pc: %d\n",old_pc);
-          printf("top_dnpc: %d\n",top_dnpc);
-          if(pc_count != 0){
-            printf("pc count: %d\n",pc_count);
-          }
-          if(top_dnpc == old_pc){
-            pc_count++;
-            if(pc_count > 150){
-              printf("\33[1;34mProgram pc has not change for 1.5w clk.\033[0m\n");
-              return;
-            }
-          }
-          else{
-            pc_count = 0;
-          }
-          old_pc = top_dnpc;  
-        }
+        
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
           printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
@@ -561,6 +545,23 @@ void cpu_exec(uint32_t n){
       }
       else{
         step_and_dump_wave();
+      }
+
+      if(PC_NO_CHANGE_DECETE){
+        if(pc_count != 0){
+          printf("pc count: %d\n",pc_count);
+        }
+        if(top_dnpc == old_pc){
+          pc_count++;
+          if(pc_count > 150){
+            printf("\33[1;34mProgram pc has not change for 1.5w clk.\033[0m\n");
+            return;
+          }
+        }
+        else{
+          pc_count = 0;
+        }
+        old_pc = top_dnpc;  
       }
       
       
