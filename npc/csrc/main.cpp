@@ -519,6 +519,7 @@ void cpu_exec(uint32_t n){
           if(pc_count != 0){
             printf("pc count: %d\n",pc_count);
           }
+          printf("pc count: %d\n",top_dnpc);
           if(top_dnpc == old_pc){
             pc_count++;
             if(pc_count > 150){
