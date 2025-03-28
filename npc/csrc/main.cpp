@@ -494,8 +494,8 @@ extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool directi
 extern "C" void difftest_regcpy(void *dut, bool direction);
 
 CPU_state refstate;
-uint32_t old_pc = 0;
-uint32_t pc_count = 0;
+int old_pc = 0;
+int pc_count = 0;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
@@ -519,7 +519,6 @@ void cpu_exec(uint32_t n){
           if(pc_count != 0){
             printf("pc count: %d\n",pc_count);
           }
-          printf("pc count: %d\n",top_dnpc);
           if(top_dnpc == old_pc){
             pc_count++;
             if(pc_count > 150){
