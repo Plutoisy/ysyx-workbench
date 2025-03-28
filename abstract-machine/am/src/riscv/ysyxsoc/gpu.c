@@ -1,6 +1,6 @@
 #include <am.h>
 
-const int disp_w = 400, disp_h = 300;
+const int disp_w = 640, disp_h = 480;
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
 //   uint32_t *pixels = ctl->pixels;
