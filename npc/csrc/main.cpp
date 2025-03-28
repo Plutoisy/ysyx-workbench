@@ -548,12 +548,9 @@ void cpu_exec(uint32_t n){
       }
 
       if(PC_NO_CHANGE_DECETE){
-        if(pc_count != 0){
-          printf("pc count: %d\n",pc_count);
-        }
         if(top_dnpc == old_pc){
           pc_count++;
-          if(pc_count > 150){
+          if(pc_count > 1500){
             printf("\33[1;34mProgram pc has not change for 1.5w clk.\033[0m\n");
             return;
           }
