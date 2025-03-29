@@ -1728,7 +1728,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
                                                                                 | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4yank__DOT__Queue1_BundleMap_16__DOT__full))))))))))))))));
     if (vlSelf->reset) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i = 0U;
-        while (VL_GTS_III(32, 0x200000U, vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i)) {
+        while (VL_GTS_III(32, 0x400000U, vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i)) {
             vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb[(0x3fffffU 
                                                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i)] = 0U;
             vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i 
@@ -1833,7 +1833,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
                 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__ram_write_data_w;
             __Vdlyvset__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0 = 1U;
             __Vdlyvdim0__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0 
-                = (0x1fffffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__ram_addr_w 
+                = (0x3fffffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__ram_addr_w 
                                 >> 2U));
         }
     }
