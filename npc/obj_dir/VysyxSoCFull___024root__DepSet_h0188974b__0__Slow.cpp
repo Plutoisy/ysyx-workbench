@@ -84,7 +84,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___eval_initial__TOP(VysyxSoCFull___024r
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VysyxSoCFull___024root___eval_initial__TOP\n"); );
     // Body
-    VL_READMEM_N(true, 24, 2097152, 0, VL_CVT_PACK_STR_NW(17, VysyxSoCFull__ConstPool__CONST_h037ca5da_0)
+    VL_READMEM_N(true, 24, 4194304, 0, VL_CVT_PACK_STR_NW(17, VysyxSoCFull__ConstPool__CONST_h037ca5da_0)
                  ,  &(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vmem__DOT__vga_mem)
                  , 0, ~0ULL);
     vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data = 0U;
@@ -834,11 +834,11 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__u_ps2_keyboard__DOT__ps2_clk_sync = VL_RAND_RESET_I(3);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__u_ps2_keyboard__DOT____Vlvbound_h1a91ade8__0 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_data = VL_RAND_RESET_I(24);
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt = VL_RAND_RESET_I(11);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt = VL_RAND_RESET_I(12);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt = VL_RAND_RESET_I(10);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__h_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__v_valid = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 2097152; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4194304; ++__Vi0) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vmem__DOT__vga_mem[__Vi0] = VL_RAND_RESET_I(24);
     }
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state = VL_RAND_RESET_I(4);
