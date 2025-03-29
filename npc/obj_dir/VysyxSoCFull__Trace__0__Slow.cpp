@@ -3293,10 +3293,10 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1419,"h_active", false,-1, 31,0);
     tracep->declBus(c+1420,"h_backporch", false,-1, 31,0);
     tracep->declBus(c+1421,"h_total", false,-1, 31,0);
-    tracep->declBus(c+1413,"v_frontporch", false,-1, 31,0);
-    tracep->declBus(c+1411,"v_active", false,-1, 31,0);
-    tracep->declBus(c+1422,"v_backporch", false,-1, 31,0);
-    tracep->declBus(c+1423,"v_total", false,-1, 31,0);
+    tracep->declBus(c+1392,"v_frontporch", false,-1, 31,0);
+    tracep->declBus(c+1422,"v_active", false,-1, 31,0);
+    tracep->declBus(c+1423,"v_backporch", false,-1, 31,0);
+    tracep->declBus(c+1424,"v_total", false,-1, 31,0);
     tracep->declBus(c+876,"x_cnt", false,-1, 9,0);
     tracep->declBus(c+877,"y_cnt", false,-1, 9,0);
     tracep->declBit(c+878,"h_valid", false,-1);
@@ -3394,16 +3394,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1199,"ba", false,-1, 1,0);
     tracep->declBus(c+1210,"dqm", false,-1, 1,0);
     tracep->declBus(c+1213,"dq", false,-1, 15,0);
-    tracep->declBus(c+1424,"CMD_W", false,-1, 31,0);
-    tracep->declBus(c+1425,"CMD_NOP", false,-1, 2,0);
+    tracep->declBus(c+1425,"CMD_W", false,-1, 31,0);
+    tracep->declBus(c+1426,"CMD_NOP", false,-1, 2,0);
     tracep->declBus(c+1363,"CMD_ACTIVE", false,-1, 2,0);
     tracep->declBus(c+1365,"CMD_READ", false,-1, 2,0);
     tracep->declBus(c+1364,"CMD_WRITE", false,-1, 2,0);
-    tracep->declBus(c+1426,"CMD_TERMINATE", false,-1, 2,0);
+    tracep->declBus(c+1427,"CMD_TERMINATE", false,-1, 2,0);
     tracep->declBus(c+1302,"CMD_PRECHARGE", false,-1, 2,0);
     tracep->declBus(c+1288,"CMD_REFRESH", false,-1, 2,0);
     tracep->declBus(c+1300,"CMD_LOAD_MODE", false,-1, 2,0);
-    tracep->declBus(c+1427,"BANK_SIZE", false,-1, 31,0);
+    tracep->declBus(c+1428,"BANK_SIZE", false,-1, 31,0);
     for (int i = 0; i < 4; ++i) {
         tracep->declBus(c+1114+i*1,"Line_Address", true,(i+0), 12,0);
     }
@@ -3436,16 +3436,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1199,"ba", false,-1, 1,0);
     tracep->declBus(c+1211,"dqm", false,-1, 1,0);
     tracep->declBus(c+1214,"dq", false,-1, 15,0);
-    tracep->declBus(c+1424,"CMD_W", false,-1, 31,0);
-    tracep->declBus(c+1425,"CMD_NOP", false,-1, 2,0);
+    tracep->declBus(c+1425,"CMD_W", false,-1, 31,0);
+    tracep->declBus(c+1426,"CMD_NOP", false,-1, 2,0);
     tracep->declBus(c+1363,"CMD_ACTIVE", false,-1, 2,0);
     tracep->declBus(c+1365,"CMD_READ", false,-1, 2,0);
     tracep->declBus(c+1364,"CMD_WRITE", false,-1, 2,0);
-    tracep->declBus(c+1426,"CMD_TERMINATE", false,-1, 2,0);
+    tracep->declBus(c+1427,"CMD_TERMINATE", false,-1, 2,0);
     tracep->declBus(c+1302,"CMD_PRECHARGE", false,-1, 2,0);
     tracep->declBus(c+1288,"CMD_REFRESH", false,-1, 2,0);
     tracep->declBus(c+1300,"CMD_LOAD_MODE", false,-1, 2,0);
-    tracep->declBus(c+1427,"BANK_SIZE", false,-1, 31,0);
+    tracep->declBus(c+1428,"BANK_SIZE", false,-1, 31,0);
     for (int i = 0; i < 4; ++i) {
         tracep->declBus(c+1133+i*1,"Line_Address", true,(i+0), 12,0);
     }
@@ -3489,16 +3489,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1199,"ba", false,-1, 1,0);
     tracep->declBus(c+1210,"dqm", false,-1, 1,0);
     tracep->declBus(c+1213,"dq", false,-1, 15,0);
-    tracep->declBus(c+1424,"CMD_W", false,-1, 31,0);
-    tracep->declBus(c+1425,"CMD_NOP", false,-1, 2,0);
+    tracep->declBus(c+1425,"CMD_W", false,-1, 31,0);
+    tracep->declBus(c+1426,"CMD_NOP", false,-1, 2,0);
     tracep->declBus(c+1363,"CMD_ACTIVE", false,-1, 2,0);
     tracep->declBus(c+1365,"CMD_READ", false,-1, 2,0);
     tracep->declBus(c+1364,"CMD_WRITE", false,-1, 2,0);
-    tracep->declBus(c+1426,"CMD_TERMINATE", false,-1, 2,0);
+    tracep->declBus(c+1427,"CMD_TERMINATE", false,-1, 2,0);
     tracep->declBus(c+1302,"CMD_PRECHARGE", false,-1, 2,0);
     tracep->declBus(c+1288,"CMD_REFRESH", false,-1, 2,0);
     tracep->declBus(c+1300,"CMD_LOAD_MODE", false,-1, 2,0);
-    tracep->declBus(c+1427,"BANK_SIZE", false,-1, 31,0);
+    tracep->declBus(c+1428,"BANK_SIZE", false,-1, 31,0);
     for (int i = 0; i < 4; ++i) {
         tracep->declBus(c+1152+i*1,"Line_Address", true,(i+0), 12,0);
     }
@@ -3531,16 +3531,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1199,"ba", false,-1, 1,0);
     tracep->declBus(c+1211,"dqm", false,-1, 1,0);
     tracep->declBus(c+1214,"dq", false,-1, 15,0);
-    tracep->declBus(c+1424,"CMD_W", false,-1, 31,0);
-    tracep->declBus(c+1425,"CMD_NOP", false,-1, 2,0);
+    tracep->declBus(c+1425,"CMD_W", false,-1, 31,0);
+    tracep->declBus(c+1426,"CMD_NOP", false,-1, 2,0);
     tracep->declBus(c+1363,"CMD_ACTIVE", false,-1, 2,0);
     tracep->declBus(c+1365,"CMD_READ", false,-1, 2,0);
     tracep->declBus(c+1364,"CMD_WRITE", false,-1, 2,0);
-    tracep->declBus(c+1426,"CMD_TERMINATE", false,-1, 2,0);
+    tracep->declBus(c+1427,"CMD_TERMINATE", false,-1, 2,0);
     tracep->declBus(c+1302,"CMD_PRECHARGE", false,-1, 2,0);
     tracep->declBus(c+1288,"CMD_REFRESH", false,-1, 2,0);
     tracep->declBus(c+1300,"CMD_LOAD_MODE", false,-1, 2,0);
-    tracep->declBus(c+1427,"BANK_SIZE", false,-1, 31,0);
+    tracep->declBus(c+1428,"BANK_SIZE", false,-1, 31,0);
     for (int i = 0; i < 4; ++i) {
         tracep->declBus(c+1171+i*1,"Line_Address", true,(i+0), 12,0);
     }
@@ -5439,10 +5439,14 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_sub_0(VysyxSoCFull___024roo
                                 ? (0x3ffU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt) 
                                              - (IData)(0x91U)))
                                 : 0U)),10);
-    bufp->fullSData(oldp+874,(((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__v_valid)
-                                ? (0x3ffU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt) 
-                                             - (IData)(0x24U)))
-                                : 0U)),10);
+    bufp->fullSData(oldp+874,(((0x1e0U < ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__v_valid)
+                                           ? ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt) 
+                                              - (IData)(0x24U))
+                                           : 0U)) ? 0U
+                                : ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__v_valid)
+                                    ? (0x3ffU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt) 
+                                                 - (IData)(0x24U)))
+                                    : 0U))),10);
     bufp->fullIData(oldp+875,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_data),24);
     bufp->fullSData(oldp+876,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt),10);
     bufp->fullSData(oldp+877,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt),10);
@@ -6291,10 +6295,11 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_sub_0(VysyxSoCFull___024roo
     bufp->fullIData(oldp+1419,(0x90U),32);
     bufp->fullIData(oldp+1420,(0x310U),32);
     bufp->fullIData(oldp+1421,(0x320U),32);
-    bufp->fullIData(oldp+1422,(0x101U),32);
-    bufp->fullIData(oldp+1423,(0x106U),32);
-    bufp->fullIData(oldp+1424,(3U),32);
-    bufp->fullCData(oldp+1425,(7U),3);
-    bufp->fullCData(oldp+1426,(6U),3);
-    bufp->fullIData(oldp+1427,(0x400000U),32);
+    bufp->fullIData(oldp+1422,(0x23U),32);
+    bufp->fullIData(oldp+1423,(0x203U),32);
+    bufp->fullIData(oldp+1424,(0x20dU),32);
+    bufp->fullIData(oldp+1425,(3U),32);
+    bufp->fullCData(oldp+1426,(7U),3);
+    bufp->fullCData(oldp+1427,(6U),3);
+    bufp->fullIData(oldp+1428,(0x400000U),32);
 }
