@@ -77,16 +77,11 @@ VL_ATTR_COLD void VysyxSoCFull___024root___eval_initial(VysyxSoCFull___024root* 
         = vlSelf->ysyxSoCFull__DOT___asic_psram_sck;
 }
 
-extern const VlWide<17>/*543:0*/ VysyxSoCFull__ConstPool__CONST_h037ca5da_0;
-
 VL_ATTR_COLD void VysyxSoCFull___024root___eval_initial__TOP(VysyxSoCFull___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VysyxSoCFull___024root___eval_initial__TOP\n"); );
     // Body
-    VL_READMEM_N(true, 24, 1048576, 0, VL_CVT_PACK_STR_NW(17, VysyxSoCFull__ConstPool__CONST_h037ca5da_0)
-                 ,  &(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_mem)
-                 , 0, ~0ULL);
     vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data = 0U;
     vlSelf->ysyxSoCFull__DOT__bitrev__DOT__bit_cnt = 0U;
     vlSelf->ysyxSoCFull__DOT___bitrev_miso = 1U;
