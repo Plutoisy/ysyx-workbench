@@ -1,5 +1,6 @@
 #include <am.h>
 #include "soc.h"
+#include <riscv/riscv.h>
 
 const int disp_w = 640, disp_h = 480;
 
@@ -11,12 +12,12 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
       fb[disp_w*(i+(ctl->y)-1)+j+(ctl->x)-1] = pixels[ctl->w*(i-1)+j-1];
     }
   }
-//   if (ctl->sync) {
-//     outl(SYNC_ADDR, 1);
-//   }
-//   else{
-//     outl(SYNC_ADDR, 0);
-//   }
+  if (ctl->sync) {
+    outl(SYNC_ADDR, 1);
+  }
+  else{
+    outl(SYNC_ADDR, 0);
+  }
 }
 
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {

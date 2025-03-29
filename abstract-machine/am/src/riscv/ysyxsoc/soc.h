@@ -8,3 +8,4 @@
 #define UART_REG_DL2     0x10000001L
 #define UART_REG_LSR     0x10000005L
 #define FB_ADDR          0x21000000
+#define SYNC_ADDR        0x211FFFF4
