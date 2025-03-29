@@ -229,7 +229,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
     __Vdlyvval__ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__u_ps2_keyboard__DOT__fifo__v0 = 0;
     CData/*0:0*/ __Vdlyvset__ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__u_ps2_keyboard__DOT__fifo__v0;
     __Vdlyvset__ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__u_ps2_keyboard__DOT__fifo__v0 = 0;
-    IData/*20:0*/ __Vdlyvdim0__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0;
+    IData/*21:0*/ __Vdlyvdim0__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0;
     __Vdlyvdim0__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0 = 0;
     IData/*31:0*/ __Vdlyvval__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0;
     __Vdlyvval__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb__v0 = 0;
@@ -1729,7 +1729,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
     if (vlSelf->reset) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i = 0U;
         while (VL_GTS_III(32, 0x200000U, vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i)) {
-            vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb[(0x1fffffU 
+            vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__fb[(0x3fffffU 
                                                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i)] = 0U;
             vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i 
                 = ((IData)(1U) + vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__i);
@@ -2900,7 +2900,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
         }
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__reg_cnt 
             = ((0x20dU == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__y_cnt))
-                ? 0U : (0x1fffffU & ((IData)(vlSelf->externalPins_vga_valid)
+                ? 0U : (0x3fffffU & ((IData)(vlSelf->externalPins_vga_valid)
                                       ? ((IData)(1U) 
                                          + vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__reg_cnt)
                                       : vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__reg_cnt)));
