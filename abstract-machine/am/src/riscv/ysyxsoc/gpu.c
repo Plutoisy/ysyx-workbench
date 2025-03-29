@@ -2,7 +2,7 @@
 #include "soc.h"
 #include <riscv/riscv.h>
 
-const int disp_w = 640, disp_h = 480;
+const int disp_w = 480, disp_h = 640;
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
   uint32_t *pixels = ctl->pixels;
