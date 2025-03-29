@@ -2309,8 +2309,8 @@ void VysyxSoCFull___024root__trace_chg_sub_0(VysyxSoCFull___024root* vlSelf, Ver
         bufp->chgCData(oldp+1109,((0xfU & ((IData)(1U) 
                                            + (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__transmitter__DOT__fifo_tx__DOT__top)))),4);
         bufp->chgSData(oldp+1110,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__x_cnt),10);
-        bufp->chgBit(oldp+1111,(((0x90U < (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__x_cnt)) 
-                                 & (0x310U >= (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__x_cnt)))));
+        bufp->chgBit(oldp+1111,(((0x48U < (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__x_cnt)) 
+                                 & (0x188U >= (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__u_vga_ctrl__DOT__x_cnt)))));
         bufp->chgBit(oldp+1112,((1U & ((IData)(vlSelf->ysyxSoCFull__DOT___asic_spi_ss) 
                                        >> 7U))));
         bufp->chgBit(oldp+1113,(vlSelf->ysyxSoCFull__DOT____Vcellinp__flash__ss));
