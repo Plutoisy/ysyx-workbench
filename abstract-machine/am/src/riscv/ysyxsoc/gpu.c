@@ -5,11 +5,14 @@
 const int disp_w = 640, disp_h = 480;
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
-  uint32_t *pixels = ctl->pixels;
-  uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
-  for (int i = 1; i <= ctl->h; i ++){
-    for (int j = 1; j <= ctl->w; j ++){
-      fb[disp_w*(i+(ctl->y)-1)+j+(ctl->x)-1] = pixels[ctl->w*(i-1)+j-1];
+  uint32_t x = ctl->x, y = ctl->y;
+  uint32_t w = ctl->w, h = ctl->h;
+
+  uint32_t *pixels = (uint32_t *)ctl->pixels;
+  uint32_t *fb = (uint32_t *)FB_ADDR;
+  for (int i = 1; i <= h; i ++){
+    for (int j = 1; j <= w; j ++){
+      fb[disp_w*(i+y-1)+j+x-1] = pixels[w*(i-1)+j-1];
     }
   }
 //   if (ctl->sync) {
