@@ -496,8 +496,8 @@ extern "C" void difftest_regcpy(void *dut, bool direction);
 CPU_state refstate;
 int old_pc = 0;
 int pc_count = 0;
-void cpu_exec(uint32_t n){
-  for(int i = 0; i < n; i++){
+void cpu_exec(uint64_t n){
+  for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
       if (dut.clock != 1){
