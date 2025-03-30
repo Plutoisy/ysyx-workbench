@@ -3275,14 +3275,14 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBit(c+1239,"vga_vsync", false,-1);
     tracep->declBit(c+1240,"vga_valid", false,-1);
     tracep->declBus(c+874,"h_addr", false,-1, 9,0);
-    tracep->declBus(c+875,"v_addr", false,-1, 9,0);
+    tracep->declBus(c+875,"v_addr", false,-1, 10,0);
     tracep->declBus(c+876,"vga_data", false,-1, 23,0);
     tracep->pushNamePrefix("my_vga_ctrl ");
     tracep->declBit(c+1221,"pclk", false,-1);
     tracep->declBit(c+1222,"reset", false,-1);
     tracep->declBus(c+876,"vga_data", false,-1, 23,0);
     tracep->declBus(c+874,"h_addr", false,-1, 9,0);
-    tracep->declBus(c+875,"v_addr", false,-1, 9,0);
+    tracep->declBus(c+875,"v_addr", false,-1, 10,0);
     tracep->declBit(c+1238,"hsync", false,-1);
     tracep->declBit(c+1239,"vsync", false,-1);
     tracep->declBit(c+1240,"valid", false,-1);
@@ -3298,7 +3298,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_init_sub__TOP__0(VysyxSoCFull___
     tracep->declBus(c+1423,"v_backporch", false,-1, 31,0);
     tracep->declBus(c+1424,"v_total", false,-1, 31,0);
     tracep->declBus(c+877,"x_cnt", false,-1, 9,0);
-    tracep->declBus(c+878,"y_cnt", false,-1, 9,0);
+    tracep->declBus(c+878,"y_cnt", false,-1, 10,0);
     tracep->declBit(c+879,"h_valid", false,-1);
     tracep->declBit(c+880,"v_valid", false,-1);
     tracep->popNamePrefix(4);
@@ -5436,12 +5436,12 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_sub_0(VysyxSoCFull___024roo
                                              - (IData)(0x49U)))
                                 : 0U)),10);
     bufp->fullSData(oldp+875,(((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__v_valid)
-                                ? (0x3ffU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt) 
+                                ? (0x7ffU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt) 
                                              - (IData)(0x24U)))
-                                : 0U)),10);
+                                : 0U)),11);
     bufp->fullIData(oldp+876,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_data),24);
     bufp->fullSData(oldp+877,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt),10);
-    bufp->fullSData(oldp+878,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt),10);
+    bufp->fullSData(oldp+878,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__y_cnt),11);
     bufp->fullBit(oldp+879,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__h_valid));
     bufp->fullBit(oldp+880,(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__v_valid));
     bufp->fullCData(oldp+881,(vlSelf->ysyxSoCFull__DOT__bitrev__DOT__data),8);
