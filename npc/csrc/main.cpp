@@ -496,6 +496,7 @@ extern "C" void difftest_regcpy(void *dut, bool direction);
 CPU_state refstate;
 int old_pc = 0;
 int pc_count = 0;
+uint64_t inst_count = 0;
 void cpu_exec(uint64_t n){
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
@@ -516,6 +517,7 @@ void cpu_exec(uint64_t n){
         }
         
         step_and_dump_wave();
+        inst_count++;
         
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
@@ -569,7 +571,10 @@ void cpu_exec(uint64_t n){
     }
     else{
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
-      printf("exec times: %d\n",i+1);
+      printf("\33[1;34mClock Cycle: %d\033[0m\n",i+1);
+      printf("\33[1;34mInstruction Count: %d\033[0m\n",inst_count);
+      printf("\33[1;34mIPC: %f\033[0m\n",inst_count/(i+1));
+      printf("\33[1;34mCPI: %f\033[0m\n",(i+1)/inst_count);
       return;
     }
   }
