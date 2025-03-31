@@ -511,7 +511,7 @@ void cpu_exec(uint64_t n){
       if(top_IFU_valid_int){
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
-          printf("exec times: %d\n",i+1);
+          printf("exec times: %ld\n",i+1);
           difftest_exec(1);
           difftest_regcpy(&refstate, 0);
         }
@@ -570,11 +570,13 @@ void cpu_exec(uint64_t n){
       
     }
     else{
+      float ipc = inst_count/(i+1);
+      float cpi = 1/ipc;
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
-      printf("\33[1;34mClock Cycle: %d\033[0m\n",i+1);
-      printf("\33[1;34mInstruction Count: %d\033[0m\n",inst_count);
-      printf("\33[1;34mIPC: %f\033[0m\n",inst_count/(i+1));
-      printf("\33[1;34mCPI: %f\033[0m\n",(i+1)/inst_count);
+      printf("\33[1;34mClock Cycle: %ld\033[0m\n",i+1);
+      printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
+      printf("\33[1;34mIPC: %f\033[0m\n",ipc);
+      printf("\33[1;34mCPI: %f\033[0m\n",cpi);
       return;
     }
   }
