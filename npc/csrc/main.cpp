@@ -570,8 +570,8 @@ void cpu_exec(uint64_t n){
       
     }
     else{
-      float ipc = inst_count/(i+1);
-      float cpi = 1/ipc;
+      float ipc = (float)inst_count/(float)(i+1);
+      float cpi = 1.0/ipc;
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
       printf("\33[1;34mClock Cycle: %ld\033[0m\n",i+1);
       printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
