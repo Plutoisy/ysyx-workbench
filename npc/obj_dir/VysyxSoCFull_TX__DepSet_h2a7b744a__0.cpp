@@ -106,14 +106,14 @@ VL_INLINE_OPT void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__D
                      & ((IData)(vlSelf->__PVT__send) 
                         != (0U != ((IData)(vlSelf->__PVT__grant) 
                                    & (IData)(vlSelf->__PVT__requests))))))) {
-        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14131: Assertion failed in %NysyxSoCFull.asic.chipMaster.chiplink.tx: Assertion failed at TX.scala:106\n\n",
-                  64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 14131, "");
-        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14133: Assertion failed in %NysyxSoCFull.asic.chipMaster.chiplink.tx\n",
+        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14133: Assertion failed in %NysyxSoCFull.asic.chipMaster.chiplink.tx: Assertion failed at TX.scala:106\n\n",
                   64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 14133, "");
+        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14135: Assertion failed in %NysyxSoCFull.asic.chipMaster.chiplink.tx\n",
+                  64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 14135, "");
     }
     vlSelf->__Vdly__rxQ__DOT__valid_1 = vlSelf->__PVT__rxQ__DOT__valid_1;
     vlSelf->__Vdly__rxQ__DOT__valid_0 = vlSelf->__PVT__rxQ__DOT__valid_0;
@@ -2121,14 +2121,14 @@ VL_INLINE_OPT void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__D
                      & ((IData)(vlSelf->__PVT__send) 
                         != (0U != ((IData)(vlSelf->__PVT__grant) 
                                    & (IData)(vlSelf->__PVT__requests))))))) {
-        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14131: Assertion failed in %NysyxSoCFull.fpga.chiplink.tx: Assertion failed at TX.scala:106\n\n",
-                  64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 14131, "");
-        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14133: Assertion failed in %NysyxSoCFull.fpga.chiplink.tx\n",
+        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14133: Assertion failed in %NysyxSoCFull.fpga.chiplink.tx: Assertion failed at TX.scala:106\n\n",
                   64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 14133, "");
+        VL_WRITEF("[%0t] %%Error: ysyxSoCFull.v:14135: Assertion failed in %NysyxSoCFull.fpga.chiplink.tx\n",
+                  64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 14135, "");
     }
     vlSelf->__Vdly__rxQ__DOT__valid_1 = vlSelf->__PVT__rxQ__DOT__valid_1;
     vlSelf->__Vdly__rxQ__DOT__valid_0 = vlSelf->__PVT__rxQ__DOT__valid_0;
