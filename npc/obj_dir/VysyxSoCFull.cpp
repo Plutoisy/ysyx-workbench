@@ -35,6 +35,34 @@ VysyxSoCFull::VysyxSoCFull(VerilatedContext* _vcontextp__, const char* _vcname__
     , externalPins_gpio_out{vlSymsp->TOP.externalPins_gpio_out}
     , externalPins_gpio_in{vlSymsp->TOP.externalPins_gpio_in}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__xbar_1{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__xbar_1}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__ferr{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__ferr}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__axi4yank{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__axi4yank}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__tl2axi4{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__tl2axi4}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__fixer{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__fixer}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink}
+    , __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx{vlSymsp->TOP.__PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context
