@@ -584,7 +584,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
       printf("\33[1;34mIPC: %f\033[0m\n",ipc);
       printf("\33[1;34mCPI: %f\033[0m\n",cpi);
-      printf("\33[1;34mIFU get inst: %f\033[0m\n",IFU_getinst);
+      printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       return;
     }
   }
