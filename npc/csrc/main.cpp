@@ -325,7 +325,7 @@ void isa_reg_display() {
 }
 
 uint64_t IFU_getinst = 0;
-extern "C" void Performance_Counters(int type){
+extern "C" void Performance_Counters(uint32_t type){
   if(type == 1){
     IFU_getinst++;
   }
