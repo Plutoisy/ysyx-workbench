@@ -30,7 +30,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
-#define WAVE 1
+#define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 
@@ -325,9 +325,13 @@ void isa_reg_display() {
 }
 
 uint64_t IFU_getinst = 0;
+uint64_t LSU_getdata = 0;
 extern "C" void Performance_Counters(int Performancetype){
   if(Performancetype == 1){
     IFU_getinst++;
+  }
+  if(Performancetype == 2){
+    LSU_getdata++;
   }
 }
 
@@ -585,6 +589,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mIPC: %f\033[0m\n",ipc);
       printf("\33[1;34mCPI: %f\033[0m\n",cpi);
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
+      printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       return;
     }
   }

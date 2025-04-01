@@ -388,13 +388,20 @@ end
 
 reg IFU_valid_delay;
 reg IFU_valid_rising_edge;
+reg LSU_rready_delay;
+reg LSU_rready_rising_edge;
 always@(posedge clock) begin
     IFU_valid_delay <= IFU_valid;
     IFU_valid_rising_edge <= IFU_valid & ~IFU_valid_delay;
+    LSU_rready_delay <= M1_rready;
+    LSU_rready_rising_edge <= M1_rready & ~LSU_rready_delay;
 end
 always@(posedge clock) begin
     if(IFU_valid_rising_edge) begin
         Performance_Counters(32'd1);
+    end
+    if(LSU_rready_rising_edge) begin
+        Performance_Counters(32'd2);
     end
 end
 
