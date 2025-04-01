@@ -2,7 +2,7 @@
 import "DPI-C" function void ebreak ();
 import "DPI-C" function void npc_trap(input int pc, input int ret);
 import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
-import "DPI-C" function void Performance_Counters(input int type);
+import "DPI-C" function void Performance_Counters(input int Performancetype);
 
 module ysyx_24120011 (
     input clock,
