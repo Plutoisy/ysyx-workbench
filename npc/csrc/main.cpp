@@ -324,6 +324,13 @@ void isa_reg_display() {
   }
 }
 
+uint64_t IFU_getinst = 0;
+extern "C" void Performance_Counters(int type){
+  if(type == 1){
+    IFU_getinst++;
+  }
+}
+
 extern "C" void psram_read(uint32_t addr, uint32_t *data) {
 	if(addr >= 0 && addr <= PSRAM_SIZE){
 		*data = host_read(psram+addr,4);
@@ -577,6 +584,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
       printf("\33[1;34mIPC: %f\033[0m\n",ipc);
       printf("\33[1;34mCPI: %f\033[0m\n",cpi);
+      printf("\33[1;34mIFU get inst: %f\033[0m\n",IFU_getinst);
       return;
     }
   }

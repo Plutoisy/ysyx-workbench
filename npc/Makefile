@@ -17,6 +17,9 @@ VERILATOR_ROOT = /usr/local/share/verilator
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
 VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
+VSRCS_bs = $(shell find $(abspath ./vsrc_bs) -name "*.v")
+VSRCS_bs += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
+VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
 
@@ -49,6 +52,22 @@ sim:$(VSRCS) $(CSRCS)
 
 nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	rm -rf ./obj_dir
+	$(VERILATOR) $(VERILATOR_CFLAGS) \
+		--top-module $(TOPNAME) $^ \
+		--timescale "1ns/1ns" \
+		--no-timing \
+		--autoflush \
+		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		-I$(YSYXSOC_HOME)/perip/uart16550/rtl\
+		-I$(YSYXSOC_HOME)/perip/spi/rtl\
+		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		--exe main.cpp
+	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
+	./obj_dir/V$(TOPNAME) $(IMG)
+	
+nvboard_bs:$(VSRCS_bs) $(CSRCS) $(NVBOARD_ARCHIVE)
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
