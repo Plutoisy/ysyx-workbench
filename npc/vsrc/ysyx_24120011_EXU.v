@@ -12,7 +12,7 @@ module ysyx_24120011_EXU(
     output [31:0] ALUout,
     output [31:0] ALUB,
     output EXU_valid,
-    output EXU_ready
+    output reg EXU_ready
 );
 
 ysyx_24120011_ALU u_ysyx_24120011_ALU(
