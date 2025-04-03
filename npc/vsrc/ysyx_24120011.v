@@ -493,19 +493,17 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .r_csr_en       ( r_csr_en       )
 );
 
-
 ysyx_24120011_EXU u_ysyx_24120011_EXU(
-    .A          ( A          ),
-    .B          ( B          ),
+    .A          ( src1          ),
+    .B          ( ALUB          ),
     .ALU_ctrl   ( ALU_ctrl   ),
     .ALUBctrl   ( ALUBctrl   ),
     .src2       ( src2       ),
     .imme       ( imme       ),
     .r_csr_data ( r_csr_data ),
-    .ALUout     ( ALUout     ),
+    .ALUout     ( alu_result     ),
     .ALUB       ( ALUB       )
 );
-
 
 ysyx_24120011_WBU i_WBU(
     .pc_add_imme_out ( pc_add_imme_out ),
