@@ -67,8 +67,8 @@ always@(posedge clk) begin
 end
 
 always@(posedge clk)begin
-    if(IFU_valid) LSU_ready <= 1'b0;
-    else if(reg_EXU_valid5) LSU_ready <= 1'b1;
+    if(IFU_valid) EXU_ready <= 1'b0;
+    else if(reg_EXU_valid5) EXU_ready <= 1'b1;
 end
 endmodule
 
