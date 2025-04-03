@@ -32,7 +32,7 @@
 #define BMODE 1
 #define WAVE 0
 #define NVBOARD 1
-#define PC_NO_CHANGE_DECETE 0
+#define PC_NO_CHANGE_DECETE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -324,6 +324,17 @@ void isa_reg_display() {
   }
 }
 
+uint64_t IFU_getinst = 0;
+uint64_t LSU_getdata = 0;
+extern "C" void Performance_Counters(int Performancetype){
+  if(Performancetype == 1){
+    IFU_getinst++;
+  }
+  if(Performancetype == 2){
+    LSU_getdata++;
+  }
+}
+
 extern "C" void psram_read(uint32_t addr, uint32_t *data) {
 	if(addr >= 0 && addr <= PSRAM_SIZE){
 		*data = host_read(psram+addr,4);
@@ -496,8 +507,9 @@ extern "C" void difftest_regcpy(void *dut, bool direction);
 CPU_state refstate;
 int old_pc = 0;
 int pc_count = 0;
-void cpu_exec(uint32_t n){
-  for(int i = 0; i < n; i++){
+uint64_t inst_count = 0;
+void cpu_exec(uint64_t n){
+  for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
       if (dut.clock != 1){
@@ -510,12 +522,13 @@ void cpu_exec(uint32_t n){
       if(top_IFU_valid_int){
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
-          printf("exec times: %d\n",i+1);
+          printf("exec times: %ld\n",i+1);
           difftest_exec(1);
           difftest_regcpy(&refstate, 0);
         }
         
         step_and_dump_wave();
+        inst_count++;
         
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
@@ -568,8 +581,15 @@ void cpu_exec(uint32_t n){
       
     }
     else{
+      float ipc = (float)inst_count/(float)(i+1);
+      float cpi = 1.0/ipc;
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
-      printf("exec times: %d\n",i+1);
+      printf("\33[1;34mClock Cycle: %ld\033[0m\n",i+1);
+      printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
+      printf("\33[1;34mIPC: %f\033[0m\n",ipc);
+      printf("\33[1;34mCPI: %f\033[0m\n",cpi);
+      printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
+      printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       return;
     }
   }

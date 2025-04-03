@@ -54,6 +54,16 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_get_pc_inst_TOP____024un
     get_pc_inst(pc__Vcvt, dnpc__Vcvt, inst__Vcvt, IFU_valid_int__Vcvt);
 }
 
+extern "C" void Performance_Counters(int Performancetype);
+
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_Performance_Counters_TOP____024unit(IData/*31:0*/ Performancetype) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_Performance_Counters_TOP____024unit\n"); );
+    // Body
+    int Performancetype__Vcvt;
+    for (size_t Performancetype__Vidx = 0; Performancetype__Vidx < 1; ++Performancetype__Vidx) Performancetype__Vcvt = Performancetype;
+    Performance_Counters(Performancetype__Vcvt);
+}
+
 extern "C" void flash_read(int addr, int* data);
 
 VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_flash_read_TOP____024unit(IData/*31:0*/ addr, IData/*31:0*/ &data) {

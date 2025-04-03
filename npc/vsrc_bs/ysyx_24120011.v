@@ -109,7 +109,6 @@ wire [31:0] r_csr_data;
 reg [31:0] pc;
 reg [31:0] inst;
 wire IFU_valid;
-wire EXU_valid;
 wire LSU_valid;
 wire LSU_ready;
 wire [31:0] LSU_valid_int;
@@ -470,6 +469,7 @@ ysyx_24120011_Reg #(32, 32'h3000_0000) i_pc (
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .inst           ( inst           ),
     .IFU_valid      ( IFU_valid      ),
+    .LSU_valid      ( LSU_valid      ),
     .rd             ( rd             ),
     .rs1            ( rs1            ),
     .rs2            ( rs2            ),
@@ -493,20 +493,12 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .r_csr_en       ( r_csr_en       )
 );
 
-ysyx_24120011_EXU u_ysyx_24120011_EXU(
-    .clk   ( clock   ),
-    .rst   ( reset   ),
-    .IFU_valid      ( IFU_valid      ),
-    .A          ( src1          ),
-    .B          ( ALUB          ),
+
+ysyx_24120011_ALU i_ALU(
+    .A          ( src1       ),
+    .B          ( ALUB       ),
     .ALU_ctrl   ( ALU_ctrl   ),
-    .ALUBctrl   ( ALUBctrl   ),
-    .src2       ( src2       ),
-    .imme       ( imme       ),
-    .r_csr_data ( r_csr_data ),
-    .ALUout     ( alu_result     ),
-    .ALUB       ( ALUB       ),
-    .EXU_valid           ( EXU_valid           )
+    .ALUout     ( alu_result      )
 );
 
 ysyx_24120011_WBU i_WBU(
@@ -535,11 +527,19 @@ ysyx_24120011_RegStack i_RegStack(
     .a0    ( a0    )
 );
 
+ysyx_24120011_ALUCtrl i_ALUCtrl(
+    .ALUBctrl   ( ALUBctrl   ),
+    .src2       ( src2       ),
+    .imme       ( imme       ),
+    .r_csr_data ( r_csr_data ),
+    .ALUB       ( ALUB       )
+);
+
 
 ysyx_24120011_LSU i_LSU(
     .clk   ( clock   ),
     .rst   ( reset   ),
-    .EXU_valid           ( EXU_valid           ),
+    .IFU_valid           ( IFU_valid           ),
     .w_mem_addr          ( alu_result          ),
     .r_mem_addr          ( alu_result          ),
     .w_mem_len           ( w_mem_len           ),

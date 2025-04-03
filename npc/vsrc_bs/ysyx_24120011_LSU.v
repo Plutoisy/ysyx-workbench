@@ -2,7 +2,7 @@
 module ysyx_24120011_LSU(
     input clk,
     input rst,
-    input EXU_valid,
+    input IFU_valid,
     input [31:0] w_mem_addr,
     input [31:0] r_mem_addr,
     input [7:0] w_mem_len,
@@ -177,8 +177,7 @@ module ysyx_24120011_LSU(
     );
 
     //assign LSU_valid = (state == ysyx_24120011_LSU_M_AXI_RDATA || state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
-    //assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
-    assign LSU_working = ~LSU_ready;
+    assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
     //AR
     assign araddr = r_mem_addr;
     //assign arvalid = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? 1 : 0;
@@ -439,7 +438,7 @@ module ysyx_24120011_LSU(
         else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE) LSU_ready <= 1'b1;
     end
     always@(posedge clk)begin
-        if(EXU_valid)begin
+        if(IFU_valid)begin
             if(LSU_working == 0 && (w_mem_en == 0 && r_mem_en == 0) )begin
                 LSU_valid <= 1;
             end
