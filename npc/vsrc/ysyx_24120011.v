@@ -494,12 +494,18 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
 );
 
 
-ysyx_24120011_ALU i_ALU(
-    .A          ( src1       ),
-    .B          ( ALUB       ),
+ysyx_24120011_EXU u_ysyx_24120011_EXU(
+    .A          ( A          ),
+    .B          ( B          ),
     .ALU_ctrl   ( ALU_ctrl   ),
-    .ALUout     ( alu_result      )
+    .ALUBctrl   ( ALUBctrl   ),
+    .src2       ( src2       ),
+    .imme       ( imme       ),
+    .r_csr_data ( r_csr_data ),
+    .ALUout     ( ALUout     ),
+    .ALUB       ( ALUB       )
 );
+
 
 ysyx_24120011_WBU i_WBU(
     .pc_add_imme_out ( pc_add_imme_out ),
@@ -525,14 +531,6 @@ ysyx_24120011_RegStack i_RegStack(
     .src1  ( src1  ),
     .src2  ( src2  ),
     .a0    ( a0    )
-);
-
-ysyx_24120011_ALUCtrl i_ALUCtrl(
-    .ALUBctrl   ( ALUBctrl   ),
-    .src2       ( src2       ),
-    .imme       ( imme       ),
-    .r_csr_data ( r_csr_data ),
-    .ALUB       ( ALUB       )
 );
 
 
