@@ -281,9 +281,9 @@ always@(*)begin
             if(IFU_valid) begin
                 w_mem_en = 1'd1;
             end
-            // else begin
-            //     w_mem_en = 1'd0;
-            // end
+            else begin
+                w_mem_en = 1'd0;
+            end
             if(func3 == 3'b000)begin//sb
                  w_mem_len = 8'd1;
             end
