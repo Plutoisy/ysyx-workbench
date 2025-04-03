@@ -11,7 +11,8 @@ module ysyx_24120011_EXU(
     input  [31:0] r_csr_data,
     output [31:0] ALUout,
     output [31:0] ALUB,
-    output EXU_valid
+    output EXU_valid,
+    output EXU_ready
 );
 
 ysyx_24120011_ALU u_ysyx_24120011_ALU(
@@ -65,5 +66,9 @@ always@(posedge clk) begin
     end
 end
 
+always@(posedge clk)begin
+    if(IFU_valid) LSU_ready <= 1'b0;
+    else if(reg_EXU_valid5) LSU_ready <= 1'b1;
+end
 endmodule
 

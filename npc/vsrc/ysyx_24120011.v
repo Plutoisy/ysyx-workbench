@@ -112,6 +112,7 @@ wire IFU_valid;
 wire EXU_valid;
 wire LSU_valid;
 wire LSU_ready;
+wire EXU_ready;
 wire [31:0] LSU_valid_int;
 
 //============M0=============//        
@@ -415,6 +416,7 @@ ysyx_24120011_IFU i_IFU(
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid ),
     .LSU_ready ( LSU_ready ),
+    .EXU_ready ( EXU_ready ),
     .M0_araddr  ( M0_araddr  ),
     .M0_arvalid ( M0_arvalid ),
     .M0_arready ( M0_arready ),
