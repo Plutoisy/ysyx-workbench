@@ -52,4 +52,9 @@ github:
 	git commit -m "$(M)" && \
 	git push my_origin dev
 	
+githubyb:
+	git add . && \
+	git commit -m "$(M)" && \
+	git push my_origin dev	
+	
 .PHONY: .git_commit .clean_index _default

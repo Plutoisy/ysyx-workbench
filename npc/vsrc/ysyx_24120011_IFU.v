@@ -6,6 +6,7 @@ module ysyx_24120011_IFU(
     output reg [31:0] inst,
     output IFU_valid,
     input LSU_ready,
+    input EXU_ready,
     //============M0=============//        
     //AR-axi4lite
     output  [31:0]     M0_araddr,
@@ -220,7 +221,7 @@ end
 
 always@(*)begin
     case(state)
-        ysyx_24120011_IFU_M_AXI_IDLE: next_state = (LSU_ready) ? ysyx_24120011_IFU_M_AXI_RADDR : ysyx_24120011_IFU_M_AXI_IDLE;
+        ysyx_24120011_IFU_M_AXI_IDLE: next_state = (LSU_ready && EXU_ready) ? ysyx_24120011_IFU_M_AXI_RADDR : ysyx_24120011_IFU_M_AXI_IDLE;
         ysyx_24120011_IFU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_IFU_M_AXI_RDATA;
         ysyx_24120011_IFU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_IFU_M_AXI_IDLE;
         default : next_state = ysyx_24120011_IFU_M_AXI_IDLE;
