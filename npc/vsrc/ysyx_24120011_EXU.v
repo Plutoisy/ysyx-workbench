@@ -34,7 +34,7 @@ reg reg_EXU_valid;
 // reg reg_EXU_valid3;
 // reg reg_EXU_valid4;
 // reg reg_EXU_valid5;
-assign EXU_valid = reg_EXU_valid5;
+assign EXU_valid = reg_EXU_valid;
 
 always@(posedge clk) begin
     if(rst) begin
