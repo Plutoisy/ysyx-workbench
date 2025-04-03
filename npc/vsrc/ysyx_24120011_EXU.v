@@ -45,7 +45,7 @@ always@(posedge clk) begin
         reg_EXU_valid3<= 'd0;
         reg_EXU_valid4<= 'd0;
         reg_EXU_valid5<= 'd0;
-        EXU_ready<='d0;
+        EXU_ready<='d1;
     end
     else begin
         if(IFU_valid) begin
