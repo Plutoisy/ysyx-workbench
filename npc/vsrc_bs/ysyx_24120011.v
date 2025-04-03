@@ -2,6 +2,7 @@
 import "DPI-C" function void ebreak ();
 import "DPI-C" function void npc_trap(input int pc, input int ret);
 import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
+import "DPI-C" function void Performance_Counters(input int Performancetype);
 
 module ysyx_24120011 (
     input clock,
@@ -383,6 +384,25 @@ end
 
 always@(negedge clock) begin
     get_pc_inst(pc,dnpc,inst,LSU_valid_int);
+end
+
+reg IFU_valid_delay;
+reg IFU_valid_rising_edge;
+reg LSU_rready_delay;
+reg LSU_rready_rising_edge;
+always@(posedge clock) begin
+    IFU_valid_delay <= IFU_valid;
+    IFU_valid_rising_edge <= IFU_valid & ~IFU_valid_delay;
+    LSU_rready_delay <= M1_rready;
+    LSU_rready_rising_edge <= M1_rready & ~LSU_rready_delay;
+end
+always@(posedge clock) begin
+    if(IFU_valid_rising_edge) begin
+        Performance_Counters(32'd1);
+    end
+    if(LSU_rready_rising_edge) begin
+        Performance_Counters(32'd2);
+    end
 end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
