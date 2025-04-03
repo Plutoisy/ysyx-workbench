@@ -2,7 +2,6 @@
 module ysyx_24120011_IDU (
     input [31:0]  inst,
     input IFU_valid,
-    input LSU_valid,
     output [4:0]  rd,
     output [4:0]  rs1,
     output [4:0]  rs2,

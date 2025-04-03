@@ -29,38 +29,18 @@ ysyx_24120011_ALUCtrl u_ysyx_24120011_ALUCtrl(
 );
 
 reg reg_EXU_valid;
-reg reg_EXU_valid1;
-reg reg_EXU_valid2;
-reg reg_EXU_valid3;
-reg reg_EXU_valid4;
-reg reg_EXU_valid5;
-assign EXU_valid = reg_EXU_valid5;
+assign EXU_valid = reg_EXU_valid;
 
 always@(posedge clk) begin
     if(rst) begin
         reg_EXU_valid <= 'd0;
-        reg_EXU_valid1<= 'd0; 
-        reg_EXU_valid2<= 'd0;
-        reg_EXU_valid3<= 'd0;
-        reg_EXU_valid4<= 'd0;
-        reg_EXU_valid5<= 'd0;
     end
     else begin
         if(IFU_valid) begin
             reg_EXU_valid <= 'd1;
-            reg_EXU_valid1<= reg_EXU_valid; 
-            reg_EXU_valid2<= reg_EXU_valid1;
-            reg_EXU_valid3<= reg_EXU_valid2;
-            reg_EXU_valid4<= reg_EXU_valid3;
-            reg_EXU_valid5<= reg_EXU_valid4;
         end
         else begin
             reg_EXU_valid <= 'd0;
-            reg_EXU_valid1<= reg_EXU_valid; 
-            reg_EXU_valid2<= reg_EXU_valid1;
-            reg_EXU_valid3<= reg_EXU_valid2;
-            reg_EXU_valid4<= reg_EXU_valid3;
-            reg_EXU_valid5<= reg_EXU_valid4;
         end
     end
 end
