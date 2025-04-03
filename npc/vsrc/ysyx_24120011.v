@@ -508,7 +508,8 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .r_csr_data ( r_csr_data ),
     .ALUout     ( alu_result     ),
     .ALUB       ( ALUB       ),
-    .EXU_valid           ( EXU_valid           )
+    .EXU_valid           ( EXU_valid           ),
+    .EXU_ready           ( EXU_ready           )
 );
 
 ysyx_24120011_WBU i_WBU(
