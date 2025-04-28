@@ -29,7 +29,7 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 0
+#define BMODE 1
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -520,13 +520,21 @@ void cpu_exec(uint64_t n){
       //AssembleDecoder(handle, top_inst, top_pc);
 
       if(top_IFU_valid_int){
+
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
           printf("exec times: %ld\n",i+1);
           difftest_exec(1);
           difftest_regcpy(&refstate, 0);
         }
-        
+
+        if(!BMODE){
+          AssembleDecoder(handle, top_inst, top_pc);
+          for(int j = 0; j < 32; j++){
+            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
+          }
+        }
+
         step_and_dump_wave();
         inst_count++;
         
@@ -569,6 +577,7 @@ void cpu_exec(uint64_t n){
             for(int j = 0; j < 32; j++){
               printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
             }
+            printf("exec times: %ld\n",i+1);
             return;
           }
         }
