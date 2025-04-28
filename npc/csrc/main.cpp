@@ -109,8 +109,8 @@ typedef struct {
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
-  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
-  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+  "sd0", "sd1", "sd2", "sd3", "wd0", "wd1", "wd2", "wd3",
+  "mod", "imm", "od0", "od1", "od2", "od3", "t5", "t6"
 };
 
 static char* rl_gets() {

@@ -90,6 +90,7 @@ wire [1:0]  pc_ctrl;
 wire [3:0]  rd_ctrl;
 wire [1:0]  ALUBctrl;
 wire        w_en;
+wire        w_pe_en;
 wire        w_mem_en;
 wire        r_mem_en;
 wire        sign_extension;
@@ -112,7 +113,23 @@ wire IFU_valid;
 wire EXU_valid;
 wire LSU_valid;
 wire LSU_ready;
+wire EXU_ready;
 wire [31:0] LSU_valid_int;
+
+wire [31:0] source_data0;
+wire [31:0] source_data1;
+wire [31:0] source_data2;
+wire [31:0] source_data3;
+wire [31:0] weight_data0;
+wire [31:0] weight_data1;
+wire [31:0] weight_data2;
+wire [31:0] weight_data3;
+wire [2:0]  mode;
+wire [7:0]  imm;
+wire [31:0] out0;
+wire [31:0] out1;
+wire [31:0] out2;
+wire [31:0] out3;
 
 //============M0=============//        
 //AR-axi4lite
@@ -415,6 +432,7 @@ ysyx_24120011_IFU i_IFU(
     .inst      ( inst      ),
     .IFU_valid ( IFU_valid ),
     .LSU_ready ( LSU_ready ),
+    .EXU_ready ( EXU_ready ),
     .M0_araddr  ( M0_araddr  ),
     .M0_arvalid ( M0_arvalid ),
     .M0_arready ( M0_arready ),
@@ -506,7 +524,8 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .r_csr_data ( r_csr_data ),
     .ALUout     ( alu_result     ),
     .ALUB       ( ALUB       ),
-    .EXU_valid           ( EXU_valid           )
+    .EXU_valid           ( EXU_valid           ),
+    .EXU_ready           ( EXU_ready           )
 );
 
 ysyx_24120011_WBU i_WBU(
@@ -519,20 +538,53 @@ ysyx_24120011_WBU i_WBU(
     .rd_ctrl         ( rd_ctrl         ),
     .LSU_valid       ( LSU_valid       ),
     .w_en            ( w_en            ),
+    .w_pe_en         ( w_pe_en         ),
     .wdata           ( wdata           )
 );
 
-ysyx_24120011_RegStack i_RegStack(
-    .clk   ( clock   ),
-    .rst   ( reset   ),
-    .w_en  ( w_en  ),
-    .wdata ( wdata ),
-    .rd    ( rd    ),
-    .rs1   ( rs1   ),
-    .rs2   ( rs2   ),
-    .src1  ( src1  ),
-    .src2  ( src2  ),
-    .a0    ( a0    )
+ysyx_24120011_RegStack u_ysyx_24120011_RegStack(
+    .clk          ( clock        ),
+    .rst          ( reset        ),
+    .w_en         ( w_en         ),
+    .w_pe_en      ( w_pe_en      ),
+    .wdata        ( wdata        ),
+    .rd           ( rd           ),
+    .rs1          ( rs1          ),
+    .rs2          ( rs2          ),
+    .src1         ( src1         ),
+    .src2         ( src2         ),
+    .source_data0 ( source_data0 ),
+    .source_data1 ( source_data1 ),
+    .source_data2 ( source_data2 ),
+    .source_data3 ( source_data3 ),
+    .weight_data0 ( weight_data0 ),
+    .weight_data1 ( weight_data1 ),
+    .weight_data2 ( weight_data2 ),
+    .weight_data3 ( weight_data3 ),
+    .mode         ( mode         ),
+    .imm          ( imm          ),
+    .out0         ( out0         ),
+    .out1         ( out1         ),
+    .out2         ( out2         ),
+    .out3         ( out3         ),
+    .a0           ( a0           )
+);
+
+PE_ctrl u_PE_ctrl(
+    .mode         ( mode         ),
+    .imm          ( imm          ),
+    .source_data0 ( source_data0 ),
+    .source_data1 ( source_data1 ),
+    .source_data2 ( source_data2 ),
+    .source_data3 ( source_data3 ),
+    .weight_data0 ( weight_data0 ),
+    .weight_data1 ( weight_data1 ),
+    .weight_data2 ( weight_data2 ),
+    .weight_data3 ( weight_data3 ),
+    .out0         ( out0         ),
+    .out1         ( out1         ),
+    .out2         ( out2         ),
+    .out3         ( out3         )
 );
 
 

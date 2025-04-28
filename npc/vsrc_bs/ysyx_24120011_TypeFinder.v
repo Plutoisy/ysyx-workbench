@@ -12,6 +12,7 @@ module ysyx_24120011_TypeFinder(
             
             7'b0010111:opcode_type = 3'd1;//U-Type
             7'b0110111:opcode_type = 3'd1;//U-Type
+            7'b1111011:opcode_type = 3'd1;//myU-Type 7b 
 
             7'b1101111:opcode_type = 3'd2;//J-Type
 

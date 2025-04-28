@@ -93,6 +93,7 @@ end
 //4'd4: w_en = 1'd0;
 //4'd5: rdata;
 //4'd6: r_csr_data;
+//4'd7: w_pe_en = 1'd1;
 always@(*)begin
     if(rd == 5'b00000) begin
         rd_ctrl = 4'd4;
@@ -122,6 +123,9 @@ always@(*)begin
                 end
                 else if(opcode == 7'b0110111)begin//lui
                     rd_ctrl = 4'd3;
+                end
+                else if(opcode == 7'b1111011)begin//pewb
+                    rd_ctrl = 4'd7;
                 end
                 else begin
                     rd_ctrl = 4'd0;
