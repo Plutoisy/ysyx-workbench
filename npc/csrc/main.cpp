@@ -29,7 +29,7 @@
 #define PC_ASSERT 1
 #define REG_ASSERT 1
 #define DIFFTESE 0
-#define BMODE 0
+#define BMODE 1
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -528,7 +528,7 @@ void cpu_exec(uint64_t n){
           difftest_regcpy(&refstate, 0);
         }
 
-        if(!BMODE){
+        if(!BMODE && n < 100){
           AssembleDecoder(handle, top_inst, top_pc);
           for(int j = 0; j < 32; j++){
             printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
