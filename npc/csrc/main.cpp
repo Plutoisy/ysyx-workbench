@@ -30,6 +30,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 0
+#define WATCHPOINT 1
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -528,6 +529,9 @@ void cpu_exec(uint64_t n){
           difftest_regcpy(&refstate, 0);
         }
 
+        step_and_dump_wave();
+        inst_count++;
+
         if(!BMODE && n < 100){
           AssembleDecoder(handle, top_inst, top_pc);
           for(int j = 0; j < 32; j++){
@@ -535,9 +539,12 @@ void cpu_exec(uint64_t n){
           }
         }
 
-        step_and_dump_wave();
-        inst_count++;
-        
+        if(WATCHPOINT){
+          if(top_pc == 0xa0020e38){
+            return;
+          }
+        }
+
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
           printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
@@ -761,7 +768,12 @@ int main(int argc, char *argv[]) {
   system_rst();
   if(BMODE){
     cmd_si("-1");
-    cmd_q(NULL);
+    if(WATCHPOINT){
+      sdb_mainloop();
+    }
+    else{
+      cmd_q(NULL);
+    }
   }
   else{
     sdb_mainloop();
