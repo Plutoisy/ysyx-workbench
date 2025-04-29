@@ -327,12 +327,16 @@ void isa_reg_display() {
 
 uint64_t IFU_getinst = 0;
 uint64_t LSU_getdata = 0;
+uint64_t EXU_fincal = 0;
 extern "C" void Performance_Counters(int Performancetype){
   if(Performancetype == 1){
     IFU_getinst++;
   }
   if(Performancetype == 2){
     LSU_getdata++;
+  }
+  if(Performancetype == 3){
+    EXU_fincal++;
   }
 }
 
@@ -606,6 +610,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mCPI: %f\033[0m\n",cpi);
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
+      printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
       return;
     }
   }
