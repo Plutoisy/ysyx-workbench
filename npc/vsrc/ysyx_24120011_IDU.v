@@ -62,7 +62,7 @@ always@(posedge clock) begin
     IFU_valid_delay <= IFU_valid;
     IFU_valid_rising_edge <= IFU_valid & ~IFU_valid_delay;
 end
-always @(clock) begin
+always @(posedge clock) begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(IFU_valid_rising_edge) begin
