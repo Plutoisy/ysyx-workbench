@@ -536,16 +536,14 @@ int parse_instruction_type(uint32_t top_inst) {
       // R型和I型计算类指令
       case 0x33:  // R型：add, sub, sll, slt, sltu, xor, srl, sra, or, and
       case 0x13:  // I型：addi, slti, sltiu, xori, ori, andi, slli, srli, srai
-      case 0x1B:  // I型：addiw (RV64)
-      case 0x3B:  // R型：addw, subw, sllw, srlw, sraw (RV64)
+      case 0x17:  // U型：auipc
+      case 0x37:  // U型：lui
           return 4;
       
       // 访存指令
       case 0x03:  // I型：lb, lh, lw, lbu, lhu
       case 0x23:  // S型：sb, sh, sw
       case 0x0F:  // fence指令
-      case 0x07:  // I型：(RV64) ld
-      case 0x27:  // S型：(RV64) sd
           return 3;
       
       // CSR指令
