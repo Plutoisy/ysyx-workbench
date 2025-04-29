@@ -56,137 +56,155 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 always @(*) begin
     case(opcode_type)
         3'd0:begin //I-Type
-            if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
-                inst_type_Counters(32'd1);
-            end
-            else if(inst == 32'b00110000001000000000000001110011)begin//mret
-                inst_type_Counters(32'd1);
-            end
-            else if(inst == 32'b00000000000000000000000001110011)begin//ecall
-                inst_type_Counters(32'd2);
-            end
-            else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                inst_type_Counters(32'd3);
-            end
-            else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
-                inst_type_Counters(32'd2);
-            end
-            else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                inst_type_Counters(32'd2);
-            end
-            else if(func3 == 3'b000 && opcode == 7'b0010011)begin//addi
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b011 && opcode == 7'b0010011)begin//sltiu
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b111 && opcode == 7'b0010011)begin//andi
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b100 && opcode == 7'b0010011)begin//xori
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b110 && opcode == 7'b0010011)begin//ori
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//srli
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b001 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//slli
-                inst_type_Counters(32'd4);
-            end
-            else begin
-                inst_type_Counters(32'd99);
+            if(IFU_valid) begin
+                if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
+                    inst_type_Counters(32'd1);
+                end
+                else if(inst == 32'b00110000001000000000000001110011)begin//mret
+                    inst_type_Counters(32'd1);
+                end
+                else if(inst == 32'b00000000000000000000000001110011)begin//ecall
+                    inst_type_Counters(32'd2);
+                end
+                else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
+                    inst_type_Counters(32'd3);
+                end
+                else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
+                    inst_type_Counters(32'd2);
+                end
+                else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
+                    inst_type_Counters(32'd2);
+                end
+                else if(func3 == 3'b000 && opcode == 7'b0010011)begin//addi
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b011 && opcode == 7'b0010011)begin//sltiu
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b111 && opcode == 7'b0010011)begin//andi
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b100 && opcode == 7'b0010011)begin//xori
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b110 && opcode == 7'b0010011)begin//ori
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0100000)begin//srai
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b101 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//srli
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b001 && opcode == 7'b0010011 && func7 == 7'b0000000)begin//slli
+                    inst_type_Counters(32'd4);
+                end
+                else begin
+                    inst_type_Counters(32'd99);
+                end
             end
         end
         3'd1:begin //U-Type
-            if(opcode == 7'b0010111)begin//auipc
-                inst_type_Counters(32'd4);
-            end
-            else if(opcode == 7'b0110111)begin//lui
-                inst_type_Counters(32'd4);
-            end
-            else begin
-                inst_type_Counters(32'd99);
+            if(IFU_valid) begin
+                if(opcode == 7'b0010111)begin//auipc
+                    inst_type_Counters(32'd4);
+                end
+                else if(opcode == 7'b0110111)begin//lui
+                    inst_type_Counters(32'd4);
+                end
+                else begin
+                    inst_type_Counters(32'd99);
+                end
             end
         end
-        3'd2:   inst_type_Counters(32'd1);
+        3'd2: begin  
+            if(IFU_valid) begin
+                inst_type_Counters(32'd1);
+            end
+        end
         3'd3:begin
-            if(func3 == 3'b000)begin//sb
-                 inst_type_Counters(32'd3);
-            end
-            else if(func3 == 3'b001)begin//sh
-                 inst_type_Counters(32'd3);
-            end
-            else if(func3 == 3'b010)begin//sw
-                 inst_type_Counters(32'd3);
-            end
-            else begin
-                 inst_type_Counters(32'd99);
+            if(IFU_valid) begin
+                if(func3 == 3'b000)begin//sb
+                    inst_type_Counters(32'd3);
+                end
+                else if(func3 == 3'b001)begin//sh
+                    inst_type_Counters(32'd3);
+                end
+                else if(func3 == 3'b010)begin//sw
+                    inst_type_Counters(32'd3);
+                end
+                else begin
+                    inst_type_Counters(32'd99);
+                end
             end
         end
         3'd4:begin//R-Type
-            if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b000 && func7 == 7'b0100000)begin//sub
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b011 && func7 == 7'b0000000)begin//sltu
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b010 && func7 == 7'b0000000)begin//slt
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b100 && func7 == 7'b0000000)begin//xor
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b001 && func7 == 7'b0000000)begin//sll
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b111 && func7 == 7'b0000000)begin//and
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b101 && func7 == 7'b0100000)begin//sra
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b110 && func7 == 7'b0000000)begin//or
-                inst_type_Counters(32'd4);
-            end
-            else if(func3 == 3'b101 && func7 == 7'b0000000)begin//srl
-                inst_type_Counters(32'd4);
-            end
-            else begin
-                inst_type_Counters(32'd99);
+            if(IFU_valid) begin
+                if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b000 && func7 == 7'b0100000)begin//sub
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b011 && func7 == 7'b0000000)begin//sltu
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b010 && func7 == 7'b0000000)begin//slt
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b100 && func7 == 7'b0000000)begin//xor
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b001 && func7 == 7'b0000000)begin//sll
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b111 && func7 == 7'b0000000)begin//and
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b101 && func7 == 7'b0100000)begin//sra
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b110 && func7 == 7'b0000000)begin//or
+                    inst_type_Counters(32'd4);
+                end
+                else if(func3 == 3'b101 && func7 == 7'b0000000)begin//srl
+                    inst_type_Counters(32'd4);
+                end
+                else begin
+                    inst_type_Counters(32'd99);
+                end
             end
         end
         3'd5:begin//B-Type
-            if(func3 == 3'b000)begin//beq
-                inst_type_Counters(32'd1);
+            if(IFU_valid) begin
+                if(func3 == 3'b000)begin//beq
+                    inst_type_Counters(32'd1);
+                end
+                else if(func3 == 3'b001)begin//bne
+                    inst_type_Counters(32'd1);
+                end
+                else if(func3 == 3'b101)begin//bge
+                    inst_type_Counters(32'd1);
+                end
+                else if(func3 == 3'b111)begin//bgeu
+                    inst_type_Counters(32'd1);
+                end
+                else if(func3 == 3'b100)begin//blt
+                    inst_type_Counters(32'd1);
+                end
+                else if(func3 == 3'b110)begin//bltu
+                    inst_type_Counters(32'd1);
+                end
+                else begin
+                    inst_type_Counters(32'd99);
+                end
             end
-            else if(func3 == 3'b001)begin//bne
-                inst_type_Counters(32'd1);
-            end
-            else if(func3 == 3'b101)begin//bge
-                inst_type_Counters(32'd1);
-            end
-            else if(func3 == 3'b111)begin//bgeu
-                inst_type_Counters(32'd1);
-            end
-            else if(func3 == 3'b100)begin//blt
-                inst_type_Counters(32'd1);
-            end
-            else if(func3 == 3'b110)begin//bltu
-                inst_type_Counters(32'd1);
-            end
-            else begin
+        end
+        default: begin
+            if(IFU_valid) begin
                 inst_type_Counters(32'd99);
             end
         end
-        default: inst_type_Counters(32'd99);
     endcase
 end
 //======================dpic========================//
