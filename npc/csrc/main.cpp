@@ -528,6 +528,49 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
   
 }
 
+int parse_instruction_type(uint32_t top_inst) {
+  // 提取opcode（低7位）
+  uint32_t opcode = top_inst & 0x7F;
+  
+  switch (opcode) {
+      // R型和I型计算类指令
+      case 0x33:  // R型：add, sub, sll, slt, sltu, xor, srl, sra, or, and
+      case 0x13:  // I型：addi, slti, sltiu, xori, ori, andi, slli, srli, srai
+      case 0x1B:  // I型：addiw (RV64)
+      case 0x3B:  // R型：addw, subw, sllw, srlw, sraw (RV64)
+          return 4;
+      
+      // 访存指令
+      case 0x03:  // I型：lb, lh, lw, lbu, lhu
+      case 0x23:  // S型：sb, sh, sw
+      case 0x0F:  // fence指令
+      case 0x07:  // I型：(RV64) ld
+      case 0x27:  // S型：(RV64) sd
+          return 3;
+      
+      // CSR指令
+      case 0x73: {
+          // 对于0x73 opcode，需要进一步检查funct3字段来确定是CSR指令还是其他系统指令
+          uint32_t funct3 = (top_inst >> 12) & 0x7;
+          if (funct3 != 0) {
+              return 2;  // CSR指令 (csrrw, csrrs, csrrc等)
+          } else {
+              // 可能是ecall, ebreak等系统指令，这里归类为未知类型
+              return 99;
+          }
+      }
+      
+      // 跳转指令
+      case 0x6F:  // J型：jal
+      case 0x67:  // I型：jalr
+      case 0x63:  // B型：beq, bne, blt, bge, bltu, bgeu
+          return 1;
+          
+      default:
+          return 99;
+  }
+}
+
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
@@ -536,6 +579,12 @@ CPU_state refstate;
 int old_pc = 0;
 int pc_count = 0;
 uint64_t inst_count = 0;
+int inst_type;
+uint64_t jump_type_s = 0;
+uint64_t csr_type_s = 0;
+uint64_t read_and_store_type_s = 0;
+uint64_t cal_type_s = 0;
+uint64_t unk_s = 0;
 void cpu_exec(uint64_t n){
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
@@ -558,6 +607,22 @@ void cpu_exec(uint64_t n){
 
         step_and_dump_wave();
         inst_count++;
+
+        if(parse_instruction_type(top_inst) == 1){
+          jump_type_s++;
+        }
+        if(parse_instruction_type(top_inst) == 2){
+          csr_type_s++;
+        }
+        if(parse_instruction_type(top_inst) == 3){
+          read_and_store_type_s++;
+        }
+        if(parse_instruction_type(top_inst) == 4){
+          cal_type_s++;
+        }
+        if(parse_instruction_type(top_inst) == 5){
+          unk_s++;
+        }
 
         if((WATCHPOINT || !BMODE) && n < 100){
           AssembleDecoder(handle, top_inst, top_pc);
@@ -640,6 +705,12 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
       printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
       printf("\33[1;34munk: %ld\033[0m\n",unk);
+      printf("\33[1;34mTYPE COUNT SOFTWARE:\033[0m\n");
+      printf("\33[1;34mjump: %ld\033[0m\n",jump_type_s);
+      printf("\33[1;34mcsr: %ld\033[0m\n",csr_type_s);
+      printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type_s);
+      printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
+      printf("\33[1;34munk: %ld\033[0m\n",unk_s);
       return;
     }
   }
