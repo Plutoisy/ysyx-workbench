@@ -8,6 +8,16 @@
 #include "VysyxSoCFull__Syms.h"
 #include "VysyxSoCFull___024unit.h"
 
+extern "C" void inst_type_Counters(int insttype);
+
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(IData/*31:0*/ insttype) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit\n"); );
+    // Body
+    int insttype__Vcvt;
+    for (size_t insttype__Vidx = 0; insttype__Vidx < 1; ++insttype__Vidx) insttype__Vcvt = insttype;
+    inst_type_Counters(insttype__Vcvt);
+}
+
 extern "C" void reg_out(const int* array);
 
 VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<IData/*31:0*/, 32> array) {

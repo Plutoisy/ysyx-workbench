@@ -634,7 +634,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
-      printf("\33[1;34mTYPE COUNT:\033[0m\n")
+      printf("\33[1;34mTYPE COUNT:\033[0m\n");
       printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
       printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
       printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
