@@ -356,38 +356,16 @@ wire             clint_bready;
 //B-axi4
 wire [3:0]	  clint_bid;
 
-
-assign LSU_valid_int    = {31'b0,LSU_valid};
-
-assign io_slave_awready = 'd0;    
-assign io_slave_wready  = 'd0;    
-assign io_slave_bvalid  = 'd0;    
-assign io_slave_bresp   = 'd0;    
-assign io_slave_bid     = 'd0;    
-assign io_slave_arready = 'd0;    
-assign io_slave_rvalid  = 'd0;    
-assign io_slave_rresp   = 'd0;    
-assign io_slave_rdata   = 'd0;    
-assign io_slave_rlast   = 'd0;    
-assign io_slave_rid     = 'd0;
-
+//======================dpic========================//
 always@(posedge clock)begin
     if (inst == 32'b00000000000100000000000001110011)begin
         npc_trap(pc,a0);
         ebreak();
     end
 end
-
-always@(posedge clock) begin
-    if(reset) begin
-        pc <= 32'h3000_0000;
-    end
-end
-
 always@(negedge clock) begin
     get_pc_inst(pc,dnpc,inst,LSU_valid_int);
 end
-
 reg IFU_valid_delay;
 reg IFU_valid_rising_edge;
 reg LSU_rready_delay;
@@ -413,6 +391,29 @@ always@(posedge clock) begin
         Performance_Counters(32'd3);
     end
 end
+//======================dpic========================//
+
+assign LSU_valid_int    = {31'b0,LSU_valid};
+
+assign io_slave_awready = 'd0;    
+assign io_slave_wready  = 'd0;    
+assign io_slave_bvalid  = 'd0;    
+assign io_slave_bresp   = 'd0;    
+assign io_slave_bid     = 'd0;    
+assign io_slave_arready = 'd0;    
+assign io_slave_rvalid  = 'd0;    
+assign io_slave_rresp   = 'd0;    
+assign io_slave_rdata   = 'd0;    
+assign io_slave_rlast   = 'd0;    
+assign io_slave_rid     = 'd0;
+
+always@(posedge clock) begin
+    if(reset) begin
+        pc <= 32'h3000_0000;
+    end
+end
+
+
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
 

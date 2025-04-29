@@ -340,6 +340,29 @@ extern "C" void Performance_Counters(int Performancetype){
   }
 }
 
+uint64_t jump_type = 0;
+uint64_t csr_type = 0;
+uint64_t read_and_store_type = 0;
+uint64_t cal_type = 0;
+uint64_t unk = 0;
+extern "C" void inst_type_Counters(int insttype){
+  if(insttype == 1){
+    jump_type++;
+  }
+  if(insttype == 2){
+    csr_type++;
+  }
+  if(insttype == 3){
+    read_and_store_type++;
+  }
+  if(insttype == 4){
+    cal_type++;
+  }
+  if(insttype == 5){
+    unk++;
+  }
+}
+
 extern "C" void psram_read(uint32_t addr, uint32_t *data) {
 	if(addr >= 0 && addr <= PSRAM_SIZE){
 		*data = host_read(psram+addr,4);
@@ -611,6 +634,12 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
+      printf("\33[1;34mTYPE COUNT:\033[0m\n")
+      printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
+      printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
+      printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
+      printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
+      printf("\33[1;34munk: %ld\033[0m\n",unk);
       return;
     }
   }
