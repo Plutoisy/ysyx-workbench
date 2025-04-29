@@ -1325,120 +1325,133 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     }
     if ((4U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
         if ((2U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
+            if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
+            }
         } else if ((1U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
-            if ((0U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                              >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-            } else if ((1U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-            } else if ((5U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-            } else if ((7U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-            } else if ((4U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-            } else if ((6U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+            if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
+                if ((0U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                  >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+                } else if ((1U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+                } else if ((5U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+                } else if ((7U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+                } else if ((4U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+                } else if ((6U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+                } else {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
+                }
+            }
+        } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
+            if ((IData)((0U == (0xfe007000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x40000000U == (0xfe007000U 
+                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x3000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x2000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x4000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x1000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x7000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x40005000U == (0xfe007000U 
+                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x6000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((IData)((0x5000U == (0xfe007000U 
+                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
             } else {
                 VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
             }
-        } else if ((IData)((0U == (0xfe007000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x40000000U == (0xfe007000U 
-                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x3000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x2000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x4000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x1000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x7000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x40005000U == (0xfe007000U 
-                                            & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x6000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((IData)((0x5000U == (0xfe007000U 
-                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else {
-            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
         }
     } else if ((2U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
         if ((1U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
-            if ((0U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                              >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
-            } else if ((1U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
-            } else if ((2U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                     >> 0xcU)))) {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
-            } else {
-                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
+            if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
+                if ((0U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                  >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
+                } else if ((1U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
+                } else if ((2U == (7U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                         >> 0xcU)))) {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
+                } else {
+                    VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
+                }
             }
-        } else {
+        } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
             VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
         }
     } else if ((1U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
-        if ((0x17U == (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst))) {
+        if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
+            if ((0x17U == (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else if ((0x37U == (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst))) {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+            } else {
+                VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
+            }
+        }
+    } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready) {
+        if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+        } else if ((0x30200073U == vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
+        } else if ((0x73U == vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(2U);
+        } else if ((3U == (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
+        } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(2U);
+        } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hed3628ff__0) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(2U);
+        } else if ((IData)((0x13U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
             VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-        } else if ((0x37U == (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst))) {
+        } else if ((IData)((0x3013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+        } else if ((IData)((0x7013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+        } else if ((IData)((0x4013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+        } else if ((IData)((0x6013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+        } else if (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgTmp_h53d597ad__0) 
+                    & (0x20U == (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                 >> 0x19U)))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+        } else if (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgTmp_h53d597ad__0) 
+                    & (0U == (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                              >> 0x19U)))) {
+            VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
+        } else if ((IData)((0x1013U == (0xfe00707fU 
+                                        & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
             VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
         } else {
             VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
         }
-    } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-    } else if ((0x30200073U == vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(1U);
-    } else if ((0x73U == vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(2U);
-    } else if ((3U == (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(3U);
-    } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(2U);
-    } else if (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hed3628ff__0) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(2U);
-    } else if ((IData)((0x13U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if ((IData)((0x3013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if ((IData)((0x7013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if ((IData)((0x4013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if ((IData)((0x6013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgTmp_h53d597ad__0) 
-                & (0x20U == (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                             >> 0x19U)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgTmp_h53d597ad__0) 
-                & (0U == (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                          >> 0x19U)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else if ((IData)((0x1013U == (0xfe00707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)))) {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(4U);
-    } else {
-        VysyxSoCFull___024unit____Vdpiimwrap_inst_type_Counters_TOP____024unit(0x63U);
     }
     if ((4U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc_ctrl = 0U;

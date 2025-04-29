@@ -1,6 +1,9 @@
 import "DPI-C" function void inst_type_Counters(input int insttype);
 
 module ysyx_24120011_IDU (
+    //dpic//
+    input clock,
+    //dpic//
     input [31:0]  inst,
     input IFU_valid,
     output [4:0]  rd,
@@ -53,10 +56,16 @@ ysyx_24120011_ImmeGen i_ImmeGen(
 //read_and_store 3
 //cal 4
 //unk 99
-always @(*) begin
+reg IFU_valid_delay;
+reg IFU_valid_rising_edge;
+always@(posedge clock) begin
+    IFU_valid_delay <= IFU_valid;
+    IFU_valid_rising_edge <= IFU_valid & ~IFU_valid_delay;
+end
+always @(clock) begin
     case(opcode_type)
         3'd0:begin //I-Type
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
                     inst_type_Counters(32'd1);
                 end
@@ -105,7 +114,7 @@ always @(*) begin
             end
         end
         3'd1:begin //U-Type
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 if(opcode == 7'b0010111)begin//auipc
                     inst_type_Counters(32'd4);
                 end
@@ -118,12 +127,12 @@ always @(*) begin
             end
         end
         3'd2: begin  
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 inst_type_Counters(32'd1);
             end
         end
         3'd3:begin
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 if(func3 == 3'b000)begin//sb
                     inst_type_Counters(32'd3);
                 end
@@ -139,7 +148,7 @@ always @(*) begin
             end
         end
         3'd4:begin//R-Type
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 if(func3 == 3'b000 && func7 == 7'b0000000)begin//add
                     inst_type_Counters(32'd4);
                 end
@@ -176,7 +185,7 @@ always @(*) begin
             end
         end
         3'd5:begin//B-Type
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 if(func3 == 3'b000)begin//beq
                     inst_type_Counters(32'd1);
                 end
@@ -201,7 +210,7 @@ always @(*) begin
             end
         end
         default: begin
-            if(IFU_valid) begin
+            if(IFU_valid_rising_edge) begin
                 inst_type_Counters(32'd99);
             end
         end

@@ -478,6 +478,7 @@ ysyx_24120011_Reg #(32, 32'h3000_0000) i_pc (
 );
 
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
+    .clock          ( clock          ),
     .inst           ( inst           ),
     .IFU_valid      ( IFU_valid      ),
     .rd             ( rd             ),
