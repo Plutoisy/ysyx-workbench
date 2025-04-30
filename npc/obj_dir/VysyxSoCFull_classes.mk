@@ -12,7 +12,7 @@ VM_TIMING = 0
 # Coverage output mode?  0/1 (from --coverage)
 VM_COVERAGE = 0
 # Parallel builds?  0/1 (from --output-split)
-VM_PARALLEL_BUILDS = 0
+VM_PARALLEL_BUILDS = 1
 # Tracing output mode?  0/1 (from --trace/--trace-fst)
 VM_TRACE = 1
 # Tracing output mode in VCD format?  0/1 (from --trace)
@@ -25,8 +25,11 @@ VM_TRACE_FST = 0
 VM_CLASSES_FAST += \
 	VysyxSoCFull \
 	VysyxSoCFull___024root__DepSet_h4d156741__0 \
+	VysyxSoCFull___024root__DepSet_h4d156741__1 \
 	VysyxSoCFull___024root__DepSet_h0188974b__0 \
 	VysyxSoCFull___024unit__DepSet_h308b0958__0 \
+	VysyxSoCFull_mul_top__DepSet_h1b797dd4__0 \
+	VysyxSoCFull_mul_top__DepSet_h1b797dd4__1 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
@@ -36,16 +39,20 @@ VM_CLASSES_SLOW += \
 	VysyxSoCFull___024root__DepSet_h0188974b__0__Slow \
 	VysyxSoCFull___024unit__Slow \
 	VysyxSoCFull___024unit__DepSet_h460a3d32__0__Slow \
+	VysyxSoCFull_mul_top__Slow \
+	VysyxSoCFull_mul_top__DepSet_h2fdcb0be__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
 	VysyxSoCFull__Dpi \
 	VysyxSoCFull__Trace__0 \
+	VysyxSoCFull__Trace__1 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
 	VysyxSoCFull__Syms \
 	VysyxSoCFull__Trace__0__Slow \
+	VysyxSoCFull__Trace__1__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
