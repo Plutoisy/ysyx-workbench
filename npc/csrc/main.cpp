@@ -702,6 +702,17 @@ void cpu_exec(uint64_t n){
     else{
       float ipc = (float)inst_count/(float)(i+1);
       float cpi = 1.0/ipc;
+      double avg_jump = (double)clk_jump_type_s/(double)jump_type_s;
+      double avg_csr = (double)clk_csr_type_s/(double)csr_type_s;
+      double avg_read_and_store = (double)clk_read_and_store_type_s/(double)read_and_store_type_s;
+      double avg_cal = (double)clk_cal_type_s/(double)cal_type_s;
+      double avg_unk;
+      if(unk_s == 0){
+        avg_unk = 0;
+      }
+      else{
+        avg_unk = (double)clk_jump_type_s/(double)jump_type_s;
+      }
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
       printf("\33[1;34mClock Cycle: %ld\033[0m\n",i+1);
       printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
@@ -710,12 +721,12 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
-      printf("\33[1;34mTYPE COUNT:\033[0m\n");
-      printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
-      printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
-      printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
-      printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
-      printf("\33[1;34munk: %ld\033[0m\n",unk);
+      // printf("\33[1;34mTYPE COUNT:\033[0m\n");
+      // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
+      // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
+      // printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
+      // printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
+      // printf("\33[1;34munk: %ld\033[0m\n",unk);
       printf("\33[1;34mTYPE COUNT SOFTWARE:\033[0m\n");
       printf("\33[1;34mjump: %ld\033[0m\n",jump_type_s);
       printf("\33[1;34mcsr: %ld\033[0m\n",csr_type_s);
@@ -723,16 +734,12 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
       printf("\33[1;34munk: %ld\033[0m\n",unk_s);
       printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
-      printf("\33[1;34mjump: %ld\033[0m\n",clk_jump_type_s);
-      printf("\33[1;34mcsr: %lf\033[0m\n",clk_csr_type_s/csr_type_s);
-      printf("\33[1;34mread_and_store: %lf\033[0m\n",clk_read_and_store_type_s/read_and_store_type_s);
-      printf("\33[1;34mcalculate: %lf\033[0m\n",clk_cal_type_s/cal_type_s);
-      if(unk_s == 0){
-        printf("\33[1;34munk: %lf\033[0m\n",0);
-      }
-      else{
-        printf("\33[1;34munk: %lf\033[0m\n",clk_unk_s/unk_s);
-      }
+      printf("\33[1;34mjump: %ld\033[0m\n",avg_jump);
+      printf("\33[1;34mcsr: %lf\033[0m\n",avg_csr);
+      printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
+      printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
+      printf("\33[1;34munk: %ld\033[0m\n",avg_unk);
+      
       
       return;
     }
