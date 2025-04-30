@@ -583,6 +583,13 @@ uint64_t csr_type_s = 0;
 uint64_t read_and_store_type_s = 0;
 uint64_t cal_type_s = 0;
 uint64_t unk_s = 0;
+uint64_t last_clock = 0;
+uint64_t inst_clock_time = 0;
+uint64_t clk_jump_type_s = 0;
+uint64_t clk_csr_type_s = 0;
+uint64_t clk_read_and_store_type_s = 0;
+uint64_t clk_cal_type_s = 0;
+uint64_t clk_unk_s = 0;
 void cpu_exec(uint64_t n){
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
@@ -595,7 +602,8 @@ void cpu_exec(uint64_t n){
       //AssembleDecoder(handle, top_inst, top_pc);
 
       if(top_IFU_valid_int){
-
+        inst_clock_time = i - last_clock;
+        last_clock = i;
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
           printf("exec times: %ld\n",i+1);
@@ -608,18 +616,23 @@ void cpu_exec(uint64_t n){
 
         if(parse_instruction_type(top_inst) == 1){
           jump_type_s++;
+          clk_jump_type_s += inst_clock_time;
         }
         if(parse_instruction_type(top_inst) == 2){
           csr_type_s++;
+          clk_csr_type_s += inst_clock_time;
         }
         if(parse_instruction_type(top_inst) == 3){
           read_and_store_type_s++;
+          clk_read_and_store_type_s += inst_clock_time;
         }
         if(parse_instruction_type(top_inst) == 4){
           cal_type_s++;
+          clk_cal_type_s += inst_clock_time;
         }
         if(parse_instruction_type(top_inst) == 5){
           unk_s++;
+          clk_unk_s += inst_clock_time;
         }
 
         if((WATCHPOINT || !BMODE) && n < 100){
@@ -709,6 +722,18 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type_s);
       printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
       printf("\33[1;34munk: %ld\033[0m\n",unk_s);
+      printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
+      printf("\33[1;34mjump: %lf\033[0m\n",clk_jump_type_s/jump_type_s);
+      printf("\33[1;34mcsr: %lf\033[0m\n",clk_csr_type_s/csr_type_s);
+      printf("\33[1;34mread_and_store: %lf\033[0m\n",clk_read_and_store_type_s/read_and_store_type_s);
+      printf("\33[1;34mcalculate: %lf\033[0m\n",clk_cal_type_s/cal_type_s);
+      if(unk_s == 0){
+        printf("\33[1;34munk: %lf\033[0m\n",0);
+      }
+      else{
+        printf("\33[1;34munk: %lf\033[0m\n",clk_unk_s/unk_s);
+      }
+      
       return;
     }
   }
