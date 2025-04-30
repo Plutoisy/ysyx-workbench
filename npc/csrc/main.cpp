@@ -30,6 +30,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
+#define WATCHPOINT 0
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -109,8 +110,8 @@ typedef struct {
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
-  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
-  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+  "sd0", "sd1", "sd2", "sd3", "wd0", "wd1", "wd2", "wd3",
+  "mod", "imm", "od0", "od1", "od2", "od3", "t5", "t6"
 };
 
 static char* rl_gets() {
@@ -326,12 +327,39 @@ void isa_reg_display() {
 
 uint64_t IFU_getinst = 0;
 uint64_t LSU_getdata = 0;
+uint64_t EXU_fincal = 0;
 extern "C" void Performance_Counters(int Performancetype){
   if(Performancetype == 1){
     IFU_getinst++;
   }
   if(Performancetype == 2){
     LSU_getdata++;
+  }
+  if(Performancetype == 3){
+    EXU_fincal++;
+  }
+}
+
+uint64_t jump_type = 0;
+uint64_t csr_type = 0;
+uint64_t read_and_store_type = 0;
+uint64_t cal_type = 0;
+uint64_t unk = 0;
+extern "C" void inst_type_Counters(int insttype){
+  if(insttype == 1){
+    jump_type++;
+  }
+  if(insttype == 2){
+    csr_type++;
+  }
+  if(insttype == 3){
+    read_and_store_type++;
+  }
+  if(insttype == 4){
+    cal_type++;
+  }
+  if(insttype == 5){
+    unk++;
   }
 }
 
@@ -500,6 +528,47 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
   
 }
 
+int parse_instruction_type(uint32_t top_inst) {
+  // 提取opcode（低7位）
+  uint32_t opcode = top_inst & 0x7F;
+  
+  switch (opcode) {
+      // R型和I型计算类指令
+      case 0x33:  // R型：add, sub, sll, slt, sltu, xor, srl, sra, or, and
+      case 0x13:  // I型：addi, slti, sltiu, xori, ori, andi, slli, srli, srai
+      case 0x17:  // U型：auipc
+      case 0x37:  // U型：lui
+          return 4;
+      
+      // 访存指令
+      case 0x03:  // I型：lb, lh, lw, lbu, lhu
+      case 0x23:  // S型：sb, sh, sw
+      case 0x0F:  // fence指令
+          return 3;
+      
+      // CSR指令
+      case 0x73: {
+          // 对于0x73 opcode，需要进一步检查funct3字段来确定是CSR指令还是其他系统指令
+          uint32_t funct3 = (top_inst >> 12) & 0x7;
+          if (funct3 != 0) {
+              return 2;  // CSR指令 (csrrw, csrrs, csrrc等)
+          } else {
+              // 可能是ecall, ebreak等系统指令，这里归类为未知类型
+              return 99;
+          }
+      }
+      
+      // 跳转指令
+      case 0x6F:  // J型：jal
+      case 0x67:  // I型：jalr
+      case 0x63:  // B型：beq, bne, blt, bge, bltu, bgeu
+          return 1;
+          
+      default:
+          return 99;
+  }
+}
+
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
@@ -508,6 +577,19 @@ CPU_state refstate;
 int old_pc = 0;
 int pc_count = 0;
 uint64_t inst_count = 0;
+int inst_type;
+uint64_t jump_type_s = 0;
+uint64_t csr_type_s = 0;
+uint64_t read_and_store_type_s = 0;
+uint64_t cal_type_s = 0;
+uint64_t unk_s = 0;
+uint64_t last_clock = 0;
+uint64_t inst_clock_time = 0;
+uint64_t clk_jump_type_s = 0;
+uint64_t clk_csr_type_s = 0;
+uint64_t clk_read_and_store_type_s = 0;
+uint64_t clk_cal_type_s = 0;
+uint64_t clk_unk_s = 0;
 void cpu_exec(uint64_t n){
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
@@ -520,16 +602,52 @@ void cpu_exec(uint64_t n){
       //AssembleDecoder(handle, top_inst, top_pc);
 
       if(top_IFU_valid_int){
+        inst_clock_time = i - last_clock;
+        last_clock = i;
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
           printf("exec times: %ld\n",i+1);
           difftest_exec(1);
           difftest_regcpy(&refstate, 0);
         }
-        
+
         step_and_dump_wave();
         inst_count++;
-        
+
+        if(parse_instruction_type(top_inst) == 1){
+          jump_type_s++;
+          clk_jump_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 2){
+          csr_type_s++;
+          clk_csr_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 3){
+          read_and_store_type_s++;
+          clk_read_and_store_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 4){
+          cal_type_s++;
+          clk_cal_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 5){
+          unk_s++;
+          clk_unk_s += inst_clock_time;
+        }
+
+        if((WATCHPOINT || !BMODE) && n < 100){
+          AssembleDecoder(handle, top_inst, top_pc);
+          for(int j = 0; j < 32; j++){
+            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
+          }
+        }
+
+        if(WATCHPOINT){
+          if(top_pc == 0xa0020e38){
+            return;
+          }
+        }
+
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
           printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
@@ -569,6 +687,7 @@ void cpu_exec(uint64_t n){
             for(int j = 0; j < 32; j++){
               printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
             }
+            printf("exec times: %ld\n",i+1);
             return;
           }
         }
@@ -583,6 +702,17 @@ void cpu_exec(uint64_t n){
     else{
       float ipc = (float)inst_count/(float)(i+1);
       float cpi = 1.0/ipc;
+      double avg_jump = (double)clk_jump_type_s/(double)jump_type_s;
+      double avg_csr = (double)clk_csr_type_s/(double)csr_type_s;
+      double avg_read_and_store = (double)clk_read_and_store_type_s/(double)read_and_store_type_s;
+      double avg_cal = (double)clk_cal_type_s/(double)cal_type_s;
+      double avg_unk;
+      if(unk_s == 0){
+        avg_unk = 0;
+      }
+      else{
+        avg_unk = (double)clk_jump_type_s/(double)jump_type_s;
+      }
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
       printf("\33[1;34mClock Cycle: %ld\033[0m\n",i+1);
       printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
@@ -590,6 +720,27 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mCPI: %f\033[0m\n",cpi);
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
+      printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
+      // printf("\33[1;34mTYPE COUNT:\033[0m\n");
+      // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
+      // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
+      // printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
+      // printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
+      // printf("\33[1;34munk: %ld\033[0m\n",unk);
+      printf("\33[1;34mTYPE COUNT SOFTWARE:\033[0m\n");
+      printf("\33[1;34mjump: %ld\033[0m\n",jump_type_s);
+      printf("\33[1;34mcsr: %ld\033[0m\n",csr_type_s);
+      printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type_s);
+      printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
+      printf("\33[1;34munk: %ld\033[0m\n",unk_s);
+      printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
+      printf("\33[1;34mjump: %ld\033[0m\n",avg_jump);
+      printf("\33[1;34mcsr: %lf\033[0m\n",avg_csr);
+      printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
+      printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
+      printf("\33[1;34munk: %ld\033[0m\n",avg_unk);
+      
+      
       return;
     }
   }
@@ -752,7 +903,12 @@ int main(int argc, char *argv[]) {
   system_rst();
   if(BMODE){
     cmd_si("-1");
-    cmd_q(NULL);
+    if(WATCHPOINT){
+      sdb_mainloop();
+    }
+    else{
+      cmd_q(NULL);
+    }
   }
   else{
     sdb_mainloop();

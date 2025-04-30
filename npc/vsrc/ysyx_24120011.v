@@ -356,6 +356,42 @@ wire             clint_bready;
 //B-axi4
 wire [3:0]	  clint_bid;
 
+//======================dpic========================//
+always@(posedge clock)begin
+    if (inst == 32'b00000000000100000000000001110011)begin
+        npc_trap(pc,a0);
+        ebreak();
+    end
+end
+always@(negedge clock) begin
+    get_pc_inst(pc,dnpc,inst,LSU_valid_int);
+end
+reg IFU_valid_delay;
+reg IFU_valid_rising_edge;
+reg LSU_rready_delay;
+reg LSU_rready_rising_edge;
+reg EXU_valid_delay;
+reg EXU_valid_rising_edge;
+always@(posedge clock) begin
+    IFU_valid_delay <= IFU_valid;
+    IFU_valid_rising_edge <= IFU_valid & ~IFU_valid_delay;
+    LSU_rready_delay <= M1_rready;
+    LSU_rready_rising_edge <= M1_rready & ~LSU_rready_delay;
+    EXU_valid_delay <= EXU_ready;
+    EXU_valid_rising_edge <= EXU_ready & ~EXU_valid_delay;
+end
+always@(posedge clock) begin
+    if(IFU_valid_rising_edge) begin
+        Performance_Counters(32'd1);
+    end
+    if(LSU_rready_rising_edge) begin
+        Performance_Counters(32'd2);
+    end
+    if(EXU_valid_rising_edge) begin
+        Performance_Counters(32'd3);
+    end
+end
+//======================dpic========================//
 
 assign LSU_valid_int    = {31'b0,LSU_valid};
 
@@ -371,41 +407,13 @@ assign io_slave_rdata   = 'd0;
 assign io_slave_rlast   = 'd0;    
 assign io_slave_rid     = 'd0;
 
-always@(posedge clock)begin
-    if (inst == 32'b00000000000100000000000001110011)begin
-        npc_trap(pc,a0);
-        ebreak();
-    end
-end
-
 always@(posedge clock) begin
     if(reset) begin
         pc <= 32'h3000_0000;
     end
 end
 
-always@(negedge clock) begin
-    get_pc_inst(pc,dnpc,inst,LSU_valid_int);
-end
 
-reg IFU_valid_delay;
-reg IFU_valid_rising_edge;
-reg LSU_rready_delay;
-reg LSU_rready_rising_edge;
-always@(posedge clock) begin
-    IFU_valid_delay <= IFU_valid;
-    IFU_valid_rising_edge <= IFU_valid & ~IFU_valid_delay;
-    LSU_rready_delay <= M1_rready;
-    LSU_rready_rising_edge <= M1_rready & ~LSU_rready_delay;
-end
-always@(posedge clock) begin
-    if(IFU_valid_rising_edge) begin
-        Performance_Counters(32'd1);
-    end
-    if(LSU_rready_rising_edge) begin
-        Performance_Counters(32'd2);
-    end
-end
 
 assign b_type_enter_if = (inst[6:0] == 7'b1100011 && alu_result[0] == 1'b1) ? 1 : 0;
 
@@ -470,6 +478,7 @@ ysyx_24120011_Reg #(32, 32'h3000_0000) i_pc (
 );
 
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
+    .clock          ( clock          ),
     .inst           ( inst           ),
     .IFU_valid      ( IFU_valid      ),
     .rd             ( rd             ),

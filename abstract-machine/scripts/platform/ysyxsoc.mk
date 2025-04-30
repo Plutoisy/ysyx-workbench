@@ -26,3 +26,4 @@ image: $(IMAGE).elf
 
 run: image
 	$(MAKE) -C $(NPC_HOME) nvboard IMG=$(IMAGE).bin
+    # $(MAKE) -C $(NPC_HOME) nvboard_bs IMG=$(IMAGE).bin

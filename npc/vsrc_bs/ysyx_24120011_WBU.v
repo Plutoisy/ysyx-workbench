@@ -9,9 +9,12 @@ module ysyx_24120011_WBU(
     input [3:0]  rd_ctrl,
     input LSU_valid,
     output w_en,
+    output w_pe_en,
     output reg [31:0] wdata
 );
-assign w_en = LSU_valid ? (rd_ctrl == 4'd4 ? 1'd0 : 1'd1) : 1'd0;
+assign w_en    = LSU_valid ? ((rd_ctrl == 4'd4 || rd_ctrl == 4'd7) ? 1'd0 : 1'd1) : 1'd0;
+assign w_pe_en = LSU_valid ? (rd_ctrl == 4'd7 ? 1'd1 : 1'd0) : 1'd0;
+
 always@(*)begin
     case(rd_ctrl)
         4'd0: wdata = pc_add_4_out;
@@ -21,6 +24,7 @@ always@(*)begin
         4'd4: wdata = 32'h0000_0000;
         4'd5: wdata = r_mem_data;
         4'd6: wdata = r_csr_data;
+        4'd7: wdata = 32'h0000_0000;
         default: wdata = 32'h0000_0000;
     endcase
 end
