@@ -723,7 +723,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
       printf("\33[1;34munk: %ld\033[0m\n",unk_s);
       printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
-      printf("\33[1;34mjump: %lf\033[0m\n",clk_jump_type_s/jump_type_s);
+      printf("\33[1;34mjump: %ld\033[0m\n",clk_jump_type_s);
       printf("\33[1;34mcsr: %lf\033[0m\n",clk_csr_type_s/csr_type_s);
       printf("\33[1;34mread_and_store: %lf\033[0m\n",clk_read_and_store_type_s/read_and_store_type_s);
       printf("\33[1;34mcalculate: %lf\033[0m\n",clk_cal_type_s/cal_type_s);
