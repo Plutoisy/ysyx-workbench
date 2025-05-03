@@ -25,5 +25,5 @@ image: $(IMAGE).elf
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
 
 run: image
-	$(MAKE) -C $(NPC_HOME) nvboard_bs IMG=$(IMAGE).bin
+	$(MAKE) -C $(NPC_HOME) nvboard IMG=$(IMAGE).bin
     # $(MAKE) -C $(NPC_HOME) nvboard_bs IMG=$(IMAGE).bin
