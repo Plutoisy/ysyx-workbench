@@ -16,6 +16,7 @@
 // INCLUDE MODULE CLASSES
 #include "VysyxSoCFull___024root.h"
 #include "VysyxSoCFull___024unit.h"
+#include "VysyxSoCFull_mul_top.h"
 
 // DPI TYPES for DPI Export callbacks (Internal use)
 
@@ -32,6 +33,22 @@ class VysyxSoCFull__Syms final : public VerilatedSyms {
     // MODULE INSTANCE STATE
     VysyxSoCFull___024root         TOP;
     VysyxSoCFull___024unit         TOP____024unit;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul0;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul1;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul2;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul3;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul0;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul1;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul2;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul3;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul0;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul1;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul2;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul3;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul0;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul1;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul2;
+    VysyxSoCFull_mul_top           TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul3;
 
     // SCOPE NAMES
     VerilatedScope __Vscope_ysyxSoCFull__asic__axi42apb;

@@ -30,11 +30,13 @@ extern const VlUnpacked<SData/*9:0*/, 256> VysyxSoCFull__ConstPool__TABLE_he3879
 extern const VlUnpacked<CData/*7:0*/, 16> VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0;
 extern const VlUnpacked<VlWide<3>/*79:0*/, 16> VysyxSoCFull__ConstPool__TABLE_h142cc7a0_0;
 extern const VlUnpacked<CData/*3:0*/, 4> VysyxSoCFull__ConstPool__TABLE_h05f4911a_0;
-extern const VlUnpacked<CData/*2:0*/, 128> VysyxSoCFull__ConstPool__TABLE_h129a8bb7_0;
+extern const VlUnpacked<CData/*2:0*/, 128> VysyxSoCFull__ConstPool__TABLE_h14bab45f_0;
 void VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<IData/*31:0*/, 32> array);
-extern const VlUnpacked<CData/*3:0*/, 1024> VysyxSoCFull__ConstPool__TABLE_h284954d7_0;
+extern const VlUnpacked<CData/*3:0*/, 2048> VysyxSoCFull__ConstPool__TABLE_hbe1e5efa_0;
 extern const VlUnpacked<CData/*1:0*/, 16> VysyxSoCFull__ConstPool__TABLE_h40570e4b_0;
 void VysyxSoCFull___024root____Vdpiimwrap_ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__mrom__DOT__mrom_read_TOP(IData/*31:0*/ raddr, IData/*31:0*/ &rdata);
+extern const VlUnpacked<SData/*15:0*/, 16> VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0;
+extern const VlUnpacked<CData/*3:0*/, 16> VysyxSoCFull__ConstPool__TABLE_h6725412a_0;
 extern const VlUnpacked<CData/*1:0*/, 512> VysyxSoCFull__ConstPool__TABLE_h4999258b_0;
 extern const VlUnpacked<CData/*0:0*/, 512> VysyxSoCFull__ConstPool__TABLE_hf345c4f2_0;
 extern const VlUnpacked<CData/*2:0*/, 512> VysyxSoCFull__ConstPool__TABLE_h51329ea7_0;
@@ -140,48 +142,48 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__ier) 
            & ((0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__counter_t)) 
               & (0U != (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__rf_count))));
-    vlSelf->__Vtableidx6 = vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__lcr;
+    vlSelf->__Vtableidx14 = vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__lcr;
     vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__block_value 
         = VysyxSoCFull__ConstPool__TABLE_hccb3c341_0
-        [vlSelf->__Vtableidx6];
-    vlSelf->__Vtableidx9 = vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__lcr;
+        [vlSelf->__Vtableidx14];
+    vlSelf->__Vtableidx17 = vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__lcr;
     vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__receiver__DOT__toc_value 
         = VysyxSoCFull__ConstPool__TABLE_he38796ec_0
-        [vlSelf->__Vtableidx9];
-    vlSelf->__Vtableidx10 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_0;
-    vlSelf->externalPins_gpio_seg_0 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx10];
-    vlSelf->__Vtableidx11 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_1;
-    vlSelf->externalPins_gpio_seg_1 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx11];
-    vlSelf->__Vtableidx12 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_2;
-    vlSelf->externalPins_gpio_seg_2 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx12];
-    vlSelf->__Vtableidx13 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_3;
-    vlSelf->externalPins_gpio_seg_3 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx13];
-    vlSelf->__Vtableidx14 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_4;
-    vlSelf->externalPins_gpio_seg_4 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx14];
-    vlSelf->__Vtableidx15 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_5;
-    vlSelf->externalPins_gpio_seg_5 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx15];
-    vlSelf->__Vtableidx16 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_6;
-    vlSelf->externalPins_gpio_seg_6 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
-        [vlSelf->__Vtableidx16];
-    vlSelf->__Vtableidx17 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_7;
-    vlSelf->externalPins_gpio_seg_7 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
         [vlSelf->__Vtableidx17];
-    vlSelf->__Vtableidx20 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__state_q;
+    vlSelf->__Vtableidx18 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_0;
+    vlSelf->externalPins_gpio_seg_0 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx18];
+    vlSelf->__Vtableidx19 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_1;
+    vlSelf->externalPins_gpio_seg_1 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx19];
+    vlSelf->__Vtableidx20 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_2;
+    vlSelf->externalPins_gpio_seg_2 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx20];
+    vlSelf->__Vtableidx21 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_3;
+    vlSelf->externalPins_gpio_seg_3 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx21];
+    vlSelf->__Vtableidx22 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_4;
+    vlSelf->externalPins_gpio_seg_4 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx22];
+    vlSelf->__Vtableidx23 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_5;
+    vlSelf->externalPins_gpio_seg_5 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx23];
+    vlSelf->__Vtableidx24 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_6;
+    vlSelf->externalPins_gpio_seg_6 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx24];
+    vlSelf->__Vtableidx25 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lgpio__DOT__mgpio__DOT__reg_gpio_seg_hex_7;
+    vlSelf->externalPins_gpio_seg_7 = VysyxSoCFull__ConstPool__TABLE_h1f93ebb4_0
+        [vlSelf->__Vtableidx25];
+    vlSelf->__Vtableidx28 = vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__state_q;
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__dbg_state[0U] 
         = VysyxSoCFull__ConstPool__TABLE_h142cc7a0_0
-        [vlSelf->__Vtableidx20][0U];
+        [vlSelf->__Vtableidx28][0U];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__dbg_state[1U] 
         = VysyxSoCFull__ConstPool__TABLE_h142cc7a0_0
-        [vlSelf->__Vtableidx20][1U];
+        [vlSelf->__Vtableidx28][1U];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__dbg_state[2U] 
         = VysyxSoCFull__ConstPool__TABLE_h142cc7a0_0
-        [vlSelf->__Vtableidx20][2U];
+        [vlSelf->__Vtableidx28][2U];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__u0_spi_top__DOT__shift__DOT__tx_clk 
         = ((0U != (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__u0_spi_top__DOT__shift__DOT__cnt)) 
            & ((0x400U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__u0_spi_top__DOT__ctrl))
@@ -220,10 +222,10 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__lsr5 
         = ((~ (IData)((0U != (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__block_cnt)))) 
            & (0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__tf_count)));
-    vlSelf->__Vtableidx5 = vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__fcr;
+    vlSelf->__Vtableidx13 = vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__fcr;
     vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__trigger_level 
         = VysyxSoCFull__ConstPool__TABLE_h05f4911a_0
-        [vlSelf->__Vtableidx5];
+        [vlSelf->__Vtableidx13];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__resp_hold 
         = ((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state))
             ? ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__apbdelay_delayer__DOT__reg_pslverr) 
@@ -243,6 +245,25 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__serial_out 
         = ((~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__lcr) 
                >> 6U)) & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__transmitter__DOT__stx_o_tmp));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_add15__DOT__temp_out 
+        = (0xffffU & (((0x8000U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                   [0x13U] >> 0x10U)) 
+                       | ((0x7000U & ((- (IData)((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                  [0x13U] 
+                                                  >> 0x1fU))) 
+                                      << 0xcU)) | (0xfe0U 
+                                                   & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                      [0x13U] 
+                                                      >> 0x13U)))) 
+                      + ((0x8000U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                     [0x17U] >> 0x10U)) 
+                         | ((0x7000U & ((- (IData)(
+                                                   (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                    [0x17U] 
+                                                    >> 0x1fU))) 
+                                        << 0xcU)) | 
+                            (0xfe0U & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                       [0x17U] >> 0x13U))))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__h_valid 
         = ((0x48U < (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt)) 
            & (0x188U >= (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__my_vga_ctrl__DOT__x_cnt)));
@@ -393,101 +414,101 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                                                                                 | ((IData)(vlSelf->ysyxSoCFull__DOT__sdram__DOT__sdram_32_u1__DOT__sdram_16_u1__DOT__read_flag)
                                                                                  ? 0x8000U
                                                                                  : 0U)))))))))))))))));
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[1U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[1U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [1U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[2U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[2U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [2U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[3U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[3U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [3U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[4U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[4U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [4U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[5U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[5U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [5U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[6U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[6U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [6U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[7U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[7U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [7U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[8U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[8U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [8U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[9U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[9U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [9U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0xaU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0xaU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0xaU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0xbU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0xbU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0xbU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0xcU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0xcU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0xcU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0xdU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0xdU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0xdU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0xeU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0xeU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0xeU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0xfU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0xfU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0xfU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x10U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x10U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x10U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x11U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x11U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x11U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x12U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x12U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x12U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x13U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x13U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x13U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x14U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x14U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x14U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x15U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x15U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x15U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x16U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x16U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x16U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x17U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x17U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x17U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x18U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x18U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x18U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x19U] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x19U] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x19U];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x1aU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x1aU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x1aU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x1bU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x1bU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x1bU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x1cU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x1cU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x1cU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x1dU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x1dU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x1dU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x1eU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x1eU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x1eU];
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout[0x1fU] 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout[0x1fU] 
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [0x1fU];
     vlSelf->ysyxSoCFull__DOT__sdram__DOT__sdram_32_u0__DOT__sdram_16_u0__DOT__dq__out__strong__out0 
         = ((0xfffeU & (IData)(vlSelf->ysyxSoCFull__DOT__sdram__DOT__sdram_32_u0__DOT__sdram_16_u0__DOT__dq__out__strong__out0)) 
@@ -783,14 +804,52 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__ptr_match 
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap) 
            == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap_1));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_01 
+        = (0xffU & (VL_GTS_III(8, (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                   [0x10U] >> 0x18U), 
+                               (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                         [0x10U] >> 0x10U)))
+                     ? (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x10U] >> 0x18U) : (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                             [0x10U] 
+                                             >> 0x10U)));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_23 
+        = (0xffU & (VL_GTS_III(8, (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                            [0x10U] 
+                                            >> 8U)), 
+                               (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                [0x10U])) ? (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                             [0x10U] 
+                                             >> 8U)
+                     : vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                    [0x10U]));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_45 
+        = (0xffU & (VL_GTS_III(8, (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                   [0x11U] >> 0x18U), 
+                               (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                         [0x11U] >> 0x10U)))
+                     ? (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x11U] >> 0x18U) : (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                             [0x11U] 
+                                             >> 0x10U)));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_67 
+        = (0xffU & (VL_GTS_III(8, (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                            [0x11U] 
+                                            >> 8U)), 
+                               (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                [0x11U])) ? (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                             [0x11U] 
+                                             >> 8U)
+                     : vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                    [0x11U]));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__src1 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [(0x1fU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
                    >> 0xfU))];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgTmp_h53d597ad__0 
         = (IData)((0x5013U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__src2 
-        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__Regs
+        = vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
         [(0x1fU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
                    >> 0x14U))];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0 
@@ -799,8 +858,108 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         = (IData)((0x2073U == (0x707fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)));
     vlSelf->__Vtableidx4 = (0x7fU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type 
-        = VysyxSoCFull__ConstPool__TABLE_h129a8bb7_0
+        = VysyxSoCFull__ConstPool__TABLE_h14bab45f_0
         [vlSelf->__Vtableidx4];
+    if ((3U == (7U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                [0x18U]))) {
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul3__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul3__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul3__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul3__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul2__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul2__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul2__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul2__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul1__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul1__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul1__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul1__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul0__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul0__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul0__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul0__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x19U]);
+    } else {
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul3__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x17U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul3__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x17U] >> 8U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul3__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x17U] >> 0x10U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul3__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x17U] >> 0x18U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul2__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x16U] >> 0x10U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul2__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x16U] >> 0x18U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul2__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x16U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul2__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x16U] >> 8U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul1__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x15U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul1__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x15U] >> 8U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul1__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x15U] >> 0x10U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul1__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x15U] >> 0x18U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__2__KET____DOT__u_mul0__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x14U] >> 0x10U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__3__KET____DOT__u_mul0__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x14U] >> 0x18U));
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__0__KET____DOT__u_mul0__in1 
+            = (0xffU & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+               [0x14U]);
+        vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT____Vcellinp__pe_blocks__BRA__1__KET____DOT__u_mul0__in1 
+            = (0xffU & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                        [0x14U] >> 8U));
+    }
     vlSelf->ysyxSoCFull__DOT____Vcellinp__flash__ss 
         = (1U & (IData)(vlSelf->ysyxSoCFull__DOT___asic_spi_ss));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__u0_spi_top__DOT__shift__DOT__rx_bit_pos 
@@ -855,6 +1014,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         = ((0x10U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__mcr))
             ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__serial_out)
             : (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__srx_pad));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_add15__DOT__out16 
+        = ((((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+              [0x13U] >> 0x1fU) == (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                    [0x17U] >> 0x1fU)) 
+            & ((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                [0x13U] >> 0x1fU) != (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_add15__DOT__temp_out) 
+                                            >> 0xfU))))
+            ? ((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                [0x13U] >> 0x1fU) ? 0x8000U : 0x7fffU)
+            : (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_add15__DOT__temp_out));
     if (vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__deq_q__DOT__full) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT___deq_q_io_deq_bits_burst 
             = (3U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__deq_q__DOT__ram));
@@ -931,7 +1100,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__S0_arvalid 
             = (1U & 0U);
     }
-    VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_RegStack__DOT__regout);
+    VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__regout);
     vlSelf->ysyxSoCFull__DOT__sdram__DOT__sdram_32_u0__DOT__dq__out__strong__out2 
         = ((0xffff0000U & vlSelf->ysyxSoCFull__DOT__sdram__DOT__sdram_32_u0__DOT__dq__out__strong__out2) 
            | (((IData)(vlSelf->ysyxSoCFull__DOT__sdram__DOT__sdram_32_u0__DOT__sdram_16_u0__DOT__dq__out__strong__out0) 
@@ -1293,6 +1462,14 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_awvalid 
         = (IData)(((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__w_Xbar_state)) 
                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__S0_awvalid)));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_0123 
+        = (VL_GTS_III(8, (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_01), (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_23))
+            ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_01)
+            : (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_23));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_4567 
+        = (VL_GTS_III(8, (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_45), (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_67))
+            ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_45)
+            : (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_67));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__w_mem_en 
         = ((3U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type)) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready));
@@ -1345,34 +1522,37 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__r_mem_en = 0U;
     }
     vlSelf->__Vtableidx2 = (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hed3628ff__0) 
-                             << 9U) | (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0) 
-                                        << 8U) | ((
-                                                   (3U 
-                                                    == 
-                                                    (0x7fU 
-                                                     & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
-                                                   << 7U) 
-                                                  | (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0) 
-                                                      << 6U) 
-                                                     | (((0x37U 
+                             << 0xaU) | (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hecfb244b__0) 
+                                          << 9U) | 
+                                         (((3U == (0x7fU 
+                                                   & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
+                                           << 8U) | 
+                                          (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT____VdfgExtracted_hd7d5a5db__0) 
+                                            << 7U) 
+                                           | (((0x7bU 
+                                                == 
+                                                (0x7fU 
+                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
+                                               << 6U) 
+                                              | (((0x37U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
+                                                  << 5U) 
+                                                 | (((0x17U 
+                                                      == 
+                                                      (0x7fU 
+                                                       & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
+                                                     << 4U) 
+                                                    | (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type) 
+                                                        << 1U) 
+                                                       | (0U 
                                                           == 
-                                                          (0x7fU 
-                                                           & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
-                                                         << 5U) 
-                                                        | (((0x17U 
-                                                             == 
-                                                             (0x7fU 
-                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst)) 
-                                                            << 4U) 
-                                                           | (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type) 
-                                                               << 1U) 
-                                                              | (0U 
-                                                                 == 
-                                                                 (0x1fU 
-                                                                  & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
-                                                                     >> 7U))))))))));
+                                                          (0x1fU 
+                                                           & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__inst 
+                                                              >> 7U)))))))))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__rd_ctrl 
-        = VysyxSoCFull__ConstPool__TABLE_h284954d7_0
+        = VysyxSoCFull__ConstPool__TABLE_hbe1e5efa_0
         [vlSelf->__Vtableidx2];
     if ((4U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__opcode_type))) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc_ctrl = 0U;
@@ -1703,6 +1883,10 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__deq_q_1__DOT__io_deq_valid_0 
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__deq_q_1__DOT__full) 
            | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_awvalid));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out 
+        = (VL_GTS_III(8, (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_0123), (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_4567))
+            ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_0123)
+            : (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_inst__DOT__max_4567));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_PCProcessor__DOT__pc_add_imme 
         = (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__imme 
            + vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc);
@@ -1751,6 +1935,478 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__nodeOut_awvalid 
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__deq_q_1__DOT__io_deq_valid_0) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT___in_awready_T));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x11U] 
+                                                              >> 0x18U))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x10U)))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 8U)))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x11U]))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x10U] 
+                                                              >> 0x18U))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x10U)))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 8U)))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (1U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x10U]))))) 
+                          >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x11U] 
+                                                              >> 0x18U))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x10U)))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 8U)))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x11U]))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x10U] 
+                                                              >> 0x18U))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x10U)))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 8U)))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (3U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x10U]))))) 
+                          >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x11U] 
+                                                              >> 0x18U))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x10U)))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 8U)))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x11U]))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x10U] 
+                                                              >> 0x18U))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x10U)))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 8U)))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (7U & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                           & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                             (0xffU 
+                                                              & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                              [0x10U]))))) 
+                          >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                    [0x11U] 
+                                                    >> 0x18U))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (0xffU 
+                                                    & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                       [0x11U] 
+                                                       >> 0x10U)))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (0xffU 
+                                                    & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                       [0x11U] 
+                                                       >> 8U)))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (0xffU 
+                                                    & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                    [0x11U]))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U] 
+                                                                >> 0x18U))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 0x10U)))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 8U)))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U]))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                    [0x10U] 
+                                                    >> 0x18U))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (0xffU 
+                                                    & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                       [0x10U] 
+                                                       >> 0x10U)))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (0xffU 
+                                                    & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                       [0x10U] 
+                                                       >> 8U)))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci 
+        = (1U & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                 & ((IData)(1U) + (~ VL_EXTENDS_II(1,8, 
+                                                   (0xffU 
+                                                    & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                    [0x10U]))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U] 
+                                                                >> 0x18U))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 0x10U)))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 8U)))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0xfU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                             & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U]))))) 
+                            >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x18U))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 0x10U)))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 8U)))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U]))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x18U))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 0x10U)))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 8U)))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x1fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U]))))) 
+                             >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x18U))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 0x10U)))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 8U)))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U]))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x18U))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 0x10U)))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 8U)))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x3fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U]))))) 
+                             >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x18U))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 0x10U)))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 8U)))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U]))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x18U))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 0x10U)))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 8U)))))) 
+                             >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1 
+        = (1U & (~ (0x7fU & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                              & ((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U]))))) 
+                             >> 1U))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__S0_awsize 
         = ((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Arbiter__DOT__write_state))
             ? 2U : ((2U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Arbiter__DOT__write_state))
@@ -1792,6 +2448,514 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4yank_auto_out_awvalid 
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__nodeOut_awvalid) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4yank__DOT____VdfgTmp_he7a0eac8__0));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U] 
+                                                                >> 0x18U)))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 0x10U))))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 8U))))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U])))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U] 
+                                                                >> 0x18U)))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 0x10U))))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 8U))))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 7U) | (1U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U])))) 
+                               >> 7U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U] 
+                                                                >> 0x18U)))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 0x10U))))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 8U))))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U])))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U] 
+                                                                >> 0x18U)))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 0x10U))))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 8U))))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 6U) | (3U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U])))) 
+                               >> 6U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U] 
+                                                                >> 0x18U)))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 0x10U))))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 8U))))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U])))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U] 
+                                                                >> 0x18U)))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 0x10U))))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 8U))))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 5U) | (7U & (((IData)(1U) + (~ VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U])))) 
+                               >> 5U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U] 
+                                                                >> 0x18U)))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 0x10U))))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x11U] 
+                                                                   >> 8U))))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x11U])))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U] 
+                                                                >> 0x18U)))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 0x10U))))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                   [0x10U] 
+                                                                   >> 8U))))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 4U) | (0xfU & (((IData)(1U) + (~ 
+                                                 VL_EXTENDS_II(8,8, 
+                                                               (0xffU 
+                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                [0x10U])))) 
+                                 >> 4U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x18U)))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 0x10U))))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 8U))))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U])))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x18U)))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 0x10U))))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 8U))))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 3U) | (0x1fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U])))) 
+                                  >> 3U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x18U)))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 0x10U))))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 8U))))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U])))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x18U)))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 0x10U))))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 8U))))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 2U) | (0x3fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U])))) 
+                                  >> 2U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U] 
+                                                                 >> 0x18U)))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 0x10U))))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x11U] 
+                                                                    >> 8U))))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x11U])))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U] 
+                                                                 >> 0x18U)))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 0x10U))))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                    [0x10U] 
+                                                                    >> 8U))))) 
+                                  >> 1U))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1 
+        = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1) 
+           & (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+               >> 1U) | (0x7fU & (((IData)(1U) + (~ 
+                                                  VL_EXTENDS_II(8,8, 
+                                                                (0xffU 
+                                                                 & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                 [0x10U])))) 
+                                  >> 1U))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALUB 
         = ((0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALUBctrl))
             ? vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__imme
@@ -1809,12 +2973,60 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0_io_enq_valid 
         = ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__latched)) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4yank_auto_out_awvalid));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT____VdfgTmp_h6c4bfc22__0 
         = (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALUB 
            ^ (- (IData)((1U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALU_ctrl)))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__io_deq_valid_0 
         = (1U & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__empty)) 
                  | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0_io_enq_valid)));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__i0_nand_i1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__B_in 
         = ((1U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALU_ctrl))
             ? ((IData)(1U) + vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT____VdfgTmp_h6c4bfc22__0)
@@ -1822,6 +3034,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__in_0_wvalid 
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__io_deq_valid_0) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__nodeOut_wvalid));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__carry 
         = (1U & (IData)((1ULL & (((QData)((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__src1)) 
                                   + (QData)((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__B_in))) 
@@ -1829,6 +3065,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__ALUout_tmp 
         = (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__src1 
            + vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__B_in);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__i0_nand_i1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__sless 
         = (1U & ((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__ALUout_tmp 
                   >> 0x1fU) ^ (((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__src1 
@@ -1840,6 +3100,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                                & ((vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__src1 
                                    >> 0x1fU) != (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__ALUout_tmp 
                                                  >> 0x1fU)))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__alu_result 
         = ((4U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALU_ctrl))
             ? ((2U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__ALU_ctrl))
@@ -2072,6 +3356,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__busy_1)
             ? vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__r_addr_1
             : vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT___deq_q_1_io_deq_bits_addr);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__i0_nand_i1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__w_csr_data 
         = ((0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__w_csr_data_ctrl))
             ? 0U : ((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__w_csr_data_ctrl))
@@ -2121,6 +3429,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                                                     == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__w_mem_len))
                                                     ? 7U
                                                     : 0x3fU)));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__reg_wdata 
         = (((((((((0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__wdata_format)) 
                   | (1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__wdata_format))) 
@@ -2169,6 +3501,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
             ? 0U : ((2U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Arbiter__DOT__write_state))
                      ? vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__reg_wdata
                      : 0U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__i0_nand_i1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_wstrb 
         = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__full)
                     ? (IData)((vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__ram 
@@ -2200,6 +3556,54 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__full)
             ? (IData)((vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__ram 
                        >> 5U)) : vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wdata);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__i0_nand_i1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_araddr 
         = (~ (((~ (vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__addr 
                    >> 2U)) << 2U) | (3U & ((~ ((IData)(3U) 
@@ -2210,6 +3614,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                    >> 2U)) << 2U) | (3U & ((~ ((IData)(3U) 
                                                << (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT___deq_q_1_io_deq_bits_size))) 
                                            | (~ vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__addr_1)))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__requestARIO_0_2 
         = (0U == ((8U & (vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_araddr 
                          >> 0x1cU)) | ((6U & (vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_araddr 
@@ -2303,6 +3731,30 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                                                  >> 0x1dU)))) 
                               | (3U & (2U ^ (vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_awaddr 
                                              >> 0x1cU)))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__i0_nand_i1))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lmrom__DOT___nodeIn_rid_T 
         = ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__state)) 
            & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4yank_auto_out_arvalid) 
@@ -2328,12 +3780,36 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                                      | (1U & (vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_awaddr 
                                               >> 0xcU)))))) 
                        << 1U) | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__requestAWIO_0_0)));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci 
+        = (1U & (~ ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                    & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))));
     if (vlSelf->ysyxSoCFull__DOT__asic__DOT__lmrom__DOT___nodeIn_rid_T) {
         VysyxSoCFull___024root____Vdpiimwrap_ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__mrom__DOT__mrom_read_TOP(
                                                                                 (0x3fffffffU 
-                                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_araddr), vlSelf->__Vtask_ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__mrom__DOT__mrom_read__49__rdata);
+                                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_araddr), vlSelf->__Vtask_ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__mrom__DOT__mrom_read__6__rdata);
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lmrom__DOT___mrom_rdata 
-            = vlSelf->__Vtask_ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__mrom__DOT__mrom_read__49__rdata;
+            = vlSelf->__Vtask_ysyxSoCFull__DOT__asic__DOT__lmrom__DOT__mrom__DOT__mrom_read__6__rdata;
     } else {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lmrom__DOT___mrom_rdata = 0U;
     }
@@ -2345,14 +3821,387 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
             ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT____Vcellinp__awIn_0__io_enq_bits)
             : vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__ram_ext__DOT__Memory
            [vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap_1]);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out4 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out4)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_4__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x11U] 
+                                                                                >> 0x18U)))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out5 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out5)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_5__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (0xffU 
+                                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x11U] 
+                                                                                >> 0x10U))))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out6 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out6)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_6__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (0xffU 
+                                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x11U] 
+                                                                                >> 8U))))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out7 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out7)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_7__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (0xffU 
+                                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x11U])))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out0 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out0)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_0__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x10U] 
+                                                                                >> 0x18U)))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out1 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out1)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_1__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (0xffU 
+                                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x10U] 
+                                                                                >> 0x10U))))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out2 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out2)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_2__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (0xffU 
+                                                                                & (vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x10U] 
+                                                                                >> 8U))))))))))))))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out3 
+        = ((0x100U & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out3)) 
+           | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__7__KET____DOT__full_adder__ci) 
+                   | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__7__KET____DOT__full_adder__DOT__xor_o1))) 
+               << 7U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                           & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__6__KET____DOT__full_adder__ci) 
+                              | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__6__KET____DOT__full_adder__DOT__xor_o1))) 
+                          << 6U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                      & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__5__KET____DOT__full_adder__ci) 
+                                         | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__5__KET____DOT__full_adder__DOT__xor_o1))) 
+                                     << 5U) | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                 & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__4__KET____DOT__full_adder__ci) 
+                                                    | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__4__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                << 4U) 
+                                               | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                    & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__3__KET____DOT__full_adder__ci) 
+                                                       | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__3__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                   << 3U) 
+                                                  | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                       & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__2__KET____DOT__full_adder__ci) 
+                                                          | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__2__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                      << 2U) 
+                                                     | ((((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xoro1_nand_ci) 
+                                                          & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci) 
+                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT__genblk1__BRA__1__KET____DOT__full_adder__DOT__xor_o1))) 
+                                                         << 1U) 
+                                                        | (1U 
+                                                           & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_inst_3__DOT____Vcellinp__genblk1__BRA__1__KET____DOT__full_adder__ci)) 
+                                                              & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__max_out) 
+                                                                 | ((IData)(1U) 
+                                                                    + 
+                                                                    (~ 
+                                                                     VL_EXTENDS_II(1,8, 
+                                                                                (0xffU 
+                                                                                & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_RegStack__DOT__Regs
+                                                                                [0x10U])))))))))))))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4xbar_1_auto_anon_out_0_wvalid 
         = ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__in_0_wvalid) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT___awIn_0_io_deq_bits));
+    vlSelf->__Vtableidx9 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out4) 
+                                    >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out4 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx9];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index4 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx9];
+    vlSelf->__Vtableidx10 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out5) 
+                                     >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out5 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx10];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index5 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx10];
+    vlSelf->__Vtableidx11 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out6) 
+                                     >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out6 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx11];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index6 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx11];
+    vlSelf->__Vtableidx12 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out7) 
+                                     >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out7 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx12];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index7 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx12];
+    vlSelf->__Vtableidx5 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out0) 
+                                    >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out0 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx5];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index0 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx5];
+    vlSelf->__Vtableidx6 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out1) 
+                                    >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out1 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx6];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index1 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx6];
+    vlSelf->__Vtableidx7 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out2) 
+                                    >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out2 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx7];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index2 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx7];
+    vlSelf->__Vtableidx8 = (0xfU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sub_out3) 
+                                    >> 4U));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out3 
+        = VysyxSoCFull__ConstPool__TABLE_h1cc05d4b_0
+        [vlSelf->__Vtableidx8];
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out_index3 
+        = VysyxSoCFull__ConstPool__TABLE_h6725412a_0
+        [vlSelf->__Vtableidx8];
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__accept_write 
         = ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__accept_read)) 
            & ((0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state)) 
               & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4xbar_1_auto_anon_out_0_awvalid) 
                  & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4xbar_1_auto_anon_out_0_wvalid))));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total 
+        = (0x7ffffU & ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out0) 
+                       + ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out1) 
+                          + ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out2) 
+                             + ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out3) 
+                                + ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out4) 
+                                   + ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out5) 
+                                      + ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out6) 
+                                         + (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__e_recip_out7)))))))));
     if (vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__accept_write) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lsdram_apb__DOT__msdram__DOT__u_sdram_ctrl__DOT__ram_write_data_w 
             = vlSelf->ysyxSoCFull__DOT__asic__DOT___axi4frag_auto_out_wdata;
@@ -2370,6 +4219,28 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
         = ((0U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state))
             ? (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__accept_write)
             : (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__is_write_r));
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__sumreg 
+        = ((0x40000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+            ? ((0x20000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                ? ((0x10000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                    ? ((0x8000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                        ? 0xfU : 0xeU) : ((0x8000U 
+                                           & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                                           ? 0xdU : 0xcU))
+                : ((0x10000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                    ? ((0x8000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                        ? 0xbU : 0xaU) : ((0x8000U 
+                                           & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                                           ? 9U : 8U)))
+            : ((0x20000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                ? ((0x10000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                    ? ((0x8000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                        ? 7U : 6U) : ((0x8000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                                       ? 5U : 4U)) : 
+               ((0x10000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                 ? ((0x8000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                     ? 3U : 2U) : ((0x8000U & vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__u_softmax__DOT__sum_inst__DOT__total)
+                                    ? 1U : 0U))));
     if (vlSelf->ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__is_write) {
         vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT____VdfgTmp_h1138d757__0 
             = (1U & ((IData)(vlSelf->__VdfgTmp_h5e58bb53__0) 
@@ -3083,7 +4954,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__mw_wr 
         = ((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__state)) 
            & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__wb_we));
-    vlSelf->__Vtableidx18 = (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__wb_re) 
+    vlSelf->__Vtableidx26 = (((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__wb_re) 
                               << 8U) | (((0x16U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__MR__DOT__counter)) 
                                          << 7U) | (
                                                    ((IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__wb_we) 
@@ -3100,7 +4971,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                                                             | (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__state)))))));
     vlSelf->ysyxSoCFull__DOT__asic__DOT__lpsram__DOT__mpsram__DOT__u0__DOT__nstate 
         = VysyxSoCFull__ConstPool__TABLE_h4999258b_0
-        [vlSelf->__Vtableidx18];
+        [vlSelf->__Vtableidx26];
     vlSelf->ysyxSoCFull__DOT__asic__DOT___apbxbar_auto_anon_in_pready 
         = (1U & (~ (((~ (((1U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state)) 
                           | (9U == (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__lspi__DOT__mspi__DOT__spi_top_apb_state))) 
@@ -3836,4 +5707,62 @@ VL_ATTR_COLD void VysyxSoCFull___024root___stl_sequent__TOP__0(VysyxSoCFull___02
                & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT____Vcellinp__deq_q_1__io_deq_ready))) 
            & ((~ (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__deq_q_1__DOT__full)) 
               & (IData)(vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_awvalid)));
+}
+
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul3__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul3__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul3__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul3__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul2__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul2__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul2__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul2__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul1__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul1__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul1__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul1__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul0__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul0__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul0__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul0__0(VysyxSoCFull_mul_top* vlSelf);
+void VysyxSoCFull___024root___nba_sequent__TOP__1(VysyxSoCFull___024root* vlSelf);
+
+VL_ATTR_COLD void VysyxSoCFull___024root___eval_stl(VysyxSoCFull___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VysyxSoCFull___024root___eval_stl\n"); );
+    // Body
+    if (vlSelf->__VstlTriggered.at(0U)) {
+        VysyxSoCFull___024root___stl_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[0xcU] = 1U;
+        vlSelf->__Vm_traceActivity[0xbU] = 1U;
+        vlSelf->__Vm_traceActivity[0xaU] = 1U;
+        vlSelf->__Vm_traceActivity[9U] = 1U;
+        vlSelf->__Vm_traceActivity[8U] = 1U;
+        vlSelf->__Vm_traceActivity[7U] = 1U;
+        vlSelf->__Vm_traceActivity[6U] = 1U;
+        vlSelf->__Vm_traceActivity[5U] = 1U;
+        vlSelf->__Vm_traceActivity[4U] = 1U;
+        vlSelf->__Vm_traceActivity[3U] = 1U;
+        vlSelf->__Vm_traceActivity[2U] = 1U;
+        vlSelf->__Vm_traceActivity[1U] = 1U;
+        vlSelf->__Vm_traceActivity[0U] = 1U;
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul3__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul3));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul3__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul3));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul3__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul3));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul3__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul3));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul2__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul2));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul2__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul2));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul2__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul2));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul2__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul2));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul1));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul1));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul1));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul1));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul0__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul0));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul0__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul0));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul0__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul0));
+        VysyxSoCFull_mul_top___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul0__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul0));
+        VysyxSoCFull___024root___nba_sequent__TOP__1(vlSelf);
+    }
 }
