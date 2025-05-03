@@ -47,12 +47,14 @@ github:
 	git commit -m "$(M)" && \
 	git push origin ysyxsocdev && \
 	cd .. && \
+	git submodule update && \
 	git add ysyxSoC && \
 	git add . && \
 	git commit -m "$(M)" && \
 	git push my_origin dev
 	
 githubyb:
+	git submodule update && \
 	git add . && \
 	git commit -m "$(M)" && \
 	git push my_origin dev	
