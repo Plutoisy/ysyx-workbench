@@ -590,7 +590,6 @@ uint64_t clk_csr_type_s = 0;
 uint64_t clk_read_and_store_type_s = 0;
 uint64_t clk_cal_type_s = 0;
 uint64_t clk_unk_s = 0;
-uint64_t func_time = 0;
 void cpu_exec(uint64_t n){
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
@@ -644,22 +643,9 @@ void cpu_exec(uint64_t n){
         }
 
         if(WATCHPOINT){
-
-          if(top_pc == 0xa0000000){
-            func_time = i;
+          if(top_pc == 0xa0020e38){
+            return;
           }
-          if(top_pc == 0xa00000a4){
-            func_time = i-func_time;
-            printf("pc time: %ld\n",func_time);
-          }
-
-          // if(top_pc == 0xa0000000){
-          //   func_time = i;
-          // }
-          // if(top_pc == 0xa00002dc){
-          //   func_time = i-func_time;
-          //   printf("pc time: %ld\n",func_time);
-          // }
         }
 
         if(DIFFTESE){
@@ -748,13 +734,11 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
       printf("\33[1;34munk: %ld\033[0m\n",unk_s);
       printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
-      printf("\33[1;34mjump: %lf\033[0m\n",avg_jump);
+      printf("\33[1;34mjump: %ld\033[0m\n",avg_jump);
       printf("\33[1;34mcsr: %lf\033[0m\n",avg_csr);
       printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
       printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
-      printf("\33[1;34munk: %lf\033[0m\n",avg_unk);
-      // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
-      // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
+      printf("\33[1;34munk: %ld\033[0m\n",avg_unk);
       
       
       return;
