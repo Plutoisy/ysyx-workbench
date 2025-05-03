@@ -734,11 +734,11 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
       printf("\33[1;34munk: %ld\033[0m\n",unk_s);
       printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
-      printf("\33[1;34mjump: %ld\033[0m\n",avg_jump);
+      printf("\33[1;34mjump: %lf\033[0m\n",avg_jump);
       printf("\33[1;34mcsr: %lf\033[0m\n",avg_csr);
       printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
       printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
-      printf("\33[1;34munk: %ld\033[0m\n",avg_unk);
+      printf("\33[1;34munk: %lf\033[0m\n",avg_unk);
       
       
       return;
