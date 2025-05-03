@@ -54,7 +54,6 @@ github:
 	git push my_origin dev
 	
 githubyb:
-	git submodule update && \
 	git add . && \
 	git commit -m "$(M)" && \
 	git push my_origin dev	
