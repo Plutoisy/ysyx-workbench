@@ -20,6 +20,7 @@ assign src1 = Regs[rs1];
 assign src2 = Regs[rs2];
 assign a0 = Regs[10];
 
+//======================dpic========================//
 int regout[31:0];
 
 genvar i, j;
@@ -34,6 +35,7 @@ endgenerate
 always@(*)begin
     reg_out(regout);
 end
+//======================dpic========================//
 
 always@(posedge clk)begin
     if(rst)begin
