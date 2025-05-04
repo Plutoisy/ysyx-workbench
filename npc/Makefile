@@ -83,8 +83,18 @@ nvboard_bs:$(VSRCS_bs) $(CSRCS) $(NVBOARD_ARCHIVE)
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)
 
+perf:
+	rm -rf ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
+	python3 ./tools/remove_dpic.py && \
+	rm -rf ~/yosys-sta/result/* && \
+	cd ~/yosys-sta && \
+	make sta && \
+	cd $(YSYX_HOME)/am-kernels/benchmarks/microbench && \
+	make ARCH=riscv32e-ysyxsoc run mainargs=test && \
+	cd $(YSYX_HOME)/npc
+
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
-	
 include ../Makefile
