@@ -92,7 +92,8 @@ perf:
 	make sta && \
 	cd $(YSYX_HOME)/am-kernels/benchmarks/microbench && \
 	make ARCH=riscv32e-ysyxsoc run mainargs=test && \
-	cd $(YSYX_HOME)/npc
+	cd $(YSYX_HOME)/npc && \
+	python3 ./tools/perf.py
 
 clean:
 	rm -rf ./build
