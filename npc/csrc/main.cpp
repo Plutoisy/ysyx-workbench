@@ -764,15 +764,14 @@ void cpu_exec(uint64_t n){
       fprintf(file, "clk: %ld\n",i+1);
       fprintf(file, "inst: %ld\n",inst_count);
       fprintf(file, "IPC: %f\n",ipc);
-      fprintf(file, "IFU get inst: %ld\n",IFU_getinst);
-      fprintf(file, "LSU get data: %ld\n",LSU_getdata);
-      fprintf(file, "EXU finish calculate: %ld\n",EXU_fincal);
+      fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
+      fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
+      fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
       fprintf(file, "jump: %ld\n",jump_type_s);
       fprintf(file, "csr: %ld\n",csr_type_s);
       fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
       fprintf(file, "calculate: %ld\n",cal_type_s);
       fprintf(file, "unk: %ld\n",unk_s);
-      fprintf(file, "AVG TYPE CLOCK TIME:\n");
       fprintf(file, "jump time: %lf\n",avg_jump);
       fprintf(file, "csr time: %lf\n",avg_csr);
       fprintf(file, "read_and_store time: %lf\n",avg_read_and_store);
