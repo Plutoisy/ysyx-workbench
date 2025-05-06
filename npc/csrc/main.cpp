@@ -756,7 +756,7 @@ void cpu_exec(uint64_t n){
       // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
       // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
 
-      FILE *file = fopen("../perf.txt", "w");
+      FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/perf.txt", "w");
       if (file == NULL) {
           printf("无法打开文件\n");
           return;
