@@ -93,7 +93,6 @@ perf:
 	cd $(YSYX_HOME)/am-kernels/benchmarks/microbench && \
 	make ARCH=riscv32e-ysyxsoc run mainargs=test && \
 	cd $(YSYX_HOME)/npc
-	
 
 clean:
 	rm -rf ./build
