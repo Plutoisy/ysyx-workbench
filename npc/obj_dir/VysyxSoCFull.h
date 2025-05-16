@@ -15,7 +15,6 @@ class VysyxSoCFull__Syms;
 class VysyxSoCFull___024root;
 class VerilatedVcdC;
 class VysyxSoCFull___024unit;
-class VysyxSoCFull_mul_top;
 
 
 // This class is the main interface to the Verilated model
@@ -60,22 +59,6 @@ class alignas(VL_CACHE_LINE_BYTES) VysyxSoCFull VL_NOT_FINAL : public VerilatedM
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
     VysyxSoCFull___024unit* const __PVT____024unit;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul0;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul1;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul2;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__0__KET____DOT__u_mul3;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul0;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul1;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul2;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__1__KET____DOT__u_mul3;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul0;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul1;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul2;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__2__KET____DOT__u_mul3;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul0;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul1;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul2;
-    VysyxSoCFull_mul_top* const __PVT__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_PE_ctrl__DOT__pe_blocks__BRA__3__KET____DOT__u_mul3;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
