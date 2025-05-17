@@ -33,7 +33,7 @@ always@(*)begin
         2'd1: dnpc = pc_add_imme;
         2'd2: dnpc = alu_result;
         2'd3: dnpc = r_csr_data;
-        default: dnpc = 32'h3000_0000;
+        default: dnpc = 32'h8000_0000;
     endcase
 end
 
