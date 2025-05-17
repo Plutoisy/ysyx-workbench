@@ -2,7 +2,7 @@
 # DESCRIPTION: Verilator output: Make include file with class lists
 #
 # This file lists generated Verilated files, for including in higher level makefiles.
-# See Vysyx_24120011.mk for the caller.
+# See VysyxSoCFull.mk for the caller.
 
 ### Switches...
 # C11 constructs required?  0/1 (always on now)
@@ -25,30 +25,30 @@ VM_TRACE_VCD = 1
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	Vysyx_24120011 \
-	Vysyx_24120011___024root__DepSet_h20653b28__0 \
-	Vysyx_24120011___024root__DepSet_hda981c00__0 \
-	Vysyx_24120011___024unit__DepSet_h7d0fc3b9__0 \
+	VysyxSoCFull \
+	VysyxSoCFull___024root__DepSet_h4d156741__0 \
+	VysyxSoCFull___024root__DepSet_h0188974b__0 \
+	VysyxSoCFull___024unit__DepSet_h308b0958__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Vysyx_24120011__ConstPool_0 \
-	Vysyx_24120011___024root__Slow \
-	Vysyx_24120011___024root__DepSet_h20653b28__0__Slow \
-	Vysyx_24120011___024root__DepSet_hda981c00__0__Slow \
-	Vysyx_24120011___024unit__Slow \
-	Vysyx_24120011___024unit__DepSet_h27423491__0__Slow \
+	VysyxSoCFull__ConstPool_0 \
+	VysyxSoCFull___024root__Slow \
+	VysyxSoCFull___024root__DepSet_h4d156741__0__Slow \
+	VysyxSoCFull___024root__DepSet_h0188974b__0__Slow \
+	VysyxSoCFull___024unit__Slow \
+	VysyxSoCFull___024unit__DepSet_h460a3d32__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vysyx_24120011__Dpi \
-	Vysyx_24120011__Trace__0 \
+	VysyxSoCFull__Dpi \
+	VysyxSoCFull__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	Vysyx_24120011__Syms \
-	Vysyx_24120011__Trace__0__Slow \
-	Vysyx_24120011__TraceDecls__0__Slow \
+	VysyxSoCFull__Syms \
+	VysyxSoCFull__Trace__0__Slow \
+	VysyxSoCFull__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
