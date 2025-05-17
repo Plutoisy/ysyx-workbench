@@ -39,7 +39,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
-		--top-module $(TOPNAME) $^ \
+		--top-module ysyx_24120011 $^ \
 		--timescale "1ns/1ns" \
 		--no-timing \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
