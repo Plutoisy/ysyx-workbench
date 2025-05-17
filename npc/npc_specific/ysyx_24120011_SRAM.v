@@ -1,4 +1,5 @@
-
+import "DPI-C" function void rtl_pmem_write (input int w_mem_addr, input int w_mem_data, input byte w_mem_len);
+import "DPI-C" function int rtl_pmem_read(int r_mem_addr);
 module ysyx_24120011_SRAM (
     input wire clk,
     input wire rst,
