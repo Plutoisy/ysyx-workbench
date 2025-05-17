@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vysyx_24120011_top.h"
+#include "Vysyx_24120011.h"
 #include <cstdint>
 #include <stdio.h>
 #include <stdint.h>
