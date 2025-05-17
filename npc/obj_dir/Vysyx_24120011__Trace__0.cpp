@@ -484,9 +484,9 @@ void Vysyx_24120011___024root__trace_chg_0_sub_0(Vysyx_24120011___024root* vlSel
                                                     : 1U)
                                                 : ((IData)(vlSelfRef.ysyx_24120011__DOT__S0_arvalid)
                                                     ? 
-                                                   (((0x2000048U 
+                                                   (((0xa0000048U 
                                                       == vlSelfRef.ysyx_24120011__DOT__S0_araddr) 
-                                                     | (0x200004cU 
+                                                     | (0xa000004cU 
                                                         == vlSelfRef.ysyx_24120011__DOT__S0_araddr))
                                                      ? 3U
                                                      : 1U)

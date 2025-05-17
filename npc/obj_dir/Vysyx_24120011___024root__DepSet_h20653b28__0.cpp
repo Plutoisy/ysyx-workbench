@@ -1985,8 +1985,8 @@ VL_INLINE_OPT void Vysyx_24120011___024root___nba_sequent__TOP__0(Vysyx_24120011
             vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr = 0U;
             vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__r_Xbar_next_state 
                 = ((IData)(vlSelfRef.ysyx_24120011__DOT__S0_arvalid)
-                    ? (((0x2000048U == vlSelfRef.ysyx_24120011__DOT__S0_araddr) 
-                        | (0x200004cU == vlSelfRef.ysyx_24120011__DOT__S0_araddr))
+                    ? (((0xa0000048U == vlSelfRef.ysyx_24120011__DOT__S0_araddr) 
+                        | (0xa000004cU == vlSelfRef.ysyx_24120011__DOT__S0_araddr))
                         ? 3U : 1U) : 0U);
         }
         vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_arsize = 0U;
