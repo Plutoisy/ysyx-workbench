@@ -520,9 +520,9 @@ VL_INLINE_OPT void Vysyx_24120011___024root___nba_sequent__TOP__0(Vysyx_24120011
                  & (0U == (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__read_delay_cnt))) 
                 & (~ (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__pmem_readed)))) {
         vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__rdata_reg 
-            = ((0x2000048U == vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__addr)
+            = ((0xa0000048U == vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__addr)
                 ? (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__mtime)
-                : ((0x200004cU == vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__addr)
+                : ((0xa000004cU == vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__addr)
                     ? (IData)((vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__mtime 
                                >> 0x20U)) : 0U));
         __Vdly__ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__pmem_readed = 1U;
