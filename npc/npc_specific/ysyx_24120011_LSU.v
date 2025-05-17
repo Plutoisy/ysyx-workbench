@@ -76,7 +76,7 @@ module ysyx_24120011_LSU(
     assign M1_arid    = 'd0       ;
     assign M1_arlen   = 'd0       ;
     assign M1_arburst = 'd0       ;
-    assign M1_arsize  = ~M1_arvalid ? 3'b010 : (
+    assign M1_arsize  = M1_arvalid ? 3'b010 : (
            ({3{r_mem_len == 8'd1}} & 3'b000) |
            ({3{r_mem_len == 8'd2}} & 3'b001) |
            ({3{r_mem_len == 8'd4}} & 3'b010) |
@@ -85,7 +85,7 @@ module ysyx_24120011_LSU(
     assign M1_awid    = 'd0       ;
     assign M1_awlen   = 'd0       ;
     assign M1_awburst = 'd0       ;
-    assign M1_awsize  = ~M1_awvalid ? 3'b010 : (
+    assign M1_awsize  = M1_awvalid ? 3'b010 : (
            ({3{w_mem_len == 8'd1}} & 3'b000) |
            ({3{w_mem_len == 8'd2}} & 3'b001) |
            ({3{w_mem_len == 8'd4}} & 3'b010) |
@@ -143,7 +143,7 @@ module ysyx_24120011_LSU(
     wire [31:0] wdata;
     wire [1:0] bresp;
     wire [3:0] wstrb;
-    wire bready;
+    reg bready;
     wire [31:0] rdata;
     wire bvalid;
     wire LSU_working;
@@ -166,10 +166,6 @@ module ysyx_24120011_LSU(
     reg [7:0] LSFR_in;
     reg [7:0] random_delay;
 
-    reg [3:0] reg_wstrb;
-    reg [31:0] reg_wdata;
-    reg [5:0] wdata_format;
-    reg [31:0] rdata_mask;
     ysyx_24120011_LFSR i0_LFSR(
         .clk ( clk           ),
         .in  ( LSFR_in       ),
@@ -177,10 +173,9 @@ module ysyx_24120011_LSU(
     );
 
     //assign LSU_valid = (state == ysyx_24120011_LSU_M_AXI_RDATA || state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
-    //assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
     assign LSU_working = ~LSU_ready;
     //AR
-    assign araddr = r_mem_addr;
+    assign araddr = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? r_mem_addr : 32'b0;
     //assign arvalid = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? 1 : 0;
 
     //R
@@ -188,125 +183,26 @@ module ysyx_24120011_LSU(
 
     //AW
     //assign awvalid = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? 1 : 0;
-    //assign awaddr = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? w_mem_addr : 32'b0;
-    assign awaddr = w_mem_addr;
+    assign awaddr = (state == ysyx_24120011_LSU_M_AXI_WADDR) ? w_mem_addr : 32'b0;
 
     //W
     //assign wvalid = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
-    assign wdata = reg_wdata; //(state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
-    assign wstrb = reg_wstrb;
+    assign wdata = (state == ysyx_24120011_LSU_M_AXI_WDATA) ? w_mem_data : 32'b0;
+    assign wstrb = (w_mem_len == 8'd4) ? 
+                    4'b1111 :
+                    ((w_mem_len == 8'd2) ? 4'b0011 : 4'b0001);
     //B
-    assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
+    //assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
 
 /* verilator lint_off LATCH */
-    always@(*)begin
-        if(r_mem_len == 8'd1) begin
-            if(araddr[1:0] == 2'd0)begin
-                rdata_mask = {24'b0,rdata[7:0]};
-            end
-            else if(araddr[1:0] == 2'd1)begin
-                rdata_mask = {24'b0,rdata[15:8]};
-            end
-            else if(araddr[1:0] == 2'd2)begin
-                rdata_mask = {24'b0,rdata[23:16]};
-            end
-            else begin
-                rdata_mask = {24'b0,rdata[31:24]};
-            end
-        end
-        else if(r_mem_len == 8'd2)begin
-            rdata_mask = rdata;
-            if(araddr[1:0] == 2'd0)begin
-                rdata_mask = {16'b0,rdata[15:0]};
-            end
-            else if(araddr[1:0] == 2'd1)begin
-                rdata_mask = {16'b0,rdata[23:8]};
-            end
-            else if(araddr[1:0] == 2'd2)begin
-                rdata_mask = {16'b0,rdata[31:16]};
-            end
-            else begin
-                rdata_mask = 32'hdeadbeef;
-            end
-        end
-        else if(r_mem_len == 8'd4) begin
-            rdata_mask = rdata;
-        end
-        else begin
-            rdata_mask = rdata;
-        end
-    end
-    always@(*)begin
-        case(wdata_format)
-        'd0:reg_wdata = {24'b0,w_mem_data[7:0]};
-        'd1:reg_wdata = {16'b0,w_mem_data[7:0],8'b0};
-        'd2:reg_wdata = {8'b0,w_mem_data[7:0],16'b0};
-        'd3:reg_wdata = {w_mem_data[7:0],24'b0};
-        'd4:reg_wdata = {16'b0,w_mem_data[15:0]};
-        'd5:reg_wdata = {8'b0,w_mem_data[15:0],8'b0};
-        'd6:reg_wdata = {w_mem_data[15:0],16'b0};
-        'd7:reg_wdata = w_mem_data;
-        default:reg_wdata = 32'hdeadbeef;
-        endcase
-    end
-    always@(*)begin
-        if(w_mem_len == 8'd1) begin
-            if(awaddr[1:0] == 2'd0)begin
-                reg_wstrb = 4'b0001;
-                wdata_format = 'd0;
-            end
-            else if(awaddr[1:0] == 2'd1)begin
-                reg_wstrb = 4'b0010;
-                wdata_format = 'd1;
-            end
-            else if(awaddr[1:0] == 2'd2)begin
-                reg_wstrb = 4'b0100;
-                wdata_format = 'd2;
-            end
-            else begin
-                reg_wstrb = 4'b1000;
-                wdata_format = 'd3;
-            end
-        end
-        else if(w_mem_len == 8'd2)begin
-            if(awaddr[1:0] == 2'd0)begin
-                reg_wstrb = 4'b0011;
-                wdata_format = 'd4;
-            end
-            else if(awaddr[1:0] == 2'd1)begin
-                reg_wstrb = 4'b0110;
-                wdata_format = 'd5;
-            end
-            else if(awaddr[1:0] == 2'd2)begin
-                reg_wstrb = 4'b1100;
-                wdata_format = 'd6;
-            end
-            else begin
-                reg_wstrb = 4'b0000;
-                wdata_format = 'd63;
-            end
-        end
-        else if(w_mem_len == 8'd4) begin
-            reg_wstrb = 4'b1111;
-            wdata_format = 'd7;
-        end
-        else begin
-            reg_wstrb = 4'b0000;//shouldnt enter
-            wdata_format = 'd63;
-        end
-    end
+
     //arvalid_delay
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
             arvalid_delay_cnt <= arvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
-            if(arready)begin
-                arvalid <= 0;
-            end
-            else begin
-                arvalid <= 1;
-            end
+            arvalid <= 1;
         end
         else begin
             arvalid <= 0;
@@ -325,12 +221,7 @@ module ysyx_24120011_LSU(
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
-            if(awready)begin
-                awvalid <= 0;
-            end
-            else begin
-                awvalid <= 1;
-            end
+            awvalid <= 1;
         end
         else begin
             awvalid <= 0;
@@ -349,7 +240,7 @@ module ysyx_24120011_LSU(
             wvalid_delay_cnt <= wvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
-            if(wready == 1 && wvalid == 0) begin
+            if(wready == 1) begin
                 wvalid <= 1;
             end
             else begin
@@ -395,34 +286,25 @@ module ysyx_24120011_LSU(
     end
 
     //bready_delay
-    // always@(posedge clk)begin
-    //     // if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
-    //     //     bready_delay_cnt <= bready_delay_cnt - 1;
-    //     //     //bready <= 0;
-    //     // end
-    //     // else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
-    //     //     //bready <= 1;
-    //     //     //bready_delay_cnt <= 32'hFFFFFFFF;
-    //     //     if(bvalid == 1) begin
-    //     //         bready <= 1;
-    //     //     end
-    //     //     else begin
-    //     //         bready <= 0;
-    //     //     end
-    //     // end
-    //     // else begin
-    //     //     bready <= 0;
-    //     // end
-    //     if(awready) begin
-    //         bready <= 1;
-    //     end
-    //     else if(bvalid) begin
-    //         bready <= 0;
-    //     end
-    //     else begin
-    //         bready <= 0;
-    //     end
-    // end
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
+            bready_delay_cnt <= bready_delay_cnt - 1;
+            //bready <= 0;
+        end
+        else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
+            //bready <= 1;
+            //bready_delay_cnt <= 32'hFFFFFFFF;
+            if(bvalid == 1) begin
+                bready <= 1;
+            end
+            else begin
+                bready <= 0;
+            end
+        end
+        else begin
+            bready <= 0;
+        end
+    end
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
@@ -462,22 +344,22 @@ module ysyx_24120011_LSU(
             if(state == ysyx_24120011_LSU_M_AXI_RDATA) begin
                 if(r_mem_len == 8'd1)begin
                     if(sign_extension)begin
-                        r_mem_data <= {{24{rdata_mask[7]}},rdata_mask[7:0]};
+                        r_mem_data <= {{24{rdata[7]}},rdata[7:0]};
                     end
                     else begin
-                        r_mem_data <= {24'b0,rdata_mask[7:0]};
+                        r_mem_data <= {24'b0,rdata[7:0]};
                     end
                 end
                 else if(r_mem_len == 8'd2)begin
                     if(sign_extension)begin
-                        r_mem_data <= {{16{rdata_mask[15]}},rdata_mask[15:0]};
+                        r_mem_data <= {{16{rdata[15]}},rdata[15:0]};
                     end
                     else begin
-                        r_mem_data <= {16'b0,rdata_mask[15:0]};
+                        r_mem_data <= {16'b0,rdata[15:0]};
                     end
                 end
                 else if(r_mem_len == 8'd4)begin
-                    r_mem_data <= rdata_mask;
+                    r_mem_data <= rdata;
                 end
                 else begin//shouldn't in
                     r_mem_data <= 32'b11111111;
