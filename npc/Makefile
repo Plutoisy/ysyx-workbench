@@ -23,7 +23,7 @@ VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
-VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v" -not -name "ysyx_24120011.v" -not -name "ysyx_24120011_PCProcessor.v" -not -name "ysyx_24120011_Xbar.v")
+VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v" -not -name "ysyx_24120011.v" -not -name "ysyx_24120011_PCProcessor.v" -not -name "ysyx_24120011_Xbar.v" -not -name "ysyx_24120011_Uart.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
 # LOADLIBES += -lreadline
