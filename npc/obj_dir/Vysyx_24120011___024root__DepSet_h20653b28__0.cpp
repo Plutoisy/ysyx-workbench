@@ -417,7 +417,7 @@ VL_INLINE_OPT void Vysyx_24120011___024root___nba_sequent__TOP__0(Vysyx_24120011
     } else if ((((4U == (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Uart__DOT__state)) 
                  & (0U == (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Uart__DOT__write_delay_cnt))) 
                 & (~ (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Uart__DOT__pmem_writed)))) {
-        if ((0x3f8U == vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Uart__DOT__addr)) {
+        if ((0xa00003f8U == vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Uart__DOT__addr)) {
             if (VL_UNLIKELY(((0xfU == (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wstrb))))) {
                 VL_WRITEF_NX("%c",0,8,(0xffU & vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wdata));
             } else if (VL_UNLIKELY(((3U == (IData)(vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S1_wstrb))))) {
