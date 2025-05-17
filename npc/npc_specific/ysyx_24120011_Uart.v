@@ -133,13 +133,13 @@ module ysyx_24120011_Uart (
         else if(state == ysyx_24120011_S_AXI_WDATA && write_delay_cnt == 0 && pmem_writed == 0)begin
             if(addr == 32'h000003f8) begin
                 if(wstrb == 4'b1111) begin
-                    //$write("%c", wdata[7:0]);
+                    $write("%c", wdata[7:0]);
                 end
                 else if(wstrb == 4'b0011) begin
-                    //$write("%c", wdata[7:0]);
+                    $write("%c", wdata[7:0]);
                 end
                 else if(wstrb == 4'b0001) begin
-                    //$write("%c", wdata[7:0]);
+                    $write("%c", wdata[7:0]);
                 end
                 else ;
             end
