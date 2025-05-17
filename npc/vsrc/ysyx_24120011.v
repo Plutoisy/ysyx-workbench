@@ -409,7 +409,7 @@ assign io_slave_rid     = 'd0;
 
 always@(posedge clock) begin
     if(reset) begin
-        pc <= 32'h3000_0000;
+        pc <= 32'h8000_0000;
     end
 end
 
