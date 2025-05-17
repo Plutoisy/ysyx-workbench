@@ -930,7 +930,7 @@ VL_INLINE_OPT void Vysyx_24120011___024root___nba_sequent__TOP__0(Vysyx_24120011
                                       && (IData)(vlSelfRef.io_master_rvalid))));
     if (vlSelfRef.reset) {
         vlSelfRef.ysyx_24120011__DOT__pc = 0x80000000U;
-        vlSelfRef.ysyx_24120011__DOT__pc = 0x30000000U;
+        vlSelfRef.ysyx_24120011__DOT__pc = 0x80000000U;
         vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Clint__DOT__state = 0U;
         vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Arbiter__DOT__read_state = 0U;
         vlSelfRef.ysyx_24120011__DOT__u_ysyx_24120011_Arbiter__DOT__write_state = 0U;

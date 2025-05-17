@@ -409,7 +409,7 @@ assign io_slave_rid     = 'd0;
 
 always@(posedge clock) begin
     if(reset) begin
-        pc <= 32'h8000_0000;
+        pc <= 32'h3000_0000;
     end
 end
 
@@ -469,7 +469,7 @@ ysyx_24120011_PCProcessor i_PCProcessor(
 );
 
 
-ysyx_24120011_Reg #(32, 32'h8000_0000) i_pc (
+ysyx_24120011_Reg #(32, 32'h3000_0000) i_pc (
     .clk   ( clock ), 
     .rst   ( reset ), 
     .din   ( dnpc ), 

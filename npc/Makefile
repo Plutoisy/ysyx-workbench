@@ -23,7 +23,8 @@ VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
-VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
+VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v" -not -name "ysyx_24120011.v")
+
 # LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
 # LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
