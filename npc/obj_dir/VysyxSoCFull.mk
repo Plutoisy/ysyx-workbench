@@ -38,19 +38,9 @@ VM_MODPREFIX = VysyxSoCFull
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
 	-I /home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include \
-	-MMD \
-	-O3 \
-	-I/usr/include/SDL2 \
-	-D_REENTRANT \
-	-I/home/plutoisy/ysyx-workbench/nvboard/usr/include \
-	-DTOP_NAME="VysyxSoCFull" \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	/home/plutoisy/ysyx-workbench/nvboard/build/nvboard.a \
-	-lSDL2 \
-	-lSDL2_image \
-	-lSDL2_ttf \
 	-L/home/plutoisy/ysyx-workbench/nemu/build -L/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,/home/plutoisy/ysyx-workbench/nemu/build \
 
 # User .cpp files (from .cpp's on Verilator command line)

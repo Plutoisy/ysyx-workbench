@@ -22,7 +22,7 @@ VSRCS_bs += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
 VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
-
+CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 # LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
 # LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
@@ -34,6 +34,19 @@ include $(NVBOARD_HOME)/scripts/nvboard.mk
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
+npc:$(VSRCS) $(CSRCS_NPC)
+	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	rm -rf ./obj_dir
+	$(VERILATOR) $(VERILATOR_CFLAGS) \
+		--top-module $(TOPNAME) $^ \
+		--timescale "1ns/1ns" \
+		--no-timing \
+		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		--exe main.cpp
+	make -C obj_dir -f Vysyx_24120011.mk Vysyx_24120011
+	./obj_dir/Vysyx_24120011 $(IMG)
+	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
