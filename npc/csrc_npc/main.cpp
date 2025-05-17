@@ -219,6 +219,21 @@ void isa_reg_display() {
   }
 }
 
+uint64_t IFU_getinst = 0;
+uint64_t LSU_getdata = 0;
+uint64_t EXU_fincal = 0;
+extern "C" void Performance_Counters(int Performancetype){
+  if(Performancetype == 1){
+    IFU_getinst++;
+  }
+  if(Performancetype == 2){
+    LSU_getdata++;
+  }
+  if(Performancetype == 3){
+    EXU_fincal++;
+  }
+}
+
 extern "C" void ebreak(){
   trap = 1;
   // printf("excute the ebreak inst!!!\n");
