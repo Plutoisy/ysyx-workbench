@@ -23,6 +23,7 @@ VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
+VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
 # LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
 # LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
@@ -34,7 +35,7 @@ include $(NVBOARD_HOME)/scripts/nvboard.mk
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
-npc:$(VSRCS) $(CSRCS_NPC)
+npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
