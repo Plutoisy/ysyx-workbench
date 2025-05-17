@@ -25,7 +25,7 @@
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-static Vysyx_24120011_top* top;
+static Vysyx_24120011* top;
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
@@ -142,7 +142,7 @@ void step_and_dump_wave(){
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  top = new Vysyx_24120011_top;
+  top = new Vysyx_24120011;
   contextp->traceEverOn(true);
   top->trace(tfp, 99);
   tfp->open("dump.vcd");
