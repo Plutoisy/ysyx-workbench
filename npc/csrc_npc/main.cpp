@@ -22,6 +22,7 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WAVE 0
+#define PC_NO_CHANGE_DECETE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -336,6 +337,9 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
   
 }
 
+int old_pc = 0;
+int pc_count = 0;
+
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
@@ -390,7 +394,25 @@ void cpu_exec(uint32_t n){
       else{
         step_and_dump_wave();
       }
-      
+
+      if(PC_NO_CHANGE_DECETE){
+        if(top_pc == old_pc){
+          pc_count++;
+          if(pc_count > 15000){
+            printf("\33[1;31mProgram pc has not change for 1.5w clk. Stuck at 0x%08x\033[0m\n",top_pc);
+            AssembleDecoder(handle, top_inst, top_pc);
+            for(int j = 0; j < 32; j++){
+              printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
+            }
+            printf("exec times: %ld\n",i+1);
+            return;
+          }
+        }
+        else{
+          pc_count = 0;
+        }
+        old_pc = top_pc;  
+      }
       
     }
     else{
