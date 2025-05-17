@@ -269,7 +269,10 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   }
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
     if (w_mem_addr == 0xa00003f8) { 
-      putchar((char)(w_mem_data & 0xFF)); 
+      if(M_W_ASSERT){
+        assert(0);
+      }
+      //putchar((char)(w_mem_data & 0xFF)); 
     }
     else{
       if(M_W_ASSERT){
