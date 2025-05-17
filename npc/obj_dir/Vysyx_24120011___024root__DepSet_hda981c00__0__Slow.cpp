@@ -241,7 +241,6 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->ysyx_24120011__DOT__rdata = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__r_mem_data = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__src1 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_24120011__DOT__src2 = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__ALUB = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__alu_result = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__pc_ctrl = VL_RAND_RESET_I(2);
@@ -267,7 +266,9 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->ysyx_24120011__DOT__LSU_ready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__EXU_ready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__M0_rdata = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_24120011__DOT__M1_bready = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011__DOT__M1_rvalid = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011__DOT__M1_wready = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_24120011__DOT__M1_bvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__S0_araddr = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__S0_arvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__S0_arsize = VL_RAND_RESET_I(3);
@@ -322,14 +323,10 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__start_read_delay = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__start_write_delay = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__arvalid = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__arready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__rready = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__rvalid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__awvalid = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__awready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__wvalid = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__wready = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__rdata = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__bready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__arvalid_delay_cnt = VL_RAND_RESET_I(8);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__awvalid_delay_cnt = VL_RAND_RESET_I(8);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__wvalid_delay_cnt = VL_RAND_RESET_I(8);
@@ -337,9 +334,6 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__bready_delay_cnt = VL_RAND_RESET_I(8);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__LSFR_in = VL_RAND_RESET_I(8);
     vlSelf->ysyx_24120011__DOT__i_LSU__DOT__random_delay = VL_RAND_RESET_I(8);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__reg_wdata = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__wdata_format = VL_RAND_RESET_I(6);
-    vlSelf->ysyx_24120011__DOT__i_LSU__DOT__rdata_mask = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__i_Csr__DOT__mepc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__i_Csr__DOT__mstatus = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__i_Csr__DOT__mcause = VL_RAND_RESET_I(32);
