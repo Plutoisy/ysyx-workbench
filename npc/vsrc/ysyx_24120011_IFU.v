@@ -1,3 +1,4 @@
+import "DPI-C" function void IFU_clktime_count(input int ifu_clk_count);
 
 module ysyx_24120011_IFU(
     input clk,
@@ -135,6 +136,21 @@ assign M0_wlast   = M0_wvalid ;
 //     .bvalid  ( bvalid  ),
 //     .bready  ( 1'b1  )
 // );
+
+//======================dpic========================//
+reg [31:0] ifu_clk_count;
+always@(posedge clk)begin
+    if(state == ysyx_24120011_IFU_M_AXI_IDLE)begin
+        ifu_clk_count <= 'b0;
+    end
+    else if(next_state == ysyx_24120011_IFU_M_AXI_IDLE)begin
+        IFU_clktime_count(ifu_clk_count);
+    end
+    else begin
+        ifu_clk_count <= ifu_clk_count + 1;
+    end
+end
+//======================dpic========================//
 
 parameter ysyx_24120011_IFU_M_AXI_IDLE  = 3'b000;
 parameter ysyx_24120011_IFU_M_AXI_RADDR = 3'b001;
