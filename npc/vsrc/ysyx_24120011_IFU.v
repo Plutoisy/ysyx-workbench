@@ -140,10 +140,10 @@ assign M0_wlast   = M0_wvalid ;
 //======================dpic========================//
 reg [31:0] ifu_clk_count;
 always@(posedge clk)begin
-    if(LSU_ready && EXU_ready)begin
+    if(state == ysyx_24120011_IFU_M_AXI_IDLE)begin
         ifu_clk_count <= 'b0;
     end
-    else if(rvalid  && rready)begin
+    else if(next_state = ysyx_24120011_IFU_M_AXI_IDLE)begin
         IFU_clktime_count(ifu_clk_count);
     end
     else begin
