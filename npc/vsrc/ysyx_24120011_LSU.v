@@ -1,3 +1,4 @@
+import "DPI-C" function void LSU_clktime_count(input int lsu_clk_count);
 
 module ysyx_24120011_LSU(
     input clk,
@@ -197,6 +198,21 @@ module ysyx_24120011_LSU(
     assign wstrb = reg_wstrb;
     //B
     assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
+
+    //======================dpic========================//
+    reg [31:0] lsu_clk_count;
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_LSU_M_AXI_IDLE)begin
+            lsu_clk_count <= 'b0;
+        end
+        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE)begin
+            LSU_clktime_count(lsu_clk_count);
+        end
+        else begin
+            lsu_clk_count <= lsu_clk_count + 1;
+        end
+    end
+    //======================dpic========================//
 
 /* verilator lint_off LATCH */
     always@(*)begin
