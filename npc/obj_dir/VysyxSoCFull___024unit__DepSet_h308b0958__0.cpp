@@ -2,9 +2,7 @@
 // DESCRIPTION: Verilator output: Design implementation internals
 // See VysyxSoCFull.h for the primary calling header
 
-#include "verilated.h"
-#include "verilated_dpi.h"
-
+#include "VysyxSoCFull__pch.h"
 #include "VysyxSoCFull__Syms.h"
 #include "VysyxSoCFull___024unit.h"
 
