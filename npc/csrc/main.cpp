@@ -325,6 +325,13 @@ void isa_reg_display() {
   }
 }
 
+uint64_t sum_ifu_clock_time = 0;
+uint64_t ifu_clock_time_num = 0;
+extern "C" void IFU_clktime_count(int ifu_clk_count){
+  sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
+  ifu_clock_time_num++;
+}
+
 uint64_t IFU_getinst = 0;
 uint64_t LSU_getdata = 0;
 uint64_t EXU_fincal = 0;
@@ -735,6 +742,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
+      printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
       // printf("\33[1;34mTYPE COUNT:\033[0m\n");
       // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
       // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
@@ -767,6 +775,7 @@ void cpu_exec(uint64_t n){
       fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
       fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
       fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
+      fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
       fprintf(file, "jump: %ld\n",jump_type_s);
       fprintf(file, "csr: %ld\n",csr_type_s);
       fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
