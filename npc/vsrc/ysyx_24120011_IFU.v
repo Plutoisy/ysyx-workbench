@@ -7,7 +7,7 @@ module ysyx_24120011_IFU(
     input EXU_ready,
 
     output reg [31:0] inst,
-    output IFU_valid,    
+    output reg IFU_valid,    
     //AR-axi4lite
     output  [31:0]     M0_araddr,
     output             M0_arvalid,
@@ -60,8 +60,6 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 //====================IFU====================//
 reg [2:0] state;
 reg [2:0] next_state;
-
-assign IFU_valid = rready;
 //====================IFU====================//
 
 //====================icache====================//
@@ -119,6 +117,28 @@ assign M0_awsize  = 3'b010    ;
 assign M0_wlast   = M0_wvalid ;
 //====================axi====================//
 
+always @(posedge clk) begin
+    if(rst) begin
+        IFU_valid <= 1'b0;
+    end
+    else begin
+        if(state == ysyx_24120011_IFU_IDLE) begin
+        end
+        else if(state == ysyx_24120011_IFU_LOOKUP) begin
+        end
+        else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
+        end
+        else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
+            if(rvalid  && rready) begin
+                IFU_valid <= 1'b1;
+            end
+            else begin
+            end
+        end
+        else begin //不应该进入
+        end
+    end
+end
 
 always @(posedge clk) begin
     if(rst) begin
@@ -161,7 +181,7 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
             if(rvalid  && rready) begin
-                icache[index] = {1'b1, tag, M0_rdata};
+                icache[index] <= {1'b1, tag, M0_rdata};
             end
             else begin
             end
