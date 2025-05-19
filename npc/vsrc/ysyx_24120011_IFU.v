@@ -66,7 +66,7 @@ assign IFU_valid = (rvalid  && rready ) ? 1'b1 : 1'b0;
 
 //====================icache====================//
 //  valid                                       tag                                                 data
-reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [NUM-1 : 0];
+reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
 
 wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
 wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
