@@ -1,6 +1,6 @@
 import "DPI-C" function void IFU_clktime_count(input int ifu_clk_count);
 
-module ysyx_24120011_IFU(
+module ysyx_24120011_IFUback(
     input clk,
     input rst,
     input [31:0] pc,

@@ -16,6 +16,16 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(V
     reg_out(array__Vcvt);
 }
 
+extern "C" void IFU_clktime_count(int ifu_clk_count);
+
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_IFU_clktime_count_TOP____024unit(IData/*31:0*/ ifu_clk_count) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_IFU_clktime_count_TOP____024unit\n"); );
+    // Body
+    int ifu_clk_count__Vcvt;
+    for (size_t ifu_clk_count__Vidx = 0; ifu_clk_count__Vidx < 1; ++ifu_clk_count__Vidx) ifu_clk_count__Vcvt = ifu_clk_count;
+    IFU_clktime_count(ifu_clk_count__Vcvt);
+}
+
 extern "C" void ebreak();
 
 VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_ebreak_TOP____024unit() {
@@ -60,16 +70,6 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_Performance_Counters_TOP
     int Performancetype__Vcvt;
     for (size_t Performancetype__Vidx = 0; Performancetype__Vidx < 1; ++Performancetype__Vidx) Performancetype__Vcvt = Performancetype;
     Performance_Counters(Performancetype__Vcvt);
-}
-
-extern "C" void IFU_clktime_count(int ifu_clk_count);
-
-VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_IFU_clktime_count_TOP____024unit(IData/*31:0*/ ifu_clk_count) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_IFU_clktime_count_TOP____024unit\n"); );
-    // Body
-    int ifu_clk_count__Vcvt;
-    for (size_t ifu_clk_count__Vidx = 0; ifu_clk_count__Vidx < 1; ++ifu_clk_count__Vidx) ifu_clk_count__Vcvt = ifu_clk_count;
-    IFU_clktime_count(ifu_clk_count__Vcvt);
 }
 
 extern "C" void LSU_clktime_count(int lsu_clk_count);
