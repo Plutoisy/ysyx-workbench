@@ -6,7 +6,7 @@ module ysyx_24120011_IFU(
     input EXU_ready,
 
     output reg [31:0] inst,
-    output reg IFU_valid,    
+    output IFU_valid,    
     //AR-axi4lite
     output  [31:0]     M0_araddr,
     output             M0_arvalid,
@@ -59,7 +59,8 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 //====================IFU====================//
 reg [2:0] state;
 reg [2:0] next_state;
-reg IFU_valid_delay;
+
+assign IFU_valid = rready;
 //====================IFU====================//
 
 //====================icache====================//
@@ -122,16 +123,10 @@ assign M0_wlast   = M0_wvalid ;
 
 always @(posedge clk) begin
     if(rst) begin
-        IFU_valid <= 1'b0;
-        IFU_valid_delay <= 1'b0;
-
         rready <= 1'b0;
         rready_delay <= 1'b0;
     end
     else begin
-        IFU_valid <= (rvalid  && rready) & ~IFU_valid_delay;
-        IFU_valid_delay <= rvalid  && rready;
-
         rready <= (rvalid) & ~rready_delay;
         rready_delay <= rvalid;
     end
