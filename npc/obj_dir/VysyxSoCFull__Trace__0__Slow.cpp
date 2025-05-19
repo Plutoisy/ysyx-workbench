@@ -5314,16 +5314,16 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_0_sub_0(VysyxSoCFull___024r
                                            [(0xfU & 
                                              (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
                                               >> 2U))] 
-                                           >> 0x1fU)))));
+                                           >> 0x3aU)))));
     bufp->fullBit(oldp+639,(((vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                              >> 6U) == (0x3ffffffU 
+                              >> 6U) == (0x7ffffffU 
                                          & (IData)(
                                                    (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__icache
                                                     [
                                                     (0xfU 
                                                      & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
                                                         >> 2U))] 
-                                                    >> 5U))))));
+                                                    >> 0x1fU))))));
     bufp->fullBit(oldp+640,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready_delay));
     bufp->fullCData(oldp+641,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__state),3);
     bufp->fullCData(oldp+642,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__next_state),3);

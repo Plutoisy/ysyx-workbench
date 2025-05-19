@@ -77,7 +77,7 @@ wire hit_tag;
 assign {tag,index,offset} = pc;
 //assign hit = 1'b0;
 assign hit_valid = (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1);
-assign hit_tag = (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)-1]);
+assign hit_tag = (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]);
 assign hit = hit_valid && hit_tag;
 assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
 //====================icache====================//
