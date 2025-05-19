@@ -5,23 +5,23 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VYSYXSOCFULL_H_
-#define VERILATED_VYSYXSOCFULL_H_  // guard
+#ifndef VERILATED_VYSYX_24120011_H_
+#define VERILATED_VYSYX_24120011_H_  // guard
 
 #include "verilated.h"
 #include "svdpi.h"
 
-class VysyxSoCFull__Syms;
-class VysyxSoCFull___024root;
+class Vysyx_24120011__Syms;
+class Vysyx_24120011___024root;
 class VerilatedVcdC;
-class VysyxSoCFull___024unit;
+class Vysyx_24120011___024unit;
 
 
 // This class is the main interface to the Verilated model
-class alignas(VL_CACHE_LINE_BYTES) VysyxSoCFull VL_NOT_FINAL : public VerilatedModel {
+class alignas(VL_CACHE_LINE_BYTES) Vysyx_24120011 VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
-    VysyxSoCFull__Syms* const vlSymsp;
+    Vysyx_24120011__Syms* const vlSymsp;
 
   public:
 
@@ -34,47 +34,86 @@ class alignas(VL_CACHE_LINE_BYTES) VysyxSoCFull VL_NOT_FINAL : public VerilatedM
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clock,0,0);
     VL_IN8(&reset,0,0);
-    VL_OUT8(&externalPins_gpio_seg_0,7,0);
-    VL_OUT8(&externalPins_gpio_seg_1,7,0);
-    VL_OUT8(&externalPins_gpio_seg_2,7,0);
-    VL_OUT8(&externalPins_gpio_seg_3,7,0);
-    VL_OUT8(&externalPins_gpio_seg_4,7,0);
-    VL_OUT8(&externalPins_gpio_seg_5,7,0);
-    VL_OUT8(&externalPins_gpio_seg_6,7,0);
-    VL_OUT8(&externalPins_gpio_seg_7,7,0);
-    VL_IN8(&externalPins_ps2_clk,0,0);
-    VL_IN8(&externalPins_ps2_data,0,0);
-    VL_OUT8(&externalPins_vga_r,7,0);
-    VL_OUT8(&externalPins_vga_g,7,0);
-    VL_OUT8(&externalPins_vga_b,7,0);
-    VL_OUT8(&externalPins_vga_hsync,0,0);
-    VL_OUT8(&externalPins_vga_vsync,0,0);
-    VL_OUT8(&externalPins_vga_valid,0,0);
-    VL_IN8(&externalPins_uart_rx,0,0);
-    VL_OUT8(&externalPins_uart_tx,0,0);
-    VL_OUT16(&externalPins_gpio_out,15,0);
-    VL_IN16(&externalPins_gpio_in,15,0);
+    VL_IN8(&io_interrupt,0,0);
+    VL_IN8(&io_master_awready,0,0);
+    VL_OUT8(&io_master_awvalid,0,0);
+    VL_OUT8(&io_master_awid,3,0);
+    VL_OUT8(&io_master_awlen,7,0);
+    VL_OUT8(&io_master_awsize,2,0);
+    VL_OUT8(&io_master_awburst,1,0);
+    VL_IN8(&io_master_wready,0,0);
+    VL_OUT8(&io_master_wvalid,0,0);
+    VL_OUT8(&io_master_wstrb,3,0);
+    VL_OUT8(&io_master_wlast,0,0);
+    VL_OUT8(&io_master_bready,0,0);
+    VL_IN8(&io_master_bvalid,0,0);
+    VL_IN8(&io_master_bresp,1,0);
+    VL_IN8(&io_master_bid,3,0);
+    VL_IN8(&io_master_arready,0,0);
+    VL_OUT8(&io_master_arvalid,0,0);
+    VL_OUT8(&io_master_arid,3,0);
+    VL_OUT8(&io_master_arlen,7,0);
+    VL_OUT8(&io_master_arsize,2,0);
+    VL_OUT8(&io_master_arburst,1,0);
+    VL_OUT8(&io_master_rready,0,0);
+    VL_IN8(&io_master_rvalid,0,0);
+    VL_IN8(&io_master_rresp,1,0);
+    VL_IN8(&io_master_rlast,0,0);
+    VL_IN8(&io_master_rid,3,0);
+    VL_OUT8(&io_slave_awready,0,0);
+    VL_IN8(&io_slave_awvalid,0,0);
+    VL_IN8(&io_slave_awid,3,0);
+    VL_IN8(&io_slave_awlen,7,0);
+    VL_IN8(&io_slave_awsize,2,0);
+    VL_IN8(&io_slave_awburst,1,0);
+    VL_OUT8(&io_slave_wready,0,0);
+    VL_IN8(&io_slave_wvalid,0,0);
+    VL_IN8(&io_slave_wstrb,3,0);
+    VL_IN8(&io_slave_wlast,0,0);
+    VL_IN8(&io_slave_bready,0,0);
+    VL_OUT8(&io_slave_bvalid,0,0);
+    VL_OUT8(&io_slave_bresp,1,0);
+    VL_OUT8(&io_slave_bid,3,0);
+    VL_OUT8(&io_slave_arready,0,0);
+    VL_IN8(&io_slave_arvalid,0,0);
+    VL_IN8(&io_slave_arid,3,0);
+    VL_IN8(&io_slave_arlen,7,0);
+    VL_IN8(&io_slave_arsize,2,0);
+    VL_IN8(&io_slave_arburst,1,0);
+    VL_IN8(&io_slave_rready,0,0);
+    VL_OUT8(&io_slave_rvalid,0,0);
+    VL_OUT8(&io_slave_rresp,1,0);
+    VL_OUT8(&io_slave_rlast,0,0);
+    VL_OUT8(&io_slave_rid,3,0);
+    VL_OUT(&io_master_awaddr,31,0);
+    VL_OUT(&io_master_wdata,31,0);
+    VL_OUT(&io_master_araddr,31,0);
+    VL_IN(&io_master_rdata,31,0);
+    VL_IN(&io_slave_awaddr,31,0);
+    VL_IN(&io_slave_wdata,31,0);
+    VL_IN(&io_slave_araddr,31,0);
+    VL_OUT(&io_slave_rdata,31,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
-    VysyxSoCFull___024unit* const __PVT____024unit;
+    Vysyx_24120011___024unit* const __PVT____024unit;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    VysyxSoCFull___024root* const rootp;
+    Vysyx_24120011___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit VysyxSoCFull(VerilatedContext* contextp, const char* name = "TOP");
-    explicit VysyxSoCFull(const char* name = "TOP");
+    explicit Vysyx_24120011(VerilatedContext* contextp, const char* name = "TOP");
+    explicit Vysyx_24120011(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~VysyxSoCFull();
+    virtual ~Vysyx_24120011();
   private:
-    VL_UNCOPYABLE(VysyxSoCFull);  ///< Copying not allowed
+    VL_UNCOPYABLE(Vysyx_24120011);  ///< Copying not allowed
 
   public:
     // API METHODS
