@@ -59,8 +59,9 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 //====================IFU====================//
 reg [2:0] state;
 reg [2:0] next_state;
+reg cache_IFU_valid;
 
-assign IFU_valid = rready;
+assign IFU_valid = rready || cache_IFU_valid;
 //====================IFU====================//
 
 //====================icache====================//
@@ -138,20 +139,26 @@ end
 always @(posedge clk) begin
     if(rst) begin
         inst <= 32'b0;
+        cache_IFU_valid <= 1'b0;
     end
     else begin
         if(state == ysyx_24120011_IFU_IDLE) begin
+            cache_IFU_valid <= 1'b0;
         end
         else if(state == ysyx_24120011_IFU_LOOKUP) begin
             if(hit) begin
                 inst <= inst_cache;
+                cache_IFU_valid <= 1'b1;
             end
             else begin
+                cache_IFU_valid <= 1'b0;
             end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
+            cache_IFU_valid <= 1'b0;
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
+            cache_IFU_valid <= 1'b0;
             if(rvalid) begin
                 inst <= M0_rdata;
             end
@@ -159,6 +166,7 @@ always @(posedge clk) begin
             end
         end
         else begin //不应该进入
+            cache_IFU_valid <= 1'b0;
         end
     end
 end
