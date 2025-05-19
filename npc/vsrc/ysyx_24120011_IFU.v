@@ -61,7 +61,7 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 reg [2:0] state;
 reg [2:0] next_state;
 
-assign IFU_valid = (rvalid  && rready ) ? 1'b1 : 1'b0;
+assign IFU_valid = rvalid;
 //====================IFU====================//
 
 //====================icache====================//
