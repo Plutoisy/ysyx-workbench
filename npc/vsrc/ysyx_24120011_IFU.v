@@ -72,10 +72,13 @@ wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
 wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
 wire [31:0] inst_cache;
 wire hit;
-
+wire hit_valid;
+wire hit_tag;
 assign {tag,index,offset} = pc;
 //assign hit = 1'b0;
-assign hit = (tag == icache[index][30:$clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM)-1]) && (icache[index][31] == 1'b1);
+assign hit_valid = icache[index][31] == 1'b1
+assign hit_tag = tag == icache[index][30:$clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM)-1]
+assign hit = hit_valid && hit_tag;
 assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
 //====================icache====================//
 
