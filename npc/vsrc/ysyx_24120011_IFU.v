@@ -149,7 +149,7 @@ always @(posedge clk) begin
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
-            if(rvalid  && rready) begin
+            if(rvalid) begin
                 inst <= M0_rdata;
             end
             else begin
