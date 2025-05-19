@@ -188,9 +188,23 @@ always @(posedge clk) begin
     end
 end
 
+genvar j;
+generate
+    for (j = 0; j < ysyx_24120011_ICACHE_NUM; j = j + 1) begin : gen_reset
+        always @(posedge clk) begin
+            if (rst) begin
+                icache[j] <= 'b0;
+            end
+            else begin
+    
+            end
+        end
+    end
+endgenerate
+
 always @(posedge clk) begin
     if(rst) begin
-        icache <= '{default: '0};
+        //icache <= '{default: '0};
     end
     else begin
         if(state == ysyx_24120011_IFU_IDLE) begin
