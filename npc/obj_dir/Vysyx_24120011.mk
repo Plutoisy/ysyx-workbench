@@ -2,9 +2,9 @@
 # DESCRIPTION: Verilator output: Makefile for building Verilated archive or executable
 #
 # Execute this makefile from the object directory:
-#    make -f VysyxSoCFull.mk
+#    make -f Vysyx_24120011.mk
 
-default: VysyxSoCFull
+default: Vysyx_24120011
 
 ### Constants...
 # Perl executable (from $PERL, defaults to 'perl' if not set)
@@ -32,58 +32,44 @@ VM_SC_TARGET_ARCH = linux
 
 ### Vars...
 # Design prefix (from --prefix)
-VM_PREFIX = VysyxSoCFull
+VM_PREFIX = Vysyx_24120011
 # Module prefix (from --prefix)
-VM_MODPREFIX = VysyxSoCFull
+VM_MODPREFIX = Vysyx_24120011
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
 	-I /home/plutoisy/ysyx-workbench/npc/tools/capstone/repo/include \
-	-MMD \
-	-O3 \
-	-I/usr/include/SDL2 \
-	-D_REENTRANT \
-	-I/home/plutoisy/ysyx-workbench/nvboard/usr/include \
-	-DTOP_NAME="VysyxSoCFull" \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	/home/plutoisy/ysyx-workbench/nvboard/build/nvboard.a \
-	-lSDL2 \
-	-lSDL2_image \
-	-lSDL2_ttf \
 	-L/home/plutoisy/ysyx-workbench/nemu/build -L/home/plutoisy/ysyx-workbench/npc/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,/home/plutoisy/ysyx-workbench/nemu/build \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
 	main \
-	auto_bind \
 	main \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
 	.. \
-	../../ysyxSoC/constr \
-	../csrc \
+	../csrc_npc \
 
 
 ### Default rules...
 # Include list of all generated classes
-include VysyxSoCFull_classes.mk
+include Vysyx_24120011_classes.mk
 # Include global rules
 include $(VERILATOR_ROOT)/include/verilated.mk
 
 ### Executable rules... (from --exe)
 VPATH += $(VM_USER_DIR)
 
-main.o: /home/plutoisy/ysyx-workbench/npc/csrc/main.cpp 
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
-auto_bind.o: /home/plutoisy/ysyx-workbench/ysyxSoC/constr/auto_bind.cpp 
+main.o: /home/plutoisy/ysyx-workbench/npc/csrc_npc/main.cpp 
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 main.o: main.cpp 
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 
 ### Link rules... (from --exe)
-VysyxSoCFull: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
+Vysyx_24120011: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
 	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
 
 
