@@ -150,7 +150,7 @@ end
 
 always @(posedge clk) begin
     if(rst) begin
-        icache <= 'b0;
+        icache <= '{default: '0};
     end
     else begin
         if(state == ysyx_24120011_IFU_IDLE) begin
