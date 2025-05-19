@@ -60,6 +60,7 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 //====================IFU====================//
 reg [2:0] state;
 reg [2:0] next_state;
+reg IFU_valid_delay;
 //====================IFU====================//
 
 //====================icache====================//
@@ -117,26 +118,15 @@ assign M0_awsize  = 3'b010    ;
 assign M0_wlast   = M0_wvalid ;
 //====================axi====================//
 
+
 always @(posedge clk) begin
     if(rst) begin
         IFU_valid <= 1'b0;
+        IFU_valid_delay <= 1'b0;
     end
     else begin
-        if(state == ysyx_24120011_IFU_IDLE) begin
-        end
-        else if(state == ysyx_24120011_IFU_LOOKUP) begin
-        end
-        else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
-        end
-        else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
-            if(rvalid  && rready) begin
-                IFU_valid <= 1'b1;
-            end
-            else begin
-            end
-        end
-        else begin //不应该进入
-        end
+        IFU_valid <= (rvalid  && rready) & ~IFU_valid_delay;
+        IFU_valid_delay <= rvalid  && rready;
     end
 end
 
