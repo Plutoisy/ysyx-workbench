@@ -288,7 +288,6 @@ VL_ATTR_COLD void Vysyx_24120011___024root___ctor_var_reset(Vysyx_24120011___024
     vlSelf->ysyx_24120011__DOT__LSU_rready_rising_edge = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__EXU_valid_delay = VL_RAND_RESET_I(1);
     vlSelf->ysyx_24120011__DOT__EXU_valid_rising_edge = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_24120011__DOT__i_IFU__DOT__ifu_clk_count = VL_RAND_RESET_I(32);
     vlSelf->ysyx_24120011__DOT__i_IFU__DOT__state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011__DOT__i_IFU__DOT__next_state = VL_RAND_RESET_I(3);
     vlSelf->ysyx_24120011__DOT__i_IFU__DOT__IFU_valid_delay = VL_RAND_RESET_I(1);

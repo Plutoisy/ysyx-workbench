@@ -248,7 +248,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vysyx_24120011___024root final : public Veril
         IData/*31:0*/ ysyx_24120011__DOT__S0_araddr;
         IData/*31:0*/ ysyx_24120011__DOT__S0_awaddr;
         IData/*31:0*/ ysyx_24120011__DOT__S0_wdata;
-        IData/*31:0*/ ysyx_24120011__DOT__i_IFU__DOT__ifu_clk_count;
         IData/*31:0*/ ysyx_24120011__DOT__i_PCProcessor__DOT__pc_add_imme;
         IData/*31:0*/ ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__B_in;
         IData/*31:0*/ ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__u_ysyx_24120011_ALU__DOT__ALUout_tmp;
@@ -281,8 +280,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vysyx_24120011___024root final : public Veril
         VlUnpacked<QData/*58:0*/, 16> ysyx_24120011__DOT__i_IFU__DOT__icache;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011__DOT__i_RegStack__DOT__Regs;
         VlUnpacked<IData/*31:0*/, 32> ysyx_24120011__DOT__i_RegStack__DOT__regout;
-    };
-    struct {
         VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
     };
     VlTriggerVec<1> __VstlTriggered;

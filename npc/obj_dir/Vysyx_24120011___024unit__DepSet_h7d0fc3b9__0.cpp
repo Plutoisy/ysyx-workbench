@@ -16,26 +16,6 @@ VL_INLINE_OPT void Vysyx_24120011___024unit____Vdpiimwrap_reg_out_TOP____024unit
     reg_out(array__Vcvt);
 }
 
-extern "C" void IFU_clktime_countback(int ifu_clk_count);
-
-VL_INLINE_OPT void Vysyx_24120011___024unit____Vdpiimwrap_IFU_clktime_countback_TOP____024unit(IData/*31:0*/ ifu_clk_count) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011___024unit____Vdpiimwrap_IFU_clktime_countback_TOP____024unit\n"); );
-    // Body
-    int ifu_clk_count__Vcvt;
-    for (size_t ifu_clk_count__Vidx = 0; ifu_clk_count__Vidx < 1; ++ifu_clk_count__Vidx) ifu_clk_count__Vcvt = ifu_clk_count;
-    IFU_clktime_countback(ifu_clk_count__Vcvt);
-}
-
-extern "C" void IFU_clktime_count(int ifu_clk_count);
-
-VL_INLINE_OPT void Vysyx_24120011___024unit____Vdpiimwrap_IFU_clktime_count_TOP____024unit(IData/*31:0*/ ifu_clk_count) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        Vysyx_24120011___024unit____Vdpiimwrap_IFU_clktime_count_TOP____024unit\n"); );
-    // Body
-    int ifu_clk_count__Vcvt;
-    for (size_t ifu_clk_count__Vidx = 0; ifu_clk_count__Vidx < 1; ++ifu_clk_count__Vidx) ifu_clk_count__Vcvt = ifu_clk_count;
-    IFU_clktime_count(ifu_clk_count__Vcvt);
-}
-
 extern "C" void rtl_pmem_write(int w_mem_addr, int w_mem_data, char w_mem_len);
 
 VL_INLINE_OPT void Vysyx_24120011___024unit____Vdpiimwrap_rtl_pmem_write_TOP____024unit(IData/*31:0*/ w_mem_addr, IData/*31:0*/ w_mem_data, CData/*7:0*/ w_mem_len) {

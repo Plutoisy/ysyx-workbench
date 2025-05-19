@@ -16,10 +16,6 @@ extern "C" {
 
 
     // DPI IMPORTS
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_IFU.v:1:30
-    extern void IFU_clktime_count(int ifu_clk_count);
-    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc/ysyx_24120011_IFUback.v:1:30
-    extern void IFU_clktime_countback(int ifu_clk_count);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/npc_specific/ysyx_24120011.v:5:30
     extern void Performance_Counters(int Performancetype);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/npc_specific/ysyx_24120011.v:2:30
