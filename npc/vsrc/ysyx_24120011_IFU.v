@@ -61,10 +61,10 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 //======================dpic========================//
 reg [31:0] ifu_clk_count;
 always@(posedge clk)begin
-    if(state == ysyx_24120011_IFU_M_AXI_IDLE)begin
+    if(state == ysyx_24120011_IFU_IDLE)begin
         ifu_clk_count <= 'b0;
     end
-    else if(next_state == ysyx_24120011_IFU_M_AXI_IDLE)begin
+    else if(next_state == ysyx_24120011_IFU_IDLE)begin
         IFU_clktime_count(ifu_clk_count);
     end
     else begin
