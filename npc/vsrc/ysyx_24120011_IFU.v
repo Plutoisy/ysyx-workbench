@@ -64,7 +64,7 @@ reg [31:0] last_time;      // 上一次上升沿的时间戳
 reg ifu_valid_prev;        // 用于检测上升沿的寄存器
 
 always @(posedge clk) begin
-    if (rst_n) begin
+    if (rst) begin
         cycle_counter <= 0;
         last_time     <= 0;
         ifu_valid_prev <= 0;
