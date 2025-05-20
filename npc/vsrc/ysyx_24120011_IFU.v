@@ -59,30 +59,20 @@ parameter ysyx_24120011_IFU_AXI_RADDR = 3'b010;
 parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 
 //======================dpic========================//
-reg [63:0] cycle_counter;  // 时钟周期计数器
-reg [63:0] last_time;      // 上一次上升沿的时间戳
-reg ifu_valid_prev;        // 用于检测上升沿的寄存器
+reg [32:0] cycle_counter;  // 时钟周期计数器
 
 always @(posedge clk) begin
     if (rst) begin
         cycle_counter <= 0;
-        last_time     <= 0;
-        ifu_valid_prev <= 0;
     end else begin
-        // 寄存输入信号用于边沿检测
-        ifu_valid_prev <= IFU_valid;
-        
-        // 每个周期递增时钟计数器
-        cycle_counter <= cycle_counter + 1;
-
-        // 检测上升沿
-        if (IFU_valid && !ifu_valid_prev) begin
-            // 计算时间间隔并调用DPI函数
-            automatic int interval = cycle_counter - last_time;
-            IFU_clktime_count(interval);  // 调用DPI函数
-            
-            // 更新上次触发时间戳
-            last_time <= cycle_counter;
+        if (state == ysyx_24120011_IFU_IDLE) begin
+            cycle_counter <= 0;
+        end
+        else begin
+            cycle_counter <= cycle_counter + 1'b1;
+        end
+        if (IFU_valid) begin
+            IFU_clktime_count(cycle_counter);
         end
     end
 end
