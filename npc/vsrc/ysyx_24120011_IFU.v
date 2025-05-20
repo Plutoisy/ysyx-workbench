@@ -145,7 +145,7 @@ always @(posedge clk) begin
     if (rst) begin
         cycle_counter <= 0;
     end else begin
-        if (state == ysyx_24120011_IFU_IDLE) begin
+        if (state == ysyx_24120011_IFU_M_AXI_IDLE) begin
             cycle_counter <= 0;
         end
         else begin
