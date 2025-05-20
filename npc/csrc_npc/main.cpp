@@ -344,7 +344,7 @@ extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
 CPU_state refstate;
-
+uint64_t inst_count = 0;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
@@ -364,6 +364,7 @@ void cpu_exec(uint32_t n){
         }
         
         step_and_dump_wave();
+        inst_count++;
 
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
@@ -418,6 +419,7 @@ void cpu_exec(uint32_t n){
     else{
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
       printf("exec times: %d\n",i+1);
+      printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
       return;
     }
   }
