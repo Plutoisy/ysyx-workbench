@@ -1,4 +1,4 @@
-// import "DPI-C" function void IFU_clktime_countback(input int ifu_clk_count);
+// import "DPI-C" function void IFU_clktime_count(input int ifu_clk_count);
 
 module ysyx_24120011_IFUback(
     input clk,
@@ -136,7 +136,25 @@ assign M0_wlast   = M0_wvalid ;
 //     .bvalid  ( bvalid  ),
 //     .bready  ( 1'b1  )
 // );
+// //======================dpic========================//
+// reg [31:0] cycle_counter;  // 时钟周期计数器
 
+// always @(posedge clk) begin
+//     if (rst) begin
+//         cycle_counter <= 0;
+//     end else begin
+//         if (state == ysyx_24120011_IFU_M_AXI_IDLE) begin
+//             cycle_counter <= 0;
+//         end
+//         else begin
+//             cycle_counter <= cycle_counter + 1'b1;
+//         end
+//         if (IFU_valid) begin
+//             IFU_clktime_count(cycle_counter);
+//         end
+//     end
+// end
+// //======================dpic========================//
 // //======================dpic========================//
 // reg [31:0] ifu_clk_count;
 // always@(posedge clk)begin
