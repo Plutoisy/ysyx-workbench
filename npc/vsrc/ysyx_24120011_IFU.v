@@ -59,7 +59,7 @@ parameter ysyx_24120011_IFU_AXI_RADDR = 3'b010;
 parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 
 //======================dpic========================//
-reg [32:0] cycle_counter;  // 时钟周期计数器
+reg [31:0] cycle_counter;  // 时钟周期计数器
 
 always @(posedge clk) begin
     if (rst) begin
