@@ -59,8 +59,8 @@ parameter ysyx_24120011_IFU_AXI_RADDR = 3'b010;
 parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 
 //======================dpic========================//
-reg [31:0] cycle_counter;  // 时钟周期计数器
-reg [31:0] last_time;      // 上一次上升沿的时间戳
+reg [63:0] cycle_counter;  // 时钟周期计数器
+reg [63:0] last_time;      // 上一次上升沿的时间戳
 reg ifu_valid_prev;        // 用于检测上升沿的寄存器
 
 always @(posedge clk) begin
