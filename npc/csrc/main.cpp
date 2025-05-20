@@ -613,12 +613,10 @@ uint64_t clk_cal_type_s = 0;
 uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 void cpu_exec(uint64_t n){
-  if(ITRACE_FILE){
-    FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/itrace.txt", "w");
-    if (itracefile == NULL) {
-        printf("无法打开文件\n");
-        return;
-    }
+  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/itrace.txt", "w");
+  if (itracefile == NULL) {
+      printf("无法打开文件\n");
+      return;
   }
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
