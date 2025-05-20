@@ -607,12 +607,12 @@ uint64_t clk_read_and_store_type_s = 0;
 uint64_t clk_cal_type_s = 0;
 uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
-FILE *filetest = fopen("/home/plutoisy/ysyx-workbench/npc/test.txt", "w");
-if (filetest == NULL) {
-    printf("无法打开文件\n");
-    return;
-}
 void cpu_exec(uint64_t n){
+  FILE *filetest = fopen("/home/plutoisy/ysyx-workbench/npc/test.txt", "w");
+  if (filetest == NULL) {
+      printf("无法打开文件\n");
+      return;
+  }
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
