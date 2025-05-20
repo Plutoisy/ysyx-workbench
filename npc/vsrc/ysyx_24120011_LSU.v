@@ -201,17 +201,21 @@ module ysyx_24120011_LSU(
 
 //======================dpic========================//
 reg [31:0] cycle_counter;  // 时钟周期计数器
+reg LSU_working_delay;
 always @(posedge clk) begin
     if (rst) begin
         cycle_counter <= 0;
+        LSU_working_delay <= 0;
     end else begin
+        LSU_working_delay <= LSU_working;
+
         if (state == ysyx_24120011_LSU_M_AXI_IDLE) begin
             cycle_counter <= 0;
         end
         else begin
             cycle_counter <= cycle_counter + 1'b1;
         end
-        if (LSU_valid) begin
+        if (~LSU_working & LSU_working_delay) begin//LSU_working下降沿
             LSU_clktime_count(cycle_counter);
         end
     end
