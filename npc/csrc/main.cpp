@@ -327,7 +327,7 @@ void isa_reg_display() {
 
 uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
-uinn64_t icache_hit_count = 0;
+uint64_t icache_hit_count = 0;
 extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
   //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
