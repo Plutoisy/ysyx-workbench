@@ -327,10 +327,14 @@ void isa_reg_display() {
 
 uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
-extern "C" void IFU_clktime_count(int ifu_clk_count){
+uint64_t icache_hit_count = 0;
+extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
   //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
   ifu_clock_time_num++;
+  if(hit){
+    icache_hit_count++;
+  }
 }
 
 uint64_t sum_lsu_clock_time = 0;
@@ -757,6 +761,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
       printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+      printf("\33[1;34micache hit rate: %f\033[0m\n",(double)icache_hit_count/(double)ifu_clock_time_num);
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
@@ -793,6 +798,7 @@ void cpu_exec(uint64_t n){
       fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
       fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
       fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+      fprintf(file, "icache hit rate: %f\n",(double)icache_hit_count/(double)ifu_clock_time_num);
       fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       fprintf(file, "jump: %ld\n",jump_type_s);
       fprintf(file, "csr: %ld\n",csr_type_s);
