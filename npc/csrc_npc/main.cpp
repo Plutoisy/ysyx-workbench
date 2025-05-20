@@ -220,6 +220,14 @@ void isa_reg_display() {
   }
 }
 
+uint64_t sum_ifu_clock_time = 0;
+uint64_t ifu_clock_time_num = 0;
+extern "C" void IFU_clktime_count(int ifu_clk_count){
+  //printf("%d\n",ifu_clk_count);
+  sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
+  ifu_clock_time_num++;
+}
+
 uint64_t IFU_getinst = 0;
 uint64_t LSU_getdata = 0;
 uint64_t EXU_fincal = 0;
