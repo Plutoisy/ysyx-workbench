@@ -21,7 +21,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
-#define WAVE 0
+#define WAVE 1
 #define PC_NO_CHANGE_DECETE 1
 
 VerilatedContext* contextp = NULL;
@@ -220,6 +220,14 @@ void isa_reg_display() {
   }
 }
 
+uint64_t sum_ifu_clock_time = 0;
+uint64_t ifu_clock_time_num = 0;
+extern "C" void IFU_clktime_count(int ifu_clk_count){
+  //printf("%d\n",ifu_clk_count);
+  sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
+  ifu_clock_time_num++;
+}
+
 uint64_t IFU_getinst = 0;
 uint64_t LSU_getdata = 0;
 uint64_t EXU_fincal = 0;
@@ -344,7 +352,7 @@ extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
 CPU_state refstate;
-
+uint64_t inst_count = 0;
 void cpu_exec(uint32_t n){
   for(int i = 0; i < n; i++){
     if(trap != 1){
@@ -364,6 +372,7 @@ void cpu_exec(uint32_t n){
         }
         
         step_and_dump_wave();
+        inst_count++;
 
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
@@ -418,6 +427,7 @@ void cpu_exec(uint32_t n){
     else{
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
       printf("exec times: %d\n",i+1);
+      printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
       return;
     }
   }

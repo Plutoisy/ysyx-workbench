@@ -31,7 +31,7 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WATCHPOINT 0
-#define WAVE 0
+#define WAVE 1
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 
@@ -328,6 +328,7 @@ void isa_reg_display() {
 uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
 extern "C" void IFU_clktime_count(int ifu_clk_count){
+  //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
   ifu_clock_time_num++;
 }
@@ -335,6 +336,7 @@ extern "C" void IFU_clktime_count(int ifu_clk_count){
 uint64_t sum_lsu_clock_time = 0;
 uint64_t lsu_clock_time_num = 0;
 extern "C" void LSU_clktime_count(int lsu_clk_count){
+  //printf("%d\n",lsu_clk_count);
   sum_lsu_clock_time = sum_lsu_clock_time + lsu_clk_count;
   lsu_clock_time_num++;
 }
@@ -606,6 +608,11 @@ uint64_t clk_cal_type_s = 0;
 uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 void cpu_exec(uint64_t n){
+  // FILE *filetest = fopen("/home/plutoisy/ysyx-workbench/npc/test.txt", "w");
+  // if (filetest == NULL) {
+  //     printf("无法打开文件\n");
+  //     return;
+  // }
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
@@ -628,7 +635,7 @@ void cpu_exec(uint64_t n){
 
         step_and_dump_wave();
         inst_count++;
-
+        //fprintf(filetest, "%X\n",top_inst);
         if(parse_instruction_type(top_inst) == 1){
           jump_type_s++;
           clk_jump_type_s += inst_clock_time;
@@ -752,7 +759,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
-      // printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
+      printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
       // printf("\33[1;34mTYPE COUNT:\033[0m\n");
       // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
       // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);

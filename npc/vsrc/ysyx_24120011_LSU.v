@@ -199,20 +199,28 @@ module ysyx_24120011_LSU(
     //B
     assign bready = (state == ysyx_24120011_LSU_M_AXI_WRESP || state == ysyx_24120011_LSU_M_AXI_WDATA) ? 1 : 0;
 
-    //======================dpic========================//
-    reg [31:0] lsu_clk_count;
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_IDLE)begin
-            lsu_clk_count <= 'b0;
-        end
-        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE)begin
-            LSU_clktime_count(lsu_clk_count);
+//======================dpic========================//
+reg [31:0] cycle_counter;  // 时钟周期计数器
+reg LSU_working_delay;
+always @(posedge clk) begin
+    if (rst) begin
+        cycle_counter <= 0;
+        LSU_working_delay <= 0;
+    end else begin
+        LSU_working_delay <= LSU_working;
+
+        if (state == ysyx_24120011_LSU_M_AXI_IDLE) begin
+            cycle_counter <= 0;
         end
         else begin
-            lsu_clk_count <= lsu_clk_count + 1;
+            cycle_counter <= cycle_counter + 1'b1;
+        end
+        if (~LSU_working & LSU_working_delay) begin//LSU_working下降沿
+            LSU_clktime_count(cycle_counter);
         end
     end
-    //======================dpic========================//
+end
+//======================dpic========================//
 
 /* verilator lint_off LATCH */
     always@(*)begin
