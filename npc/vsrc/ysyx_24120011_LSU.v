@@ -348,15 +348,15 @@ end
         if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
-            if(awready)begin
-                awvalid <= 0;
-                wvalid <= 0;
-            end
-            else begin
+        else if((state == ysyx_24120011_LSU_M_AXI_WADDR || state == ysyx_24120011_LSU_M_AXI_WDATA)&& awvalid_delay_cnt == 0)begin
+            // if(awready)begin
+            //     awvalid <= 0;
+            //     wvalid <= 0;
+            // end
+            //else begin
                 awvalid <= 1;
                 wvalid <= 1;
-            end
+            //end
         end
         else begin
             awvalid <= 0;
