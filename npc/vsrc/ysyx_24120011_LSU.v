@@ -324,13 +324,13 @@ end
         if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
             arvalid_delay_cnt <= arvalid_delay_cnt - 1;
         end
-        else if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
-            if(arready)begin
-                arvalid <= 0;
-            end
-            else begin
+        else if((state == ysyx_24120011_LSU_M_AXI_RADDR || state == ysyx_24120011_LSU_M_AXI_RDATA) && arvalid_delay_cnt == 0)begin
+            //if(arready)begin
+            //    arvalid <= 0;
+            //end
+            //else begin
                 arvalid <= 1;
-            end
+            //end
         end
         else begin
             arvalid <= 0;
