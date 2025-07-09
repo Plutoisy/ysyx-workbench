@@ -377,11 +377,11 @@ end
                 wvalid <= 1;
             end
             else begin
-                wvalid <= 1;
+                wvalid <= 0;
             end
         end
         else begin
-            wvalid <= 1;
+            wvalid <= 0;
         end
     end
 
