@@ -348,19 +348,19 @@ end
         if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
-        else if((state == ysyx_24120011_LSU_M_AXI_WADDR || state == ysyx_24120011_LSU_M_AXI_WDATA)&& awvalid_delay_cnt == 0)begin
-            // if(awready)begin
-            //     awvalid <= 0;
-            //     wvalid <= 0;
-            // end
-            //else begin
+        else if((state == ysyx_24120011_LSU_M_AXI_WADDR)&& awvalid_delay_cnt == 0)begin
+            if(awready)begin
+                 awvalid <= 0;
+                 //wvalid <= 0;
+            end
+            else begin
                 awvalid <= 1;
-                wvalid <= 1;
-            //end
+                //wvalid <= 1;
+            end
         end
         else begin
             awvalid <= 0;
-            wvalid <= 0;
+            //wvalid <= 0;
         end
     end
 
@@ -371,22 +371,22 @@ end
     end
 
     //wvalid_delay
-    // always@(posedge clk)begin
-    //     if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt != 0 )begin
-    //         wvalid_delay_cnt <= wvalid_delay_cnt - 1;
-    //     end
-    //     else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
-    //         if(wready == 1 && wvalid == 0) begin
-    //             wvalid <= 1;
-    //         end
-    //         else begin
-    //             wvalid <= 0;
-    //         end
-    //     end
-    //     else begin
-    //         wvalid <= 0;
-    //     end
-    // end
+    always@(posedge clk)begin
+        if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt != 0 )begin
+            wvalid_delay_cnt <= wvalid_delay_cnt - 1;
+        end
+        else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
+            if(wready == 1 && wvalid == 0) begin
+                wvalid <= 1;
+            end
+            else begin
+                wvalid <= 0;
+            end
+        end
+        else begin
+            wvalid <= 0;
+        end
+    end
 
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_WADDR)begin
