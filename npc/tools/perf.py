@@ -25,7 +25,7 @@ def extract_chip_area(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             # 查找包含"Chip area for top module '\ysyx_24120011':"的行
-            if "Chip area for top module '\\ysyx_24120011':" in line:
+            if "Chip area for module '\\ysyx_24120011':" in line:
                 # 分割行并提取最后一个部分作为数字
                 parts = line.strip().split(':')
                 if len(parts) >= 2:

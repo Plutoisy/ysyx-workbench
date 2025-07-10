@@ -31,9 +31,10 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WATCHPOINT 0
-#define WAVE 1
+#define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
+#define ITRACE_FILE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -612,11 +613,11 @@ uint64_t clk_cal_type_s = 0;
 uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 void cpu_exec(uint64_t n){
-  // FILE *filetest = fopen("/home/plutoisy/ysyx-workbench/npc/test.txt", "w");
-  // if (filetest == NULL) {
-  //     printf("无法打开文件\n");
-  //     return;
-  // }
+  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/itrace.txt", "w");
+  if (itracefile == NULL) {
+      printf("无法打开文件\n");
+      return;
+  }
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
@@ -639,7 +640,9 @@ void cpu_exec(uint64_t n){
 
         step_and_dump_wave();
         inst_count++;
-        //fprintf(filetest, "%X\n",top_inst);
+        if(ITRACE_FILE){
+          fprintf(itracefile, "%08x\n",top_pc);
+        }
         if(parse_instruction_type(top_inst) == 1){
           jump_type_s++;
           clk_jump_type_s += inst_clock_time;

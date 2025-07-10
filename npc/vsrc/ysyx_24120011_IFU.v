@@ -49,9 +49,6 @@ module ysyx_24120011_IFU(
     input	[3:0]	   M0_bid
 );
 
-parameter ysyx_24120011_ICACHE_SIZE   = 32'd4;
-parameter ysyx_24120011_ICACHE_NUM    = 32'd16;
-
 parameter ysyx_24120011_IFU_IDLE      = 3'b000;
 parameter ysyx_24120011_IFU_LOOKUP    = 3'b001;
 parameter ysyx_24120011_IFU_AXI_RADDR = 3'b010;
@@ -90,6 +87,8 @@ assign IFU_valid = rready || cache_IFU_valid;
 //====================IFU====================//
 
 //====================icache====================//
+parameter ysyx_24120011_ICACHE_SIZE   = 32'd4;
+parameter ysyx_24120011_ICACHE_NUM    = 32'd16;
 //  valid                                       tag                                                 data
 reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
 
