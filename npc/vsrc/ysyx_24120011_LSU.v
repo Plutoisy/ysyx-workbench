@@ -545,7 +545,14 @@ end
                                                     ((start_write_delay) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE);
             ysyx_24120011_LSU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
             ysyx_24120011_LSU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
-            ysyx_24120011_LSU_M_AXI_WADDR: if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
+            ysyx_24120011_LSU_M_AXI_WADDR: begin 
+                if (wvalid  && wready ) begin 
+                    next_state = ysyx_24120011_LSU_M_AXI_WRESP;
+                end
+                else begin
+                    if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
+                end
+            end
             ysyx_24120011_LSU_M_AXI_WDATA: if (wvalid  && wready ) next_state = ysyx_24120011_LSU_M_AXI_WRESP;
             ysyx_24120011_LSU_M_AXI_WRESP: if (bvalid  && bready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
             default : next_state = ysyx_24120011_LSU_M_AXI_IDLE;
