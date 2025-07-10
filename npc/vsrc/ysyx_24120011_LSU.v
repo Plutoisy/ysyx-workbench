@@ -403,12 +403,12 @@ end
         else if(state == ysyx_24120011_LSU_M_AXI_RDATA && rready_delay_cnt == 0)begin
             // rready <= 1;
             // rready_delay_cnt <= 32'hFFFFFFFF;
-            if(rvalid == 1) begin
+            //if(rvalid == 1) begin
                 rready <= 1;
-            end
-            else begin
-                rready <= 0;
-            end
+            //end
+            //else begin
+            //    rready <= 0;
+            //end
         end
         else begin
             rready <= 0;
