@@ -14,6 +14,16 @@
 class VysyxSoCFull__Syms;
 class VysyxSoCFull___024root;
 class VerilatedVcdC;
+class VysyxSoCFull_AXI4UserYanker_1;
+class VysyxSoCFull_AsyncQueueSink_UInt32;
+class VysyxSoCFull_RX;
+class VysyxSoCFull_TLBusBypass;
+class VysyxSoCFull_TLError;
+class VysyxSoCFull_TLFIFOFixer;
+class VysyxSoCFull_TLMonitor_7;
+class VysyxSoCFull_TLToAXI4;
+class VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u;
+class VysyxSoCFull_TX;
 class VysyxSoCFull___024unit;
 
 
@@ -59,6 +69,34 @@ class alignas(VL_CACHE_LINE_BYTES) VysyxSoCFull VL_NOT_FINAL : public VerilatedM
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
     VysyxSoCFull___024unit* const __PVT____024unit;
+    VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1;
+    VysyxSoCFull_TLError* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr;
+    VysyxSoCFull_TLFIFOFixer* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer;
+    VysyxSoCFull_AXI4UserYanker_1* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1;
+    VysyxSoCFull_TLToAXI4* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4;
+    VysyxSoCFull_TLBusBypass* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass;
+    VysyxSoCFull_TLMonitor_7* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor;
+    VysyxSoCFull_RX* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink;
+    VysyxSoCFull_TX* const __PVT__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx;
+    VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* const __PVT__ysyxSoCFull__DOT__fpga__DOT__xbar_1;
+    VysyxSoCFull_TLError* const __PVT__ysyxSoCFull__DOT__fpga__DOT__ferr;
+    VysyxSoCFull_AXI4UserYanker_1* const __PVT__ysyxSoCFull__DOT__fpga__DOT__axi4yank;
+    VysyxSoCFull_TLToAXI4* const __PVT__ysyxSoCFull__DOT__fpga__DOT__tl2axi4;
+    VysyxSoCFull_TLFIFOFixer* const __PVT__ysyxSoCFull__DOT__fpga__DOT__fixer;
+    VysyxSoCFull_TLBusBypass* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass;
+    VysyxSoCFull_TLMonitor_7* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor;
+    VysyxSoCFull_RX* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink;
+    VysyxSoCFull_AsyncQueueSink_UInt32* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink;
+    VysyxSoCFull_TX* const __PVT__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
