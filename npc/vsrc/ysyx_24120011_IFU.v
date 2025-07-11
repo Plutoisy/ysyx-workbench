@@ -83,7 +83,7 @@ reg [2:0] state;
 reg [2:0] next_state;
 reg cache_IFU_valid;
 
-assign IFU_valid = (rready && (cached_size == ysyx_24120011_ICACHE_SIZE - 'd4)) || cache_IFU_valid;
+assign IFU_valid = cache_IFU_valid;
 //====================IFU====================//
 
 //====================icache====================//
