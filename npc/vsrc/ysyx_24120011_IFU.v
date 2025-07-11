@@ -120,7 +120,7 @@ wire [1:0] bresp;
 wire bvalid;
 wire rvalid;
 
-assign arvalid = (state == ysyx_24120011_IFU_AXI_RADDR) ? 1'b1 : 1'b0;
+assign arvalid = (state == ysyx_24120011_IFU_AXI_RADDR || state == ysyx_24120011_IFU_AXI_RDATA) ? 1'b1 : 1'b0;
 // assign rready = (state == ysyx_24120011_IFU_AXI_RDATA) ? 1'b1 :1'b0;
 assign M0_araddr  = pc      ;
 assign M0_arvalid = arvalid ;
