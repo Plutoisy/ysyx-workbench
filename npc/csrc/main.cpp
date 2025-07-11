@@ -716,17 +716,18 @@ void cpu_exec(uint64_t n){
             }
           }
         }
+        if(INST_NOT_VALID_CHECK){
+          if(top_inst==0x00000000 && top_IFU_valid_int){
+            printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
+            return;
+          }
+        }
       }
       else{
         step_and_dump_wave();
       }
 
-      if(INST_NOT_VALID_CHECK){
-        if(top_inst==0x00000000 && top_IFU_valid_int){
-          printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
-          return;
-        }
-      }
+      
 
       if(PC_NO_CHANGE_DECETE){
         if(top_pc == old_pc){

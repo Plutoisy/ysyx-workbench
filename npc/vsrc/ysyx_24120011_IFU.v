@@ -192,7 +192,9 @@ always @(posedge clk) begin
             end
             else begin
             end
-            arlen_cnt <= arlen_cnt - 1;
+            if(rvalid) begin
+                arlen_cnt <= arlen_cnt - 1;
+            end
             cache_IFU_valid <= 1'b0;
         end
         else begin //不应该进入
