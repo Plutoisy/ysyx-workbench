@@ -193,7 +193,7 @@ always @(posedge clk) begin
             end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
-            if(pc[31:24] == 8'ha0) begin
+            if(pc[31:24] != 8'ha0) begin
                 araddr <= pc + ({24'b0,arlen} - {24'b0,arlen_cnt})*4;
             end
             else begin
