@@ -91,6 +91,7 @@ parameter ysyx_24120011_ICACHE_SIZE   = 32'd4;
 parameter ysyx_24120011_ICACHE_NUM    = 32'd16;
 //  valid                                       tag                                                 data
 reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
+reg [7:0] arlen_cnt;
 
 wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
 wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
@@ -104,7 +105,7 @@ assign {tag,index,offset} = pc;
 assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
 assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
 assign hit = hit_valid && hit_tag;
-assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
+assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
 //====================icache====================//
 
 //====================axi====================//
@@ -164,12 +165,15 @@ always @(posedge clk) begin
     if(rst) begin
         inst <= 32'b0;
         cache_IFU_valid <= 1'b0;
+        arlen_cnt <= M0_arlen + 1;
     end
     else begin
         if(state == ysyx_24120011_IFU_IDLE) begin
             cache_IFU_valid <= 1'b0;
+            arlen_cnt <= M0_arlen + 1;
         end
         else if(state == ysyx_24120011_IFU_LOOKUP) begin
+            arlen_cnt <= M0_arlen + 1;
             if(hit) begin
                 inst <= inst_cache;
                 cache_IFU_valid <= 1'b1;
@@ -179,17 +183,20 @@ always @(posedge clk) begin
             end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
+            arlen_cnt <= M0_arlen + 1;
             cache_IFU_valid <= 1'b0;
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
-            cache_IFU_valid <= 1'b0;
-            if(rvalid) begin
+            if(rvalid && (arlen_cnt == (M0_arlen + 1))) begin
                 inst <= M0_rdata;
             end
             else begin
             end
+            arlen_cnt <= arlen_cnt - 1;
+            cache_IFU_valid <= 1'b0;
         end
         else begin //不应该进入
+            arlen_cnt <= M0_arlen + 1;
             cache_IFU_valid <= 1'b0;
         end
     end
@@ -222,7 +229,8 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
             if(rvalid  && rready) begin
-                icache[index] <= {1'b1, tag, M0_rdata};
+                icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) -1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
+                icache[index][31+(arlen_cnt-1)*32 -: 32] <= M0_rdata;
             end
             else begin
             end
@@ -237,7 +245,7 @@ always@(*)begin
         ysyx_24120011_IFU_IDLE:      next_state = (LSU_ready && EXU_ready && ~IFU_valid) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE;
         ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
-        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && rready )     ? ysyx_24120011_IFU_IDLE      : ysyx_24120011_IFU_AXI_RDATA;
+        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && rready )     ? (M0_rlast ? ysyx_24120011_IFU_IDLE : ysyx_24120011_IFU_AXI_RDATA) : ysyx_24120011_IFU_AXI_RDATA;
         default : next_state = ysyx_24120011_IFU_IDLE;
     endcase
 end
