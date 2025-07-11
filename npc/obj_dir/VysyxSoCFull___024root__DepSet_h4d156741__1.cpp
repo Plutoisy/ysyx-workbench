@@ -23,10 +23,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__1(VysyxSoCFull___0
     VL_ZERO_W(128, ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT__monitor__DOT__unnamedblk1__DOT___GEN_67);
     VlWide<16>/*511:0*/ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT__monitor__DOT__unnamedblk1__DOT___c_size_lookup_T_1;
     VL_ZERO_W(512, ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT__monitor__DOT__unnamedblk1__DOT___c_size_lookup_T_1);
-    IData/*29:0*/ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_2;
-    ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_2 = 0;
-    IData/*29:0*/ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_3;
-    ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_3 = 0;
     SData/*11:0*/ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___is_aligned_mask_T;
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___is_aligned_mask_T = 0;
     CData/*4:0*/ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_10;
@@ -321,6 +317,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__1(VysyxSoCFull___0
     ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_30 = 0;
     CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_31;
     ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_31 = 0;
+    CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33;
+    ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33 = 0;
     SData/*11:0*/ ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___is_aligned_mask_T_4;
     ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___is_aligned_mask_T_4 = 0;
     CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_40;
@@ -1252,108 +1250,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__1(VysyxSoCFull___0
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 3742, "", false);
-    }
-    ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_2 
-        = (0x3fffffffU & VL_SHIFTL_III(30,30,30, (IData)(0x7fffU), 
-                                       (((0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__r_size_hi)) 
-                                         << 3U) | (
-                                                   ((0U 
-                                                     != 
-                                                     (0xfU 
-                                                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___rsize_T_6) 
-                                                         >> 3U))) 
-                                                    << 2U) 
-                                                   | (((0U 
-                                                        != 
-                                                        (3U 
-                                                         & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___rsize_T_8) 
-                                                            >> 1U))) 
-                                                       << 1U) 
-                                                      | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___rsize_T_10))))));
-    ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_3 
-        = (0x3fffffffU & VL_SHIFTL_III(30,30,30, (IData)(0x7fffU), 
-                                       (((0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__w_size_hi)) 
-                                         << 3U) | (
-                                                   ((0U 
-                                                     != 
-                                                     (0xfU 
-                                                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___wsize_T_6) 
-                                                         >> 3U))) 
-                                                    << 2U) 
-                                                   | (((0U 
-                                                        != 
-                                                        (3U 
-                                                         & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___wsize_T_8) 
-                                                            >> 1U))) 
-                                                       << 1U) 
-                                                      | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___wsize_T_10))))));
-    if (VL_UNLIKELY(((1U & ((~ (IData)(vlSelfRef.reset)) 
-                            & (~ ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT___axi4yank_auto_out_arvalid)) 
-                                  | ((0x7fffU & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___rsize1_T_1 
-                                                 >> 8U)) 
-                                     == (0x7fffU & 
-                                         (~ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_2)))))))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:16397: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1: Assertion failed at ToTL.scala:114\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16397, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:16399: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16399, "", false);
-    }
-    if (VL_UNLIKELY(((1U & ((~ (IData)(vlSelfRef.reset)) 
-                            & (~ ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT___axi4yank_auto_out_awvalid)) 
-                                  | ((0x7fffU & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___wsize1_T_1 
-                                                 >> 8U)) 
-                                     == (0x7fffU & 
-                                         (~ ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk1__DOT___GEN_3)))))))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:16403: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1: Assertion failed at ToTL.scala:150\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16403, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:16405: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16405, "", false);
-    }
-    if (VL_UNLIKELY(((1U & ((~ (IData)(vlSelfRef.reset)) 
-                            & (~ (((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT___axi4yank_auto_out_awvalid)) 
-                                   | (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__beats1_1))) 
-                                  | (2U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT___deq_q_1_io_deq_bits_size))))))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:16411: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1: Assertion failed at ToTL.scala:151\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16411, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:16413: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16413, "", false);
-    }
-    if (VL_UNLIKELY(((1U & ((~ (IData)(vlSelfRef.reset)) 
-                            & (~ ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_0)) 
-                                  | (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_1))))))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:16417: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1: Assertion failed at Arbiter.scala:77\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16417, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:16419: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16419, "", false);
-    }
-    if (VL_UNLIKELY(((1U & ((~ (IData)(vlSelfRef.reset)) 
-                            & (~ (((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT___nodeOut_a_valid_T)) 
-                                   | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_0)) 
-                                  | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_1)))))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:16423: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1: Assertion failed at Arbiter.scala:79\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16423, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:16425: Assertion failed in %NysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 16425, "", false);
     }
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT__source_ok 
         = (1U & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT___atomics_auto_out_a_bits_source) 
@@ -5923,7 +5819,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__1(VysyxSoCFull___0
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_32 
         = (1U & ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__muxState_1)) 
                  | (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT___nodeIn_d_bits_T_3)));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33 
+    ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33 
         = (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__nodeIn_d_valid) 
             & (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT___nodeIn_d_bits_T_25))) 
            & (~ (IData)(vlSelfRef.reset)));
@@ -6875,5 +6771,60 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__1(VysyxSoCFull___0
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43148, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33) 
+                      & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:43152: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAck carries invalid source ID (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:172:12)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43152, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:43154: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43154, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33) 
+                      & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT___nodeIn_d_bits_T_22)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:43158: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAck carries invalid param (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:172:12)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43158, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:43160: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43160, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33) 
+                      & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT___nodeIn_d_bits_T_3))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:43164: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAck is corrupt (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:172:12)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43164, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:43166: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43166, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_34) 
+                      & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:43170: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAckData carries invalid source ID (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:172:12)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43170, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:43172: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43172, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_34) 
+                      & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT___nodeIn_d_bits_T_22)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:43176: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAckData carries invalid param (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:172:12)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43176, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:43178: Assertion failed in %NysyxSoCFull.fpga.err.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 43178, "", false);
     }
 }

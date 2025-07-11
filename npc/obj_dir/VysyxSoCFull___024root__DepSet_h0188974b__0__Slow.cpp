@@ -69,24 +69,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___dump_triggers__stl(VysyxSoCFull___024
     if ((1ULL & vlSelfRef.__VstlTriggered.word(0U))) {
         VL_DBG_MSGF("         'stl' region trigger index 0 is active: Internal 'stl' trigger - first iteration\n");
     }
-    if ((2ULL & vlSelfRef.__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 1 is active: @([hybrid] ysyxSoCFull.asic.axi42apb.nodeIn_rvalid)\n");
-    }
-    if ((4ULL & vlSelfRef.__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 2 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.axi4frag._align1_T_2)\n");
-    }
-    if ((8ULL & vlSelfRef.__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 3 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_valid)\n");
-    }
-    if ((0x10ULL & vlSelfRef.__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 4 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_opcode)\n");
-    }
-    if ((0x20ULL & vlSelfRef.__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 5 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_size)\n");
-    }
-    if ((0x40ULL & vlSelfRef.__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 6 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_source)\n");
-    }
 }
 #endif  // VL_DEBUG
 
@@ -133,130 +115,112 @@ VL_ATTR_COLD void VysyxSoCFull___024root___dump_triggers__act(VysyxSoCFull___024
         VL_DBG_MSGF("         No triggers active\n");
     }
     if ((1ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 0 is active: @([hybrid] ysyxSoCFull.asic.axi42apb.nodeIn_rvalid)\n");
+        VL_DBG_MSGF("         'act' region trigger index 0 is active: @(posedge clock)\n");
     }
     if ((2ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 1 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.axi4frag._align1_T_2)\n");
+        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(negedge clock)\n");
     }
     if ((4ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 2 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_valid)\n");
+        VL_DBG_MSGF("         'act' region trigger index 2 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
     }
     if ((8ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 3 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_opcode)\n");
+        VL_DBG_MSGF("         'act' region trigger index 3 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx_reset_reg.reg_0)\n");
     }
     if ((0x10ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 4 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_size)\n");
+        VL_DBG_MSGF("         'act' region trigger index 4 is active: @(posedge reset)\n");
     }
     if ((0x20ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 5 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_source)\n");
+        VL_DBG_MSGF("         'act' region trigger index 5 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
     }
     if ((0x40ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 6 is active: @(posedge clock)\n");
+        VL_DBG_MSGF("         'act' region trigger index 6 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx_reset_reg.reg_0)\n");
     }
     if ((0x80ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 7 is active: @(negedge clock)\n");
+        VL_DBG_MSGF("         'act' region trigger index 7 is active: @(posedge ysyxSoCFull._asic_spi_sck)\n");
     }
     if ((0x100ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 8 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
+        VL_DBG_MSGF("         'act' region trigger index 8 is active: @(posedge ysyxSoCFull.flash.reset)\n");
     }
     if ((0x200ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 9 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx_reset_reg.reg_0)\n");
+        VL_DBG_MSGF("         'act' region trigger index 9 is active: @(negedge ysyxSoCFull._asic_spi_sck)\n");
     }
     if ((0x400ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 10 is active: @(posedge reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 10 is active: @(posedge ysyxSoCFull._asic_psram_ce_n)\n");
     }
     if ((0x800ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 11 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
+        VL_DBG_MSGF("         'act' region trigger index 11 is active: @(posedge ysyxSoCFull._asic_psram_sck)\n");
     }
     if ((0x1000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 12 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx_reset_reg.reg_0)\n");
+        VL_DBG_MSGF("         'act' region trigger index 12 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x2000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 13 is active: @(posedge ysyxSoCFull._asic_spi_sck)\n");
+        VL_DBG_MSGF("         'act' region trigger index 13 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x4000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 14 is active: @(posedge ysyxSoCFull.flash.reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 14 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x8000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 15 is active: @(negedge ysyxSoCFull._asic_spi_sck)\n");
+        VL_DBG_MSGF("         'act' region trigger index 15 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x10000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 16 is active: @(posedge ysyxSoCFull._asic_psram_ce_n)\n");
+        VL_DBG_MSGF("         'act' region trigger index 16 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x20000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 17 is active: @(posedge ysyxSoCFull._asic_psram_sck)\n");
+        VL_DBG_MSGF("         'act' region trigger index 17 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x40000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 18 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 18 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x80000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 19 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 19 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x100000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 20 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 20 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x200000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 21 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 21 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x400000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 22 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 22 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x800000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 23 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 23 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x1000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 24 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 24 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x2000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 25 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 25 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x4000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 26 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 26 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x8000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 27 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 27 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x10000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 28 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 28 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x20000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 29 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 29 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x40000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 30 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 30 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x80000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 31 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 31 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x100000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 32 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 32 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x200000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 33 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 33 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x400000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 34 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 34 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x800000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 35 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x1000000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 36 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x2000000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 37 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x4000000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 38 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x8000000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 39 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x10000000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 40 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x20000000000ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 41 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'act' region trigger index 35 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -271,130 +235,112 @@ VL_ATTR_COLD void VysyxSoCFull___024root___dump_triggers__nba(VysyxSoCFull___024
         VL_DBG_MSGF("         No triggers active\n");
     }
     if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 0 is active: @([hybrid] ysyxSoCFull.asic.axi42apb.nodeIn_rvalid)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 0 is active: @(posedge clock)\n");
     }
     if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.axi4frag._align1_T_2)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(negedge clock)\n");
     }
     if ((4ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_valid)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
     }
     if ((8ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 3 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_opcode)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 3 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx_reset_reg.reg_0)\n");
     }
     if ((0x10ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 4 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_size)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 4 is active: @(posedge reset)\n");
     }
     if ((0x20ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 5 is active: @([hybrid] ysyxSoCFull.asic.chipMaster.chiplink.sbypass.bar.nodeIn_d_bits_source)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 5 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
     }
     if ((0x40ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 6 is active: @(posedge clock)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 6 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx_reset_reg.reg_0)\n");
     }
     if ((0x80ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 7 is active: @(negedge clock)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 7 is active: @(posedge ysyxSoCFull._asic_spi_sck)\n");
     }
     if ((0x100ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 8 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 8 is active: @(posedge ysyxSoCFull.flash.reset)\n");
     }
     if ((0x200ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 9 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx_reset_reg.reg_0)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 9 is active: @(negedge ysyxSoCFull._asic_spi_sck)\n");
     }
     if ((0x400ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 10 is active: @(posedge reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 10 is active: @(posedge ysyxSoCFull._asic_psram_ce_n)\n");
     }
     if ((0x800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 11 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.io_c2b_rst_reg.reg_0)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 11 is active: @(posedge ysyxSoCFull._asic_psram_sck)\n");
     }
     if ((0x1000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 12 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx_reset_reg.reg_0)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 12 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x2000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 13 is active: @(posedge ysyxSoCFull._asic_spi_sck)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 13 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x4000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 14 is active: @(posedge ysyxSoCFull.flash.reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 14 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x8000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 15 is active: @(negedge ysyxSoCFull._asic_spi_sck)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 15 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x10000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 16 is active: @(posedge ysyxSoCFull._asic_psram_ce_n)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 16 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x20000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 17 is active: @(posedge ysyxSoCFull._asic_psram_sck)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 17 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x40000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 18 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 18 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x80000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 19 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_txc_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 19 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x100000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 20 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 20 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x200000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 21 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 21 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x400000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 22 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 22 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x800000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 23 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 23 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x1000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 24 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 24 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x2000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 25 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 25 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
     }
     if ((0x4000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 26 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 26 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x8000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 27 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 27 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x10000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 28 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 28 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x20000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 29 is active: @(posedge ysyxSoCFull.fpga.chiplink.sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 29 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x40000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 30 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 30 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x80000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 31 is active: @(posedge ysyxSoCFull.fpga.chiplink.tx.rxInc_sink.__Vcellinp__sink_valid_0__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 31 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x100000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 32 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 32 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x200000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 33 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 33 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x400000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 34 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 34 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
     }
     if ((0x800000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 35 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x1000000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 36 is active: @(posedge ysyxSoCFull.asic.chipMaster.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x2000000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 37 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_a_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x4000000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 38 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_bsource.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x8000000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 39 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_c_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x10000000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 40 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_d_source.__Vcellinp__sink_extend__reset)\n");
-    }
-    if ((0x20000000000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 41 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 35 is active: @(posedge ysyxSoCFull.fpga.chiplink.rx.io_e_source.__Vcellinp__sink_extend__reset)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -406,7 +352,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root____Vm_traceActivitySetAll(VysyxSoCFull_
     // Body
     IData/*31:0*/ __Vilp1;
     __Vilp1 = 0U;
-    while ((__Vilp1 <= 0x48U)) {
+    while ((__Vilp1 <= 0x3aU)) {
         vlSelfRef.__Vm_traceActivity[__Vilp1] = 1U;
         __Vilp1 = ((IData)(1U) + __Vilp1);
     }
@@ -617,8 +563,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__anyValid_1 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__readys_valid_1 = VL_RAND_RESET_I(3);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__readys_mask_1 = VL_RAND_RESET_I(3);
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT___readys_filter_T_3 = VL_RAND_RESET_I(3);
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT___GEN_2 = VL_RAND_RESET_I(4);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__readys_unready_1 = VL_RAND_RESET_I(6);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__readys_readys_1 = VL_RAND_RESET_I(3);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__winner_4_0 = VL_RAND_RESET_I(1);
@@ -702,6 +646,8 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__anyValid = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__readys_valid = VL_RAND_RESET_I(3);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__readys_mask = VL_RAND_RESET_I(3);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT___readys_filter_T_1 = VL_RAND_RESET_I(3);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT___GEN_1 = VL_RAND_RESET_I(4);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__readys_unready = VL_RAND_RESET_I(6);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__readys_readys = VL_RAND_RESET_I(3);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__prefixOR_1 = VL_RAND_RESET_I(1);
@@ -875,6 +821,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__arlen_cnt = VL_RAND_RESET_I(8);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__hit = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready = VL_RAND_RESET_I(1);
+    vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rlast = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__rready_delay = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT____Vlvbound_hb50327ce__0 = VL_RAND_RESET_I(32);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_PCProcessor__DOT__pc_add_imme = VL_RAND_RESET_I(32);
@@ -1640,9 +1587,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__q_bdeq_q__DOT__io_deq_valid_0 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__q_bdeq_q__DOT__do_enq = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT___GEN = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT___GEN_0 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT___GEN_2 = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT___GEN_3 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT____Vcellinp__Queue4_BundleMap__io_deq_ready = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT____Vcellinp__Queue4_BundleMap__io_enq_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT____Vcellinp__Queue4_BundleMap_1__io_deq_ready = VL_RAND_RESET_I(1);
@@ -2109,7 +2054,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__stalls_id_6 = VL_RAND_RESET_I(2);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__stall = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__anonIn_a_ready = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__unnamedblk1__DOT___stalls_id_T_24 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__unnamedblk1__DOT__unnamedblk2__DOT__d_first_first = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__unnamedblk1__DOT__unnamedblk2__DOT___GEN = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__unnamedblk1__DOT__unnamedblk2__DOT___GEN_0 = VL_RAND_RESET_I(1);
@@ -3073,6 +3017,9 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_41 = VL_RAND_RESET_I(8);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__address_ok_1 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_44 = VL_RAND_RESET_I(1);
+    vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_48 = VL_RAND_RESET_I(1);
+    vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_49 = VL_RAND_RESET_I(1);
+    vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_50 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_51 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_52 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_53 = VL_RAND_RESET_I(1);
@@ -3897,8 +3844,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT__mask_sub_1_1 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT__mask = VL_RAND_RESET_I(4);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1 = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_27 = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_29 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_31 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_32 = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(512, vlSelf->ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___a_opcode_lookup_T_1);
@@ -4182,7 +4127,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT__mask = VL_RAND_RESET_I(4);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_32 = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_33 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_34 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT___GEN_35 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__err__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_2 = VL_RAND_RESET_I(1);
@@ -4529,7 +4473,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_2 = VL_RAND_RESET_I(1);
     vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__address_ok_1 = VL_RAND_RESET_I(1);
-    vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_57 = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(512, vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___a_opcode_lookup_T_1);
     VL_RAND_RESET_W(1024, vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_58);
     VL_RAND_RESET_W(128, vlSelf->ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready);
@@ -5953,19 +5896,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->__VdlyVal__ysyxSoCFull__DOT__mem__DOT__axi4buf__DOT__nodeIn_rdeq_q__DOT__ram_ext__DOT__Memory__v0 = VL_RAND_RESET_Q(40);
     vlSelf->__VdlyDim0__ysyxSoCFull__DOT__mem__DOT__axi4buf__DOT__nodeIn_rdeq_q__DOT__ram_ext__DOT__Memory__v0 = VL_RAND_RESET_I(1);
     vlSelf->__VdlySet__ysyxSoCFull__DOT__mem__DOT__axi4buf__DOT__nodeIn_rdeq_q__DOT__ram_ext__DOT__Memory__v0 = 0;
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__nodeIn_rvalid__0 = VL_RAND_RESET_I(1);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT___align1_T_2__0 = VL_RAND_RESET_I(3);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_valid__0 = VL_RAND_RESET_I(1);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_bits_opcode__0 = VL_RAND_RESET_I(3);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_bits_size__0 = VL_RAND_RESET_I(3);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_bits_source__0 = VL_RAND_RESET_I(4);
-    vlSelf->__VstlDidInit = 0;
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__nodeIn_rvalid__1 = VL_RAND_RESET_I(1);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT___align1_T_2__1 = VL_RAND_RESET_I(3);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_valid__1 = VL_RAND_RESET_I(1);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_bits_opcode__1 = VL_RAND_RESET_I(3);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_bits_size__1 = VL_RAND_RESET_I(3);
-    vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass____PVT__bar__DOT__nodeIn_d_bits_source__1 = VL_RAND_RESET_I(4);
     vlSelf->__Vtrigprevexpr___TOP__clock__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx____PVT__io_c2b_rst_reg__DOT__reg_0__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0__0 = VL_RAND_RESET_I(1);
@@ -6000,8 +5930,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root___ctor_var_reset(VysyxSoCFull___024root
     vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source____Vcellinp__sink_extend__reset__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source____Vcellinp__sink_extend__reset__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source____Vcellinp__sink_extend__reset__0 = VL_RAND_RESET_I(1);
-    vlSelf->__VactDidInit = 0;
-    for (int __Vi0 = 0; __Vi0 < 73; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 59; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

@@ -195,7 +195,7 @@ always @(posedge clk) begin
             end
             else begin
             end
-            if(rvalid) begin
+            if(rready) begin
                 arlen_cnt <= arlen_cnt - 1;
             end
             cache_IFU_valid <= 1'b0;
