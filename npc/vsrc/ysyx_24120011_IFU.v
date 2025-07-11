@@ -83,7 +83,7 @@ reg [2:0] state;
 reg [2:0] next_state;
 reg cache_IFU_valid;
 
-assign IFU_valid = (rlast && rready) || cache_IFU_valid;
+assign IFU_valid = ((arlen_cnt == 'd0) && rready) || cache_IFU_valid;
 //====================IFU====================//
 
 //====================icache====================//
