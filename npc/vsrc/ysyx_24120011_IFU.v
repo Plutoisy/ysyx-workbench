@@ -215,7 +215,7 @@ always @(posedge clk) begin
             araddr <= araddr;
         end
         else begin
-            araddr <= 'd0;
+            araddr <= araddr;
         end
     end
 end
