@@ -722,7 +722,7 @@ void cpu_exec(uint64_t n){
       }
 
       if(INST_NOT_VALID_CHECK){
-        if(top_inst==0x00000000){
+        if(top_inst==0x00000000 && top_IFU_valid_int){
           printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
           return;
         }
