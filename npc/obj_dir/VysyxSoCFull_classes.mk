@@ -66,7 +66,6 @@ VM_CLASSES_SLOW += \
 	VysyxSoCFull___024unit__DepSet_h460a3d32__0__Slow \
 	VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u__Slow \
 	VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u__DepSet_hb8d0b4b7__0__Slow \
-	VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u__DepSet_h8b2b6912__0__Slow \
 	VysyxSoCFull_TLError__Slow \
 	VysyxSoCFull_TLError__DepSet_had81924e__0__Slow \
 	VysyxSoCFull_TLFIFOFixer__Slow \
