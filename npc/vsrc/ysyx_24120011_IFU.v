@@ -186,7 +186,7 @@ always @(posedge clk) begin
             end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
-            arlen_cnt <= M0_arlen + 1;
+            arlen_cnt <= arlen_cnt;
             cache_IFU_valid <= 1'b0;
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
