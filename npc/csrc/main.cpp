@@ -35,6 +35,7 @@
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 1
+#define INST_NOT_VALID_CHECK 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -718,6 +719,13 @@ void cpu_exec(uint64_t n){
       }
       else{
         step_and_dump_wave();
+      }
+
+      if(INST_NOT_VALID_CHECK){
+        if(top_inst==0x00000000){
+          printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
+          return;
+        }
       }
 
       if(PC_NO_CHANGE_DECETE){
