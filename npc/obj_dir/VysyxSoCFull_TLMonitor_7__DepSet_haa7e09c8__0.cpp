@@ -6,6 +6,17 @@
 #include "VysyxSoCFull_TLMonitor_7.h"
 #include "VysyxSoCFull__Syms.h"
 
+VL_INLINE_OPT void VysyxSoCFull_TLMonitor_7___act_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0(VysyxSoCFull_TLMonitor_7* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              VysyxSoCFull_TLMonitor_7___act_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0\n"); );
+    VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.__PVT___a_first_T_1 = ((~ (IData)(vlSymsp->TOP.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sinkA__DOT__inject_io_i_q__DOT__full)) 
+                                     & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass.auto_node_out_out_a_valid));
+    vlSelfRef.__PVT___GEN_1 = ((IData)(vlSelfRef.__PVT___a_first_T_1) 
+                               & (0U == (IData)(vlSelfRef.__PVT__a_first_counter_1)));
+}
+
 VL_INLINE_OPT void VysyxSoCFull_TLMonitor_7___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0(VysyxSoCFull_TLMonitor_7* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+              VysyxSoCFull_TLMonitor_7___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0\n"); );
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -1425,17 +1436,6 @@ VL_INLINE_OPT void VysyxSoCFull_TLMonitor_7___nba_sequent__TOP__ysyxSoCFull__DOT
     vlSelfRef.__PVT__d_first_1 = (0U == (IData)(vlSelfRef.__PVT__d_first_counter_1));
     vlSelfRef.__PVT__d_first_2 = (0U == (IData)(vlSelfRef.__PVT__d_first_counter_2));
     vlSelfRef.__PVT__a_first_1 = (0U == (IData)(vlSelfRef.__PVT__a_first_counter_1));
-}
-
-VL_INLINE_OPT void VysyxSoCFull_TLMonitor_7___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0(VysyxSoCFull_TLMonitor_7* vlSelf) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+              VysyxSoCFull_TLMonitor_7___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0\n"); );
-    VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    auto& vlSelfRef = std::ref(*vlSelf).get();
-    // Body
-    vlSelfRef.__PVT___a_first_T_1 = ((~ (IData)(vlSymsp->TOP.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sinkA__DOT__inject_io_i_q__DOT__full)) 
-                                     & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass.auto_node_out_out_a_valid));
-    vlSelfRef.__PVT___GEN_1 = ((IData)(vlSelfRef.__PVT___a_first_T_1) 
-                               & (0U == (IData)(vlSelfRef.__PVT__a_first_counter_1)));
 }
 
 VL_INLINE_OPT void VysyxSoCFull_TLMonitor_7___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor__0(VysyxSoCFull_TLMonitor_7* vlSelf) {
