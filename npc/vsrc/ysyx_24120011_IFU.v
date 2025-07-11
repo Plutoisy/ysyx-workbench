@@ -83,15 +83,14 @@ reg [2:0] state;
 reg [2:0] next_state;
 reg cache_IFU_valid;
 
-assign IFU_valid = ((arlen_cnt == 'd1) && rready) || cache_IFU_valid;
+assign IFU_valid = rready || cache_IFU_valid;
 //====================IFU====================//
 
 //====================icache====================//
-parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
+parameter ysyx_24120011_ICACHE_SIZE   = 32'd4;
 parameter ysyx_24120011_ICACHE_NUM    = 32'd16;
 //  valid                                       tag                                                 data
 reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
-reg [7:0] arlen_cnt;
 
 wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
 wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
@@ -105,15 +104,12 @@ assign {tag,index,offset} = pc;
 assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
 assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
 assign hit = hit_valid && hit_tag;
-assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
 //====================icache====================//
 
 //====================axi====================//
 wire arvalid;
 reg rready;
-reg rlast;
-reg [31:0] araddr;
-reg [7:0] arlen;
 reg rready_delay;
 wire arready;
 wire [1:0] rresp;
@@ -125,7 +121,7 @@ wire rvalid;
 
 assign arvalid = (state == ysyx_24120011_IFU_AXI_RADDR) ? 1'b1 : 1'b0;
 // assign rready = (state == ysyx_24120011_IFU_AXI_RDATA) ? 1'b1 :1'b0;
-assign M0_araddr  = araddr   ;
+assign M0_araddr  = pc      ;
 assign M0_arvalid = arvalid ;
 assign arready    = M0_arready;
 assign rresp      = M0_rresp ;
@@ -142,9 +138,8 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 assign M0_arid    = 'd0       ;
-//assign M0_arlen   = (pc[31:24] == 8'ha0) ? arlen : 'd0;
-assign M0_arlen   = 'd0;
-assign M0_arburst = 'b01      ;
+assign M0_arlen   = 'd0       ;
+assign M0_arburst = 'd0       ;
 assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
 assign M0_awlen   = 'd0       ;
@@ -158,14 +153,10 @@ always @(posedge clk) begin
     if(rst) begin
         rready <= 1'b0;
         rready_delay <= 1'b0;
-        rlast <= M0_rlast;
-        arlen <= 'd1;
     end
     else begin
         rready <= (rvalid) & ~rready_delay;
         rready_delay <= rvalid;
-        rlast <= M0_rlast;
-        arlen <= 'd1;
     end
 end
 
@@ -173,18 +164,12 @@ always @(posedge clk) begin
     if(rst) begin
         inst <= 32'b0;
         cache_IFU_valid <= 1'b0;
-        arlen_cnt <= arlen +1;
-        araddr <= 'd0;
     end
     else begin
         if(state == ysyx_24120011_IFU_IDLE) begin
             cache_IFU_valid <= 1'b0;
-            arlen_cnt <= arlen +1;
-            araddr <= 'd0;
         end
         else if(state == ysyx_24120011_IFU_LOOKUP) begin
-            arlen_cnt <= arlen +1;
-            araddr <= 'd0;
             if(hit) begin
                 inst <= inst_cache;
                 cache_IFU_valid <= 1'b1;
@@ -194,30 +179,17 @@ always @(posedge clk) begin
             end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
-            //if(pc[31:24] != 8'ha0) begin
-                araddr <= pc + ({24'b0,arlen} + 1 - {24'b0,arlen_cnt})*4;
-            //end
-            //else begin
-            //    araddr <= pc;
-            //end
-            arlen_cnt <= arlen_cnt;
             cache_IFU_valid <= 1'b0;
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
-            araddr <= 'd0;
-            if(rvalid && (arlen_cnt == (arlen +1))) begin
+            cache_IFU_valid <= 1'b0;
+            if(rvalid) begin
                 inst <= M0_rdata;
             end
             else begin
             end
-            if(rready) begin
-                arlen_cnt <= arlen_cnt - 1;
-            end
-            cache_IFU_valid <= 1'b0;
         end
         else begin //不应该进入
-            araddr <= 'd0;
-            arlen_cnt <= arlen +1;
             cache_IFU_valid <= 1'b0;
         end
     end
@@ -250,8 +222,7 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
             if(rvalid  && rready) begin
-                icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                icache[index][31+(arlen - (arlen_cnt-1))*32 -: 32] <= M0_rdata;
+                icache[index] <= {1'b1, tag, M0_rdata};
             end
             else begin
             end
@@ -266,7 +237,7 @@ always@(*)begin
         ysyx_24120011_IFU_IDLE:      next_state = (LSU_ready && EXU_ready && ~IFU_valid) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE;
         ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
-        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && rready )     ? (arlen_cnt == 'd1 ? ysyx_24120011_IFU_IDLE : ysyx_24120011_IFU_AXI_RADDR) : ysyx_24120011_IFU_AXI_RDATA;
+        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && rready )     ? ysyx_24120011_IFU_IDLE      : ysyx_24120011_IFU_AXI_RDATA;
         default : next_state = ysyx_24120011_IFU_IDLE;
     endcase
 end
