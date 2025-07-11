@@ -83,7 +83,7 @@ reg [2:0] state;
 reg [2:0] next_state;
 reg cache_IFU_valid;
 
-assign IFU_valid = (M0_rlast && rready) || cache_IFU_valid;
+assign IFU_valid = (rlast && rready) || cache_IFU_valid;
 //====================IFU====================//
 
 //====================icache====================//
@@ -111,6 +111,7 @@ assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SI
 //====================axi====================//
 wire arvalid;
 reg rready;
+reg rlast;
 reg rready_delay;
 wire arready;
 wire [1:0] rresp;
@@ -154,10 +155,12 @@ always @(posedge clk) begin
     if(rst) begin
         rready <= 1'b0;
         rready_delay <= 1'b0;
+        rlast <= M0_rlast;
     end
     else begin
         rready <= (rvalid) & ~rready_delay;
         rready_delay <= rvalid;
+        rlast <= M0_rlast;
     end
 end
 

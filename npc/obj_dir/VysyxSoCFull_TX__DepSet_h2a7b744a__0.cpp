@@ -124,6 +124,8 @@ VL_INLINE_OPT void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__D
     __Vdly__tx_b = vlSelfRef.__PVT__tx_b;
     __Vdly__ioX_first_4 = vlSelfRef.__PVT__ioX_first_4;
     __Vdly__tx_e = vlSelfRef.__PVT__tx_e;
+    vlSelfRef.__Vdly__qa_q__DOT__valid_0 = vlSelfRef.__PVT__qa_q__DOT__valid_0;
+    vlSelfRef.__Vdly__qa_q__DOT__valid_1 = vlSelfRef.__PVT__qa_q__DOT__valid_1;
     __Vdly__ioX_first_3 = vlSelfRef.__PVT__ioX_first_3;
     __Vdly__tx_d = vlSelfRef.__PVT__tx_d;
     __Vdly__rx_e = vlSelfRef.__PVT__rx_e;
@@ -131,6 +133,8 @@ VL_INLINE_OPT void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__D
     __Vdly__rx_c = vlSelfRef.__PVT__rx_c;
     __Vdly__rx_b = vlSelfRef.__PVT__rx_b;
     __Vdly__rx_a = vlSelfRef.__PVT__rx_a;
+    __Vdly__ioX_first = vlSelfRef.__PVT__ioX_first;
+    __Vdly__tx_a = vlSelfRef.__PVT__tx_a;
     vlSelfRef.__Vdly__ioX_cq_1__DOT__valid_1 = vlSelfRef.__PVT__ioX_cq_1__DOT__valid_1;
     vlSelfRef.__Vdly__ioX_cq_2__DOT__valid_1 = vlSelfRef.__PVT__ioX_cq_2__DOT__valid_1;
     vlSelfRef.__Vdly__ioX_cq_4__DOT__valid_1 = vlSelfRef.__PVT__ioX_cq_4__DOT__valid_1;
@@ -139,10 +143,6 @@ VL_INLINE_OPT void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__D
     vlSelfRef.__Vdly__ioX_cq_4__DOT__valid_0 = vlSelfRef.__PVT__ioX_cq_4__DOT__valid_0;
     vlSelfRef.__Vdly__ioX_cq_3__DOT__valid_1 = vlSelfRef.__PVT__ioX_cq_3__DOT__valid_1;
     vlSelfRef.__Vdly__ioX_cq_3__DOT__valid_0 = vlSelfRef.__PVT__ioX_cq_3__DOT__valid_0;
-    vlSelfRef.__Vdly__qa_q__DOT__valid_0 = vlSelfRef.__PVT__qa_q__DOT__valid_0;
-    vlSelfRef.__Vdly__qa_q__DOT__valid_1 = vlSelfRef.__PVT__qa_q__DOT__valid_1;
-    __Vdly__ioX_first = vlSelfRef.__PVT__ioX_first;
-    __Vdly__tx_a = vlSelfRef.__PVT__tx_a;
     vlSelfRef.__Vdly__ioX_cq__DOT__valid_1 = vlSelfRef.__PVT__ioX_cq__DOT__valid_1;
     vlSelfRef.__Vdly__ioX_cq__DOT__valid_0 = vlSelfRef.__PVT__ioX_cq__DOT__valid_0;
     if (vlSymsp->TOP.reset) {

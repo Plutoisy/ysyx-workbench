@@ -33,6 +33,20 @@ VL_ATTR_COLD void VysyxSoCFull_TLFIFOFixer___eval_initial__TOP__ysyxSoCFull__DOT
     }
 }
 
+VL_ATTR_COLD void VysyxSoCFull_TLFIFOFixer___stl_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer__0(VysyxSoCFull_TLFIFOFixer* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            VysyxSoCFull_TLFIFOFixer___stl_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer__0\n"); );
+    VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.__PVT__a_first = (0U == (IData)(vlSelfRef.__PVT__a_first_counter));
+    vlSelfRef.__PVT__monitor__DOT__a_first_1 = (0U 
+                                                == (IData)(vlSelfRef.__PVT__monitor__DOT__a_first_counter_1));
+    vlSelfRef.__PVT__monitor__DOT__d_first_1 = (0U 
+                                                == (IData)(vlSelfRef.__PVT__monitor__DOT__d_first_counter_1));
+    vlSelfRef.__PVT__monitor__DOT__d_first_2 = (0U 
+                                                == (IData)(vlSelfRef.__PVT__monitor__DOT__d_first_counter_2));
+}
+
 VL_ATTR_COLD void VysyxSoCFull_TLFIFOFixer___ctor_var_reset(VysyxSoCFull_TLFIFOFixer* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VysyxSoCFull_TLFIFOFixer___ctor_var_reset\n"); );
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
