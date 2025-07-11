@@ -142,8 +142,9 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 assign M0_arid    = 'd0       ;
-assign M0_arlen   = 'd0;
-assign M0_arburst = 'b00      ;
+//assign M0_arlen   = (pc[31:24] == 8'ha0) ? arlen : 'd0;
+assign M0_arlen   = (pc[31:24] == 8'ha0) ? arlen : 'd0;
+assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
 assign M0_awlen   = 'd0       ;
@@ -193,12 +194,12 @@ always @(posedge clk) begin
             end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
-            if(pc[31:24] != 8'ha0) begin
+            //if(pc[31:24] != 8'ha0) begin
                 araddr <= pc + ({24'b0,arlen} + 1 - {24'b0,arlen_cnt})*4;
-            end
-            else begin
-                araddr <= pc;
-            end
+            //end
+            //else begin
+            //    araddr <= pc;
+            //end
             arlen_cnt <= arlen_cnt;
             cache_IFU_valid <= 1'b0;
         end
