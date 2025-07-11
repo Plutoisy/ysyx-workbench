@@ -235,7 +235,7 @@ always @(posedge clk) begin
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
             if(rvalid  && rready) begin
                 icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                icache[index][31+(arlen_cnt-1)*32 -: 32] <= M0_rdata;
+                icache[index][31+(M0_arlen - (arlen_cnt-1))*32 -: 32] <= M0_rdata;
             end
             else begin
             end
