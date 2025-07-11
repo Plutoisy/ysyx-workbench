@@ -205,7 +205,7 @@ always @(posedge clk) begin
     else begin
         if(state == ysyx_24120011_IFU_LOOKUP && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
             //araddr <= pc;
-            araddr <= pc & ~(32'hFFFFFFFF >> $clog2(ysyx_24120011_ICACHE_SIZE));
+            araddr <= pc & 32'hFFFFFFFF << $clog2(ysyx_24120011_ICACHE_SIZE);
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
             //araddr <= pc + 'd4;
