@@ -206,7 +206,7 @@ always @(posedge clk) begin
         if(state == ysyx_24120011_IFU_LOOKUP && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
             araddr <= pc;
         end
-        else if(state == ysyx_24120011_IFU_AXI_RDATA || next_state == ysyx_24120011_IFU_AXI_RADDR) begin
+        else if(state == ysyx_24120011_IFU_AXI_RDATA && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
             araddr <= pc + 'd4;
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
