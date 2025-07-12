@@ -100,11 +100,11 @@ class CacheSimulator:
 def main():
     # 命令行参数解析
     parser = argparse.ArgumentParser(description='缓存模拟器')
-    parser.add_argument('--b', type=int, required=True, help='缓存块大小（字节）')
-    parser.add_argument('--k', type=int, required=True, help='总缓存块数')
-    parser.add_argument('--w', type=int, required=True, help='每组块数')
-    parser.add_argument('--algorithm', choices=['FIFO', 'LRU', 'RANDOM'], required=True, help='替换算法')
-    parser.add_argument('--input', type=str, required=True, help='输入文件路径')
+    parser.add_argument('--b', type=int, default=8, help='缓存块大小（字节）')
+    parser.add_argument('--k', type=int, default=16, help='总缓存块数')
+    parser.add_argument('--w', type=int, default=1, help='每组块数')
+    parser.add_argument('--algorithm', choices=['FIFO', 'LRU', 'RANDOM'], default='LRU', help='替换算法')
+    parser.add_argument('--input', type=str, default='itrace.txt', help='输入文件路径')
     args = parser.parse_args()
 
     # 初始化模拟器
