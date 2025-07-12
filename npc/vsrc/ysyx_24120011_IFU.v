@@ -144,7 +144,7 @@ assign M0_arvalid = arvalid ;
 assign arready    = M0_arready;
 assign rresp      = M0_rresp ;
 assign rvalid     = M0_rvalid;
-assign M0_rready  = rready  ;
+assign M0_rready  = (state == ysyx_24120011_IFU_AXI_RDATA) ? 1'b1 : 1'b0  ;
 assign M0_awaddr  = 32'b0   ;
 assign M0_awvalid = 1'b0    ;
 assign awready    = M0_awready;
@@ -167,16 +167,16 @@ assign M0_wlast   = M0_wvalid ;
 //====================axi====================//
 
 
-always @(posedge clk) begin
-    if(rst) begin
-        rready <= 1'b0;
-        rready_delay <= 1'b0;
-    end
-    else begin
-        rready <= (rvalid) & ~rready_delay;
-        rready_delay <= rvalid;
-    end
-end
+// always @(posedge clk) begin
+//     if(rst) begin
+//         rready <= 1'b0;
+//         rready_delay <= 1'b0;
+//     end
+//     else begin
+//         rready <= (rvalid) & ~rready_delay;
+//         rready_delay <= rvalid;
+//     end
+// end
 
 always @(posedge clk) begin
     if(rst) begin
