@@ -74,6 +74,16 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_IFU_clktime_count_TOP___
     IFU_clktime_count(ifu_clk_count__Vcvt, hit__Vcvt);
 }
 
+extern "C" void icahce_miss_count(int miss_count);
+
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_icahce_miss_count_TOP____024unit(IData/*31:0*/ miss_count) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_icahce_miss_count_TOP____024unit\n"); );
+    // Body
+    int miss_count__Vcvt;
+    for (size_t miss_count__Vidx = 0; miss_count__Vidx < 1; ++miss_count__Vidx) miss_count__Vcvt = miss_count;
+    icahce_miss_count(miss_count__Vcvt);
+}
+
 extern "C" void LSU_clktime_count(int lsu_clk_count);
 
 VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_LSU_clktime_count_TOP____024unit(IData/*31:0*/ lsu_clk_count) {

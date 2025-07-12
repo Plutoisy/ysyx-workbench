@@ -35,6 +35,7 @@
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 1
+#define INST_NOT_VALID_CHECK 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -329,6 +330,7 @@ void isa_reg_display() {
 uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
 uint64_t icache_hit_count = 0;
+uint64_t icache_miss_count = 0;
 extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
   //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
@@ -337,7 +339,9 @@ extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
     icache_hit_count++;
   }
 }
-
+extern "C" void icahce_miss_count(int miss_count){
+  icache_miss_count = miss_count;
+}
 uint64_t sum_lsu_clock_time = 0;
 uint64_t lsu_clock_time_num = 0;
 extern "C" void LSU_clktime_count(int lsu_clk_count){
@@ -715,10 +719,18 @@ void cpu_exec(uint64_t n){
             }
           }
         }
+        if(INST_NOT_VALID_CHECK){
+          if(top_inst==0x00000000 && top_IFU_valid_int){
+            printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
+            return;
+          }
+        }
       }
       else{
         step_and_dump_wave();
       }
+
+      
 
       if(PC_NO_CHANGE_DECETE){
         if(top_pc == old_pc){
@@ -764,7 +776,8 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
       printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      printf("\33[1;34micache hit rate: %f\033[0m\n",(double)icache_hit_count/(double)ifu_clock_time_num);
+      printf("\33[1;34micache hit rate: %f\033[0m\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
+      printf("\33[1;34micache miss count: %ld\033[0m\n",icache_miss_count);
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
@@ -801,7 +814,7 @@ void cpu_exec(uint64_t n){
       fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
       fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
       fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      fprintf(file, "icache hit rate: %f\n",(double)icache_hit_count/(double)ifu_clock_time_num);
+      fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
       fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       fprintf(file, "jump: %ld\n",jump_type_s);
       fprintf(file, "csr: %ld\n",csr_type_s);
