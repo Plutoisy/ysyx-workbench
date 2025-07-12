@@ -776,7 +776,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
       printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      printf("\33[1;34micache hit rate: %f\033[0m\n",(double)icache_hit_count/(double)ifu_clock_time_num);
+      printf("\33[1;34micache hit rate: %f\033[0m\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
       printf("\33[1;34micache miss count: %ld\033[0m\n",icache_miss_count);
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
@@ -814,7 +814,7 @@ void cpu_exec(uint64_t n){
       fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
       fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
       fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      fprintf(file, "icache hit rate: %f\n",(double)icache_hit_count/(double)ifu_clock_time_num);
+      fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
       fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       fprintf(file, "jump: %ld\n",jump_type_s);
       fprintf(file, "csr: %ld\n",csr_type_s);
