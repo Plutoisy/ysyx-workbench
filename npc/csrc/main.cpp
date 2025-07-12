@@ -777,6 +777,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
       printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
       printf("\33[1;34micache hit rate: %f\033[0m\n",(double)icache_hit_count/(double)ifu_clock_time_num);
+      printf("\33[1;34micache miss count: %ld\033[0m\n",icache_miss_count);
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
