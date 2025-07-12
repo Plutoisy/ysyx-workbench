@@ -330,6 +330,7 @@ void isa_reg_display() {
 uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
 uint64_t icache_hit_count = 0;
+uint64_t icache_miss_count = 0;
 extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
   //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
@@ -338,7 +339,9 @@ extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
     icache_hit_count++;
   }
 }
-
+extern "C" void icahce_miss_count(int miss_count){
+  icache_miss_count = miss_count;
+}
 uint64_t sum_lsu_clock_time = 0;
 uint64_t lsu_clock_time_num = 0;
 extern "C" void LSU_clktime_count(int lsu_clk_count){

@@ -1,4 +1,5 @@
 import "DPI-C" function void IFU_clktime_count(input int ifu_clk_count,input int hit);
+import "DPI-C" function void icahce_miss_count(input int miss_count);
 module ysyx_24120011_IFU(
     input clk,
     input rst,
@@ -56,6 +57,7 @@ parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
 
 //======================dpic========================//
 reg [31:0] cycle_counter;  // 时钟周期计数器
+reg [31:0] miss_counter;
 always @(posedge clk) begin
     if (rst) begin
         cycle_counter <= 0;
@@ -73,6 +75,19 @@ always @(posedge clk) begin
             else begin
                 IFU_clktime_count(cycle_counter,0);
             end
+        end
+    end
+end
+always @(posedge clk) begin
+    if (rst) begin
+        miss_counter <= 0;
+    end else begin
+        icahce_miss_count(miss_counter);
+        if (state == ysyx_24120011_IFU_LOOKUP && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
+            miss_counter <= miss_counter + 1;
+        end
+        else begin
+            miss_counter <= miss_counter;
         end
     end
 end
