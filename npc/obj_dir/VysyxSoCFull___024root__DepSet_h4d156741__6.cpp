@@ -860,8 +860,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__axi4deint__DOT__qs_queue_0__DOT__maybe_full;
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4deint__DOT__qs_queue_0__DOT__deq_ptr_value 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__axi4deint__DOT__qs_queue_0__DOT__deq_ptr_value;
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__d_last_counter 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__d_last_counter;
     if (vlSelfRef.__VdlySet__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__data_ext__DOT__Memory__v0) {
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__data_ext__DOT__Memory[vlSelfRef.__VdlyDim0__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__data_ext__DOT__Memory__v0] 
             = vlSelfRef.__VdlyVal__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__data_ext__DOT__Memory__v0;
@@ -894,6 +892,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_7__DOT__data_ext__DOT__Memory[vlSelfRef.__VdlyDim0__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_7__DOT__data_ext__DOT__Memory__v0] 
             = vlSelfRef.__VdlyVal__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_7__DOT__data_ext__DOT__Memory__v0;
     }
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__d_last_counter 
+        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__d_last_counter;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_0 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_0;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_1 
@@ -1454,8 +1454,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_7__DOT__data_ext__DOT__Memory[vlSelfRef.__VdlyDim0__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_7__DOT__data_ext__DOT__Memory__v0] 
             = vlSelfRef.__VdlyVal__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_7__DOT__data_ext__DOT__Memory__v0;
     }
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__nextdata_n 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__nextdata_n;
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__hints__DOT__a_repeater_io_repeat_counter 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__hints__DOT__a_repeater_io_repeat_counter;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__monitor__DOT__inflight[0U] 
@@ -1682,6 +1680,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__monitor__DOT__inflight_sizes_1[0xeU];
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__monitor__DOT__inflight_sizes_1[0xfU] 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__monitor__DOT__inflight_sizes_1[0xfU];
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__nextdata_n 
+        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__lkeyboard__DOT__mps2__DOT__nextdata_n;
     if (vlSelfRef.__VdlySet__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_mem__v0) {
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_mem[vlSelfRef.__VdlyDim0__ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_mem__v0] 
             = ((0xffff00U & vlSelfRef.ysyxSoCFull__DOT__asic__DOT__lvga__DOT__mvga__DOT__vga_mem
@@ -2125,12 +2125,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight_sizes_1[0x1fU];
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__c_last_counter 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__c_last_counter;
-    if (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__do_enq) {
-        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__ram 
-            = (((QData)((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wdata)) 
-                << 5U) | (QData)((IData)((((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wstrb) 
-                                           << 1U) | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wlast)))));
-    }
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__hints__DOT__monitor__DOT__inflight 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__hints__DOT__monitor__DOT__inflight;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__hints__DOT__monitor__DOT__inflight_opcodes[0U] 
@@ -2183,6 +2177,12 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__hints__DOT__monitor__DOT__inflight_sizes_1[6U];
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__hints__DOT__monitor__DOT__inflight_sizes_1[7U] 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__hints__DOT__monitor__DOT__inflight_sizes_1[7U];
+    if (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__do_enq) {
+        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4frag__DOT__in_wdeq_q__DOT__ram 
+            = (((QData)((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wdata)) 
+                << 5U) | (QData)((IData)((((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wstrb) 
+                                           << 1U) | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_wlast)))));
+    }
     if (vlSelfRef.__VdlySet__ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__transmitter__DOT__fifo_tx__DOT__tfifo__DOT__ram__v0) {
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__transmitter__DOT__fifo_tx__DOT__tfifo__DOT__ram[vlSelfRef.__VdlyDim0__ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__transmitter__DOT__fifo_tx__DOT__tfifo__DOT__ram__v0] 
             = vlSelfRef.__VdlyVal__ysyxSoCFull__DOT__asic__DOT__luart__DOT__muart__DOT__Uregs__DOT__transmitter__DOT__fifo_tx__DOT__tfifo__DOT__ram__v0;
@@ -2838,8 +2838,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__axi4yank__DOT__Queue1_BundleMap_30__DOT__full;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4yank__DOT__Queue1_BundleMap_31__DOT__full 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__axi4yank__DOT__Queue1_BundleMap_31__DOT__full;
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state;
     if (((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT__monitor__DOT___c_first_T_1) 
          & (~ (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__c_first_counter))))) {
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__opcode_3 
@@ -2880,6 +2878,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__address 
             = (0x1fffU & vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT___atomics_auto_out_a_bits_address);
     }
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state 
+        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__axi42apb__DOT__state;
     vlSelfRef.ysyxSoCFull__DOT__mem__DOT__axi4buf__DOT__nodeIn_rdeq_q__DOT__wrap_1 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__mem__DOT__axi4buf__DOT__nodeIn_rdeq_q__DOT__wrap_1;
     if (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT__monitor__DOT___c_first_T_1) 
@@ -3252,6 +3252,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
             = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___chiplink_auto_mbypass_out_a_bits_address;
     }
     if (vlSelfRef.reset) {
+        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__state_0 = 0U;
+        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__state_1 = 0U;
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT__Queue4_BundleMap__DOT__maybe_full = 0U;
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT__Queue4_BundleMap_1__DOT__maybe_full = 0U;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer_1__DOT__a_first_counter = 0U;
@@ -3602,6 +3604,12 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT__Queue4_BundleMap_3__DOT__maybe_full = 0U;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__c_q__DOT__full = 0U;
     } else {
+        if ((0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft))) {
+            vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__state_0 
+                = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_0;
+            vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__state_1 
+                = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_1;
+        }
         if (((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT__Queue4_BundleMap__DOT__do_enq) 
              != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT__Queue4_BundleMap__DOT__do_deq))) {
             vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank__DOT__Queue4_BundleMap__DOT__maybe_full 
@@ -4616,10 +4624,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
             = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__axi4frag__DOT__deq_q_1__DOT__full;
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4frag__DOT__busy = 0U;
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4frag__DOT__busy_1 = 0U;
-        vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft = 0U;
-        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_mask = 3U;
-        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft 
-            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter = 0U;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter = 0U;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16 = 0U;
@@ -4734,6 +4738,236 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125 = 0U;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126 = 0U;
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127 = 0U;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_17 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_17;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_18 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_18;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_19 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_19;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_20 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_20;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_21 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_21;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_22 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_22;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_23 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_23;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_24 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_24;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_25 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_25;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_26 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_26;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_27 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_27;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_28 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_28;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_29 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_29;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_30 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_30;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_31 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_31;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_32 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_32;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_33 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_33;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_34 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_34;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_35 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_35;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_36 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_36;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_37 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_37;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_38 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_38;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_39 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_39;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_40 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_40;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_41 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_41;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_42 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_42;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_43 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_43;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_44 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_44;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_45 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_45;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_46 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_46;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_47 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_47;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_48 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_48;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_49 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_49;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_50 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_50;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_51 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_51;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_52 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_52;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_53 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_53;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_54 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_54;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_55 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_55;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_56 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_56;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_57 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_57;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_58 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_58;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_59 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_59;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_60 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_60;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_61 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_61;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_62 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_62;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_63 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_63;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_64 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_64;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_65 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_65;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_66 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_66;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_67 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_67;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_68 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_68;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_69 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_69;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_70 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_70;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_71 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_71;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_72 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_72;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_73 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_73;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_74 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_74;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_75 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_75;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_76 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_76;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_77 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_77;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_78 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_78;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_79 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_79;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_80 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_80;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_81 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_81;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_82 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_82;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_83 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_83;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_84 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_84;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_85 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_85;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_86 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_86;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_87 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_87;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_88 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_88;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_89 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_89;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_90 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_90;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_91 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_91;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_92 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_92;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_93 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_93;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_94 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_94;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_95 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_95;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_96 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_96;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_97 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_97;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_98 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_98;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_99 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_99;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_100 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_100;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_101 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_101;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_102 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_102;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_103 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_103;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_104 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_104;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_105 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_105;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_106 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_106;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_107 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_107;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_108 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_108;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_109 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_109;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_110 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_110;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_111 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_111;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_112 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_112;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_113 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_113;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_114 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_114;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_115 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_115;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_116 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_116;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_117 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_117;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_118 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_118;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_119 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_119;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_120 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_120;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_121 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_121;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_122 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_122;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_123 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_123;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_124 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_124;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter;
+        vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft = 0U;
+        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_mask = 3U;
     } else {
         if (ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__extract__DOT__unnamedblk1__DOT___GEN_0) {
             vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__extract__DOT__state 
@@ -4758,28 +4992,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
                 = ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4frag__DOT__beats1_1) 
                    != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4frag__DOT__len_1));
         }
-        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__latch 
-            = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__idle) 
-               & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer.__PVT__anonIn_a_ready));
-        vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft 
-            = (0xffU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__latch)
-                         ? ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_1)
-                             ? (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__beats1_1)
-                             : 0U) : ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft) 
-                                      - ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer.__PVT__anonIn_a_ready) 
-                                         & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__nodeOut_a_valid)))));
-        if (((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__latch) 
-             & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_valid)))) {
-            vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__unnamedblk3__DOT___readys_mask_T 
-                = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_readys) 
-                   & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_valid));
-            vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_mask 
-                = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__unnamedblk3__DOT___readys_mask_T) 
-                   | (2U & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__unnamedblk3__DOT___readys_mask_T) 
-                            << 1U)));
-        }
-        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft 
-            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft;
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__unnamedblk1__DOT__unnamedblk2__DOT__d_first_first 
             = (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter));
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__unnamedblk1__DOT__unnamedblk2__DOT___GEN 
@@ -5485,235 +5697,257 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
                & (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__unnamedblk1__DOT__unnamedblk2__DOT___GEN) 
                    & (0x7fU == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_a_bits_source))) 
                   | (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127)));
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_17 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_17;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_18 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_18;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_19 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_19;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_20 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_20;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_21 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_21;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_22 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_22;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_23 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_23;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_24 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_24;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_25 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_25;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_26 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_26;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_27 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_27;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_28 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_28;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_29 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_29;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_30 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_30;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_31 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_31;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_32 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_32;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_33 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_33;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_34 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_34;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_35 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_35;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_36 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_36;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_37 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_37;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_38 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_38;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_39 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_39;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_40 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_40;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_41 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_41;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_42 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_42;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_43 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_43;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_44 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_44;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_45 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_45;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_46 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_46;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_47 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_47;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_48 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_48;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_49 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_49;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_50 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_50;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_51 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_51;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_52 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_52;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_53 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_53;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_54 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_54;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_55 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_55;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_56 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_56;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_57 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_57;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_58 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_58;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_59 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_59;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_60 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_60;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_61 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_61;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_62 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_62;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_63 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_63;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_64 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_64;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_65 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_65;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_66 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_66;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_67 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_67;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_68 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_68;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_69 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_69;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_70 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_70;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_71 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_71;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_72 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_72;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_73 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_73;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_74 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_74;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_75 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_75;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_76 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_76;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_77 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_77;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_78 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_78;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_79 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_79;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_80 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_80;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_81 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_81;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_82 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_82;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_83 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_83;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_84 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_84;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_85 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_85;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_86 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_86;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_87 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_87;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_88 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_88;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_89 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_89;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_90 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_90;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_91 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_91;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_92 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_92;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_93 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_93;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_94 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_94;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_95 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_95;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_96 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_96;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_97 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_97;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_98 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_98;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_99 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_99;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_100 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_100;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_101 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_101;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_102 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_102;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_103 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_103;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_104 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_104;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_105 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_105;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_106 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_106;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_107 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_107;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_108 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_108;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_109 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_109;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_110 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_110;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_111 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_111;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_112 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_112;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_113 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_113;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_114 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_114;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_115 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_115;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_116 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_116;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_117 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_117;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_118 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_118;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_119 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_119;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_120 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_120;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_121 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_121;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_122 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_122;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_123 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_123;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_124 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_124;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127;
+        vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter 
+            = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter;
+        vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__latch 
+            = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__idle) 
+               & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer.__PVT__anonIn_a_ready));
+        vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft 
+            = (0xffU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__latch)
+                         ? ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__winner_1)
+                             ? (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__beats1_1)
+                             : 0U) : ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft) 
+                                      - ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer.__PVT__anonIn_a_ready) 
+                                         & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__nodeOut_a_valid)))));
+        if (((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__latch) 
+             & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_valid)))) {
+            vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__unnamedblk3__DOT___readys_mask_T 
+                = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_readys) 
+                   & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_valid));
+            vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__readys_mask 
+                = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__unnamedblk3__DOT___readys_mask_T) 
+                   | (2U & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__unnamedblk2__DOT__unnamedblk3__DOT___readys_mask_T) 
+                            << 1U)));
+        }
     }
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__d_first_counter;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_16;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_17 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_17;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_18 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_18;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_19 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_19;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_20 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_20;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_21 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_21;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_22 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_22;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_23 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_23;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_24 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_24;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_25 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_25;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_26 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_26;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_27 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_27;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_28 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_28;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_29 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_29;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_30 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_30;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_31 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_31;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_32 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_32;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_33 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_33;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_34 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_34;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_35 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_35;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_36 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_36;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_37 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_37;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_38 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_38;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_39 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_39;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_40 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_40;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_41 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_41;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_42 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_42;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_43 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_43;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_44 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_44;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_45 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_45;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_46 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_46;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_47 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_47;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_48 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_48;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_49 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_49;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_50 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_50;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_51 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_51;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_52 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_52;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_53 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_53;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_54 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_54;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_55 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_55;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_56 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_56;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_57 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_57;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_58 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_58;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_59 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_59;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_60 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_60;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_61 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_61;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_62 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_62;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_63 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_63;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_64 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_64;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_65 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_65;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_66 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_66;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_67 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_67;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_68 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_68;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_69 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_69;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_70 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_70;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_71 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_71;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_72 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_72;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_73 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_73;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_74 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_74;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_75 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_75;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_76 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_76;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_77 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_77;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_78 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_78;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_79 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_79;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_80 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_80;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_81 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_81;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_82 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_82;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_83 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_83;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_84 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_84;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_85 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_85;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_86 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_86;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_87 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_87;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_88 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_88;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_89 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_89;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_90 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_90;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_91 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_91;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_92 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_92;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_93 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_93;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_94 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_94;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_95 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_95;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_96 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_96;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_97 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_97;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_98 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_98;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_99 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_99;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_100 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_100;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_101 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_101;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_102 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_102;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_103 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_103;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_104 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_104;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_105 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_105;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_106 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_106;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_107 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_107;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_108 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_108;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_109 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_109;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_110 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_110;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_111 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_111;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_112 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_112;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_113 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_113;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_114 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_114;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_115 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_115;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_116 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_116;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_117 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_117;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_118 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_118;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_119 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_119;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_120 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_120;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_121 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_121;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_122 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_122;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_123 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_123;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_124 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_124;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_125;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_126;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__flight_127;
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter;
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft 
+        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__arvalid_delay_cnt 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_LSU__DOT__arvalid_delay_cnt;
     if (vlSelfRef.ysyxSoCFull__DOT__asic__DOT____Vcellinp__cpu__reset) {
@@ -6583,12 +6817,12 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
                                                 | ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT___atomics_auto_out_a_bits_source) 
                                                    >> 0xeU)))));
     }
+    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__da_first 
+        = (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__r_counter));
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD__DOT__cam__DOT___free_sel_T_2 
         = (0x7fffffffU & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD__DOT__cam__DOT__free 
                           | (0x7ffffffeU & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD__DOT__cam__DOT__free 
                                             << 1U))));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__da_first 
-        = (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__r_counter));
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT___free_sel_T_2 
         = (0x7fU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__free) 
                     | (0x7eU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__free) 
@@ -6664,9 +6898,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__cam_d_0_corrupt 
             = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT___in_0_d_bits_T_3;
     }
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__ptr_match 
-        = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap) 
-           == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap_1));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__unnamedblk1__DOT__do_enq 
         = ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__full)) 
            & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___xbar_auto_anon_out_2_a_valid));
@@ -6703,6 +6934,9 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
             = (3U & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___atomics_auto_out_a_bits_opcode) 
                      >> 1U));
     }
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__ptr_match 
+        = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap) 
+           == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__wrap_1));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__ptr_match 
         = ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__deq_ptr_value) 
            == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__enq_ptr_value));
@@ -10328,10 +10562,10 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4frag__DOT__wbeats_valid = 0U;
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___axi4frag_auto_out_awid = 0U;
     }
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__idle 
-        = (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first 
         = (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__a_first_counter));
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__idle 
+        = (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__beatsLeft));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__c_last_beats1 
         = ((1U & (IData)((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__c_q__DOT__ram 
                           >> 0x3bU))) ? (7U & (~ (7U 
@@ -10482,14 +10716,14 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__state_0;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__beatsLeft 
         = vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__beatsLeft;
+    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__full 
+        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__full;
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__full 
         = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__ptr_match) 
            & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__maybe_full));
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__empty 
         = ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__maybe_full)) 
            & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__ptr_match));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__full 
-        = vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__full;
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__empty 
         = ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__maybe_full)) 
            & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__ptr_match));
@@ -11233,9 +11467,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
         = ((0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__beatsLeft))
             ? (2U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__cam_s_0_state))
             : (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__atomics__DOT__state_0));
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT___anonIn_awready_T 
-        = (1U & ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__full)) 
-                 | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__latched)));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__da_bits_opcode 
         = ((0x17U >= (0x1fU & ((IData)(3U) * (7U & 
                                               ((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__ram[2U] 
@@ -11255,20 +11486,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__6(VysyxSoCFull___0
                                     << (7U & (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__err__DOT__a_q__DOT__ram[1U] 
                                               >> 0x19U))) 
                                    >> 2U)))));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT___GEN_2 
-        = (1U & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___axi4frag_auto_out_awid)
-                  ? (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_3__DOT__full))
-                  : (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4yank_2__DOT__Queue4_BundleMap_2__DOT__full))));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT___GEN 
-        = ((1U | (0xfeU & ((~ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT___free_sel_T_5) 
-                               | VL_SHIFTL_III(7,7,32, (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT___free_sel_T_5), 4U))) 
-                           << 1U))) & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__free));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_1__DOT___GEN 
-        = ((1U | (0xfeU & ((~ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_1__DOT___free_sel_T_5) 
-                               | VL_SHIFTL_III(7,7,32, (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_1__DOT___free_sel_T_5), 4U))) 
-                           << 1U))) & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_1__DOT__free));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_2__DOT___GEN 
-        = ((1U | (0xfeU & ((~ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_2__DOT___free_sel_T_5) 
-                               | VL_SHIFTL_III(7,7,32, (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_2__DOT___free_sel_T_5), 4U))) 
-                           << 1U))) & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA__DOT__cams_2__DOT__free));
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT___anonIn_awready_T 
+        = (1U & ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__awIn_0__DOT__full)) 
+                 | (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar_1__DOT__latched)));
 }

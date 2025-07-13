@@ -143,7 +143,7 @@ module ysyx_24120011_Arbiter (
     wire [2:0] write_choose;
 
     assign read_done = S0_rlast && S0_rready && S0_rvalid;
-    assign write_done = S0_wlast && S0_bready && S0_bvalid;
+    assign write_done = S0_bready && S0_bvalid;
     //AR-AXILITE
     assign S0_araddr  = (read_state == ysyx_24120011_Arbiter_M0 ? M0_araddr :
                        (read_state == ysyx_24120011_Arbiter_M1 ? M1_araddr : 'b0));
