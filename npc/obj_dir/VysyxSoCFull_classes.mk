@@ -34,8 +34,8 @@ VM_CLASSES_FAST += \
 	VysyxSoCFull___024root__DepSet_h4d156741__5 \
 	VysyxSoCFull___024root__DepSet_h4d156741__6 \
 	VysyxSoCFull___024root__DepSet_h4d156741__7 \
+	VysyxSoCFull___024root__DepSet_h4d156741__8 \
 	VysyxSoCFull___024root__DepSet_h0188974b__0 \
-	VysyxSoCFull___024root__DepSet_h0188974b__1 \
 	VysyxSoCFull___024unit__DepSet_h308b0958__0 \
 	VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u__DepSet_h8b2b6912__0 \
 	VysyxSoCFull_TLError__DepSet_had81924e__0 \

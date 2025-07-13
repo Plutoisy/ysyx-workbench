@@ -120,7 +120,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
     }
     if (VL_UNLIKELY(((vlSelfRef.__Vm_traceActivity[1U] 
                       | vlSelfRef.__Vm_traceActivity
-                      [0x20U])))) {
+                      [0x21U])))) {
         bufp->chgBit(oldp+78,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx.io_txc_source__DOT____Vcellinp__sink_extend__reset));
         bufp->chgBit(oldp+79,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source.__Vcellinp__sink_extend__reset));
         bufp->chgBit(oldp+80,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource.__Vcellinp__sink_extend__reset));
@@ -130,7 +130,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
     }
     if (VL_UNLIKELY(((vlSelfRef.__Vm_traceActivity[1U] 
                       | vlSelfRef.__Vm_traceActivity
-                      [0x29U])))) {
+                      [0x2aU])))) {
         bufp->chgBit(oldp+84,(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx.io_txc_source__DOT____Vcellinp__sink_extend__reset));
         bufp->chgBit(oldp+85,(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source.__Vcellinp__sink_extend__reset));
         bufp->chgBit(oldp+86,(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource.__Vcellinp__sink_extend__reset));
@@ -852,7 +852,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
         bufp->chgCData(oldp+752,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC__DOT__q_opcode),3);
         bufp->chgCData(oldp+753,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_param),3);
         bufp->chgCData(oldp+754,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_size),3);
-        bufp->chgCData(oldp+755,(vlSelfRef.__VdfgRegularize_hd87f99a1_17_7),6);
+        bufp->chgCData(oldp+755,(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7),6);
         bufp->chgIData(oldp+756,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_address),32);
         bufp->chgIData(oldp+757,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink.__PVT__io_deq_bits_deq_bits_reg__DOT__cdc_reg),32);
         bufp->chgBit(oldp+758,((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sinkD__DOT__d_q__DOT__full)))));
@@ -4702,7 +4702,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
         bufp->chgCData(oldp+3440,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC__DOT__q_opcode),3);
         bufp->chgCData(oldp+3441,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_param),3);
         bufp->chgCData(oldp+3442,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_size),4);
-        bufp->chgCData(oldp+3443,(vlSelfRef.__VdfgRegularize_hd87f99a1_60_7),6);
+        bufp->chgCData(oldp+3443,(vlSelfRef.__VdfgRegularize_hd87f99a1_63_7),6);
         bufp->chgIData(oldp+3444,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_address),32);
         bufp->chgIData(oldp+3445,(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink.__PVT__io_deq_bits_deq_bits_reg__DOT__cdc_reg),32);
         bufp->chgBit(oldp+3446,((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sinkD__DOT__d_q__DOT__full)))));
@@ -9673,7 +9673,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
     if (VL_UNLIKELY((((vlSelfRef.__Vm_traceActivity
                        [2U] | vlSelfRef.__Vm_traceActivity
                        [9U]) | vlSelfRef.__Vm_traceActivity
-                      [0x1fU])))) {
+                      [0x20U])))) {
         bufp->chgCData(oldp+7955,((3U & ((((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__idle_4)
                                             ? (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__winner_4_0)
                                             : (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__state_4_0))
