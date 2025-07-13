@@ -252,12 +252,12 @@ module ysyx_24120011_Xbar(
     wire read_S2_done;
     wire write_S2_done;
 
-    assign read_S0_done = Xbar_S0_rready && Xbar_S0_rvalid;
-    assign write_S0_done = Xbar_S0_bready && Xbar_S0_bvalid;
-    assign read_S1_done = Xbar_S1_rready && Xbar_S1_rvalid;
-    assign write_S1_done = Xbar_S1_bready && Xbar_S1_bvalid;
-    assign read_S2_done = Xbar_S2_rready && Xbar_S2_rvalid;
-    assign write_S2_done = Xbar_S2_bready && Xbar_S2_bvalid;
+    assign read_S0_done = Xbar_S0_rlast && Xbar_S0_rready && Xbar_S0_rvalid;
+    assign write_S0_done = Xbar_S0_wlast && Xbar_S0_bready && Xbar_S0_bvalid;
+    assign read_S1_done = Xbar_S1_rlast && Xbar_S1_rready && Xbar_S1_rvalid;
+    assign write_S1_done = Xbar_S1_wlast && Xbar_S1_bready && Xbar_S1_bvalid;
+    assign read_S2_done = Xbar_S2_rlast && Xbar_S2_rready && Xbar_S2_rvalid;
+    assign write_S2_done = Xbar_S2_wlast && Xbar_S2_bready && Xbar_S2_bvalid;
 
     
     assign Xbar_rdata      = reg_Xbar_rdata     ;
