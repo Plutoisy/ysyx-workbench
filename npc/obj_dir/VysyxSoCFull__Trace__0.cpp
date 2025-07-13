@@ -1993,53 +1993,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
         bufp->chgCData(oldp+1932,((0xfU & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
                                            >> 3U))),4);
         bufp->chgCData(oldp+1933,((7U & vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc)),3);
-        bufp->chgIData(oldp+1934,(((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__hit)
-                                    ? ((0x59U >= (0x7fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                                      >> 2U)), 5U)))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & VL_SHIFTL_III(7,7,32, 
-                                                              (1U 
-                                                               & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                                  >> 2U)), 5U)))
-                                             ? 0U : 
-                                            (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__icache
-                                             [(0xfU 
-                                               & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                  >> 3U))][
-                                             (((IData)(0x1fU) 
-                                               + (0x7fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                                      >> 2U)), 5U))) 
-                                              >> 5U)] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                                      >> 2U)), 5U))))) 
-                                           | (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__icache
-                                              [(0xfU 
-                                                & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                   >> 3U))][
-                                              (3U & 
-                                               (VL_SHIFTL_III(7,7,32, 
-                                                              (1U 
-                                                               & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                                  >> 2U)), 5U) 
-                                                >> 5U))] 
-                                              >> (0x1fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__pc 
-                                                                      >> 2U)), 5U))))
-                                        : 0U) : 0U)),32);
+        bufp->chgIData(oldp+1934,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__inst_cache),32);
         bufp->chgBit(oldp+1935,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__hit));
         bufp->chgBit(oldp+1936,(((1U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__state)) 
                                  & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__i_IFU__DOT__icache
