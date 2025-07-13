@@ -144,7 +144,7 @@ assign M0_arvalid = arvalid ;
 assign arready    = M0_arready;
 assign rresp      = M0_rresp ;
 assign rvalid     = M0_rvalid;
-assign M0_rready  = rready  ;
+assign M0_rready  = (state == ysyx_24120011_IFU_AXI_RDATA) ? 1'b1 : 1'b0  ;
 assign M0_awaddr  = 32'b0   ;
 assign M0_awvalid = 1'b0    ;
 assign awready    = M0_awready;
@@ -156,8 +156,8 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 assign M0_arid    = 'd0       ;
-assign M0_arlen   = 'd0       ;
-assign M0_arburst = 'd0       ;
+assign M0_arlen   = (pc[31:24] == 8'ha0) ? 'd1 : 'd0;
+assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
 assign M0_awlen   = 'd0       ;
@@ -167,16 +167,16 @@ assign M0_wlast   = M0_wvalid ;
 //====================axi====================//
 
 
-always @(posedge clk) begin
-    if(rst) begin
-        rready <= 1'b0;
-        rready_delay <= 1'b0;
-    end
-    else begin
-        rready <= (rvalid) & ~rready_delay;
-        rready_delay <= rvalid;
-    end
-end
+// always @(posedge clk) begin
+//     if(rst) begin
+//         rready <= 1'b0;
+//         rready_delay <= 1'b0;
+//     end
+//     else begin
+//         rready <= (rvalid) & ~rready_delay;
+//         rready_delay <= rvalid;
+//     end
+// end
 
 always @(posedge clk) begin
     if(rst) begin
@@ -224,7 +224,12 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
             //araddr <= pc + 'd4;
-            araddr <= araddr + 'd4;
+            if(pc[31:24] == 8'ha0) begin
+                araddr <= araddr;
+            end
+            else begin
+                araddr <= araddr + 'd4;
+            end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
             araddr <= araddr;
@@ -240,7 +245,7 @@ always @(posedge clk) begin
         cached_size <= 'd0;
     end
     else begin
-        if(state == ysyx_24120011_IFU_AXI_RDATA && next_state != ysyx_24120011_IFU_AXI_RDATA) begin
+        if(rvalid) begin
             cached_size <= cached_size + 'd4;
         end
         else if(state == ysyx_24120011_IFU_IDLE) begin
@@ -278,7 +283,7 @@ always @(posedge clk) begin
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
-            if(rvalid  && rready) begin
+            if(rvalid  && M0_rready) begin
                 icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
                 icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
             end
@@ -295,7 +300,7 @@ always@(*)begin
         ysyx_24120011_IFU_IDLE:      next_state = (LSU_ready && EXU_ready && ~IFU_valid) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE;
         ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
-        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && rready )     ? (cached_size == ysyx_24120011_ICACHE_SIZE - 'd4 ? ysyx_24120011_IFU_LOOKUP : ysyx_24120011_IFU_AXI_RADDR) : ysyx_24120011_IFU_AXI_RDATA;
+        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && M0_rready )     ? (cached_size == ysyx_24120011_ICACHE_SIZE - 'd4 ? ysyx_24120011_IFU_LOOKUP : (pc[31:24] == 8'ha0 ? ysyx_24120011_IFU_AXI_RDATA :ysyx_24120011_IFU_AXI_RADDR)) : ysyx_24120011_IFU_AXI_RDATA;
         default : next_state = ysyx_24120011_IFU_IDLE;
     endcase
 end

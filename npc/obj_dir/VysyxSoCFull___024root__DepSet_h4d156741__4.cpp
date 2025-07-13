@@ -227,6 +227,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_1 = 0;
     CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_3;
     ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_3 = 0;
+    VlWide<4>/*127:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_66;
+    VL_ZERO_W(128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_66);
     VlWide<4>/*127:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_67;
     VL_ZERO_W(128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_67);
     VlWide<32>/*1023:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___a_size_lookup_T_1;
@@ -373,19 +375,37 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     VlWide<4>/*127:0*/ __Vtemp_2;
     VlWide<4>/*127:0*/ __Vtemp_3;
     VlWide<4>/*127:0*/ __Vtemp_4;
-    VlWide<4>/*127:0*/ __Vtemp_9;
+    VlWide<4>/*127:0*/ __Vtemp_5;
     VlWide<4>/*127:0*/ __Vtemp_10;
     VlWide<4>/*127:0*/ __Vtemp_11;
     VlWide<4>/*127:0*/ __Vtemp_12;
     VlWide<4>/*127:0*/ __Vtemp_13;
-    VlWide<8>/*255:0*/ __Vtemp_19;
-    VlWide<8>/*255:0*/ __Vtemp_23;
+    VlWide<4>/*127:0*/ __Vtemp_14;
+    VlWide<8>/*255:0*/ __Vtemp_20;
+    VlWide<8>/*255:0*/ __Vtemp_24;
     // Body
-    __Vtemp_1[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_1[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_a_bits_source;
     __Vtemp_1[1U] = 0U;
     __Vtemp_1[2U] = 0U;
     __Vtemp_1[3U] = 0U;
-    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_67, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight, __Vtemp_1);
+    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_66, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight, __Vtemp_1);
+    if (VL_UNLIKELY(((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT___GEN_2) 
+                       & (~ (IData)(vlSelfRef.reset))) 
+                      & ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_66[0U])))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46898: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'A' channel re-used a source ID (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46898, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46900: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46900, "", false);
+    }
+    __Vtemp_2[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_2[1U] = 0U;
+    __Vtemp_2[2U] = 0U;
+    __Vtemp_2[3U] = 0U;
+    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_67, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight, __Vtemp_2);
     if (VL_UNLIKELY(((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_60) 
                        & (~ (IData)(vlSelfRef.reset))) 
                       & (~ (ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_67[0U] 
@@ -518,35 +538,35 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46943, "", false);
     }
-    __Vtemp_2[0U] = 1U;
-    __Vtemp_2[1U] = 0U;
-    __Vtemp_2[2U] = 0U;
-    __Vtemp_2[3U] = 0U;
-    __Vtemp_3[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_3[0U] = 1U;
     __Vtemp_3[1U] = 0U;
     __Vtemp_3[2U] = 0U;
     __Vtemp_3[3U] = 0U;
-    VL_SHIFTL_WWW(128,128,128, __Vtemp_4, __Vtemp_2, __Vtemp_3);
+    __Vtemp_4[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_4[1U] = 0U;
+    __Vtemp_4[2U] = 0U;
+    __Vtemp_4[3U] = 0U;
+    VL_SHIFTL_WWW(128,128,128, __Vtemp_5, __Vtemp_3, __Vtemp_4);
     if (VL_UNLIKELY(((1U & ((~ (IData)(vlSelfRef.reset)) 
                             & (~ ((0U != ((((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready[0U] 
                                              ^ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_60)
                                                  ? 
-                                                __Vtemp_4[0U]
+                                                __Vtemp_5[0U]
                                                  : 0U)) 
                                             | (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready[1U] 
                                                ^ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_60)
                                                    ? 
-                                                  __Vtemp_4[1U]
+                                                  __Vtemp_5[1U]
                                                    : 0U))) 
                                            | (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready[2U] 
                                               ^ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_60)
                                                   ? 
-                                                 __Vtemp_4[2U]
+                                                 __Vtemp_5[2U]
                                                   : 0U))) 
                                           | (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready[3U] 
                                              ^ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_60)
                                                  ? 
-                                                __Vtemp_4[3U]
+                                                __Vtemp_5[3U]
                                                  : 0U)))) 
                                   | (0U == (((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready[0U] 
                                               | vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__a_set_wo_ready[1U]) 
@@ -578,12 +598,12 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46959, "", false);
     }
-    __Vtemp_9[0U] = ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___chiplink_auto_mbypass_out_c_bits_source) 
-                     << 1U);
-    __Vtemp_9[1U] = 0U;
-    __Vtemp_9[2U] = 0U;
-    __Vtemp_9[3U] = 0U;
-    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_68, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight_1, __Vtemp_9);
+    __Vtemp_10[0U] = ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___chiplink_auto_mbypass_out_c_bits_source) 
+                      << 1U);
+    __Vtemp_10[1U] = 0U;
+    __Vtemp_10[2U] = 0U;
+    __Vtemp_10[3U] = 0U;
+    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_68, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight_1, __Vtemp_10);
     if (VL_UNLIKELY(((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT___GEN_7) 
                        & (~ (IData)(vlSelfRef.reset))) 
                       & ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_68[0U])))) {
@@ -596,11 +616,11 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46966, "", false);
     }
-    __Vtemp_10[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
-    __Vtemp_10[1U] = 0U;
-    __Vtemp_10[2U] = 0U;
-    __Vtemp_10[3U] = 0U;
-    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_69, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight_1, __Vtemp_10);
+    __Vtemp_11[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_11[1U] = 0U;
+    __Vtemp_11[2U] = 0U;
+    __Vtemp_11[3U] = 0U;
+    VL_SHIFTR_WWW(128,128,128, ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_69, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__inflight_1, __Vtemp_11);
     if (VL_UNLIKELY(((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_65) 
                        & (~ (IData)(vlSelfRef.reset))) 
                       & (~ (ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_69[0U] 
@@ -664,15 +684,15 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46996, "", false);
     }
-    __Vtemp_11[0U] = 1U;
-    __Vtemp_11[1U] = 0U;
-    __Vtemp_11[2U] = 0U;
-    __Vtemp_11[3U] = 0U;
-    __Vtemp_12[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_12[0U] = 1U;
     __Vtemp_12[1U] = 0U;
     __Vtemp_12[2U] = 0U;
     __Vtemp_12[3U] = 0U;
-    VL_SHIFTL_WWW(128,128,128, __Vtemp_13, __Vtemp_11, __Vtemp_12);
+    __Vtemp_13[0U] = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26;
+    __Vtemp_13[1U] = 0U;
+    __Vtemp_13[2U] = 0U;
+    __Vtemp_13[3U] = 0U;
+    VL_SHIFTL_WWW(128,128,128, __Vtemp_14, __Vtemp_12, __Vtemp_13);
     if (VL_UNLIKELY(((((0U != (((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[0U] 
                                  | vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[1U]) 
                                 | vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[2U]) 
@@ -680,22 +700,22 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
                        & (~ (IData)(vlSelfRef.reset))) 
                       & (0U == ((((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[0U] 
                                    ^ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_65)
-                                       ? __Vtemp_13[0U]
+                                       ? __Vtemp_14[0U]
                                        : 0U)) | (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[1U] 
                                                  ^ 
                                                  ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_65)
                                                    ? 
-                                                  __Vtemp_13[1U]
+                                                  __Vtemp_14[1U]
                                                    : 0U))) 
                                  | (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[2U] 
                                     ^ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_65)
-                                        ? __Vtemp_13[2U]
+                                        ? __Vtemp_14[2U]
                                         : 0U))) | (
                                                    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT__c_set_wo_ready[3U] 
                                                    ^ 
                                                    ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_65)
                                                      ? 
-                                                    __Vtemp_13[3U]
+                                                    __Vtemp_14[3U]
                                                      : 0U)))))))) {
         VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:47001: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'C' and 'D' concurrent, despite minlatency > 0 (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
@@ -1206,16 +1226,16 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         = (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__nodeOut_c_valid) 
             & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__c_first_counter))) 
            & (~ (IData)(vlSelfRef.reset)));
-    __Vtemp_19[0U] = (0xfcU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
+    __Vtemp_20[0U] = (0xfcU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
                                << 1U));
-    __Vtemp_19[1U] = 0U;
-    __Vtemp_19[2U] = 0U;
-    __Vtemp_19[3U] = 0U;
-    __Vtemp_19[4U] = 0U;
-    __Vtemp_19[5U] = 0U;
-    __Vtemp_19[6U] = 0U;
-    __Vtemp_19[7U] = 0U;
-    VL_SHIFTR_WWW(256,256,256, ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__unnamedblk1__DOT___a_opcode_lookup_T_1, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__inflight_opcodes, __Vtemp_19);
+    __Vtemp_20[1U] = 0U;
+    __Vtemp_20[2U] = 0U;
+    __Vtemp_20[3U] = 0U;
+    __Vtemp_20[4U] = 0U;
+    __Vtemp_20[5U] = 0U;
+    __Vtemp_20[6U] = 0U;
+    __Vtemp_20[7U] = 0U;
+    VL_SHIFTR_WWW(256,256,256, ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__unnamedblk1__DOT___a_opcode_lookup_T_1, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__inflight_opcodes, __Vtemp_20);
     if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__unnamedblk1__DOT___GEN_17) 
                       & (~ (IData)(ysyxSoCFull__DOT__fpga__DOT__hints__DOT__monitor__DOT__unnamedblk1__DOT___GEN_16)))))) {
         VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:48472: Assertion failed in %NysyxSoCFull.fpga.hints.monitor.unnamedblk1: Assertion failed: 'A' channel carries AcquireBlock type which is unexpected using diplomatic parameters (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:98)\n\n",0,
@@ -5426,16 +5446,16 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         = (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_valid) 
             & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__c_first_counter))) 
            & (~ (IData)(vlSelfRef.reset)));
-    __Vtemp_23[0U] = (0xfcU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
+    __Vtemp_24[0U] = (0xfcU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
                                << 1U));
-    __Vtemp_23[1U] = 0U;
-    __Vtemp_23[2U] = 0U;
-    __Vtemp_23[3U] = 0U;
-    __Vtemp_23[4U] = 0U;
-    __Vtemp_23[5U] = 0U;
-    __Vtemp_23[6U] = 0U;
-    __Vtemp_23[7U] = 0U;
-    VL_SHIFTR_WWW(256,256,256, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___a_opcode_lookup_T_1, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_opcodes, __Vtemp_23);
+    __Vtemp_24[1U] = 0U;
+    __Vtemp_24[2U] = 0U;
+    __Vtemp_24[3U] = 0U;
+    __Vtemp_24[4U] = 0U;
+    __Vtemp_24[5U] = 0U;
+    __Vtemp_24[6U] = 0U;
+    __Vtemp_24[7U] = 0U;
+    VL_SHIFTR_WWW(256,256,256, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___a_opcode_lookup_T_1, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_opcodes, __Vtemp_24);
     if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_17) 
                       & (~ (IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_16)))))) {
         VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:35098: Assertion failed in %NysyxSoCFull.fpga.chiplink.mbypass.monitor_1.unnamedblk1: Assertion failed: 'A' channel carries AcquireBlock type which is unexpected using diplomatic parameters (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/chiplink/ChipLink.scala:70:16)\n\n",0,
@@ -6355,16 +6375,5 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 35592, "", false);
-    }
-    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_49) 
-                      & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__source_ok_2)))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:35596: Assertion failed in %NysyxSoCFull.fpga.chiplink.mbypass.monitor_1.unnamedblk1: Assertion failed: 'C' channel Release carries invalid source ID (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/chiplink/ChipLink.scala:70:16)\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 35596, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:35598: Assertion failed in %NysyxSoCFull.fpga.chiplink.mbypass.monitor_1.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 35598, "", false);
     }
 }
