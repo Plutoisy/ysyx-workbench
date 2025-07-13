@@ -245,7 +245,7 @@ always @(posedge clk) begin
         cached_size <= 'd0;
     end
     else begin
-        if(state == ysyx_24120011_IFU_AXI_RDATA && next_state != ysyx_24120011_IFU_AXI_RDATA) begin
+        if(rvalid) begin
             cached_size <= cached_size + 'd4;
         end
         else if(state == ysyx_24120011_IFU_IDLE) begin
