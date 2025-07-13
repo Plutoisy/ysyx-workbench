@@ -265,7 +265,7 @@ generate
                 icache[j] <= 'b0;
             end
             else begin
-                if(M0_rdata == 32'h0000100f)begin//fence.i
+                if(inst_cache == 32'h0000100f)begin//fence.i
                     icache[j] <= 'b0;
                 end
                 else begin
