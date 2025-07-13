@@ -313,5 +313,4 @@ always@(posedge clk)begin
         state <= next_state;
     end
 end
-
 endmodule
