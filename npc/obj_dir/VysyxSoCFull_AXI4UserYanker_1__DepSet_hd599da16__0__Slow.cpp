@@ -5,92 +5,11 @@
 #include "VysyxSoCFull__pch.h"
 #include "VysyxSoCFull_AXI4UserYanker_1.h"
 
-VL_ATTR_COLD void VysyxSoCFull_AXI4UserYanker_1___eval_initial__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1(VysyxSoCFull_AXI4UserYanker_1* vlSelf) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            VysyxSoCFull_AXI4UserYanker_1___eval_initial__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1\n"); );
-    VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    auto& vlSelfRef = std::ref(*vlSelf).get();
-    // Body
-    vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__do_enq = 0U;
-    vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__do_enq = 0U;
-}
-
 VL_ATTR_COLD void VysyxSoCFull_AXI4UserYanker_1___stl_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1__0(VysyxSoCFull_AXI4UserYanker_1* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VysyxSoCFull_AXI4UserYanker_1___stl_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1__0\n"); );
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.__PVT__Queue17_BundleMap_8__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_9__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_10__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_11__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_12__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_13__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_1__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_2__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_3__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_4__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_5__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__deq_ptr_value]
-            : 0U);
-    vlSelfRef.__PVT__Queue17_BundleMap_6__DOT___ram_ext_R0_data 
-        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__deq_ptr_value))
-            ? vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__ram_ext__DOT__Memory
-           [vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__deq_ptr_value]
-            : 0U);
     vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__ptr_match 
         = ((IData)(vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__deq_ptr_value) 
            == (IData)(vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__enq_ptr_value));
@@ -138,10 +57,70 @@ VL_ATTR_COLD void VysyxSoCFull_AXI4UserYanker_1___stl_sequent__TOP__ysyxSoCFull_
             ? vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__ram_ext__DOT__Memory
            [vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__deq_ptr_value]
             : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_8__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_8__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_9__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_9__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_10__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_10__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_11__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_11__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_12__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_12__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_13__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_13__DOT__deq_ptr_value]
+            : 0U);
     vlSelfRef.__PVT__Queue17_BundleMap__DOT___ram_ext_R0_data 
         = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap__DOT__deq_ptr_value))
             ? vlSelfRef.__PVT__Queue17_BundleMap__DOT__ram_ext__DOT__Memory
            [vlSelfRef.__PVT__Queue17_BundleMap__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_1__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_1__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_2__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_2__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_3__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_3__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_4__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_4__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_5__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_5__DOT__deq_ptr_value]
+            : 0U);
+    vlSelfRef.__PVT__Queue17_BundleMap_6__DOT___ram_ext_R0_data 
+        = ((0x10U >= (IData)(vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__deq_ptr_value))
+            ? vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__ram_ext__DOT__Memory
+           [vlSelfRef.__PVT__Queue17_BundleMap_6__DOT__deq_ptr_value]
             : 0U);
     vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__empty 
         = ((~ (IData)(vlSelfRef.__PVT__Queue17_BundleMap_7__DOT__maybe_full)) 

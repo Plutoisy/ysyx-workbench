@@ -95,10 +95,10 @@ VL_INLINE_OPT void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSo
         = ((1U & (~ (IData)(vlSymsp->TOP.reset))) && (IData)(vlSelfRef.__PVT__widx_widx_gray__DOT__output_chain_2__DOT__sync_2));
     vlSelfRef.__PVT__widx_widx_gray__DOT__output_chain_3__DOT__sync_1 
         = ((1U & (~ (IData)(vlSymsp->TOP.reset))) && (IData)(vlSelfRef.__PVT__widx_widx_gray__DOT__output_chain_3__DOT__sync_2));
-    vlSelfRef.io_deq_valid = ((IData)(vlSelfRef.__PVT__source_valid__DOT__io_out_source_valid_0__DOT__output_chain__DOT__sync_0) 
-                              & (IData)(vlSelfRef.__PVT__valid_reg));
     vlSelfRef.__PVT__source_valid__DOT__io_out_source_valid_0__DOT__output_chain__DOT__sync_1 
         = ((1U & (~ (IData)(vlSymsp->TOP.reset))) && (IData)(vlSelfRef.__PVT__source_valid__DOT__io_out_source_valid_0__DOT__output_chain__DOT__sync_2));
+    vlSelfRef.io_deq_valid = ((IData)(vlSelfRef.__PVT__source_valid__DOT__io_out_source_valid_0__DOT__output_chain__DOT__sync_0) 
+                              & (IData)(vlSelfRef.__PVT__valid_reg));
     vlSelfRef.__PVT__widx_widx_gray__DOT__output_chain__DOT__sync_2 
         = ((1U & (~ (IData)(vlSymsp->TOP.reset))) && 
            (1U & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source.__PVT__widx_gray)));

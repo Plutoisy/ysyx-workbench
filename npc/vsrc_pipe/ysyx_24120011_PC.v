@@ -13,12 +13,15 @@ module ysyx_24120011_PC (
 reg [31:0] npc;
 reg full;
 
+assign o_PC_ready = ~full;
+assign o_PC_valid = full;
+
 assign o_pc = npc;
 
 always @(posedge clk) begin
     if(rst) begin
         npc   <= 32'h0000_0000;
-        full <= 1'b0;
+        full <= 1'b1;
     end
     else begin
         //输入握手
