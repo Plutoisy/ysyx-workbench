@@ -59,6 +59,8 @@ assign o_src1       = src1;
 assign o_src2       = src2;
 assign o_r_csr_data = r_csr_data;
 assign o_imm        = imm;
+assign o_rd         = rd;
+assign o_w_csr_addr = w_csr_addr;
 
 always @(posedge clk) begin
     if(rst) begin
