@@ -20,8 +20,8 @@ assign o_pc = npc;
 
 always @(posedge clk) begin
     if(rst) begin
-        npc   <= 32'h0000_0000;
-        full <= 1'b1;
+        npc   <= 32'h3000_0000;
+        full  <= 1'b1;
     end
     else begin
         //输入握手
