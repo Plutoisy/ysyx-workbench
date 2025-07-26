@@ -58,18 +58,19 @@ reg next_state;
 assign o_EXU_ready  = ((state == ysyx_24120011_EXU_IDLE) && i_EXMEM_ready && i_PC_ready) ? 1'b1 : 1'b0;
 assign o_EXU_valid  = (state == ysyx_24120011_EXU_WORKING && next_state == ysyx_24120011_EXU_IDLE) ? 1'b1 : 1'b0;
 
-assign o_rd_ctrl    = rd_ctrl    ;
-assign o_mem_ctrl   = mem_ctrl   ;
-assign o_csr_ctrl   = csr_ctrl   ;
-assign o_pc         = pc         ;
-assign o_src1       = src1       ;
-assign o_src2       = src2       ;
-assign o_r_csr_data = r_csr_data ;
-assign o_imm        = imm        ;
-assign o_rd         = rd         ;
-assign o_w_csr_addr = w_csr_addr ;
-assign o_ALU_result = ALU_result ;
-assign o_npc        = npc        ;
+assign o_rd_ctrl    = rd_ctrl     ;
+assign o_mem_ctrl   = mem_ctrl    ;
+assign o_csr_ctrl   = csr_ctrl    ;
+assign o_pc         = pc          ;
+assign o_src1       = src1        ;
+assign o_src2       = src2        ;
+assign o_r_csr_data = r_csr_data  ;
+assign o_imm        = imm         ;
+assign o_rd         = rd          ;
+assign o_w_csr_addr = w_csr_addr  ;
+assign o_ALU_result = ALU_result  ;
+assign o_npc        = npc         ;
+
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
@@ -83,6 +84,8 @@ always @(posedge clk) begin
         src2       <=  'd0;
         r_csr_data <=  'd0;
         imm        <=  'd0;
+        rd         <=  'd0;
+        w_csr_addr <=  'd0;
     end
     else begin
         //输入握手
@@ -97,6 +100,8 @@ always @(posedge clk) begin
             src2       <=  i_src2      ;
             r_csr_data <=  i_r_csr_data;
             imm        <=  i_imm       ;
+            rd         <=  i_rd        ;
+            w_csr_addr <=  i_w_csr_addr;
         end
     end
 end
