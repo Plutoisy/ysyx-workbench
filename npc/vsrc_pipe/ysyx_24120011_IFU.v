@@ -57,7 +57,7 @@ reg [31:0] pc;
 reg [31:0] inst;
 
 assign o_pc = pc;
-
+assign o_inst = inst;
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin

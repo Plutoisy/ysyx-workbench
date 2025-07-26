@@ -35,7 +35,7 @@
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 1
-#define INST_NOT_VALID_CHECK 0
+#define INST_NOT_VALID_CHECK 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
