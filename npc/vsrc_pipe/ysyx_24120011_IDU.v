@@ -27,7 +27,9 @@ module ysyx_24120011_IDU (
     input  [31:0] i_src1,
     input  [31:0] i_src2,
     output [11:0] o_r_csr_addr,
-    input  [31:0] i_r_csr_data
+    input  [31:0] i_r_csr_data,
+    //暂停流水线
+    input i_stop_pipe
 );
 
 parameter ysyx_24120011_IDU_IDLE      = 1'b0;
@@ -39,7 +41,7 @@ reg state;
 reg next_state;
 
 assign o_IDU_ready  = ((state == ysyx_24120011_IDU_IDLE) && i_IDEX_ready) ? 1'b1 : 1'b0;
-assign o_IDU_valid  = (state == ysyx_24120011_IDU_WORKING && next_state == ysyx_24120011_IDU_IDLE) ? 1'b1 : 1'b0;
+assign o_IDU_valid  = (!i_stop_pipe && state == ysyx_24120011_IDU_WORKING && next_state == ysyx_24120011_IDU_IDLE) ? 1'b1 : 1'b0;
 assign o_rs1        = rs1;
 assign o_rs2        = rs2;
 assign o_r_csr_addr = r_csr_addr;
