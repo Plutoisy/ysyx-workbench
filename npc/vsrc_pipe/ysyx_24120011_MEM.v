@@ -600,9 +600,9 @@ end
     always@(*)begin
         case(state)
             ysyx_24120011_LSU_M_AXI_IDLE: next_state = (i_EXMEM_valid && o_MEM_ready) ? ysyx_24120011_LSU_M_AXI_RWCHECK : ysyx_24120011_LSU_M_AXI_IDLE;
-            ysyx_24120011_LSU_M_AXI_RWCHECK:next_state = (start_read_delay) ? 
+            ysyx_24120011_LSU_M_AXI_RWCHECK:next_state = (mem_ctrl[17]) ? 
                                                     ysyx_24120011_LSU_M_AXI_RADDR : 
-                                                    ((start_write_delay) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE);
+                                                    ((mem_ctrl[8]) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE);
             ysyx_24120011_LSU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
             ysyx_24120011_LSU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
             ysyx_24120011_LSU_M_AXI_WADDR: begin 
