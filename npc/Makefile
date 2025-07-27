@@ -14,7 +14,7 @@ $(SRC_AUTO_BIND): $(NXDC_FILES)
 VERILATOR_ROOT = /usr/local/share/verilator
 
 # rules for src
-VSRCS = $(shell find $(abspath ./vsrc_pipe) -name "*.v")
+VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
 VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 VSRCS_bs = $(shell find $(abspath ./vsrc_bs) -name "*.v")
