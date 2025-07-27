@@ -18,7 +18,7 @@ module ysyx_24120011_GPR(
 reg [31:0] GPRs [15:0];
 
 assign o_src1 = GPRs[i_rs1[3:0]];
-assign o_src2 = GPRs[i_rs1[3:0]];
+assign o_src2 = GPRs[i_rs2[3:0]];
 assign a0     = GPRs[10];
 
 //======================dpic========================//
