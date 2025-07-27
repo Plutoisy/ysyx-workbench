@@ -775,7 +775,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 35808, "", false);
     }
     if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_57) 
-                      & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_68_7) 
+                      & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
                          != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__source_3)))))) {
         VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:35812: Assertion failed in %NysyxSoCFull.fpga.chiplink.mbypass.monitor_1.unnamedblk1: Assertion failed: 'C' channel source changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/chiplink/ChipLink.scala:70:16)\n\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
@@ -983,7 +983,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 35886, "", false);
     }
     ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_68 
-        = VL_SHIFTR_QQQ(64,64,64, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_68_7)));
+        = VL_SHIFTR_QQQ(64,64,64, vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7)));
     if (VL_UNLIKELY(((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT___GEN_7) 
                        & (~ (IData)(vlSelfRef.reset))) 
                       & (IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_68))))) {
@@ -1047,7 +1047,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
     if (VL_UNLIKELY((((((((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_64) 
                             & (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__c_first_counter_1))) 
                            & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_valid)) 
-                          & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_68_7) 
+                          & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
                              == (0x3fU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
                                           >> 1U)))) 
                          & (6U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___mbypass_auto_in_1_d_bits_opcode))) 
@@ -18110,9 +18110,9 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
         __Vtemp_616[0xeU] = 0U;
         __Vtemp_616[0xfU] = 0U;
         __Vtemp_616[0x10U] = 0U;
-        __Vtemp_618[0U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_24_7) 
+        __Vtemp_618[0U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
                            << 2U);
-        __Vtemp_618[1U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_24_7) 
+        __Vtemp_618[1U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
                            >> 0x1eU);
         __Vtemp_618[2U] = 0U;
         __Vtemp_618[3U] = 0U;
@@ -18322,7 +18322,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1 
             = ((vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1 
                 | ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT___GEN_7)
-                    ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_24_7)))
+                    ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7)))
                     : 0ULL)) & (~ ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk2__DOT___GEN_72)
                                     ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(
                                                                                 (0x3fU 
@@ -19803,9 +19803,9 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
         __Vtemp_698[0xeU] = 0U;
         __Vtemp_698[0xfU] = 0U;
         __Vtemp_698[0x10U] = 0U;
-        __Vtemp_700[0U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_68_7) 
+        __Vtemp_700[0U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
                            << 3U);
-        __Vtemp_700[1U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_68_7) 
+        __Vtemp_700[1U] = ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
                            >> 0x1dU);
         __Vtemp_700[2U] = 0U;
         __Vtemp_700[3U] = 0U;
@@ -20079,7 +20079,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
         vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1 
             = ((vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1 
                 | ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT___GEN_7)
-                    ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_68_7)))
+                    ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7)))
                     : 0ULL)) & (~ ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk2__DOT___GEN_72)
                                     ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(
                                                                                 (0x3fU 
@@ -20744,9 +20744,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
                                               << 1U) 
                                              | (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi42tl__DOT____Vcellinp__nodeIn_rdeq_q__io_enq_bits_last))))));
     }
-    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__state 
-        = ((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT____Vcellinp__cpu__reset))) 
-           && (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__next_state));
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__state 
         = ((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT____Vcellinp__cpu__reset))) 
            && (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_EXU__DOT__next_state));
@@ -20763,6 +20760,9 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__5(VysyxSoCFull___0
             = (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4ram__DOT___mem_ext_R0_data 
                >> 0x18U);
     }
+    vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__state 
+        = ((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT____Vcellinp__cpu__reset))) 
+           && (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IDU__DOT__next_state));
     if (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi42tl__DOT__q_bdeq_q__DOT__do_enq) {
         vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi42tl__DOT__q_bdeq_q__DOT__ram 
             = ((4U & ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1.__PVT___in_0_d_bits_T_16) 

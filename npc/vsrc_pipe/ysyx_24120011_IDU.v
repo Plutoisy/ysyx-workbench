@@ -77,7 +77,7 @@ end
 always@(*)begin
     case(state)
         ysyx_24120011_IDU_IDLE:    next_state = (i_IFID_valid && o_IDU_ready) ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE;
-        ysyx_24120011_IDU_WORKING: next_state = ysyx_24120011_IDU_IDLE;
+        ysyx_24120011_IDU_WORKING: next_state = i_stop_pipe ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE;
         default : next_state = ysyx_24120011_IDU_IDLE;
     endcase
 end
