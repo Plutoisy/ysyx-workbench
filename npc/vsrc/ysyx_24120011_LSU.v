@@ -348,28 +348,16 @@ end
         if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
             awvalid_delay_cnt <= awvalid_delay_cnt - 1;
         end
-        else if((state == ysyx_24120011_LSU_M_AXI_WADDR)&& awvalid_delay_cnt == 0)begin
+        else if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt == 0)begin
             if(awready)begin
                 awvalid <= 0;
-                if(awaddr[31:24] == 8'ha0) begin
-                    wvalid <= 0;
-                end
-                //wvalid <= 0;
             end
             else begin
                 awvalid <= 1;
-                if(awaddr[31:24] == 8'ha0) begin
-                    wvalid <= 1;
-                end
-                //wvalid <= 1;
             end
         end
         else begin
             awvalid <= 0;
-            if(awaddr[31:24] == 8'ha0) begin
-                wvalid <= 0;
-            end
-            //wvalid <= 0;
         end
     end
 
@@ -385,16 +373,11 @@ end
             wvalid_delay_cnt <= wvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
-            if(awaddr[31:24] == 8'ha0) begin
+            if(wready == 1 && wvalid == 0) begin
                 wvalid <= 1;
             end
             else begin
-                if(wready == 1 && wvalid == 0) begin
-                    wvalid <= 1;
-                end
-                else begin
-                    wvalid <= 0;
-                end
+                wvalid <= 0;
             end
         end
         else begin
@@ -545,14 +528,7 @@ end
                                                     ((start_write_delay) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE);
             ysyx_24120011_LSU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
             ysyx_24120011_LSU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
-            ysyx_24120011_LSU_M_AXI_WADDR: begin 
-                if (wvalid  && wready ) begin 
-                    next_state = ysyx_24120011_LSU_M_AXI_WRESP;
-                end
-                else begin
-                    if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
-                end
-            end
+            ysyx_24120011_LSU_M_AXI_WADDR: if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
             ysyx_24120011_LSU_M_AXI_WDATA: if (wvalid  && wready ) next_state = ysyx_24120011_LSU_M_AXI_WRESP;
             ysyx_24120011_LSU_M_AXI_WRESP: if (bvalid  && bready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
             default : next_state = ysyx_24120011_LSU_M_AXI_IDLE;
