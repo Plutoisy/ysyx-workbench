@@ -69,7 +69,7 @@ VysyxSoCFull__Syms::VysyxSoCFull__Syms(VerilatedContext* contextp, const char* n
     , TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1{this, Verilated::catName(namep, "ysyxSoCFull.fpga.xbar_1")}
 {
         // Check resources
-        Verilated::stackCheck(69219);
+        Verilated::stackCheck(69125);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-12);
@@ -168,8 +168,6 @@ VysyxSoCFull__Syms::VysyxSoCFull__Syms(VerilatedContext* contextp, const char* n
     __Vscope_ysyxSoCFull__asic__chipMaster__axi42tl__unnamedblk1.configure(this, name(), "ysyxSoCFull.asic.chipMaster.axi42tl.unnamedblk1", "unnamedblk1", "<null>", -9, VerilatedScope::SCOPE_OTHER);
     __Vscope_ysyxSoCFull__asic__chipMaster__axi4frag.configure(this, name(), "ysyxSoCFull.asic.chipMaster.axi4frag", "axi4frag", "<null>", -9, VerilatedScope::SCOPE_OTHER);
     __Vscope_ysyxSoCFull__asic__chipMaster__axi4yank.configure(this, name(), "ysyxSoCFull.asic.chipMaster.axi4yank", "axi4yank", "<null>", -9, VerilatedScope::SCOPE_OTHER);
-    __Vscope_ysyxSoCFull__asic__chipMaster__axi4yank_1.configure(this, name(), "ysyxSoCFull.asic.chipMaster.axi4yank_1", "axi4yank_1", "<null>", -9, VerilatedScope::SCOPE_OTHER);
-    __Vscope_ysyxSoCFull__asic__chipMaster__axi4yank_1__unnamedblk1.configure(this, name(), "ysyxSoCFull.asic.chipMaster.axi4yank_1.unnamedblk1", "unnamedblk1", "<null>", -9, VerilatedScope::SCOPE_OTHER);
     __Vscope_ysyxSoCFull__asic__chipMaster__chiplink__mbypass__monitor.configure(this, name(), "ysyxSoCFull.asic.chipMaster.chiplink.mbypass.monitor", "monitor", "<null>", -9, VerilatedScope::SCOPE_OTHER);
     __Vscope_ysyxSoCFull__asic__chipMaster__chiplink__mbypass__monitor_1.configure(this, name(), "ysyxSoCFull.asic.chipMaster.chiplink.mbypass.monitor_1", "monitor_1", "<null>", -9, VerilatedScope::SCOPE_OTHER);
     __Vscope_ysyxSoCFull__asic__chipMaster__chiplink__mbypass__monitor_1__unnamedblk1.configure(this, name(), "ysyxSoCFull.asic.chipMaster.chiplink.mbypass.monitor_1.unnamedblk1", "unnamedblk1", "<null>", -9, VerilatedScope::SCOPE_OTHER);

@@ -8,22 +8,12 @@
 
 extern "C" void reg_out(const int* array);
 
-VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<IData/*31:0*/, 16> array) {
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(VlUnpacked<IData/*31:0*/, 32> array) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit\n"); );
     // Body
-    int array__Vcvt[16];
-    for (size_t array__Vidx = 0; array__Vidx < 16; ++array__Vidx) array__Vcvt[array__Vidx] = (&array[0])[array__Vidx];
+    int array__Vcvt[32];
+    for (size_t array__Vidx = 0; array__Vidx < 32; ++array__Vidx) array__Vcvt[array__Vidx] = (&array[0])[array__Vidx];
     reg_out(array__Vcvt);
-}
-
-extern "C" void LSU_clktime_count(int lsu_clk_count);
-
-VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_LSU_clktime_count_TOP____024unit(IData/*31:0*/ lsu_clk_count) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_LSU_clktime_count_TOP____024unit\n"); );
-    // Body
-    int lsu_clk_count__Vcvt;
-    for (size_t lsu_clk_count__Vidx = 0; lsu_clk_count__Vidx < 1; ++lsu_clk_count__Vidx) lsu_clk_count__Vcvt = lsu_clk_count;
-    LSU_clktime_count(lsu_clk_count__Vcvt);
 }
 
 extern "C" void ebreak();
@@ -92,6 +82,16 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_icahce_miss_count_TOP___
     int miss_count__Vcvt;
     for (size_t miss_count__Vidx = 0; miss_count__Vidx < 1; ++miss_count__Vidx) miss_count__Vcvt = miss_count;
     icahce_miss_count(miss_count__Vcvt);
+}
+
+extern "C" void LSU_clktime_count(int lsu_clk_count);
+
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_LSU_clktime_count_TOP____024unit(IData/*31:0*/ lsu_clk_count) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_LSU_clktime_count_TOP____024unit\n"); );
+    // Body
+    int lsu_clk_count__Vcvt;
+    for (size_t lsu_clk_count__Vidx = 0; lsu_clk_count__Vidx < 1; ++lsu_clk_count__Vidx) lsu_clk_count__Vcvt = lsu_clk_count;
+    LSU_clktime_count(lsu_clk_count__Vcvt);
 }
 
 extern "C" void flash_read(int addr, int* data);

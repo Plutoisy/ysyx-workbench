@@ -33,6 +33,28 @@ VL_ATTR_COLD void VysyxSoCFull_TLToAXI4___eval_initial__TOP__ysyxSoCFull__DOT__a
     }
 }
 
+VL_ATTR_COLD void VysyxSoCFull_TLToAXI4___stl_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4__0(VysyxSoCFull_TLToAXI4* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            VysyxSoCFull_TLToAXI4___stl_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4__0\n"); );
+    VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.__PVT__a_first = (0U == (IData)(vlSelfRef.__PVT__r_counter));
+    vlSelfRef.__PVT__monitor__DOT__a_first_1 = (0U 
+                                                == (IData)(vlSelfRef.__PVT__monitor__DOT__a_first_counter_1));
+    vlSelfRef.__PVT__monitor__DOT__d_first_1 = (0U 
+                                                == (IData)(vlSelfRef.__PVT__monitor__DOT__d_first_counter_1));
+    vlSelfRef.__PVT__monitor__DOT__d_first_2 = (0U 
+                                                == (IData)(vlSelfRef.__PVT__monitor__DOT__d_first_counter_2));
+    vlSelfRef.__PVT__r_denied = ((1U & (~ (IData)(vlSelfRef.__PVT__r_first))) 
+                                 && (IData)(vlSelfRef.__PVT__r_denied_r));
+    vlSelfRef.__PVT___out_wvalid_T_3 = (1U & ((~ (IData)(vlSelfRef.__PVT__queue_arw_deq_q__DOT__full)) 
+                                              | (IData)(vlSelfRef.__PVT__doneAW)));
+    vlSelfRef.__PVT__nodeIn_d_bits_corrupt = ((IData)(vlSelfRef.__PVT__r_holds_d) 
+                                              & (IData)(vlSelfRef.__PVT__r_denied));
+    vlSelfRef.__PVT__nodeIn_d_bits_denied = ((IData)(vlSelfRef.__PVT__r_holds_d) 
+                                             && (IData)(vlSelfRef.__PVT__r_denied));
+}
+
 VL_ATTR_COLD void VysyxSoCFull_TLToAXI4___ctor_var_reset(VysyxSoCFull_TLToAXI4* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VysyxSoCFull_TLToAXI4___ctor_var_reset\n"); );
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;

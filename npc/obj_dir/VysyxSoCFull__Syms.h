@@ -96,8 +96,6 @@ class alignas(VL_CACHE_LINE_BYTES)VysyxSoCFull__Syms final : public VerilatedSym
     VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__axi42tl__unnamedblk1;
     VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__axi4frag;
     VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__axi4yank;
-    VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__axi4yank_1;
-    VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__axi4yank_1__unnamedblk1;
     VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__chiplink__mbypass__monitor;
     VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__chiplink__mbypass__monitor_1;
     VerilatedScope __Vscope_ysyxSoCFull__asic__chipMaster__chiplink__mbypass__monitor_1__unnamedblk1;
