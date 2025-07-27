@@ -101,7 +101,7 @@ nvboard_bs:$(VSRCS_bs) $(CSRCS) $(NVBOARD_ARCHIVE)
 
 perf:
 	rm -rf ~/yosys-sta/npc && \
-	cp -r ./vsrc ~/yosys-sta/npc && \
+	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	rm -rf ~/yosys-sta/result/* && \
 	cd ~/yosys-sta && \
@@ -110,7 +110,15 @@ perf:
 	make ARCH=riscv32e-ysyxsoc run mainargs=test && \
 	cd $(YSYX_HOME)/npc && \
 	python3 ./tools/perf.py
-
+	
+perfhalf:
+	rm -rf ~/yosys-sta/npc && \
+	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	python3 ./tools/remove_dpic.py && \
+	rm -rf ~/yosys-sta/result/* && \
+	cd ~/yosys-sta && \
+	make sta
+	
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
