@@ -126,12 +126,12 @@ assign o_ALU_result = ALU_result;
 //             src2       <=  i_src2      ;
 //             r_csr_data <=  i_r_csr_data;
 //             imm        <=  i_imm       ;
-            rd         <=  i_rd        ;
-            w_csr_addr <=  i_w_csr_addr;
-            ALU_result <=  i_ALU_result;
-        end
-    end
-end
+//             rd         <=  i_rd        ;
+//             w_csr_addr <=  i_w_csr_addr;
+//             ALU_result <=  i_ALU_result;
+//         end
+//     end
+// end
 
 
 always @(*) begin
