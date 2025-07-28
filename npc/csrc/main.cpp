@@ -235,9 +235,11 @@ void step_and_dump_wave(){
     nvboard_update();
   }
   dut.eval();
-  if(WAVE && ((top_pc & 0xFF000000) >> 24) == 0xA0){
-    contextp->timeInc(1);
-    tfp->dump(contextp->time());
+  if(WAVE){
+    //if(((top_pc & 0xFF000000) >> 24) == 0xA0){
+      contextp->timeInc(1);
+      tfp->dump(contextp->time());
+    //} 
   }
 }
 
