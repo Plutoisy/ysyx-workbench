@@ -127,7 +127,7 @@ assign o_IFU_ready  = ((state == ysyx_24120011_IFU_IDLE) && i_IFID_ready) ? 1'b1
 //====================IFU====================//
 
 //====================icache====================//
-parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
+parameter ysyx_24120011_ICACHE_SIZE   = 32'd4;
 parameter ysyx_24120011_ICACHE_NUM    = 32'd16;
 //  valid                                       tag                                                 data
 reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
