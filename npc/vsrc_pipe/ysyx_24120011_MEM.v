@@ -88,7 +88,7 @@ reg [31:0] r_mem_data;
 
 //assign o_MEM_ready  = LSU_ready ;
 assign o_MEM_ready  = ((state == ysyx_24120011_LSU_M_AXI_IDLE) && i_MEMWB_ready) ? 1'b1 : 1'b0;
-assign o_MEM_valid  = (state == ysyx_24120011_LSU_M_AXI_RWCHECK) && (next_state == ysyx_24120011_LSU_M_AXI_IDLE) ? 1'b1 : (LSU_working == 1 && next_state == ysyx_24120011_LSU_M_AXI_IDLE ? 1'b1 : 1'b0);
+assign o_MEM_valid  = (state != ysyx_24120011_LSU_M_AXI_IDLE) && (next_state == ysyx_24120011_LSU_M_AXI_IDLE) ? 1'b1 : 1'b0;
 assign o_r_mem_data = r_mem_data;
 assign o_rd_ctrl    = rd_ctrl   ;
 assign o_csr_ctrl   = csr_ctrl  ;
@@ -269,14 +269,15 @@ always @(posedge clk) begin
         LSU_working_delay <= LSU_working;
 
         if (state == ysyx_24120011_LSU_M_AXI_IDLE) begin
+            LSU_clktime_count(cycle_counter);
             cycle_counter <= 0;
         end
         else begin
             cycle_counter <= cycle_counter + 1'b1;
         end
-        if (~LSU_working & LSU_working_delay) begin//LSU_working下降沿
-            LSU_clktime_count(cycle_counter);
-        end
+        // if (~LSU_working & LSU_working_delay) begin//LSU_working下降沿
+        //     LSU_clktime_count(cycle_counter);
+        // end
     end
 end
 //======================dpic========================//
@@ -410,14 +411,14 @@ end
         else if((state == ysyx_24120011_LSU_M_AXI_WADDR)&& awvalid_delay_cnt == 0)begin
             if(awready)begin
                 awvalid <= 0;
-                if(awaddr[31:24] == 8'ha0) begin
+                if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                     wvalid <= 0;
                 end
                 //wvalid <= 0;
             end
             else begin
                 awvalid <= 1;
-                if(awaddr[31:24] == 8'ha0) begin
+                if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                     wvalid <= 1;
                 end
                 //wvalid <= 1;
@@ -425,7 +426,7 @@ end
         end
         else begin
             awvalid <= 0;
-            if(awaddr[31:24] == 8'ha0) begin
+            if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                 wvalid <= 0;
             end
             //wvalid <= 0;
@@ -444,7 +445,7 @@ end
             wvalid_delay_cnt <= wvalid_delay_cnt - 1;
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
-            if(awaddr[31:24] == 8'ha0) begin
+            if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                 wvalid <= 1;
             end
             else begin
