@@ -344,18 +344,18 @@ ysyx_24120011_IFID u_ysyx_24120011_IFID(
     .o_IFID_valid  ( IFID_valid  )
 );
 
-wire [2:0]  IDU_IDEX_pc_ctrl;
-wire [3:0]  IDU_IDEX_rd_ctrl;
-wire [5:0]  IDU_IDEX_ALU_ctrl;
-wire [18:0] IDU_IDEX_mem_ctrl;
-wire [4:0]  IDU_IDEX_csr_ctrl;
-wire [31:0] IDU_IDEX_pc;
-wire [31:0] IDU_IDEX_src1;
-wire [31:0] IDU_IDEX_src2;
-wire [31:0] IDU_IDEX_r_csr_data;
-wire [31:0] IDU_IDEX_imm;
-wire [4:0]  IDU_IDEX_rd;
-wire [11:0] IDU_IDEX_w_csr_addr;
+wire [2:0]  IDU_EXU_pc_ctrl;
+wire [3:0]  IDU_EXU_rd_ctrl;
+wire [5:0]  IDU_EXU_ALU_ctrl;
+wire [18:0] IDU_EXU_mem_ctrl;
+wire [4:0]  IDU_EXU_csr_ctrl;
+wire [31:0] IDU_EXU_pc;
+wire [31:0] IDU_EXU_src1;
+wire [31:0] IDU_EXU_src2;
+wire [31:0] IDU_EXU_r_csr_data;
+wire [31:0] IDU_EXU_imm;
+wire [4:0]  IDU_EXU_rd;
+wire [11:0] IDU_EXU_w_csr_addr;
 wire IDEX_ready;
 wire IDU_valid;
 wire [4:0]  IDU_GPR_rs1;
@@ -370,21 +370,21 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .rst          ( reset          ),
     .i_pc         ( IFID_IDU_pc         ),
     .i_inst       ( IFID_IDU_inst       ),
-    .o_pc_ctrl    ( IDU_IDEX_pc_ctrl    ),
-    .o_rd_ctrl    ( IDU_IDEX_rd_ctrl    ),
-    .o_ALU_ctrl   ( IDU_IDEX_ALU_ctrl   ),
-    .o_mem_ctrl   ( IDU_IDEX_mem_ctrl   ),
-    .o_csr_ctrl   ( IDU_IDEX_csr_ctrl   ),
-    .o_pc         ( IDU_IDEX_pc         ),
-    .o_src1       ( IDU_IDEX_src1       ),
-    .o_src2       ( IDU_IDEX_src2       ),
-    .o_r_csr_data ( IDU_IDEX_r_csr_data ),
-    .o_imm        ( IDU_IDEX_imm        ),
-    .o_rd         ( IDU_IDEX_rd         ),
-    .o_w_csr_addr ( IDU_IDEX_w_csr_addr ),
+    .o_pc_ctrl    ( IDU_EXU_pc_ctrl    ),
+    .o_rd_ctrl    ( IDU_EXU_rd_ctrl    ),
+    .o_ALU_ctrl   ( IDU_EXU_ALU_ctrl   ),
+    .o_mem_ctrl   ( IDU_EXU_mem_ctrl   ),
+    .o_csr_ctrl   ( IDU_EXU_csr_ctrl   ),
+    .o_pc         ( IDU_EXU_pc         ),
+    .o_src1       ( IDU_EXU_src1       ),
+    .o_src2       ( IDU_EXU_src2       ),
+    .o_r_csr_data ( IDU_EXU_r_csr_data ),
+    .o_imm        ( IDU_EXU_imm        ),
+    .o_rd         ( IDU_EXU_rd         ),
+    .o_w_csr_addr ( IDU_EXU_w_csr_addr ),
     .i_IFID_valid ( IFID_valid ),
     .o_IDU_ready  ( IDU_ready  ),
-    .i_IDEX_ready ( IDEX_ready ),
+    .i_IDEX_ready ( EXU_ready ),
     .o_IDU_valid  ( IDU_valid  ),
     .o_rs1        ( IDU_GPR_rs1        ),
     .o_rs2        ( IDU_GPR_rs2        ),
@@ -408,38 +408,38 @@ wire [4:0]  IDEX_EXU_rd;
 wire [11:0] IDEX_EXU_w_csr_addr;
 wire EXU_ready ;
 wire IDEX_valid;
-ysyx_24120011_IDEX u_ysyx_24120011_IDEX(
-    .clk          ( clock          ),
-    .rst          ( reset          ),
-    .i_pc_ctrl    ( IDU_IDEX_pc_ctrl    ),
-    .i_rd_ctrl    ( IDU_IDEX_rd_ctrl    ),
-    .i_ALU_ctrl   ( IDU_IDEX_ALU_ctrl   ),
-    .i_mem_ctrl   ( IDU_IDEX_mem_ctrl   ),
-    .i_csr_ctrl   ( IDU_IDEX_csr_ctrl   ),
-    .i_pc         ( IDU_IDEX_pc         ),
-    .i_src1       ( IDU_IDEX_src1       ),
-    .i_src2       ( IDU_IDEX_src2       ),
-    .i_r_csr_data ( IDU_IDEX_r_csr_data ),
-    .i_imm        ( IDU_IDEX_imm        ),
-    .i_rd         ( IDU_IDEX_rd         ),
-    .i_w_csr_addr ( IDU_IDEX_w_csr_addr ),
-    .o_pc_ctrl    ( IDEX_EXU_pc_ctrl    ),
-    .o_rd_ctrl    ( IDEX_EXU_rd_ctrl    ),
-    .o_ALU_ctrl   ( IDEX_EXU_ALU_ctrl   ),
-    .o_mem_ctrl   ( IDEX_EXU_mem_ctrl   ),
-    .o_csr_ctrl   ( IDEX_EXU_csr_ctrl   ),
-    .o_pc         ( IDEX_EXU_pc         ),
-    .o_src1       ( IDEX_EXU_src1       ),
-    .o_src2       ( IDEX_EXU_src2       ),
-    .o_r_csr_data ( IDEX_EXU_r_csr_data ),
-    .o_imm        ( IDEX_EXU_imm        ),
-    .o_rd         ( IDEX_EXU_rd         ),
-    .o_w_csr_addr ( IDEX_EXU_w_csr_addr ),
-    .i_IDU_valid  ( IDU_valid  ),
-    .o_IDEX_ready ( IDEX_ready ),
-    .i_EXU_ready  ( EXU_ready  ),
-    .o_IDEX_valid  ( IDEX_valid  )
-);
+// ysyx_24120011_IDEX u_ysyx_24120011_IDEX(
+//     .clk          ( clock          ),
+//     .rst          ( reset          ),
+//     .i_pc_ctrl    ( IDU_IDEX_pc_ctrl    ),
+//     .i_rd_ctrl    ( IDU_IDEX_rd_ctrl    ),
+//     .i_ALU_ctrl   ( IDU_IDEX_ALU_ctrl   ),
+//     .i_mem_ctrl   ( IDU_IDEX_mem_ctrl   ),
+//     .i_csr_ctrl   ( IDU_IDEX_csr_ctrl   ),
+//     .i_pc         ( IDU_IDEX_pc         ),
+//     .i_src1       ( IDU_IDEX_src1       ),
+//     .i_src2       ( IDU_IDEX_src2       ),
+//     .i_r_csr_data ( IDU_IDEX_r_csr_data ),
+//     .i_imm        ( IDU_IDEX_imm        ),
+//     .i_rd         ( IDU_IDEX_rd         ),
+//     .i_w_csr_addr ( IDU_IDEX_w_csr_addr ),
+//     .o_pc_ctrl    ( IDEX_EXU_pc_ctrl    ),
+//     .o_rd_ctrl    ( IDEX_EXU_rd_ctrl    ),
+//     .o_ALU_ctrl   ( IDEX_EXU_ALU_ctrl   ),
+//     .o_mem_ctrl   ( IDEX_EXU_mem_ctrl   ),
+//     .o_csr_ctrl   ( IDEX_EXU_csr_ctrl   ),
+//     .o_pc         ( IDEX_EXU_pc         ),
+//     .o_src1       ( IDEX_EXU_src1       ),
+//     .o_src2       ( IDEX_EXU_src2       ),
+//     .o_r_csr_data ( IDEX_EXU_r_csr_data ),
+//     .o_imm        ( IDEX_EXU_imm        ),
+//     .o_rd         ( IDEX_EXU_rd         ),
+//     .o_w_csr_addr ( IDEX_EXU_w_csr_addr ),
+//     .i_IDU_valid  ( IDU_valid  ),
+//     .o_IDEX_ready ( IDEX_ready ),
+//     .i_EXU_ready  ( EXU_ready  ),
+//     .o_IDEX_valid  ( IDEX_valid  )
+// );
 wire [3:0]  EXU_EXMEM_rd_ctrl;
 wire [18:0] EXU_EXMEM_mem_ctrl;
 wire [4:0]  EXU_EXMEM_csr_ctrl;
@@ -455,18 +455,18 @@ wire EXMEM_ready;
 ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .clk           ( clock           ),
     .rst           ( reset           ),
-    .i_pc_ctrl     ( IDEX_EXU_pc_ctrl     ),
-    .i_rd_ctrl     ( IDEX_EXU_rd_ctrl     ),
-    .i_ALU_ctrl    ( IDEX_EXU_ALU_ctrl    ),
-    .i_mem_ctrl    ( IDEX_EXU_mem_ctrl    ),
-    .i_csr_ctrl    ( IDEX_EXU_csr_ctrl    ),
-    .i_pc          ( IDEX_EXU_pc          ),
-    .i_src1        ( IDEX_EXU_src1        ),
-    .i_src2        ( IDEX_EXU_src2        ),
-    .i_r_csr_data  ( IDEX_EXU_r_csr_data  ),
-    .i_imm         ( IDEX_EXU_imm         ),
-    .i_rd          ( IDEX_EXU_rd          ),
-    .i_w_csr_addr  ( IDEX_EXU_w_csr_addr  ),
+    .i_pc_ctrl     ( IDU_EXU_pc_ctrl     ),
+    .i_rd_ctrl     ( IDU_EXU_rd_ctrl     ),
+    .i_ALU_ctrl    ( IDU_EXU_ALU_ctrl    ),
+    .i_mem_ctrl    ( IDU_EXU_mem_ctrl    ),
+    .i_csr_ctrl    ( IDU_EXU_csr_ctrl    ),
+    .i_pc          ( IDU_EXU_pc          ),
+    .i_src1        ( IDU_EXU_src1        ),
+    .i_src2        ( IDU_EXU_src2        ),
+    .i_r_csr_data  ( IDU_EXU_r_csr_data  ),
+    .i_imm         ( IDU_EXU_imm         ),
+    .i_rd          ( IDU_EXU_rd          ),
+    .i_w_csr_addr  ( IDU_EXU_w_csr_addr  ),
     .o_rd_ctrl     ( EXU_EXMEM_rd_ctrl     ),
     .o_mem_ctrl    ( EXU_EXMEM_mem_ctrl    ),
     .o_csr_ctrl    ( EXU_EXMEM_csr_ctrl    ),
@@ -479,7 +479,7 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .o_w_csr_addr  ( EXU_EXMEM_w_csr_addr  ),
     .o_ALU_result  ( EXU_EXMEM_ALU_result  ),
     .o_npc         ( EXU_PC_npc         ),
-    .i_IDEX_valid  ( IDEX_valid  ),
+    .i_IDEX_valid  ( IDU_valid  ),
     .o_EXU_ready   ( EXU_ready   ),
     .i_EXMEM_ready ( EXMEM_ready ),
     .i_PC_ready    ( PC_ready    ),
