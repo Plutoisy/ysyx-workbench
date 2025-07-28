@@ -58,7 +58,7 @@ assign o_imm        = imm;
 assign o_rd         = rd;
 assign o_w_csr_addr = w_csr_addr;
 assign o_ALU_result = ALU_result;
-
+reg flag;
 always @(posedge clk) begin
     if(rst) begin
         rd_ctrl    <=  'd0;
@@ -73,6 +73,7 @@ always @(posedge clk) begin
         w_csr_addr <=  'd0;
         ALU_result <=  'd0;
         full       <= 1'b0;
+        flag       <= 1'b0;
     end
     else begin
         //输入握手
@@ -89,11 +90,18 @@ always @(posedge clk) begin
             w_csr_addr <=  i_w_csr_addr;
             ALU_result <=  i_ALU_result;
             full       <=  1'b1        ;
+            flag       <=  flag        ;
         end
         //输出握手
-        if(o_EXMEM_valid && i_MEM_ready) begin
+        if(o_EXMEM_valid && i_MEM_ready ) begin
             //不复位为0以保持低功耗
-            full <= 1'b0;
+            if (!flag) begin
+                flag <= 1'b1;
+                full <= full;
+            end else begin
+                flag <= 1'b0;
+                full <= 1'b0;
+            end
         end
     end
 end
