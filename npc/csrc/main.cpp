@@ -43,7 +43,6 @@ static VysyxSoCFull dut;
 void nvboard_bind_all_pins(VysyxSoCFull* top);
 
 
-
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
