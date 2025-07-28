@@ -26,6 +26,9 @@ module ysyx_24120011_MEM(
     output [4:0]  o_rd,
     output [11:0] o_w_csr_addr,
     output [31:0] o_ALU_result,
+
+    // output [2:0] o_MEM_state,
+
     //握手
     input  i_EXMEM_valid,
     output o_MEM_ready,
@@ -99,54 +102,54 @@ assign o_imm        = imm       ;
 assign o_rd         = rd        ;
 assign o_w_csr_addr = w_csr_addr;
 assign o_ALU_result = ALU_result;
-
+// assign o_MEM_state  = state     ;
 //指令锁存
-always @(posedge clk) begin
-    if(rst) begin
-        rd_ctrl    <=  'd0;
-        mem_ctrl   <=  'd0;
-        csr_ctrl   <=  'd0;
-        pc         <=  'd0;
-        src1       <=  'd0;
-        src2       <=  'd0;
-        r_csr_data <=  'd0;
-        imm        <=  'd0;
-        rd         <=  'd0;
-        w_csr_addr <=  'd0;
-        ALU_result <=  'd0;
-    end
-    else begin
-        //输入握手
-        if(i_EXMEM_valid && o_MEM_ready) begin
-            rd_ctrl    <=  i_rd_ctrl   ;
-            mem_ctrl   <=  i_mem_ctrl  ;
-            csr_ctrl   <=  i_csr_ctrl  ;
-            pc         <=  i_pc        ;
-            src1       <=  i_src1      ;
-            src2       <=  i_src2      ;
-            r_csr_data <=  i_r_csr_data;
-            imm        <=  i_imm       ;
-            rd         <=  i_rd        ;
-            w_csr_addr <=  i_w_csr_addr;
-            ALU_result <=  i_ALU_result;
-        end
-    end
-end
-
-
-// always @(*) begin
-//             rd_ctrl    =  i_rd_ctrl   ;
-//             mem_ctrl   =  i_mem_ctrl  ;
-//             csr_ctrl   =  i_csr_ctrl  ;
-//             pc         =  i_pc        ;
-//             src1       =  i_src1      ;
-//             src2       =  i_src2      ;
-//             r_csr_data =  i_r_csr_data;
-//             imm        =  i_imm       ;
-//             rd         =  i_rd        ;
-//             w_csr_addr =  i_w_csr_addr;
-//             ALU_result =  i_ALU_result;
+// always @(posedge clk) begin
+//     if(rst) begin
+//         rd_ctrl    <=  'd0;
+//         mem_ctrl   <=  'd0;
+//         csr_ctrl   <=  'd0;
+//         pc         <=  'd0;
+//         src1       <=  'd0;
+//         src2       <=  'd0;
+//         r_csr_data <=  'd0;
+//         imm        <=  'd0;
+//         rd         <=  'd0;
+//         w_csr_addr <=  'd0;
+//         ALU_result <=  'd0;
+//     end
+//     else begin
+//         //输入握手
+//         if(i_EXMEM_valid && o_MEM_ready) begin
+//             rd_ctrl    <=  i_rd_ctrl   ;
+//             mem_ctrl   <=  i_mem_ctrl  ;
+//             csr_ctrl   <=  i_csr_ctrl  ;
+//             pc         <=  i_pc        ;
+//             src1       <=  i_src1      ;
+//             src2       <=  i_src2      ;
+//             r_csr_data <=  i_r_csr_data;
+//             imm        <=  i_imm       ;
+//             rd         <=  i_rd        ;
+//             w_csr_addr <=  i_w_csr_addr;
+//             ALU_result <=  i_ALU_result;
+//         end
+//     end
 // end
+
+
+always @(*) begin
+            rd_ctrl    =  i_rd_ctrl   ;
+            mem_ctrl   =  i_mem_ctrl  ;
+            csr_ctrl   =  i_csr_ctrl  ;
+            pc         =  i_pc        ;
+            src1       =  i_src1      ;
+            src2       =  i_src2      ;
+            r_csr_data =  i_r_csr_data;
+            imm        =  i_imm       ;
+            rd         =  i_rd        ;
+            w_csr_addr =  i_w_csr_addr;
+            ALU_result =  i_ALU_result;
+end
 
 
     reg LSU_valid;
