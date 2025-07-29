@@ -4182,7 +4182,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_0_sub_0(VysyxSoCFull___024r
     bufp->fullCData(oldp+763,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC__DOT__q_opcode),3);
     bufp->fullCData(oldp+764,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_param),3);
     bufp->fullCData(oldp+765,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_size),3);
-    bufp->fullCData(oldp+766,(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7),6);
+    bufp->fullCData(oldp+766,(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7),6);
     bufp->fullIData(oldp+767,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_address),32);
     bufp->fullIData(oldp+768,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink.__PVT__io_deq_bits_deq_bits_reg__DOT__cdc_reg),32);
     bufp->fullBit(oldp+769,((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sinkD__DOT__d_q__DOT__full)))));
@@ -7948,7 +7948,7 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_0_sub_0(VysyxSoCFull___024r
     bufp->fullCData(oldp+3398,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC__DOT__q_opcode),3);
     bufp->fullCData(oldp+3399,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_param),3);
     bufp->fullCData(oldp+3400,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_size),4);
-    bufp->fullCData(oldp+3401,(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7),6);
+    bufp->fullCData(oldp+3401,(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7),6);
     bufp->fullIData(oldp+3402,(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_address),32);
     bufp->fullIData(oldp+3403,(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink.__PVT__io_deq_bits_deq_bits_reg__DOT__cdc_reg),32);
     bufp->fullBit(oldp+3404,((1U & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sinkD__DOT__d_q__DOT__full)))));

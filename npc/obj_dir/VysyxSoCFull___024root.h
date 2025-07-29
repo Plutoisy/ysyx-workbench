@@ -3622,14 +3622,14 @@ class alignas(VL_CACHE_LINE_BYTES) VysyxSoCFull___024root final : public Verilat
             CData/*3:0*/ __VdfgRegularize_hd87f99a1_1_68;
         };
         struct {
-            CData/*0:0*/ __VdfgRegularize_hd87f99a1_20_6;
-            CData/*2:0*/ __VdfgRegularize_hd87f99a1_20_7;
-            CData/*0:0*/ __VdfgRegularize_hd87f99a1_20_9;
-            CData/*0:0*/ __VdfgRegularize_hd87f99a1_64_5;
-            CData/*2:0*/ __VdfgRegularize_hd87f99a1_64_7;
-            CData/*0:0*/ __VdfgRegularize_hd87f99a1_64_9;
-            CData/*0:0*/ __VdfgRegularize_hd87f99a1_64_28;
-            CData/*0:0*/ __VdfgRegularize_hd87f99a1_64_30;
+            CData/*0:0*/ __VdfgRegularize_hd87f99a1_21_6;
+            CData/*2:0*/ __VdfgRegularize_hd87f99a1_21_7;
+            CData/*0:0*/ __VdfgRegularize_hd87f99a1_21_9;
+            CData/*0:0*/ __VdfgRegularize_hd87f99a1_65_5;
+            CData/*2:0*/ __VdfgRegularize_hd87f99a1_65_7;
+            CData/*0:0*/ __VdfgRegularize_hd87f99a1_65_9;
+            CData/*0:0*/ __VdfgRegularize_hd87f99a1_65_28;
+            CData/*0:0*/ __VdfgRegularize_hd87f99a1_65_30;
             CData/*6:0*/ __Vtableidx1;
             CData/*1:0*/ __Vtableidx3;
             CData/*7:0*/ __Vtableidx4;
@@ -5509,8 +5509,8 @@ class alignas(VL_CACHE_LINE_BYTES) VysyxSoCFull___024root final : public Verilat
             QData/*48:0*/ ysyxSoCFull__DOT__mem__DOT__axi4frag__DOT__deq_q__DOT__ram;
             QData/*48:0*/ ysyxSoCFull__DOT__mem__DOT__axi4frag__DOT__deq_q_1__DOT__ram;
             QData/*36:0*/ ysyxSoCFull__DOT__mem__DOT__axi4frag__DOT__in_wdeq_q__DOT__ram;
-            QData/*35:0*/ __VdfgRegularize_hd87f99a1_23_0;
-            QData/*35:0*/ __VdfgRegularize_hd87f99a1_68_0;
+            QData/*35:0*/ __VdfgRegularize_hd87f99a1_24_0;
+            QData/*35:0*/ __VdfgRegularize_hd87f99a1_69_0;
             QData/*63:0*/ __Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_Clint__DOT__mtime;
             QData/*63:0*/ __Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight;
             QData/*63:0*/ __Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1;
