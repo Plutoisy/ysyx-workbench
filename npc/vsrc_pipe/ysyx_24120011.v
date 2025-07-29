@@ -230,8 +230,8 @@ wire             clint_bready;
 wire [3:0]	  clint_bid;
 
 //======================dpic========================//
-wire [31:0] MEMWB_valid_int;
-assign MEMWB_valid_int    = {31'b0,MEMWB_valid};
+wire [31:0] MEM_valid_int;
+assign MEM_valid_int    = {31'b0,MEM_valid};
 always@(posedge clock)begin
     if (IFU_IFID_inst == 32'b00000000000100000000000001110011)begin
         npc_trap(IFU_IFID_pc,a0);
@@ -239,7 +239,7 @@ always@(posedge clock)begin
     end
 end
 always@(negedge clock) begin
-    get_pc_inst(IFU_IFID_pc,EXU_PC_npc,IFU_IFID_inst,MEMWB_valid_int);
+    get_pc_inst(IFU_IFID_pc,EXU_PC_npc,IFU_IFID_inst,MEM_valid_int);
 end
 reg IFU_valid_delay;
 reg IFU_valid_rising_edge;
