@@ -127,8 +127,8 @@ assign o_IFU_ready  = ((state == ysyx_24120011_IFU_IDLE) && i_IFID_ready) ? 1'b1
 //====================IFU====================//
 
 //====================icache====================//
-parameter ysyx_24120011_ICACHE_SIZE   = 32'd4;
-parameter ysyx_24120011_ICACHE_NUM    = 32'd4;
+parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
+parameter ysyx_24120011_ICACHE_NUM    = 32'd2;
 //  valid                                       tag                                                 data
 reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
 
@@ -144,8 +144,8 @@ assign {tag,index,offset} = pc;
 assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
 assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
 assign hit = hit_valid && hit_tag;
-assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
-//assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+//assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
+assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
 //====================icache====================//
 
 //====================axi====================//
@@ -180,8 +180,8 @@ assign wready     = M0_wready;
 assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
-assign M0_arid    = 'd0       ;
-//assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;
+//assign M0_arid    = 'd0       ;
+assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;
 assign M0_arlen   = 'd0;
 assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;
