@@ -233,13 +233,13 @@ wire [3:0]	  clint_bid;
 wire [31:0] MEM_valid_int;
 assign MEM_valid_int    = {31'b0,MEM_valid};
 always@(posedge clock)begin
-    if (IFU_IFID_inst == 32'b00000000000100000000000001110011)begin
-        npc_trap(IFU_IFID_pc,a0);
+    if (IFU_IDU_inst == 32'b00000000000100000000000001110011)begin
+        npc_trap(IFU_IDU_pc,a0);
         ebreak();
     end
 end
 always@(negedge clock) begin
-    get_pc_inst(IFU_IFID_pc,EXU_PC_npc,IFU_IFID_inst,MEM_valid_int);
+    get_pc_inst(IFU_IDU_pc,EXU_PC_npc,IFU_IDU_inst,MEM_valid_int);
 end
 reg IFU_valid_delay;
 reg IFU_valid_rising_edge;
@@ -283,19 +283,19 @@ ysyx_24120011_PC u_ysyx_24120011_PC(
     .i_IFU_ready ( IFU_ready ),
     .o_PC_valid  ( PC_valid  )
 );
-wire [31:0] IFU_IFID_pc;
-wire [31:0] IFU_IFID_inst;
+wire [31:0] IFU_IDU_pc;
+wire [31:0] IFU_IDU_inst;
 wire IFID_ready;
 wire IFU_valid;
 ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .clk          ( clock          ),
     .rst          ( reset          ),
     .i_pc         ( PC_IFU_pc         ),
-    .o_pc         ( IFU_IFID_pc         ),
-    .o_inst       ( IFU_IFID_inst       ),
+    .o_pc         ( IFU_IDU_pc         ),
+    .o_inst       ( IFU_IDU_inst       ),
     .i_PC_valid   ( PC_valid   ),
     .o_IFU_ready  ( IFU_ready  ),
-    .i_IFID_ready ( IFID_ready ),
+    .i_IFID_ready ( IDU_ready ),
     .o_IFU_valid  ( IFU_valid  ),
     .M0_araddr    ( M0_araddr    ),
     .M0_arvalid   ( M0_arvalid   ),
@@ -331,18 +331,18 @@ wire [31:0] IFID_IDU_pc;
 wire [31:0] IFID_IDU_inst;
 wire IDU_ready;
 wire IFID_valid;
-ysyx_24120011_IFID u_ysyx_24120011_IFID(
-    .clk          ( clock          ),
-    .rst          ( reset          ),
-    .i_pc         ( IFU_IFID_pc         ),
-    .i_inst       ( IFU_IFID_inst       ),
-    .o_pc         ( IFID_IDU_pc         ),
-    .o_inst       ( IFID_IDU_inst       ),
-    .i_IFU_valid  ( IFU_valid  ),
-    .o_IFID_ready ( IFID_ready ),
-    .i_IDU_ready  ( IDU_ready  ),
-    .o_IFID_valid  ( IFID_valid  )
-);
+// ysyx_24120011_IFID u_ysyx_24120011_IFID(
+//     .clk          ( clock          ),
+//     .rst          ( reset          ),
+//     .i_pc         ( IFU_IFID_pc         ),
+//     .i_inst       ( IFU_IFID_inst       ),
+//     .o_pc         ( IFID_IDU_pc         ),
+//     .o_inst       ( IFID_IDU_inst       ),
+//     .i_IFU_valid  ( IFU_valid  ),
+//     .o_IFID_ready ( IFID_ready ),
+//     .i_IDU_ready  ( IDU_ready  ),
+//     .o_IFID_valid  ( IFID_valid  )
+// );
 
 wire [2:0]  IDU_EXU_pc_ctrl;
 wire [3:0]  IDU_EXU_rd_ctrl;
@@ -368,8 +368,8 @@ wire [31:0] IDU_CSR_r_csr_data;
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .clk          ( clock          ),
     .rst          ( reset          ),
-    .i_pc         ( IFID_IDU_pc         ),
-    .i_inst       ( IFID_IDU_inst       ),
+    .i_pc         ( IFU_IDU_pc         ),
+    .i_inst       ( IFU_IDU_inst       ),
     .o_pc_ctrl    ( IDU_EXU_pc_ctrl    ),
     .o_rd_ctrl    ( IDU_EXU_rd_ctrl    ),
     .o_ALU_ctrl   ( IDU_EXU_ALU_ctrl   ),
@@ -382,7 +382,7 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .o_imm        ( IDU_EXU_imm        ),
     .o_rd         ( IDU_EXU_rd         ),
     .o_w_csr_addr ( IDU_EXU_w_csr_addr ),
-    .i_IFID_valid ( IFID_valid ),
+    .i_IFID_valid ( IFU_valid ),
     .o_IDU_ready  ( IDU_ready  ),
     .i_IDEX_ready ( EXU_ready ),
     .o_IDU_valid  ( IDU_valid  ),
