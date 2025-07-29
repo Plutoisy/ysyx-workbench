@@ -481,7 +481,7 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .o_npc         ( EXU_PC_npc         ),
     .i_IDEX_valid  ( IDU_valid  ),
     .o_EXU_ready   ( EXU_ready   ),
-    .i_EXMEM_ready ( EXU_ready ),
+    .i_EXMEM_ready ( MEM_ready ),
     .i_PC_ready    ( PC_ready    ),
     .o_EXU_valid   ( EXU_valid   )
 );
@@ -682,6 +682,7 @@ ysyx_24120011_GPR u_ysyx_24120011_GPR(
     .i_rd_en   ( WBU_GPR_rd_en   ),
     .a0        ( a0              )
 );
+
 
 ysyx_24120011_CSR u_ysyx_24120011_CSR(
     .clk          ( clock          ),
