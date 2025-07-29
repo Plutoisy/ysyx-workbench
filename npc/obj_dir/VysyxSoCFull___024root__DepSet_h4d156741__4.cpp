@@ -3121,27 +3121,27 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
             & (2U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___mbypass_auto_in_1_d_bits_opcode))) 
            & (~ (IData)(vlSelfRef.reset)));
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__source_ok_2 
-        = (1U & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+        = (1U & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                         >> 3U)))) | 
-                       (1U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                       (1U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                      >> 3U)))) | (2U 
                                                   == 
                                                   (7U 
-                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                       >> 3U)))) 
-                     | (3U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                     | (3U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                      >> 3U)))) | (4U 
                                                   == 
                                                   (7U 
-                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                       >> 3U)))) 
-                   | (5U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                   | (5U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                    >> 3U)))) | (6U 
                                                 == 
                                                 (7U 
-                                                 & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                                 & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                     >> 3U)))) 
-                 | (7U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                 | (7U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                  >> 3U)))));
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___is_aligned_mask_T_4 
         = (0xfffU & VL_SHIFTL_III(12,12,12, (IData)(0x1fU), (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_size)));
@@ -3173,25 +3173,25 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         = (3U != (3U & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_bits_size) 
                         >> 1U)));
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_48 
-        = ((((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+        = ((((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                     >> 3U)))) | (1U 
                                                  == 
                                                  (7U 
-                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                      >> 3U)))) 
-                  | (2U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                  | (2U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                   >> 3U)))) | (3U == 
                                                (7U 
-                                                & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                                & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                    >> 3U)))) 
-                | (4U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                | (4U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                 >> 3U)))) | (5U == 
                                              (7U & 
-                                              ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                              ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                >> 3U)))) 
-              | (6U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+              | (6U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                               >> 3U)))) | (7U == (7U 
-                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                                                      >> 3U)))) 
             & (IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_47)) 
            & (~ (0U != ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_42)));
@@ -3200,7 +3200,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
             & (6U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC__DOT__q_opcode))) 
            & (~ (IData)(vlSelfRef.reset)));
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_50 
-        = (((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+        = (((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                              >> 3U)))) & (IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_47)) 
            & ((~ (0U != ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_42)) 
               | (~ (IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_43))));
@@ -3262,7 +3262,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__c_set_wo_ready 
         = (((IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_3) 
             & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT___GEN_5))
-            ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7)))
+            ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7)))
             : 0ULL);
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_63 
         = ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__nodeIn_1_d_valid) 
@@ -3273,7 +3273,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__same_cycle_resp_1 
         = (((IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_3) 
             & (6U == (6U & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC__DOT__q_opcode)))) 
-           & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+           & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
               == (0x3fU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT___in_0_d_bits_T_16) 
                            >> 1U))));
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_55 
@@ -4620,7 +4620,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 9289, "", false);
     }
     if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_57) 
-                      & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                      & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                          != (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__source_3)))))) {
         VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:9293: Assertion failed in %NysyxSoCFull.asic.chipMaster.chiplink.mbypass.monitor_1.unnamedblk1: Assertion failed: 'C' channel source changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/chiplink/ChipLink.scala:70:16)\n\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
@@ -4828,7 +4828,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 9367, "", false);
     }
     ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_67 
-        = VL_SHIFTR_QQQ(64,64,64, vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7)));
+        = VL_SHIFTR_QQQ(64,64,64, vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__inflight_1, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7)));
     if (VL_UNLIKELY(((((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT___GEN_7) 
                        & (~ (IData)(vlSelfRef.reset))) 
                       & (IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_67))))) {
@@ -4892,7 +4892,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     if (VL_UNLIKELY((((((((((IData)(ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_63) 
                             & (0U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__c_first_counter_1))) 
                            & (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___sourceC_io_c_valid)) 
-                          & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_20_7) 
+                          & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_21_7) 
                              == (0x3fU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT___in_0_d_bits_T_16) 
                                           >> 1U)))) 
                          & (6U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT___mbypass_auto_in_1_d_bits_opcode))) 
@@ -5274,27 +5274,27 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
             & (2U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___mbypass_auto_in_1_d_bits_opcode))) 
            & (~ (IData)(vlSelfRef.reset)));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__source_ok_2 
-        = (1U & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+        = (1U & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                         >> 3U)))) | 
-                       (1U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                       (1U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                      >> 3U)))) | (2U 
                                                   == 
                                                   (7U 
-                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                                       >> 3U)))) 
-                     | (3U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                     | (3U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                      >> 3U)))) | (4U 
                                                   == 
                                                   (7U 
-                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                                                   & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                                       >> 3U)))) 
-                   | (5U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                   | (5U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                    >> 3U)))) | (6U 
                                                 == 
                                                 (7U 
-                                                 & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                                                 & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                                     >> 3U)))) 
-                 | (7U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                 | (7U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                  >> 3U)))));
     ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___is_aligned_mask_T_4 
         = (0x7fffffU & VL_SHIFTL_III(23,23,23, (IData)(0xffU), (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_size)));
@@ -5331,26 +5331,26 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
         = (6U > (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___sourceC_io_c_bits_size));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_48 
         = ((((IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_46) 
-             & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+             & ((((((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                        >> 3U)))) | 
-                      (1U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                      (1U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                     >> 3U)))) | (2U 
                                                  == 
                                                  (7U 
-                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                                      >> 3U)))) 
-                    | (3U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                    | (3U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                     >> 3U)))) | (4U 
                                                  == 
                                                  (7U 
-                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                                                  & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                                      >> 3U)))) 
-                  | (5U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                  | (5U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                   >> 3U)))) | (6U == 
                                                (7U 
-                                                & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                                                & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                                    >> 3U)))) 
-                | (7U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+                | (7U == (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                                 >> 3U))))) & (IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_47)) 
            & (~ (0U != ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_42)));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_49 
@@ -5358,7 +5358,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
             & (6U == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC__DOT__q_opcode))) 
            & (~ (IData)(vlSelfRef.reset)));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_50 
-        = ((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+        = ((((~ (0U != (7U & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
                               >> 3U)))) & (IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_47)) 
             & (IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_46)) 
            & ((~ (0U != ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_42)) 
@@ -5432,7 +5432,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__c_set_wo_ready 
         = (((IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_3) 
             & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT___GEN_5))
-            ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7)))
+            ? VL_SHIFTL_QQQ(64,64,64, 1ULL, (QData)((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7)))
             : 0ULL);
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_64 
         = ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__nodeIn_1_d_valid) 
@@ -5443,7 +5443,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__4(VysyxSoCFull___0
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT__same_cycle_resp_1 
         = (((IData)(ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___same_cycle_resp_T_3) 
             & (6U == (6U & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC__DOT__q_opcode)))) 
-           & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_64_7) 
+           & ((IData)(vlSelfRef.__VdfgRegularize_hd87f99a1_65_7) 
               == (0x3fU & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
                            >> 1U))));
     vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor_1__DOT__unnamedblk1__DOT___GEN_55 
