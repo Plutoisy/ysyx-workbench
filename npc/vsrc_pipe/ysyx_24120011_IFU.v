@@ -126,26 +126,47 @@ assign o_IFU_valid  = cache_IFU_valid;
 assign o_IFU_ready  = ((state == ysyx_24120011_IFU_IDLE) && i_IFID_ready) ? 1'b1 : 1'b0;
 //====================IFU====================//
 
-//====================icache====================//
+// //====================icache====================//
+// parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
+// parameter ysyx_24120011_ICACHE_NUM    = 32'd2;
+// //  valid                                       tag                                                 data
+// reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
+
+// wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
+// wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
+// wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
+// wire [31:0] inst_cache;
+// wire hit;
+// wire hit_valid;
+// wire hit_tag;
+// assign {tag,index,offset} = pc;
+// //assign hit = 1'b0;
+// assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
+// assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
+// assign hit = hit_valid && hit_tag;
+// //assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
+// assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+// //====================icache====================//
+
+//====================icache_num1====================//
 parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
-parameter ysyx_24120011_ICACHE_NUM    = 32'd2;
+parameter ysyx_24120011_ICACHE_NUM    = 32'd1;
 //  valid                                       tag                                                 data
-reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
+reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache;
 
 wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
-wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
 wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
 wire [31:0] inst_cache;
 wire hit;
 wire hit_valid;
 wire hit_tag;
-assign {tag,index,offset} = pc;
+assign {tag,offset} = pc;
 //assign hit = 1'b0;
-assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
-assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
+assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
+assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
 assign hit = hit_valid && hit_tag;
 //assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
-assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+assign inst_cache = hit ? icache[31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
 //====================icache====================//
 
 //====================axi====================//
@@ -314,8 +335,11 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
             if(rvalid  && M0_rready) begin
-                icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
+                // icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
+                // icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
+
+                icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
+                icache[31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
             end
             else begin
             end
