@@ -55,7 +55,7 @@ reg [11:0] w_csr_addr;
 reg state;
 reg next_state;
 
-assign o_EXU_ready  = ((state == ysyx_24120011_EXU_IDLE) && i_EXMEM_ready && i_PC_ready) ? 1'b1 : 1'b0;
+assign o_EXU_ready  = ((state == ysyx_24120011_EXU_IDLE) && i_EXMEM_ready) ? 1'b1 : 1'b0;
 assign o_EXU_valid  = (state == ysyx_24120011_EXU_WORKING && next_state == ysyx_24120011_EXU_IDLE) ? 1'b1 : 1'b0;
 
 assign o_rd_ctrl    = rd_ctrl     ;
