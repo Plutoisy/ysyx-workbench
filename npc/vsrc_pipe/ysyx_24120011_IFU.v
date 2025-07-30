@@ -59,18 +59,20 @@ reg [31:0] inst;
 assign o_pc = pc;
 assign o_inst = inst;
 //指令锁存
-always @(posedge clk) begin
-    if(rst) begin
-        pc         <=  'd0;
-    end
-    else begin
-        //输入握手
-        if(i_PC_valid && o_IFU_ready) begin
-            pc         <=  i_pc        ;
-        end
-    end
+// always @(posedge clk) begin
+//     if(rst) begin
+//         pc         <=  'd0;
+//     end
+//     else begin
+//         //输入握手
+//         if(i_PC_valid && o_IFU_ready) begin
+//             pc         <=  i_pc        ;
+//         end
+//     end
+// end
+always @(*) begin
+    pc         =  i_pc        ;
 end
-
 //IFU逻辑
 parameter ysyx_24120011_IFU_IDLE      = 3'b000;
 parameter ysyx_24120011_IFU_LOOKUP    = 3'b001;

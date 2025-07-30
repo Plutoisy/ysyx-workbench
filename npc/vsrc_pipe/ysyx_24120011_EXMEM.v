@@ -44,7 +44,7 @@ reg [11:0] w_csr_addr;
 reg [31:0] ALU_result;
 reg full;
 
-assign o_EXMEM_ready = ~full;
+assign o_EXMEM_ready = ~full && i_MEM_ready;
 assign o_EXMEM_valid = full;
 
 assign o_rd_ctrl    = rd_ctrl;

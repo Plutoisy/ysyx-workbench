@@ -375,6 +375,10 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__3(VysyxSoCFull___0
     ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_53 = 0;
     CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_54;
     ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_54 = 0;
+    CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55;
+    ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55 = 0;
+    CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56;
+    ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56 = 0;
     CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___same_cycle_resp_T_1;
     ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___same_cycle_resp_T_1 = 0;
     CData/*0:0*/ ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___same_cycle_resp_T_3;
@@ -409,50 +413,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__3(VysyxSoCFull___0
     VlWide<4>/*127:0*/ __Vtemp_48;
     VlWide<16>/*511:0*/ __Vtemp_52;
     // Body
-    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_28) 
-                      & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1)))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:41098: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAck carries invalid source ID (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:139:22)\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41098, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:41100: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41100, "", false);
-    }
-    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_28) 
-                      & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__nodeIn_d_bits_corrupt))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:41104: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAck is corrupt (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:139:22)\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41104, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:41106: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41106, "", false);
-    }
-    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_29) 
-                      & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT__source_ok_1)))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:41110: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAckData carries invalid source ID (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:139:22)\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41110, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:41112: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41112, "", false);
-    }
-    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_29) 
-                      & (~ (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_27)))))) {
-        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:41116: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1: Assertion failed: 'D' channel AccessAckData is denied but not corrupt (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:139:22)\n\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41116, "");
-        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:41118: Assertion failed in %NysyxSoCFull.fpga.tl2axi4_1.monitor.unnamedblk1\n",0,
-                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        Verilated::runFlushCallbacks();
-        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 41118, "", false);
-    }
     if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_31) 
                       & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___atomics_auto_out_a_bits_opcode) 
                          != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__monitor__DOT__opcode)))))) {
@@ -5566,11 +5526,11 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__3(VysyxSoCFull___0
             & (6U == (6U & (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__nodeOut_c_bits_opcode)))) 
            & (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___chiplink_auto_mbypass_out_c_bits_source) 
                << 1U) == (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26)));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55 
+    ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55 
         = (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__hints__DOT__a_repeater__DOT__io_deq_valid_0) 
             & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__a_first_counter))) 
            & (~ (IData)(vlSelfRef.reset)));
-    vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56 
+    ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56 
         = (((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__atomics__DOT__nodeIn_d_valid) 
             & (0U != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__d_first_counter))) 
            & (~ (IData)(vlSelfRef.reset)));
@@ -6771,7 +6731,7 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__3(VysyxSoCFull___0
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46803, "", false);
     }
-    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55) 
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55) 
                       & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_a_bits_opcode) 
                          != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__opcode)))))) {
         VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46807: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'A' channel opcode changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
@@ -6782,5 +6742,137 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__3(VysyxSoCFull___0
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         Verilated::runFlushCallbacks();
         VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46809, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_a_bits_param) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__param)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46813: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'A' channel param changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46813, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46815: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46815, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__hints__DOT___a_repeater_io_deq_bits_size) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__size)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46819: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'A' channel size changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46819, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46821: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46821, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_a_bits_source) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__source)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46825: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'A' channel source changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46825, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46827: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46827, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_55) 
+                      & (vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_a_bits_address 
+                         != vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__address))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46831: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'A' channel address changed with multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46831, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46833: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46833, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__atomics__DOT__nodeIn_d_bits_opcode) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__opcode_1)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46837: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'D' channel opcode changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46837, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46839: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46839, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_34) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__param_1)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46843: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'D' channel param changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46843, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46845: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46845, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_31) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__size_1)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46849: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'D' channel size changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46849, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46851: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46851, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__xbar__DOT___in_0_d_bits_T_26) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__source_1)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46855: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'D' channel source changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46855, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46857: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46857, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_56) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT___mbypass_auto_in_1_d_bits_denied) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__denied)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46861: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'D' channel denied changed with multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46861, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46863: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46863, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_57) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__nodeOut_c_bits_opcode) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__opcode_3)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46867: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'C' channel opcode changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46867, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46869: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46869, "", false);
+    }
+    if (VL_UNLIKELY((((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__unnamedblk1__DOT___GEN_57) 
+                      & ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT___hints_auto_out_c_bits_param) 
+                         != (IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__param_3)))))) {
+        VL_WRITEF_NX("[%0t] %%Error: ysyxSoCFull.v:46873: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1: Assertion failed: 'C' channel param changed within multibeat operation (connected at home/plutoisy/ysyx-workbench/ysyxSoC/src/device/ChipLinkBridge.scala:171:79)\n\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46873, "");
+        VL_WRITEF_NX("[%0t] %%Fatal: ysyxSoCFull.v:46875: Assertion failed in %NysyxSoCFull.fpga.fixer_1.monitor.unnamedblk1\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
+        Verilated::runFlushCallbacks();
+        VL_STOP_MT("/home/plutoisy/ysyx-workbench/ysyxSoC/build/ysyxSoCFull.v", 46875, "", false);
     }
 }
