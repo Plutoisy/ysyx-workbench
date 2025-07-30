@@ -35,9 +35,9 @@ def extract_chip_area(file_path):
     
     # 如果没找到匹配的行，返回None
     return None
-file_path = "/home/plutoisy/yosys-sta/result/ysyx_24120011-5000MHz/ysyx_24120011.rpt"
+file_path = "/home/plutoisy/yosys-sta/result/ysyx_24120011-100MHz/ysyx_24120011.rpt"
 hz = extract_hz(file_path)
-file_path = "/home/plutoisy/yosys-sta/result/ysyx_24120011-5000MHz/synth_stat.txt"
+file_path = "/home/plutoisy/yosys-sta/result/ysyx_24120011-100MHz/synth_stat.txt"
 area = extract_chip_area(file_path)
 
 # Read data from perf.txt
