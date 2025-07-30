@@ -59,20 +59,18 @@ reg [31:0] inst;
 assign o_pc = pc;
 assign o_inst = inst;
 //指令锁存
-// always @(posedge clk) begin
-//     if(rst) begin
-//         pc         <=  'd0;
-//     end
-//     else begin
-//         //输入握手
-//         if(i_PC_valid && o_IFU_ready) begin
-//             pc         <=  i_pc        ;
-//         end
-//     end
-// end
-always @(*) begin
-    pc         =  i_pc        ;
+always @(posedge clk) begin
+    if(rst) begin
+        pc         <=  'd0;
+    end
+    else begin
+        //输入握手
+        if(i_PC_valid && o_IFU_ready) begin
+            pc         <=  i_pc        ;
+        end
+    end
 end
+
 //IFU逻辑
 parameter ysyx_24120011_IFU_IDLE      = 3'b000;
 parameter ysyx_24120011_IFU_LOOKUP    = 3'b001;
@@ -126,47 +124,26 @@ assign o_IFU_valid  = cache_IFU_valid;
 assign o_IFU_ready  = ((state == ysyx_24120011_IFU_IDLE) && i_IFID_ready) ? 1'b1 : 1'b0;
 //====================IFU====================//
 
-// //====================icache====================//
-// parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
-// parameter ysyx_24120011_ICACHE_NUM    = 32'd2;
-// //  valid                                       tag                                                 data
-// reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
-
-// wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
-// wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
-// wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
-// wire [31:0] inst_cache;
-// wire hit;
-// wire hit_valid;
-// wire hit_tag;
-// assign {tag,index,offset} = pc;
-// //assign hit = 1'b0;
-// assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
-// assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
-// assign hit = hit_valid && hit_tag;
-// //assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
-// assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
-// //====================icache====================//
-
-//====================icache_num1====================//
+//====================icache====================//
 parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
-parameter ysyx_24120011_ICACHE_NUM    = 32'd1;
+parameter ysyx_24120011_ICACHE_NUM    = 32'd16;
 //  valid                                       tag                                                 data
-reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache;
+reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache [ysyx_24120011_ICACHE_NUM-1 : 0];
 
 wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
+wire [$clog2(ysyx_24120011_ICACHE_NUM)-1:0] index;
 wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
 wire [31:0] inst_cache;
 wire hit;
 wire hit_valid;
 wire hit_tag;
-assign {tag,offset} = pc;
+assign {tag,index,offset} = pc;
 //assign hit = 1'b0;
-assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
-assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
+assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
+assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[index][(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
 assign hit = hit_valid && hit_tag;
 //assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
-assign inst_cache = hit ? icache[31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+assign inst_cache = hit ? icache[index][31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
 //====================icache====================//
 
 //====================axi====================//
@@ -201,9 +178,8 @@ assign wready     = M0_wready;
 assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
-//assign M0_arid    = 'd0       ;
+assign M0_arid    = 'd0       ;
 assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;
-assign M0_arlen   = 'd0;
 assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
@@ -335,11 +311,8 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
             if(rvalid  && M0_rready) begin
-                // icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                // icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
-
-                icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                icache[31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
+                icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
+                icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
             end
             else begin
             end

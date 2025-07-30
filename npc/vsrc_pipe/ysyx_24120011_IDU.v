@@ -59,24 +59,20 @@ assign o_rd         = rd;
 assign o_w_csr_addr = w_csr_addr;
 
 //指令锁存
-// always @(posedge clk) begin
-//     if(rst) begin
-//         inst <= 32'h0000_0000;
-//         pc   <= 32'h0000_0000;
-//     end
-//     else begin
-//         //输入握手
-//         if(i_IFID_valid && o_IDU_ready) begin
-//             inst <= i_inst;
-//             pc   <= i_pc;
-//         end
-//     end
-// end
-
-always @(*) begin
-            inst = i_inst;
-            pc   = i_pc;
+always @(posedge clk) begin
+    if(rst) begin
+        inst <= 32'h0000_0000;
+        pc   <= 32'h0000_0000;
+    end
+    else begin
+        //输入握手
+        if(i_IFID_valid && o_IDU_ready) begin
+            inst <= i_inst;
+            pc   <= i_pc;
+        end
+    end
 end
+
 //状态机跳转
 always@(*)begin
     case(state)
