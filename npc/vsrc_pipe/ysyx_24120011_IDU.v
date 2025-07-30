@@ -29,7 +29,8 @@ module ysyx_24120011_IDU (
     output [11:0] o_r_csr_addr,
     input  [31:0] i_r_csr_data,
     //暂停流水线
-    input i_stop_pipe
+    input i_stop_pipe,
+    output o_IFUIDU_handshake
 );
 
 parameter ysyx_24120011_IDU_IDLE      = 1'b0;
@@ -57,7 +58,7 @@ assign o_r_csr_data = i_r_csr_data;
 assign o_imm        = imm;
 assign o_rd         = rd;
 assign o_w_csr_addr = w_csr_addr;
-
+assign o_IFUIDU_handshake = i_IFID_valid && o_IDU_ready;
 //指令锁存
 // always @(posedge clk) begin
 //     if(rst) begin

@@ -364,7 +364,7 @@ wire [31:0] IDU_GPR_src1;
 wire [31:0] IDU_GPR_src2;
 wire [11:0] IDU_CSR_r_csr_addr;
 wire [31:0] IDU_CSR_r_csr_data;
-
+wire IFUIDU_handshake;
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .clk          ( clock          ),
     .rst          ( reset          ),
@@ -392,7 +392,8 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_src2       ( IDU_GPR_src2       ),
     .o_r_csr_addr ( IDU_CSR_r_csr_addr ),
     .i_r_csr_data ( IDU_CSR_r_csr_data  ),
-    .i_stop_pipe  ( stop_pipe           )
+    .i_stop_pipe  ( stop_pipe           ),
+    .o_IFUIDU_handshake  ( IFUIDU_handshake           )
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
 wire [3:0]  IDEX_EXU_rd_ctrl;
@@ -697,6 +698,7 @@ wire stop_pipe;
 ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs1     ( IDU_GPR_rs1     ),
     .i_IDU_rs2     ( IDU_GPR_rs2     ),
+    .i_IFUIDU_handshake(IFUIDU_handshake),
     //.i_IDEX_rd     ( IDEX_EXU_rd     ),
     .i_EXU_rd      ( EXU_EXMEM_rd      ),
     .i_EXMEM_rd    ( EXMEM_MEM_rd    ),
