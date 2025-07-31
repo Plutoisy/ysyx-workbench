@@ -203,7 +203,7 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 //assign M0_arid    = 'd0       ;
-//assign M0_arlen   = 'd0;
+assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;
 assign M0_arlen   = 'd0;
 assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;
@@ -275,12 +275,12 @@ always @(posedge clk) begin
         end
         else if(state == ysyx_24120011_IFU_AXI_RDATA && next_state == ysyx_24120011_IFU_AXI_RADDR) begin
             //araddr <= pc + 'd4;
-            // if(pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) begin
-            //     araddr <= araddr;
-            // end
-            // else begin
+            if(pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) begin
+                araddr <= araddr;
+            end
+            else begin
                 araddr <= araddr + 'd4;
-            //end
+            end
         end
         else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
             araddr <= araddr;
@@ -361,7 +361,7 @@ always@(*)begin
         ysyx_24120011_IFU_IDLE_FULL:      next_state = (i_IDU_ready) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE_FULL;
         ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE_EMPTY      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
-        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && M0_rready )     ? (cached_size == ysyx_24120011_ICACHE_SIZE - 'd4 ? ysyx_24120011_IFU_LOOKUP : (ysyx_24120011_IFU_AXI_RADDR)) : ysyx_24120011_IFU_AXI_RDATA;
+        ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && M0_rready )     ? (cached_size == ysyx_24120011_ICACHE_SIZE - 'd4 ? ysyx_24120011_IFU_LOOKUP : (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF ? ysyx_24120011_IFU_AXI_RDATA :ysyx_24120011_IFU_AXI_RADDR)) : ysyx_24120011_IFU_AXI_RDATA;
         default : next_state = ysyx_24120011_IFU_IDLE_EMPTY;
     endcase
 end
