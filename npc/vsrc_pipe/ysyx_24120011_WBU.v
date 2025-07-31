@@ -23,7 +23,9 @@ module ysyx_24120011_WBU(
     output         o_w_csr_ecall,
     //握手
     input  i_MEM_valid,
-    output o_WBU_ready
+    output o_WBU_ready,
+
+    output [3:0] o_rd_ctrl
 );
 
 parameter ysyx_24120011_WBU_IDLE      = 1'b0;
@@ -119,7 +121,7 @@ assign o_w_csr_addr  = w_csr_addr ;
 assign o_w_csr_data  = w_csr_data ;
 assign o_w_csr_en    = w_csr_en   ;
 assign o_w_csr_ecall = w_csr_ecall;
-
+assign o_rd_ctrl     = rd_ctrl    ;
 //GPR\CSR写入逻辑
 always @(posedge clk) begin
     if (rst) begin

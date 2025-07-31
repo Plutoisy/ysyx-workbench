@@ -644,6 +644,7 @@ wire [11:0]  WBU_CSR_w_csr_addr;
 wire [31:0]  WBU_CSR_w_csr_data;
 wire         WBU_CSR_w_csr_en;
 wire         WBU_CSR_w_csr_ecall;
+wire [3:0]   WBU_rd_ctrl;
 ysyx_24120011_WBU u_ysyx_24120011_WBU(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -665,7 +666,8 @@ ysyx_24120011_WBU u_ysyx_24120011_WBU(
     .o_w_csr_en    ( WBU_CSR_w_csr_en    ),
     .o_w_csr_ecall ( WBU_CSR_w_csr_ecall ),
     .i_MEM_valid   ( MEM_valid ),
-    .o_WBU_ready   ( WBU_ready   )
+    .o_WBU_ready   ( WBU_ready   ),
+    .o_rd_ctrl     ( WBU_rd_ctrl   )
 );
 
 wire [31:0] a0;
@@ -698,10 +700,13 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs2     ( IDU_GPR_rs2     ),
     //.i_IDEX_rd     ( IDEX_EXU_rd     ),
     .i_EXU_rd      ( EXU_MEM_rd      ),
+    .i_EXU_rd_ctrl ( EXU_MEM_rd_ctrl),
     //.i_EXMEM_rd    ( EXMEM_MEM_rd    ),
     .i_MEM_rd      ( MEM_WBU_rd      ),
+    .i_MEM_rd_ctrl ( MEM_WBU_rd_ctrl),
     //.i_MEMWB_rd    ( MEMWB_WBU_rd    ),
     .i_WBU_rd      ( WBU_GPR_rd      ),
+    .i_WBU_rd_ctrl ( WBU_rd_ctrl),
     .i_GPR_rd      (WBU_GPR_rd),
     //.i_IDEX_ready  ( IDEX_ready  ),
     .i_EXU_ready   ( EXU_ready   ),
