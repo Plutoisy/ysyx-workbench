@@ -17,9 +17,9 @@ module ysyx_24120011_IDU (
     output [4:0]  o_rd,
     output [11:0] o_w_csr_addr,
     //握手
-    input  i_IFID_valid,
+    input  i_IFU_valid,
     output o_IDU_ready,
-    input  i_IDEX_ready,
+    input  i_EXU_ready,
     output o_IDU_valid,
     //读寄存器
     output [4:0]  o_rs1,
@@ -32,16 +32,18 @@ module ysyx_24120011_IDU (
     input i_stop_pipe
 );
 
-parameter ysyx_24120011_IDU_IDLE      = 1'b0;
-parameter ysyx_24120011_IDU_WORKING   = 1'b1;
+parameter ysyx_24120011_IDU_IDLE_EMPTY = 2'd0;
+parameter ysyx_24120011_IDU_IDLE_FULL  = 2'd1;
+parameter ysyx_24120011_IDU_WORKING    = 2'd2;
 
 reg [31:0] inst;
 reg [31:0] pc;
-reg state;
-reg next_state;
+reg [1:0] state;
+reg [1:0] next_state;
 
-assign o_IDU_ready  = ((state == ysyx_24120011_IDU_IDLE) && i_IDEX_ready) ? 1'b1 : 1'b0;
-assign o_IDU_valid  = (!i_stop_pipe && state == ysyx_24120011_IDU_WORKING && next_state == ysyx_24120011_IDU_IDLE) ? 1'b1 : 1'b0;
+assign o_IDU_ready  = (state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
+assign o_IDU_valid  = (state == ysyx_24120011_IDU_WORKING && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
+
 assign o_rs1        = rs1;
 assign o_rs2        = rs2;
 assign o_r_csr_addr = r_csr_addr;
@@ -59,36 +61,37 @@ assign o_rd         = rd;
 assign o_w_csr_addr = w_csr_addr;
 
 //指令锁存
-// always @(posedge clk) begin
-//     if(rst) begin
-//         inst <= 32'h0000_0000;
-//         pc   <= 32'h0000_0000;
-//     end
-//     else begin
-//         //输入握手
-//         if(i_IFID_valid && o_IDU_ready) begin
-//             inst <= i_inst;
-//             pc   <= i_pc;
-//         end
-//     end
-// end
-
-always @(*) begin
-            inst = i_inst;
-            pc   = i_pc;
+always @(posedge clk) begin
+    if(rst) begin
+        inst <= 32'h0000_0000;
+        pc   <= 32'h0000_0000;
+    end
+    else begin
+        //输入握手
+        if(i_IFU_valid && o_IDU_ready) begin
+            inst <= i_inst;
+            pc   <= i_pc;
+        end
+    end
 end
+
+// always @(*) begin
+//             inst = i_inst;
+//             pc   = i_pc;
+// end
 
 //状态机跳转
 always@(*)begin
     case(state)
-        ysyx_24120011_IDU_IDLE:    next_state = (i_IFID_valid && o_IDU_ready) ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE;
-        ysyx_24120011_IDU_WORKING: next_state = i_stop_pipe ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE;
-        default : next_state = ysyx_24120011_IDU_IDLE;
+        ysyx_24120011_IDU_IDLE_EMPTY : next_state = (i_IFU_valid && o_IDU_ready) ? ysyx_24120011_IDU_IDLE_FULL : ysyx_24120011_IDU_IDLE_EMPTY;
+        ysyx_24120011_IDU_IDLE_FULL  : next_state = (!i_stop_pipe && i_EXU_ready) ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE_FULL;
+        ysyx_24120011_IDU_WORKING    : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
+        default                      : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
     endcase
 end
 always@(posedge clk)begin
     if(rst) begin
-        state <= ysyx_24120011_IDU_IDLE;
+        state <= ysyx_24120011_IDU_IDLE_EMPTY;
     end
     else begin
         state <= next_state;

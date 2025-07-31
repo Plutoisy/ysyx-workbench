@@ -22,7 +22,7 @@ module ysyx_24120011_WBU(
     output         o_w_csr_en,
     output         o_w_csr_ecall,
     //握手
-    input  i_MEMWB_valid,
+    input  i_MEM_valid,
     output o_WBU_ready
 );
 
@@ -46,53 +46,53 @@ reg next_state;
 assign o_WBU_ready  = (state == ysyx_24120011_WBU_IDLE) ? 1'b1 : 1'b0;
 
 //指令锁存
-// always @(posedge clk) begin
-//     if(rst) begin
-//         r_mem_data <= 'd0;
-//         rd_ctrl    <= 'd0;
-//         csr_ctrl   <= 'd0;
-//         pc         <= 'd0;
-//         src1       <= 'd0;
-//         r_csr_data <= 'd0;
-//         imm        <= 'd0;
-//         rd         <= 'd0;
-//         w_csr_addr <= 'd0;
-//         ALU_result <= 'd0;
-//     end
-//     else begin
-//         //输入握手
-//         if(i_MEMWB_valid && o_WBU_ready) begin
-//             r_mem_data <= i_r_mem_data;
-//             rd_ctrl    <= i_rd_ctrl;
-//             csr_ctrl   <= i_csr_ctrl;
-//             pc         <= i_pc;
-//             src1       <= i_src1;
-//             r_csr_data <= i_r_csr_data;
-//             imm        <= i_imm;
-//             rd         <= i_rd;
-//             w_csr_addr <= i_w_csr_addr;
-//             ALU_result <= i_ALU_result;
-//         end
-//     end
-// end
-
-always @(*) begin
-            r_mem_data = i_r_mem_data;
-            rd_ctrl    = i_rd_ctrl;
-            csr_ctrl   = i_csr_ctrl;
-            pc         = i_pc;
-            src1       = i_src1;
-            r_csr_data = i_r_csr_data;
-            imm        = i_imm;
-            rd         = i_rd;
-            w_csr_addr = i_w_csr_addr;
-            ALU_result = i_ALU_result;
+always @(posedge clk) begin
+    if(rst) begin
+        r_mem_data <= 'd0;
+        rd_ctrl    <= 'd0;
+        csr_ctrl   <= 'd0;
+        pc         <= 'd0;
+        src1       <= 'd0;
+        r_csr_data <= 'd0;
+        imm        <= 'd0;
+        rd         <= 'd0;
+        w_csr_addr <= 'd0;
+        ALU_result <= 'd0;
+    end
+    else begin
+        //输入握手
+        if(i_MEM_valid && o_WBU_ready) begin
+            r_mem_data <= i_r_mem_data;
+            rd_ctrl    <= i_rd_ctrl;
+            csr_ctrl   <= i_csr_ctrl;
+            pc         <= i_pc;
+            src1       <= i_src1;
+            r_csr_data <= i_r_csr_data;
+            imm        <= i_imm;
+            rd         <= i_rd;
+            w_csr_addr <= i_w_csr_addr;
+            ALU_result <= i_ALU_result;
+        end
+    end
 end
+
+// always @(*) begin
+//             r_mem_data = i_r_mem_data;
+//             rd_ctrl    = i_rd_ctrl;
+//             csr_ctrl   = i_csr_ctrl;
+//             pc         = i_pc;
+//             src1       = i_src1;
+//             r_csr_data = i_r_csr_data;
+//             imm        = i_imm;
+//             rd         = i_rd;
+//             w_csr_addr = i_w_csr_addr;
+//             ALU_result = i_ALU_result;
+// end
 
 //状态机跳转
 always@(*)begin
     case(state)
-        ysyx_24120011_WBU_IDLE:    next_state = (i_MEMWB_valid && o_WBU_ready) ? ysyx_24120011_WBU_WORKING : ysyx_24120011_WBU_IDLE;
+        ysyx_24120011_WBU_IDLE:    next_state = (i_MEM_valid && o_WBU_ready) ? ysyx_24120011_WBU_WORKING : ysyx_24120011_WBU_IDLE;
         ysyx_24120011_WBU_WORKING: next_state = ysyx_24120011_WBU_IDLE;
         default : next_state = ysyx_24120011_WBU_IDLE;
     endcase

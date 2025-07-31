@@ -27,9 +27,9 @@ module ysyx_24120011_MEM(
     output [11:0] o_w_csr_addr,
     output [31:0] o_ALU_result,
     //握手
-    input  i_EXMEM_valid,
+    input  i_EXU_valid,
     output o_MEM_ready,
-    input  i_MEMWB_ready,
+    input  i_WBU_ready,
     output o_MEM_valid,
     //============M1=============//        
     //AR-axi4lite
@@ -87,8 +87,8 @@ reg [31:0] ALU_result;
 reg [31:0] r_mem_data;
 
 //assign o_MEM_ready  = LSU_ready ;
-assign o_MEM_ready  = ((state == ysyx_24120011_LSU_M_AXI_IDLE) && i_MEMWB_ready) ? 1'b1 : 1'b0;
-assign o_MEM_valid  = (state != ysyx_24120011_LSU_M_AXI_IDLE) && (next_state == ysyx_24120011_LSU_M_AXI_IDLE) ? 1'b1 : 1'b0;
+assign o_MEM_ready  = (state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) ? 1'b1 : 1'b0;
+assign o_MEM_valid  = (state != ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) && (next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_r_mem_data = r_mem_data;
 assign o_rd_ctrl    = rd_ctrl   ;
 assign o_csr_ctrl   = csr_ctrl  ;
@@ -101,52 +101,52 @@ assign o_w_csr_addr = w_csr_addr;
 assign o_ALU_result = ALU_result;
 
 //指令锁存
-// always @(posedge clk) begin
-//     if(rst) begin
-//         rd_ctrl    <=  'd0;
-//         mem_ctrl   <=  'd0;
-//         csr_ctrl   <=  'd0;
-//         pc         <=  'd0;
-//         src1       <=  'd0;
-//         src2       <=  'd0;
-//         r_csr_data <=  'd0;
-//         imm        <=  'd0;
-//         rd         <=  'd0;
-//         w_csr_addr <=  'd0;
-//         ALU_result <=  'd0;
-//     end
-//     else begin
-//         //输入握手
-//         if(i_EXMEM_valid && o_MEM_ready) begin
-//             rd_ctrl    <=  i_rd_ctrl   ;
-//             mem_ctrl   <=  i_mem_ctrl  ;
-//             csr_ctrl   <=  i_csr_ctrl  ;
-//             pc         <=  i_pc        ;
-//             src1       <=  i_src1      ;
-//             src2       <=  i_src2      ;
-//             r_csr_data <=  i_r_csr_data;
-//             imm        <=  i_imm       ;
-//             rd         <=  i_rd        ;
-//             w_csr_addr <=  i_w_csr_addr;
-//             ALU_result <=  i_ALU_result;
-//         end
-//     end
-// end
-
-
-always @(*) begin
-            rd_ctrl    =  i_rd_ctrl   ;
-            mem_ctrl   =  i_mem_ctrl  ;
-            csr_ctrl   =  i_csr_ctrl  ;
-            pc         =  i_pc        ;
-            src1       =  i_src1      ;
-            src2       =  i_src2      ;
-            r_csr_data =  i_r_csr_data;
-            imm        =  i_imm       ;
-            rd         =  i_rd        ;
-            w_csr_addr =  i_w_csr_addr;
-            ALU_result =  i_ALU_result;
+always @(posedge clk) begin
+    if(rst) begin
+        rd_ctrl    <=  'd0;
+        mem_ctrl   <=  'd0;
+        csr_ctrl   <=  'd0;
+        pc         <=  'd0;
+        src1       <=  'd0;
+        src2       <=  'd0;
+        r_csr_data <=  'd0;
+        imm        <=  'd0;
+        rd         <=  'd0;
+        w_csr_addr <=  'd0;
+        ALU_result <=  'd0;
+    end
+    else begin
+        //输入握手
+        if(i_EXU_valid && o_MEM_ready) begin
+            rd_ctrl    <=  i_rd_ctrl   ;
+            mem_ctrl   <=  i_mem_ctrl  ;
+            csr_ctrl   <=  i_csr_ctrl  ;
+            pc         <=  i_pc        ;
+            src1       <=  i_src1      ;
+            src2       <=  i_src2      ;
+            r_csr_data <=  i_r_csr_data;
+            imm        <=  i_imm       ;
+            rd         <=  i_rd        ;
+            w_csr_addr <=  i_w_csr_addr;
+            ALU_result <=  i_ALU_result;
+        end
+    end
 end
+
+
+// always @(*) begin
+//             rd_ctrl    =  i_rd_ctrl   ;
+//             mem_ctrl   =  i_mem_ctrl  ;
+//             csr_ctrl   =  i_csr_ctrl  ;
+//             pc         =  i_pc        ;
+//             src1       =  i_src1      ;
+//             src2       =  i_src2      ;
+//             r_csr_data =  i_r_csr_data;
+//             imm        =  i_imm       ;
+//             rd         =  i_rd        ;
+//             w_csr_addr =  i_w_csr_addr;
+//             ALU_result =  i_ALU_result;
+// end
     reg LSU_valid;
     reg LSU_ready;
     assign M1_araddr  = araddr    ;
@@ -188,14 +188,15 @@ end
     assign M1_wlast   = M1_wvalid ;
 
 
-    parameter ysyx_24120011_LSU_M_AXI_IDLE  = 3'b000;
-    parameter ysyx_24120011_LSU_M_AXI_RADDR = 3'b001;
-    parameter ysyx_24120011_LSU_M_AXI_RDATA = 3'b010;
-    parameter ysyx_24120011_LSU_M_AXI_WADDR = 3'b011;
-    parameter ysyx_24120011_LSU_M_AXI_WDATA = 3'b100;
-    parameter ysyx_24120011_LSU_M_AXI_WRESP = 3'b101;
-    parameter ysyx_24120011_LSU_M_AXI_RWCHECK = 3'b110;
-    parameter ysyx_24120011_LSU_M_AXI_RESP_OKAY = 2'b00;
+    parameter ysyx_24120011_LSU_M_AXI_IDLE_EMPTY = 3'b000;
+    parameter ysyx_24120011_LSU_M_AXI_IDLE_FULL  = 3'b001;
+    parameter ysyx_24120011_LSU_M_AXI_RWCHECK    = 3'b010;
+    parameter ysyx_24120011_LSU_M_AXI_RADDR      = 3'b011;
+    parameter ysyx_24120011_LSU_M_AXI_RDATA      = 3'b100;
+    parameter ysyx_24120011_LSU_M_AXI_WADDR      = 3'b101;
+    parameter ysyx_24120011_LSU_M_AXI_WDATA      = 3'b110;
+    parameter ysyx_24120011_LSU_M_AXI_WRESP      = 3'b111;
+    parameter ysyx_24120011_LSU_M_AXI_RESP_OKAY  = 2'b00;
 
     reg [2:0] state;
     reg [2:0] next_state;
@@ -283,7 +284,7 @@ always @(posedge clk) begin
     end else begin
         LSU_working_delay <= LSU_working;
 
-        if (state == ysyx_24120011_LSU_M_AXI_IDLE) begin
+        if (state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) begin
             LSU_clktime_count(cycle_counter);
             cycle_counter <= 0;
         end
@@ -413,7 +414,7 @@ end
     end
     
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_IDLE)begin
+        if(state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
             arvalid_delay_cnt <= random_delay;
         end
     end
@@ -449,7 +450,7 @@ end
     end
 
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_IDLE)begin
+        if(state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
             awvalid_delay_cnt <= random_delay;
         end
     end
@@ -552,16 +553,16 @@ end
 
     always@(posedge clk)begin
         if(mem_ctrl[8] == 1 || mem_ctrl[17] == 1) LSU_ready <= 1'b0;
-        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE) LSU_ready <= 1'b1;
+        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) LSU_ready <= 1'b1;
     end
     always@(posedge clk)begin
-        if(i_EXMEM_valid)begin
+        if(i_EXU_valid)begin
             if(LSU_working == 0 && (mem_ctrl[8] == 0 && mem_ctrl[17] == 0) )begin
                 LSU_valid <= 1;
             end
         end
         else begin
-            if(LSU_working == 1 && next_state == ysyx_24120011_LSU_M_AXI_IDLE)begin
+            if(LSU_working == 1 && next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
                 LSU_valid <= 1;
             end
             else begin
@@ -615,13 +616,14 @@ end
 
     always@(*)begin
         case(state)
-            ysyx_24120011_LSU_M_AXI_IDLE: next_state = (i_EXMEM_valid && o_MEM_ready) ? ysyx_24120011_LSU_M_AXI_RWCHECK : ysyx_24120011_LSU_M_AXI_IDLE;
-            ysyx_24120011_LSU_M_AXI_RWCHECK:next_state = (mem_ctrl[17]) ? 
-                                                    ysyx_24120011_LSU_M_AXI_RADDR : 
-                                                    ((mem_ctrl[8]) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE);
-            ysyx_24120011_LSU_M_AXI_RADDR: if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
-            ysyx_24120011_LSU_M_AXI_RDATA: if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
-            ysyx_24120011_LSU_M_AXI_WADDR: begin 
+            ysyx_24120011_LSU_M_AXI_IDLE_EMPTY: next_state = (i_EXU_valid && o_MEM_ready) ? ysyx_24120011_LSU_M_AXI_IDLE_FULL : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
+            ysyx_24120011_LSU_M_AXI_IDLE_FULL : next_state = (i_WBU_ready) ? ysyx_24120011_LSU_M_AXI_RWCHECK : ysyx_24120011_LSU_M_AXI_IDLE_FULL;
+            ysyx_24120011_LSU_M_AXI_RWCHECK   : next_state = (mem_ctrl[17]) ? 
+                                                       ysyx_24120011_LSU_M_AXI_RADDR : 
+                                                       ((mem_ctrl[8]) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY);
+            ysyx_24120011_LSU_M_AXI_RADDR     : if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
+            ysyx_24120011_LSU_M_AXI_RDATA     : if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
+            ysyx_24120011_LSU_M_AXI_WADDR     : begin 
                 if (wvalid  && wready ) begin 
                     next_state = ysyx_24120011_LSU_M_AXI_WRESP;
                 end
@@ -629,15 +631,15 @@ end
                     if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
                 end
             end
-            ysyx_24120011_LSU_M_AXI_WDATA: if (wvalid  && wready ) next_state = ysyx_24120011_LSU_M_AXI_WRESP;
-            ysyx_24120011_LSU_M_AXI_WRESP: if (bvalid  && bready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE;
-            default : next_state = ysyx_24120011_LSU_M_AXI_IDLE;
+            ysyx_24120011_LSU_M_AXI_WDATA     : if (wvalid  && wready ) next_state = ysyx_24120011_LSU_M_AXI_WRESP;
+            ysyx_24120011_LSU_M_AXI_WRESP     : if (bvalid  && bready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
+            default                           : next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
         endcase
     end
 
     always@(posedge clk)begin
         if(rst) begin
-            state <= ysyx_24120011_LSU_M_AXI_IDLE;
+            state <= ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
             // arvalid_delay <= 32'd1;
             // awvalid_delay <= 32'd1;
             // wvalid_delay  <= 32'd1;
