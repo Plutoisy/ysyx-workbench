@@ -10,7 +10,7 @@ module ysyx_24120011_IFU(
     //握手
     input  i_PC_valid,
     output o_IFU_ready,
-    input  i_IFID_ready,
+    input  i_IDU_ready,
     output o_IFU_valid,
     //AR-axi4lite
     output  [31:0]     M0_araddr,
@@ -59,25 +59,26 @@ reg [31:0] inst;
 assign o_pc = pc;
 assign o_inst = inst;
 //指令锁存
-// always @(posedge clk) begin
-//     if(rst) begin
-//         pc         <=  'd0;
-//     end
-//     else begin
-//         //输入握手
-//         if(i_PC_valid && o_IFU_ready) begin
-//             pc         <=  i_pc        ;
-//         end
-//     end
-// end
-always @(*) begin
-    pc         =  i_pc        ;
+always @(posedge clk) begin
+    if(rst) begin
+        pc         <=  'd0;
+    end
+    else begin
+        //输入握手
+        if(i_PC_valid && o_IFU_ready) begin
+            pc         <=  i_pc        ;
+        end
+    end
 end
+// always @(*) begin
+//     pc         =  i_pc        ;
+// end
 //IFU逻辑
-parameter ysyx_24120011_IFU_IDLE      = 3'b000;
-parameter ysyx_24120011_IFU_LOOKUP    = 3'b001;
-parameter ysyx_24120011_IFU_AXI_RADDR = 3'b010;
-parameter ysyx_24120011_IFU_AXI_RDATA = 3'b011;
+parameter ysyx_24120011_IFU_IDLE_EMPTY      = 3'b000;
+parameter ysyx_24120011_IFU_IDLE_FULL       = 3'b001;
+parameter ysyx_24120011_IFU_LOOKUP          = 3'b010;
+parameter ysyx_24120011_IFU_AXI_RADDR       = 3'b011;
+parameter ysyx_24120011_IFU_AXI_RDATA       = 3'b100;
 
 //======================dpic========================//
 reg [31:0] cycle_counter;  // 时钟周期计数器
@@ -86,7 +87,7 @@ always @(posedge clk) begin
     if (rst) begin
         cycle_counter <= 0;
     end else begin
-        if (state == ysyx_24120011_IFU_IDLE) begin
+        if (state == ysyx_24120011_IFU_IDLE_EMPTY) begin
             cycle_counter <= 0;
         end
         else begin
@@ -123,7 +124,7 @@ reg [2:0] next_state;
 reg cache_IFU_valid;
 
 assign o_IFU_valid  = cache_IFU_valid;
-assign o_IFU_ready  = ((state == ysyx_24120011_IFU_IDLE) && i_IFID_ready) ? 1'b1 : 1'b0;
+assign o_IFU_ready  = (state == ysyx_24120011_IFU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 //====================IFU====================//
 
 // //====================icache====================//
@@ -231,7 +232,10 @@ always @(posedge clk) begin
         cache_IFU_valid <= 1'b0;
     end
     else begin
-        if(state == ysyx_24120011_IFU_IDLE) begin
+        if(state == ysyx_24120011_IFU_IDLE_EMPTY) begin
+            cache_IFU_valid <= 1'b0;
+        end
+        else if(state == ysyx_24120011_IFU_IDLE_FULL) begin
             cache_IFU_valid <= 1'b0;
         end
         else if(state == ysyx_24120011_IFU_LOOKUP) begin
@@ -295,7 +299,7 @@ always @(posedge clk) begin
         if(rvalid) begin
             cached_size <= cached_size + 'd4;
         end
-        else if(state == ysyx_24120011_IFU_IDLE) begin
+        else if(state == ysyx_24120011_IFU_IDLE_EMPTY) begin
             cached_size <= 'd0;
         end
         else begin
@@ -327,7 +331,9 @@ always @(posedge clk) begin
         //icache <= '{default: '0};
     end
     else begin
-        if(state == ysyx_24120011_IFU_IDLE) begin
+        if(state == ysyx_24120011_IFU_IDLE_EMPTY) begin
+        end
+        if(state == ysyx_24120011_IFU_IDLE_FULL) begin
         end
         else if(state == ysyx_24120011_IFU_LOOKUP) begin
         end
@@ -351,17 +357,18 @@ end
 
 always@(*)begin
     case(state)
-        ysyx_24120011_IFU_IDLE:      next_state = (i_PC_valid && o_IFU_ready) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE;
-        ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
+        ysyx_24120011_IFU_IDLE_EMPTY:      next_state = (i_PC_valid && o_IFU_ready) ? ysyx_24120011_IFU_IDLE_FULL    : ysyx_24120011_IFU_IDLE_EMPTY;
+        ysyx_24120011_IFU_IDLE_FULL:      next_state = (i_IDU_ready) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE_FULL;
+        ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE_EMPTY      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
         ysyx_24120011_IFU_AXI_RDATA: next_state = (rvalid  && M0_rready )     ? (cached_size == ysyx_24120011_ICACHE_SIZE - 'd4 ? ysyx_24120011_IFU_LOOKUP : (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF ? ysyx_24120011_IFU_AXI_RDATA :ysyx_24120011_IFU_AXI_RADDR)) : ysyx_24120011_IFU_AXI_RDATA;
-        default : next_state = ysyx_24120011_IFU_IDLE;
+        default : next_state = ysyx_24120011_IFU_IDLE_EMPTY;
     endcase
 end
 
 always@(posedge clk)begin
     if(rst) begin
-        state <= ysyx_24120011_IFU_IDLE;
+        state <= ysyx_24120011_IFU_IDLE_EMPTY;
     end
     else begin
         state <= next_state;
