@@ -39,7 +39,7 @@ module ysyx_24120011_data_hazard_detection (
                         //| hazard_exmem 
                         | hazard_mem 
                         //| hazard_memwb 
-                        | hazard_wbu 
+                        //| hazard_wbu 
                         | hazard_gpr;
 
 endmodule
