@@ -31,7 +31,7 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WATCHPOINT 0
-#define WAVE 1
+#define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 1
@@ -236,10 +236,10 @@ void step_and_dump_wave(){
   }
   dut.eval();
   if(WAVE){
-    if(((top_pc & 0xFF000000) >> 24) == 0xA0){
+    //if(((top_pc & 0xFF000000) >> 24) == 0xA0){
       contextp->timeInc(1);
       tfp->dump(contextp->time());
-    } 
+    //} 
   }
 }
 

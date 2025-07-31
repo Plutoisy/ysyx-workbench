@@ -394,7 +394,8 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_r_csr_data ( IDU_CSR_r_csr_data  ),
     .i_stop_pipe  ( DATAHAZARD_stop_pipe           ),
     .i_rd_data    ( DATAHAZARD_IDU_r_ddata),
-    .i_rs1_or_rs2 ( DATAHAZARD_IDU_rs1_or_rs2)
+    .i_rs1_or_rs2 ( DATAHAZARD_IDU_rs1_or_rs2),
+    .i_bypass     ( DATAHAZARD_IDU_bypass)
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
 wire [3:0]  IDEX_EXU_rd_ctrl;
@@ -699,6 +700,7 @@ ysyx_24120011_CSR u_ysyx_24120011_CSR(
 wire DATAHAZARD_stop_pipe;
 wire [31:0] DATAHAZARD_IDU_r_ddata;
 wire DATAHAZARD_IDU_rs1_or_rs2;
+wire DATAHAZARD_IDU_bypass;
 ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs1     ( IDU_GPR_rs1     ),
     .i_IDU_rs2     ( IDU_GPR_rs2     ),
@@ -723,7 +725,8 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_GPR_en      ( WBU_GPR_rd_en      ),
     .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),
     .o_rd_data     ( DATAHAZARD_IDU_r_ddata),
-    .o_rs1_or_rs2  ( DATAHAZARD_IDU_rs1_or_rs2)
+    .o_rs1_or_rs2  ( DATAHAZARD_IDU_rs1_or_rs2),
+    .o_bypass      ( DATAHAZARD_IDU_bypass)
 );
 
 ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
