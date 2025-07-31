@@ -79,7 +79,8 @@ end
 //             inst = i_inst;
 //             pc   = i_pc;
 // end
-
+wire a;
+assign a = i_stop_pipe && (state == ysyx_24120011_IDU_IDLE_FULL);
 //状态机跳转
 always@(*)begin
     case(state)
