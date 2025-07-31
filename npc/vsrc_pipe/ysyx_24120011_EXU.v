@@ -56,7 +56,7 @@ reg [1:0] state;
 reg [1:0] next_state;
 
 assign o_EXU_ready  = (state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
-assign o_EXU_valid  = (state == ysyx_24120011_EXU_WORKING && next_state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
+assign o_EXU_valid  = (state == ysyx_24120011_EXU_IDLE_FULL && next_state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 
 assign o_rd_ctrl    = rd_ctrl     ;
 assign o_mem_ctrl   = mem_ctrl    ;
@@ -124,7 +124,7 @@ end
 always@(*)begin
     case(state)
         ysyx_24120011_EXU_IDLE_EMPTY : next_state = (i_IDU_valid && o_EXU_ready) ? ysyx_24120011_EXU_IDLE_FULL : ysyx_24120011_EXU_IDLE_EMPTY;
-        ysyx_24120011_EXU_IDLE_FULL  : next_state = (i_MEM_ready) ? ysyx_24120011_EXU_WORKING : ysyx_24120011_EXU_IDLE_FULL;
+        ysyx_24120011_EXU_IDLE_FULL  : next_state = (i_MEM_ready) ? ysyx_24120011_EXU_IDLE_EMPTY : ysyx_24120011_EXU_IDLE_FULL;
         ysyx_24120011_EXU_WORKING    : next_state = ysyx_24120011_EXU_IDLE_EMPTY;
         default                      : next_state = ysyx_24120011_EXU_IDLE_EMPTY;
     endcase
