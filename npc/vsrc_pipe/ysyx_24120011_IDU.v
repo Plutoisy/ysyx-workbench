@@ -29,7 +29,10 @@ module ysyx_24120011_IDU (
     output [11:0] o_r_csr_addr,
     input  [31:0] i_r_csr_data,
     //暂停流水线
-    input i_stop_pipe
+    input i_stop_pipe,
+    input [31:0] i_rd_data,
+    input i_rs1_or_rs2,
+    input i_bypass
 );
 
 parameter ysyx_24120011_IDU_IDLE_EMPTY = 2'd0;
@@ -42,7 +45,7 @@ reg [1:0] state;
 reg [1:0] next_state;
 
 assign o_IDU_ready  = (state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
-assign o_IDU_valid  = (state == ysyx_24120011_IDU_WORKING && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
+assign o_IDU_valid  = (state == ysyx_24120011_IDU_IDLE_FULL && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 
 assign o_rs1        = rs1;
 assign o_rs2        = rs2;
@@ -53,8 +56,8 @@ assign o_ALU_ctrl   = ALU_ctrl;
 assign o_mem_ctrl   = mem_ctrl;
 assign o_csr_ctrl   = csr_ctrl;
 assign o_pc         = pc;
-assign o_src1       = i_src1;
-assign o_src2       = i_src2;
+assign o_src1       = !i_bypass ? i_src1 :((!i_rs1_or_rs2) ? i_rd_data : i_src1);
+assign o_src2       = !i_bypass ? i_src2 :((i_rs1_or_rs2) ? i_rd_data : i_src2);
 assign o_r_csr_data = i_r_csr_data;
 assign o_imm        = imm;
 assign o_rd         = rd;
@@ -85,7 +88,7 @@ assign a = i_stop_pipe && (state == ysyx_24120011_IDU_IDLE_FULL);
 always@(*)begin
     case(state)
         ysyx_24120011_IDU_IDLE_EMPTY : next_state = (i_IFU_valid && o_IDU_ready) ? ysyx_24120011_IDU_IDLE_FULL : ysyx_24120011_IDU_IDLE_EMPTY;
-        ysyx_24120011_IDU_IDLE_FULL  : next_state = (!i_stop_pipe && i_EXU_ready) ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE_FULL;
+        ysyx_24120011_IDU_IDLE_FULL  : next_state = (!i_stop_pipe && i_EXU_ready) ? ysyx_24120011_IDU_IDLE_EMPTY : ysyx_24120011_IDU_IDLE_FULL;
         ysyx_24120011_IDU_WORKING    : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
         default                      : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
     endcase
