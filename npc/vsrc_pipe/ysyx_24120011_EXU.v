@@ -154,12 +154,111 @@ always@(*)begin
     endcase
 end
 //ALU
-ysyx_24120011_ALU u_ysyx_24120011_ALU(
-    .A        ( A                   ),
-    .B        ( B                   ),
-    .ALU_ctrl ( ALU_ctrl[3:0]       ),
-    .ALUout   ( ALU_result          )
-);
+wire [31:0] B_in;
+wire [31:0] B_in_used_for_overflow;
+wire [31:0] ALUout_tmp;
+wire carry;
+wire overflow;
+wire uless;
+wire sless;
+wire a_is_b;
+wire a_not_b;
+assign B_in = ALU_ctrl[0] ? ((B^{32{ALU_ctrl[0]}}) + 1'b1) : B;
+assign B_in_used_for_overflow = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} : B;
+assign uless = ~carry;//无符号a<b标志
+assign sless = ALUout_tmp[31] ^ overflow;
+assign overflow = (A[31]==B_in_used_for_overflow[31]) && (A[31]!=ALUout_tmp[31]);
+assign a_is_b  = A == B ? 1 : 0;
+assign a_not_b = A != B ? 1 : 0;
+
+assign {carry, ALUout_tmp} = A + B_in;
+
+always@(*)begin
+    case(ALU_ctrl[2:0])
+        3'b000: begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = ALUout_tmp;
+            end
+
+            else begin
+                ALU_result = {31'b0,a_is_b};
+            end
+        end
+        3'b001:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = ALUout_tmp;
+            end
+
+            else begin
+                ALU_result = {31'b0,a_not_b};
+            end
+        end
+        3'b011:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = {31'b0,sless};
+            end
+            else begin
+                if(B == 32'b0)begin
+                    ALU_result = {31'b0,1'b0};
+                end
+                else begin
+                    ALU_result = {31'b0,uless};
+                end
+            end
+        end
+        3'b111:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = {31'b0,~sless};
+            end
+            else begin
+                if(B == 32'b0)begin
+                    ALU_result = {31'b0,1'b1};
+                end
+                else begin
+                    ALU_result = {31'b0,~uless};
+                end
+            end
+        end
+        3'b010:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = A^B;
+            end
+            else begin
+                ALU_result = ALUout_tmp;//useless
+            end
+        end
+        3'b100:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = A >> B[4:0]; //逻辑右移
+            end
+            else begin
+                if(B[4:0] == 0)begin
+                    ALU_result = A;
+                end
+                else begin
+                    ALU_result = (A >> B[4:0]) | ({32{A[31]}} << (32-B[4:0]));//算术右移
+                end
+            end
+        end
+        3'b101:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = A | B;//or
+            end
+            else begin
+                ALU_result = A & B;//and
+            end
+        end
+        3'b110:begin
+            if(ALU_ctrl[3] == 1'b0)begin
+                ALU_result = A << B[4:0]; //逻辑左移
+            end
+            else begin
+                ALU_result = ALUout_tmp;//useless
+            end
+        end
+        default: ALU_result = ALUout_tmp;
+    endcase
+end
 
 
 //pc逻辑
