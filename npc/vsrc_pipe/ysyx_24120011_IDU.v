@@ -44,7 +44,7 @@ reg [1:0] state;
 reg [1:0] next_state;
 
 assign o_IDU_ready  = (state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
-assign o_IDU_valid  = (state == ysyx_24120011_IDU_WORKING && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
+assign o_IDU_valid  = (state == ysyx_24120011_IDU_IDLE_FULL && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 
 assign o_rs1        = rs1;
 assign o_rs2        = rs2;
@@ -87,7 +87,7 @@ assign a = i_stop_pipe && (state == ysyx_24120011_IDU_IDLE_FULL);
 always@(*)begin
     case(state)
         ysyx_24120011_IDU_IDLE_EMPTY : next_state = (i_IFU_valid && o_IDU_ready) ? ysyx_24120011_IDU_IDLE_FULL : ysyx_24120011_IDU_IDLE_EMPTY;
-        ysyx_24120011_IDU_IDLE_FULL  : next_state = (!i_stop_pipe && i_EXU_ready) ? ysyx_24120011_IDU_WORKING : ysyx_24120011_IDU_IDLE_FULL;
+        ysyx_24120011_IDU_IDLE_FULL  : next_state = (!i_stop_pipe && i_EXU_ready) ? ysyx_24120011_IDU_IDLE_EMPTY : ysyx_24120011_IDU_IDLE_FULL;
         ysyx_24120011_IDU_WORKING    : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
         default                      : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
     endcase
