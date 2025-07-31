@@ -10,6 +10,7 @@ module ysyx_24120011_data_hazard_detection (
     //input [4:0] i_MEMWB_rd,
     input [4:0] i_WBU_rd,
     input [3:0] i_WBU_rd_ctrl,
+    input [31:0] i_WBU_rd_data,
     input [4:0] i_GPR_rd,
     //input i_IDEX_ready,
     input i_EXU_ready,
@@ -20,9 +21,12 @@ module ysyx_24120011_data_hazard_detection (
     input i_GPR_en,
     
 
-    output o_stop_pipe
+    output o_stop_pipe,
+    output o_rs1_or_rs2,
+    output [31:0] o_rd_data
 );
-
+    assign o_rd_data = hazard_wbu ? i_WBU_rd_data : 32'b0;
+    assign o_rs1_or_rs2 = (i_IDU_rs1 == i_WBU_rd) ? 1'b0 : 1'b1;
     //wire hazard_idex  = ((i_IDU_rs1 == i_IDEX_rd)  || (i_IDU_rs2 == i_IDEX_rd))  && (!i_IDEX_ready );
     wire hazard_exu   = ((i_IDU_rs1 == i_EXU_rd)   || (i_IDU_rs2 == i_EXU_rd))   && (!i_EXU_ready  )&& (i_EXU_rd_ctrl != 4'd4);
     //wire hazard_exmem = ((i_IDU_rs1 == i_EXMEM_rd) || (i_IDU_rs2 == i_EXMEM_rd)) && (!i_EXMEM_ready);
@@ -35,6 +39,7 @@ module ysyx_24120011_data_hazard_detection (
                         //| hazard_exmem 
                         | hazard_mem 
                         //| hazard_memwb 
-                        | hazard_wbu | hazard_gpr;
+                        //| hazard_wbu 
+                        | hazard_gpr;
 
 endmodule

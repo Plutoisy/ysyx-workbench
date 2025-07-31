@@ -392,7 +392,9 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_src2       ( IDU_GPR_src2       ),
     .o_r_csr_addr ( IDU_CSR_r_csr_addr ),
     .i_r_csr_data ( IDU_CSR_r_csr_data  ),
-    .i_stop_pipe  ( stop_pipe           )
+    .i_stop_pipe  ( DATAHAZARD_stop_pipe           ),
+    .i_rd_data    ( DATAHAZARD_IDU_r_ddata),
+    .i_rs1_or_rs2 ( DATAHAZARD_IDU_rs1_or_rs2)
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
 wire [3:0]  IDEX_EXU_rd_ctrl;
@@ -694,7 +696,9 @@ ysyx_24120011_CSR u_ysyx_24120011_CSR(
     .i_w_csr_en   ( WBU_CSR_w_csr_en   ),
     .i_w_csr_ecall  ( WBU_CSR_w_csr_ecall  )
 );
-wire stop_pipe;
+wire DATAHAZARD_stop_pipe;
+wire [31:0] DATAHAZARD_IDU_r_ddata;
+wire DATAHAZARD_IDU_rs1_or_rs2;
 ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs1     ( IDU_GPR_rs1     ),
     .i_IDU_rs2     ( IDU_GPR_rs2     ),
@@ -707,6 +711,7 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     //.i_MEMWB_rd    ( MEMWB_WBU_rd    ),
     .i_WBU_rd      ( WBU_GPR_rd      ),
     .i_WBU_rd_ctrl ( WBU_rd_ctrl),
+    .i_WBU_rd_data ( WBU_GPR_rd_data),
     .i_GPR_rd      (WBU_GPR_rd),
     //.i_IDEX_ready  ( IDEX_ready  ),
     .i_EXU_ready   ( EXU_ready   ),
@@ -716,7 +721,9 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     //.i_MEMWB_ready ( MEMWB_ready ),
     .i_WBU_ready   ( WBU_ready   ),
     .i_GPR_en      ( WBU_GPR_rd_en      ),
-    .o_stop_pipe   ( stop_pipe   )
+    .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),
+    .o_rd_data     ( DATAHAZARD_IDU_r_ddata),
+    .o_rs1_or_rs2  ( DATAHAZARD_IDU_rs1_or_rs2)
 );
 
 ysyx_24120011_Arbiter u_ysyx_24120011_Arbiter(
