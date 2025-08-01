@@ -36,6 +36,7 @@
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 1
 #define INST_NOT_VALID_CHECK 1
+#define BTRACE_FILE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -617,9 +618,16 @@ uint64_t clk_read_and_store_type_s = 0;
 uint64_t clk_cal_type_s = 0;
 uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
+uint64_t detect_btype = 0;
+int      btype_pc = 0;
 void cpu_exec(uint64_t n){
   FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/itrace.txt", "w");
   if (itracefile == NULL) {
+      printf("无法打开文件\n");
+      return;
+  }
+  FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/btrace.txt", "w");
+  if (btracefile == NULL) {
       printf("无法打开文件\n");
       return;
   }
@@ -647,6 +655,23 @@ void cpu_exec(uint64_t n){
         inst_count++;
         if(ITRACE_FILE){
           fprintf(itracefile, "%08x\n",top_pc);
+        }
+        if(BTRACE_FILE){
+          //printf("%08x,%08x\n",top_pc, top_inst);
+          if(detect_btype == 1){
+            detect_btype = 0;
+            if(btype_pc + 4 == top_pc){
+              fprintf(btracefile, "nottaken\n");
+            }
+            else{
+              fprintf(btracefile, "taken\n");
+            }
+          }
+          if((top_inst & 0x7F) == 0x63){//B-Type
+            fprintf(btracefile, "%08x,%08x,",top_pc, top_inst);
+            detect_btype = 1;
+            btype_pc = top_pc;
+          }
         }
         if(parse_instruction_type(top_inst) == 1){
           jump_type_s++;

@@ -8,7 +8,7 @@ module ysyx_24120011_IFU(
     output [31:0] o_pc,
     output [31:0] o_inst,
     //握手
-    input  i_PC_valid,
+    input  i_EXU_valid,
     output o_IFU_ready,
     input  i_IDU_ready,
     output o_IFU_valid,
@@ -61,11 +61,11 @@ assign o_inst = inst;
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
-        pc         <=  'd0;
+        pc         <=  32'h3000_0000;
     end
     else begin
         //输入握手
-        if(i_PC_valid && o_IFU_ready) begin
+        if(i_EXU_valid && o_IFU_ready) begin
             pc         <=  i_pc        ;
         end
     end
@@ -357,7 +357,7 @@ end
 
 always@(*)begin
     case(state)
-        ysyx_24120011_IFU_IDLE_EMPTY:      next_state = (i_PC_valid && o_IFU_ready) ? ysyx_24120011_IFU_IDLE_FULL    : ysyx_24120011_IFU_IDLE_EMPTY;
+        ysyx_24120011_IFU_IDLE_EMPTY:      next_state = (i_EXU_valid && o_IFU_ready) ? ysyx_24120011_IFU_IDLE_FULL    : ysyx_24120011_IFU_IDLE_EMPTY;
         ysyx_24120011_IFU_IDLE_FULL:      next_state = (i_IDU_ready) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE_FULL;
         ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE_EMPTY      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
@@ -368,7 +368,7 @@ end
 
 always@(posedge clk)begin
     if(rst) begin
-        state <= ysyx_24120011_IFU_IDLE_EMPTY;
+        state <= ysyx_24120011_IFU_IDLE_FULL;
     end
     else begin
         state <= next_state;

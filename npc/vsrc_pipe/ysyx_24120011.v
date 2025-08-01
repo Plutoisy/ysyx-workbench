@@ -230,8 +230,8 @@ wire             clint_bready;
 wire [3:0]	  clint_bid;
 
 //======================dpic========================//
-wire [31:0] MEM_valid_int;
-assign MEM_valid_int    = {31'b0,MEM_valid};
+wire [31:0] IFU_valid_int;
+assign IFU_valid_int    = {31'b0,IFU_valid};
 always@(posedge clock)begin
     if (IFU_IDU_inst == 32'b00000000000100000000000001110011)begin
         npc_trap(IFU_IDU_pc,a0);
@@ -239,7 +239,7 @@ always@(posedge clock)begin
     end
 end
 always@(negedge clock) begin
-    get_pc_inst(IFU_IDU_pc,EXU_PC_npc,IFU_IDU_inst,MEM_valid_int);
+    get_pc_inst(IFU_IDU_pc,EXU_IFU_npc,IFU_IDU_inst,IFU_valid_int);
 end
 reg IFU_valid_delay;
 reg IFU_valid_rising_edge;
@@ -267,22 +267,22 @@ always@(posedge clock) begin
     end
 end
 //======================dpic========================//
-wire [31:0] EXU_PC_npc;
+wire [31:0] EXU_IFU_npc;
 wire [31:0] PC_IFU_pc;
 wire EXU_valid;
 wire PC_ready;
 wire IFU_ready;
 wire PC_valid;
-ysyx_24120011_PC u_ysyx_24120011_PC(
-    .clk         ( clock         ),
-    .rst         ( reset         ),
-    .i_npc       ( EXU_PC_npc       ),
-    .o_pc        ( PC_IFU_pc        ),
-    .i_EXU_valid ( EXU_valid ),
-    .o_PC_ready  ( PC_ready  ),
-    .i_IFU_ready ( IFU_ready ),
-    .o_PC_valid  ( PC_valid  )
-);
+// ysyx_24120011_PC u_ysyx_24120011_PC(
+//     .clk         ( clock         ),
+//     .rst         ( reset         ),
+//     .i_npc       ( EXU_PC_npc       ),
+//     .o_pc        ( PC_IFU_pc        ),
+//     .i_EXU_valid ( EXU_valid ),
+//     .o_PC_ready  ( PC_ready  ),
+//     .i_IFU_ready ( IFU_ready ),
+//     .o_PC_valid  ( PC_valid  )
+// );
 wire [31:0] IFU_IDU_pc;
 wire [31:0] IFU_IDU_inst;
 wire IFID_ready;
@@ -290,10 +290,10 @@ wire IFU_valid;
 ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .clk          ( clock          ),
     .rst          ( reset          ),
-    .i_pc         ( PC_IFU_pc         ),
+    .i_pc         ( EXU_IFU_npc         ),
     .o_pc         ( IFU_IDU_pc         ),
     .o_inst       ( IFU_IDU_inst       ),
-    .i_PC_valid   ( PC_valid   ),
+    .i_EXU_valid  ( EXU_valid   ),
     .o_IFU_ready  ( IFU_ready  ),
     .i_IDU_ready  ( IDU_ready ),
     .o_IFU_valid  ( IFU_valid  ),
@@ -481,7 +481,7 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .o_rd          ( EXU_MEM_rd          ),
     .o_w_csr_addr  ( EXU_MEM_w_csr_addr  ),
     .o_ALU_result  ( EXU_MEM_ALU_result  ),
-    .o_npc         ( EXU_PC_npc         ),
+    .o_npc         ( EXU_IFU_npc         ),
     .i_IDU_valid   ( IDU_valid  ),
     .o_EXU_ready   ( EXU_ready   ),
     .i_MEM_ready   ( MEM_ready ),
