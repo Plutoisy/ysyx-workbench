@@ -657,6 +657,7 @@ void cpu_exec(uint64_t n){
           fprintf(itracefile, "%08x\n",top_pc);
         }
         if(BTRACE_FILE){
+          printf("%x\n",top_inst & 0x7F)
           if(detect_btype == 1){
             detect_btype = 0;
             if(btype_pc + 4 == top_pc){
@@ -667,6 +668,7 @@ void cpu_exec(uint64_t n){
             }
           }
           if(top_inst & 0x7F == 0x63){//B-Type
+            printf("here!\n");
             fprintf(btracefile, "%08x,%08x,",top_pc, top_inst);
             detect_btype = 1;
             btype_pc = top_pc;
