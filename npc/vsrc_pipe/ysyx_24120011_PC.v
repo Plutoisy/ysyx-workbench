@@ -4,6 +4,8 @@ module ysyx_24120011_PC (
     //数据
     input  [31:0]  i_npc,
     output [31:0]  o_pc,
+    input  [31:0]  i_IFU_pc,
+    input  [31:0]  i_IFU_inst,
     //握手
     input  i_EXU_valid,
     output o_PC_ready,

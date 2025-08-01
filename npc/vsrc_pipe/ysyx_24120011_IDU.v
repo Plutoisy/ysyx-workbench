@@ -378,8 +378,7 @@ end
 //Sign_extension R_mem_en R_mem_len W_mem_en W_men_len
 //[18]           [17]     [16:9]    [8]      [7:0]
 //--------------------w_mem------------------//
-always@(*)
-begin
+always@(*)begin
     case(opcode_type)
         3'd3:begin //S-Type
             mem_ctrl[8] = 1'd1;
