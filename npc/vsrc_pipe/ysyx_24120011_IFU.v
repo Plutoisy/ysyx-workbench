@@ -95,7 +95,9 @@ always @(posedge clk) begin
             end
         end
         else begin
-            pc <= i_pc;//写入EXU的npc
+            if(state == ysyx_24120011_IFU_IDLE_EMPTY) begin
+                pc <= i_pc;//写入EXU的npc
+            end
         end
     end
 end

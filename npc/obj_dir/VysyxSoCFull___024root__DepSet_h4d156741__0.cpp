@@ -115,82 +115,78 @@ void VysyxSoCFull___024root___eval_triggers__act(VysyxSoCFull___024root* vlSelf)
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.__VactTriggered.setBit(0U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__flush) 
-                                          != (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__flush__1)));
-    vlSelfRef.__VactTriggered.setBit(1U, ((IData)(vlSelfRef.clock) 
+    vlSelfRef.__VactTriggered.setBit(0U, ((IData)(vlSelfRef.clock) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__clock__0))));
-    vlSelfRef.__VactTriggered.setBit(2U, ((~ (IData)(vlSelfRef.clock)) 
+    vlSelfRef.__VactTriggered.setBit(1U, ((~ (IData)(vlSelfRef.clock)) 
                                           & (IData)(vlSelfRef.__Vtrigprevexpr___TOP__clock__0)));
-    vlSelfRef.__VactTriggered.setBit(3U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx.__PVT__io_c2b_rst_reg__DOT__reg_0) 
+    vlSelfRef.__VactTriggered.setBit(2U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx.__PVT__io_c2b_rst_reg__DOT__reg_0) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx____PVT__io_c2b_rst_reg__DOT__reg_0__0))));
-    vlSelfRef.__VactTriggered.setBit(4U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0) 
+    vlSelfRef.__VactTriggered.setBit(3U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0__0))));
-    vlSelfRef.__VactTriggered.setBit(5U, ((IData)(vlSelfRef.reset) 
+    vlSelfRef.__VactTriggered.setBit(4U, ((IData)(vlSelfRef.reset) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(6U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__io_c2b_rst_reg__DOT__reg_0) 
+    vlSelfRef.__VactTriggered.setBit(5U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__io_c2b_rst_reg__DOT__reg_0) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx____PVT__io_c2b_rst_reg__DOT__reg_0__0))));
-    vlSelfRef.__VactTriggered.setBit(7U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0) 
+    vlSelfRef.__VactTriggered.setBit(6U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx_reset_reg__DOT__reg_0__0))));
-    vlSelfRef.__VactTriggered.setBit(8U, ((IData)(vlSelfRef.ysyxSoCFull__DOT___asic_spi_sck) 
+    vlSelfRef.__VactTriggered.setBit(7U, ((IData)(vlSelfRef.ysyxSoCFull__DOT___asic_spi_sck) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT___asic_spi_sck__0))));
-    vlSelfRef.__VactTriggered.setBit(9U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__flash__DOT__reset) 
+    vlSelfRef.__VactTriggered.setBit(8U, ((IData)(vlSelfRef.ysyxSoCFull__DOT__flash__DOT__reset) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__flash__DOT__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0xaU, ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT___asic_spi_sck)) 
-                                            & (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT___asic_spi_sck__0)));
-    vlSelfRef.__VactTriggered.setBit(0xbU, ((IData)(vlSelfRef.ysyxSoCFull__DOT___asic_psram_ce_n) 
+    vlSelfRef.__VactTriggered.setBit(9U, ((~ (IData)(vlSelfRef.ysyxSoCFull__DOT___asic_spi_sck)) 
+                                          & (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT___asic_spi_sck__0)));
+    vlSelfRef.__VactTriggered.setBit(0xaU, ((IData)(vlSelfRef.ysyxSoCFull__DOT___asic_psram_ce_n) 
                                             & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT___asic_psram_ce_n__0))));
-    vlSelfRef.__VactTriggered.setBit(0xcU, ((IData)(vlSelfRef.ysyxSoCFull__DOT___asic_psram_sck) 
+    vlSelfRef.__VactTriggered.setBit(0xbU, ((IData)(vlSelfRef.ysyxSoCFull__DOT___asic_psram_sck) 
                                             & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT___asic_psram_sck__0))));
-    vlSelfRef.__VactTriggered.setBit(0xdU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx.io_txc_source__DOT____Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0xcU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx.io_txc_source__DOT____Vcellinp__sink_extend__reset) 
                                             & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_txc_source__DOT____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0xeU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx.io_txc_source__DOT____Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0xdU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx.io_txc_source__DOT____Vcellinp__sink_extend__reset) 
                                             & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_txc_source__DOT____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0xfU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0xeU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                             & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x10U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset) 
-                                             & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x11U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0xfU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+                                            & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
+    vlSelfRef.__VactTriggered.setBit(0x10U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x12U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x11U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x13U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x12U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x14U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x13U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x15U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x14U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x16U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x15U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x17U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x16U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x18U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x17U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink.__Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x19U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.rxInc_sink__DOT____Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x18U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.rxInc_sink__DOT____Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__rxInc_sink__DOT____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x1aU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx.rxInc_sink__DOT____Vcellinp__sink_valid_0__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x19U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx.rxInc_sink__DOT____Vcellinp__sink_valid_0__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx__rxInc_sink__DOT____Vcellinp__sink_valid_0__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x1bU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x1aU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x1cU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x1bU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x1dU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x1cU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x1eU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x1dU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x1fU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x1eU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x20U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x1fU, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x21U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x20U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x22U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x21U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x23U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x22U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__VactTriggered.setBit(0x24U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source.__Vcellinp__sink_extend__reset) 
+    vlSelfRef.__VactTriggered.setBit(0x23U, ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source.__Vcellinp__sink_extend__reset) 
                                              & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source____Vcellinp__sink_extend__reset__0))));
-    vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__flush__1 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__flush;
     vlSelfRef.__Vtrigprevexpr___TOP__clock__0 = vlSelfRef.clock;
     vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx____PVT__io_c2b_rst_reg__DOT__reg_0__0 
         = vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx.__PVT__io_c2b_rst_reg__DOT__reg_0;
@@ -257,10 +253,6 @@ void VysyxSoCFull___024root___eval_triggers__act(VysyxSoCFull___024root* vlSelf)
         = vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source.__Vcellinp__sink_extend__reset;
     vlSelfRef.__Vtrigprevexpr___TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source____Vcellinp__sink_extend__reset__0 
         = vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source.__Vcellinp__sink_extend__reset;
-    if (VL_UNLIKELY(((1U & (~ (IData)(vlSelfRef.__VactDidInit)))))) {
-        vlSelfRef.__VactDidInit = 1U;
-        vlSelfRef.__VactTriggered.setBit(0U, 1U);
-    }
 #ifdef VL_DEBUG
     if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
         VysyxSoCFull___024root___dump_triggers__act(vlSelf);
@@ -395,11 +387,10 @@ void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fp
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__2(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__2(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink__2(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__1(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull___024root___nba_sequent__TOP__26(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__5(VysyxSoCFull_TX* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__3(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__2(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__1(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_RX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__3(VysyxSoCFull_RX* vlSelf);
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__0(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
 void VysyxSoCFull_RX___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__0(VysyxSoCFull_RX* vlSelf);
@@ -412,23 +403,23 @@ void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source__2(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source__2(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source__2(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__3(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__2(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass__0(VysyxSoCFull_TLBusBypass* vlSelf);
 void VysyxSoCFull_TLToAXI4___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4__0(VysyxSoCFull_TLToAXI4* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__4(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__3(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLMonitor_7___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0(VysyxSoCFull_TLMonitor_7* vlSelf);
 void VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__0(VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* vlSelf);
 void VysyxSoCFull_AXI4UserYanker_1___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1__0(VysyxSoCFull_AXI4UserYanker_1* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__5(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__4(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__1(VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* vlSelf);
 void VysyxSoCFull_TLError___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr__0(VysyxSoCFull_TLError* vlSelf);
 void VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass__1(VysyxSoCFull_TLBusBypass* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__6(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__5(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__2(VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink__0(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
 void VysyxSoCFull_TLFIFOFixer___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer__0(VysyxSoCFull_TLFIFOFixer* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__7(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__6(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull___024root___nba_sequent__TOP__27(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_RX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__3(VysyxSoCFull_RX* vlSelf);
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__0(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
@@ -441,43 +432,43 @@ void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source__2(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source__2(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
 void VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source__2(VysyxSoCFull_AsyncQueueSource_UInt32* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__8(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__7(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass__0(VysyxSoCFull_TLBusBypass* vlSelf);
 void VysyxSoCFull_TLToAXI4___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__tl2axi4__0(VysyxSoCFull_TLToAXI4* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__9(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__8(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLMonitor_7___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor__0(VysyxSoCFull_TLMonitor_7* vlSelf);
 void VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1__0(VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* vlSelf);
 void VysyxSoCFull_AXI4UserYanker_1___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__axi4yank__0(VysyxSoCFull_AXI4UserYanker_1* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__10(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__9(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLToAXI4___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__tl2axi4__1(VysyxSoCFull_TLToAXI4* vlSelf);
 void VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1__1(VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* vlSelf);
 void VysyxSoCFull_TLError___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__ferr__0(VysyxSoCFull_TLError* vlSelf);
 void VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass__1(VysyxSoCFull_TLBusBypass* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__11(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__10(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1__2(VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink__0(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
 void VysyxSoCFull_TLFIFOFixer___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__fixer__0(VysyxSoCFull_TLFIFOFixer* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__12(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__11(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull___024root___nba_sequent__TOP__28(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull___024root___nba_sequent__TOP__29(VysyxSoCFull___024root* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__13(VysyxSoCFull___024root* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__12(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
 void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__6(VysyxSoCFull_TX* vlSelf);
 void VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4(VysyxSoCFull_AsyncQueueSink_UInt32* vlSelf);
 void VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__7(VysyxSoCFull_TX* vlSelf);
+void VysyxSoCFull___024root___nba_comb__TOP__13(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull___024root___nba_comb__TOP__14(VysyxSoCFull___024root* vlSelf);
 void VysyxSoCFull___024root___nba_comb__TOP__15(VysyxSoCFull___024root* vlSelf);
-void VysyxSoCFull___024root___nba_comb__TOP__16(VysyxSoCFull___024root* vlSelf);
 
 void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VysyxSoCFull___024root___eval_nba\n"); );
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__0(vlSelf);
-        vlSelfRef.__Vm_traceActivity[3U] = 1U;
+        vlSelfRef.__Vm_traceActivity[2U] = 1U;
         VysyxSoCFull___024root___nba_sequent__TOP__1(vlSelf);
         VysyxSoCFull___024root___nba_sequent__TOP__2(vlSelf);
         VysyxSoCFull___024root___nba_sequent__TOP__3(vlSelf);
@@ -546,22 +537,22 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AXI4UserYanker_1___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1));
         VysyxSoCFull_TLError___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__ferr__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__ferr));
     }
-    if ((0x100ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x80ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__12(vlSelf);
-        vlSelfRef.__Vm_traceActivity[4U] = 1U;
+        vlSelfRef.__Vm_traceActivity[3U] = 1U;
     }
-    if ((0x300ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x180ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__13(vlSelf);
     }
-    if ((0x800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x400ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__14(vlSelf);
     }
-    if ((0x1800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0xc00ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__15(vlSelf);
     }
-    if ((0x22ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x11ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__16(vlSelf);
-        vlSelfRef.__Vm_traceActivity[5U] = 1U;
+        vlSelfRef.__Vm_traceActivity[4U] = 1U;
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__3((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx));
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx__3((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
@@ -575,13 +566,13 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
     }
-    if ((4ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__17(vlSelf);
-        vlSelfRef.__Vm_traceActivity[6U] = 1U;
+        vlSelfRef.__Vm_traceActivity[5U] = 1U;
     }
-    if ((0x12ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((9ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_RX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx));
-        vlSelfRef.__Vm_traceActivity[7U] = 1U;
+        vlSelfRef.__Vm_traceActivity[6U] = 1U;
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source));
@@ -589,9 +580,9 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source));
         VysyxSoCFull___024root___nba_sequent__TOP__18(vlSelf);
     }
-    if ((0x82ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x41ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_RX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx));
-        vlSelfRef.__Vm_traceActivity[8U] = 1U;
+        vlSelfRef.__Vm_traceActivity[7U] = 1U;
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source));
@@ -599,33 +590,33 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source));
         VysyxSoCFull___024root___nba_sequent__TOP__19(vlSelf);
     }
-    if ((0x1000ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__20(vlSelf);
     }
-    if ((0x800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x400ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__21(vlSelf);
     }
-    if ((0x100ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x80ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__22(vlSelf);
     }
-    if ((0x300ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x180ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__23(vlSelf);
-        vlSelfRef.__Vm_traceActivity[9U] = 1U;
+        vlSelfRef.__Vm_traceActivity[8U] = 1U;
     }
-    if ((0x400ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x200ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__24(vlSelf);
     }
-    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__25(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xaU] = 1U;
+        vlSelfRef.__Vm_traceActivity[9U] = 1U;
         VysyxSoCFull_TLBusBypass___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass));
         VysyxSoCFull_TLFIFOFixer___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer));
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1));
         VysyxSoCFull_TLError___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr));
     }
-    if ((0x22ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x11ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_comb__TOP__0(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xbU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0xaU] = 1U;
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
@@ -633,61 +624,57 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
     }
-    if ((0x2000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x1000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx));
+        vlSelfRef.__Vm_traceActivity[0xbU] = 1U;
+    }
+    if ((0x2000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx));
         vlSelfRef.__Vm_traceActivity[0xcU] = 1U;
     }
-    if ((0x4000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx));
+    if ((0x8001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0xdU] = 1U;
     }
-    if ((0x10002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
+    if ((0x100001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0xeU] = 1U;
     }
-    if ((0x200002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink));
+    if ((0x40001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0xfU] = 1U;
     }
-    if ((0x80002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
+    if ((0x800001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x10U] = 1U;
     }
-    if ((0x1000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
+    if ((0x10001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x11U] = 1U;
     }
-    if ((0x20002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
+    if ((0x200001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x12U] = 1U;
     }
-    if ((0x400002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
+    if ((0x400001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x13U] = 1U;
     }
-    if ((0x800002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
+    if ((0x4001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x14U] = 1U;
     }
-    if ((0x8002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
+    if ((0x80001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x15U] = 1U;
     }
-    if ((0x100002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
+    if ((0x20001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x16U] = 1U;
     }
-    if ((0x40002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
-        vlSelfRef.__Vm_traceActivity[0x17U] = 1U;
-    }
-    if ((3ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__1(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x18U] = 1U;
-    }
-    if ((0x22ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x11ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__26(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x19U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x17U] = 1U;
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__5((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__3((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__3((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
@@ -701,66 +688,66 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__3((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__3((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
     }
-    if ((0x26ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__2(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x1aU] = 1U;
+    if ((0x13ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__1(vlSelf);
+        vlSelfRef.__Vm_traceActivity[0x18U] = 1U;
     }
-    if ((0x2002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x1001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_RX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__3((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx));
-        vlSelfRef.__Vm_traceActivity[0x1bU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x19U] = 1U;
     }
-    if ((0x12ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((9ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source));
-        vlSelfRef.__Vm_traceActivity[0x1cU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x1aU] = 1U;
         VysyxSoCFull_RX___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source));
     }
-    if ((0x8000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x4000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source));
+        vlSelfRef.__Vm_traceActivity[0x1bU] = 1U;
+    }
+    if ((0x8000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource));
+        vlSelfRef.__Vm_traceActivity[0x1cU] = 1U;
+    }
+    if ((0x10000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source));
         vlSelfRef.__Vm_traceActivity[0x1dU] = 1U;
     }
-    if ((0x10000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource));
+    if ((0x20000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source));
         vlSelfRef.__Vm_traceActivity[0x1eU] = 1U;
     }
-    if ((0x20000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_c_source));
+    if ((0x40000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source));
         vlSelfRef.__Vm_traceActivity[0x1fU] = 1U;
     }
-    if ((0x40000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source));
+    if ((0x19ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__2(vlSelf);
         vlSelfRef.__Vm_traceActivity[0x20U] = 1U;
-    }
-    if ((0x80000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source));
-        vlSelfRef.__Vm_traceActivity[0x21U] = 1U;
-    }
-    if ((0x32ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__3(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x22U] = 1U;
         VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass));
         VysyxSoCFull_TLToAXI4___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__tl2axi4));
-        VysyxSoCFull___024root___nba_comb__TOP__4(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__3(vlSelf);
         VysyxSoCFull_TLMonitor_7___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__monitor));
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1));
         VysyxSoCFull_AXI4UserYanker_1___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4yank_1));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
-        VysyxSoCFull___024root___nba_comb__TOP__5(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__4(vlSelf);
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1));
         VysyxSoCFull_TLError___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__ferr));
         VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sbypass));
-        VysyxSoCFull___024root___nba_comb__TOP__6(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__5(vlSelf);
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1__2((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar_1));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
         VysyxSoCFull_TLFIFOFixer___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__fixer));
-        VysyxSoCFull___024root___nba_comb__TOP__7(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__6(vlSelf);
     }
-    if ((0xaULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((5ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__27(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x23U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x21U] = 1U;
         VysyxSoCFull_RX___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx));
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_bsource));
@@ -768,63 +755,63 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_d_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__io_e_source));
     }
-    if ((0x4002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x2001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_RX___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__3((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx));
-        vlSelfRef.__Vm_traceActivity[0x24U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x22U] = 1U;
     }
-    if ((0x82ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x41ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source));
-        vlSelfRef.__Vm_traceActivity[0x25U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x23U] = 1U;
         VysyxSoCFull_RX___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__rx__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source));
     }
-    if ((0x100000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x80000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source));
+        vlSelfRef.__Vm_traceActivity[0x24U] = 1U;
+    }
+    if ((0x100000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource));
+        vlSelfRef.__Vm_traceActivity[0x25U] = 1U;
+    }
+    if ((0x200000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source));
         vlSelfRef.__Vm_traceActivity[0x26U] = 1U;
     }
-    if ((0x200000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource));
+    if ((0x400000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source));
         vlSelfRef.__Vm_traceActivity[0x27U] = 1U;
     }
-    if ((0x400000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_c_source));
+    if ((0x800000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source));
         vlSelfRef.__Vm_traceActivity[0x28U] = 1U;
     }
-    if ((0x800000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source));
+    if ((0x51ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__7(vlSelf);
         vlSelfRef.__Vm_traceActivity[0x29U] = 1U;
-    }
-    if ((0x1000000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSource_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source));
-        vlSelfRef.__Vm_traceActivity[0x2aU] = 1U;
-    }
-    if ((0xa2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__8(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x2bU] = 1U;
         VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass));
         VysyxSoCFull_TLToAXI4___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__tl2axi4__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__tl2axi4));
-        VysyxSoCFull___024root___nba_comb__TOP__9(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__8(vlSelf);
         VysyxSoCFull_TLMonitor_7___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__monitor));
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1));
         VysyxSoCFull_AXI4UserYanker_1___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__axi4yank__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__axi4yank));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
-        VysyxSoCFull___024root___nba_comb__TOP__10(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__9(vlSelf);
         VysyxSoCFull_TLToAXI4___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__tl2axi4__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__tl2axi4));
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1));
         VysyxSoCFull_TLError___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__ferr__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__ferr));
         VysyxSoCFull_TLBusBypass___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sbypass));
-        VysyxSoCFull___024root___nba_comb__TOP__11(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__10(vlSelf);
         VysyxSoCFull_TLXbar_i1_o2_a32d32s4k6z3u___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1__2((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
         VysyxSoCFull_TLFIFOFixer___nba_comb__TOP__ysyxSoCFull__DOT__fpga__DOT__fixer__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__fixer));
-        VysyxSoCFull___024root___nba_comb__TOP__12(vlSelf);
+        VysyxSoCFull___024root___nba_comb__TOP__11(vlSelf);
     }
-    if ((0x42ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x21ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__28(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x2cU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x2aU] = 1U;
         VysyxSoCFull_RX___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx));
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_bsource));
@@ -832,13 +819,13 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_d_source));
         VysyxSoCFull_AsyncQueueSource_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_a_source__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__rx__io_e_source));
     }
-    if ((0x1800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0xc00ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull___024root___nba_sequent__TOP__29(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x2dU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x2bU] = 1U;
     }
-    if ((0x22ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__13(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x2eU] = 1U;
+    if ((0x11ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__12(vlSelf);
+        vlSelfRef.__Vm_traceActivity[0x2cU] = 1U;
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
@@ -846,84 +833,85 @@ void VysyxSoCFull___024root___eval_nba(VysyxSoCFull___024root* vlSelf) {
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___nba_comb__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink__1((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
     }
-    if ((0x2000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x1000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__6((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx));
+        vlSelfRef.__Vm_traceActivity[0x2dU] = 1U;
+    }
+    if ((0x4001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
+        vlSelfRef.__Vm_traceActivity[0x2eU] = 1U;
+    }
+    if ((0x8001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x2fU] = 1U;
     }
-    if ((0x8002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
+    if ((0x10001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x30U] = 1U;
     }
-    if ((0x10002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
+    if ((0x20001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x31U] = 1U;
     }
-    if ((0x20002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
+    if ((0x40001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x32U] = 1U;
     }
-    if ((0x40002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
-        vlSelfRef.__Vm_traceActivity[0x33U] = 1U;
-    }
-    if ((0x80002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
-        vlSelfRef.__Vm_traceActivity[0x34U] = 1U;
-    }
-    if ((0x22ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x11ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__7((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx));
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__7((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx));
     }
-    if ((0x4000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x2000001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_TX___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__6((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx));
+        vlSelfRef.__Vm_traceActivity[0x33U] = 1U;
+    }
+    if ((0x80001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
+        vlSelfRef.__Vm_traceActivity[0x34U] = 1U;
+    }
+    if ((0x100001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x35U] = 1U;
     }
-    if ((0x100002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
+    if ((0x200001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x36U] = 1U;
     }
-    if ((0x200002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink));
+    if ((0x400001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x37U] = 1U;
     }
-    if ((0x400002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
+    if ((0x800001ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
         vlSelfRef.__Vm_traceActivity[0x38U] = 1U;
     }
-    if ((0x800002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
+    if ((0xc00ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__13(vlSelf);
+    }
+    if ((0x19ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__14(vlSelf);
         vlSelfRef.__Vm_traceActivity[0x39U] = 1U;
     }
-    if ((0x1000002ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull_AsyncQueueSink_UInt32___nba_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__4((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
-        vlSelfRef.__Vm_traceActivity[0x3aU] = 1U;
-    }
-    if ((0x1800ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__14(vlSelf);
-    }
-    if ((0x33ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__15(vlSelf);
-    }
-    if ((0xaULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((5ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_TX___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx));
-        vlSelfRef.__Vm_traceActivity[0x3bU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x3aU] = 1U;
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceB_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceC_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceD_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceE_io_q_sink));
     }
-    if ((0x42ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((0x21ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VysyxSoCFull_TX___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__tx));
-        vlSelfRef.__Vm_traceActivity[0x3cU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x3bU] = 1U;
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceB_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceC_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceD_io_q_sink));
         VysyxSoCFull_AsyncQueueSink_UInt32___ico_sequent__TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceA_io_q_sink__0((&vlSymsp->TOP__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sourceE_io_q_sink));
     }
-    if ((0x1822ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VysyxSoCFull___024root___nba_comb__TOP__16(vlSelf);
+    if ((0xc11ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        VysyxSoCFull___024root___nba_comb__TOP__15(vlSelf);
     }
 }
 
@@ -1543,6 +1531,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor__DOT__inflight_sizes;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor__DOT__inflight_sizes_1 
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor__DOT__inflight_sizes_1;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__rready_delay_cnt 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__rready_delay_cnt;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sinkA__DOT__inject_io_i_q__DOT__full 
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__sinkA__DOT__inject_io_i_q__DOT__full;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sinkD__DOT__d_q__DOT__full 
@@ -1623,8 +1613,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor__DOT__d_first_counter_2;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor__DOT__d_first_counter_3 
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__chiplink__DOT__mbypass__DOT__monitor__DOT__d_first_counter_3;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__rready_delay_cnt 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__rready_delay_cnt;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__atomics__DOT__monitor__DOT__d_first_counter_3 
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__atomics__DOT__monitor__DOT__d_first_counter_3;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__fixer_1__DOT__monitor__DOT__d_first_counter_3 
@@ -1815,12 +1803,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
         = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__axi4deint__DOT__qs_queue_0__DOT__deq_ptr_value;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__d_last_counter 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi42tl__DOT__d_last_counter;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_0 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_0;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_1 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_1;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__queue_arw_deq_q__DOT__full 
-        = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__queue_arw_deq_q__DOT__full;
     if (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__IFU_valid_rising_edge) {
         VysyxSoCFull___024unit____Vdpiimwrap_Performance_Counters_TOP____024unit(1U);
     }
@@ -1830,6 +1812,22 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
     if (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__EXU_valid_rising_edge) {
         VysyxSoCFull___024unit____Vdpiimwrap_Performance_Counters_TOP____024unit(3U);
     }
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_0 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_0;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_1 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__error_1;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__queue_arw_deq_q__DOT__full 
+        = vlSelfRef.ysyxSoCFull__DOT__fpga__DOT__tl2axi4_1__DOT__queue_arw_deq_q__DOT__full;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mvendorid 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mvendorid;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__marchid 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__marchid;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mepc 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mepc;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mstatus 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mstatus;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mtvec 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mtvec;
     vlSelfRef.__VdlySet__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_0__DOT__data_ext__DOT__Memory__v0 = 0U;
     vlSelfRef.__VdlySet__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_1__DOT__data_ext__DOT__Memory__v0 = 0U;
     vlSelfRef.__VdlySet__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__sourceA__DOT__cams_2__DOT__data_ext__DOT__Memory__v0 = 0U;
@@ -1846,16 +1844,6 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__xbar__DOT__monitor__DOT__a_first_counter_1;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__a_first_counter_1 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__a_first_counter_1;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mvendorid 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mvendorid;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__marchid 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__marchid;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mepc 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mepc;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mstatus 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mstatus;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mtvec 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_CSR__DOT__mtvec;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__inflight[0U] 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__inflight[0U];
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__err__DOT__monitor__DOT__inflight[1U] 
@@ -6185,14 +6173,14 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__0(VysyxSoCFull___0
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__awIn_0__DOT__wrap;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__awIn_0__DOT__wrap_1 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__axi4xbar__DOT__awIn_0__DOT__wrap_1;
-    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__deq_q__DOT__full 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__deq_q__DOT__full;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__wvalid_delay_cnt 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__wvalid_delay_cnt;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__deq_q_1__DOT__full 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__axi4frag__DOT__deq_q_1__DOT__full;
+    vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+        = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc;
     vlSelfRef.__Vdly__ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__awvalid_delay_cnt 
         = vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_MEM__DOT__awvalid_delay_cnt;
     if (VL_UNLIKELY((((~ (IData)(vlSelfRef.reset)) 
