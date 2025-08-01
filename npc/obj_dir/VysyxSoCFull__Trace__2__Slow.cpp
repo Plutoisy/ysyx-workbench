@@ -29,8 +29,6 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_0_sub_1(VysyxSoCFull___024r
     VlWide<8>/*255:0*/ __Vtemp_70;
     VlWide<4>/*127:0*/ __Vtemp_71;
     // Body
-    bufp->fullIData(oldp+7642,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qb_q__DOT__elts_0_data),32);
-    bufp->fullBit(oldp+7643,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qb_q__DOT__elts_0_last));
     bufp->fullCData(oldp+7644,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qb_q__DOT__elts_0_beats),7);
     bufp->fullBit(oldp+7645,((1U & ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__allowed) 
                                     >> 1U))));
