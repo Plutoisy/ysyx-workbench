@@ -59,7 +59,29 @@ reg [11:0] w_csr_addr;
 reg [1:0] state;
 reg [1:0] next_state;
 
-assign o_flush = !o_EXU_valid ? 1'b0 : (i_IDU_empty ? (i_IFU_pc != npc ? 1'b1 : 1'b0) : (i_pc != npc ? 1'b1 : 1'b0));
+assign o_flush = flush;
+reg flush;
+always @(posedge clk) begin
+    if(o_EXU_valid) begin
+        if (i_IDU_empty) begin
+            if (i_IFU_pc != npc) begin
+                flush <= 1'b1;
+            end else begin
+                flush <= 1'b0;
+            end
+        end else begin
+            if (i_pc != npc) begin
+                flush <= 1'b1;
+            end else begin
+                flush <= 1'b0;
+            end
+        end
+    end
+    else begin
+        flush <= 1'b0;
+    end
+end
+//assign o_flush = !o_EXU_valid ? 1'b0 : (i_IDU_empty ? (i_IFU_pc != npc ? 1'b1 : 1'b0) : (i_pc != npc ? 1'b1 : 1'b0));
 
 assign o_EXU_ready  = (state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_EXU_valid  = (state == ysyx_24120011_EXU_IDLE_FULL && next_state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
