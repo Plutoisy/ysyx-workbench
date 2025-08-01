@@ -657,7 +657,7 @@ void cpu_exec(uint64_t n){
           fprintf(itracefile, "%08x\n",top_pc);
         }
         if(BTRACE_FILE){
-          printf("%x\n",top_inst & 0x7F)
+          printf("%x\n",top_inst & 0x7F);
           if(detect_btype == 1){
             detect_btype = 0;
             if(btype_pc + 4 == top_pc){
