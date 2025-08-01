@@ -117,8 +117,21 @@ perfhalf:
 	python3 ./tools/remove_dpic.py && \
 	rm -rf ~/yosys-sta/result/* && \
 	cd ~/yosys-sta && \
-	make sta
-	
+	make sta  && \
+	cd $(YSYX_HOME)/npc
+
+oldsta:
+	rm -rf ~/yosys-sta/npc && \
+	rm -rf ~/yosys-sta-old/npc && \
+	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	python3 ./tools/remove_dpic.py && \
+	cp -r ~/yosys-sta/npc ~/yosys-sta-old/npc && \
+	rm -rf ~/yosys-sta-old/result/* && \
+	cd ~/yosys-sta-old && \
+	make sta  && \
+	python3 area.py && \
+	cd $(YSYX_HOME)/npc
+
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd

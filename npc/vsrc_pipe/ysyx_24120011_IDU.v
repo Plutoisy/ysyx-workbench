@@ -32,7 +32,9 @@ module ysyx_24120011_IDU (
     input i_stop_pipe,
     input [31:0] i_rd_data,
     input i_rs1_or_rs2,
-    input i_bypass
+    input i_bypass,
+    //冲刷流水线
+    input i_flush
 );
 
 parameter ysyx_24120011_IDU_IDLE_EMPTY = 2'd0;
@@ -45,7 +47,7 @@ reg [1:0] state;
 reg [1:0] next_state;
 
 assign o_IDU_ready  = (state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
-assign o_IDU_valid  = (state == ysyx_24120011_IDU_IDLE_FULL && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
+assign o_IDU_valid  = !i_flush && (state == ysyx_24120011_IDU_IDLE_FULL && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 
 assign o_rs1        = rs1;
 assign o_rs2        = rs2;
@@ -87,8 +89,8 @@ assign a = i_stop_pipe && (state == ysyx_24120011_IDU_IDLE_FULL);
 //状态机跳转
 always@(*)begin
     case(state)
-        ysyx_24120011_IDU_IDLE_EMPTY : next_state = (i_IFU_valid && o_IDU_ready) ? ysyx_24120011_IDU_IDLE_FULL : ysyx_24120011_IDU_IDLE_EMPTY;
-        ysyx_24120011_IDU_IDLE_FULL  : next_state = (!i_stop_pipe && i_EXU_ready) ? ysyx_24120011_IDU_IDLE_EMPTY : ysyx_24120011_IDU_IDLE_FULL;
+        ysyx_24120011_IDU_IDLE_EMPTY : next_state = (!i_flush && i_IFU_valid && o_IDU_ready) ? ysyx_24120011_IDU_IDLE_FULL : ysyx_24120011_IDU_IDLE_EMPTY;
+        ysyx_24120011_IDU_IDLE_FULL  : next_state = (i_flush || (!i_stop_pipe && i_EXU_ready)) ? ysyx_24120011_IDU_IDLE_EMPTY : ysyx_24120011_IDU_IDLE_FULL;
         ysyx_24120011_IDU_WORKING    : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
         default                      : next_state = ysyx_24120011_IDU_IDLE_EMPTY;
     endcase

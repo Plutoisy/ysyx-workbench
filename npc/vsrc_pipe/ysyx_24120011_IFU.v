@@ -50,7 +50,9 @@ module ysyx_24120011_IFU(
     input            M0_bvalid,
     output             M0_bready,
     //B-axi4
-    input	[3:0]	   M0_bid
+    input	[3:0]	   M0_bid,
+    //flush
+    input i_flush
 );
 
 reg [31:0] pc;
@@ -58,6 +60,19 @@ reg [31:0] inst;
 
 assign o_pc = pc;
 assign o_inst = inst;
+
+reg flushing;
+always @(posedge clk) begin
+    if (i_flush) begin
+        flushing <= 1'b1;
+    end
+    else begin
+        if (state == ysyx_24120011_IFU_IDLE_FULL) begin
+            flushing <= 1'b0;
+        end
+    end
+end
+
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
@@ -65,8 +80,22 @@ always @(posedge clk) begin
     end
     else begin
         //输入握手
-        if(i_EXU_valid && o_IFU_ready) begin
-            pc         <=  i_pc        ;
+        if(!i_flush && !flushing) begin
+            if(o_IFU_valid && o_IFU_ready) begin
+                //pc         <=  i_pc        ;
+                if ((inst[6:0] == 7'b1100011) && inst[31]) begin//B-Type,inst[31]是1，则imm为负数，则跳转
+                    pc <= pc + {{20{inst[31]}},inst[7],inst[30:25],inst[11:8],1'b0};
+                end 
+                else if (inst[6:0] == 7'b1101111) begin//jal
+                    pc <= pc + {{11{inst[31]}},inst[31],inst[19:12],inst[20],inst[30:21],1'b0};
+                end
+                else begin
+                    pc <= pc + 32'd4;
+                end
+            end
+        end
+        else begin
+            pc <= i_pc;//写入EXU的npc
         end
     end
 end
@@ -123,7 +152,7 @@ reg [2:0] state;
 reg [2:0] next_state;
 reg cache_IFU_valid;
 
-assign o_IFU_valid  = cache_IFU_valid;
+assign o_IFU_valid  = !i_flush && !flushing && cache_IFU_valid;
 assign o_IFU_ready  = (state == ysyx_24120011_IFU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 //====================IFU====================//
 
@@ -357,7 +386,7 @@ end
 
 always@(*)begin
     case(state)
-        ysyx_24120011_IFU_IDLE_EMPTY:      next_state = (i_EXU_valid && o_IFU_ready) ? ysyx_24120011_IFU_IDLE_FULL    : ysyx_24120011_IFU_IDLE_EMPTY;
+        ysyx_24120011_IFU_IDLE_EMPTY:      next_state = ((o_IFU_valid && o_IFU_ready) || (i_flush || flushing)) ? ysyx_24120011_IFU_IDLE_FULL    : ysyx_24120011_IFU_IDLE_EMPTY;
         ysyx_24120011_IFU_IDLE_FULL:      next_state = (i_IDU_ready) ? ysyx_24120011_IFU_LOOKUP    : ysyx_24120011_IFU_IDLE_FULL;
         ysyx_24120011_IFU_LOOKUP:    next_state = hit                      ? ysyx_24120011_IFU_IDLE_EMPTY      : ysyx_24120011_IFU_AXI_RADDR;//1周期内要确定有没有命中
         ysyx_24120011_IFU_AXI_RADDR: next_state = (arvalid && arready)     ? ysyx_24120011_IFU_AXI_RDATA : ysyx_24120011_IFU_AXI_RADDR;
