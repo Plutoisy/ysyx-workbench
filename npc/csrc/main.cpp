@@ -822,7 +822,7 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
       printf("\33[1;34mmiss_counter_branch_c: %ld\033[0m\n",miss_counter_branch_c);
       printf("\33[1;34mall_counter_branch_c: %ld\033[0m\n",all_counter_branch_c);
-      printf("\33[1;34mbranch hit rate: %ld\033[0m\n",1-((double)miss_counter_branch_c/(double)all_counter_branch_c));
+      printf("\33[1;34mbranch hit rate: %f\033[0m\n",1-((double)miss_counter_branch_c/(double)all_counter_branch_c));
       // printf("\33[1;34mTYPE COUNT:\033[0m\n");
       // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
       // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
