@@ -5394,7 +5394,46 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_0_sub_0(VysyxSoCFull___024r
     bufp->fullIData(oldp+1978,((vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
                                 >> 3U)),29);
     bufp->fullCData(oldp+1979,((7U & vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc)),3);
-    bufp->fullIData(oldp+1980,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__inst_cache),32);
+    bufp->fullIData(oldp+1980,(((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__hit)
+                                 ? ((0x5dU >= (0x7fU 
+                                               & VL_SHIFTL_III(7,7,32, 
+                                                               (1U 
+                                                                & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+                                                                   >> 2U)), 5U)))
+                                     ? (((0U == (0x1fU 
+                                                 & VL_SHIFTL_III(7,7,32, 
+                                                                 (1U 
+                                                                  & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+                                                                     >> 2U)), 5U)))
+                                          ? 0U : (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__icache[
+                                                  (((IData)(0x1fU) 
+                                                    + 
+                                                    (0x7fU 
+                                                     & VL_SHIFTL_III(7,7,32, 
+                                                                     (1U 
+                                                                      & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+                                                                         >> 2U)), 5U))) 
+                                                   >> 5U)] 
+                                                  << 
+                                                  ((IData)(0x20U) 
+                                                   - 
+                                                   (0x1fU 
+                                                    & VL_SHIFTL_III(7,7,32, 
+                                                                    (1U 
+                                                                     & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+                                                                        >> 2U)), 5U))))) 
+                                        | (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__icache[
+                                           (3U & (VL_SHIFTL_III(7,7,32, 
+                                                                (1U 
+                                                                 & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+                                                                    >> 2U)), 5U) 
+                                                  >> 5U))] 
+                                           >> (0x1fU 
+                                               & VL_SHIFTL_III(7,7,32, 
+                                                               (1U 
+                                                                & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
+                                                                   >> 2U)), 5U))))
+                                     : 0U) : 0U)),32);
     bufp->fullBit(oldp+1981,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__hit));
     bufp->fullBit(oldp+1982,(((2U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__state)) 
                               & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__icache[2U] 
@@ -12304,14 +12343,4 @@ VL_ATTR_COLD void VysyxSoCFull___024root__trace_full_0_sub_0(VysyxSoCFull___024r
     bufp->fullBit(oldp+7653,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__valid_1));
     bufp->fullIData(oldp+7654,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__elts_1_data),32);
     bufp->fullBit(oldp+7655,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__elts_1_last));
-    bufp->fullCData(oldp+7656,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__elts_1_beats),7);
-    bufp->fullBit(oldp+7657,((1U & (~ (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_2__DOT__valid_1)))));
-    bufp->fullBit(oldp+7658,(((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__valid_0) 
-                              & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_allow_2))));
-    bufp->fullIData(oldp+7659,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__elts_0_data),32);
-    bufp->fullBit(oldp+7660,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__elts_0_last));
-    bufp->fullCData(oldp+7661,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__elts_0_beats),7);
-    bufp->fullBit(oldp+7662,((1U & ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__allowed) 
-                                    >> 2U))));
-    bufp->fullBit(oldp+7663,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_2__DOT__valid_0));
 }
