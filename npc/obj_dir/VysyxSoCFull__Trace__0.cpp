@@ -2769,47 +2769,7 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
         bufp->chgIData(oldp+1977,((vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
                                    >> 3U)),29);
         bufp->chgCData(oldp+1978,((7U & vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc)),3);
-        bufp->chgIData(oldp+1979,(((IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__hit)
-                                    ? ((0x5dU >= (0x7fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-                                                                      >> 2U)), 5U)))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & VL_SHIFTL_III(7,7,32, 
-                                                              (1U 
-                                                               & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-                                                                  >> 2U)), 5U)))
-                                             ? 0U : 
-                                            (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__icache[
-                                             (((IData)(0x1fU) 
-                                               + (0x7fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-                                                                      >> 2U)), 5U))) 
-                                              >> 5U)] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-                                                                      >> 2U)), 5U))))) 
-                                           | (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__icache[
-                                              (3U & 
-                                               (VL_SHIFTL_III(7,7,32, 
-                                                              (1U 
-                                                               & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-                                                                  >> 2U)), 5U) 
-                                                >> 5U))] 
-                                              >> (0x1fU 
-                                                  & VL_SHIFTL_III(7,7,32, 
-                                                                  (1U 
-                                                                   & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__pc 
-                                                                      >> 2U)), 5U))))
-                                        : 0U) : 0U)),32);
+        bufp->chgIData(oldp+1979,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__inst_cache),32);
         bufp->chgBit(oldp+1980,(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__hit));
         bufp->chgBit(oldp+1981,(((2U == (IData)(vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__state)) 
                                  & (vlSelfRef.ysyxSoCFull__DOT__asic__DOT__cpu__DOT__cpu__DOT__u_ysyx_24120011_IFU__DOT__icache[2U] 
@@ -9817,5 +9777,15 @@ void VysyxSoCFull___024root__trace_chg_0_sub_0(VysyxSoCFull___024root* vlSelf, V
         bufp->chgBit(oldp+7652,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__valid_1));
         bufp->chgIData(oldp+7653,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__elts_1_data),32);
         bufp->chgBit(oldp+7654,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__elts_1_last));
+        bufp->chgCData(oldp+7655,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_1__DOT__elts_1_beats),7);
+        bufp->chgBit(oldp+7656,((1U & (~ (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_2__DOT__valid_1)))));
+        bufp->chgBit(oldp+7657,(((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__valid_0) 
+                                 & (IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_allow_2))));
+        bufp->chgIData(oldp+7658,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__elts_0_data),32);
+        bufp->chgBit(oldp+7659,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__elts_0_last));
+        bufp->chgCData(oldp+7660,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__qc_q__DOT__elts_0_beats),7);
+        bufp->chgBit(oldp+7661,((1U & ((IData)(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__allowed) 
+                                       >> 2U))));
+        bufp->chgBit(oldp+7662,(vlSymsp->TOP__ysyxSoCFull__DOT__asic__DOT__chipMaster__DOT__chiplink__DOT__tx.__PVT__ioX_cq_2__DOT__valid_0));
     }
 }

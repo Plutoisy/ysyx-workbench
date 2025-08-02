@@ -339,52 +339,67 @@ always @(posedge clk) begin
     end
 end
 
-genvar j;
-generate
-    for (j = 0; j < ysyx_24120011_ICACHE_NUM; j = j + 1) begin : gen_reset
-        always @(posedge clk) begin
-            if (rst) begin
-                //icache[j] <= 'b0;
-                icache <= 'b0;
+// genvar j;
+// generate
+//     for (j = 0; j < ysyx_24120011_ICACHE_NUM; j = j + 1) begin : gen_reset
+//         always @(posedge clk) begin
+//             if (rst) begin
+//                 icache[j] <= 'b0;
+//             end
+//             else begin
+//                 if(inst_cache == 32'h0000100f)begin//fence.i
+//                     icache[j] <= 'b0;
+//                 end
+//                 else begin
+//                 end
+//             end
+//         end
+//     end
+// endgenerate
+// always @(posedge clk) begin
+//     if (rst) begin
+//         icache <= 'b0;
+//     end
+//     else begin
+//         if(inst_cache == 32'h0000100f)begin//fence.i
+//             icache <= 'b0;
+//         end
+//         else begin
+//             icache <= icache;
+//         end
+//     end
+// end
+always @(posedge clk) begin
+    if(rst) begin
+        icache <= 'b0;
+    end
+    else begin
+        if(inst_cache == 32'h0000100f)begin//fence.i
+            icache <= 'b0;
+        end else begin
+            if(state == ysyx_24120011_IFU_IDLE_EMPTY) begin
             end
-            else begin
-                if(inst_cache == 32'h0000100f)begin//fence.i
-                    //icache[j] <= 'b0;
-                    icache <= 'b0;
+            if(state == ysyx_24120011_IFU_IDLE_FULL) begin
+            end
+            else if(state == ysyx_24120011_IFU_LOOKUP) begin
+            end
+            else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
+            end
+            else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
+                if(rvalid  && M0_rready) begin
+                    // icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
+                    // icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
+
+                    icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
+                    icache[31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
                 end
                 else begin
                 end
             end
-        end
-    end
-endgenerate
-
-always @(posedge clk) begin
-    if(rst) begin
-        //icache <= '{default: '0};
-    end
-    else begin
-        if(state == ysyx_24120011_IFU_IDLE_EMPTY) begin
-        end
-        if(state == ysyx_24120011_IFU_IDLE_FULL) begin
-        end
-        else if(state == ysyx_24120011_IFU_LOOKUP) begin
-        end
-        else if(state == ysyx_24120011_IFU_AXI_RADDR) begin
-        end
-        else if(state == ysyx_24120011_IFU_AXI_RDATA) begin
-            if(rvalid  && M0_rready) begin
-                // icache[index][(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                // icache[index][31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
-
-                icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1: (8*ysyx_24120011_ICACHE_SIZE)] <= {1'b1, tag};
-                icache[31+(cached_size[31:2])*32 -: 32] <= M0_rdata;
-            end
-            else begin
+            else begin //不应该进入
             end
         end
-        else begin //不应该进入
-        end
+        
     end
 end
 
