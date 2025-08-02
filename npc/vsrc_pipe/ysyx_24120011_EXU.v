@@ -1,3 +1,4 @@
+import "DPI-C" function void branch_count(input int all_counter_branch,input int miss_counter_branch);
 module ysyx_24120011_EXU (
     input  clk,
     input  rst,
@@ -38,7 +39,32 @@ module ysyx_24120011_EXU (
     input [31:0] i_IFU_pc,
     input  i_IDU_empty
 );
-
+//======================dpic========================//
+reg [31:0] miss_counter_branch;
+reg [31:0] all_counter_branch;
+always @(posedge clk ) begin
+    branch_count(all_counter_branch,miss_counter_branch);
+end
+always @(posedge clk) begin
+    if (rst) begin
+        miss_counter_branch <= 'd0;
+        all_counter_branch  <= 'd0;
+    end else begin
+        if(o_EXU_valid) begin
+            all_counter_branch <= all_counter_branch + 1;
+            if (i_IDU_empty) begin
+                if (i_IFU_pc != npc) begin
+                    miss_counter_branch <= miss_counter_branch + 1;
+                end 
+            end else begin
+                if (i_pc != npc) begin
+                    miss_counter_branch <= miss_counter_branch + 1;
+                end 
+            end
+        end
+    end
+end
+//======================dpic========================//
 parameter ysyx_24120011_EXU_IDLE_EMPTY = 2'd0;
 parameter ysyx_24120011_EXU_IDLE_FULL  = 2'd1;
 parameter ysyx_24120011_EXU_WORKING    = 2'd2;
