@@ -287,6 +287,8 @@ wire [31:0] IFU_IDU_pc;
 wire [31:0] IFU_IDU_inst;
 wire IFID_ready;
 wire IFU_valid;
+wire flush;
+
 ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .clk          ( clock          ),
     .rst          ( reset          ),
@@ -325,7 +327,8 @@ ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .M0_bresp     ( M0_bresp     ),
     .M0_bvalid    ( M0_bvalid    ),
     .M0_bready    ( M0_bready    ),
-    .M0_bid       ( M0_bid       )
+    .M0_bid       ( M0_bid       ),
+    .i_flush      ( flush        )
 );
 wire [31:0] IFID_IDU_pc;
 wire [31:0] IFID_IDU_inst;
@@ -395,7 +398,8 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_stop_pipe  ( DATAHAZARD_stop_pipe           ),
     .i_rd_data    ( DATAHAZARD_IDU_r_ddata),
     .i_rs1_or_rs2 ( DATAHAZARD_IDU_rs1_or_rs2),
-    .i_bypass     ( DATAHAZARD_IDU_bypass)
+    .i_bypass     ( DATAHAZARD_IDU_bypass),
+    .i_flush      ( flush )
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
 wire [3:0]  IDEX_EXU_rd_ctrl;
@@ -485,7 +489,10 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .i_IDU_valid   ( IDU_valid  ),
     .o_EXU_ready   ( EXU_ready   ),
     .i_MEM_ready   ( MEM_ready ),
-    .o_EXU_valid   ( EXU_valid   )
+    .o_EXU_valid   ( EXU_valid   ),
+    .o_flush       ( flush ),
+    .i_IDU_empty   ( IDU_ready ),
+    .i_IFU_pc      ( IFU_IDU_pc)
 );
 wire [3:0]  EXMEM_MEM_rd_ctrl;
 wire [18:0] EXMEM_MEM_mem_ctrl;
