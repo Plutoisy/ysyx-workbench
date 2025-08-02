@@ -16,6 +16,18 @@ VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_reg_out_TOP____024unit(V
     reg_out(array__Vcvt);
 }
 
+extern "C" void branch_count(int all_counter_branch, int miss_counter_branch);
+
+VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_branch_count_TOP____024unit(IData/*31:0*/ all_counter_branch, IData/*31:0*/ miss_counter_branch) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VysyxSoCFull___024unit____Vdpiimwrap_branch_count_TOP____024unit\n"); );
+    // Body
+    int all_counter_branch__Vcvt;
+    for (size_t all_counter_branch__Vidx = 0; all_counter_branch__Vidx < 1; ++all_counter_branch__Vidx) all_counter_branch__Vcvt = all_counter_branch;
+    int miss_counter_branch__Vcvt;
+    for (size_t miss_counter_branch__Vidx = 0; miss_counter_branch__Vidx < 1; ++miss_counter_branch__Vidx) miss_counter_branch__Vcvt = miss_counter_branch;
+    branch_count(all_counter_branch__Vcvt, miss_counter_branch__Vcvt);
+}
+
 extern "C" void LSU_clktime_count(int lsu_clk_count);
 
 VL_INLINE_OPT void VysyxSoCFull___024unit____Vdpiimwrap_LSU_clktime_count_TOP____024unit(IData/*31:0*/ lsu_clk_count) {
