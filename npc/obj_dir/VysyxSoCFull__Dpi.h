@@ -22,6 +22,8 @@ extern "C" {
     extern void LSU_clktime_count(int lsu_clk_count);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc_pipe/ysyx_24120011.v:4:30
     extern void Performance_Counters(int Performancetype);
+    // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc_pipe/ysyx_24120011_EXU.v:1:30
+    extern void branch_count(int all_counter_branch, int miss_counter_branch);
     // DPI import at /home/plutoisy/ysyx-workbench/npc/vsrc_pipe/ysyx_24120011.v:1:30
     extern void ebreak();
     // DPI import at /home/plutoisy/ysyx-workbench/ysyxSoC/perip/flash/flash.v:84:30

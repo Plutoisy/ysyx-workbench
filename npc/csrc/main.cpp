@@ -333,6 +333,9 @@ uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
 uint64_t icache_hit_count = 0;
 uint64_t icache_miss_count = 0;
+uint64_t icache_miss_count_branch = 0;
+uint64_t miss_counter_branch_c = 0;
+uint64_t all_counter_branch_c = 0;
 extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
   //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
@@ -344,12 +347,20 @@ extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
 extern "C" void icahce_miss_count(int miss_count){
   icache_miss_count = miss_count;
 }
+extern "C" void icahce_miss_count_branch(int miss_count_branch){
+  icache_miss_count_branch = miss_count_branch;
+}
 uint64_t sum_lsu_clock_time = 0;
 uint64_t lsu_clock_time_num = 0;
 extern "C" void LSU_clktime_count(int lsu_clk_count){
   //printf("%d\n",lsu_clk_count);
   sum_lsu_clock_time = sum_lsu_clock_time + lsu_clk_count;
   lsu_clock_time_num++;
+}
+extern "C" void branch_count(int all_counter_branch,int miss_counter_branch){
+  //printf("%d\n",ifu_clk_count);
+  all_counter_branch_c = all_counter_branch;
+  miss_counter_branch_c = miss_counter_branch;
 }
 
 uint64_t IFU_getinst = 0;
@@ -809,6 +820,9 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mlsu_clock_time_num: %ld\033[0m\n",lsu_clock_time_num);
       // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
+      printf("\33[1;34mmiss_counter_branch_c: %ld\033[0m\n",miss_counter_branch_c);
+      printf("\33[1;34mall_counter_branch_c: %ld\033[0m\n",all_counter_branch_c);
+      printf("\33[1;34mbranch hit rate: %f\033[0m\n",1-((double)miss_counter_branch_c/(double)all_counter_branch_c));
       // printf("\33[1;34mTYPE COUNT:\033[0m\n");
       // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
       // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
