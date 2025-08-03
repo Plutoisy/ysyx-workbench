@@ -350,7 +350,7 @@ wire IFID_valid;
 wire [2:0]  IDU_EXU_pc_ctrl;
 wire [2:0]  IDU_EXU_rd_ctrl;
 wire [5:0]  IDU_EXU_ALU_ctrl;
-wire [18:0] IDU_EXU_mem_ctrl;
+wire [6:0] IDU_EXU_mem_ctrl;
 wire [2:0]  IDU_EXU_csr_ctrl;
 wire [31:0] IDU_EXU_pc;
 wire [31:0] IDU_EXU_src1;
@@ -448,7 +448,7 @@ wire IDEX_valid;
 //     .o_IDEX_valid  ( IDEX_valid  )
 // );
 wire [2:0]  EXU_MEM_rd_ctrl;
-wire [18:0] EXU_MEM_mem_ctrl;
+wire [6:0] EXU_MEM_mem_ctrl;
 wire [2:0]  EXU_MEM_csr_ctrl;
 wire [31:0] EXU_MEM_pc;
 wire [31:0] EXU_MEM_src1;

@@ -7,7 +7,7 @@ module ysyx_24120011_IDU (
     output [2:0]  o_pc_ctrl,
     output [2:0]  o_rd_ctrl,
     output [5:0]  o_ALU_ctrl,
-    output [18:0] o_mem_ctrl,
+    output [6:0] o_mem_ctrl,
     output [2:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
@@ -116,7 +116,7 @@ reg  [31:0] imm;
 reg  [2:0]  pc_ctrl;
 reg  [2:0]  rd_ctrl;
 reg  [5:0]  ALU_ctrl;
-reg  [18:0] mem_ctrl;
+reg  [6:0] mem_ctrl;
 reg  [11:0] r_csr_addr;
 reg  [11:0] w_csr_addr;
 reg  [2:0]  csr_ctrl;
@@ -379,28 +379,31 @@ end
 //--------------------mem--------------------//
 //Sign_extension R_mem_en R_mem_len W_mem_en W_men_len
 //[18]           [17]     [16:9]    [8]      [7:0]
+//Sign_extension R_mem_en R_mem_len W_mem_en W_men_len
+//[6]            [5]      [4:3]     [2]      [1:0]
+//len 0->1,1->2,2->4
 //--------------------w_mem------------------//
 always@(*)begin
     case(opcode_type)
         3'd3:begin //S-Type
-            mem_ctrl[8] = 1'd1;
+            mem_ctrl[2] = 1'd1;
 
             if(func3 == 3'b000)begin//sb
-                 mem_ctrl[7:0] = 8'd1;
+                 mem_ctrl[1:0] = 2'd0;
             end
             else if(func3 == 3'b001)begin//sh
-                 mem_ctrl[7:0] = 8'd2;
+                 mem_ctrl[1:0] = 2'd1;
             end
             else if(func3 == 3'b010)begin//sw
-                 mem_ctrl[7:0] = 8'd4;
+                 mem_ctrl[1:0] = 2'd2;
             end
             else begin
-                 mem_ctrl[7:0] = 8'd1;
+                 mem_ctrl[1:0] = 2'd0;
             end
         end
         default: begin 
-            mem_ctrl[8] = 1'd0;
-            mem_ctrl[7:0] = 8'd1;
+            mem_ctrl[2] = 1'd0;
+            mem_ctrl[1:0] = 2'd0;
         end
     endcase
 end
@@ -410,43 +413,43 @@ always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                mem_ctrl[17] = 1'd1;
+                mem_ctrl[5] = 1'd1;
 
                 if(func3 == 3'b000)begin//lb
-                    mem_ctrl[16:9] = 8'd1;
-                    mem_ctrl[18] = 1'd1;
+                    mem_ctrl[4:3] = 2'd0;
+                    mem_ctrl[6] = 1'd1;
                 end
                 else if(func3 == 3'b001)begin//lh
-                    mem_ctrl[16:9] = 8'd2;
-                    mem_ctrl[18] = 1'd1;
+                    mem_ctrl[4:3] = 2'd1;
+                    mem_ctrl[6] = 1'd1;
                 end
                 else if(func3 == 3'b010)begin//lw
-                    mem_ctrl[16:9] = 8'd4;
-                    mem_ctrl[18] = 1'd1;
+                    mem_ctrl[4:3] = 2'd2;
+                    mem_ctrl[6] = 1'd1;
                 end
                 else if(func3 == 3'b100)begin//lbu
-                    mem_ctrl[16:9] = 8'd1;
-                    mem_ctrl[18] = 1'd0;
+                    mem_ctrl[4:3] = 2'd0;
+                    mem_ctrl[6] = 1'd0;
                 end
                 else if(func3 == 3'b101)begin//lhu
-                    mem_ctrl[16:9] = 8'd2;
-                    mem_ctrl[18] = 1'd0;
+                    mem_ctrl[4:3] = 2'd1;
+                    mem_ctrl[6] = 1'd0;
                 end
                 else begin
-                    mem_ctrl[16:9] = 8'd1;
-                    mem_ctrl[18] = 1'd0;
+                    mem_ctrl[4:3] = 2'd0;
+                    mem_ctrl[6] = 1'd0;
                 end
             end
             else begin
-                mem_ctrl[17] = 1'd0;
-                mem_ctrl[16:9] = 8'd1;
-                mem_ctrl[18] = 1'd0;
+                mem_ctrl[5] = 1'd0;
+                mem_ctrl[4:3] = 2'd0;
+                mem_ctrl[6] = 1'd0;
             end
         end
         default: begin 
-            mem_ctrl[17] = 1'd0;
-            mem_ctrl[16:9] = 8'd1;
-            mem_ctrl[18] = 1'd0;
+            mem_ctrl[5] = 1'd0;
+            mem_ctrl[4:3] = 2'd0;
+            mem_ctrl[6] = 1'd0;
         end
     endcase
 end

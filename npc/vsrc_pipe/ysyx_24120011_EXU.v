@@ -6,7 +6,7 @@ module ysyx_24120011_EXU (
     input  [2:0]  i_pc_ctrl,
     input  [2:0]  i_rd_ctrl,
     input  [5:0]  i_ALU_ctrl,
-    input  [18:0] i_mem_ctrl,
+    input  [6:0] i_mem_ctrl,
     input  [2:0]  i_csr_ctrl,
     input  [31:0] i_pc,
     input  [31:0] i_src1,
@@ -17,7 +17,7 @@ module ysyx_24120011_EXU (
     input  [11:0] i_w_csr_addr,
 
     output [2:0]  o_rd_ctrl,
-    output [18:0] o_mem_ctrl,
+    output [6:0] o_mem_ctrl,
     output [2:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
@@ -72,7 +72,7 @@ parameter ysyx_24120011_EXU_WORKING    = 2'd2;
 reg [2:0]  pc_ctrl;
 reg [2:0]  rd_ctrl;
 reg [5:0]  ALU_ctrl;
-reg [18:0] mem_ctrl;
+reg [6:0] mem_ctrl;
 reg [2:0]  csr_ctrl;
 reg [31:0] pc;
 reg [31:0] src1;
