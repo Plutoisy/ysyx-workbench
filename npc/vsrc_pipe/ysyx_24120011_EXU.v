@@ -227,89 +227,21 @@ assign a_not_b = A != B ? 1 : 0;
 
 assign {carry, ALUout_tmp} = A + B_in;
 
-always@(*)begin
-    case(ALU_ctrl[2:0])
-        3'b000: begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = ALUout_tmp;
-            end
-
-            else begin
-                ALU_result = {31'b0,a_is_b};
-            end
-        end
-        3'b001:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = ALUout_tmp;
-            end
-
-            else begin
-                ALU_result = {31'b0,a_not_b};
-            end
-        end
-        3'b011:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = {31'b0,sless};
-            end
-            else begin
-                if(B == 32'b0)begin
-                    ALU_result = {31'b0,1'b0};
-                end
-                else begin
-                    ALU_result = {31'b0,uless};
-                end
-            end
-        end
-        3'b111:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = {31'b0,~sless};
-            end
-            else begin
-                if(B == 32'b0)begin
-                    ALU_result = {31'b0,1'b1};
-                end
-                else begin
-                    ALU_result = {31'b0,~uless};
-                end
-            end
-        end
-        3'b010:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = A^B;
-            end
-            else begin
-                ALU_result = ALUout_tmp;//useless
-            end
-        end
-        3'b100:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = A >> B[4:0]; //逻辑右移
-            end
-            else begin
-                if(B[4:0] == 0)begin
-                    ALU_result = A;
-                end
-                else begin
-                    ALU_result = (A >> B[4:0]) | ({32{A[31]}} << (32-B[4:0]));//算术右移
-                end
-            end
-        end
-        3'b101:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = A | B;//or
-            end
-            else begin
-                ALU_result = A & B;//and
-            end
-        end
-        3'b110:begin
-            if(ALU_ctrl[3] == 1'b0)begin
-                ALU_result = A << B[4:0]; //逻辑左移
-            end
-            else begin
-                ALU_result = ALUout_tmp;//useless
-            end
-        end
+always @(*) begin
+    case (ALU_ctrl[3:0])
+        4'b0000, 4'b0001, 4'b1010, 4'b1110: ALU_result = ALUout_tmp;
+        4'b1000: ALU_result = {31'b0, a_is_b};
+        4'b1001: ALU_result = {31'b0, a_not_b};
+        4'b0011: ALU_result = {31'b0, sless};
+        4'b1011: ALU_result = (B == 32'b0) ? 32'b0 : {31'b0, uless};
+        4'b0111: ALU_result = {31'b0, ~sless};
+        4'b1111: ALU_result = (B == 32'b0) ? 32'h1 : {31'b0, ~uless};
+        4'b0010: ALU_result = A ^ B;
+        4'b0100: ALU_result = A >> B[4:0]; //逻辑右移
+        4'b1100: ALU_result = (B[4:0] == 0) ? A : $signed(A) >>> B[4:0]; //算术右移
+        4'b0101: ALU_result = A | B;
+        4'b1101: ALU_result = A & B;
+        4'b0110: ALU_result = A << B[4:0]; //左移
         default: ALU_result = ALUout_tmp;
     endcase
 end
