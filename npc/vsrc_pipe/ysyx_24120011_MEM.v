@@ -4,7 +4,7 @@ module ysyx_24120011_MEM(
     input clk,
     input rst,
     //数据
-    input [3:0]  i_rd_ctrl,
+    input [2:0]  i_rd_ctrl,
     input [18:0] i_mem_ctrl,
     input [4:0]  i_csr_ctrl,
     input [31:0] i_pc,
@@ -17,7 +17,7 @@ module ysyx_24120011_MEM(
     input [31:0] i_ALU_result,
 
     output [31:0] o_r_mem_data,
-    output [3:0]  o_rd_ctrl,
+    output [2:0]  o_rd_ctrl,
     output [4:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
@@ -73,7 +73,7 @@ module ysyx_24120011_MEM(
     input	[3:0]	   M1_bid
 );
 
-reg [3:0]  rd_ctrl;
+reg [2:0]  rd_ctrl;
 reg [18:0] mem_ctrl;
 reg [4:0]  csr_ctrl;
 reg [31:0] pc;

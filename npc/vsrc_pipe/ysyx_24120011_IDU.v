@@ -5,7 +5,7 @@ module ysyx_24120011_IDU (
     input  [31:0] i_pc,
     input  [31:0] i_inst,
     output [2:0]  o_pc_ctrl,
-    output [3:0]  o_rd_ctrl,
+    output [2:0]  o_rd_ctrl,
     output [5:0]  o_ALU_ctrl,
     output [18:0] o_mem_ctrl,
     output [4:0]  o_csr_ctrl,
@@ -114,7 +114,7 @@ wire [6:0]  func7 ;
 reg  [2:0]  opcode_type;
 reg  [31:0] imm;
 reg  [2:0]  pc_ctrl;
-reg  [3:0]  rd_ctrl;
+reg  [2:0]  rd_ctrl;
 reg  [5:0]  ALU_ctrl;
 reg  [18:0] mem_ctrl;
 reg  [11:0] r_csr_addr;
@@ -187,52 +187,52 @@ end
 //--------------------PC---------------------//
 
 //--------------------Rd---------------------//
-//4'd0: pc_add_4;
-//4'd1: pc_add_imme;
-//4'd2: alu_result;
-//4'd3: imme;
-//4'd4: w_en = 1'd0;
-//4'd5: rdata;
-//4'd6: r_csr_data;
+//3'd0: pc_add_4;
+//3'd1: pc_add_imme;
+//3'd2: alu_result;
+//3'd3: imme;
+//3'd4: w_en = 1'd0;
+//3'd5: rdata;
+//3'd6: r_csr_data;
 always@(*)begin
     if(rd == 5'b00000) begin
-        rd_ctrl = 4'd4;
+        rd_ctrl = 3'd4;
     end
     else begin
         case(opcode_type)
             3'd0:begin //I-Type
                 if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
-                    rd_ctrl = 4'd0;
+                    rd_ctrl = 3'd0;
                 end
                 else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                    rd_ctrl = 4'd5;
+                    rd_ctrl = 3'd5;
                 end
                 else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
-                    rd_ctrl = 4'd6;
+                    rd_ctrl = 3'd6;
                 end
                 else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                    rd_ctrl = 4'd6;
+                    rd_ctrl = 3'd6;
                 end
                 else begin
-                    rd_ctrl = 4'd2;
+                    rd_ctrl = 3'd2;
                 end
             end
             3'd1:begin //U-Type
                 if(opcode == 7'b0010111)begin//auipc
-                    rd_ctrl = 4'd1;
+                    rd_ctrl = 3'd1;
                 end
                 else if(opcode == 7'b0110111)begin//lui
-                    rd_ctrl = 4'd3;
+                    rd_ctrl = 3'd3;
                 end
                 else begin
-                    rd_ctrl = 4'd0;
+                    rd_ctrl = 3'd0;
                 end
             end
-            3'd2:    rd_ctrl = 4'd0;//J-Type jal
-            3'd3:    rd_ctrl = 4'd4;//S-Type sw
-            3'd4:    rd_ctrl = 4'd2;//R-Type
-            3'd5:    rd_ctrl = 4'd4;//B-Type
-            default: rd_ctrl = 4'd0;
+            3'd2:    rd_ctrl = 3'd0;//J-Type jal
+            3'd3:    rd_ctrl = 3'd4;//S-Type sw
+            3'd4:    rd_ctrl = 3'd2;//R-Type
+            3'd5:    rd_ctrl = 3'd4;//B-Type
+            default: rd_ctrl = 3'd0;
         endcase
     end
 end

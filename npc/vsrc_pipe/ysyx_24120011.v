@@ -348,7 +348,7 @@ wire IFID_valid;
 // );
 
 wire [2:0]  IDU_EXU_pc_ctrl;
-wire [3:0]  IDU_EXU_rd_ctrl;
+wire [2:0]  IDU_EXU_rd_ctrl;
 wire [5:0]  IDU_EXU_ALU_ctrl;
 wire [18:0] IDU_EXU_mem_ctrl;
 wire [4:0]  IDU_EXU_csr_ctrl;
@@ -402,7 +402,7 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_flush      ( flush )
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
-wire [3:0]  IDEX_EXU_rd_ctrl;
+wire [2:0]  IDEX_EXU_rd_ctrl;
 wire [5:0]  IDEX_EXU_ALU_ctrl;
 wire [18:0] IDEX_EXU_mem_ctrl;
 wire [4:0]  IDEX_EXU_csr_ctrl;
@@ -447,7 +447,7 @@ wire IDEX_valid;
 //     .i_EXU_ready  ( EXU_ready  ),
 //     .o_IDEX_valid  ( IDEX_valid  )
 // );
-wire [3:0]  EXU_MEM_rd_ctrl;
+wire [2:0]  EXU_MEM_rd_ctrl;
 wire [18:0] EXU_MEM_mem_ctrl;
 wire [4:0]  EXU_MEM_csr_ctrl;
 wire [31:0] EXU_MEM_pc;
@@ -494,7 +494,7 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .i_IDU_empty   ( IDU_ready ),
     .i_IFU_pc      ( IFU_IDU_pc)
 );
-wire [3:0]  EXMEM_MEM_rd_ctrl;
+wire [2:0]  EXMEM_MEM_rd_ctrl;
 wire [18:0] EXMEM_MEM_mem_ctrl;
 wire [4:0]  EXMEM_MEM_csr_ctrl;
 wire [31:0] EXMEM_MEM_pc;
@@ -538,7 +538,7 @@ wire EXMEM_valid;
 //     .o_EXMEM_valid  ( EXMEM_valid  )
 // );
 wire [31:0] MEM_WBU_r_mem_data;
-wire [3:0]  MEM_WBU_rd_ctrl;
+wire [2:0]  MEM_WBU_rd_ctrl;
 wire [4:0]  MEM_WBU_csr_ctrl;
 wire [31:0] MEM_WBU_pc;
 wire [31:0] MEM_WBU_src1;
@@ -608,7 +608,7 @@ ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .M1_bid        ( M1_bid        )
 );
 wire [31:0] MEMWB_WBU_r_mem_data;
-wire [3:0]  MEMWB_WBU_rd_ctrl;
+wire [2:0]  MEMWB_WBU_rd_ctrl;
 wire [4:0]  MEMWB_WBU_csr_ctrl;
 wire [31:0] MEMWB_WBU_pc;
 wire [31:0] MEMWB_WBU_src1;
@@ -654,7 +654,7 @@ wire [11:0]  WBU_CSR_w_csr_addr;
 wire [31:0]  WBU_CSR_w_csr_data;
 wire         WBU_CSR_w_csr_en;
 wire         WBU_CSR_w_csr_ecall;
-wire [3:0]   WBU_rd_ctrl;
+wire [2:0]   WBU_rd_ctrl;
 ysyx_24120011_WBU u_ysyx_24120011_WBU(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -952,6 +952,7 @@ ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
     .Xbar_S1_bvalid  ( clint_bvalid      ),
     .Xbar_S1_bready  ( clint_bready      ),
     .Xbar_S1_bid     ( clint_bid         )
+
     // .Xbar_S2_araddr  (  ),
     // .Xbar_S2_arvalid (  ),
     // .Xbar_S2_arready (  ),

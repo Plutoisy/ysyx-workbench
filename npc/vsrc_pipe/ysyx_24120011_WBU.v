@@ -3,7 +3,7 @@ module ysyx_24120011_WBU(
     input rst,
     //数据
     input  [31:0] i_r_mem_data,
-    input  [3:0]  i_rd_ctrl,
+    input  [2:0]  i_rd_ctrl,
     input  [4:0]  i_csr_ctrl,
     input  [31:0] i_pc,
     input  [31:0] i_src1,
@@ -25,14 +25,14 @@ module ysyx_24120011_WBU(
     input  i_MEM_valid,
     output o_WBU_ready,
 
-    output [3:0] o_rd_ctrl
+    output [2:0] o_rd_ctrl
 );
 
 parameter ysyx_24120011_WBU_IDLE      = 1'b0;
 parameter ysyx_24120011_WBU_WORKING   = 1'b1;
 
 reg  [31:0] r_mem_data;
-reg  [3:0]  rd_ctrl;
+reg  [2:0]  rd_ctrl;
 reg  [4:0]  csr_ctrl;
 reg  [31:0] pc;
 reg  [31:0] src1;
@@ -134,7 +134,7 @@ always @(posedge clk) begin
             w_csr_en    <= 'd0       ;
             w_csr_ecall <= 'd0       ;
         end else begin
-            if (rd_ctrl == 4'd4) begin
+            if (rd_ctrl == 3'd4) begin
                 rd_en      <= 'd0;
             end else begin
                 rd_en      <= 'd1;
@@ -154,13 +154,13 @@ always @(posedge clk) begin
 end
 always@(*)begin
     case(rd_ctrl)
-        4'd0: rd_data = pc + 32'd4;
-        4'd1: rd_data = pc + imm;
-        4'd2: rd_data = ALU_result;
-        4'd3: rd_data = imm;
-        4'd4: rd_data = 32'h0000_0000;
-        4'd5: rd_data = r_mem_data;
-        4'd6: rd_data = r_csr_data;
+        3'd0: rd_data = pc + 32'd4;
+        3'd1: rd_data = pc + imm;
+        3'd2: rd_data = ALU_result;
+        3'd3: rd_data = imm;
+        3'd4: rd_data = 32'h0000_0000;
+        3'd5: rd_data = r_mem_data;
+        3'd6: rd_data = r_csr_data;
         default: rd_data = 32'h0000_0000;
     endcase
 end

@@ -4,7 +4,7 @@ module ysyx_24120011_EXU (
     input  rst,
     //数据
     input  [2:0]  i_pc_ctrl,
-    input  [3:0]  i_rd_ctrl,
+    input  [2:0]  i_rd_ctrl,
     input  [5:0]  i_ALU_ctrl,
     input  [18:0] i_mem_ctrl,
     input  [4:0]  i_csr_ctrl,
@@ -16,7 +16,7 @@ module ysyx_24120011_EXU (
     input  [4:0]  i_rd,
     input  [11:0] i_w_csr_addr,
 
-    output [3:0]  o_rd_ctrl,
+    output [2:0]  o_rd_ctrl,
     output [18:0] o_mem_ctrl,
     output [4:0]  o_csr_ctrl,
     output [31:0] o_pc,
@@ -70,7 +70,7 @@ parameter ysyx_24120011_EXU_IDLE_FULL  = 2'd1;
 parameter ysyx_24120011_EXU_WORKING    = 2'd2;
 
 reg [2:0]  pc_ctrl;
-reg [3:0]  rd_ctrl;
+reg [2:0]  rd_ctrl;
 reg [5:0]  ALU_ctrl;
 reg [18:0] mem_ctrl;
 reg [4:0]  csr_ctrl;
