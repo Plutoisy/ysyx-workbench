@@ -5,16 +5,16 @@ module ysyx_24120011_IDU (
     input  [31:0] i_pc,
     input  [31:0] i_inst,
     output [2:0]  o_pc_ctrl,
-    output [3:0]  o_rd_ctrl,
+    output [2:0]  o_rd_ctrl,
     output [5:0]  o_ALU_ctrl,
-    output [18:0] o_mem_ctrl,
-    output [4:0]  o_csr_ctrl,
+    output [6:0] o_mem_ctrl,
+    output [2:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
     output [31:0] o_src2,
     output [31:0] o_r_csr_data,
     output [31:0] o_imm,
-    output [4:0]  o_rd,
+    output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
     //握手
     input  i_IFU_valid,
@@ -22,8 +22,8 @@ module ysyx_24120011_IDU (
     input  i_EXU_ready,
     output o_IDU_valid,
     //读寄存器
-    output [4:0]  o_rs1,
-    output [4:0]  o_rs2,
+    output [3:0]  o_rs1,
+    output [3:0]  o_rs2,
     input  [31:0] i_src1,
     input  [31:0] i_src2,
     output [11:0] o_r_csr_addr,
@@ -106,25 +106,25 @@ end
 
 //指令解码
 wire [6:0]  opcode;
-wire [4:0]  rd    ;
-wire [4:0]  rs1   ;
-wire [4:0]  rs2   ;
+wire [3:0]  rd    ;
+wire [3:0]  rs1   ;
+wire [3:0]  rs2   ;
 wire [2:0]  func3 ;
 wire [6:0]  func7 ;
 reg  [2:0]  opcode_type;
 reg  [31:0] imm;
 reg  [2:0]  pc_ctrl;
-reg  [3:0]  rd_ctrl;
+reg  [2:0]  rd_ctrl;
 reg  [5:0]  ALU_ctrl;
-reg  [18:0] mem_ctrl;
+reg  [6:0] mem_ctrl;
 reg  [11:0] r_csr_addr;
 reg  [11:0] w_csr_addr;
-reg  [4:0]  csr_ctrl;
+reg  [2:0]  csr_ctrl;
 
 assign opcode   = inst[6:0];
-assign rd       = inst[11:7];
-assign rs1      = inst[19:15];
-assign rs2      = inst[24:20];
+assign rd       = inst[10:7];
+assign rs1      = inst[18:15];
+assign rs2      = inst[23:20];
 assign func3    = inst[14:12];
 assign func7    = inst[31:25];
 
@@ -187,52 +187,52 @@ end
 //--------------------PC---------------------//
 
 //--------------------Rd---------------------//
-//4'd0: pc_add_4;
-//4'd1: pc_add_imme;
-//4'd2: alu_result;
-//4'd3: imme;
-//4'd4: w_en = 1'd0;
-//4'd5: rdata;
-//4'd6: r_csr_data;
+//3'd0: pc_add_4;
+//3'd1: pc_add_imme;
+//3'd2: alu_result;
+//3'd3: imme;
+//3'd4: w_en = 1'd0;
+//3'd5: rdata;
+//3'd6: r_csr_data;
 always@(*)begin
-    if(rd == 5'b00000) begin
-        rd_ctrl = 4'd4;
+    if(rd == 4'b0000) begin
+        rd_ctrl = 3'd4;
     end
     else begin
         case(opcode_type)
             3'd0:begin //I-Type
                 if(opcode == 7'b1100111 && func3 == 3'b000)begin//jalr
-                    rd_ctrl = 4'd0;
+                    rd_ctrl = 3'd0;
                 end
                 else if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                    rd_ctrl = 4'd5;
+                    rd_ctrl = 3'd5;
                 end
                 else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
-                    rd_ctrl = 4'd6;
+                    rd_ctrl = 3'd6;
                 end
                 else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
-                    rd_ctrl = 4'd6;
+                    rd_ctrl = 3'd6;
                 end
                 else begin
-                    rd_ctrl = 4'd2;
+                    rd_ctrl = 3'd2;
                 end
             end
             3'd1:begin //U-Type
                 if(opcode == 7'b0010111)begin//auipc
-                    rd_ctrl = 4'd1;
+                    rd_ctrl = 3'd1;
                 end
                 else if(opcode == 7'b0110111)begin//lui
-                    rd_ctrl = 4'd3;
+                    rd_ctrl = 3'd3;
                 end
                 else begin
-                    rd_ctrl = 4'd0;
+                    rd_ctrl = 3'd0;
                 end
             end
-            3'd2:    rd_ctrl = 4'd0;//J-Type jal
-            3'd3:    rd_ctrl = 4'd4;//S-Type sw
-            3'd4:    rd_ctrl = 4'd2;//R-Type
-            3'd5:    rd_ctrl = 4'd4;//B-Type
-            default: rd_ctrl = 4'd0;
+            3'd2:    rd_ctrl = 3'd0;//J-Type jal
+            3'd3:    rd_ctrl = 3'd4;//S-Type sw
+            3'd4:    rd_ctrl = 3'd2;//R-Type
+            3'd5:    rd_ctrl = 3'd4;//B-Type
+            default: rd_ctrl = 3'd0;
         endcase
     end
 end
@@ -379,28 +379,31 @@ end
 //--------------------mem--------------------//
 //Sign_extension R_mem_en R_mem_len W_mem_en W_men_len
 //[18]           [17]     [16:9]    [8]      [7:0]
+//Sign_extension R_mem_en R_mem_len W_mem_en W_men_len
+//[6]            [5]      [4:3]     [2]      [1:0]
+//len 0->1,1->2,2->4
 //--------------------w_mem------------------//
 always@(*)begin
     case(opcode_type)
         3'd3:begin //S-Type
-            mem_ctrl[8] = 1'd1;
+            mem_ctrl[2] = 1'd1;
 
             if(func3 == 3'b000)begin//sb
-                 mem_ctrl[7:0] = 8'd1;
+                 mem_ctrl[1:0] = 2'd0;
             end
             else if(func3 == 3'b001)begin//sh
-                 mem_ctrl[7:0] = 8'd2;
+                 mem_ctrl[1:0] = 2'd1;
             end
             else if(func3 == 3'b010)begin//sw
-                 mem_ctrl[7:0] = 8'd4;
+                 mem_ctrl[1:0] = 2'd2;
             end
             else begin
-                 mem_ctrl[7:0] = 8'd1;
+                 mem_ctrl[1:0] = 2'd0;
             end
         end
         default: begin 
-            mem_ctrl[8] = 1'd0;
-            mem_ctrl[7:0] = 8'd1;
+            mem_ctrl[2] = 1'd0;
+            mem_ctrl[1:0] = 2'd0;
         end
     endcase
 end
@@ -410,43 +413,43 @@ always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(opcode == 7'b0000011)begin//lb lbu lh lhu lw
-                mem_ctrl[17] = 1'd1;
+                mem_ctrl[5] = 1'd1;
 
                 if(func3 == 3'b000)begin//lb
-                    mem_ctrl[16:9] = 8'd1;
-                    mem_ctrl[18] = 1'd1;
+                    mem_ctrl[4:3] = 2'd0;
+                    mem_ctrl[6] = 1'd1;
                 end
                 else if(func3 == 3'b001)begin//lh
-                    mem_ctrl[16:9] = 8'd2;
-                    mem_ctrl[18] = 1'd1;
+                    mem_ctrl[4:3] = 2'd1;
+                    mem_ctrl[6] = 1'd1;
                 end
                 else if(func3 == 3'b010)begin//lw
-                    mem_ctrl[16:9] = 8'd4;
-                    mem_ctrl[18] = 1'd1;
+                    mem_ctrl[4:3] = 2'd2;
+                    mem_ctrl[6] = 1'd1;
                 end
                 else if(func3 == 3'b100)begin//lbu
-                    mem_ctrl[16:9] = 8'd1;
-                    mem_ctrl[18] = 1'd0;
+                    mem_ctrl[4:3] = 2'd0;
+                    mem_ctrl[6] = 1'd0;
                 end
                 else if(func3 == 3'b101)begin//lhu
-                    mem_ctrl[16:9] = 8'd2;
-                    mem_ctrl[18] = 1'd0;
+                    mem_ctrl[4:3] = 2'd1;
+                    mem_ctrl[6] = 1'd0;
                 end
                 else begin
-                    mem_ctrl[16:9] = 8'd1;
-                    mem_ctrl[18] = 1'd0;
+                    mem_ctrl[4:3] = 2'd0;
+                    mem_ctrl[6] = 1'd0;
                 end
             end
             else begin
-                mem_ctrl[17] = 1'd0;
-                mem_ctrl[16:9] = 8'd1;
-                mem_ctrl[18] = 1'd0;
+                mem_ctrl[5] = 1'd0;
+                mem_ctrl[4:3] = 2'd0;
+                mem_ctrl[6] = 1'd0;
             end
         end
         default: begin 
-            mem_ctrl[17] = 1'd0;
-            mem_ctrl[16:9] = 8'd1;
-            mem_ctrl[18] = 1'd0;
+            mem_ctrl[5] = 1'd0;
+            mem_ctrl[4:3] = 2'd0;
+            mem_ctrl[6] = 1'd0;
         end
     endcase
 end
@@ -454,45 +457,45 @@ end
 //--------------------mem--------------------//
 
 //--------------------CSR--------------------//
-//4'd0 => 32'b0
-//4'd1 => src1
-//4'd2 => alu_result
-//4'd3 => pc
+//2'd0 => 32'b0
+//2'd1 => src1
+//2'd2 => alu_result
+//2'd3 => pc
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(inst == 32'b00110000001000000000000001110011)begin//mret
                 r_csr_addr  = 12'h341;//mepc
                 w_csr_addr  = 12'b0;
-                csr_ctrl    = {1'b0,4'd0};
+                csr_ctrl    = {1'b0,2'd0};
             end
             else if(inst == 32'b00000000000000000000000001110011)begin//ecall
                 //由于要同时写两个寄存器，但目前就传了一个地址mepc
                 //对ecall进行特殊配置
                 r_csr_addr  = 12'h305;//mtvec
                 w_csr_addr  = 12'h341;//mepc
-                csr_ctrl    = {1'b1,4'd3};
+                csr_ctrl    = {1'b1,2'd3};
             end
             else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
                 r_csr_addr  = imm[11:0];
                 w_csr_addr  = imm[11:0];
-                csr_ctrl    = {1'b0,4'd1};
+                csr_ctrl    = {1'b0,2'd1};
             end
             else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
                 r_csr_addr  = imm[11:0];
                 w_csr_addr  = imm[11:0];
-                csr_ctrl    = {1'b0,4'd2};
+                csr_ctrl    = {1'b0,2'd2};
             end
             else begin
                 r_csr_addr  = 12'b0;
                 w_csr_addr  = 12'b0;
-                csr_ctrl    = {1'b0,4'd0};
+                csr_ctrl    = {1'b0,2'd0};
             end
         end
         default: begin 
             r_csr_addr  = 12'b0;
             w_csr_addr  = 12'b0;
-            csr_ctrl    = {1'b0,4'd0};
+            csr_ctrl    = {1'b0,2'd0};
         end
     endcase
 end

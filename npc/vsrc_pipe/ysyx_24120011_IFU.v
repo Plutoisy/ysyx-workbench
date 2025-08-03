@@ -198,7 +198,8 @@ assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[(1) + (32-($clo
 assign hit_tag = (state == ysyx_24120011_IFU_LOOKUP) ? (tag == icache[(32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:(8*ysyx_24120011_ICACHE_SIZE)]) : 1'b0;
 assign hit = hit_valid && hit_tag;
 //assign inst_cache = hit ? icache[index][31+offset*32 -: 32] : 32'b0;
-assign inst_cache = hit ? icache[31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+//assign inst_cache = hit ? icache[31+offset[$clog2(ysyx_24120011_ICACHE_SIZE)-1:2]*32 -: 32] : 32'b0;
+assign inst_cache = hit ? (offset[2] ? icache[63:32] : icache[31:0]) : 32'b0;//面积优化，并不通用
 //====================icache====================//
 
 //====================axi====================//
@@ -234,7 +235,7 @@ assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
 //assign M0_arid    = 'd0       ;
-assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;
+assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;//A000_0000-BFFF_FFFF
 assign M0_arlen   = 'd0;
 assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;

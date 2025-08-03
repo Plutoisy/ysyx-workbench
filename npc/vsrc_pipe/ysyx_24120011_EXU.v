@@ -4,27 +4,27 @@ module ysyx_24120011_EXU (
     input  rst,
     //数据
     input  [2:0]  i_pc_ctrl,
-    input  [3:0]  i_rd_ctrl,
+    input  [2:0]  i_rd_ctrl,
     input  [5:0]  i_ALU_ctrl,
-    input  [18:0] i_mem_ctrl,
-    input  [4:0]  i_csr_ctrl,
+    input  [6:0] i_mem_ctrl,
+    input  [2:0]  i_csr_ctrl,
     input  [31:0] i_pc,
     input  [31:0] i_src1,
     input  [31:0] i_src2,
     input  [31:0] i_r_csr_data,
     input  [31:0] i_imm,
-    input  [4:0]  i_rd,
+    input  [3:0]  i_rd,
     input  [11:0] i_w_csr_addr,
 
-    output [3:0]  o_rd_ctrl,
-    output [18:0] o_mem_ctrl,
-    output [4:0]  o_csr_ctrl,
+    output [2:0]  o_rd_ctrl,
+    output [6:0] o_mem_ctrl,
+    output [2:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
     output [31:0] o_src2,
     output [31:0] o_r_csr_data,
     output [31:0] o_imm,
-    output [4:0]  o_rd,
+    output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
     output [31:0] o_ALU_result,
 
@@ -70,16 +70,16 @@ parameter ysyx_24120011_EXU_IDLE_FULL  = 2'd1;
 parameter ysyx_24120011_EXU_WORKING    = 2'd2;
 
 reg [2:0]  pc_ctrl;
-reg [3:0]  rd_ctrl;
+reg [2:0]  rd_ctrl;
 reg [5:0]  ALU_ctrl;
-reg [18:0] mem_ctrl;
-reg [4:0]  csr_ctrl;
+reg [6:0] mem_ctrl;
+reg [2:0]  csr_ctrl;
 reg [31:0] pc;
 reg [31:0] src1;
 reg [31:0] src2;
 reg [31:0] r_csr_data;
 reg [31:0] imm;
-reg [4:0]  rd;
+reg [3:0]  rd;
 reg [11:0] w_csr_addr;
 
 reg [1:0] state;

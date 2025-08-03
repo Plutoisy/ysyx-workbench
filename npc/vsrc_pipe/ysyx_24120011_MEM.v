@@ -4,26 +4,26 @@ module ysyx_24120011_MEM(
     input clk,
     input rst,
     //数据
-    input [3:0]  i_rd_ctrl,
-    input [18:0] i_mem_ctrl,
-    input [4:0]  i_csr_ctrl,
+    input [2:0]  i_rd_ctrl,
+    input [6:0]  i_mem_ctrl,
+    input [2:0]  i_csr_ctrl,
     input [31:0] i_pc,
     input [31:0] i_src1,
     input [31:0] i_src2,
     input [31:0] i_r_csr_data,
     input [31:0] i_imm,
-    input [4:0]  i_rd,
+    input [3:0]  i_rd,
     input [11:0] i_w_csr_addr,
     input [31:0] i_ALU_result,
 
     output [31:0] o_r_mem_data,
-    output [3:0]  o_rd_ctrl,
-    output [4:0]  o_csr_ctrl,
+    output [2:0]  o_rd_ctrl,
+    output [2:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
     output [31:0] o_r_csr_data,
     output [31:0] o_imm,
-    output [4:0]  o_rd,
+    output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
     output [31:0] o_ALU_result,
     //握手
@@ -73,15 +73,15 @@ module ysyx_24120011_MEM(
     input	[3:0]	   M1_bid
 );
 
-reg [3:0]  rd_ctrl;
-reg [18:0] mem_ctrl;
-reg [4:0]  csr_ctrl;
+reg [2:0]  rd_ctrl;
+reg [6:0]  mem_ctrl;
+reg [2:0]  csr_ctrl;
 reg [31:0] pc;
 reg [31:0] src1;
 reg [31:0] src2;
 reg [31:0] r_csr_data;
 reg [31:0] imm;
-reg [4:0]  rd;
+reg [3:0]  rd;
 reg [11:0] w_csr_addr;
 reg [31:0] ALU_result;
 reg [31:0] r_mem_data;
@@ -171,18 +171,18 @@ end
     assign M1_arlen   = 'd0       ;
     assign M1_arburst = 'd0       ;
     assign M1_arsize  = ~M1_arvalid ? 3'b010 : (
-           ({3{mem_ctrl[16:9] == 8'd1}} & 3'b000) |
-           ({3{mem_ctrl[16:9] == 8'd2}} & 3'b001) |
-           ({3{mem_ctrl[16:9] == 8'd4}} & 3'b010) |
+           ({3{mem_ctrl[4:3] == 2'd0}} & 3'b000) |
+           ({3{mem_ctrl[4:3] == 2'd1}} & 3'b001) |
+           ({3{mem_ctrl[4:3] == 2'd2}} & 3'b010) |
            (3'b000)
          );
     assign M1_awid    = 'd0       ;
     assign M1_awlen   = 'd0       ;
     assign M1_awburst = 'd0       ;
     assign M1_awsize  = ~M1_awvalid ? 3'b010 : (
-           ({3{mem_ctrl[7:0] == 8'd1}} & 3'b000) |
-           ({3{mem_ctrl[7:0] == 8'd2}} & 3'b001) |
-           ({3{mem_ctrl[7:0] == 8'd4}} & 3'b010) |
+           ({3{mem_ctrl[1:0] == 2'd0}} & 3'b000) |
+           ({3{mem_ctrl[1:0] == 2'd1}} & 3'b001) |
+           ({3{mem_ctrl[1:0] == 2'd2}} & 3'b010) |
            (3'b000)
          );
     assign M1_wlast   = M1_wvalid ;
@@ -300,7 +300,7 @@ end
 
 /* verilator lint_off LATCH */
     always@(*)begin
-        if(mem_ctrl[16:9] == 8'd1) begin
+        if(mem_ctrl[4:3] == 2'd0) begin
             if(araddr[1:0] == 2'd0)begin
                 rdata_mask = {24'b0,rdata[7:0]};
             end
@@ -314,7 +314,7 @@ end
                 rdata_mask = {24'b0,rdata[31:24]};
             end
         end
-        else if(mem_ctrl[16:9] == 8'd2)begin
+        else if(mem_ctrl[4:3] == 2'd1)begin
             rdata_mask = rdata;
             if(araddr[1:0] == 2'd0)begin
                 rdata_mask = {16'b0,rdata[15:0]};
@@ -329,7 +329,7 @@ end
                 rdata_mask = 32'hdeadbeef;
             end
         end
-        else if(mem_ctrl[16:9] == 8'd4) begin
+        else if(mem_ctrl[4:3] == 2'd2) begin
             rdata_mask = rdata;
         end
         else begin
@@ -350,7 +350,7 @@ end
         endcase
     end
     always@(*)begin
-        if(mem_ctrl[7:0] == 8'd1) begin
+        if(mem_ctrl[1:0] == 2'd0) begin
             if(awaddr[1:0] == 2'd0)begin
                 reg_wstrb = 4'b0001;
                 wdata_format = 'd0;
@@ -368,7 +368,7 @@ end
                 wdata_format = 'd3;
             end
         end
-        else if(mem_ctrl[7:0] == 8'd2)begin
+        else if(mem_ctrl[1:0] == 2'd1)begin
             if(awaddr[1:0] == 2'd0)begin
                 reg_wstrb = 4'b0011;
                 wdata_format = 'd4;
@@ -386,7 +386,7 @@ end
                 wdata_format = 'd63;
             end
         end
-        else if(mem_ctrl[7:0] == 8'd4) begin
+        else if(mem_ctrl[1:0] == 2'd2) begin
             reg_wstrb = 4'b1111;
             wdata_format = 'd7;
         end
@@ -552,12 +552,12 @@ end
 
 
     always@(posedge clk)begin
-        if(mem_ctrl[8] == 1 || mem_ctrl[17] == 1) LSU_ready <= 1'b0;
+        if(mem_ctrl[2] == 1 || mem_ctrl[5] == 1) LSU_ready <= 1'b0;
         else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) LSU_ready <= 1'b1;
     end
     always@(posedge clk)begin
         if(i_EXU_valid)begin
-            if(LSU_working == 0 && (mem_ctrl[8] == 0 && mem_ctrl[17] == 0) )begin
+            if(LSU_working == 0 && (mem_ctrl[2] == 0 && mem_ctrl[5] == 0) )begin
                 LSU_valid <= 1;
             end
         end
@@ -577,23 +577,23 @@ end
         end
         else begin
             if(state == ysyx_24120011_LSU_M_AXI_RDATA) begin
-                if(mem_ctrl[16:9] == 8'd1)begin
-                    if(mem_ctrl[18])begin
+                if(mem_ctrl[4:3] == 2'd0)begin
+                    if(mem_ctrl[6])begin
                         r_mem_data <= {{24{rdata_mask[7]}},rdata_mask[7:0]};
                     end
                     else begin
                         r_mem_data <= {24'b0,rdata_mask[7:0]};
                     end
                 end
-                else if(mem_ctrl[16:9] == 8'd2)begin
-                    if(mem_ctrl[18])begin
+                else if(mem_ctrl[4:3] == 2'd1)begin
+                    if(mem_ctrl[6])begin
                         r_mem_data <= {{16{rdata_mask[15]}},rdata_mask[15:0]};
                     end
                     else begin
                         r_mem_data <= {16'b0,rdata_mask[15:0]};
                     end
                 end
-                else if(mem_ctrl[16:9] == 8'd4)begin
+                else if(mem_ctrl[4:3] == 2'd2)begin
                     r_mem_data <= rdata_mask;
                 end
                 else begin//shouldn't in
@@ -609,8 +609,8 @@ end
             start_write_delay <= 0;
         end
         else begin
-            start_read_delay <= mem_ctrl[17];
-            start_write_delay <= mem_ctrl[8];
+            start_read_delay <= mem_ctrl[5];
+            start_write_delay <= mem_ctrl[2];
         end
     end
 
@@ -618,9 +618,9 @@ end
         case(state)
             ysyx_24120011_LSU_M_AXI_IDLE_EMPTY: next_state = (i_EXU_valid && o_MEM_ready) ? ysyx_24120011_LSU_M_AXI_IDLE_FULL : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
             ysyx_24120011_LSU_M_AXI_IDLE_FULL : next_state = (i_WBU_ready) ? ysyx_24120011_LSU_M_AXI_RWCHECK : ysyx_24120011_LSU_M_AXI_IDLE_FULL;
-            ysyx_24120011_LSU_M_AXI_RWCHECK   : next_state = (mem_ctrl[17]) ? 
+            ysyx_24120011_LSU_M_AXI_RWCHECK   : next_state = (mem_ctrl[5]) ? 
                                                        ysyx_24120011_LSU_M_AXI_RADDR : 
-                                                       ((mem_ctrl[8]) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY);
+                                                       ((mem_ctrl[2]) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY);
             ysyx_24120011_LSU_M_AXI_RADDR     : if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
             ysyx_24120011_LSU_M_AXI_RDATA     : if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
             ysyx_24120011_LSU_M_AXI_WADDR     : begin 

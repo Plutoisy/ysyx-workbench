@@ -348,21 +348,21 @@ wire IFID_valid;
 // );
 
 wire [2:0]  IDU_EXU_pc_ctrl;
-wire [3:0]  IDU_EXU_rd_ctrl;
+wire [2:0]  IDU_EXU_rd_ctrl;
 wire [5:0]  IDU_EXU_ALU_ctrl;
-wire [18:0] IDU_EXU_mem_ctrl;
-wire [4:0]  IDU_EXU_csr_ctrl;
+wire [6:0] IDU_EXU_mem_ctrl;
+wire [2:0]  IDU_EXU_csr_ctrl;
 wire [31:0] IDU_EXU_pc;
 wire [31:0] IDU_EXU_src1;
 wire [31:0] IDU_EXU_src2;
 wire [31:0] IDU_EXU_r_csr_data;
 wire [31:0] IDU_EXU_imm;
-wire [4:0]  IDU_EXU_rd;
+wire [3:0]  IDU_EXU_rd;
 wire [11:0] IDU_EXU_w_csr_addr;
 wire IDEX_ready;
 wire IDU_valid;
-wire [4:0]  IDU_GPR_rs1;
-wire [4:0]  IDU_GPR_rs2;
+wire [3:0]  IDU_GPR_rs1;
+wire [3:0]  IDU_GPR_rs2;
 wire [31:0] IDU_GPR_src1;
 wire [31:0] IDU_GPR_src2;
 wire [11:0] IDU_CSR_r_csr_addr;
@@ -402,7 +402,7 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_flush      ( flush )
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
-wire [3:0]  IDEX_EXU_rd_ctrl;
+wire [2:0]  IDEX_EXU_rd_ctrl;
 wire [5:0]  IDEX_EXU_ALU_ctrl;
 wire [18:0] IDEX_EXU_mem_ctrl;
 wire [4:0]  IDEX_EXU_csr_ctrl;
@@ -447,15 +447,15 @@ wire IDEX_valid;
 //     .i_EXU_ready  ( EXU_ready  ),
 //     .o_IDEX_valid  ( IDEX_valid  )
 // );
-wire [3:0]  EXU_MEM_rd_ctrl;
-wire [18:0] EXU_MEM_mem_ctrl;
-wire [4:0]  EXU_MEM_csr_ctrl;
+wire [2:0]  EXU_MEM_rd_ctrl;
+wire [6:0] EXU_MEM_mem_ctrl;
+wire [2:0]  EXU_MEM_csr_ctrl;
 wire [31:0] EXU_MEM_pc;
 wire [31:0] EXU_MEM_src1;
 wire [31:0] EXU_MEM_src2;
 wire [31:0] EXU_MEM_r_csr_data;
 wire [31:0] EXU_MEM_imm;
-wire [4:0]  EXU_MEM_rd;
+wire [3:0]  EXU_MEM_rd;
 wire [11:0] EXU_MEM_w_csr_addr;
 wire [31:0] EXU_MEM_ALU_result;
 wire EXMEM_ready;
@@ -494,7 +494,7 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .i_IDU_empty   ( IDU_ready ),
     .i_IFU_pc      ( IFU_IDU_pc)
 );
-wire [3:0]  EXMEM_MEM_rd_ctrl;
+wire [2:0]  EXMEM_MEM_rd_ctrl;
 wire [18:0] EXMEM_MEM_mem_ctrl;
 wire [4:0]  EXMEM_MEM_csr_ctrl;
 wire [31:0] EXMEM_MEM_pc;
@@ -538,13 +538,13 @@ wire EXMEM_valid;
 //     .o_EXMEM_valid  ( EXMEM_valid  )
 // );
 wire [31:0] MEM_WBU_r_mem_data;
-wire [3:0]  MEM_WBU_rd_ctrl;
-wire [4:0]  MEM_WBU_csr_ctrl;
+wire [2:0]  MEM_WBU_rd_ctrl;
+wire [2:0]  MEM_WBU_csr_ctrl;
 wire [31:0] MEM_WBU_pc;
 wire [31:0] MEM_WBU_src1;
 wire [31:0] MEM_WBU_r_csr_data;
 wire [31:0] MEM_WBU_imm;
-wire [4:0]  MEM_WBU_rd;
+wire [3:0]  MEM_WBU_rd;
 wire [11:0] MEM_WBU_w_csr_addr;
 wire [31:0] MEM_WBU_ALU_result;
 wire MEMWB_ready;
@@ -608,7 +608,7 @@ ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .M1_bid        ( M1_bid        )
 );
 wire [31:0] MEMWB_WBU_r_mem_data;
-wire [3:0]  MEMWB_WBU_rd_ctrl;
+wire [2:0]  MEMWB_WBU_rd_ctrl;
 wire [4:0]  MEMWB_WBU_csr_ctrl;
 wire [31:0] MEMWB_WBU_pc;
 wire [31:0] MEMWB_WBU_src1;
@@ -647,14 +647,14 @@ wire MEMWB_valid;
 //     .i_WBU_ready   ( WBU_ready   ),
 //     .o_MEMWB_valid ( MEMWB_valid  )
 // );
-wire [4:0]   WBU_GPR_rd;
+wire [3:0]   WBU_GPR_rd;
 wire [31:0]  WBU_GPR_rd_data;
 wire         WBU_GPR_rd_en;
 wire [11:0]  WBU_CSR_w_csr_addr;
 wire [31:0]  WBU_CSR_w_csr_data;
 wire         WBU_CSR_w_csr_en;
 wire         WBU_CSR_w_csr_ecall;
-wire [3:0]   WBU_rd_ctrl;
+wire [2:0]   WBU_rd_ctrl;
 ysyx_24120011_WBU u_ysyx_24120011_WBU(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -923,64 +923,65 @@ ysyx_24120011_Xbar u_ysyx_24120011_Xbar(
     .Xbar_S0_bvalid  ( io_master_bvalid  ),
     .Xbar_S0_bready  ( io_master_bready  ),
     .Xbar_S0_bid     ( io_master_bid     ),
-    .Xbar_S1_araddr  (  ),
-    .Xbar_S1_arvalid (  ),
-    .Xbar_S1_arready (  ),
-    .Xbar_S1_arid    (  ),
-    .Xbar_S1_arlen   (  ),
-    .Xbar_S1_arsize  (  ),
-    .Xbar_S1_arburst (  ),
-    .Xbar_S1_rdata   (  ),
-    .Xbar_S1_rresp   (  ),
-    .Xbar_S1_rvalid  (  ),
-    .Xbar_S1_rready  (  ),
-    .Xbar_S1_rlast   (  ),
-    .Xbar_S1_rid     (  ),
-    .Xbar_S1_awaddr  (  ),
-    .Xbar_S1_awvalid (  ),
-    .Xbar_S1_awready (  ),
-    .Xbar_S1_awid    (  ),
-    .Xbar_S1_awlen   (  ),
-    .Xbar_S1_awsize  (  ),
-    .Xbar_S1_awburst (  ),
-    .Xbar_S1_wdata   (  ),
-    .Xbar_S1_wstrb   (  ),
-    .Xbar_S1_wvalid  (  ),
-    .Xbar_S1_wready  (  ),
-    .Xbar_S1_wlast   (  ),
-    .Xbar_S1_bresp   (  ),
-    .Xbar_S1_bvalid  (  ),
-    .Xbar_S1_bready  (  ),
-    .Xbar_S1_bid     (  ),
-    .Xbar_S2_araddr  ( clint_araddr  ),
-    .Xbar_S2_arvalid ( clint_arvalid ),
-    .Xbar_S2_arready ( clint_arready ),
-    .Xbar_S2_arid    ( clint_arid    ),
-    .Xbar_S2_arlen   ( clint_arlen   ),
-    .Xbar_S2_arsize  ( clint_arsize  ),
-    .Xbar_S2_arburst ( clint_arburst ),
-    .Xbar_S2_rdata   ( clint_rdata   ),
-    .Xbar_S2_rresp   ( clint_rresp   ),
-    .Xbar_S2_rvalid  ( clint_rvalid  ),
-    .Xbar_S2_rready  ( clint_rready  ),
-    .Xbar_S2_rlast   ( clint_rlast   ),
-    .Xbar_S2_rid     ( clint_rid     ),
-    .Xbar_S2_awaddr  ( clint_awaddr  ),
-    .Xbar_S2_awvalid ( clint_awvalid ),
-    .Xbar_S2_awready ( clint_awready ),
-    .Xbar_S2_awid    ( clint_awid    ),
-    .Xbar_S2_awlen   ( clint_awlen   ),
-    .Xbar_S2_awsize  ( clint_awsize  ),
-    .Xbar_S2_awburst ( clint_awburst ),
-    .Xbar_S2_wdata   ( clint_wdata   ),
-    .Xbar_S2_wstrb   ( clint_wstrb   ),
-    .Xbar_S2_wvalid  ( clint_wvalid  ),
-    .Xbar_S2_wready  ( clint_wready  ),
-    .Xbar_S2_wlast   ( clint_wlast   ),
-    .Xbar_S2_bresp   ( clint_bresp   ),
-    .Xbar_S2_bvalid  ( clint_bvalid  ),
-    .Xbar_S2_bready  ( clint_bready  ),
-    .Xbar_S2_bid     ( clint_bid     )
+    .Xbar_S1_araddr  ( clint_araddr      ),
+    .Xbar_S1_arvalid ( clint_arvalid     ),
+    .Xbar_S1_arready ( clint_arready     ),
+    .Xbar_S1_arid    ( clint_arid        ),
+    .Xbar_S1_arlen   ( clint_arlen       ),
+    .Xbar_S1_arsize  ( clint_arsize      ),
+    .Xbar_S1_arburst ( clint_arburst     ),
+    .Xbar_S1_rdata   ( clint_rdata       ),
+    .Xbar_S1_rresp   ( clint_rresp       ),
+    .Xbar_S1_rvalid  ( clint_rvalid      ),
+    .Xbar_S1_rready  ( clint_rready      ),
+    .Xbar_S1_rlast   ( clint_rlast       ),
+    .Xbar_S1_rid     ( clint_rid         ),
+    .Xbar_S1_awaddr  ( clint_awaddr      ),
+    .Xbar_S1_awvalid ( clint_awvalid     ),
+    .Xbar_S1_awready ( clint_awready     ),
+    .Xbar_S1_awid    ( clint_awid        ),
+    .Xbar_S1_awlen   ( clint_awlen       ),
+    .Xbar_S1_awsize  ( clint_awsize      ),
+    .Xbar_S1_awburst ( clint_awburst     ),
+    .Xbar_S1_wdata   ( clint_wdata       ),
+    .Xbar_S1_wstrb   ( clint_wstrb       ),
+    .Xbar_S1_wvalid  ( clint_wvalid      ),
+    .Xbar_S1_wready  ( clint_wready      ),
+    .Xbar_S1_wlast   ( clint_wlast       ),
+    .Xbar_S1_bresp   ( clint_bresp       ),
+    .Xbar_S1_bvalid  ( clint_bvalid      ),
+    .Xbar_S1_bready  ( clint_bready      ),
+    .Xbar_S1_bid     ( clint_bid         )
+
+    // .Xbar_S2_araddr  (  ),
+    // .Xbar_S2_arvalid (  ),
+    // .Xbar_S2_arready (  ),
+    // .Xbar_S2_arid    (  ),
+    // .Xbar_S2_arlen   (  ),
+    // .Xbar_S2_arsize  (  ),
+    // .Xbar_S2_arburst (  ),
+    // .Xbar_S2_rdata   (  ),
+    // .Xbar_S2_rresp   (  ),
+    // .Xbar_S2_rvalid  (  ),
+    // .Xbar_S2_rready  (  ),
+    // .Xbar_S2_rlast   (  ),
+    // .Xbar_S2_rid     (  ),
+    // .Xbar_S2_awaddr  (  ),
+    // .Xbar_S2_awvalid (  ),
+    // .Xbar_S2_awready (  ),
+    // .Xbar_S2_awid    (  ),
+    // .Xbar_S2_awlen   (  ),
+    // .Xbar_S2_awsize  (  ),
+    // .Xbar_S2_awburst (  ),
+    // .Xbar_S2_wdata   (  ),
+    // .Xbar_S2_wstrb   (  ),
+    // .Xbar_S2_wvalid  (  ),
+    // .Xbar_S2_wready  (  ),
+    // .Xbar_S2_wlast   (  ),
+    // .Xbar_S2_bresp   (  ),
+    // .Xbar_S2_bvalid  (  ),
+    // .Xbar_S2_bready  (  ),
+    // .Xbar_S2_bid     (  )
 );
 
 endmodule

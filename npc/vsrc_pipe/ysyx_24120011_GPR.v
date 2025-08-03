@@ -4,12 +4,12 @@ module ysyx_24120011_GPR(
     input clk,
     input rst,
     //读口
-    input  [4:0]   i_rs1,
-    input  [4:0]   i_rs2,
+    input  [3:0]   i_rs1,
+    input  [3:0]   i_rs2,
     output [31:0]  o_src1,
     output [31:0]  o_src2,
     //写口
-    input  [4:0]   i_rd,
+    input  [3:0]   i_rd,
     input  [31:0]  i_rd_data,
     input          i_rd_en,
     output [31:0] a0
@@ -17,8 +17,8 @@ module ysyx_24120011_GPR(
 
 reg [31:0] GPRs [15:0];
 
-assign o_src1 = GPRs[i_rs1[3:0]];
-assign o_src2 = GPRs[i_rs2[3:0]];
+assign o_src1 = GPRs[i_rs1];
+assign o_src2 = GPRs[i_rs2];
 assign a0     = GPRs[10];
 
 //======================dpic========================//
@@ -60,7 +60,7 @@ always@(posedge clk)begin
     else begin
         GPRs[0]  <= 32'h0000_0000;
         if(i_rd_en)begin
-            GPRs[i_rd[3:0]] <= i_rd_data;
+            GPRs[i_rd] <= i_rd_data;
         end
     end
 end
