@@ -95,7 +95,6 @@ module ysyx_24120011_Clint (
     assign bid     = 'd0;
 
 
-    /* verilator lint_off LATCH */
     always@(posedge clk)begin
         if(rst) begin
             mtime <= 64'b0;
@@ -220,11 +219,11 @@ module ysyx_24120011_Clint (
     always@(*)begin
         case(state)
             ysyx_24120011_S_AXI_IDLE  : next_state = (arvalid) ? ysyx_24120011_S_AXI_RADDR : (awvalid) ? ysyx_24120011_S_AXI_WADDR : ysyx_24120011_S_AXI_IDLE;
-			ysyx_24120011_S_AXI_RADDR : if (arvalid && arready) next_state = ysyx_24120011_S_AXI_RDATA;
-			ysyx_24120011_S_AXI_RDATA : if (rvalid  && rready ) next_state = ysyx_24120011_S_AXI_IDLE;
-			ysyx_24120011_S_AXI_WADDR : if (awvalid && awready) next_state = ysyx_24120011_S_AXI_WDATA;
-			ysyx_24120011_S_AXI_WDATA : if (wvalid  && wready ) next_state = ysyx_24120011_S_AXI_WRESP;
-			ysyx_24120011_S_AXI_WRESP : if (bvalid  && bready ) next_state = ysyx_24120011_S_AXI_IDLE;
+			ysyx_24120011_S_AXI_RADDR : next_state = (arvalid && arready) ? ysyx_24120011_S_AXI_RDATA : ysyx_24120011_S_AXI_RADDR;
+			ysyx_24120011_S_AXI_RDATA : next_state = (rvalid  && rready ) ? ysyx_24120011_S_AXI_IDLE  : ysyx_24120011_S_AXI_RDATA;
+			ysyx_24120011_S_AXI_WADDR : next_state = (awvalid && awready) ? ysyx_24120011_S_AXI_WDATA : ysyx_24120011_S_AXI_WADDR;
+			ysyx_24120011_S_AXI_WDATA : next_state = (wvalid  && wready ) ? ysyx_24120011_S_AXI_WRESP : ysyx_24120011_S_AXI_WDATA;
+			ysyx_24120011_S_AXI_WRESP : next_state = (bvalid  && bready ) ? ysyx_24120011_S_AXI_IDLE  : ysyx_24120011_S_AXI_WRESP;
 			default : next_state = ysyx_24120011_S_AXI_IDLE;
         endcase
     end
