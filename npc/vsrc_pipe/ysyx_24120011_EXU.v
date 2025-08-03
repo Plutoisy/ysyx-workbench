@@ -229,7 +229,7 @@ assign {carry, ALUout_tmp} = A + B_in;
 
 always @(*) begin
     case (ALU_ctrl[3:0])
-        4'b0000, 4'b0001, 4'b1010, 4'b1110: ALU_result = ALUout_tmp;
+        //4'b0000, 4'b0001, 4'b1010, 4'b1110: ALU_result = ALUout_tmp;
         4'b1000: ALU_result = {31'b0, a_is_b};
         4'b1001: ALU_result = {31'b0, a_not_b};
         4'b0011: ALU_result = {31'b0, sless};
