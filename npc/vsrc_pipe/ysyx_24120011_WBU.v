@@ -9,11 +9,11 @@ module ysyx_24120011_WBU(
     input  [31:0] i_src1,
     input  [31:0] i_r_csr_data,
     input  [31:0] i_imm,
-    input  [4:0]  i_rd,
+    input  [3:0]  i_rd,
     input  [11:0] i_w_csr_addr,
     input  [31:0] i_ALU_result,
     //写GPR
-    output [4:0]   o_rd,
+    output [3:0]   o_rd,
     output [31:0]  o_rd_data,
     output         o_rd_en,
     //写CSR
@@ -38,7 +38,7 @@ reg  [31:0] pc;
 reg  [31:0] src1;
 reg  [31:0] r_csr_data;
 reg  [31:0] imm;
-reg  [4:0]  rd;
+reg  [3:0]  rd;
 reg  [11:0] w_csr_addr;
 reg  [31:0] ALU_result;
 

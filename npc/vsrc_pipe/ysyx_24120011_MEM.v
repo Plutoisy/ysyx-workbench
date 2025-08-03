@@ -12,7 +12,7 @@ module ysyx_24120011_MEM(
     input [31:0] i_src2,
     input [31:0] i_r_csr_data,
     input [31:0] i_imm,
-    input [4:0]  i_rd,
+    input [3:0]  i_rd,
     input [11:0] i_w_csr_addr,
     input [31:0] i_ALU_result,
 
@@ -23,7 +23,7 @@ module ysyx_24120011_MEM(
     output [31:0] o_src1,
     output [31:0] o_r_csr_data,
     output [31:0] o_imm,
-    output [4:0]  o_rd,
+    output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
     output [31:0] o_ALU_result,
     //握手
@@ -81,7 +81,7 @@ reg [31:0] src1;
 reg [31:0] src2;
 reg [31:0] r_csr_data;
 reg [31:0] imm;
-reg [4:0]  rd;
+reg [3:0]  rd;
 reg [11:0] w_csr_addr;
 reg [31:0] ALU_result;
 reg [31:0] r_mem_data;

@@ -14,7 +14,7 @@ module ysyx_24120011_IDU (
     output [31:0] o_src2,
     output [31:0] o_r_csr_data,
     output [31:0] o_imm,
-    output [4:0]  o_rd,
+    output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
     //握手
     input  i_IFU_valid,
@@ -22,8 +22,8 @@ module ysyx_24120011_IDU (
     input  i_EXU_ready,
     output o_IDU_valid,
     //读寄存器
-    output [4:0]  o_rs1,
-    output [4:0]  o_rs2,
+    output [3:0]  o_rs1,
+    output [3:0]  o_rs2,
     input  [31:0] i_src1,
     input  [31:0] i_src2,
     output [11:0] o_r_csr_addr,
@@ -106,9 +106,9 @@ end
 
 //指令解码
 wire [6:0]  opcode;
-wire [4:0]  rd    ;
-wire [4:0]  rs1   ;
-wire [4:0]  rs2   ;
+wire [3:0]  rd    ;
+wire [3:0]  rs1   ;
+wire [3:0]  rs2   ;
 wire [2:0]  func3 ;
 wire [6:0]  func7 ;
 reg  [2:0]  opcode_type;
@@ -122,9 +122,9 @@ reg  [11:0] w_csr_addr;
 reg  [2:0]  csr_ctrl;
 
 assign opcode   = inst[6:0];
-assign rd       = inst[11:7];
-assign rs1      = inst[19:15];
-assign rs2      = inst[24:20];
+assign rd       = inst[10:7];
+assign rs1      = inst[18:15];
+assign rs2      = inst[23:20];
 assign func3    = inst[14:12];
 assign func7    = inst[31:25];
 
@@ -195,7 +195,7 @@ end
 //3'd5: rdata;
 //3'd6: r_csr_data;
 always@(*)begin
-    if(rd == 5'b00000) begin
+    if(rd == 4'b0000) begin
         rd_ctrl = 3'd4;
     end
     else begin
