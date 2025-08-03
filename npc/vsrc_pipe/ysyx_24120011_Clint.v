@@ -227,7 +227,6 @@ module ysyx_24120011_Clint (
 			default : next_state = ysyx_24120011_S_AXI_IDLE;
         endcase
     end
-    /* verilator lint_on LATCH */
 
     always@(posedge clk)begin
         if(rst)begin
