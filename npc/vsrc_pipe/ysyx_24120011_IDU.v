@@ -8,7 +8,7 @@ module ysyx_24120011_IDU (
     output [2:0]  o_rd_ctrl,
     output [5:0]  o_ALU_ctrl,
     output [18:0] o_mem_ctrl,
-    output [4:0]  o_csr_ctrl,
+    output [2:0]  o_csr_ctrl,
     output [31:0] o_pc,
     output [31:0] o_src1,
     output [31:0] o_src2,
@@ -119,7 +119,7 @@ reg  [5:0]  ALU_ctrl;
 reg  [18:0] mem_ctrl;
 reg  [11:0] r_csr_addr;
 reg  [11:0] w_csr_addr;
-reg  [4:0]  csr_ctrl;
+reg  [2:0]  csr_ctrl;
 
 assign opcode   = inst[6:0];
 assign rd       = inst[11:7];
@@ -454,45 +454,45 @@ end
 //--------------------mem--------------------//
 
 //--------------------CSR--------------------//
-//4'd0 => 32'b0
-//4'd1 => src1
-//4'd2 => alu_result
-//4'd3 => pc
+//2'd0 => 32'b0
+//2'd1 => src1
+//2'd2 => alu_result
+//2'd3 => pc
 always@(*)begin
     case(opcode_type)
         3'd0:begin //I-Type
             if(inst == 32'b00110000001000000000000001110011)begin//mret
                 r_csr_addr  = 12'h341;//mepc
                 w_csr_addr  = 12'b0;
-                csr_ctrl    = {1'b0,4'd0};
+                csr_ctrl    = {1'b0,2'd0};
             end
             else if(inst == 32'b00000000000000000000000001110011)begin//ecall
                 //由于要同时写两个寄存器，但目前就传了一个地址mepc
                 //对ecall进行特殊配置
                 r_csr_addr  = 12'h305;//mtvec
                 w_csr_addr  = 12'h341;//mepc
-                csr_ctrl    = {1'b1,4'd3};
+                csr_ctrl    = {1'b1,2'd3};
             end
             else if(opcode == 7'b1110011 && func3 == 3'b001)begin//csrrw
                 r_csr_addr  = imm[11:0];
                 w_csr_addr  = imm[11:0];
-                csr_ctrl    = {1'b0,4'd1};
+                csr_ctrl    = {1'b0,2'd1};
             end
             else if(opcode == 7'b1110011 && func3 == 3'b010)begin//csrrs
                 r_csr_addr  = imm[11:0];
                 w_csr_addr  = imm[11:0];
-                csr_ctrl    = {1'b0,4'd2};
+                csr_ctrl    = {1'b0,2'd2};
             end
             else begin
                 r_csr_addr  = 12'b0;
                 w_csr_addr  = 12'b0;
-                csr_ctrl    = {1'b0,4'd0};
+                csr_ctrl    = {1'b0,2'd0};
             end
         end
         default: begin 
             r_csr_addr  = 12'b0;
             w_csr_addr  = 12'b0;
-            csr_ctrl    = {1'b0,4'd0};
+            csr_ctrl    = {1'b0,2'd0};
         end
     endcase
 end
