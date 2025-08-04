@@ -26,9 +26,9 @@ module ysyx_24120011_data_hazard_detection (
     output o_bypass,
     output [31:0] o_rd_data
 );
-    assign o_rd_data = hazard_gpr ? i_WBU_rd_data : 32'b0;
+    assign o_rd_data = hazard_wbu ? i_WBU_rd_data : 32'b0;
     assign o_bypass  = hazard_gpr ? 1'b1 : 1'b0;
-    assign o_rs1_or_rs2 = (i_IDU_rs1 == i_GPR_rd) ? 1'b0 : 1'b1;
+    assign o_rs1_or_rs2 = (i_IDU_rs1 == i_WBU_rd) ? 1'b0 : 1'b1;
     //wire hazard_idex  = ((i_IDU_rs1 == i_IDEX_rd)  || (i_IDU_rs2 == i_IDEX_rd))  && (!i_IDEX_ready );
     wire hazard_exu   = ((i_IDU_rs1 == i_EXU_rd)   || (i_IDU_rs2 == i_EXU_rd))   && (!i_EXU_ready  )&& (i_EXU_rd_ctrl != 3'd4);
     //wire hazard_exmem = ((i_IDU_rs1 == i_EXMEM_rd) || (i_IDU_rs2 == i_EXMEM_rd)) && (!i_EXMEM_ready);
