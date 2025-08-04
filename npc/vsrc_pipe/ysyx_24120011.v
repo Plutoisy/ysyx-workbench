@@ -729,7 +729,7 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_MEM_ready   ( MEM_ready   ),
     //.i_MEMWB_ready ( MEMWB_ready ),
     .i_WBU_ready   ( WBU_ready   ),
-    .i_GPR_en      ( WBU_GPR_rd_en      ),
+    //.i_GPR_en      ( WBU_GPR_rd_en      ),
     .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),
     .o_rd_data     ( DATAHAZARD_IDU_r_ddata),
     .o_rs1_or_rs2  ( DATAHAZARD_IDU_rs1_or_rs2),
