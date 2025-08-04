@@ -69,7 +69,7 @@ VysyxSoCFull__Syms::VysyxSoCFull__Syms(VerilatedContext* contextp, const char* n
     , TOP__ysyxSoCFull__DOT__fpga__DOT__xbar_1{this, Verilated::catName(namep, "ysyxSoCFull.fpga.xbar_1")}
 {
         // Check resources
-        Verilated::stackCheck(69217);
+        Verilated::stackCheck(69223);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-12);

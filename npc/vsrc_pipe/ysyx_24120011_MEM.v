@@ -298,7 +298,7 @@ always @(posedge clk) begin
 end
 //======================dpic========================//
 
-/* verilator lint_off LATCH */
+
     always@(*)begin
         if(mem_ctrl[4:3] == 2'd0) begin
             if(araddr[1:0] == 2'd0)begin
@@ -621,18 +621,18 @@ end
             ysyx_24120011_LSU_M_AXI_RWCHECK   : next_state = (mem_ctrl[5]) ? 
                                                        ysyx_24120011_LSU_M_AXI_RADDR : 
                                                        ((mem_ctrl[2]) ? ysyx_24120011_LSU_M_AXI_WADDR : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY);
-            ysyx_24120011_LSU_M_AXI_RADDR     : if (arvalid && arready) next_state = ysyx_24120011_LSU_M_AXI_RDATA;
-            ysyx_24120011_LSU_M_AXI_RDATA     : if (rvalid  && rready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
+            ysyx_24120011_LSU_M_AXI_RADDR     : next_state = (arvalid && arready) ? ysyx_24120011_LSU_M_AXI_RDATA      : ysyx_24120011_LSU_M_AXI_RADDR;
+            ysyx_24120011_LSU_M_AXI_RDATA     : next_state = (rvalid  && rready ) ? ysyx_24120011_LSU_M_AXI_IDLE_EMPTY : ysyx_24120011_LSU_M_AXI_RDATA;
             ysyx_24120011_LSU_M_AXI_WADDR     : begin 
                 if (wvalid  && wready ) begin 
                     next_state = ysyx_24120011_LSU_M_AXI_WRESP;
                 end
                 else begin
-                    if (awvalid && awready) next_state = ysyx_24120011_LSU_M_AXI_WDATA;
+                    next_state = (awvalid && awready) ? ysyx_24120011_LSU_M_AXI_WDATA : ysyx_24120011_LSU_M_AXI_WADDR;
                 end
             end
-            ysyx_24120011_LSU_M_AXI_WDATA     : if (wvalid  && wready ) next_state = ysyx_24120011_LSU_M_AXI_WRESP;
-            ysyx_24120011_LSU_M_AXI_WRESP     : if (bvalid  && bready ) next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
+            ysyx_24120011_LSU_M_AXI_WDATA     : next_state = (wvalid  && wready )? ysyx_24120011_LSU_M_AXI_WRESP      : ysyx_24120011_LSU_M_AXI_WDATA;
+            ysyx_24120011_LSU_M_AXI_WRESP     : next_state = (bvalid  && bready )? ysyx_24120011_LSU_M_AXI_IDLE_EMPTY : ysyx_24120011_LSU_M_AXI_WRESP;
             default                           : next_state = ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
         endcase
     end
@@ -651,5 +651,4 @@ end
             state <= next_state;
         end
     end
-/* verilator lint_on LATCH */
 endmodule

@@ -206,7 +206,7 @@ module ysyx_24120011_Arbiter (
     //B-AXI
     assign M0_bid   = (state == ysyx_24120011_Arbiter_M0 ? S0_bid :'b0);
     assign M1_bid   = (state == ysyx_24120011_Arbiter_M1 ? S0_bid :'b0);
-    /* verilator lint_off LATCH */
+    
     //状态跳转
     always@(posedge clk)begin
         if(rst)begin
@@ -286,5 +286,4 @@ module ysyx_24120011_Arbiter (
             default:next_state = ysyx_24120011_Arbiter_IDLE;
         endcase
     end
-    /* verilator lint_on LATCH */
 endmodule
