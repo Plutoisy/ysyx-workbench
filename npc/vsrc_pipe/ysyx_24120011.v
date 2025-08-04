@@ -656,8 +656,8 @@ wire         WBU_CSR_w_csr_en;
 wire         WBU_CSR_w_csr_ecall;
 wire [2:0]   WBU_rd_ctrl;
 ysyx_24120011_WBU u_ysyx_24120011_WBU(
-    .clk           ( clock           ),
-    .rst           ( reset           ),
+    //.clk           ( clock           ),
+    //.rst           ( reset           ),
     .i_r_mem_data  ( MEM_WBU_r_mem_data  ),
     .i_rd_ctrl     ( MEM_WBU_rd_ctrl     ),
     .i_csr_ctrl    ( MEM_WBU_csr_ctrl    ),
@@ -721,7 +721,7 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_WBU_rd      ( WBU_GPR_rd      ),
     .i_WBU_rd_ctrl ( WBU_rd_ctrl),
     .i_WBU_rd_data ( WBU_GPR_rd_data),
-    .i_GPR_rd      (WBU_GPR_rd),
+    //.i_GPR_rd      (WBU_GPR_rd),
     //.i_IDEX_ready  ( IDEX_ready  ),
     .i_EXU_ready   ( EXU_ready   ),
     //.i_EXMEM_ready ( EXMEM_ready ),
@@ -729,6 +729,7 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_MEM_ready   ( MEM_ready   ),
     //.i_MEMWB_ready ( MEMWB_ready ),
     .i_WBU_ready   ( WBU_ready   ),
+
     //.i_GPR_en      ( WBU_GPR_rd_en      ),
     .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),
     .o_rd_data     ( DATAHAZARD_IDU_r_ddata),

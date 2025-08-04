@@ -1,6 +1,6 @@
 module ysyx_24120011_WBU(
-    input clk,
-    input rst,
+    //input clk,
+    //input rst,
     //数据
     input  [31:0] i_r_mem_data,
     input  [2:0]  i_rd_ctrl,
@@ -56,7 +56,7 @@ always@(*)begin
 end
 always@(*)begin
     case(i_csr_ctrl[1:0])
-        2'd0:    w_csr_data = 32'b0;
+        //2'd0:    w_csr_data = 32'b0;
         2'd1:    w_csr_data = i_src1;
         2'd2:    w_csr_data = i_ALU_result;
         2'd3:    w_csr_data = i_pc;
