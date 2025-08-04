@@ -238,7 +238,7 @@ always @(*) begin
         4'b1111: ALU_result = (B == 32'b0) ? 32'h1 : {31'b0, ~uless};
         4'b0010: ALU_result = A ^ B;
         4'b0100: ALU_result = A >> B[4:0]; //逻辑右移
-        4'b1100: ALU_result = (B[4:0] == 0) ? A :  (A >> B[4:0]) | ({32{A[31]}} << (32-B[4:0])); //算术右移
+        4'b1100: ALU_result = (B[4:0] == 0) ? A : $signed(A) >>> B[4:0]; //算术右移
         4'b0101: ALU_result = A | B;
         4'b1101: ALU_result = A & B;
         4'b0110: ALU_result = A << B[4:0]; //左移
