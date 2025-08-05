@@ -16,17 +16,23 @@ module ysyx_24120011_EXU (
     input  [3:0]  i_rd,
     input  [11:0] i_w_csr_addr,
 
-    output [2:0]  o_rd_ctrl,
+    //output [2:0]  o_rd_ctrl,
     output [6:0] o_mem_ctrl,
-    output [2:0]  o_csr_ctrl,
-    output [31:0] o_pc,
-    output [31:0] o_src1,
+    //output [2:0]  o_csr_ctrl,
+    //output [31:0] o_pc,
+    //output [31:0] o_src1,
     output [31:0] o_src2,
-    output [31:0] o_r_csr_data,
-    output [31:0] o_imm,
+    //output [31:0] o_r_csr_data,
+    //output [31:0] o_imm,
     output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
     output [31:0] o_ALU_result,
+
+    output [31:0] o_rd_data,
+    output [1:0]  o_rd_data_type,
+    output [31:0] o_w_csr_data,
+    output o_w_csr_en,
+    output o_w_csr_ecall,
 
     output [31:0] o_npc,
     //握手
@@ -82,6 +88,8 @@ reg [31:0] imm;
 reg [3:0]  rd;
 reg [11:0] w_csr_addr;
 
+
+
 reg [1:0] state;
 reg [1:0] next_state;
 
@@ -112,18 +120,21 @@ end
 assign o_EXU_ready  = (state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_EXU_valid  = (state == ysyx_24120011_EXU_IDLE_FULL && next_state == ysyx_24120011_EXU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 
-assign o_rd_ctrl    = rd_ctrl     ;
+//assign o_rd_ctrl    = rd_ctrl     ;
 assign o_mem_ctrl   = mem_ctrl    ;
-assign o_csr_ctrl   = csr_ctrl    ;
-assign o_pc         = pc          ;
-assign o_src1       = src1        ;
+//assign o_csr_ctrl   = csr_ctrl    ;
+//assign o_pc         = pc          ;
+//assign o_src1       = src1        ;
 assign o_src2       = src2        ;
-assign o_r_csr_data = r_csr_data  ;
-assign o_imm        = imm         ;
+//assign o_r_csr_data = r_csr_data  ;
+//assign o_imm        = imm         ;
 assign o_rd         = rd          ;
 assign o_w_csr_addr = w_csr_addr  ;
 assign o_ALU_result = ALU_result  ;
 assign o_npc        = npc         ;
+
+assign o_rd_data    = rd_data     ;
+assign o_w_csr_data = w_csr_data  ;
 
 //指令锁存
 always @(posedge clk) begin
@@ -264,6 +275,37 @@ always@(*)begin
             end
         end
         default: npc = 32'h3000_0000;
+    endcase
+end
+
+//rd_data解码
+reg [31:0] rd_data;
+assign o_rd_data_type = (rd_ctrl == 3'd4) ? 2'd0 : (rd_ctrl == 3'd5 ? 2'd1 : 2'd2);
+//0:不写入　1:应在MEM写入i_r_mem_data 2:已写好
+always@(*)begin
+    case(rd_ctrl)
+        3'd0: rd_data = pc + 32'd4;
+        3'd1: rd_data = pc + imm;
+        3'd2: rd_data = ALU_result;
+        3'd3: rd_data = imm;
+        3'd4: rd_data = 32'h0000_0000;
+        3'd5: rd_data = 32'h0000_0000;
+        3'd6: rd_data = r_csr_data;
+        default: rd_data = 32'h0000_0000;
+    endcase
+end
+//csr_data解码
+reg [31:0] w_csr_data;
+assign o_w_csr_en =  csr_ctrl[1:0] == 2'd0 ? 1'b0 : 1'b1;
+assign o_w_csr_ecall =  csr_ctrl[2] == 1'd0 ? 1'b0 : 1'b1;
+
+always@(*)begin
+    case(csr_ctrl[1:0])
+        //2'd0:    w_csr_data = 32'b0;
+        2'd1:    w_csr_data = src1;
+        2'd2:    w_csr_data = ALU_result;
+        2'd3:    w_csr_data = pc;
+        default: w_csr_data = 32'b0;
     endcase
 end
 endmodule
