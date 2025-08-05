@@ -748,6 +748,7 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs2     ( IDU_GPR_rs2     ),
     .i_EXU_rd      ( EXU_MEM_rd      ),
     .i_EXU_rd_data_type ( EXU_MEM_rd_data_type),
+    .i_EXU_rd_data ( EXU_MEM_rd_data),
     .i_MEM_rd      ( MEM_WBU_rd      ),
     .i_MEM_rd_data_en ( MEM_WBU_rd_data_en),
     .i_EXU_ready   ( EXU_ready   ),
