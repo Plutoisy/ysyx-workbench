@@ -6,6 +6,7 @@ module ysyx_24120011_data_hazard_detection (
     input [31:0] i_EXU_rd_data,
     input [3:0] i_MEM_rd,
     input       i_MEM_rd_data_en,
+    input [31:0] i_MEM_rd_data,
     input i_EXU_ready,
     input i_MEM_ready,
     

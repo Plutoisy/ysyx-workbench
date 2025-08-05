@@ -751,6 +751,7 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_EXU_rd_data ( EXU_MEM_rd_data),
     .i_MEM_rd      ( MEM_WBU_rd      ),
     .i_MEM_rd_data_en ( MEM_WBU_rd_data_en),
+    .i_MEM_rd_data ( MEM_WBU_rd_data),
     .i_EXU_ready   ( EXU_ready   ),
     .i_MEM_ready   ( MEM_ready   ),
     .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),
