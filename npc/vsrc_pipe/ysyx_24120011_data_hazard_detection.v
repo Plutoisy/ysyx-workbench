@@ -25,7 +25,7 @@ module ysyx_24120011_data_hazard_detection (
     wire hazard_exu   = ((i_IDU_rs1 == i_EXU_rd)   || (i_IDU_rs2 == i_EXU_rd))   && (!i_EXU_ready  )&& (i_EXU_rd_data_type != 2'd0);
     wire hazard_mem   = ((i_IDU_rs1 == i_MEM_rd)   || (i_IDU_rs2 == i_MEM_rd))   && (!i_MEM_ready  )&& (i_MEM_rd_data_en != 1'd0);
     //wire hazard_wbu   = ((i_IDU_rs1 == i_WBU_rd)   || (i_IDU_rs2 == i_WBU_rd))   && (!i_WBU_ready  )&& (i_WBU_rd_ctrl != 3'd4);
-    assign o_stop_pipe = (hazard_exu&&i_EXU_rd_data_type==2'd2) 
+    assign o_stop_pipe = (hazard_exu&&i_EXU_rd_data_type!=2'd2) 
                         | hazard_mem ;
 
 endmodule
