@@ -458,7 +458,13 @@ wire [31:0] EXU_MEM_imm;
 wire [3:0]  EXU_MEM_rd;
 wire [11:0] EXU_MEM_w_csr_addr;
 wire [31:0] EXU_MEM_ALU_result;
-wire EXMEM_ready;
+
+wire [31:0] EXU_MEM_rd_data   ;  
+wire [1:0]  EXU_MEM_rd_data_type;
+wire [31:0] EXU_MEM_w_csr_data  ;
+wire        EXU_MEM_w_csr_en    ;
+wire        EXU_MEM_w_csr_ecall ;
+wire        EXMEM_ready;
 ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -474,17 +480,22 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .i_imm         ( IDU_EXU_imm         ),
     .i_rd          ( IDU_EXU_rd          ),
     .i_w_csr_addr  ( IDU_EXU_w_csr_addr  ),
-    .o_rd_ctrl     ( EXU_MEM_rd_ctrl     ),
+    //.o_rd_ctrl     ( EXU_MEM_rd_ctrl     ),
     .o_mem_ctrl    ( EXU_MEM_mem_ctrl    ),
-    .o_csr_ctrl    ( EXU_MEM_csr_ctrl    ),
-    .o_pc          ( EXU_MEM_pc          ),
-    .o_src1        ( EXU_MEM_src1        ),
+    //.o_csr_ctrl    ( EXU_MEM_csr_ctrl    ),
+    //.o_pc          ( EXU_MEM_pc          ),
+    //.o_src1        ( EXU_MEM_src1        ),
     .o_src2        ( EXU_MEM_src2        ),
-    .o_r_csr_data  ( EXU_MEM_r_csr_data  ),
-    .o_imm         ( EXU_MEM_imm         ),
+    //.o_r_csr_data  ( EXU_MEM_r_csr_data  ),
+    //.o_imm         ( EXU_MEM_imm         ),
     .o_rd          ( EXU_MEM_rd          ),
     .o_w_csr_addr  ( EXU_MEM_w_csr_addr  ),
     .o_ALU_result  ( EXU_MEM_ALU_result  ),
+    .o_rd_data     (EXU_MEM_rd_data      ),
+    .o_rd_data_type(EXU_MEM_rd_data_type ),
+    .o_w_csr_data  (EXU_MEM_w_csr_data   ),
+    .o_w_csr_en    (EXU_MEM_w_csr_en     ),
+    .o_w_csr_ecall (EXU_MEM_w_csr_ecall  ),
     .o_npc         ( EXU_IFU_npc         ),
     .i_IDU_valid   ( IDU_valid  ),
     .o_EXU_ready   ( EXU_ready   ),
@@ -547,32 +558,50 @@ wire [31:0] MEM_WBU_imm;
 wire [3:0]  MEM_WBU_rd;
 wire [11:0] MEM_WBU_w_csr_addr;
 wire [31:0] MEM_WBU_ALU_result;
+
+wire [31:0] MEM_WBU_rd_data   ;  
+wire        MEM_WBU_rd_data_en;
+wire [31:0] MEM_WBU_w_csr_data  ;
+wire        MEM_WBU_w_csr_en    ;
+wire        MEM_WBU_w_csr_ecall ;
 wire MEMWB_ready;
 wire MEM_valid;
 ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .clk           ( clock           ),
     .rst           ( reset           ),
-    .i_rd_ctrl     ( EXU_MEM_rd_ctrl     ),
+    //.i_rd_ctrl     ( EXU_MEM_rd_ctrl     ),
     .i_mem_ctrl    ( EXU_MEM_mem_ctrl    ),
-    .i_csr_ctrl    ( EXU_MEM_csr_ctrl    ),
-    .i_pc          ( EXU_MEM_pc          ),
-    .i_src1        ( EXU_MEM_src1        ),
+    //.i_csr_ctrl    ( EXU_MEM_csr_ctrl    ),
+    //.i_pc          ( EXU_MEM_pc          ),
+    //.i_src1        ( EXU_MEM_src1        ),
     .i_src2        ( EXU_MEM_src2        ),
-    .i_r_csr_data  ( EXU_MEM_r_csr_data  ),
-    .i_imm         ( EXU_MEM_imm         ),
+    //.i_r_csr_data  ( EXU_MEM_r_csr_data  ),
+    //.i_imm         ( EXU_MEM_imm         ),
     .i_rd          ( EXU_MEM_rd          ),
     .i_w_csr_addr  ( EXU_MEM_w_csr_addr  ),
     .i_ALU_result  ( EXU_MEM_ALU_result  ),
-    .o_r_mem_data  ( MEM_WBU_r_mem_data  ),
-    .o_rd_ctrl     ( MEM_WBU_rd_ctrl     ),
-    .o_csr_ctrl    ( MEM_WBU_csr_ctrl    ),
-    .o_pc          ( MEM_WBU_pc          ),
-    .o_src1        ( MEM_WBU_src1        ),
-    .o_r_csr_data  ( MEM_WBU_r_csr_data  ),
-    .o_imm         ( MEM_WBU_imm         ),
+
+    .i_rd_data     (EXU_MEM_rd_data      ),
+    .i_rd_data_type(EXU_MEM_rd_data_type ),
+    .i_w_csr_data  (EXU_MEM_w_csr_data   ),
+    .i_w_csr_en    (EXU_MEM_w_csr_en     ),
+    .i_w_csr_ecall (EXU_MEM_w_csr_ecall  ),
+
+    //.o_r_mem_data  ( MEM_WBU_r_mem_data  ),
+    //.o_rd_ctrl     ( MEM_WBU_rd_ctrl     ),
+    //.o_csr_ctrl    ( MEM_WBU_csr_ctrl    ),
+    //.o_pc          ( MEM_WBU_pc          ),
+    //.o_src1        ( MEM_WBU_src1        ),
+    //.o_r_csr_data  ( MEM_WBU_r_csr_data  ),
+    //.o_imm         ( MEM_WBU_imm         ),
     .o_rd          ( MEM_WBU_rd          ),
     .o_w_csr_addr  ( MEM_WBU_w_csr_addr  ),
-    .o_ALU_result  ( MEM_WBU_ALU_result  ),
+    //.o_ALU_result  ( MEM_WBU_ALU_result  ),
+    .o_rd_data     (MEM_WBU_rd_data      ),
+    .o_rd_data_en  (MEM_WBU_rd_data_en ),
+    .o_w_csr_data  (MEM_WBU_w_csr_data   ),
+    .o_w_csr_en    (MEM_WBU_w_csr_en     ),
+    .o_w_csr_ecall (MEM_WBU_w_csr_ecall  ),
     .i_EXU_valid   ( EXU_valid ),
     .o_MEM_ready   ( MEM_ready   ),
     .i_WBU_ready   ( WBU_ready ),
@@ -658,16 +687,21 @@ wire [2:0]   WBU_rd_ctrl;
 ysyx_24120011_WBU u_ysyx_24120011_WBU(
     //.clk           ( clock           ),
     //.rst           ( reset           ),
-    .i_r_mem_data  ( MEM_WBU_r_mem_data  ),
-    .i_rd_ctrl     ( MEM_WBU_rd_ctrl     ),
-    .i_csr_ctrl    ( MEM_WBU_csr_ctrl    ),
-    .i_pc          ( MEM_WBU_pc          ),
-    .i_src1        ( MEM_WBU_src1        ),
-    .i_r_csr_data  ( MEM_WBU_r_csr_data  ),
-    .i_imm         ( MEM_WBU_imm         ),
+    //.i_r_mem_data  ( MEM_WBU_r_mem_data  ),
+    //.i_rd_ctrl     ( MEM_WBU_rd_ctrl     ),
+    //.i_csr_ctrl    ( MEM_WBU_csr_ctrl    ),
+    //.i_pc          ( MEM_WBU_pc          ),
+    //.i_src1        ( MEM_WBU_src1        ),
+    //.i_r_csr_data  ( MEM_WBU_r_csr_data  ),
+    //.i_imm         ( MEM_WBU_imm         ),
     .i_rd          ( MEM_WBU_rd          ),
     .i_w_csr_addr  ( MEM_WBU_w_csr_addr  ),
-    .i_ALU_result  ( MEM_WBU_ALU_result  ),
+    //.i_ALU_result  ( MEM_WBU_ALU_result  ),
+    .i_rd_data     (MEM_WBU_rd_data      ),
+    .i_rd_data_en  (MEM_WBU_rd_data_en ),
+    .i_w_csr_data  (MEM_WBU_w_csr_data   ),
+    .i_w_csr_en    (MEM_WBU_w_csr_en     ),
+    .i_w_csr_ecall (MEM_WBU_w_csr_ecall  ),
     .o_rd          ( WBU_GPR_rd          ),
     .o_rd_data     ( WBU_GPR_rd_data     ),
     .o_rd_en       ( WBU_GPR_rd_en       ),
@@ -676,8 +710,8 @@ ysyx_24120011_WBU u_ysyx_24120011_WBU(
     .o_w_csr_en    ( WBU_CSR_w_csr_en    ),
     .o_w_csr_ecall ( WBU_CSR_w_csr_ecall ),
     .i_MEM_valid   ( MEM_valid ),
-    .o_WBU_ready   ( WBU_ready   ),
-    .o_rd_ctrl     ( WBU_rd_ctrl   )
+    .o_WBU_ready   ( WBU_ready   )
+    //.o_rd_ctrl     ( WBU_rd_ctrl   )
 );
 
 wire [31:0] a0;
@@ -718,9 +752,9 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_MEM_rd      ( MEM_WBU_rd      ),
     .i_MEM_rd_ctrl ( MEM_WBU_rd_ctrl),
     //.i_MEMWB_rd    ( MEMWB_WBU_rd    ),
-    .i_WBU_rd      ( WBU_GPR_rd      ),
-    .i_WBU_rd_ctrl ( WBU_rd_ctrl),
-    .i_WBU_rd_data ( WBU_GPR_rd_data),
+    //.i_WBU_rd      ( WBU_GPR_rd      ),
+    //.i_WBU_rd_ctrl ( WBU_rd_ctrl),
+    //.i_WBU_rd_data ( WBU_GPR_rd_data),
     //.i_GPR_rd      (WBU_GPR_rd),
     //.i_IDEX_ready  ( IDEX_ready  ),
     .i_EXU_ready   ( EXU_ready   ),
@@ -728,7 +762,8 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
 
     .i_MEM_ready   ( MEM_ready   ),
     //.i_MEMWB_ready ( MEMWB_ready ),
-    .i_WBU_ready   ( WBU_ready   ),
+    //.i_WBU_ready   ( WBU_ready   ),
+
 
     //.i_GPR_en      ( WBU_GPR_rd_en      ),
     .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),

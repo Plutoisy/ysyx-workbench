@@ -2,16 +2,22 @@ module ysyx_24120011_WBU(
     //input clk,
     //input rst,
     //数据
-    input  [31:0] i_r_mem_data,
-    input  [2:0]  i_rd_ctrl,
-    input  [2:0]  i_csr_ctrl,
-    input  [31:0] i_pc,
-    input  [31:0] i_src1,
-    input  [31:0] i_r_csr_data,
-    input  [31:0] i_imm,
+    //input  [31:0] i_r_mem_data,
+    //input  [2:0]  i_rd_ctrl,
+    //input  [2:0]  i_csr_ctrl,
+    //input  [31:0] i_pc,
+    //input  [31:0] i_src1,
+    //input  [31:0] i_r_csr_data,
+    //input  [31:0] i_imm,
     input  [3:0]  i_rd,
     input  [11:0] i_w_csr_addr,
-    input  [31:0] i_ALU_result,
+    //input  [31:0] i_ALU_result,
+
+    input [31:0] i_rd_data,
+    input        i_rd_data_en,
+    input [31:0] i_w_csr_data,
+    input i_w_csr_en,
+    input i_w_csr_ecall,
     //写GPR
     output [3:0]   o_rd,
     output [31:0]  o_rd_data,
@@ -23,46 +29,55 @@ module ysyx_24120011_WBU(
     output         o_w_csr_ecall,
     //握手
     input  i_MEM_valid,
-    output o_WBU_ready,
+    output o_WBU_ready
 
-    output [2:0] o_rd_ctrl
+    //output [2:0] o_rd_ctrl
 );
 
 reg [31:0]  rd_data;
 reg [31:0]  w_csr_data;
 
+// assign o_rd = i_rd;
+// assign o_rd_data = rd_data;
+// assign o_rd_en = i_MEM_valid ? (i_rd_ctrl == 3'd4 ? 1'b0 : 1'b1) : 1'b0;
+// assign o_w_csr_addr = i_w_csr_addr;
+// assign o_w_csr_data = w_csr_data;
+// assign o_w_csr_en = i_MEM_valid ? (i_csr_ctrl[1:0] == 2'd0 ? 1'b0 : 1'b1) : 1'b0;
+// assign o_w_csr_ecall = i_MEM_valid ? (i_csr_ctrl[2] == 1'd0 ? 1'b0 : 1'b1) : 1'b0;
+
+
 assign o_rd = i_rd;
 assign o_rd_data = rd_data;
-assign o_rd_en = i_MEM_valid ? (i_rd_ctrl == 3'd4 ? 1'b0 : 1'b1) : 1'b0;
+assign o_rd_en = i_rd_data_en;
 assign o_w_csr_addr = i_w_csr_addr;
 assign o_w_csr_data = w_csr_data;
-assign o_w_csr_en = i_MEM_valid ? (i_csr_ctrl[1:0] == 2'd0 ? 1'b0 : 1'b1) : 1'b0;
-assign o_w_csr_ecall = i_MEM_valid ? (i_csr_ctrl[2] == 1'd0 ? 1'b0 : 1'b1) : 1'b0;
+assign o_w_csr_en = i_w_csr_en;
+assign o_w_csr_ecall = i_w_csr_ecall;
 
 assign o_WBU_ready = 1'b1;
-assign o_rd_ctrl   = i_rd_ctrl;
+//assign o_rd_ctrl   = i_rd_ctrl;
 
-always@(*)begin
-    case(i_rd_ctrl)
-        3'd0: rd_data = i_pc + 32'd4;
-        3'd1: rd_data = i_pc + i_imm;
-        3'd2: rd_data = i_ALU_result;
-        3'd3: rd_data = i_imm;
-        3'd4: rd_data = 32'h0000_0000;
-        3'd5: rd_data = i_r_mem_data;
-        3'd6: rd_data = i_r_csr_data;
-        default: rd_data = 32'h0000_0000;
-    endcase
-end
-always@(*)begin
-    case(i_csr_ctrl[1:0])
-        //2'd0:    w_csr_data = 32'b0;
-        2'd1:    w_csr_data = i_src1;
-        2'd2:    w_csr_data = i_ALU_result;
-        2'd3:    w_csr_data = i_pc;
-        default: w_csr_data = 32'b0;
-    endcase
-end
+// always@(*)begin
+//     case(i_rd_ctrl)
+//         3'd0: rd_data = i_pc + 32'd4;
+//         3'd1: rd_data = i_pc + i_imm;
+//         3'd2: rd_data = i_ALU_result;
+//         3'd3: rd_data = i_imm;
+//         3'd4: rd_data = 32'h0000_0000;
+//         3'd5: rd_data = i_r_mem_data;
+//         3'd6: rd_data = i_r_csr_data;
+//         default: rd_data = 32'h0000_0000;
+//     endcase
+// end
+// always@(*)begin
+//     case(i_csr_ctrl[1:0])
+//         //2'd0:    w_csr_data = 32'b0;
+//         2'd1:    w_csr_data = i_src1;
+//         2'd2:    w_csr_data = i_ALU_result;
+//         2'd3:    w_csr_data = i_pc;
+//         default: w_csr_data = 32'b0;
+//     endcase
+// end
 
 
 // parameter ysyx_24120011_WBU_IDLE      = 1'b0;
