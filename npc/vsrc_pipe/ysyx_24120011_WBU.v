@@ -34,8 +34,8 @@ module ysyx_24120011_WBU(
     //output [2:0] o_rd_ctrl
 );
 
-reg [31:0]  rd_data;
-reg [31:0]  w_csr_data;
+// reg [31:0]  rd_data;
+// reg [31:0]  w_csr_data;
 
 // assign o_rd = i_rd;
 // assign o_rd_data = rd_data;
@@ -47,10 +47,10 @@ reg [31:0]  w_csr_data;
 
 
 assign o_rd = i_rd;
-assign o_rd_data = rd_data;
+assign o_rd_data = i_rd_data;
 assign o_rd_en = i_rd_data_en;
 assign o_w_csr_addr = i_w_csr_addr;
-assign o_w_csr_data = w_csr_data;
+assign o_w_csr_data = i_w_csr_data;
 assign o_w_csr_en = i_w_csr_en;
 assign o_w_csr_ecall = i_w_csr_ecall;
 
