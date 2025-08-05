@@ -107,7 +107,7 @@ perf:
 	cd ~/yosys-sta && \
 	make sta && \
 	cd $(YSYX_HOME)/am-kernels/benchmarks/microbench && \
-	make ARCH=riscv32e-ysyxsoc run mainargs=test && \
+	make ARCH=riscv32e-ysyxsoc run mainargs=train && \
 	cd $(YSYX_HOME)/npc && \
 	python3 ./tools/perf.py
 	
