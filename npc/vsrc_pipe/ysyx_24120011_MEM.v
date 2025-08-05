@@ -38,6 +38,7 @@ module ysyx_24120011_MEM(
     output [31:0] o_w_csr_data,
     output o_w_csr_en,
     output o_w_csr_ecall,
+    output [1:0] o_rd_data_type,
     //握手
     input  i_EXU_valid,
     output o_MEM_ready,
@@ -119,11 +120,13 @@ assign o_w_csr_addr = w_csr_addr;
 //assign o_ALU_result = ALU_result;
 
 assign  o_rd_data = rd_data_type == 2'd1 ? r_mem_data : rd_data;
-assign  o_rd_data_en = rd_data_type != 2'd0 ? 1'b1 : 1'b0;
+assign  o_rd_data_en = (rd_data_type != 2'd0 && o_MEM_valid) ? 1'b1 : 1'b0;
 assign  o_w_csr_data = w_csr_data;
 assign  o_w_csr_en = w_csr_en;
 assign  o_w_csr_ecall = w_csr_ecall;
 
+
+assign o_rd_data_type = rd_data_type;
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
