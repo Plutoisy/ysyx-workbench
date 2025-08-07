@@ -86,6 +86,8 @@ end
 // end
 wire a;
 assign a = i_stop_pipe && (state == ysyx_24120011_IDU_IDLE_FULL);
+wire b;
+assign b = i_bypass && o_IDU_valid;
 //状态机跳转
 always@(*)begin
     case(state)

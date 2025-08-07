@@ -566,6 +566,7 @@ wire        MEM_WBU_w_csr_en    ;
 wire        MEM_WBU_w_csr_ecall ;
 wire MEMWB_ready;
 wire MEM_valid;
+wire [1:0] MEM_DATAHAZARD_rd_data_type;
 ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -602,6 +603,7 @@ ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .o_w_csr_data  (MEM_WBU_w_csr_data   ),
     .o_w_csr_en    (MEM_WBU_w_csr_en     ),
     .o_w_csr_ecall (MEM_WBU_w_csr_ecall  ),
+    .o_rd_data_type(MEM_DATAHAZARD_rd_data_type),
     .i_EXU_valid   ( EXU_valid ),
     .o_MEM_ready   ( MEM_ready   ),
     .i_WBU_ready   ( WBU_ready ),
@@ -748,8 +750,10 @@ ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs2     ( IDU_GPR_rs2     ),
     .i_EXU_rd      ( EXU_MEM_rd      ),
     .i_EXU_rd_data_type ( EXU_MEM_rd_data_type),
+    .i_EXU_rd_data ( EXU_MEM_rd_data),
     .i_MEM_rd      ( MEM_WBU_rd      ),
-    .i_MEM_rd_data_en ( MEM_WBU_rd_data_en),
+    .i_MEM_rd_data_type ( MEM_DATAHAZARD_rd_data_type),
+    .i_MEM_rd_data ( MEM_WBU_rd_data),
     .i_EXU_ready   ( EXU_ready   ),
     .i_MEM_ready   ( MEM_ready   ),
     .o_stop_pipe   ( DATAHAZARD_stop_pipe   ),
