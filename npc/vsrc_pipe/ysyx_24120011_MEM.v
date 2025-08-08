@@ -4,14 +4,8 @@ module ysyx_24120011_MEM(
     input clk,
     input rst,
     //数据
-    //input [2:0]  i_rd_ctrl,
     input [6:0]  i_mem_ctrl,
-    //input [2:0]  i_csr_ctrl,
-    //input [31:0] i_pc,
-    //input [31:0] i_src1,
     input [31:0] i_src2,
-    //input [31:0] i_r_csr_data,
-    //input [31:0] i_imm,
     input [3:0]  i_rd,
     input [11:0] i_w_csr_addr,
     input [31:0] i_ALU_result,
@@ -22,16 +16,9 @@ module ysyx_24120011_MEM(
     input i_w_csr_en,
     input i_w_csr_ecall,
 
-    //output [31:0] o_r_mem_data,
-    //output [2:0]  o_rd_ctrl,
-    //output [2:0]  o_csr_ctrl,
-    //output [31:0] o_pc,
-    //output [31:0] o_src1,
-    //output [31:0] o_r_csr_data,
-    //output [31:0] o_imm,
+
     output [3:0]  o_rd,
     output [11:0] o_w_csr_addr,
-    //output [31:0] o_ALU_result,
 
     output [31:0] o_rd_data,
     output        o_rd_data_en,
@@ -86,14 +73,8 @@ module ysyx_24120011_MEM(
     input	[3:0]	   M1_bid
 );
 
-//reg [2:0]  rd_ctrl;
 reg [6:0]  mem_ctrl;
-//reg [2:0]  csr_ctrl;
-//reg [31:0] pc;
-//reg [31:0] src1;
 reg [31:0] src2;
-//reg [31:0] r_csr_data;
-//reg [31:0] imm;
 reg [3:0]  rd;
 reg [11:0] w_csr_addr;
 reg [31:0] ALU_result;
@@ -105,19 +86,10 @@ reg [31:0] w_csr_data;
 reg w_csr_en;
 reg w_csr_ecall;
 
-//assign o_MEM_ready  = LSU_ready ;
 assign o_MEM_ready  = (state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_MEM_valid  = (state != ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) && (next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) ? 1'b1 : 1'b0;
-//assign o_r_mem_data = r_mem_data;
-//assign o_rd_ctrl    = rd_ctrl   ;
-//assign o_csr_ctrl   = csr_ctrl  ;
-//assign o_pc         = pc        ;
-//assign o_src1       = src1      ;
-//assign o_r_csr_data = r_csr_data;
-//assign o_imm        = imm       ;
 assign o_rd         = rd        ;
 assign o_w_csr_addr = w_csr_addr;
-//assign o_ALU_result = ALU_result;
 
 assign  o_rd_data = rd_data_type == 2'd1 ? r_mem_data : rd_data;
 assign  o_rd_data_en = (rd_data_type != 2'd0 && o_MEM_valid) ? 1'b1 : 1'b0;
@@ -130,14 +102,8 @@ assign o_rd_data_type = rd_data_type;
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
-        //rd_ctrl    <=  'd0;
         mem_ctrl   <=  'd0;
-        //csr_ctrl   <=  'd0;
-        //pc         <=  'd0;
-        //src1       <=  'd0;
         src2       <=  'd0;
-        //r_csr_data <=  'd0;
-        //imm        <=  'd0;
         rd         <=  'd0;
         w_csr_addr <=  'd0;
         ALU_result <=  'd0;
@@ -151,14 +117,8 @@ always @(posedge clk) begin
     else begin
         //输入握手
         if(i_EXU_valid && o_MEM_ready) begin
-            //rd_ctrl    <=  i_rd_ctrl   ;
             mem_ctrl   <=  i_mem_ctrl  ;
-            //csr_ctrl   <=  i_csr_ctrl  ;
-            //pc         <=  i_pc        ;
-            //src1       <=  i_src1      ;
             src2       <=  i_src2      ;
-            //r_csr_data <=  i_r_csr_data;
-            //imm        <=  i_imm       ;
             rd         <=  i_rd        ;
             w_csr_addr <=  i_w_csr_addr;
             ALU_result <=  i_ALU_result;
@@ -173,21 +133,6 @@ always @(posedge clk) begin
 end
 
 
-// always @(*) begin
-//             rd_ctrl    =  i_rd_ctrl   ;
-//             mem_ctrl   =  i_mem_ctrl  ;
-//             csr_ctrl   =  i_csr_ctrl  ;
-//             pc         =  i_pc        ;
-//             src1       =  i_src1      ;
-//             src2       =  i_src2      ;
-//             r_csr_data =  i_r_csr_data;
-//             imm        =  i_imm       ;
-//             rd         =  i_rd        ;
-//             w_csr_addr =  i_w_csr_addr;
-//             ALU_result =  i_ALU_result;
-// end
-    reg LSU_valid;
-    reg LSU_ready;
     assign M1_araddr  = araddr    ;
     assign M1_arvalid = arvalid   ;
     assign arready    = M1_arready;
@@ -239,8 +184,6 @@ end
 
     reg [2:0] state;
     reg [2:0] next_state;
-    reg start_read_delay;
-    reg start_write_delay;
 
     wire [31:0] araddr;
     reg arvalid;
@@ -259,41 +202,13 @@ end
     wire bready;
     wire [31:0] rdata;
     wire bvalid;
-    wire LSU_working;
 
-    //reg [31:0] arvalid_delay;
-    reg [7:0] arvalid_delay_cnt;
-
-    //reg [31:0] awvalid_delay;
-    reg [7:0] awvalid_delay_cnt;
-
-    //reg [31:0] wvalid_delay;
-    reg [7:0] wvalid_delay_cnt;
-
-    //reg [31:0] rready_delay;
-    reg [7:0] rready_delay_cnt;
-
-    //reg [31:0] bready_delay;
-    reg [7:0] bready_delay_cnt;
-
-    reg [7:0] LSFR_in;
-    reg [7:0] random_delay;
 
     reg [3:0] reg_wstrb;
     reg [31:0] reg_wdata;
     reg [5:0] wdata_format;
     reg [31:0] rdata_mask;
-
-    assign random_delay = 'd0;
-    // ysyx_24120011_LFSR i0_LFSR(
-    //     .clk ( clk           ),
-    //     .in  ( LSFR_in       ),
-    //     .out ( random_delay  )
-    // );
-
-    //assign LSU_valid = (state == ysyx_24120011_LSU_M_AXI_RDATA || state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
-    //assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
-    assign LSU_working = ~o_MEM_ready;
+    
     //AR
     assign araddr = ALU_result;
     //assign arvalid = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? 1 : 0;
@@ -321,7 +236,7 @@ always @(posedge clk) begin
         cycle_counter <= 0;
         LSU_working_delay <= 0;
     end else begin
-        LSU_working_delay <= LSU_working;
+        LSU_working_delay <= ~o_MEM_ready;
 
         if (state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) begin
             LSU_clktime_count(cycle_counter);
@@ -330,9 +245,6 @@ always @(posedge clk) begin
         else begin
             cycle_counter <= cycle_counter + 1'b1;
         end
-        // if (~LSU_working & LSU_working_delay) begin//LSU_working下降沿
-        //     LSU_clktime_count(cycle_counter);
-        // end
     end
 end
 //======================dpic========================//
@@ -434,12 +346,9 @@ end
             wdata_format = 'd63;
         end
     end
-    //arvalid_delay
+    //arvalid
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt != 0 )begin
-            arvalid_delay_cnt <= arvalid_delay_cnt - 1;
-        end
-        else if(state == ysyx_24120011_LSU_M_AXI_RADDR && arvalid_delay_cnt == 0)begin
+        if(state == ysyx_24120011_LSU_M_AXI_RADDR)begin
             if(arready)begin
                 arvalid <= 0;
             end
@@ -452,86 +361,28 @@ end
         end
     end
     
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
-            arvalid_delay_cnt <= random_delay;
-        end
-    end
 
-    //awvalid_delay
+    //awvalid
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_WADDR && awvalid_delay_cnt != 0 )begin
-            awvalid_delay_cnt <= awvalid_delay_cnt - 1;
-        end
-        else if((state == ysyx_24120011_LSU_M_AXI_WADDR)&& awvalid_delay_cnt == 0)begin
+        if(state == ysyx_24120011_LSU_M_AXI_WADDR)begin
             if(awready)begin
                 awvalid <= 0;
-                if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                    wvalid <= 0;
-                end
-                //wvalid <= 0;
+                wvalid <= 0;
             end
             else begin
                 awvalid <= 1;
-                if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                    wvalid <= 1;
-                end
-                //wvalid <= 1;
+                wvalid <= 1;
             end
         end
         else begin
             awvalid <= 0;
-            if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                wvalid <= 0;
-            end
-            //wvalid <= 0;
-        end
-    end
-
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
-            awvalid_delay_cnt <= random_delay;
-        end
-    end
-
-    //wvalid_delay
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt != 0 )begin
-            wvalid_delay_cnt <= wvalid_delay_cnt - 1;
-        end
-        else if(state == ysyx_24120011_LSU_M_AXI_WDATA && wvalid_delay_cnt == 0)begin
-            if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                wvalid <= 1;
-            end
-            else begin
-                if(wready == 1 && wvalid == 0) begin
-                    wvalid <= 1;
-                end
-                else begin
-                    wvalid <= 0;
-                end
-            end
-        end
-        else begin
             wvalid <= 0;
         end
     end
 
+    //rready
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_WADDR)begin
-            wvalid_delay_cnt <= random_delay;
-        end
-    end
-
-    //rready_delay
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_RDATA && rready_delay_cnt != 0 )begin
-            rready_delay_cnt <= rready_delay_cnt - 1;
-            // rready <= 0;
-        end
-        else if(state == ysyx_24120011_LSU_M_AXI_RDATA && rready_delay_cnt == 0)begin
-            // rready <= 1;
-            // rready_delay_cnt <= 32'hFFFFFFFF;
+        if(state == ysyx_24120011_LSU_M_AXI_RDATA)begin
             if(rvalid == 1) begin
                 rready <= 1;
             end
@@ -544,71 +395,7 @@ end
         end
     end
 
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_RADDR)begin
-            rready_delay_cnt <= random_delay;
-        end
-    end
 
-    //bready_delay
-    // always@(posedge clk)begin
-    //     // if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt != 0 )begin
-    //     //     bready_delay_cnt <= bready_delay_cnt - 1;
-    //     //     //bready <= 0;
-    //     // end
-    //     // else if(state == ysyx_24120011_LSU_M_AXI_WRESP && bready_delay_cnt == 0)begin
-    //     //     //bready <= 1;
-    //     //     //bready_delay_cnt <= 32'hFFFFFFFF;
-    //     //     if(bvalid == 1) begin
-    //     //         bready <= 1;
-    //     //     end
-    //     //     else begin
-    //     //         bready <= 0;
-    //     //     end
-    //     // end
-    //     // else begin
-    //     //     bready <= 0;
-    //     // end
-    //     if(awready) begin
-    //         bready <= 1;
-    //     end
-    //     else if(bvalid) begin
-    //         bready <= 0;
-    //     end
-    //     else begin
-    //         bready <= 0;
-    //     end
-    // end
-
-    always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-            bready_delay_cnt <= random_delay;
-        end
-    end
-
-
-
-
-
-    always@(posedge clk)begin
-        if(mem_ctrl[2] == 1 || mem_ctrl[5] == 1) LSU_ready <= 1'b0;
-        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) LSU_ready <= 1'b1;
-    end
-    always@(posedge clk)begin
-        if(i_EXU_valid)begin
-            if(LSU_working == 0 && (mem_ctrl[2] == 0 && mem_ctrl[5] == 0) )begin
-                LSU_valid <= 1;
-            end
-        end
-        else begin
-            if(LSU_working == 1 && next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
-                LSU_valid <= 1;
-            end
-            else begin
-                LSU_valid <= 0;
-            end
-        end
-    end
 
     always@(posedge clk)begin
         if(rst) begin
@@ -642,17 +429,6 @@ end
         end
     end
 
-    always@(posedge clk)begin
-        if(rst) begin
-            start_read_delay <= 0;
-            start_write_delay <= 0;
-        end
-        else begin
-            start_read_delay <= mem_ctrl[5];
-            start_write_delay <= mem_ctrl[2];
-        end
-    end
-
     always@(*)begin
         case(state)
             ysyx_24120011_LSU_M_AXI_IDLE_EMPTY: next_state = (i_EXU_valid && o_MEM_ready) ? ysyx_24120011_LSU_M_AXI_IDLE_FULL : ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
@@ -679,12 +455,6 @@ end
     always@(posedge clk)begin
         if(rst) begin
             state <= ysyx_24120011_LSU_M_AXI_IDLE_EMPTY;
-            // arvalid_delay <= 32'd1;
-            // awvalid_delay <= 32'd1;
-            // wvalid_delay  <= 32'd1;
-            // rready_delay  <= 32'd1;
-            // bready_delay  <= 32'd1;
-            LSFR_in <= 8'h01;
         end
         else begin
             state <= next_state;
