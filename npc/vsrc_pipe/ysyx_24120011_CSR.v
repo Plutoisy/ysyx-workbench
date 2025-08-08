@@ -16,8 +16,11 @@ reg [31:0] mepc;
 reg [31:0] mstatus;
 reg [31:0] mcause;
 reg [31:0] mtvec; 
-reg [31:0] mvendorid;
-reg [31:0] marchid;
+
+wire [31:0] mvendorid;
+wire [31:0] marchid;
+assign mvendorid = 32'h7973_7978;
+assign marchid = 32'h0170_0ACB;
 
 reg [31:0] r_csr_data;
 assign o_r_csr_data = r_csr_data;
@@ -42,8 +45,6 @@ always@(posedge clk)begin
         mstatus      <= 32'h0000_0000;
         mcause       <= 32'h0000_0000;
         mtvec        <= 32'h0000_0000;
-        mvendorid    <= 32'h7973_7978;
-        marchid      <= 32'h0170_0ACB;
     end
     else begin
         if(i_w_csr_en)begin
@@ -57,8 +58,6 @@ always@(posedge clk)begin
                     mstatus   <=  mstatus;  
                     mcause    <=  mcause;   
                     mtvec     <=  mtvec;  
-                    mvendorid <=  mvendorid;
-                    marchid   <=  marchid;
                 end
             endcase
         end

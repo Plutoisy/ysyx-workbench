@@ -133,8 +133,6 @@ always @(posedge clk) begin
 end
 
 
-    reg LSU_valid;
-    reg LSU_ready;
     assign M1_araddr  = araddr    ;
     assign M1_arvalid = arvalid   ;
     assign arready    = M1_arready;
@@ -204,17 +202,13 @@ end
     wire bready;
     wire [31:0] rdata;
     wire bvalid;
-    wire LSU_working;
 
 
     reg [3:0] reg_wstrb;
     reg [31:0] reg_wdata;
     reg [5:0] wdata_format;
     reg [31:0] rdata_mask;
-
-    //assign LSU_valid = (state == ysyx_24120011_LSU_M_AXI_RDATA || state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
-    //assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
-    assign LSU_working = ~o_MEM_ready;
+    
     //AR
     assign araddr = ALU_result;
     //assign arvalid = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? 1 : 0;
@@ -242,7 +236,7 @@ always @(posedge clk) begin
         cycle_counter <= 0;
         LSU_working_delay <= 0;
     end else begin
-        LSU_working_delay <= LSU_working;
+        LSU_working_delay <= ~o_MEM_ready;
 
         if (state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) begin
             LSU_clktime_count(cycle_counter);
@@ -251,9 +245,6 @@ always @(posedge clk) begin
         else begin
             cycle_counter <= cycle_counter + 1'b1;
         end
-        // if (~LSU_working & LSU_working_delay) begin//LSU_working下降沿
-        //     LSU_clktime_count(cycle_counter);
-        // end
     end
 end
 //======================dpic========================//
@@ -376,30 +367,13 @@ end
         if(state == ysyx_24120011_LSU_M_AXI_WADDR)begin
             if(awready)begin
                 awvalid <= 0;
-                //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                 wvalid <= 0;
-                //end
             end
             else begin
                 awvalid <= 1;
-                //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                 wvalid <= 1;
-                //end
             end
         end
-        // else if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-        //     //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-        //         wvalid <= 1;
-        //     //end
-        //     // else begin
-        //     //     if(wready == 1 && wvalid == 0) begin
-        //     //         wvalid <= 1;
-        //     //     end
-        //     //     else begin
-        //     //         wvalid <= 0;
-        //     //     end
-        //     // end
-        // end
         else begin
             awvalid <= 0;
             wvalid <= 0;
@@ -422,25 +396,6 @@ end
     end
 
 
-    always@(posedge clk)begin
-        if(mem_ctrl[2] == 1 || mem_ctrl[5] == 1) LSU_ready <= 1'b0;
-        else if(next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) LSU_ready <= 1'b1;
-    end
-    always@(posedge clk)begin
-        if(i_EXU_valid)begin
-            if(LSU_working == 0 && (mem_ctrl[2] == 0 && mem_ctrl[5] == 0) )begin
-                LSU_valid <= 1;
-            end
-        end
-        else begin
-            if(LSU_working == 1 && next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY)begin
-                LSU_valid <= 1;
-            end
-            else begin
-                LSU_valid <= 0;
-            end
-        end
-    end
 
     always@(posedge clk)begin
         if(rst) begin
