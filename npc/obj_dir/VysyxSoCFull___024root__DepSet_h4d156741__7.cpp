@@ -19,6 +19,8 @@ VL_INLINE_OPT void VysyxSoCFull___024root___nba_sequent__TOP__7(VysyxSoCFull___0
     VysyxSoCFull__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
+    vlSelfRef.ysyxSoCFull__DOT__mem__DOT__srams__DOT__rdata_REG 
+        = vlSelfRef.ysyxSoCFull__DOT__mem__DOT__srams__DOT__ren;
     vlSelfRef.ysyxSoCFull__DOT__mem__DOT__srams__DOT___mem_ext_R0_data 
         = ((IData)(vlSelfRef.ysyxSoCFull__DOT__mem__DOT__srams__DOT__mem_ext__DOT___R0_en_d0)
             ? vlSelfRef.ysyxSoCFull__DOT__mem__DOT__srams__DOT__mem_ext__DOT__Memory
