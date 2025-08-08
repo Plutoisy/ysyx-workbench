@@ -206,7 +206,7 @@ assign inst_cache = hit ? (offset[2] ? icache[63:32] : icache[31:0]) : 32'b0;//é
 wire arvalid;
 reg rready;
 reg [31:0] araddr;
-reg [31:0] cached_size;
+reg [15:0] cached_size;
 reg rready_delay;
 wire arready;
 wire [1:0] rresp;
@@ -340,36 +340,6 @@ always @(posedge clk) begin
     end
 end
 
-// genvar j;
-// generate
-//     for (j = 0; j < ysyx_24120011_ICACHE_NUM; j = j + 1) begin : gen_reset
-//         always @(posedge clk) begin
-//             if (rst) begin
-//                 icache[j] <= 'b0;
-//             end
-//             else begin
-//                 if(inst_cache == 32'h0000100f)begin//fence.i
-//                     icache[j] <= 'b0;
-//                 end
-//                 else begin
-//                 end
-//             end
-//         end
-//     end
-// endgenerate
-// always @(posedge clk) begin
-//     if (rst) begin
-//         icache <= 'b0;
-//     end
-//     else begin
-//         if(inst_cache == 32'h0000100f)begin//fence.i
-//             icache <= 'b0;
-//         end
-//         else begin
-//             icache <= icache;
-//         end
-//     end
-// end
 always @(posedge clk) begin
     if(rst) begin
         icache <= 'b0;
