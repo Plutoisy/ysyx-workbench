@@ -206,34 +206,11 @@ end
     wire bvalid;
     wire LSU_working;
 
-    //reg [31:0] arvalid_delay;
-    reg [7:0] arvalid_delay_cnt;
-
-    //reg [31:0] awvalid_delay;
-    reg [7:0] awvalid_delay_cnt;
-
-    //reg [31:0] wvalid_delay;
-    reg [7:0] wvalid_delay_cnt;
-
-    //reg [31:0] rready_delay;
-    reg [7:0] rready_delay_cnt;
-
-    //reg [31:0] bready_delay;
-    reg [7:0] bready_delay_cnt;
-
-    reg [7:0] random_delay;
 
     reg [3:0] reg_wstrb;
     reg [31:0] reg_wdata;
     reg [5:0] wdata_format;
     reg [31:0] rdata_mask;
-
-    assign random_delay = 'd0;
-    // ysyx_24120011_LFSR i0_LFSR(
-    //     .clk ( clk           ),
-    //     .in  ( LSFR_in       ),
-    //     .out ( random_delay  )
-    // );
 
     //assign LSU_valid = (state == ysyx_24120011_LSU_M_AXI_RDATA || state == ysyx_24120011_LSU_M_AXI_WRESP) ? 1 : 0;
     //assign LSU_working = (state == ysyx_24120011_LSU_M_AXI_IDLE) ? 0 : 1;
@@ -378,7 +355,7 @@ end
             wdata_format = 'd63;
         end
     end
-    //arvalid_delay
+    //arvalid
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_RADDR)begin
             if(arready)begin
@@ -394,72 +371,44 @@ end
     end
     
 
-    //awvalid_delay
+    //awvalid
     always@(posedge clk)begin
         if(state == ysyx_24120011_LSU_M_AXI_WADDR)begin
             if(awready)begin
                 awvalid <= 0;
-                if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
+                //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                     wvalid <= 0;
-                end
-                //wvalid <= 0;
+                //end
             end
             else begin
                 awvalid <= 1;
-                if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
+                //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                     wvalid <= 1;
-                end
-                //wvalid <= 1;
+                //end
             end
         end
         else if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-            if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
+            //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
                 wvalid <= 1;
-            end
-            else begin
-                if(wready == 1 && wvalid == 0) begin
-                    wvalid <= 1;
-                end
-                else begin
-                    wvalid <= 0;
-                end
-            end
+            //end
+            // else begin
+            //     if(wready == 1 && wvalid == 0) begin
+            //         wvalid <= 1;
+            //     end
+            //     else begin
+            //         wvalid <= 0;
+            //     end
+            // end
         end
         else begin
             awvalid <= 0;
-            //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                wvalid <= 0;
-            //end
-            //wvalid <= 0;
+            wvalid <= 0;
         end
     end
 
-    //wvalid_delay
-    // always@(posedge clk)begin
-    //     if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-    //         if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-    //             wvalid <= 1;
-    //         end
-    //         else begin
-    //             if(wready == 1 && wvalid == 0) begin
-    //                 wvalid <= 1;
-    //             end
-    //             else begin
-    //                 wvalid <= 0;
-    //             end
-    //         end
-    //     end
-    //     else begin
-    //         wvalid <= 0;
-    //     end
-    // end
-
-
-    //rready_delay
+    //rready
     always@(posedge clk)begin
-        if(state == ysyx_24120011_LSU_M_AXI_RDATA && rready_delay_cnt == 0)begin
-            // rready <= 1;
-            // rready_delay_cnt <= 32'hFFFFFFFF;
+        if(state == ysyx_24120011_LSU_M_AXI_RDATA)begin
             if(rvalid == 1) begin
                 rready <= 1;
             end
