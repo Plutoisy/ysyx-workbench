@@ -377,29 +377,29 @@ end
             if(awready)begin
                 awvalid <= 0;
                 //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                    wvalid <= 0;
+                wvalid <= 0;
                 //end
             end
             else begin
                 awvalid <= 1;
                 //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                    wvalid <= 1;
+                wvalid <= 1;
                 //end
             end
         end
-        else if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
-            //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
-                wvalid <= 1;
-            //end
-            // else begin
-            //     if(wready == 1 && wvalid == 0) begin
-            //         wvalid <= 1;
-            //     end
-            //     else begin
-            //         wvalid <= 0;
-            //     end
-            // end
-        end
+        // else if(state == ysyx_24120011_LSU_M_AXI_WDATA)begin
+        //     //if(awaddr >= 32'hA000_0000 && awaddr <= 32'hBFFF_FFFF) begin
+        //         wvalid <= 1;
+        //     //end
+        //     // else begin
+        //     //     if(wready == 1 && wvalid == 0) begin
+        //     //         wvalid <= 1;
+        //     //     end
+        //     //     else begin
+        //     //         wvalid <= 0;
+        //     //     end
+        //     // end
+        // end
         else begin
             awvalid <= 0;
             wvalid <= 0;
