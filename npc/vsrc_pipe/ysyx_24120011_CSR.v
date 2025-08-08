@@ -40,13 +40,13 @@ always@(*)begin
 end
 
 always@(posedge clk)begin
-    if(rst)begin
-        mepc         <= 32'h0000_0000;
-        mstatus      <= 32'h0000_0000;
-        mcause       <= 32'h0000_0000;
-        mtvec        <= 32'h0000_0000;
-    end
-    else begin
+    // if(rst)begin
+    //     mepc         <= 32'h0000_0000;
+    //     mstatus      <= 32'h0000_0000;
+    //     mcause       <= 32'h0000_0000;
+    //     mtvec        <= 32'h0000_0000;
+    // end
+    //else begin
         if(i_w_csr_en)begin
             case(i_w_csr_addr)
                 12'h341: mepc     <= i_w_csr_data;
@@ -64,6 +64,6 @@ always@(posedge clk)begin
         if(i_w_csr_ecall)begin 
             mcause       <=  32'h000b;//11 
         end
-    end
+    //end
 end
 endmodule

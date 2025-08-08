@@ -101,20 +101,20 @@ assign  o_w_csr_ecall = w_csr_ecall;
 assign o_rd_data_type = rd_data_type;
 //指令锁存
 always @(posedge clk) begin
-    if(rst) begin
-        mem_ctrl   <=  'd0;
-        src2       <=  'd0;
-        rd         <=  'd0;
-        w_csr_addr <=  'd0;
-        ALU_result <=  'd0;
+    // if(rst) begin
+    //     mem_ctrl   <=  'd0;
+    //     src2       <=  'd0;
+    //     rd         <=  'd0;
+    //     w_csr_addr <=  'd0;
+    //     ALU_result <=  'd0;
 
-        rd_data      <=  'd0;
-        rd_data_type <=  'd0;
-        w_csr_data   <=  'd0;
-        w_csr_en     <=  'd0;
-        w_csr_ecall  <=  'd0;
-    end
-    else begin
+    //     rd_data      <=  'd0;
+    //     rd_data_type <=  'd0;
+    //     w_csr_data   <=  'd0;
+    //     w_csr_en     <=  'd0;
+    //     w_csr_ecall  <=  'd0;
+    // end
+    //else begin
         //输入握手
         if(i_EXU_valid && o_MEM_ready) begin
             mem_ctrl   <=  i_mem_ctrl  ;
@@ -129,7 +129,7 @@ always @(posedge clk) begin
             w_csr_en     <=  i_w_csr_en    ;
             w_csr_ecall  <=  i_w_csr_ecall ;
         end
-    end
+    //end
 end
 
 
@@ -208,7 +208,7 @@ end
     reg [31:0] reg_wdata;
     reg [5:0] wdata_format;
     reg [31:0] rdata_mask;
-    
+
     //AR
     assign araddr = ALU_result;
     //assign arvalid = (state == ysyx_24120011_LSU_M_AXI_RADDR) ? 1 : 0;

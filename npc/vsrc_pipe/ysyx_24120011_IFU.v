@@ -234,9 +234,9 @@ assign wready     = M0_wready;
 assign bresp      = M0_bresp;
 assign bvalid     = M0_bvalid;
 assign M0_bready  = 1'b1    ;
-//assign M0_arid    = 'd0       ;
+assign M0_arid    = 'd0       ;
 assign M0_arlen   = (pc >= 32'hA000_0000 && pc <= 32'hBFFF_FFFF) ? 'd1 : 'd0;//A000_0000-BFFF_FFFF
-assign M0_arlen   = 'd0;
+//assign M0_arlen   = 'd0;
 assign M0_arburst = 'b01      ;
 assign M0_arsize  = 3'b010    ;
 assign M0_awid    = 'd0       ;
