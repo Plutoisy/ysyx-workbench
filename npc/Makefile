@@ -131,7 +131,12 @@ oldsta:
 	make sta  && \
 	python3 area.py && \
 	cd $(YSYX_HOME)/npc
-
+	
+dpic:
+	rm -rf ./vsrc_no_dpic && \
+	cp -r ./vsrc_pipe/ ./vsrc_no_dpic && \
+	python3 ./tools/verilog.py
+	
 clean:
 	rm -rf ./build
 	rm -rf ./dump.vcd
