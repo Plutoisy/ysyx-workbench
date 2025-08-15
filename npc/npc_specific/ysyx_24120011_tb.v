@@ -1,9 +1,7 @@
-`timescale 1ns / 1ns
-module ysyx_24120011_tb;
-
-    parameter CLOCK_PERIOD = 10;
-    reg clock;
-    reg reset;
+module ysyx_24120011_tb(
+    input clock,
+    input reset
+);
     reg 	      awready	;
     reg 	      awvalid	;
     reg [31:0]	  awaddr	;
@@ -130,25 +128,5 @@ module ysyx_24120011_tb;
         .bready  ( bready  ),
         .bid     ( bid     )
     );
-
-
-    initial begin
-        clock = 0;
-        forever #(CLOCK_PERIOD/2) clock = ~clock;
-    end
-
-    initial begin
-        reset = 1;
-        #15 reset = 0; 
-    end
-
-    // initial begin
-    //     #1000000 $finish;
-    // end
-
-    initial begin
-        $dumpfile("test.vcd");
-        $dumpvars(0, ysyx_24120011_tb); 
-    end
 
 endmodule

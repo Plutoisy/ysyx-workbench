@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vysyx_24120011.h"
+#include "Vysyx_24120011_tb.h"
 #include <cstdint>
 #include <stdio.h>
 #include <stdint.h>
@@ -9,10 +9,19 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
+#include <nvboard.h>
 
 #define PMEM_SIZE    0x8000000
+#define FLASH_SIZE    0x10000000
+#define PSRAM_SIZE    0x20000000
+#define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
+#define CONFIG_MBASE_SOC 0x20000000
+#define CONFIG_FLASHBASE 0x30000000
+#define CONFIG_PSRAMBASE 0x80000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
+#define LOAD_IMG_TO_FLASH 0
+#define START_FROM_MROM 0
 #define M_R_TRACE 0
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
@@ -21,12 +30,20 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
+#define WATCHPOINT 0
 #define WAVE 1
+#define NVBOARD 0
 #define PC_NO_CHANGE_DECETE 1
+#define ITRACE_FILE 1
+#define INST_NOT_VALID_CHECK 1
+#define BTRACE_FILE 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
-static Vysyx_24120011* top;
+static Vysyx_24120011_tb dut;
+void nvboard_bind_all_pins(Vysyx_24120011_tb* top);
+
+
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
@@ -35,8 +52,42 @@ int top_pc;
 int top_dnpc;
 int top_inst;
 int top_IFU_valid_int;
-//
+
 uint8_t pmem[PMEM_SIZE] = {
+  0x13,0x04,0x00,0x00,
+  0x17,0x91,0x00,0x00,
+  0x13,0x01,0xc1,0xff,
+  0xef,0x00,0xc0,0x00,
+  0x13,0x05,0x00,0x00,
+  0x67,0x80,0x00,0x00,
+  0x13,0x01,0x41,0xff,
+  0x17,0x05,0x00,0x00,
+  0x13,0x05,0xc5,0x01,
+  0x23,0x24,0x11,0x00,
+  0xef,0xf0,0x9f,0xfe,
+  0x13,0x05,0x05,0x00,
+  0x73,0x00,0x10,0x00,
+  0x6f,0x00,0x00,0x00,  
+};
+
+uint8_t flash[FLASH_SIZE] = {
+  0x13,0x04,0x00,0x00,
+  0x17,0x91,0x00,0x00,
+  0x13,0x01,0xc1,0xff,
+  0xef,0x00,0xc0,0x00,
+  0x13,0x05,0x00,0x00,
+  0x67,0x80,0x00,0x00,
+  0x13,0x01,0x41,0xff,
+  0x17,0x05,0x00,0x00,
+  0x13,0x05,0xc5,0x01,
+  0x23,0x24,0x11,0x00,
+  0xef,0xf0,0x9f,0xfe,
+  0x13,0x05,0x05,0x00,
+  0x73,0x00,0x10,0x00,
+  0x6f,0x00,0x00,0x00,  
+};
+
+uint8_t psram[PSRAM_SIZE] = {
   0x13,0x04,0x00,0x00,
   0x17,0x91,0x00,0x00,
   0x13,0x01,0xc1,0xff,
@@ -61,8 +112,8 @@ typedef struct {
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
-  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
-  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+  "sd0", "sd1", "sd2", "sd3", "wd0", "wd1", "wd2", "wd3",
+  "mod", "imm", "od0", "od1", "od2", "od3", "t5", "t6"
 };
 
 static char* rl_gets() {
@@ -82,7 +133,7 @@ static char* rl_gets() {
   return line_read;
 }
 
-static long load_img() {
+static long load_img_mrom() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.\n");
     return 4096; // built-in image size
@@ -96,10 +147,58 @@ static long load_img() {
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
 
-  printf("The image is %s, size = %ld\n", img_file, size);
+  printf("Start from mrom The image is %s, size = %ld\n", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
   int ret = fread(pmem, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+static long load_img_flash() {
+  if (img_file == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img_file, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("Start from flash The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(flash, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+static long load_img_to_flash(char *img) {
+  if (img == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(flash, size, 1, fp);
   assert(ret == 1);
 
   fclose(fp);
@@ -133,19 +232,24 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 }
 
 void step_and_dump_wave(){
-  top->eval();
+  if(NVBOARD){
+    nvboard_update();
+  }
+  dut.eval();
   if(WAVE){
-    contextp->timeInc(1);
-    tfp->dump(contextp->time());
+    //if(((top_pc & 0xFF000000) >> 24) == 0xA0){
+      contextp->timeInc(1);
+      tfp->dump(contextp->time());
+    //} 
   }
 }
 
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  top = new Vysyx_24120011;
+  // top = new Vysyx_24120011_tb;
   contextp->traceEverOn(true);
-  top->trace(tfp, 99);
+  dut.trace(tfp, 99);
   tfp->open("dump.vcd");
 }
 
@@ -155,22 +259,27 @@ void sim_exit(){
 }
 
 void system_rst(){
-  top->clock = 0;
-  top->reset = 0;
+  dut.clock = 0;
+  dut.reset = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  top->reset = 1;
+  dut.clock = 1;
+  dut.reset = 1;
   step_and_dump_wave();
-  top->clock = 0;
+  dut.clock = 0;
   step_and_dump_wave();
-  top->clock = 1;
-  step_and_dump_wave();
-  top->clock = 0;
-  step_and_dump_wave();
-  top->reset = 0;
+  for(int i = 0; i < 20; i++){
+	dut.clock = 1;
+	step_and_dump_wave();
+	dut.clock = 0;
+	step_and_dump_wave();
+  }
+  dut.reset = 0;
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
+uint8_t* guest_to_host_soc(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE_SOC; }
+uint8_t* guest_to_host_flash(uint32_t paddr) { return flash + paddr - CONFIG_FLASHBASE; }
+uint8_t* guest_to_host_psram(uint32_t paddr) { return psram + paddr - CONFIG_PSRAMBASE; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
@@ -222,10 +331,36 @@ void isa_reg_display() {
 
 uint64_t sum_ifu_clock_time = 0;
 uint64_t ifu_clock_time_num = 0;
-extern "C" void IFU_clktime_count(int ifu_clk_count){
+uint64_t icache_hit_count = 0;
+uint64_t icache_miss_count = 0;
+uint64_t icache_miss_count_branch = 0;
+uint64_t miss_counter_branch_c = 0;
+uint64_t all_counter_branch_c = 0;
+extern "C" void IFU_clktime_count(int ifu_clk_count,int hit){
   //printf("%d\n",ifu_clk_count);
   sum_ifu_clock_time = sum_ifu_clock_time + ifu_clk_count;
   ifu_clock_time_num++;
+  if(hit){
+    icache_hit_count++;
+  }
+}
+extern "C" void icahce_miss_count(int miss_count){
+  icache_miss_count = miss_count;
+}
+extern "C" void icahce_miss_count_branch(int miss_count_branch){
+  icache_miss_count_branch = miss_count_branch;
+}
+uint64_t sum_lsu_clock_time = 0;
+uint64_t lsu_clock_time_num = 0;
+extern "C" void LSU_clktime_count(int lsu_clk_count){
+  //printf("%d\n",lsu_clk_count);
+  sum_lsu_clock_time = sum_lsu_clock_time + lsu_clk_count;
+  lsu_clock_time_num++;
+}
+extern "C" void branch_count(int all_counter_branch,int miss_counter_branch){
+  //printf("%d\n",ifu_clk_count);
+  all_counter_branch_c = all_counter_branch;
+  miss_counter_branch_c = miss_counter_branch;
 }
 
 uint64_t IFU_getinst = 0;
@@ -240,6 +375,88 @@ extern "C" void Performance_Counters(int Performancetype){
   }
   if(Performancetype == 3){
     EXU_fincal++;
+  }
+}
+
+// uint64_t jump_type = 0;
+// uint64_t csr_type = 0;
+// uint64_t read_and_store_type = 0;
+// uint64_t cal_type = 0;
+// uint64_t unk = 0;
+// extern "C" void inst_type_Counters(int insttype){
+//   if(insttype == 1){
+//     jump_type++;
+//   }
+//   if(insttype == 2){
+//     csr_type++;
+//   }
+//   if(insttype == 3){
+//     read_and_store_type++;
+//   }
+//   if(insttype == 4){
+//     cal_type++;
+//   }
+//   if(insttype == 5){
+//     unk++;
+//   }
+// }
+
+extern "C" void psram_read(uint32_t addr, uint32_t *data) {
+	if(addr >= 0 && addr <= PSRAM_SIZE){
+		*data = host_read(psram+addr,4);
+    if(M_R_TRACE){
+      printf("psramR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, *data);
+    }
+	}else{
+    if(M_R_ASSERT){
+      assert(0);
+    }
+	}
+}
+extern "C" void psram_write(uint32_t addr, uint32_t data,uint32_t mask) {
+	if(addr >= 0 && addr <= PSRAM_SIZE){
+		uint32_t wdata = data >> ((8-mask)*4);
+		host_write(psram+addr,mask/2,wdata);
+    if(M_R_TRACE){
+      printf("psramW->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, data);
+    }
+	}else{
+		if(M_W_ASSERT){
+      assert(0);
+    }
+	}
+}
+
+extern "C" void flash_read(int32_t addr, int32_t *data) { 
+  addr += CONFIG_FLASHBASE;
+  if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
+    if(M_R_ASSERT){
+      assert(0);
+    }
+    return;
+  }
+  else{
+    *data = host_read(guest_to_host_flash(addr & ~0x3), 4);
+    if(M_R_TRACE){
+      printf("flashR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+    }
+    return;
+  }
+}
+
+extern "C" void mrom_read(int32_t addr, int32_t *data) { 
+  if(addr - CONFIG_MBASE_SOC > 0xfff){
+    if(M_R_ASSERT){
+      assert(0);
+    }
+    return;
+  }
+  else{
+    *data = host_read(guest_to_host_soc(addr & ~0x3), 4);
+    if(M_R_TRACE){
+      printf("mromR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+    }
+    return;
   }
 }
 
@@ -273,14 +490,14 @@ extern "C" void reg_out(const int array[32]) {
 
 extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
   if(M_W_TRACE){
-    printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
   }
   if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    if (w_mem_addr == 0xa00003f8) { 
+    if (w_mem_addr == 0x000003f8) { 
+      //putchar((char)(w_mem_data & 0xFF)); 
       if(M_W_ASSERT){
         assert(0);
       }
-      //putchar((char)(w_mem_data & 0xFF)); 
     }
     else{
       if(M_W_ASSERT){
@@ -289,11 +506,15 @@ extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
     }
   }
   else{
-    //printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    //printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
     host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
   }
 }
-
+extern "C" void sram_write_print (int w_mem_addr, int w_mem_data, char w_mem_len){
+  if(M_W_TRACE){
+    printf("sramW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+  }
+}
 static uint64_t boot_time = 0;
 
 static uint64_t get_time_internal() {
@@ -314,7 +535,7 @@ static uint32_t rtc_port_base[2];
 extern "C" int rtl_pmem_read(int r_mem_addr){
   if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
     if(M_R_TRACE){
-      printf("R->addr: 0x%x, len: %d\n", r_mem_addr, 4);
+      printf("npcR->addr: 0x%x, len: %d\n", r_mem_addr, 4);
     }
     // if (r_mem_addr == 0xa0000048 + 4) { 
     //   uint64_t us = get_time();
@@ -339,40 +560,176 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
   else{
     
     uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
-    //printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
+    //printf("npcR->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
     return ret;
   }
   
 }
 
-int old_pc = 0;
-int pc_count = 0;
+int parse_instruction_type(uint32_t top_inst) {
+  // 提取opcode（低7位）
+  uint32_t opcode = top_inst & 0x7F;
+  
+  switch (opcode) {
+      // R型和I型计算类指令
+      case 0x33:  // R型：add, sub, sll, slt, sltu, xor, srl, sra, or, and
+      case 0x13:  // I型：addi, slti, sltiu, xori, ori, andi, slli, srli, srai
+      case 0x17:  // U型：auipc
+      case 0x37:  // U型：lui
+          return 4;
+      
+      // 访存指令
+      case 0x03:  // I型：lb, lh, lw, lbu, lhu
+      case 0x23:  // S型：sb, sh, sw
+      case 0x0F:  // fence指令
+          return 3;
+      
+      // CSR指令
+      case 0x73: {
+          // 对于0x73 opcode，需要进一步检查funct3字段来确定是CSR指令还是其他系统指令
+          uint32_t funct3 = (top_inst >> 12) & 0x7;
+          if (funct3 != 0) {
+              return 2;  // CSR指令 (csrrw, csrrs, csrrc等)
+          } else {
+              // 可能是ecall, ebreak等系统指令，这里归类为未知类型
+              return 99;
+          }
+      }
+      
+      // 跳转指令
+      case 0x6F:  // J型：jal
+      case 0x67:  // I型：jalr
+      case 0x63:  // B型：beq, bne, blt, bge, bltu, bgeu
+          return 1;
+          
+      default:
+          return 99;
+  }
+}
 
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
 extern "C" void difftest_regcpy(void *dut, bool direction);
+
 CPU_state refstate;
+int old_pc = 0;
+int pc_count = 0;
 uint64_t inst_count = 0;
-void cpu_exec(uint32_t n){
-  for(int i = 0; i < n; i++){
+int inst_type;
+uint64_t jump_type_s = 0;
+uint64_t csr_type_s = 0;
+uint64_t read_and_store_type_s = 0;
+uint64_t cal_type_s = 0;
+uint64_t unk_s = 0;
+uint64_t last_clock = 0;
+uint64_t inst_clock_time = 0;
+uint64_t clk_jump_type_s = 0;
+uint64_t clk_csr_type_s = 0;
+uint64_t clk_read_and_store_type_s = 0;
+uint64_t clk_cal_type_s = 0;
+uint64_t clk_unk_s = 0;
+uint64_t func_time = 0;
+uint64_t detect_btype = 0;
+int      btype_pc = 0;
+void cpu_exec(uint64_t n){
+  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/itrace.txt", "w");
+  if (itracefile == NULL) {
+      printf("无法打开文件\n");
+      return;
+  }
+  FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/btrace.txt", "w");
+  if (btracefile == NULL) {
+      printf("无法打开文件\n");
+      return;
+  }
+  for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
-      top->clock ^= 1;
-      if (top->clock != 1){
+      dut.clock ^= 1;
+      if (dut.clock != 1){
         step_and_dump_wave();
-        top->clock ^= 1;
+        dut.clock ^= 1;
       }
       //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
       //AssembleDecoder(handle, top_inst, top_pc);
+
       if(top_IFU_valid_int){
+        inst_clock_time = i - last_clock;
+        last_clock = i;
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
-          printf("exec times: %d\n",i+1);
+          printf("exec times: %ld\n",i+1);
           difftest_exec(1);
           difftest_regcpy(&refstate, 0);
         }
-        
+
         step_and_dump_wave();
         inst_count++;
+        if(ITRACE_FILE){
+          fprintf(itracefile, "%08x\n",top_pc);
+        }
+        if(BTRACE_FILE){
+          //printf("%08x,%08x\n",top_pc, top_inst);
+          if(detect_btype == 1){
+            detect_btype = 0;
+            if(btype_pc + 4 == top_pc){
+              fprintf(btracefile, "nottaken\n");
+            }
+            else{
+              fprintf(btracefile, "taken\n");
+            }
+          }
+          if((top_inst & 0x7F) == 0x63){//B-Type
+            fprintf(btracefile, "%08x,%08x,",top_pc, top_inst);
+            detect_btype = 1;
+            btype_pc = top_pc;
+          }
+        }
+        if(parse_instruction_type(top_inst) == 1){
+          jump_type_s++;
+          clk_jump_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 2){
+          csr_type_s++;
+          clk_csr_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 3){
+          read_and_store_type_s++;
+          clk_read_and_store_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 4){
+          cal_type_s++;
+          clk_cal_type_s += inst_clock_time;
+        }
+        if(parse_instruction_type(top_inst) == 5){
+          unk_s++;
+          clk_unk_s += inst_clock_time;
+        }
+
+        if((WATCHPOINT || !BMODE) && n < 100){
+          AssembleDecoder(handle, top_inst, top_pc);
+          for(int j = 0; j < 32; j++){
+            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
+          }
+        }
+
+        if(WATCHPOINT){
+
+          if(top_pc == 0xa0000000){
+            func_time = i;
+          }
+          if(top_pc == 0xa00000a4){
+            func_time = i-func_time;
+            printf("pc time: %ld\n",func_time);
+          }
+
+          // if(top_pc == 0xa0000000){
+          //   func_time = i;
+          // }
+          // if(top_pc == 0xa00002dc){
+          //   func_time = i-func_time;
+          //   printf("pc time: %ld\n",func_time);
+          // }
+        }
 
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
@@ -399,10 +756,18 @@ void cpu_exec(uint32_t n){
             }
           }
         }
+        if(INST_NOT_VALID_CHECK){
+          if(top_inst==0x00000000 && top_IFU_valid_int){
+            printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
+            return;
+          }
+        }
       }
       else{
         step_and_dump_wave();
       }
+
+      
 
       if(PC_NO_CHANGE_DECETE){
         if(top_pc == old_pc){
@@ -423,11 +788,87 @@ void cpu_exec(uint32_t n){
         old_pc = top_pc;  
       }
       
+      
     }
     else{
+      float ipc = (float)inst_count/(float)(i+1);
+      float cpi = 1.0/ipc;
+      double avg_jump = (double)clk_jump_type_s/(double)jump_type_s;
+      double avg_csr = (double)clk_csr_type_s/(double)csr_type_s;
+      double avg_read_and_store = (double)clk_read_and_store_type_s/(double)read_and_store_type_s;
+      double avg_cal = (double)clk_cal_type_s/(double)cal_type_s;
+      double avg_unk;
+      if(unk_s == 0){
+        avg_unk = 0;
+      }
+      else{
+        avg_unk = (double)clk_jump_type_s/(double)jump_type_s;
+      }
       printf("\33[1;34mProgram execution has ended. To restart the program, exit npc and run again.\033[0m\n");
-      printf("exec times: %d\n",i+1);
+      printf("\33[1;34mClock Cycle: %ld\033[0m\n",i+1);
       printf("\33[1;34mInstruction Count: %ld\033[0m\n",inst_count);
+      printf("\33[1;34mIPC: %f\033[0m\n",ipc);
+      printf("\33[1;34mCPI: %f\033[0m\n",cpi);
+      printf("\33[1;34mIFU get inst: %ld\033[0m\n",IFU_getinst);
+      printf("\33[1;34mLSU get data: %ld\033[0m\n",LSU_getdata);
+      printf("\33[1;34mEXU finish calculate: %ld\033[0m\n",EXU_fincal);
+      printf("\33[1;34mIFU clock time: %f\033[0m\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+      printf("\33[1;34micache hit rate: %f\033[0m\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
+      printf("\33[1;34micache miss count: %ld\033[0m\n",icache_miss_count);
+      printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
+      printf("\33[1;34msum_lsu_clock_time: %ld\033[0m\n",sum_lsu_clock_time);
+      printf("\33[1;34mlsu_clock_time_num: %ld\033[0m\n",lsu_clock_time_num);
+      // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
+      printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
+      printf("\33[1;34mmiss_counter_branch_c: %ld\033[0m\n",miss_counter_branch_c);
+      printf("\33[1;34mall_counter_branch_c: %ld\033[0m\n",all_counter_branch_c);
+      printf("\33[1;34mbranch hit rate: %f\033[0m\n",1-((double)miss_counter_branch_c/(double)all_counter_branch_c));
+      // printf("\33[1;34mTYPE COUNT:\033[0m\n");
+      // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
+      // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
+      // printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
+      // printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
+      // printf("\33[1;34munk: %ld\033[0m\n",unk);
+      printf("\33[1;34mTYPE COUNT SOFTWARE:\033[0m\n");
+      printf("\33[1;34mjump: %ld\033[0m\n",jump_type_s);
+      printf("\33[1;34mcsr: %ld\033[0m\n",csr_type_s);
+      printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type_s);
+      printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type_s);
+      printf("\33[1;34munk: %ld\033[0m\n",unk_s);
+      printf("\33[1;34mAVG TYPE CLOCK TIME:\033[0m\n");
+      printf("\33[1;34mjump: %lf\033[0m\n",avg_jump);
+      printf("\33[1;34mcsr: %lf\033[0m\n",avg_csr);
+      printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
+      printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
+      printf("\33[1;34munk: %lf\033[0m\n",avg_unk);
+      // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
+      // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
+
+      FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/perf.txt", "w");
+      if (file == NULL) {
+          printf("无法打开文件\n");
+          return;
+      }
+      fprintf(file, "clk: %ld\n",i+1);
+      fprintf(file, "inst: %ld\n",inst_count);
+      fprintf(file, "IPC: %f\n",ipc);
+      fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
+      fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
+      fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
+      fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+      fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
+      fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
+      fprintf(file, "jump: %ld\n",jump_type_s);
+      fprintf(file, "csr: %ld\n",csr_type_s);
+      fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
+      fprintf(file, "calculate: %ld\n",cal_type_s);
+      fprintf(file, "unk: %ld\n",unk_s);
+      fprintf(file, "jump time: %lf\n",avg_jump);
+      fprintf(file, "csr time: %lf\n",avg_csr);
+      fprintf(file, "read_and_store time: %lf\n",avg_read_and_store);
+      fprintf(file, "calculate time: %lf\n",avg_cal);
+      fprintf(file, "unk time: %lf\n",avg_unk);
+      fclose(file);
       return;
     }
   }
@@ -551,6 +992,13 @@ void sdb_mainloop() {
 
 
 int main(int argc, char *argv[]) {
+  Verilated::traceEverOn(true);
+  sim_init();
+  if(NVBOARD){
+    nvboard_bind_all_pins(&dut);
+    nvboard_init();
+  }
+  Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
   //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
@@ -564,18 +1012,31 @@ int main(int argc, char *argv[]) {
 
   // AssembleDecoder(handle, instruction);
   
-
-  load_img();
+  // if(START_FROM_MROM){
+  //   load_img_mrom();
+  // }
+  // else{
+  //   load_img_flash();
+  // }
+  
+  if(LOAD_IMG_TO_FLASH){
+    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+  }
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE, pmem, PMEM_SIZE, 1);
+    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
     void* dut;
     difftest_regcpy(dut, 1);
   }
-  sim_init();
+  
   system_rst();
   if(BMODE){
     cmd_si("-1");
-    cmd_q(NULL);
+    if(WATCHPOINT){
+      sdb_mainloop();
+    }
+    else{
+      cmd_q(NULL);
+    }
   }
   else{
     sdb_mainloop();
@@ -584,4 +1045,3 @@ int main(int argc, char *argv[]) {
   sim_exit();
   return 0;
 }
-

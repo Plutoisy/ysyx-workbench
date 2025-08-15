@@ -63,12 +63,16 @@ assign o_inst = inst;
 
 reg flushing;
 always @(posedge clk) begin
-    if (i_flush) begin
-        flushing <= 1'b1;
-    end
-    else begin
-        if (state == ysyx_24120011_IFU_IDLE_FULL) begin
-            flushing <= 1'b0;
+    if (rst) begin
+        flushing <= 1'b0;
+    end else begin
+        if (i_flush) begin
+            flushing <= 1'b1;
+        end
+        else begin
+            if (state == ysyx_24120011_IFU_IDLE_FULL) begin
+                flushing <= 1'b0;
+            end
         end
     end
 end

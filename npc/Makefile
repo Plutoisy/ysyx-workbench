@@ -23,7 +23,7 @@ VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
 CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
-VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v" -not -name "ysyx_24120011.v" -not -name "ysyx_24120011_PCProcessor.v" -not -name "ysyx_24120011_Xbar.v" -not -name "ysyx_24120011_Uart.v" -not -name "ysyx_24120011_Clint.v" -not -name "ysyx_24120011_LSU.v")
+VSRCS_NPC = $(shell find $(abspath ./vsrc_pipe) -name "*.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
 # LOADLIBES += -lreadline
@@ -41,14 +41,14 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
-		--top-module ysyx_24120011 $^ \
+		--top-module ysyx_24120011_tb $^ \
 		--timescale "1ns/1ns" \
 		--no-timing \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
-	make -C obj_dir -f Vysyx_24120011.mk Vysyx_24120011
-	./obj_dir/Vysyx_24120011 $(IMG)
+	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
+	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
@@ -135,9 +135,17 @@ oldsta:
 dpic:
 	rm -rf ./vsrc_no_dpic && \
 	cp -r ./vsrc_pipe/ ./vsrc_no_dpic && \
+	rm -rf ./build && \
+	mkdir -p ./build && \
 	python3 ./tools/verilog.py
-	
+
+sim-iverilog:
+	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
+	iverilog -g2012 $(NPC_HOME)/tb/ysyx_24120011_tb.v $(NPC_HOME)/tb/ysyx_24120011.v $(NPC_HOME)/tb/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/tb/wave
+	vvp -n $(NPC_HOME)/tb/wave -lxt2 +IMG=$(IMG)
+
+
 clean:
 	rm -rf ./build
-	rm -rf ./dump.vcd
+	rm -rf ./*.vcd
 include ../Makefile
