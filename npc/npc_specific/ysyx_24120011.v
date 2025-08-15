@@ -1876,20 +1876,6 @@ wire [31:0] a0;
     wire [31:0] DATAHAZARD_IDU_r_ddata;
     wire DATAHAZARD_IDU_rs1_or_rs2;
     wire DATAHAZARD_IDU_bypass;
-//======================finish========================//
-always@(posedge clock) begin
-    if (IFU_IDU_inst == 32'b00000000000100000000000001110011) begin
-        $write("npc execute ebreak at pc = 0x%08x\n", IFU_IDU_pc);
-        if (a0 == 0) begin
-            $write("\033[1;32mHIT GOOD TRAP!\033[0m\n"); // 绿色
-        end
-        else begin
-            $write("\033[1;31mHIT BAD TRAP!\033[0m\n");  // 红色
-        end
-        $finish;
-    end
-end
-//======================finish========================//
 ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .clk          ( clock          ),
     .rst          ( reset          ),

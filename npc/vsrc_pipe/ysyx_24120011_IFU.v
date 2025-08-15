@@ -80,7 +80,7 @@ end
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
-        pc         <=  32'h3000_0000;
+        pc         <=  32'h8000_0000;
     end
     else begin
         //输入握手
