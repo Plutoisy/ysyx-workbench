@@ -1889,7 +1889,6 @@ always@(posedge clock) begin
         $finish;
     end
 end
-
 //======================finish========================//
 ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .clk          ( clock          ),
