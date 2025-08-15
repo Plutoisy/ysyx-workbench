@@ -43,17 +43,26 @@ module ysyx_24120011_Clint (
     //B-axi4
     output [3:0]	  bid
 );
-    parameter ysyx_24120011_S_AXI_IDLE  = 3'b000;
-    parameter ysyx_24120011_S_AXI_RADDR = 3'b001;
-    parameter ysyx_24120011_S_AXI_RDATA = 3'b010;
-
-    reg [2:0] state;
-    reg [2:0] next_state;
-
-    reg [31:0] rdata_reg;
-    reg rvalid_reg;
+        parameter ysyx_24120011_S_AXI_IDLE  = 3'b000;
+        parameter ysyx_24120011_S_AXI_RADDR = 3'b001;
+        parameter ysyx_24120011_S_AXI_RDATA = 3'b010;
     
+    reg [2:0] state;
+        reg [2:0] next_state;
+    
+    reg [31:0] rdata_reg;
+        reg rvalid_reg;
+        
     reg [63:0] mtime;
+
+
+
+
+
+
+
+
+
 
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;

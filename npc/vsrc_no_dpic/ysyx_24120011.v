@@ -67,167 +67,410 @@ module ysyx_24120011 (
     output		    io_slave_rlast      ,
     output	[3:0]	io_slave_rid
 );
+    wire  [31:0]     M0_araddr;
+    wire             M0_arvalid;
+    wire              M0_arready;
+    wire  [3:0]      M0_arid;
+    wire  [7:0]      M0_arlen;
+    wire  [2:0]      M0_arsize;
+    wire  [1:0]      M0_arburst;
+    wire   [31:0]     M0_rdata;
+    wire   [1:0]      M0_rresp;
+    wire              M0_rvalid;
+    wire             M0_rready;
+    wire              M0_rlast;
+    wire   [3:0]      M0_rid;
+    wire  [31:0]     M0_awaddr;
+    wire             M0_awvalid;
+    wire              M0_awready;
+    wire  [3:0]      M0_awid;
+    wire  [7:0]      M0_awlen;
+    wire  [2:0]      M0_awsize;
+    wire  [1:0]      M0_awburst;
+    wire  [31:0]     M0_wdata;
+    wire  [3:0]      M0_wstrb;
+    wire             M0_wvalid;
+    wire              M0_wready;
+    wire             M0_wlast;
+    wire   [1:0]      M0_bresp;
+    wire              M0_bvalid;
+    wire             M0_bready;
+    wire	[3:0]	   M0_bid;
+    wire  [31:0]     M1_araddr;
+    wire             M1_arvalid;
+    wire              M1_arready;
+    wire  [3:0]      M1_arid;
+    wire  [7:0]      M1_arlen;
+    wire  [2:0]      M1_arsize;
+    wire  [1:0]      M1_arburst;
+    wire   [31:0]     M1_rdata;
+    wire   [1:0]      M1_rresp;
+    wire              M1_rvalid;
+    wire             M1_rready;
+    wire              M1_rlast;
+    wire   [3:0]      M1_rid;
+    wire  [31:0]     M1_awaddr;
+    wire             M1_awvalid;
+    wire              M1_awready;
+    wire  [3:0]      M1_awid;
+    wire  [7:0]      M1_awlen;
+    wire  [2:0]      M1_awsize;
+    wire  [1:0]      M1_awburst;
+    wire  [31:0]     M1_wdata;
+    wire  [3:0]      M1_wstrb;
+    wire             M1_wvalid;
+    wire              M1_wready;
+    wire             M1_wlast;
+    wire   [1:0]      M1_bresp;
+    wire              M1_bvalid;
+    wire             M1_bready;
+    wire	[3:0]	   M1_bid;
+    wire  [31:0]     S0_araddr;
+    wire             S0_arvalid;
+    wire            S0_arready;
+    wire  [3:0]      S0_arid;
+    wire  [7:0]      S0_arlen;
+    wire  [2:0]      S0_arsize;
+    wire  [1:0]      S0_arburst;
+    wire [31:0]     S0_rdata;
+    wire [1:0]      S0_rresp;
+    wire            S0_rvalid;
+    wire             S0_rready;
+    wire            S0_rlast;
+    wire [3:0]      S0_rid;
+    wire  [31:0]     S0_awaddr;
+    wire             S0_awvalid;
+    wire            S0_awready;
+    wire  [3:0]      S0_awid;
+    wire  [7:0]      S0_awlen;
+    wire  [2:0]      S0_awsize;
+    wire  [1:0]      S0_awburst;
+    wire  [31:0]     S0_wdata;
+    wire  [3:0]      S0_wstrb;
+    wire             S0_wvalid;
+    wire            S0_wready;
+    wire             S0_wlast;
+    wire [1:0]      S0_bresp;
+    wire            S0_bvalid;
+    wire             S0_bready;
+    wire [3:0]	  S0_bid;
+    wire  [31:0]     clint_araddr;
+    wire             clint_arvalid;
+    wire            clint_arready;
+    wire  [3:0]      clint_arid;
+    wire  [7:0]      clint_arlen;
+    wire  [2:0]      clint_arsize;
+    wire  [1:0]      clint_arburst;
+    wire [31:0]     clint_rdata;
+    wire [1:0]      clint_rresp;
+    wire            clint_rvalid;
+    wire             clint_rready;
+    wire            clint_rlast;
+    wire [3:0]      clint_rid;
+    wire  [31:0]     clint_awaddr;
+    wire             clint_awvalid;
+    wire            clint_awready;
+    wire  [3:0]      clint_awid;
+    wire  [7:0]      clint_awlen;
+    wire  [2:0]      clint_awsize;
+    wire  [1:0]      clint_awburst;
+    wire  [31:0]     clint_wdata;
+    wire  [3:0]      clint_wstrb;
+    wire             clint_wvalid;
+    wire            clint_wready;
+    wire             clint_wlast;
+    wire [1:0]      clint_bresp;
+    wire            clint_bvalid;
+    wire             clint_bready;
+    wire [3:0]	  clint_bid;
+    wire [31:0] EXU_IFU_npc;
+    wire [31:0] PC_IFU_pc;
+    wire EXU_valid;
+    wire PC_ready;
+    wire IFU_ready;
+    wire PC_valid;
+    wire [31:0] IFU_IDU_pc;
+    wire [31:0] IFU_IDU_inst;
+    wire IFID_ready;
+    wire IFU_valid;
+    wire flush;
+    wire [31:0] IFID_IDU_pc;
+    wire [31:0] IFID_IDU_inst;
+    wire IDU_ready;
+    wire IFID_valid;
+    
+wire [2:0]  IDU_EXU_pc_ctrl;
+    wire [2:0]  IDU_EXU_rd_ctrl;
+    wire [5:0]  IDU_EXU_ALU_ctrl;
+    wire [6:0] IDU_EXU_mem_ctrl;
+    wire [2:0]  IDU_EXU_csr_ctrl;
+    wire [31:0] IDU_EXU_pc;
+    wire [31:0] IDU_EXU_src1;
+    wire [31:0] IDU_EXU_src2;
+    wire [31:0] IDU_EXU_r_csr_data;
+    wire [31:0] IDU_EXU_imm;
+    wire [3:0]  IDU_EXU_rd;
+    wire [11:0] IDU_EXU_w_csr_addr;
+    wire IDEX_ready;
+    wire IDU_valid;
+    wire [3:0]  IDU_GPR_rs1;
+    wire [3:0]  IDU_GPR_rs2;
+    wire [31:0] IDU_GPR_src1;
+    wire [31:0] IDU_GPR_src2;
+    wire [11:0] IDU_CSR_r_csr_addr;
+    wire [31:0] IDU_CSR_r_csr_data;
+    wire [2:0]  IDEX_EXU_pc_ctrl;
+    wire [2:0]  IDEX_EXU_rd_ctrl;
+    wire [5:0]  IDEX_EXU_ALU_ctrl;
+    wire [18:0] IDEX_EXU_mem_ctrl;
+    wire [4:0]  IDEX_EXU_csr_ctrl;
+    wire [31:0] IDEX_EXU_pc;
+    wire [31:0] IDEX_EXU_src1;
+    wire [31:0] IDEX_EXU_src2;
+    wire [31:0] IDEX_EXU_r_csr_data;
+    wire [31:0] IDEX_EXU_imm;
+    wire [4:0]  IDEX_EXU_rd;
+    wire [11:0] IDEX_EXU_w_csr_addr;
+    wire EXU_ready ;
+    wire IDEX_valid;
+    wire [2:0]  EXU_MEM_rd_ctrl;
+    wire [6:0] EXU_MEM_mem_ctrl;
+    wire [2:0]  EXU_MEM_csr_ctrl;
+    wire [31:0] EXU_MEM_pc;
+    wire [31:0] EXU_MEM_src1;
+    wire [31:0] EXU_MEM_src2;
+    wire [31:0] EXU_MEM_r_csr_data;
+    wire [31:0] EXU_MEM_imm;
+    wire [3:0]  EXU_MEM_rd;
+    wire [11:0] EXU_MEM_w_csr_addr;
+    wire [31:0] EXU_MEM_ALU_result;
+    
+wire [31:0] EXU_MEM_rd_data   ;
+    wire [1:0]  EXU_MEM_rd_data_type;
+    wire [31:0] EXU_MEM_w_csr_data  ;
+    wire        EXU_MEM_w_csr_en    ;
+    wire        EXU_MEM_w_csr_ecall ;
+    wire        EXMEM_ready;
+    wire [2:0]  EXMEM_MEM_rd_ctrl;
+    wire [18:0] EXMEM_MEM_mem_ctrl;
+    wire [4:0]  EXMEM_MEM_csr_ctrl;
+    wire [31:0] EXMEM_MEM_pc;
+    wire [31:0] EXMEM_MEM_src1;
+    wire [31:0] EXMEM_MEM_src2;
+    wire [31:0] EXMEM_MEM_r_csr_data;
+    wire [31:0] EXMEM_MEM_imm;
+    wire [4:0]  EXMEM_MEM_rd;
+    wire [11:0] EXMEM_MEM_w_csr_addr;
+    wire [31:0] EXMEM_MEM_ALU_result;
+    wire MEM_ready;
+    wire EXMEM_valid;
+    wire [31:0] MEM_WBU_r_mem_data;
+    wire [2:0]  MEM_WBU_rd_ctrl;
+    wire [2:0]  MEM_WBU_csr_ctrl;
+    wire [31:0] MEM_WBU_pc;
+    wire [31:0] MEM_WBU_src1;
+    wire [31:0] MEM_WBU_r_csr_data;
+    wire [31:0] MEM_WBU_imm;
+    wire [3:0]  MEM_WBU_rd;
+    wire [11:0] MEM_WBU_w_csr_addr;
+    wire [31:0] MEM_WBU_ALU_result;
+    
+wire [31:0] MEM_WBU_rd_data   ;
+    wire        MEM_WBU_rd_data_en;
+    wire [31:0] MEM_WBU_w_csr_data  ;
+    wire        MEM_WBU_w_csr_en    ;
+    wire        MEM_WBU_w_csr_ecall ;
+    wire MEMWB_ready;
+    wire MEM_valid;
+    wire [1:0] MEM_DATAHAZARD_rd_data_type;
+    wire [31:0] MEMWB_WBU_r_mem_data;
+    wire [2:0]  MEMWB_WBU_rd_ctrl;
+    wire [4:0]  MEMWB_WBU_csr_ctrl;
+    wire [31:0] MEMWB_WBU_pc;
+    wire [31:0] MEMWB_WBU_src1;
+    wire [31:0] MEMWB_WBU_r_csr_data;
+    wire [31:0] MEMWB_WBU_imm;
+    wire [4:0]  MEMWB_WBU_rd;
+    wire [11:0] MEMWB_WBU_w_csr_addr;
+    wire [31:0] MEMWB_WBU_ALU_result;
+    wire WBU_ready;
+    wire MEMWB_valid;
+    wire [3:0]   WBU_GPR_rd;
+    wire [31:0]  WBU_GPR_rd_data;
+    wire         WBU_GPR_rd_en;
+    wire [11:0]  WBU_CSR_w_csr_addr;
+    wire [31:0]  WBU_CSR_w_csr_data;
+    wire         WBU_CSR_w_csr_en;
+    wire         WBU_CSR_w_csr_ecall;
+    wire [2:0]   WBU_rd_ctrl;
+    
+wire [31:0] a0;
+    wire DATAHAZARD_stop_pipe;
+    wire [31:0] DATAHAZARD_IDU_r_ddata;
+    wire DATAHAZARD_IDU_rs1_or_rs2;
+    wire DATAHAZARD_IDU_bypass;
+
 
 //============M0=============//        
 //AR-axi4lite
-wire  [31:0]     M0_araddr;
-wire             M0_arvalid;
-wire              M0_arready;
+
+
+
 //AR-axi4
-wire  [3:0]      M0_arid;
-wire  [7:0]      M0_arlen;
-wire  [2:0]      M0_arsize;
-wire  [1:0]      M0_arburst;
+
+
+
+
 //R-axi4lite            
-wire   [31:0]     M0_rdata;
-wire   [1:0]      M0_rresp;
-wire              M0_rvalid;
-wire             M0_rready;
+
+
+
+
 //R-axi4
-wire              M0_rlast;
-wire   [3:0]      M0_rid;
+
+
 //AW-axi4lite
-wire  [31:0]     M0_awaddr;
-wire             M0_awvalid;
-wire              M0_awready;
+
+
+
 //AW-axi4
-wire  [3:0]      M0_awid;
-wire  [7:0]      M0_awlen;
-wire  [2:0]      M0_awsize;
-wire  [1:0]      M0_awburst;
+
+
+
+
 //W-axi4lite
-wire  [31:0]     M0_wdata;
-wire  [3:0]      M0_wstrb;
-wire             M0_wvalid;
-wire              M0_wready;
+
+
+
+
 //W-axi4
-wire             M0_wlast;
+
 //B-axi4lite
-wire   [1:0]      M0_bresp;
-wire              M0_bvalid;
-wire             M0_bready;
+
+
+
 //B-axi4
-wire	[3:0]	   M0_bid;
+
 //============M1=============//        
 //AR-axi4lite
-wire  [31:0]     M1_araddr;
-wire             M1_arvalid;
-wire              M1_arready;
+
+
+
 //AR-axi4
-wire  [3:0]      M1_arid;
-wire  [7:0]      M1_arlen;
-wire  [2:0]      M1_arsize;
-wire  [1:0]      M1_arburst;
+
+
+
+
 //R-axi4lite            
-wire   [31:0]     M1_rdata;
-wire   [1:0]      M1_rresp;
-wire              M1_rvalid;
-wire             M1_rready;
+
+
+
+
 //R-axi4
-wire              M1_rlast;
-wire   [3:0]      M1_rid;
+
+
 //AW-axi4lite
-wire  [31:0]     M1_awaddr;
-wire             M1_awvalid;
-wire              M1_awready;
+
+
+
 //AW-axi4
-wire  [3:0]      M1_awid;
-wire  [7:0]      M1_awlen;
-wire  [2:0]      M1_awsize;
-wire  [1:0]      M1_awburst;
+
+
+
+
 //W-axi4lite
-wire  [31:0]     M1_wdata;
-wire  [3:0]      M1_wstrb;
-wire             M1_wvalid;
-wire              M1_wready;
+
+
+
+
 //W-axi4
-wire             M1_wlast;
+
 //B-axi4lite
-wire   [1:0]      M1_bresp;
-wire              M1_bvalid;
-wire             M1_bready;
+
+
+
 //B-axi4
-wire	[3:0]	   M1_bid;
+
 //============S0=============// 
 //AR-axi4lite
-wire  [31:0]     S0_araddr;
-wire             S0_arvalid;
-wire            S0_arready;
+
+
+
 //AR-axi4
-wire  [3:0]      S0_arid;
-wire  [7:0]      S0_arlen;
-wire  [2:0]      S0_arsize;
-wire  [1:0]      S0_arburst;
+
+
+
+
 //R-axi4lite              
-wire [31:0]     S0_rdata;
-wire [1:0]      S0_rresp;
-wire            S0_rvalid;
-wire             S0_rready;
+
+
+
+
 //R-axi4
-wire            S0_rlast;
-wire [3:0]      S0_rid;
+
+
 //AW-axi4lite
-wire  [31:0]     S0_awaddr;
-wire             S0_awvalid;
-wire            S0_awready;
+
+
+
 //AW-axi4
-wire  [3:0]      S0_awid;
-wire  [7:0]      S0_awlen;
-wire  [2:0]      S0_awsize;
-wire  [1:0]      S0_awburst;
+
+
+
+
 //W-axi4lite
-wire  [31:0]     S0_wdata;
-wire  [3:0]      S0_wstrb;
-wire             S0_wvalid;
-wire            S0_wready;
+
+
+
+
 //W-axi4
-wire             S0_wlast;
+
 //B-axi4lite
-wire [1:0]      S0_bresp;
-wire            S0_bvalid;
-wire             S0_bready;
+
+
+
 //B-axi4
-wire [3:0]	  S0_bid;
+
 //============clint=============// 
 //AR-axi4lite
-wire  [31:0]     clint_araddr;
-wire             clint_arvalid;
-wire            clint_arready;
+
+
+
 //AR-axi4
-wire  [3:0]      clint_arid;
-wire  [7:0]      clint_arlen;
-wire  [2:0]      clint_arsize;
-wire  [1:0]      clint_arburst;
+
+
+
+
 //R-axi4lite              
-wire [31:0]     clint_rdata;
-wire [1:0]      clint_rresp;
-wire            clint_rvalid;
-wire             clint_rready;
+
+
+
+
 //R-axi4
-wire            clint_rlast;
-wire [3:0]      clint_rid;
+
+
 //AW-axi4lite
-wire  [31:0]     clint_awaddr;
-wire             clint_awvalid;
-wire            clint_awready;
+
+
+
 //AW-axi4
-wire  [3:0]      clint_awid;
-wire  [7:0]      clint_awlen;
-wire  [2:0]      clint_awsize;
-wire  [1:0]      clint_awburst;
+
+
+
+
 //W-axi4lite
-wire  [31:0]     clint_wdata;
-wire  [3:0]      clint_wstrb;
-wire             clint_wvalid;
-wire            clint_wready;
+
+
+
+
 //W-axi4
-wire             clint_wlast;
+
 //B-axi4lite
-wire [1:0]      clint_bresp;
-wire            clint_bvalid;
-wire             clint_bready;
+
+
+
 //B-axi4
-wire [3:0]	  clint_bid;
+
 
 //======================dpic========================//
 //wire [31:0] IFU_valid_int;
@@ -267,12 +510,12 @@ wire [3:0]	  clint_bid;
 //    end
 //end
 //======================dpic========================//
-wire [31:0] EXU_IFU_npc;
-wire [31:0] PC_IFU_pc;
-wire EXU_valid;
-wire PC_ready;
-wire IFU_ready;
-wire PC_valid;
+
+
+
+
+
+
 // ysyx_24120011_PC u_ysyx_24120011_PC(
 //     .clk         ( clock         ),
 //     .rst         ( reset         ),
@@ -283,11 +526,11 @@ wire PC_valid;
 //     .i_IFU_ready ( IFU_ready ),
 //     .o_PC_valid  ( PC_valid  )
 // );
-wire [31:0] IFU_IDU_pc;
-wire [31:0] IFU_IDU_inst;
-wire IFID_ready;
-wire IFU_valid;
-wire flush;
+
+
+
+
+
 
 ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .clk          ( clock          ),
@@ -330,10 +573,10 @@ ysyx_24120011_IFU u_ysyx_24120011_IFU(
     .M0_bid       ( M0_bid       ),
     .i_flush      ( flush        )
 );
-wire [31:0] IFID_IDU_pc;
-wire [31:0] IFID_IDU_inst;
-wire IDU_ready;
-wire IFID_valid;
+
+
+
+
 // ysyx_24120011_IFID u_ysyx_24120011_IFID(
 //     .clk          ( clock          ),
 //     .rst          ( reset          ),
@@ -347,26 +590,25 @@ wire IFID_valid;
 //     .o_IFID_valid  ( IFID_valid  )
 // );
 
-wire [2:0]  IDU_EXU_pc_ctrl;
-wire [2:0]  IDU_EXU_rd_ctrl;
-wire [5:0]  IDU_EXU_ALU_ctrl;
-wire [6:0] IDU_EXU_mem_ctrl;
-wire [2:0]  IDU_EXU_csr_ctrl;
-wire [31:0] IDU_EXU_pc;
-wire [31:0] IDU_EXU_src1;
-wire [31:0] IDU_EXU_src2;
-wire [31:0] IDU_EXU_r_csr_data;
-wire [31:0] IDU_EXU_imm;
-wire [3:0]  IDU_EXU_rd;
-wire [11:0] IDU_EXU_w_csr_addr;
-wire IDEX_ready;
-wire IDU_valid;
-wire [3:0]  IDU_GPR_rs1;
-wire [3:0]  IDU_GPR_rs2;
-wire [31:0] IDU_GPR_src1;
-wire [31:0] IDU_GPR_src2;
-wire [11:0] IDU_CSR_r_csr_addr;
-wire [31:0] IDU_CSR_r_csr_data;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .clk          ( clock          ),
@@ -401,20 +643,20 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_bypass     ( DATAHAZARD_IDU_bypass),
     .i_flush      ( flush )
 );
-wire [2:0]  IDEX_EXU_pc_ctrl;
-wire [2:0]  IDEX_EXU_rd_ctrl;
-wire [5:0]  IDEX_EXU_ALU_ctrl;
-wire [18:0] IDEX_EXU_mem_ctrl;
-wire [4:0]  IDEX_EXU_csr_ctrl;
-wire [31:0] IDEX_EXU_pc;
-wire [31:0] IDEX_EXU_src1;
-wire [31:0] IDEX_EXU_src2;
-wire [31:0] IDEX_EXU_r_csr_data;
-wire [31:0] IDEX_EXU_imm;
-wire [4:0]  IDEX_EXU_rd;
-wire [11:0] IDEX_EXU_w_csr_addr;
-wire EXU_ready ;
-wire IDEX_valid;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ysyx_24120011_IDEX u_ysyx_24120011_IDEX(
 //     .clk          ( clock          ),
 //     .rst          ( reset          ),
@@ -447,24 +689,23 @@ wire IDEX_valid;
 //     .i_EXU_ready  ( EXU_ready  ),
 //     .o_IDEX_valid  ( IDEX_valid  )
 // );
-wire [2:0]  EXU_MEM_rd_ctrl;
-wire [6:0] EXU_MEM_mem_ctrl;
-wire [2:0]  EXU_MEM_csr_ctrl;
-wire [31:0] EXU_MEM_pc;
-wire [31:0] EXU_MEM_src1;
-wire [31:0] EXU_MEM_src2;
-wire [31:0] EXU_MEM_r_csr_data;
-wire [31:0] EXU_MEM_imm;
-wire [3:0]  EXU_MEM_rd;
-wire [11:0] EXU_MEM_w_csr_addr;
-wire [31:0] EXU_MEM_ALU_result;
 
-wire [31:0] EXU_MEM_rd_data   ;  
-wire [1:0]  EXU_MEM_rd_data_type;
-wire [31:0] EXU_MEM_w_csr_data  ;
-wire        EXU_MEM_w_csr_en    ;
-wire        EXU_MEM_w_csr_ecall ;
-wire        EXMEM_ready;
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
 ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -505,19 +746,19 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .i_IDU_empty   ( IDU_ready ),
     .i_IFU_pc      ( IFU_IDU_pc)
 );
-wire [2:0]  EXMEM_MEM_rd_ctrl;
-wire [18:0] EXMEM_MEM_mem_ctrl;
-wire [4:0]  EXMEM_MEM_csr_ctrl;
-wire [31:0] EXMEM_MEM_pc;
-wire [31:0] EXMEM_MEM_src1;
-wire [31:0] EXMEM_MEM_src2;
-wire [31:0] EXMEM_MEM_r_csr_data;
-wire [31:0] EXMEM_MEM_imm;
-wire [4:0]  EXMEM_MEM_rd;
-wire [11:0] EXMEM_MEM_w_csr_addr;
-wire [31:0] EXMEM_MEM_ALU_result;
-wire MEM_ready;
-wire EXMEM_valid;
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ysyx_24120011_EXMEM u_ysyx_24120011_EXMEM(
 //     .clk           ( clock           ),
 //     .rst           ( reset           ),
@@ -548,25 +789,24 @@ wire EXMEM_valid;
 //     .i_MEM_ready   ( MEM_ready   ),
 //     .o_EXMEM_valid  ( EXMEM_valid  )
 // );
-wire [31:0] MEM_WBU_r_mem_data;
-wire [2:0]  MEM_WBU_rd_ctrl;
-wire [2:0]  MEM_WBU_csr_ctrl;
-wire [31:0] MEM_WBU_pc;
-wire [31:0] MEM_WBU_src1;
-wire [31:0] MEM_WBU_r_csr_data;
-wire [31:0] MEM_WBU_imm;
-wire [3:0]  MEM_WBU_rd;
-wire [11:0] MEM_WBU_w_csr_addr;
-wire [31:0] MEM_WBU_ALU_result;
 
-wire [31:0] MEM_WBU_rd_data   ;  
-wire        MEM_WBU_rd_data_en;
-wire [31:0] MEM_WBU_w_csr_data  ;
-wire        MEM_WBU_w_csr_en    ;
-wire        MEM_WBU_w_csr_ecall ;
-wire MEMWB_ready;
-wire MEM_valid;
-wire [1:0] MEM_DATAHAZARD_rd_data_type;
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
 ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .clk           ( clock           ),
     .rst           ( reset           ),
@@ -638,18 +878,18 @@ ysyx_24120011_MEM u_ysyx_24120011_MEM(
     .M1_bready     ( M1_bready     ),
     .M1_bid        ( M1_bid        )
 );
-wire [31:0] MEMWB_WBU_r_mem_data;
-wire [2:0]  MEMWB_WBU_rd_ctrl;
-wire [4:0]  MEMWB_WBU_csr_ctrl;
-wire [31:0] MEMWB_WBU_pc;
-wire [31:0] MEMWB_WBU_src1;
-wire [31:0] MEMWB_WBU_r_csr_data;
-wire [31:0] MEMWB_WBU_imm;
-wire [4:0]  MEMWB_WBU_rd;
-wire [11:0] MEMWB_WBU_w_csr_addr;
-wire [31:0] MEMWB_WBU_ALU_result;
-wire WBU_ready;   
-wire MEMWB_valid; 
+
+
+
+
+
+
+
+
+
+
+   
+ 
 // ysyx_24120011_MEMWB u_ysyx_24120011_MEMWB(
 //     .clk           ( clock           ),
 //     .rst           ( reset           ),
@@ -678,14 +918,14 @@ wire MEMWB_valid;
 //     .i_WBU_ready   ( WBU_ready   ),
 //     .o_MEMWB_valid ( MEMWB_valid  )
 // );
-wire [3:0]   WBU_GPR_rd;
-wire [31:0]  WBU_GPR_rd_data;
-wire         WBU_GPR_rd_en;
-wire [11:0]  WBU_CSR_w_csr_addr;
-wire [31:0]  WBU_CSR_w_csr_data;
-wire         WBU_CSR_w_csr_en;
-wire         WBU_CSR_w_csr_ecall;
-wire [2:0]   WBU_rd_ctrl;
+
+
+
+
+
+
+
+
 ysyx_24120011_WBU u_ysyx_24120011_WBU(
     //.clk           ( clock           ),
     //.rst           ( reset           ),
@@ -716,7 +956,6 @@ ysyx_24120011_WBU u_ysyx_24120011_WBU(
     //.o_rd_ctrl     ( WBU_rd_ctrl   )
 );
 
-wire [31:0] a0;
 ysyx_24120011_GPR u_ysyx_24120011_GPR(
     .clk       ( clock       ),
     .rst       ( reset       ),
@@ -740,10 +979,10 @@ ysyx_24120011_CSR u_ysyx_24120011_CSR(
     .i_w_csr_en   ( WBU_CSR_w_csr_en   ),
     .i_w_csr_ecall  ( WBU_CSR_w_csr_ecall  )
 );
-wire DATAHAZARD_stop_pipe;
-wire [31:0] DATAHAZARD_IDU_r_ddata;
-wire DATAHAZARD_IDU_rs1_or_rs2;
-wire DATAHAZARD_IDU_bypass;
+
+
+
+
 
 ysyx_24120011_data_hazard_detection u_ysyx_24120011_data_hazard_detection(
     .i_IDU_rs1     ( IDU_GPR_rs1     ),

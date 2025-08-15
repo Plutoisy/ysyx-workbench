@@ -11,18 +11,26 @@ module ysyx_24120011_CSR(
     input          i_w_csr_en,
     input          i_w_csr_ecall
 );
-
+    
 reg [31:0] mepc;
-reg [31:0] mstatus;
-reg [31:0] mcause;
-reg [31:0] mtvec; 
-
+    reg [31:0] mstatus;
+    reg [31:0] mcause;
+    reg [31:0] mtvec;
+    
 wire [31:0] mvendorid;
-wire [31:0] marchid;
+    wire [31:0] marchid;
+    
+reg [31:0] r_csr_data;
+
+
+
+
+ 
+
+
 assign mvendorid = 32'h7973_7978;
 assign marchid = 32'h0170_0ACB;
 
-reg [31:0] r_csr_data;
 assign o_r_csr_data = r_csr_data;
 
 always@(*)begin

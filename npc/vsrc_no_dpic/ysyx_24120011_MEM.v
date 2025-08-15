@@ -72,19 +72,69 @@ module ysyx_24120011_MEM(
     //B-axi4
     input	[3:0]	   M1_bid
 );
-
+    
 reg [6:0]  mem_ctrl;
-reg [31:0] src2;
-reg [3:0]  rd;
-reg [11:0] w_csr_addr;
-reg [31:0] ALU_result;
-reg [31:0] r_mem_data;
-
+    reg [31:0] src2;
+    reg [3:0]  rd;
+    reg [11:0] w_csr_addr;
+    reg [31:0] ALU_result;
+    reg [31:0] r_mem_data;
+    
 reg [31:0] rd_data;
-reg [1:0]  rd_data_type;
-reg [31:0] w_csr_data;
-reg w_csr_en;
-reg w_csr_ecall;
+    reg [1:0]  rd_data_type;
+    reg [31:0] w_csr_data;
+    reg w_csr_en;
+    reg w_csr_ecall;
+    
+
+    parameter ysyx_24120011_LSU_M_AXI_IDLE_EMPTY = 3'b000;
+        parameter ysyx_24120011_LSU_M_AXI_IDLE_FULL  = 3'b001;
+        parameter ysyx_24120011_LSU_M_AXI_RWCHECK    = 3'b010;
+        parameter ysyx_24120011_LSU_M_AXI_RADDR      = 3'b011;
+        parameter ysyx_24120011_LSU_M_AXI_RDATA      = 3'b100;
+        parameter ysyx_24120011_LSU_M_AXI_WADDR      = 3'b101;
+        parameter ysyx_24120011_LSU_M_AXI_WDATA      = 3'b110;
+        parameter ysyx_24120011_LSU_M_AXI_WRESP      = 3'b111;
+        parameter ysyx_24120011_LSU_M_AXI_RESP_OKAY  = 2'b00;
+    
+    reg [2:0] state;
+        reg [2:0] next_state;
+    
+    wire [31:0] araddr;
+        reg arvalid;
+        wire arready;
+        reg rready;
+        wire [1:0] rresp;
+        wire rvalid;
+        reg awvalid;
+        wire awready;
+        wire [31:0] awaddr;
+        reg wvalid;
+        wire wready;
+        wire [31:0] wdata;
+        wire [1:0] bresp;
+        wire [3:0] wstrb;
+        wire bready;
+        wire [31:0] rdata;
+        wire bvalid;
+    
+
+    reg [3:0] reg_wstrb;
+        reg [31:0] reg_wdata;
+        reg [5:0] wdata_format;
+        reg [31:0] rdata_mask;
+
+
+
+
+
+
+
+
+
+
+
+
 
 assign o_MEM_ready  = (state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_MEM_valid  = (state != ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) && (next_state == ysyx_24120011_LSU_M_AXI_IDLE_EMPTY) ? 1'b1 : 1'b0;
@@ -172,42 +222,36 @@ end
     assign M1_wlast   = M1_wvalid ;
 
 
-    parameter ysyx_24120011_LSU_M_AXI_IDLE_EMPTY = 3'b000;
-    parameter ysyx_24120011_LSU_M_AXI_IDLE_FULL  = 3'b001;
-    parameter ysyx_24120011_LSU_M_AXI_RWCHECK    = 3'b010;
-    parameter ysyx_24120011_LSU_M_AXI_RADDR      = 3'b011;
-    parameter ysyx_24120011_LSU_M_AXI_RDATA      = 3'b100;
-    parameter ysyx_24120011_LSU_M_AXI_WADDR      = 3'b101;
-    parameter ysyx_24120011_LSU_M_AXI_WDATA      = 3'b110;
-    parameter ysyx_24120011_LSU_M_AXI_WRESP      = 3'b111;
-    parameter ysyx_24120011_LSU_M_AXI_RESP_OKAY  = 2'b00;
-
-    reg [2:0] state;
-    reg [2:0] next_state;
-
-    wire [31:0] araddr;
-    reg arvalid;
-    wire arready;
-    reg rready;
-    wire [1:0] rresp;
-    wire rvalid;
-    reg awvalid;
-    wire awready;
-    wire [31:0] awaddr;
-    reg wvalid;
-    wire wready;
-    wire [31:0] wdata;
-    wire [1:0] bresp;
-    wire [3:0] wstrb;
-    wire bready;
-    wire [31:0] rdata;
-    wire bvalid;
 
 
-    reg [3:0] reg_wstrb;
-    reg [31:0] reg_wdata;
-    reg [5:0] wdata_format;
-    reg [31:0] rdata_mask;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //AR
     assign araddr = ALU_result;

@@ -48,6 +48,69 @@ def remove_comments_and_empty_lines(content):
     content = re.sub(r'\n\s*\n', '\n', content)
     return content
 
+def process_verilog_file(file_path):
+    print(f"Processing {file_path}...")
+    
+    # Read the file content
+    with open(file_path, 'r') as f:
+        content = f.read()
+    
+    # Find all module declarations and their positions
+    module_pattern = re.compile(r'module\s+\w+\s*\([^;]*\);', re.DOTALL)
+    module_matches = list(module_pattern.finditer(content))
+    
+    if not module_matches:
+        print(f"No module declarations found in {file_path}, skipping...")
+        return
+    
+    # Find all reg and wire declarations
+    reg_wire_pattern = re.compile(r'^\s*(reg|wire|parameter)\s+[^;]*;', re.MULTILINE)
+    reg_wire_matches = list(reg_wire_pattern.finditer(content))
+    
+    if not reg_wire_matches:
+        print(f"No reg/wire declarations found in {file_path}, skipping...")
+        return
+    
+    # Create a list of declarations to be moved
+    declarations = []
+    positions_to_remove = []
+    
+    for match in reg_wire_matches:
+        declarations.append(match.group(0))
+        positions_to_remove.append((match.start(), match.end()))
+    
+    # Sort positions in reverse order to remove from end to beginning
+    positions_to_remove.sort(reverse=True)
+    
+    # Create a new content by removing the declarations
+    new_content = content
+    for start, end in positions_to_remove:
+        new_content = new_content[:start] + new_content[end:]
+    
+    # Insert the declarations after each module declaration
+    for module_match in module_matches:
+        module_end = module_match.end()
+        declarations_text = "\n    " + "\n    ".join(declarations) + "\n"
+        new_content = new_content[:module_end] + declarations_text + new_content[module_end:]
+    
+    # Write the modified content back to the file
+    with open(file_path, 'w') as f:
+        f.write(new_content)
+    
+    print(f"Successfully reorganized declarations in {file_path}")
+
+def traverse_directory(directory):
+    """Traverse directory and process all Verilog files."""
+    count = 0
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file.endswith(('.v')):
+                file_path = os.path.join(root, file)
+                process_verilog_file(file_path)
+                count += 1
+    
+    print(f"Processed {count} Verilog files in total.")
+
 def merge_v_files(directory, output_file):
     with open(output_file, 'w') as outfile:
         for filename in os.listdir(directory):
@@ -63,6 +126,7 @@ def merge_v_files(directory, output_file):
 # 使用示例
 if __name__ == "__main__":
     process_files("/home/plutoisy/ysyx-workbench/npc/vsrc_no_dpic/")
+    traverse_directory("/home/plutoisy/ysyx-workbench/npc/vsrc_no_dpic/")
     merge_v_files('/home/plutoisy/ysyx-workbench/npc/vsrc_no_dpic/', '/home/plutoisy/ysyx-workbench/npc/build/ysyx_24120011.v')
     print("处理完成！")
 

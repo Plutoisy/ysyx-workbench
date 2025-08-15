@@ -54,14 +54,48 @@ module ysyx_24120011_IFU(
     //flush
     input i_flush
 );
-
+    
 reg [31:0] pc;
-reg [31:0] inst;
+    reg [31:0] inst;
+    
+reg flushing;
+    parameter ysyx_24120011_IFU_IDLE_EMPTY      = 3'b000;
+    parameter ysyx_24120011_IFU_IDLE_FULL       = 3'b001;
+    parameter ysyx_24120011_IFU_LOOKUP          = 3'b010;
+    parameter ysyx_24120011_IFU_AXI_RADDR       = 3'b011;
+    parameter ysyx_24120011_IFU_AXI_RDATA       = 3'b100;
+    reg [2:0] state;
+    reg [2:0] next_state;
+    reg cache_IFU_valid;
+    parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
+    parameter ysyx_24120011_ICACHE_NUM    = 32'd1;
+    reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache;
+    
+wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
+    wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
+    wire [31:0] inst_cache;
+    wire hit;
+    wire hit_valid;
+    wire hit_tag;
+    wire arvalid;
+    reg rready;
+    reg [31:0] araddr;
+    reg [31:0] cached_size;
+    reg rready_delay;
+    wire arready;
+    wire [1:0] rresp;
+    wire awready;
+    wire wready;
+    wire [1:0] bresp;
+    wire bvalid;
+    wire rvalid;
+
+
+
 
 assign o_pc = pc;
 assign o_inst = inst;
 
-reg flushing;
 always @(posedge clk) begin
     if (i_flush) begin
         flushing <= 1'b1;
@@ -105,11 +139,11 @@ end
 //     pc         =  i_pc        ;
 // end
 //IFU逻辑
-parameter ysyx_24120011_IFU_IDLE_EMPTY      = 3'b000;
-parameter ysyx_24120011_IFU_IDLE_FULL       = 3'b001;
-parameter ysyx_24120011_IFU_LOOKUP          = 3'b010;
-parameter ysyx_24120011_IFU_AXI_RADDR       = 3'b011;
-parameter ysyx_24120011_IFU_AXI_RDATA       = 3'b100;
+
+
+
+
+
 
 //======================dpic========================//
 //reg [31:0] cycle_counter;  // 时钟周期计数器
@@ -150,9 +184,9 @@ parameter ysyx_24120011_IFU_AXI_RDATA       = 3'b100;
 //======================dpic========================//
 
 //====================IFU====================//
-reg [2:0] state;
-reg [2:0] next_state;
-reg cache_IFU_valid;
+
+
+
 
 assign o_IFU_valid  = !i_flush && !flushing && cache_IFU_valid;
 assign o_IFU_ready  = (state == ysyx_24120011_IFU_IDLE_EMPTY) ? 1'b1 : 1'b0;
@@ -181,17 +215,16 @@ assign o_IFU_ready  = (state == ysyx_24120011_IFU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 // //====================icache====================//
 
 //====================icache_num1====================//
-parameter ysyx_24120011_ICACHE_SIZE   = 32'd8;
-parameter ysyx_24120011_ICACHE_NUM    = 32'd1;
-//  valid                                       tag                                                 data
-reg [(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1:0] icache;
 
-wire [32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))-1:0] tag;
-wire [$clog2(ysyx_24120011_ICACHE_SIZE)-1:0] offset;
-wire [31:0] inst_cache;
-wire hit;
-wire hit_valid;
-wire hit_tag;
+
+//  valid                                       tag                                                 data
+
+
+
+
+
+
+
 assign {tag,offset} = pc;
 //assign hit = 1'b0;
 assign hit_valid = (state == ysyx_24120011_IFU_LOOKUP) ? (icache[(1) + (32-($clog2(ysyx_24120011_ICACHE_SIZE)+$clog2(ysyx_24120011_ICACHE_NUM))) + (8*ysyx_24120011_ICACHE_SIZE)-1] == 1'b1) : 1'b0;
@@ -203,18 +236,18 @@ assign inst_cache = hit ? (offset[2] ? icache[63:32] : icache[31:0]) : 32'b0;//�
 //====================icache====================//
 
 //====================axi====================//
-wire arvalid;
-reg rready;
-reg [31:0] araddr;
-reg [31:0] cached_size;
-reg rready_delay;
-wire arready;
-wire [1:0] rresp;
-wire awready;
-wire wready;
-wire [1:0] bresp;
-wire bvalid;
-wire rvalid;
+
+
+
+
+
+
+
+
+
+
+
+
 
 assign arvalid = (state == ysyx_24120011_IFU_AXI_RADDR) ? 1'b1 : 1'b0;
 // assign rready = (state == ysyx_24120011_IFU_AXI_RDATA) ? 1'b1 :1'b0;

@@ -14,8 +14,10 @@ module ysyx_24120011_GPR(
     input          i_rd_en,
     output [31:0] a0
 );
-
+    
 reg [31:0] GPRs [15:0];
+
+
 
 assign o_src1 = GPRs[i_rs1];
 assign o_src2 = GPRs[i_rs2];

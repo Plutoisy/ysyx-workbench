@@ -36,15 +36,40 @@ module ysyx_24120011_IDU (
     //冲刷流水线
     input i_flush
 );
-
+    
 parameter ysyx_24120011_IDU_IDLE_EMPTY = 2'd0;
-parameter ysyx_24120011_IDU_IDLE_FULL  = 2'd1;
-parameter ysyx_24120011_IDU_WORKING    = 2'd2;
-
+    parameter ysyx_24120011_IDU_IDLE_FULL  = 2'd1;
+    parameter ysyx_24120011_IDU_WORKING    = 2'd2;
+    
 reg [31:0] inst;
-reg [31:0] pc;
-reg [1:0] state;
-reg [1:0] next_state;
+    reg [31:0] pc;
+    reg [1:0] state;
+    reg [1:0] next_state;
+    wire a;
+    wire b;
+    wire [6:0]  opcode;
+    wire [3:0]  rd    ;
+    wire [3:0]  rs1   ;
+    wire [3:0]  rs2   ;
+    wire [2:0]  func3 ;
+    wire [6:0]  func7 ;
+    reg  [2:0]  opcode_type;
+    reg  [31:0] imm;
+    reg  [2:0]  pc_ctrl;
+    reg  [2:0]  rd_ctrl;
+    reg  [5:0]  ALU_ctrl;
+    reg  [6:0] mem_ctrl;
+    reg  [11:0] r_csr_addr;
+    reg  [11:0] w_csr_addr;
+    reg  [2:0]  csr_ctrl;
+
+
+
+
+
+
+
+
 
 assign o_IDU_ready  = (state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_IDU_valid  = !i_flush && (state == ysyx_24120011_IDU_IDLE_FULL && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
@@ -84,9 +109,9 @@ end
 //             inst = i_inst;
 //             pc   = i_pc;
 // end
-wire a;
+
 assign a = i_stop_pipe && (state == ysyx_24120011_IDU_IDLE_FULL);
-wire b;
+
 assign b = i_bypass && o_IDU_valid;
 //状态机跳转
 always@(*)begin
@@ -107,21 +132,21 @@ always@(posedge clk)begin
 end
 
 //指令解码
-wire [6:0]  opcode;
-wire [3:0]  rd    ;
-wire [3:0]  rs1   ;
-wire [3:0]  rs2   ;
-wire [2:0]  func3 ;
-wire [6:0]  func7 ;
-reg  [2:0]  opcode_type;
-reg  [31:0] imm;
-reg  [2:0]  pc_ctrl;
-reg  [2:0]  rd_ctrl;
-reg  [5:0]  ALU_ctrl;
-reg  [6:0] mem_ctrl;
-reg  [11:0] r_csr_addr;
-reg  [11:0] w_csr_addr;
-reg  [2:0]  csr_ctrl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 assign opcode   = inst[6:0];
 assign rd       = inst[10:7];

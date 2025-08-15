@@ -123,19 +123,28 @@ module ysyx_24120011_Arbiter (
     //B-axi4
     input   [3:0]	  S0_bid
 );
-
+    
     parameter ysyx_24120011_Arbiter_IDLE = 3'b000;
-    parameter ysyx_24120011_Arbiter_M0 = 3'b001;
-    parameter ysyx_24120011_Arbiter_M1 = 3'b010;
-
+        parameter ysyx_24120011_Arbiter_M0 = 3'b001;
+        parameter ysyx_24120011_Arbiter_M1 = 3'b010;
+    
     reg [2:0] state;
-    reg [2:0] next_state;
-
+        reg [2:0] next_state;
+    
     reg [2:0] last_master;
-
+    
     wire done;
-
+    
     wire [2:0] choose;
+
+
+
+
+
+
+
+
+
 
     assign done = (S0_rlast && S0_rready && S0_rvalid) || (S0_bready && S0_bvalid);
     //AR-AXILITE

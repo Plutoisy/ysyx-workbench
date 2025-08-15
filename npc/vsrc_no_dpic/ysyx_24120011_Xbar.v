@@ -163,66 +163,128 @@ module ysyx_24120011_Xbar(
     // //B-axi4
     // input   [3:0]	   Xbar_S2_bid
 );
-    parameter ysyx_24120011_Xbar_IDLE = 3'b000;
-    parameter ysyx_24120011_Xbar_S0 = 3'b001;
-    parameter ysyx_24120011_Xbar_S1 = 3'b010;
-    // parameter ysyx_24120011_Xbar_S2 = 3'b011;
-
-    reg [2:0] r_Xbar_state;
-    reg [2:0] r_Xbar_next_state;
-    reg [2:0] w_Xbar_state;
-    reg [2:0] w_Xbar_next_state;
-
-    reg [31:0] reg_Xbar_rdata     ;
-    reg [1:0]  reg_Xbar_rresp     ;
-    reg        reg_Xbar_rvalid    ;
-    reg        reg_Xbar_awready   ;
-    reg        reg_Xbar_wready    ;
-    reg [1:0]  reg_Xbar_bresp     ;
-    reg        reg_Xbar_bvalid    ;
-    reg        reg_Xbar_arready   ;
-    reg        reg_Xbar_rlast     ;
-    reg [3:0]  reg_Xbar_rid       ;
-    reg [3:0]  reg_Xbar_bid       ;
-
-    reg [31:0] reg_Xbar_S0_araddr ;
-    reg        reg_Xbar_S0_arvalid;
-    reg        reg_Xbar_S0_rready ;
-    reg [31:0] reg_Xbar_S0_awaddr ;
-    reg        reg_Xbar_S0_awvalid;
-    reg [31:0] reg_Xbar_S0_wdata  ;
-    reg [3:0]  reg_Xbar_S0_wstrb  ;
-    reg        reg_Xbar_S0_wvalid ;
-    reg        reg_Xbar_S0_bready ;
-    reg [3:0]  reg_Xbar_S0_arid   ;
-    reg [7:0]  reg_Xbar_S0_arlen  ;
-    reg [2:0]  reg_Xbar_S0_arsize ;
-    reg [1:0]  reg_Xbar_S0_arburst;
-    reg [3:0]  reg_Xbar_S0_awid   ;
-    reg [7:0]  reg_Xbar_S0_awlen  ;
-    reg [2:0]  reg_Xbar_S0_awsize ;
-    reg [1:0]  reg_Xbar_S0_awburst;
-    reg        reg_Xbar_S0_wlast  ;
+        parameter ysyx_24120011_Xbar_IDLE = 3'b000;
+        parameter ysyx_24120011_Xbar_S0 = 3'b001;
+        parameter ysyx_24120011_Xbar_S1 = 3'b010;
     
+    reg [2:0] r_Xbar_state;
+        reg [2:0] r_Xbar_next_state;
+        reg [2:0] w_Xbar_state;
+        reg [2:0] w_Xbar_next_state;
+    
+    reg [31:0] reg_Xbar_rdata     ;
+        reg [1:0]  reg_Xbar_rresp     ;
+        reg        reg_Xbar_rvalid    ;
+        reg        reg_Xbar_awready   ;
+        reg        reg_Xbar_wready    ;
+        reg [1:0]  reg_Xbar_bresp     ;
+        reg        reg_Xbar_bvalid    ;
+        reg        reg_Xbar_arready   ;
+        reg        reg_Xbar_rlast     ;
+        reg [3:0]  reg_Xbar_rid       ;
+        reg [3:0]  reg_Xbar_bid       ;
+    
+    reg [31:0] reg_Xbar_S0_araddr ;
+        reg        reg_Xbar_S0_arvalid;
+        reg        reg_Xbar_S0_rready ;
+        reg [31:0] reg_Xbar_S0_awaddr ;
+        reg        reg_Xbar_S0_awvalid;
+        reg [31:0] reg_Xbar_S0_wdata  ;
+        reg [3:0]  reg_Xbar_S0_wstrb  ;
+        reg        reg_Xbar_S0_wvalid ;
+        reg        reg_Xbar_S0_bready ;
+        reg [3:0]  reg_Xbar_S0_arid   ;
+        reg [7:0]  reg_Xbar_S0_arlen  ;
+        reg [2:0]  reg_Xbar_S0_arsize ;
+        reg [1:0]  reg_Xbar_S0_arburst;
+        reg [3:0]  reg_Xbar_S0_awid   ;
+        reg [7:0]  reg_Xbar_S0_awlen  ;
+        reg [2:0]  reg_Xbar_S0_awsize ;
+        reg [1:0]  reg_Xbar_S0_awburst;
+        reg        reg_Xbar_S0_wlast  ;
+        
 
     reg [31:0] reg_Xbar_S1_araddr ;
-    reg        reg_Xbar_S1_arvalid;
-    reg        reg_Xbar_S1_rready ;
-    reg [31:0] reg_Xbar_S1_awaddr ;
-    reg        reg_Xbar_S1_awvalid;
-    reg [31:0] reg_Xbar_S1_wdata  ;
-    reg [3:0]  reg_Xbar_S1_wstrb  ;
-    reg        reg_Xbar_S1_wvalid ;
-    reg        reg_Xbar_S1_bready ;
-    reg [3:0]  reg_Xbar_S1_arid   ;
-    reg [7:0]  reg_Xbar_S1_arlen  ;
-    reg [2:0]  reg_Xbar_S1_arsize ;
-    reg [1:0]  reg_Xbar_S1_arburst;
-    reg [3:0]  reg_Xbar_S1_awid   ;
-    reg [7:0]  reg_Xbar_S1_awlen  ;
-    reg [2:0]  reg_Xbar_S1_awsize ;
-    reg [1:0]  reg_Xbar_S1_awburst;
-    reg        reg_Xbar_S1_wlast  ;
+        reg        reg_Xbar_S1_arvalid;
+        reg        reg_Xbar_S1_rready ;
+        reg [31:0] reg_Xbar_S1_awaddr ;
+        reg        reg_Xbar_S1_awvalid;
+        reg [31:0] reg_Xbar_S1_wdata  ;
+        reg [3:0]  reg_Xbar_S1_wstrb  ;
+        reg        reg_Xbar_S1_wvalid ;
+        reg        reg_Xbar_S1_bready ;
+        reg [3:0]  reg_Xbar_S1_arid   ;
+        reg [7:0]  reg_Xbar_S1_arlen  ;
+        reg [2:0]  reg_Xbar_S1_arsize ;
+        reg [1:0]  reg_Xbar_S1_arburst;
+        reg [3:0]  reg_Xbar_S1_awid   ;
+        reg [7:0]  reg_Xbar_S1_awlen  ;
+        reg [2:0]  reg_Xbar_S1_awsize ;
+        reg [1:0]  reg_Xbar_S1_awburst;
+        reg        reg_Xbar_S1_wlast  ;
+        
+    
+
+    wire read_S0_done;
+        wire write_S0_done;
+        wire read_S1_done;
+        wire write_S1_done;
+
+
+
+
+    // parameter ysyx_24120011_Xbar_S2 = 3'b011;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     // reg [31:0] reg_Xbar_S2_araddr ;
     // reg        reg_Xbar_S2_arvalid;
@@ -242,13 +304,10 @@ module ysyx_24120011_Xbar(
     // reg [2:0]  reg_Xbar_S2_awsize ;
     // reg [1:0]  reg_Xbar_S2_awburst;
     // reg        reg_Xbar_S2_wlast  ;
-    
-    
 
-    wire read_S0_done;
-    wire write_S0_done;
-    wire read_S1_done;
-    wire write_S1_done;
+
+
+
     // wire read_S2_done;
     // wire write_S2_done;
 

@@ -45,6 +45,44 @@ module ysyx_24120011_EXU (
     input [31:0] i_IFU_pc,
     input  i_IDU_empty
 );
+    parameter ysyx_24120011_EXU_IDLE_EMPTY = 2'd0;
+    parameter ysyx_24120011_EXU_IDLE_FULL  = 2'd1;
+    parameter ysyx_24120011_EXU_WORKING    = 2'd2;
+    
+reg [2:0]  pc_ctrl;
+    reg [2:0]  rd_ctrl;
+    reg [5:0]  ALU_ctrl;
+    reg [6:0] mem_ctrl;
+    reg [2:0]  csr_ctrl;
+    reg [31:0] pc;
+    reg [31:0] src1;
+    reg [31:0] src2;
+    reg [31:0] r_csr_data;
+    reg [31:0] imm;
+    reg [3:0]  rd;
+    reg [11:0] w_csr_addr;
+    
+
+
+reg [1:0] state;
+    reg [1:0] next_state;
+    reg flush;
+    wire [31:0] A;
+    reg  [31:0] B;
+    reg  [31:0] ALU_result;
+    wire [31:0] B_in;
+    wire [31:0] B_in_used_for_overflow;
+    wire [31:0] ALUout_tmp;
+    wire carry;
+    wire overflow;
+    wire uless;
+    wire sless;
+    wire a_is_b;
+    wire a_not_b;
+    reg  [31:0] npc;
+    reg [31:0] rd_data;
+    reg [31:0] w_csr_data;
+
 //======================dpic========================//
 //reg [31:0] miss_counter_branch;
 //reg [31:0] all_counter_branch;
@@ -71,30 +109,26 @@ module ysyx_24120011_EXU (
 //    end
 //end
 //======================dpic========================//
-parameter ysyx_24120011_EXU_IDLE_EMPTY = 2'd0;
-parameter ysyx_24120011_EXU_IDLE_FULL  = 2'd1;
-parameter ysyx_24120011_EXU_WORKING    = 2'd2;
-
-reg [2:0]  pc_ctrl;
-reg [2:0]  rd_ctrl;
-reg [5:0]  ALU_ctrl;
-reg [6:0] mem_ctrl;
-reg [2:0]  csr_ctrl;
-reg [31:0] pc;
-reg [31:0] src1;
-reg [31:0] src2;
-reg [31:0] r_csr_data;
-reg [31:0] imm;
-reg [3:0]  rd;
-reg [11:0] w_csr_addr;
 
 
 
-reg [1:0] state;
-reg [1:0] next_state;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 assign o_flush = flush;
-reg flush;
+
 always @(posedge clk) begin
     if(o_EXU_valid) begin
         if (i_IDU_empty) begin
@@ -204,9 +238,9 @@ always@(posedge clk)begin
 end
 
 //ALU逻辑
-wire [31:0] A;
-reg  [31:0] B;
-reg  [31:0] ALU_result;
+
+
+
 
 assign A = src1;
 //多路选择器，选择B
@@ -219,15 +253,15 @@ always@(*)begin
     endcase
 end
 //ALU
-wire [31:0] B_in;
-wire [31:0] B_in_used_for_overflow;
-wire [31:0] ALUout_tmp;
-wire carry;
-wire overflow;
-wire uless;
-wire sless;
-wire a_is_b;
-wire a_not_b;
+
+
+
+
+
+
+
+
+
 assign B_in = ALU_ctrl[0] ? ((B^{32{ALU_ctrl[0]}}) + 1'b1) : B;
 assign B_in_used_for_overflow = ALU_ctrl[0] ? B^{32{ALU_ctrl[0]}} : B;
 assign uless = ~carry;//无符号a<b标志
@@ -259,7 +293,7 @@ end
 
 
 //pc逻辑
-reg  [31:0] npc;
+
 always@(*)begin
     case(pc_ctrl)
         3'd0: npc = pc + 32'd4;
@@ -279,7 +313,7 @@ always@(*)begin
 end
 
 //rd_data解码
-reg [31:0] rd_data;
+
 assign o_rd_data_type = (rd_ctrl == 3'd4) ? 2'd0 : (rd_ctrl == 3'd5 ? 2'd1 : 2'd2);
 //0:不写入　1:应在MEM写入i_r_mem_data 2:已写好
 always@(*)begin
@@ -295,7 +329,7 @@ always@(*)begin
     endcase
 end
 //csr_data解码
-reg [31:0] w_csr_data;
+
 assign o_w_csr_en =  csr_ctrl[1:0] == 2'd0 ? 1'b0 : 1'b1;
 assign o_w_csr_ecall =  csr_ctrl[2] == 1'd0 ? 1'b0 : 1'b1;
 
