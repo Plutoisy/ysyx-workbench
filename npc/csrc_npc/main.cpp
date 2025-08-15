@@ -31,7 +31,6 @@
 #define BMODE 1
 #define WATCHPOINT 0
 #define WAVE 1
-#define NVBOARD 0
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 1
 #define INST_NOT_VALID_CHECK 1
@@ -40,7 +39,6 @@
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static Vysyx_24120011_tb dut;
-void nvboard_bind_all_pins(Vysyx_24120011_tb* top);
 
 
 int trap = 0;
@@ -231,15 +229,10 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 }
 
 void step_and_dump_wave(){
-  if(NVBOARD){
-    nvboard_update();
-  }
   dut.eval();
   if(WAVE){
-    //if(((top_pc & 0xFF000000) >> 24) == 0xA0){
       contextp->timeInc(1);
       tfp->dump(contextp->time());
-    //} 
   }
 }
 
@@ -993,10 +986,6 @@ void sdb_mainloop() {
 int main(int argc, char *argv[]) {
   Verilated::traceEverOn(true);
   sim_init();
-  if(NVBOARD){
-    nvboard_bind_all_pins(&dut);
-    nvboard_init();
-  }
   Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
