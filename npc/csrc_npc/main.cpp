@@ -9,7 +9,6 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
-#include <nvboard.h>
 
 #define PMEM_SIZE    0x8000000
 #define FLASH_SIZE    0x10000000

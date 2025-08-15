@@ -2,7 +2,7 @@
 # DESCRIPTION: Verilator output: Make include file with class lists
 #
 # This file lists generated Verilated files, for including in higher level makefiles.
-# See Vysyx_24120011.mk for the caller.
+# See Vysyx_24120011_tb.mk for the caller.
 
 ### Switches...
 # C11 constructs required?  0/1 (always on now)
@@ -25,30 +25,30 @@ VM_TRACE_VCD = 1
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	Vysyx_24120011 \
-	Vysyx_24120011___024root__DepSet_h20653b28__0 \
-	Vysyx_24120011___024root__DepSet_hda981c00__0 \
-	Vysyx_24120011___024unit__DepSet_h7d0fc3b9__0 \
+	Vysyx_24120011_tb \
+	Vysyx_24120011_tb___024root__DepSet_h8e1163c1__0 \
+	Vysyx_24120011_tb___024root__DepSet_h5e8f4b64__0 \
+	Vysyx_24120011_tb___024unit__DepSet_h016976f1__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Vysyx_24120011__ConstPool_0 \
-	Vysyx_24120011___024root__Slow \
-	Vysyx_24120011___024root__DepSet_h20653b28__0__Slow \
-	Vysyx_24120011___024root__DepSet_hda981c00__0__Slow \
-	Vysyx_24120011___024unit__Slow \
-	Vysyx_24120011___024unit__DepSet_h27423491__0__Slow \
+	Vysyx_24120011_tb__ConstPool_0 \
+	Vysyx_24120011_tb___024root__Slow \
+	Vysyx_24120011_tb___024root__DepSet_h8e1163c1__0__Slow \
+	Vysyx_24120011_tb___024root__DepSet_h5e8f4b64__0__Slow \
+	Vysyx_24120011_tb___024unit__Slow \
+	Vysyx_24120011_tb___024unit__DepSet_hdc073894__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vysyx_24120011__Dpi \
-	Vysyx_24120011__Trace__0 \
+	Vysyx_24120011_tb__Dpi \
+	Vysyx_24120011_tb__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	Vysyx_24120011__Syms \
-	Vysyx_24120011__Trace__0__Slow \
-	Vysyx_24120011__TraceDecls__0__Slow \
+	Vysyx_24120011_tb__Syms \
+	Vysyx_24120011_tb__Trace__0__Slow \
+	Vysyx_24120011_tb__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

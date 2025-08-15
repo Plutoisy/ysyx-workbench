@@ -3,11 +3,11 @@
 //
 // Internal details; most user sources do not need this header,
 // unless using verilator public meta comments.
-// Suggest use Vysyx_24120011.h instead.
+// Suggest use Vysyx_24120011_tb.h instead.
 
 
-#ifndef VERILATED_VYSYX_24120011__PCH_H_
-#define VERILATED_VYSYX_24120011__PCH_H_  // guard
+#ifndef VERILATED_VYSYX_24120011_TB__PCH_H_
+#define VERILATED_VYSYX_24120011_TB__PCH_H_  // guard
 
 // GCC and Clang only will precompile headers (PCH) for the first header.
 // So, make sure this is the one and only PCH.
@@ -21,8 +21,8 @@
 #include "verilated.h"
 #include "verilated_dpi.h"
 
-#include "Vysyx_24120011__Syms.h"
-#include "Vysyx_24120011.h"
+#include "Vysyx_24120011_tb__Syms.h"
+#include "Vysyx_24120011_tb.h"
 
 // Additional include files added using '--compiler-include'
 

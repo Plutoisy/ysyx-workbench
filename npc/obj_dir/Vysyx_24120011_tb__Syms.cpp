@@ -1,17 +1,17 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table implementation internals
 
-#include "Vysyx_24120011__pch.h"
-#include "Vysyx_24120011.h"
-#include "Vysyx_24120011___024root.h"
-#include "Vysyx_24120011___024unit.h"
+#include "Vysyx_24120011_tb__pch.h"
+#include "Vysyx_24120011_tb.h"
+#include "Vysyx_24120011_tb___024root.h"
+#include "Vysyx_24120011_tb___024unit.h"
 
 // FUNCTIONS
-Vysyx_24120011__Syms::~Vysyx_24120011__Syms()
+Vysyx_24120011_tb__Syms::~Vysyx_24120011_tb__Syms()
 {
 }
 
-Vysyx_24120011__Syms::Vysyx_24120011__Syms(VerilatedContext* contextp, const char* namep, Vysyx_24120011* modelp)
+Vysyx_24120011_tb__Syms::Vysyx_24120011_tb__Syms(VerilatedContext* contextp, const char* namep, Vysyx_24120011_tb* modelp)
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp{modelp}
@@ -20,7 +20,7 @@ Vysyx_24120011__Syms::Vysyx_24120011__Syms(VerilatedContext* contextp, const cha
     , TOP____024unit{this, Verilated::catName(namep, "$unit")}
 {
         // Check resources
-        Verilated::stackCheck(1554);
+        Verilated::stackCheck(966);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-9);
