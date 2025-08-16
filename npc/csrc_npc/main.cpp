@@ -453,7 +453,7 @@ extern "C" void mrom_read(int32_t addr, int32_t *data) {
 }
 
 extern "C" void ebreak(){
-  trap = 1;
+  
   // printf("excute the ebreak inst!!!\n");
 }
 
@@ -461,9 +461,11 @@ extern "C" void npc_trap(int pc, int ret){
   printf("npc execute ebreak at pc = 0x%08x\n",pc);
   if(ret == 0){
     printf("\33[1;32mHIT GOOD TRAP!\033[0m\n");
+    trap = 1;
   }
   else{
     printf("\33[1;31mHIT BAD TRAP!\033[0m\n");
+    trap = 2;
   }
 }
 
@@ -635,7 +637,7 @@ void cpu_exec(uint64_t n){
       return;
   }
   for(uint64_t i = 0; i < n; i++){
-    if(trap != 1){
+    if(trap == 0){
       dut.clock ^= 1;
       if (dut.clock != 1){
         step_and_dump_wave();
@@ -1031,5 +1033,10 @@ int main(int argc, char *argv[]) {
   }
   cs_close(&handle);
   sim_exit();
-  return 0;
+  if(trap == 1){
+    return 0;
+  }
+  else{
+    return 1;
+  }
 }
