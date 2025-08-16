@@ -274,7 +274,7 @@ always@(*)begin
                 npc = pc + 32'd4;
             end
         end
-        default: npc = 32'h8000_0000;
+        default: npc = 32'h3000_0000;
     endcase
 end
 
