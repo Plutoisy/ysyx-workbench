@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
 
 import sys
-import os
 
-def bin_to_hex_txt(bin_file, txt_file, bytes_per_line=8):
+def bin_to_hex_txt(bin_file, txt_file, bytes_per_line=16):
     """
     Convert a binary file to a text file with hex representation
-    Format: @XXXXXXXX XX XX XX XX XX XX XX XX
+    Format: 
+    @00000000
+    XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+    XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+    ...
     """
     with open(bin_file, 'rb') as f_in:
         bin_data = f_in.read()
     
     with open(txt_file, 'w') as f_out:
+        # Write the initial address
+        f_out.write("@00000000\n")
+        
+        # Write hex data
         for i in range(0, len(bin_data), bytes_per_line):
-            # Calculate address for this line
-            addr = i
-            addr_str = f"@{addr:08x}"
-            
             # Get bytes for this line
             line_bytes = bin_data[i:i+bytes_per_line]
             
@@ -24,7 +27,7 @@ def bin_to_hex_txt(bin_file, txt_file, bytes_per_line=8):
             hex_str = ' '.join(f"{b:02x}" for b in line_bytes)
             
             # Write line
-            f_out.write(f"{addr_str} {hex_str}\n")
+            f_out.write(f"{hex_str}\n")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -33,7 +36,7 @@ if __name__ == "__main__":
     
     bin_file = sys.argv[1]
     txt_file = sys.argv[2]
-    bytes_per_line = 8  # Default
+    bytes_per_line = 16  # Default
     
     if len(sys.argv) > 3:
         bytes_per_line = int(sys.argv[3])
