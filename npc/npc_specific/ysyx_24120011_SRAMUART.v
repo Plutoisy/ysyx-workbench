@@ -59,7 +59,7 @@ module ysyx_24120011_SRAMUART (
     // AR
 	assign arready = (state == ysyx_24120011_S_AXI_RADDR) ? 1 : 0;
 	// R
-	assign rdata   = {sram[araddr+3-32'h80000000],sram[araddr+2-32'h80000000],sram[araddr+1-32'h80000000],sram[araddr+0-32'h80000000]};
+	assign rdata   = {sram[{araddr[31:2],2'b00}+3-32'h80000000],sram[{araddr[31:2],2'b00}+2-32'h80000000],sram[{araddr[31:2],2'b00}+1-32'h80000000],sram[{araddr[31:2],2'b00}+0-32'h80000000]};
     assign rresp   = ysyx_24120011_S_AXI_RESP_OKAY;
 	assign rvalid  = (state == ysyx_24120011_S_AXI_RDATA) ? 1 : 0;
     assign rid     = 'd0;
