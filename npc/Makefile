@@ -132,17 +132,18 @@ oldsta:
 	python3 area.py && \
 	cd $(YSYX_HOME)/npc
 	
-dpic:
+verilog:
 	rm -rf ./vsrc_no_dpic && \
 	cp -r ./vsrc_pipe/ ./vsrc_no_dpic && \
 	rm -rf ./build && \
 	mkdir -p ./build && \
-	python3 ./tools/verilog.py
+	python3 ./tools/verilog.py && \
+	rm -rf ./vsrc_no_dpic
 
 sim-iverilog:
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
-	iverilog -g2012 $(NPC_HOME)/tb/ysyx_24120011_tb.v $(NPC_HOME)/tb/ysyx_24120011.v $(NPC_HOME)/tb/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/tb/wave
-	vvp -n $(NPC_HOME)/tb/wave -lxt2 +IMG=$(IMG)
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/iverilog/ysyx_24120011.v $(NPC_HOME)/iverilog/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/wave
+	vvp -n $(NPC_HOME)/iverilog/wave -lxt2 +IMG=$(IMG)
 
 
 clean:
