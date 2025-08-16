@@ -1157,8 +1157,8 @@ VL_ATTR_COLD void Vysyx_24120011_tb___024root___stl_sequent__TOP__0(Vysyx_241200
     vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__npc 
         = ((4U & (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__pc_ctrl))
             ? ((2U & (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__pc_ctrl))
-                ? 0x80000000U : ((1U & (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__pc_ctrl))
-                                  ? 0x80000000U : (
+                ? 0x30000000U : ((1U & (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__pc_ctrl))
+                                  ? 0x30000000U : (
                                                    (1U 
                                                     & vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_EXU__DOT__ALU_result)
                                                     ? 
