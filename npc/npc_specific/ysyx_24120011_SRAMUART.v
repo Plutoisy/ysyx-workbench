@@ -86,6 +86,7 @@ module ysyx_24120011_SRAMUART (
         if(state == ysyx_24120011_S_AXI_WADDR)begin
             if(awaddr == 32'ha00003f8) begin
                 $write("%c", wdata[7:0]);
+                $fflush();
             end
             else begin
                 if(wstrb[0])begin

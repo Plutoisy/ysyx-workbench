@@ -111,7 +111,7 @@ perf:
 	cd $(YSYX_HOME)/npc && \
 	python3 ./tools/perf.py
 	
-perfhalf:
+sta:
 	rm -rf ~/yosys-sta/npc && \
 	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
@@ -143,9 +143,16 @@ verilog:
 sim-iverilog:verilog
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
-	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/iverilog/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/wave
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/wave
 	vvp -n $(NPC_HOME)/iverilog/wave -lxt2 +IMG=$(IMG).txt
 
+sim-iverilog-netlist:
+	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
+	@if [ -z "$(NETLIST)" ]; then echo "NETLIST variable is not set. Please provide an NETLIST value"; exit 1; fi
+	@if [ -z "$(CELLS)" ]; then echo "CELLS variable is not set. Please provide an CELLS value"; exit 1; fi
+	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NETLIST) $(CELLS) $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/netlist
+	vvp -n $(NPC_HOME)/iverilog/netlist -lxt2 +IMG=$(IMG).txt
 
 clean:
 	rm -rf ./build
