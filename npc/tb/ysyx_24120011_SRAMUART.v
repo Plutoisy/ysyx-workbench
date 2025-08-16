@@ -89,16 +89,16 @@ module ysyx_24120011_SRAMUART (
             end
             else begin
                 if(wstrb[0])begin
-                    sram[awaddr+0-32'h80000000] <= wdata[7:0];
+                    sram[{awaddr[31:2],2'b00}+0-32'h80000000] <= wdata[7:0];
                 end
                 if(wstrb[1])begin
-                    sram[awaddr+1-32'h80000000] <= wdata[15:8];
+                    sram[{awaddr[31:2],2'b00}+1-32'h80000000] <= wdata[15:8];
                 end
                 if(wstrb[2])begin
-                    sram[awaddr+2-32'h80000000] <= wdata[23:16];
+                    sram[{awaddr[31:2],2'b00}+2-32'h80000000] <= wdata[23:16];
                 end
                 if(wstrb[3])begin
-                    sram[awaddr+3-32'h80000000] <= wdata[31:24];
+                    sram[{awaddr[31:2],2'b00}+3-32'h80000000] <= wdata[31:24];
                 end
             end
         end
