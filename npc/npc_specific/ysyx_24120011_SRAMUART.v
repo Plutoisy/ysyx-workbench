@@ -88,18 +88,17 @@ module ysyx_24120011_SRAMUART (
                 $write("%c", wdata[7:0]);
             end
             else begin
-                if(wstrb == 4'b1111) begin
-                    sram[awaddr+3-32'h80000000] <= wdata[31:24];
+                if(wstrb[0])begin
+                    sram[awaddr+0-32'h80000000] <= wdata[7:0];
+                end
+                if(wstrb[1])begin
+                    sram[awaddr+1-32'h80000000] <= wdata[15:8];
+                end
+                if(wstrb[2])begin
                     sram[awaddr+2-32'h80000000] <= wdata[23:16];
-                    sram[awaddr+1-32'h80000000] <= wdata[15:8];
-                    sram[awaddr+0-32'h80000000] <= wdata[7:0];
                 end
-                else if(wstrb == 4'b0011) begin
-                    sram[awaddr+1-32'h80000000] <= wdata[15:8];
-                    sram[awaddr+0-32'h80000000] <= wdata[7:0];
-                end
-                else if(wstrb == 4'b0001) begin
-                    sram[awaddr+0-32'h80000000] <= wdata[7:0];
+                if(wstrb[3])begin
+                    sram[awaddr+3-32'h80000000] <= wdata[31:24];
                 end
             end
         end
