@@ -54,7 +54,7 @@ module ysyx_24120011_IFU(
     //flush
     input i_flush
 );
-
+parameter ysyx_24120011_PC_INITIAL  = 32'h8000_0000;
 reg [31:0] pc;
 reg [31:0] inst;
 
@@ -80,7 +80,7 @@ end
 //指令锁存
 always @(posedge clk) begin
     if(rst) begin
-        pc         <=  32'h8000_0000;
+        pc         <=  ysyx_24120011_PC_INITIAL;
     end
     else begin
         //输入握手

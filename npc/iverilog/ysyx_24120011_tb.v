@@ -147,7 +147,7 @@ module ysyx_24120011_tb;
     // end
 
     initial begin
-        $dumpfile("test.vcd");
+        $dumpfile("./log/iverilog.vcd");
         $dumpvars(0, ysyx_24120011_tb); 
     end
 
