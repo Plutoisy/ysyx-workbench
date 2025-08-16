@@ -1268,17 +1268,22 @@ VL_ATTR_COLD void Vysyx_24120011_tb___024root__trace_full_0_sub_0(Vysyx_24120011
     bufp->fullBit(oldp+18,((2U == (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011_SRAMUART__DOT__state))));
     bufp->fullIData(oldp+19,((((vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011_SRAMUART__DOT__sram
                                 [(0x3ffffffU & ((IData)(3U) 
-                                                + vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr))] 
+                                                + (0x3fffffcU 
+                                                   & vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr)))] 
                                 << 0x18U) | (vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011_SRAMUART__DOT__sram
                                              [(0x3ffffffU 
                                                & ((IData)(2U) 
-                                                  + vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr))] 
+                                                  + 
+                                                  (0x3fffffcU 
+                                                   & vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr)))] 
                                              << 0x10U)) 
                               | ((vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011_SRAMUART__DOT__sram
                                   [(0x3ffffffU & ((IData)(1U) 
-                                                  + vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr))] 
+                                                  + 
+                                                  (0x3fffffcU 
+                                                   & vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr)))] 
                                   << 8U) | vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011_SRAMUART__DOT__sram
-                                 [(0x3ffffffU & vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr)]))),32);
+                                 [(0x3fffffcU & vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Xbar__DOT__reg_Xbar_S0_araddr)]))),32);
     bufp->fullIData(oldp+20,(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_IFU__DOT__araddr),32);
     bufp->fullBit(oldp+21,((3U == (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_IFU__DOT__state))));
     bufp->fullBit(oldp+22,(((1U == (IData)(vlSelfRef.ysyx_24120011_tb__DOT__u_ysyx_24120011__DOT__u_ysyx_24120011_Arbiter__DOT__state)) 
