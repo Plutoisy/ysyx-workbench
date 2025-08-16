@@ -1,6 +1,6 @@
 `timescale 1ns / 1ns
 module ysyx_24120011_tb;
-    parameter WAVE = 0;
+    parameter WAVE = 1;
     parameter CLOCK_PERIOD = 10;
     reg clock;
     reg reset;
