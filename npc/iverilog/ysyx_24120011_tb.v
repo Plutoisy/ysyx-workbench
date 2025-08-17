@@ -1,6 +1,6 @@
 `timescale 1ns / 1ns
 module ysyx_24120011_tb;
-    parameter WAVE = 1;
+    parameter WAVE = 0;
     parameter CLOCK_PERIOD = 10;
     reg clock;
     reg reset;
@@ -145,7 +145,7 @@ module ysyx_24120011_tb;
     generate
         if (WAVE == 1) begin
             initial begin
-                $dumpfile("./log/iverilog1.vcd");
+                $dumpfile("./log/iverilog.vcd");
                 $dumpvars(0, ysyx_24120011_tb); 
             end
         end
