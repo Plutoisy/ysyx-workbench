@@ -14,13 +14,13 @@ $(SRC_AUTO_BIND): $(NXDC_FILES)
 VERILATOR_ROOT = /usr/local/share/verilator
 
 # rules for src
-VSRCS = $(shell find $(abspath ./vsrc_pipe) -name "*.v")
+VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
 VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
-CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
+CSRCS = $(abspath ./csrc/main.cpp)
 CSRCS += $(SRC_AUTO_BIND)
-CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
-VSRCS_NPC = $(shell find $(abspath ./vsrc_pipe) -name "*.v")
+CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
+VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
 # LOADLIBES += -lreadline
@@ -43,7 +43,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--no-timing \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
-		--exe main.cpp
+		--exe main_npc.cpp
 	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
 	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
 	
@@ -82,7 +82,7 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 
 perf:
 	rm -rf ~/yosys-sta/npc && \
-	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	rm -rf ~/yosys-sta/result/* && \
 	cd ~/yosys-sta && \
@@ -94,7 +94,7 @@ perf:
 	
 sta:
 	rm -rf ~/yosys-sta/npc && \
-	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	rm -rf ~/yosys-sta/result/* && \
 	cd ~/yosys-sta && \
@@ -104,7 +104,7 @@ sta:
 oldsta:
 	rm -rf ~/yosys-sta/npc && \
 	rm -rf ~/yosys-sta-old/npc && \
-	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	cp -r ~/yosys-sta/npc ~/yosys-sta-old/npc && \
 	rm -rf ~/yosys-sta-old/result/* && \
@@ -115,25 +115,27 @@ oldsta:
 	
 verilog:
 	rm -rf ./vsrc_no_dpic && \
-	cp -r ./vsrc_pipe/ ./vsrc_no_dpic && \
+	cp -r ./vsrc/ ./vsrc_no_dpic && \
 	rm -rf ./build && \
 	mkdir -p ./build && \
 	python3 ./tools/verilog.py && \
 	rm -rf ./vsrc_no_dpic
 
 sim-iverilog:verilog
+	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
-	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/wave
-	vvp -n $(NPC_HOME)/iverilog/wave -lxt2 +IMG=$(IMG).txt
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/log/wave
+	vvp -n $(NPC_HOME)/log/wave -lxt2 +IMG=$(IMG).txt
 
 sim-iverilog-netlist:
+	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@if [ -z "$(NETLIST)" ]; then echo "NETLIST variable is not set. Please provide an NETLIST value"; exit 1; fi
 	@if [ -z "$(CELLS)" ]; then echo "CELLS variable is not set. Please provide an CELLS value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
-	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NETLIST) $(CELLS) $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/netlist
-	vvp -n $(NPC_HOME)/iverilog/netlist -lxt2 +IMG=$(IMG).txt
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NETLIST) $(CELLS) $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/log/netlist
+	vvp -n $(NPC_HOME)/log/netlist -lxt2 +IMG=$(IMG).txt
 
 clean:
 	rm -rf ./build && \
