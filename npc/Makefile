@@ -17,9 +17,9 @@ VERILATOR_ROOT = /usr/local/share/verilator
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
 VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
-CSRCS = $(abspath ./csrc/main.cpp)
+CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
-CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
+CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
@@ -138,8 +138,6 @@ sim-iverilog-netlist:
 clean:
 	rm -rf ./build && \
 	rm -rf ./log && \
-	rm -rf ./obj_dir && \
-	rm ./iverilog/wave && \
-	rm ./iverilog/netlist
+	rm -rf ./obj_dir
 	
 include ../Makefile
