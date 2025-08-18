@@ -43,7 +43,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--no-timing \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
-		--exe main.cpp
+		--exe main_npc.cpp
 	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
 	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
 	
