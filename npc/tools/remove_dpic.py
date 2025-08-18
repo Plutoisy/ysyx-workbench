@@ -20,7 +20,7 @@ def process_files(folder_path):
             # 处理每一行
             for i in range(len(lines)):
                 # 检查是否是dpic区域的边界线
-                if "//======================dpic========================//" in lines[i]:
+                if "//======================dpic========================//" in lines[i] or "//======================finish========================//" in lines[i]:
                     in_dpic_section = not in_dpic_section
                     if in_dpic_section:  # 如果是开始边界
                         continue

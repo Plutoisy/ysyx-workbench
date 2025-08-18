@@ -250,7 +250,7 @@ void sim_init(){
   // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
-  tfp->open("dump.vcd");
+  tfp->open("./log/dump.vcd");
 }
 
 void sim_exit(){
@@ -632,12 +632,12 @@ uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
 void cpu_exec(uint64_t n){
-  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/itrace.txt", "w");
+  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
   if (itracefile == NULL) {
       printf("无法打开文件\n");
       return;
   }
-  FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/btrace.txt", "w");
+  FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/btrace.txt", "w");
   if (btracefile == NULL) {
       printf("无法打开文件\n");
       return;
@@ -844,7 +844,7 @@ void cpu_exec(uint64_t n){
       // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
       // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
 
-      FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/perf.txt", "w");
+      FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/log/perf.txt", "w");
       if (file == NULL) {
           printf("无法打开文件\n");
           return;

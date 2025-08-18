@@ -43,7 +43,7 @@ area = extract_chip_area(file_path)
 # Read data from perf.txt
 perf_data = {}
 try:
-    with open('/home/plutoisy/ysyx-workbench/npc/perf.txt', 'r') as file:
+    with open('/home/plutoisy/ysyx-workbench/npc/log/perf.txt', 'r') as file:
         for line in file:
             if ':' in line:
                 key, value = line.strip().split(':', 1)

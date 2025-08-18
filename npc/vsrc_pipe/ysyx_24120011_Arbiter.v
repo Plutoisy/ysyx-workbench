@@ -256,6 +256,9 @@ module ysyx_24120011_Arbiter (
                         next_state = ysyx_24120011_Arbiter_IDLE;
                     end
                 end
+                else begin
+                    next_state = ysyx_24120011_Arbiter_IDLE;
+                end
             end
             ysyx_24120011_Arbiter_M0:begin
                 if(done)begin
@@ -269,6 +272,9 @@ module ysyx_24120011_Arbiter (
                         next_state = ysyx_24120011_Arbiter_IDLE;
                     end
                 end
+                else begin
+                    next_state = ysyx_24120011_Arbiter_M0;
+                end
             end
             ysyx_24120011_Arbiter_M1:begin
                 if(done)begin
@@ -281,6 +287,9 @@ module ysyx_24120011_Arbiter (
                     else begin
                         next_state = ysyx_24120011_Arbiter_IDLE;
                     end
+                end
+                else begin
+                    next_state = ysyx_24120011_Arbiter_M1;
                 end
             end
             default:next_state = ysyx_24120011_Arbiter_IDLE;
