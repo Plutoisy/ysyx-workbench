@@ -122,24 +122,24 @@ verilog:
 	rm -rf ./vsrc_no_dpic
 
 sim-iverilog:verilog
+	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
-	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/wave
-	vvp -n $(NPC_HOME)/iverilog/wave -lxt2 +IMG=$(IMG).txt
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/log/wave
+	vvp -n $(NPC_HOME)/log/wave -lxt2 +IMG=$(IMG).txt
 
 sim-iverilog-netlist:
+	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@if [ -z "$(NETLIST)" ]; then echo "NETLIST variable is not set. Please provide an NETLIST value"; exit 1; fi
 	@if [ -z "$(CELLS)" ]; then echo "CELLS variable is not set. Please provide an CELLS value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
-	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NETLIST) $(CELLS) $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/iverilog/netlist
-	vvp -n $(NPC_HOME)/iverilog/netlist -lxt2 +IMG=$(IMG).txt
+	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NETLIST) $(CELLS) $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/log/netlist
+	vvp -n $(NPC_HOME)/log/netlist -lxt2 +IMG=$(IMG).txt
 
 clean:
 	rm -rf ./build && \
 	rm -rf ./log && \
-	rm -rf ./obj_dir && \
-	rm ./iverilog/wave && \
-	rm ./iverilog/netlist
+	rm -rf ./obj_dir
 	
 include ../Makefile
