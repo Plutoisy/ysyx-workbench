@@ -9,6 +9,8 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #define PMEM_SIZE    0x8000000
 #define FLASH_SIZE    0x10000000
@@ -625,7 +627,15 @@ uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
+void create_directory(const char *path) {
+  struct stat st = {0};
+
+  if (stat(path, &st) == -1) {
+      mkdir(path, 0700);
+  }
+}
 void cpu_exec(uint64_t n){
+  create_directory("/home/plutoisy/ysyx-workbench/npc/log");
   FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
   if (itracefile == NULL) {
       printf("无法打开文件\n");
