@@ -117,13 +117,6 @@ const char *regs[] = {
   "sd0", "sd1", "sd2", "sd3", "wd0", "wd1", "wd2", "wd3",
   "mod", "imm", "od0", "od1", "od2", "od3", "t5", "t6"
 };
-void create_directory(const char *path) {
-  struct stat st = {0};
-
-  if (stat(path, &st) == -1) {
-      mkdir(path, 0700);
-  }
-}
 static char* rl_gets() {
   static char *line_read = NULL;
 
@@ -258,7 +251,6 @@ void sim_init(){
   // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
-  create_directory("/home/plutoisy/ysyx-workbench/npc/log");
   tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
 }
 
@@ -641,7 +633,6 @@ uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
 void cpu_exec(uint64_t n){
-  create_directory("/home/plutoisy/ysyx-workbench/npc/log");
   FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
   if (itracefile == NULL) {
       printf("无法打开文件\n");

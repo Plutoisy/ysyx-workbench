@@ -37,6 +37,7 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
+	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module ysyx_24120011_tb $^ \
 		--timescale "1ns/1ns" \
@@ -50,6 +51,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
+	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--timescale "1ns/1ns" \
@@ -66,6 +68,7 @@ sim:$(VSRCS) $(CSRCS)
 nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
+	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module $(TOPNAME) $^ \
 		--timescale "1ns/1ns" \
