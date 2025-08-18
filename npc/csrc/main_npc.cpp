@@ -635,13 +635,13 @@ void create_directory(const char *path) {
   }
 }
 void cpu_exec(uint64_t n){
-  create_directory("/home/plutoisy/ysyx-workbench/npc/log");
-  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
+  create_directory("../log");
+  FILE *itracefile = fopen("../log/itrace.txt", "w");
   if (itracefile == NULL) {
       printf("无法打开文件\n");
       return;
   }
-  FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/btrace.txt", "w");
+  FILE *btracefile = fopen("../log/btrace.txt", "w");
   if (btracefile == NULL) {
       printf("无法打开文件\n");
       return;
@@ -848,7 +848,7 @@ void cpu_exec(uint64_t n){
       // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
       // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
 
-      FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/log/perf.txt", "w");
+      FILE *file = fopen("../log/perf.txt", "w");
       if (file == NULL) {
           printf("无法打开文件\n");
           return;
@@ -1019,9 +1019,6 @@ int main(int argc, char *argv[]) {
   //   load_img_flash();
   // }
   
-  if(LOAD_IMG_TO_FLASH){
-    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
-  }
   if(DIFFTESE){
     difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
     void* dut;
