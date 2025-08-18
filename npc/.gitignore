@@ -12,3 +12,7 @@
 !.gitignore
 !README.md
 build/
+log/
+obj_dir/
+wave
+netlist

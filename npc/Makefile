@@ -14,16 +14,13 @@ $(SRC_AUTO_BIND): $(NXDC_FILES)
 VERILATOR_ROOT = /usr/local/share/verilator
 
 # rules for src
-VSRCS = $(shell find $(abspath ./vsrc_pipe) -name "*.v")
+VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
 VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
-VSRCS_bs = $(shell find $(abspath ./vsrc_bs) -name "*.v")
-VSRCS_bs += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
-VSRCS_bs += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
-CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
+CSRCS = $(abspath ./csrc/main.cpp)
 CSRCS += $(SRC_AUTO_BIND)
-CSRCS_NPC = $(shell find $(abspath ./csrc_npc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
-VSRCS_NPC = $(shell find $(abspath ./vsrc_pipe) -name "*.v")
+CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
+VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
 # LOADLIBES += -lreadline
@@ -81,27 +78,11 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
-	./obj_dir/V$(TOPNAME) $(IMG)
-	
-nvboard_bs:$(VSRCS_bs) $(CSRCS) $(NVBOARD_ARCHIVE)
-	rm -rf ./obj_dir
-	$(VERILATOR) $(VERILATOR_CFLAGS) \
-		--top-module $(TOPNAME) $^ \
-		--timescale "1ns/1ns" \
-		--no-timing \
-		--autoflush \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
-		-I$(YSYXSOC_HOME)/perip/uart16550/rtl\
-		-I$(YSYXSOC_HOME)/perip/spi/rtl\
-		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
-		--exe main.cpp
-	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
-	./obj_dir/V$(TOPNAME) $(IMG)
+	./obj_dir/V$(TOPNAME) $(IMG)	
 
 perf:
 	rm -rf ~/yosys-sta/npc && \
-	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	rm -rf ~/yosys-sta/result/* && \
 	cd ~/yosys-sta && \
@@ -113,7 +94,7 @@ perf:
 	
 sta:
 	rm -rf ~/yosys-sta/npc && \
-	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	rm -rf ~/yosys-sta/result/* && \
 	cd ~/yosys-sta && \
@@ -123,7 +104,7 @@ sta:
 oldsta:
 	rm -rf ~/yosys-sta/npc && \
 	rm -rf ~/yosys-sta-old/npc && \
-	cp -r ./vsrc_pipe ~/yosys-sta/npc && \
+	cp -r ./vsrc ~/yosys-sta/npc && \
 	python3 ./tools/remove_dpic.py && \
 	cp -r ~/yosys-sta/npc ~/yosys-sta-old/npc && \
 	rm -rf ~/yosys-sta-old/result/* && \
@@ -134,7 +115,7 @@ oldsta:
 	
 verilog:
 	rm -rf ./vsrc_no_dpic && \
-	cp -r ./vsrc_pipe/ ./vsrc_no_dpic && \
+	cp -r ./vsrc/ ./vsrc_no_dpic && \
 	rm -rf ./build && \
 	mkdir -p ./build && \
 	python3 ./tools/verilog.py && \
@@ -155,6 +136,10 @@ sim-iverilog-netlist:
 	vvp -n $(NPC_HOME)/iverilog/netlist -lxt2 +IMG=$(IMG).txt
 
 clean:
-	rm -rf ./build
-	rm -rf ./*.vcd
+	rm -rf ./build && \
+	rm -rf ./log && \
+	rm -rf ./obj_dir && \
+	rm ./iverilog/wave && \
+	rm ./iverilog/netlist
+	
 include ../Makefile
