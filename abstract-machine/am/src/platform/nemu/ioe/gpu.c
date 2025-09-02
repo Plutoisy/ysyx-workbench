@@ -2,14 +2,14 @@
 #include <nemu.h>
 #include <stdio.h>
 #define SYNC_ADDR (VGACTL_ADDR + 4)
-const int disp_w = 400, disp_h = 300;
+int disp_w , disp_h;
 
 void __am_gpu_init() {
   int i;
   int w = (inl(VGACTL_ADDR) & 0xFFFF0000)>>16;
-  printf("w:%d\n",w);
   int h = inl(VGACTL_ADDR) & 0x0000FFFF;
-  printf("h:%d\n",h);
+  disp_w = w;
+  disp_h = h;
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (i = 0; i < w * h; i ++) fb[i] = 0x00000000;
   outl(SYNC_ADDR, 1);
