@@ -6,7 +6,7 @@ const int disp_w = 400, disp_h = 300;
 
 void __am_gpu_init() {
   int i;
-  int w = inl(VGACTL_ADDR) & 0xFFFF0000;
+  int w = (inl(VGACTL_ADDR) & 0xFFFF0000)>>16;
   printf("w:%d\n",w);
   int h = inl(VGACTL_ADDR) & 0x0000FFFF;
   printf("h:%d\n",h);
