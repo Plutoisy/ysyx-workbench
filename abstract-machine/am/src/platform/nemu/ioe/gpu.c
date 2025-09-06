@@ -24,12 +24,6 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
-  // int x = ctl->x;
-  // int y = ctl->y;
-  // int w = ctl->w;
-  // int h = ctl->h;
-  // printf("x:%d\n",ctl->x);
-  // printf("y:%d\n",ctl->y);
   uint32_t *pixels = ctl->pixels;
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (int i = 1; i <= ctl->h; i ++){
