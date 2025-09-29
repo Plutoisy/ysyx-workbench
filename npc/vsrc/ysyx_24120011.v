@@ -67,20 +67,20 @@ module ysyx_24120011 (
     output		    io_slave_rlast      ,
     output	[3:0]	io_slave_rid
 );
-//======================finish========================//
-always@(posedge clock) begin
-    if (IFU_IDU_inst == 32'b00000000000100000000000001110011) begin
-        $write("npc execute ebreak at pc = 0x%08x\n", IFU_IDU_pc);
-        if (a0 == 0) begin
-            $write("\033[1;32mHIT GOOD TRAP!\033[0m\n"); // 绿色
-        end
-        else begin
-            $write("\033[1;31mHIT BAD TRAP!\033[0m\n");  // 红色
-        end
-        $finish;
-    end
-end
-//======================finish========================//
+// //======================finish========================//
+// always@(posedge clock) begin
+//     if (IFU_IDU_inst == 32'b00000000000100000000000001110011) begin
+//         $write("npc execute ebreak at pc = 0x%08x\n", IFU_IDU_pc);
+//         if (a0 == 0) begin
+//             $write("\033[1;32mHIT GOOD TRAP!\033[0m\n"); // 绿色
+//         end
+//         else begin
+//             $write("\033[1;31mHIT BAD TRAP!\033[0m\n");  // 红色
+//         end
+//         $finish;
+//     end
+// end
+// //======================finish========================//
 //============M0=============//        
 //AR-axi4lite
 wire  [31:0]     M0_araddr;

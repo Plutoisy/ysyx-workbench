@@ -1,6 +1,7 @@
 *.*
 *
 !*/
+!/patch/**
 !/nemu/*
 !/nexus-am/*
 !/nanos-lite/*
