@@ -108,7 +108,7 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? ??? ????? 01101 11", lui    , U, R(rd) = imm);
 
   INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, {s->dnpc = s->pc + imm; R(rd) = s->pc + 4; IFDEF(CONFIG_FTRACE, {
-    printf("0x%x: call:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);
+    if(rd == 1){printf("0x%x: call:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);}
     // printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
     // spacenum_ftrace++;
   })});
@@ -127,7 +127,7 @@ static int decode_exec(Decode *s) {
       // spacenum_ftrace--;
     }
     else{
-      printf("0x%x: call:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);
+      if(rd == 1){printf("0x%x: call:[%s@0x%x]\n",s->pc,find_function_name(s->dnpc),s->dnpc);}
       // printf("%*s0x%x: call:0x%x\n",spacenum_ftrace,"",s->pc,s->dnpc);
       // spacenum_ftrace++;
     }

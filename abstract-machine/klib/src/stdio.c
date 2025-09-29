@@ -9,27 +9,22 @@ void intToStr(int num, char *str) {
     int i = 0;
     int isNegative = 0;
 
-    // 处理负数
     if (num < 0) {
         isNegative = 1;
         num = -num;
     }
 
-    // 提取每一位数字
     do {
         str[i++] = (num % 10) + '0';
         num /= 10;
     } while (num > 0);
 
-    // 如果是负数，添加负号
     if (isNegative) {
         str[i++] = '-';
     }
 
-    // 添加字符串终止符
     str[i] = '\0';
 
-    // 反转字符串
     int start = 0;
     int end = i - 1;
     while (start < end) {

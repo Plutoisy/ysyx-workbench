@@ -1,4 +1,4 @@
-STUID = ysyx_22040000
+STUID = ysyx_24120011
 STUNAME = 喻炳尧
 M ?= "default commit message"
 # DO NOT modify the following code!!!
