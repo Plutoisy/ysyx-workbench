@@ -121,7 +121,7 @@ verilog:
 	cp -r ./vsrc/ ./vsrc_no_dpic && \
 	rm -rf ./build && \
 	mkdir -p ./build && \
-	python3 ./tools/verilog.py && \
+	python3 ./tools/verilog.py $(NPC_HOME) && \
 	rm -rf ./vsrc_no_dpic
 
 sim-iverilog:
