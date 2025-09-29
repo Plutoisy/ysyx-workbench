@@ -1,13 +1,13 @@
 *.*
 *
 !*/
+!/patch/*
 !/nemu/*
 !/nexus-am/*
 !/nanos-lite/*
 !/navy-apps/*
 !/npc/*
 !/ysyxSoC/*
-!/patch/*
 !Makefile
 !README.md
 !.gitignore
