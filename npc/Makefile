@@ -42,6 +42,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--top-module ysyx_24120011_tb $^ \
 		--timescale "1ns/1ns" \
 		--no-timing \
+		-LDFLAGS "-lreadline"\
 		--exe main_npc.cpp
 	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
 	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
@@ -57,6 +58,7 @@ sim:$(VSRCS) $(CSRCS)
 		--autoflush \
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)
