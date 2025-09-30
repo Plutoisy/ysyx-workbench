@@ -1042,7 +1042,7 @@ int main(int argc, char *argv[]) {
   else{
     sdb_mainloop();
   }
-  cs_close(&handle);
+  // cs_close(&handle);
   sim_exit();
   return 0;
 }
