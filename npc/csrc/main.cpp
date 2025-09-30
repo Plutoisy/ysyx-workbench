@@ -48,7 +48,7 @@ void nvboard_bind_all_pins(VysyxSoCFull* top);
 
 int trap = 0;
 static char *img_file = NULL;
-csh handle;
+// csh handle;
 int gpr[32];
 int top_pc;
 int top_dnpc;
@@ -206,31 +206,31 @@ static long load_img_to_flash(char *img) {
   return size;
 }
 
-bool capstone_init(csh *handle) {
-    if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
-        printf("Failed to initialize Capstone\n");
-        return false;
-    }
-    return true;
-}
+// bool capstone_init(csh *handle) {
+//     if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
+//         printf("Failed to initialize Capstone\n");
+//         return false;
+//     }
+//     return true;
+// }
 
-void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
-    cs_insn *insn;
-    size_t count;
+// void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
+//     cs_insn *insn;
+//     size_t count;
 
-    count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
-    if (count > 0) {
-        for (size_t i = 0; i < count; i++) {
-            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
-            // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
-        }
-        cs_free(insn, count);
-    } else {
-        printf("Failed to disassemble given code!\n");
-        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
+//     count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
+//     if (count > 0) {
+//         for (size_t i = 0; i < count; i++) {
+//             printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
+//             // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+//         }
+//         cs_free(insn, count);
+//     } else {
+//         printf("Failed to disassemble given code!\n");
+//         printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
 
-    }
-}
+//     }
+// }
 
 void step_and_dump_wave(){
   if(NVBOARD){
@@ -657,7 +657,7 @@ void cpu_exec(uint64_t n){
         inst_clock_time = i - last_clock;
         last_clock = i;
         if(DIFFTESE){
-          AssembleDecoder(handle, top_inst, top_pc);
+          // AssembleDecoder(handle, top_inst, top_pc);
           printf("exec times: %ld\n",i+1);
           difftest_exec(1);
           difftest_regcpy(&refstate, 0);
@@ -707,7 +707,7 @@ void cpu_exec(uint64_t n){
         }
 
         if((WATCHPOINT || !BMODE) && n < 100){
-          AssembleDecoder(handle, top_inst, top_pc);
+          // AssembleDecoder(handle, top_inst, top_pc);
           for(int j = 0; j < 32; j++){
             printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
           }
@@ -775,7 +775,7 @@ void cpu_exec(uint64_t n){
           pc_count++;
           if(pc_count > 15000){
             printf("\33[1;31mProgram pc has not change for 1.5w clk. Stuck at 0x%08x\033[0m\n",top_pc);
-            AssembleDecoder(handle, top_inst, top_pc);
+            // AssembleDecoder(handle, top_inst, top_pc);
             for(int j = 0; j < 32; j++){
               printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
             }
@@ -1007,9 +1007,9 @@ int main(int argc, char *argv[]) {
   // 示例 RISC-V 指令
   //uint32_t instruction = 0x00000013; // NOP 指令
   
-  if (!capstone_init(&handle)) {
-      return -1;
-  }
+  // if (!capstone_init(&handle)) {
+  //     return -1;
+  // }
 
   // AssembleDecoder(handle, instruction);
   
