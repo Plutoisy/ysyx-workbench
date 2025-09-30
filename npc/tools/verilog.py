@@ -1,5 +1,6 @@
 import os
 import re
+import argparse
 
 def process_files(folder_path):
     # 获取文件夹中的所有文件
@@ -125,8 +126,14 @@ def merge_v_files(directory, output_file):
 
 # 使用示例
 if __name__ == "__main__":
-    process_files("/home/plutoisy/ysyx-workbench/npc/vsrc_no_dpic/")
-    traverse_directory("/home/plutoisy/ysyx-workbench/npc/vsrc_no_dpic/")
-    merge_v_files('/home/plutoisy/ysyx-workbench/npc/vsrc_no_dpic/', '/home/plutoisy/ysyx-workbench/npc/build/ysyx_24120011.v')
+    parser = argparse.ArgumentParser(description="Verilog")
+    parser.add_argument("NPC_HOME", type=str)
+    args = parser.parse_args()
+
+    vsrc_path = f"{args.NPC_HOME}/vsrc_no_dpic/"
+    out_file = f"{args.NPC_HOME}/build/ysyx_24120011.v"
+    process_files(vsrc_path)
+    traverse_directory(vsrc_path)
+    merge_v_files(vsrc_path, out_file)
     print("处理完成！")
 
