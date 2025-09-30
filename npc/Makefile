@@ -58,7 +58,7 @@ sim:$(VSRCS) $(CSRCS)
 		--autoflush \
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-lreadline"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)
@@ -74,6 +74,7 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--autoflush \
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
+		-LDFLAGS "-lreadline"\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
