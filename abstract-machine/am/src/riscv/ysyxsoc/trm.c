@@ -70,10 +70,10 @@ void fsbl(void) {
 
 
 void putch(char ch) {
-  while (!(inb(UART_REG_LSR) & 0x20)) {
-  }
-  outb(SERIAL_PORT, ch);
+	while((inb(UART_BASE + 0X5) & 0x20) == 0){};
+	outb(UART_BASE, ch);
 }
+
 
 void halt(int code) {
   asm volatile("mv a0, %0; ebreak" : :"r"(code));
