@@ -70,14 +70,10 @@ void fsbl(void) {
 
 
 void putch(char ch) {
-  while (1){
-    volatile uint8_t lsr = inb(UART_REG_LS);
-    // if ((lsr & 0x20) != 0 && (lsr & 0x40) != 0) break;
-    if ((lsr & 0x20) != 0) break;
-  };
-  outb(UART_REG_RB_TH, ch);
+  while (!(inb(UART_REG_LSR) & 0x20)) {
+  }
+  outb(SERIAL_PORT, ch);
 }
-
 
 void halt(int code) {
   asm volatile("mv a0, %0; ebreak" : :"r"(code));
@@ -85,10 +81,17 @@ void halt(int code) {
 }
 
 void uart_init() {
-  outb(UART_REG_LC, 0x80); // Enable DLAB
-  outb(UART_REG_RB_TH, 0x01); // 38400 baud
-  outb(UART_REG_LC, 0x03); // 8 bits, no parity, one stop bit
-  outb(UART_REG_II_FC, 0xC7); // Enable FIFO, clear them, with 14-byte threshold
+  uint16_t divisor = 16;  // 修改成 16
+  // 打开 DLAB
+  outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
+  // 写高低字节
+  outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
+  outb(UART_REG_DL1, divisor & 0xFF);
+  // 关闭 DLAB
+  outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+
+  // 这里建议顺带设置 8N1 格式
+  outb(UART_REG_LC, 0x03); // 8 bit, no parity, 1 stop bit
 }
 
 
