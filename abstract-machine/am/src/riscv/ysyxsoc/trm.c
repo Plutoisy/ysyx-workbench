@@ -81,11 +81,10 @@ void halt(int code) {
 }
 
 void uart_init() {
-  outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
-  uint16_t divisior = 50000000/(16 * 115200); // dummy system clock speed
-  outb(UART_REG_DL2, divisior >> 8);
-  outb(UART_REG_DL1, divisior);
-  outb(UART_REG_LC, inb(UART_REG_LC) & (~0x80));
+  outb(UART_REG_LC, 0b10000011);
+  outb(UART_REG_DL2, (uint8_t)(1 >> 8));
+  outb(UART_REG_DL1, (uint8_t)1);
+  outb(UART_REG_LC, 0b00000011);
 }
 
 
