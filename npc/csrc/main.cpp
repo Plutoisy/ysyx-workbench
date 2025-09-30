@@ -231,10 +231,14 @@ static long load_img_to_flash(char *img) {
 
 //     }
 // }
-
+int nvboard_update_count = 0;
 void step_and_dump_wave(){
-  if(NVBOARD){
+  if(NVBOARD && nvboard_update_count == 0){
     nvboard_update();
+    nvboard_update_count = 1;
+  }
+  else if(NVBOARD && nvboard_update_count == 1){
+    nvboard_update_count = 0;
   }
   dut.eval();
   if(WAVE){
