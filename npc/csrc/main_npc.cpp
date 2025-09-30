@@ -243,7 +243,9 @@ void sim_init(){
   // top = new Vysyx_24120011_tb;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
-  tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
+  if(WAVE){
+    tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
+  }
 }
 
 void sim_exit(){

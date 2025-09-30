@@ -251,7 +251,9 @@ void sim_init(){
   // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
-  tfp->open("/home/1/ysyx-workbench/npc/log/dump.vcd");
+  if(WAVE){
+    tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
+  }
 }
 
 void sim_exit(){
