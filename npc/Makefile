@@ -16,7 +16,7 @@ VERILATOR_ROOT = /usr/local/share/verilator
 # rules for src
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS += $(shell find $(abspath $(YSYX_HOME)/ysyxSoC/perip) -name "*.v")
-VSRCS += $(NPC_HOME)/soc/ysyxSoCFull.v
+VSRCS += $(YSYX_HOME)/ysyxSoC/build/ysyxSoCFull.v
 CSRCS = $(abspath ./csrc/main.cpp)
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
