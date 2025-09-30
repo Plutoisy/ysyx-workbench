@@ -7,7 +7,7 @@
 #include <getopt.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include <capstone/capstone.h>
+// #include <capstone/capstone.h>
 #include <sys/time.h>
 #include <sys/stat.h>
 #include <sys/types.h>
