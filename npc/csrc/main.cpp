@@ -36,9 +36,9 @@
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
-#define ITRACE_FILE 1
+#define ITRACE_FILE 0
 #define INST_NOT_VALID_CHECK 1
-#define BTRACE_FILE 1
+#define BTRACE_FILE 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -251,7 +251,7 @@ void sim_init(){
   // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
-  tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
+  tfp->open("/home/1/ysyx-workbench/npc/log/dump.vcd");
 }
 
 void sim_exit(){
@@ -847,31 +847,31 @@ void cpu_exec(uint64_t n){
       // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
       // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
 
-      FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/log/perf.txt", "w");
-      if (file == NULL) {
-          printf("无法打开文件\n");
-          return;
-      }
-      fprintf(file, "clk: %ld\n",i+1);
-      fprintf(file, "inst: %ld\n",inst_count);
-      fprintf(file, "IPC: %f\n",ipc);
-      fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
-      fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
-      fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
-      fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
-      fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
-      fprintf(file, "jump: %ld\n",jump_type_s);
-      fprintf(file, "csr: %ld\n",csr_type_s);
-      fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
-      fprintf(file, "calculate: %ld\n",cal_type_s);
-      fprintf(file, "unk: %ld\n",unk_s);
-      fprintf(file, "jump time: %lf\n",avg_jump);
-      fprintf(file, "csr time: %lf\n",avg_csr);
-      fprintf(file, "read_and_store time: %lf\n",avg_read_and_store);
-      fprintf(file, "calculate time: %lf\n",avg_cal);
-      fprintf(file, "unk time: %lf\n",avg_unk);
-      fclose(file);
+      // FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/log/perf.txt", "w");
+      // if (file == NULL) {
+      //     printf("无法打开文件\n");
+      //     return;
+      // }
+      // fprintf(file, "clk: %ld\n",i+1);
+      // fprintf(file, "inst: %ld\n",inst_count);
+      // fprintf(file, "IPC: %f\n",ipc);
+      // fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
+      // fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
+      // fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
+      // fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+      // fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
+      // fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
+      // fprintf(file, "jump: %ld\n",jump_type_s);
+      // fprintf(file, "csr: %ld\n",csr_type_s);
+      // fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
+      // fprintf(file, "calculate: %ld\n",cal_type_s);
+      // fprintf(file, "unk: %ld\n",unk_s);
+      // fprintf(file, "jump time: %lf\n",avg_jump);
+      // fprintf(file, "csr time: %lf\n",avg_csr);
+      // fprintf(file, "read_and_store time: %lf\n",avg_read_and_store);
+      // fprintf(file, "calculate time: %lf\n",avg_cal);
+      // fprintf(file, "unk time: %lf\n",avg_unk);
+      // fclose(file);
       return;
     }
   }
