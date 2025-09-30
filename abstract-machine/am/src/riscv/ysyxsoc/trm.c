@@ -90,7 +90,7 @@ void uart_init() {
   // 关闭 DLAB
   outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
 
-  // 这里建议顺带设置 8N1 格式
+  // 设置 8N1 格式
   outb(UART_REG_LC, 0x03); // 8 bit, no parity, 1 stop bit
 }
 
