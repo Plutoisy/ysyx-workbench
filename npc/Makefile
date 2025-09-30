@@ -124,7 +124,7 @@ verilog:
 	python3 ./tools/verilog.py $(NPC_HOME) && \
 	rm -rf ./vsrc_no_dpic
 
-sim-iverilog:
+sim-iverilog:verilog
 	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16

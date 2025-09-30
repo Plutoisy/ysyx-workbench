@@ -32,11 +32,7 @@ extern char _sram_start;
 #define SRAM_END ((uintptr_t)&_sram_start + SRAM_SIZE)
 
 Area heap = RANGE(&_heap_start, &_sdram_end);
-#ifndef MAINARGS
-#define MAINARGS ""
-#endif
-
-static const char mainargs[] = MAINARGS;
+static const char mainargs[MAINARGS_MAX_LEN] = MAINARGS_PLACEHOLDER; // defined in CFLAGS
 
 void _trm_init(void);
 
