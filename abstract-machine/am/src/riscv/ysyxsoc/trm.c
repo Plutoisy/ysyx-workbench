@@ -81,7 +81,7 @@ void halt(int code) {
 }
 
 void uart_init() {
-  uint16_t divisor = 32;  // 修改成 16
+  uint16_t divisor = 1;  // 修改成 16
   // 打开 DLAB
   outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
   // 写高低字节
