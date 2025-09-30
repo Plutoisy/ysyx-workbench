@@ -70,8 +70,12 @@ void fsbl(void) {
 
 
 void putch(char ch) {
-	while((inb(UART_BASE + 0X5) & 0x20) == 0){};
-	outb(UART_BASE, ch);
+  while (1){
+    volatile uint8_t lsr = inb(UART_REG_LS);
+    // if ((lsr & 0x20) != 0 && (lsr & 0x40) != 0) break;
+    if ((lsr & 0x20) != 0) break;
+  };
+  outb(UART_REG_RB_TH, ch);
 }
 
 
@@ -80,17 +84,11 @@ void halt(int code) {
   while (1);
 }
 
-void uart_init(void) {
-	outb(UART_BASE + 1, 0x00);
-	outb(UART_BASE + 3, 0x80);
-	outb(UART_BASE    , 0x01);
-	outb(UART_BASE + 1, 0x00);
-	outb(UART_BASE + 3, 0x03);
-	while (inb(UART_BASE + 5) & 0x01) {
-    (void)inb(UART_BASE);
-  }
-	outb(UART_BASE + 2, 0xc7);
-	outb(UART_BASE + 1, 0x01);
+void uart_init() {
+  outb(UART_REG_LC, 0x80); // Enable DLAB
+  outb(UART_REG_RB_TH, 0x01); // 38400 baud
+  outb(UART_REG_LC, 0x03); // 8 bits, no parity, one stop bit
+  outb(UART_REG_II_FC, 0xC7); // Enable FIFO, clear them, with 14-byte threshold
 }
 
 
