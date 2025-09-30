@@ -80,13 +80,19 @@ void halt(int code) {
   while (1);
 }
 
-void uart_init() {
-  uint16_t divisor = 2;
-  outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
-  outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
-  outb(UART_REG_DL1, divisor & 0xFF);
-  outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+void uart_init(void) {
+	outb(UART_BASE + 1, 0x00);
+	outb(UART_BASE + 3, 0x80);
+	outb(UART_BASE    , 0x01);
+	outb(UART_BASE + 1, 0x00);
+	outb(UART_BASE + 3, 0x03);
+	while (inb(UART_BASE + 5) & 0x01) {
+    (void)inb(UART_BASE);
+  }
+	outb(UART_BASE + 2, 0xc7);
+	outb(UART_BASE + 1, 0x01);
 }
+
 
 void print_csr() {
   uint32_t mvendorid, marchid;
