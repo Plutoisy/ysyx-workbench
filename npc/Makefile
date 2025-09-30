@@ -42,8 +42,8 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--top-module ysyx_24120011_tb $^ \
 		--timescale "1ns/1ns" \
 		--no-timing \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include" \
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include" \
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main_npc.cpp
 	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
 	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
@@ -57,10 +57,10 @@ sim:$(VSRCS) $(CSRCS)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		--autoflush \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include"\
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)
@@ -74,11 +74,11 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		--autoflush \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include"\
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)	
@@ -124,14 +124,14 @@ verilog:
 	python3 ./tools/verilog.py $(NPC_HOME) && \
 	rm -rf ./vsrc_no_dpic
 
-sim-iverilog:verilog
+sim-iverilog-test:verilog
 	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
 	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/log/wave
 	vvp -n $(NPC_HOME)/log/wave -lxt2 +IMG=$(IMG).txt
 
-sim-iverilog-netlist:
+sim-iverilog-netlist-test:
 	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@if [ -z "$(NETLIST)" ]; then echo "NETLIST variable is not set. Please provide an NETLIST value"; exit 1; fi
