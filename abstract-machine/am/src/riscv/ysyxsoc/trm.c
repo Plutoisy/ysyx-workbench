@@ -81,12 +81,17 @@ void halt(int code) {
 }
 
 void uart_init() {
-  outb(UART_BASE + 3, 0b10000011);
-  outb(UART_BASE + 1, 0);
-  outb(UART_BASE, 1);
-  outb(UART_BASE + 3, 0b00000011);
-  outb(UART_BASE + 2, 0b11000110);
-  outb(UART_BASE + 1, 0b00000000);
+  uint16_t divisor = 32;  // 修改成 16
+  // 打开 DLAB
+  outb(UART_REG_LC, inb(UART_REG_LC) | 0x80);
+  // 写高低字节
+  outb(UART_REG_DL2, (divisor >> 8) & 0xFF);
+  outb(UART_REG_DL1, divisor & 0xFF);
+  // 关闭 DLAB
+  outb(UART_REG_LC, inb(UART_REG_LC) & ~0x80);
+
+  // 设置 8N1 格式
+  outb(UART_REG_LC, 0x03); // 8 bit, no parity, 1 stop bit
 }
 
 
