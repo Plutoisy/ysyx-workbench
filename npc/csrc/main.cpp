@@ -633,16 +633,18 @@ uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
 void cpu_exec(uint64_t n){
-  FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
-  if (itracefile == NULL) {
-      printf("无法打开文件\n");
-      return;
-  }
-  FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/btrace.txt", "w");
-  if (btracefile == NULL) {
-      printf("无法打开文件\n");
-      return;
-  }
+  FILE *itracefile;
+  // FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
+  // if (itracefile == NULL) {
+  //     printf("无法打开文件\n");
+  //     return;
+  // }
+  FILE *btracefile;
+  // FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/btrace.txt", "w");
+  // if (btracefile == NULL) {
+  //     printf("无法打开文件\n");
+  //     return;
+  // }
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
