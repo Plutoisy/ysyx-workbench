@@ -1,12 +1,12 @@
 TOPNAME = ysyxSoCFull
-NXDC_FILES = $(YSYXSOC_HOME)/constr/ysyxSoCFull.nxdc
+NXDC_FILES = $(YSYX_HOME)/ysyxSoC/constr/ysyxSoCFull.nxdc
 # rules for verilator
 VERILATOR = verilator
 VERILATOR_CFLAGS += -cc --trace 
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 
 # constraint file
-SRC_AUTO_BIND = $(YSYXSOC_HOME)/constr/auto_bind.cpp
+SRC_AUTO_BIND = $(YSYX_HOME)/ysyxSoC/constr/auto_bind.cpp
 $(SRC_AUTO_BIND): $(NXDC_FILES)
 	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py $^ $@
 
@@ -15,8 +15,8 @@ VERILATOR_ROOT = /usr/local/share/verilator
 
 # rules for src
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
-VSRCS += $(shell find $(abspath $(YSYXSOC_HOME)/perip) -name "*.v")
-VSRCS += $(YSYXSOC_HOME)/build/ysyxSoCFull.v
+VSRCS += $(shell find $(abspath $(YSYX_HOME)/ysyxSoC/perip) -name "*.v")
+VSRCS += $(YSYX_HOME)/ysyxSoC/build/ysyxSoCFull.v
 CSRCS = $(abspath ./csrc/main.cpp)
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
@@ -58,8 +58,8 @@ sim:$(VSRCS) $(CSRCS)
 		--no-timing \
 		--autoflush \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
-		-I$(YSYXSOC_HOME)/perip/uart16550/rtl\
-		-I$(YSYXSOC_HOME)/perip/spi/rtl\
+		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
+		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
@@ -75,8 +75,8 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--no-timing \
 		--autoflush \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
-		-I$(YSYXSOC_HOME)/perip/uart16550/rtl\
-		-I$(YSYXSOC_HOME)/perip/spi/rtl\
+		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
+		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
