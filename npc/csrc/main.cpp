@@ -237,7 +237,7 @@ void step_and_dump_wave(){
     nvboard_update();
     nvboard_update_count = 1;
   }
-  if(NVBOARD && nvboard_update_count == 1){
+  else if(NVBOARD && nvboard_update_count == 1){
     nvboard_update_count = 0;
   }
   dut.eval();
