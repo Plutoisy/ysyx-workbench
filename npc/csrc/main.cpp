@@ -231,6 +231,8 @@ static long load_img_to_flash(char *img) {
 
 //     }
 // }
+
+
 int nvboard_update_count = 0;
 void step_and_dump_wave(){
   if(NVBOARD && nvboard_update_count == 0){
