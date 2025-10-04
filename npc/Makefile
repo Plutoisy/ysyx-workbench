@@ -121,14 +121,14 @@ verilog:
 	python3 ./tools/verilog.py $(NPC_HOME) && \
 	rm -rf ./vsrc_no_dpic
 
-sim-iverilog-test:verilog
+sim-iverilog:verilog
 	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@python $(NPC_HOME)/tools/bin2txt.py $(IMG) $(IMG).txt 16
 	iverilog -g2012 $(NPC_HOME)/iverilog/ysyx_24120011_tb.v $(NPC_HOME)/build/ysyx_24120011.v $(NPC_HOME)/npc_specific/ysyx_24120011_SRAMUART.v -o $(NPC_HOME)/log/wave
 	vvp -n $(NPC_HOME)/log/wave -lxt2 +IMG=$(IMG).txt
 
-sim-iverilog-netlist-test:
+sim-iverilog-netlist:
 	mkdir -p log
 	@if [ -z "$(IMG)" ]; then echo "IMG variable is not set. Please provide an IMG value"; exit 1; fi
 	@if [ -z "$(NETLIST)" ]; then echo "NETLIST variable is not set. Please provide an NETLIST value"; exit 1; fi
