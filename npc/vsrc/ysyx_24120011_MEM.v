@@ -154,21 +154,11 @@ end
     assign M1_arid    = 'd0       ;
     assign M1_arlen   = 'd0       ;
     assign M1_arburst = 'd0       ;
-    assign M1_arsize  = ~M1_arvalid ? 3'b010 : (
-           ({3{mem_ctrl[4:3] == 2'd0}} & 3'b000) |
-           ({3{mem_ctrl[4:3] == 2'd1}} & 3'b001) |
-           ({3{mem_ctrl[4:3] == 2'd2}} & 3'b010) |
-           (3'b000)
-         );
+    assign M1_arsize  = 'd0       ;
     assign M1_awid    = 'd0       ;
     assign M1_awlen   = 'd0       ;
     assign M1_awburst = 'd0       ;
-    assign M1_awsize  = ~M1_awvalid ? 3'b010 : (
-           ({3{mem_ctrl[1:0] == 2'd0}} & 3'b000) |
-           ({3{mem_ctrl[1:0] == 2'd1}} & 3'b001) |
-           ({3{mem_ctrl[1:0] == 2'd2}} & 3'b010) |
-           (3'b000)
-         );
+    assign M1_awsize  = 'd0       ;
     assign M1_wlast   = M1_wvalid ;
 
 

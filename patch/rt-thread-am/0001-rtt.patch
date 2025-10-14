@@ -1,7 +1,7 @@
 From 40cd055e3ab65aa98fd9078928d8df40f3e35ffb Mon Sep 17 00:00:00 2001
 From: 211180120-Yu Bingyao <211180120@smail.nju.edu.cn>
 Date: Sun, 28 Sep 2025 14:23:46 +0800
-Subject: [PATCH] rtt
+Subject: [PATCH 1/2] rtt
 
 ---
  bsp/abstract-machine/Makefile      |  6 +++-
