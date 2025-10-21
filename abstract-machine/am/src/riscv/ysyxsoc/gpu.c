@@ -14,7 +14,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
   
   for (int i = 0; i < w; i++) {
     for (int j = 0; j < h; j++) {
-        uintptr_t addr = FB_ADDR + (((i+x) * 512 + (j+y)) * 8);
+        uintptr_t addr = FB_ADDR + (((i+x) * HEIGHT + (j+y)) * 8);
         outl(addr, pixels[i*h + j]);
     }
   }
