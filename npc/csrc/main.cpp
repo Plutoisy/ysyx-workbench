@@ -114,8 +114,8 @@ typedef struct {
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
-  "sd0", "sd1", "sd2", "sd3", "wd0", "wd1", "wd2", "wd3",
-  "mod", "imm", "od0", "od1", "od2", "od3", "t5", "t6"
+  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
 };
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -492,8 +492,11 @@ extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int){
 }
 
 extern "C" void reg_out(const int array[32]) {
-  for (int i = 0; i < 32; ++i) {
+  for (int i = 0; i < 16; ++i) {
     gpr[i] = array[i];
+  }
+  for (int i = 16; i < 31; ++i) {
+    gpr[i] = 0;
   }
 }
 
