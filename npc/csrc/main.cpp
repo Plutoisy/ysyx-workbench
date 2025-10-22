@@ -18,7 +18,6 @@
 #define PSRAM_SIZE    0x20000000
 #define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
-#define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
 #define CONFIG_PSRAMBASE 0x80000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
@@ -1034,7 +1033,7 @@ int main(int argc, char *argv[]) {
     load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
   }
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE_SOC, flash, FLASH_SIZE, 1);
+    difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
     void* dut;
     difftest_regcpy(dut, 1);
   }
