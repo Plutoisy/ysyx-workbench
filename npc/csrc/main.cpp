@@ -33,9 +33,9 @@
 #define DIFFTESE 0
 #define BMODE 1
 #define WATCHPOINT 0
-#define WAVE 0
+#define WAVE 1
 #define NVBOARD 1
-#define PC_NO_CHANGE_DECETE 0
+#define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE 0
