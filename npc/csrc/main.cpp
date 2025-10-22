@@ -48,7 +48,7 @@ void nvboard_bind_all_pins(VysyxSoCFull* top);
 
 int trap = 0;
 static char *img_file = NULL;
-// csh handle;
+csh handle;
 int gpr[32];
 int top_pc;
 int top_dnpc;
@@ -1055,7 +1055,7 @@ int main(int argc, char *argv[]) {
   else{
     sdb_mainloop();
   }
-  // cs_close(&handle);
+  cs_close(&handle);
   sim_exit();
   return 0;
 }
