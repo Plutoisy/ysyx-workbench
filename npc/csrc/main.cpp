@@ -666,7 +666,12 @@ void cpu_exec(uint64_t n){
       if(top_IFU_valid_int){
         inst_clock_time = i - last_clock;
         last_clock = i;
-        
+        if(DIFFTESE){
+          // AssembleDecoder(handle, top_inst, top_pc);
+          printf("exec times: %ld\n",i+1);
+          difftest_regcpy(&refstate, 0);
+          difftest_exec(1);
+        }
 
         step_and_dump_wave();
         inst_count++;
@@ -761,12 +766,6 @@ void cpu_exec(uint64_t n){
               }
             }
           }
-        }
-        if(DIFFTESE){
-          // AssembleDecoder(handle, top_inst, top_pc);
-          printf("exec times: %ld\n",i+1);
-          difftest_exec(1);
-          difftest_regcpy(&refstate, 0);
         }
         if(INST_NOT_VALID_CHECK){
           if(top_inst==0x00000000 && top_IFU_valid_int){
