@@ -75,7 +75,7 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
-		-LDFLAGS "-L$(NEMU_HOME)/build -lreadline -lriscv32-nemu-interpreter -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG)	

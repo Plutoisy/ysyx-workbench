@@ -7,7 +7,7 @@
 #include <getopt.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-// #include <capstone/capstone.h>
+#include <capstone/capstone.h>
 #include <sys/time.h>
 #include <nvboard.h>
 #include <sys/stat.h>
@@ -749,7 +749,7 @@ void cpu_exec(uint64_t n){
           printf("        dut                    | ref                   \n");
           printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
           if(refstate.pc != top_pc){
-           //AssembleDecoder(handle, top_inst, top_pc);
+           AssembleDecoder(handle, top_inst, top_pc);
            if(PC_ASSERT){
              assert(0);
            }
