@@ -721,7 +721,7 @@ void cpu_exec(uint64_t n){
 
         if((WATCHPOINT || !BMODE) && n < 100){
           // AssembleDecoder(handle, top_inst, top_pc);
-          for(int j = 0; j < 32; j++){
+          for(int j = 0; j < 16; j++){
             printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
           }
         }
