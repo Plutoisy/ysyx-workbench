@@ -670,7 +670,7 @@ void cpu_exec(uint64_t n){
         inst_clock_time = i - last_clock;
         last_clock = i;
         if(DIFFTESE){
-          // AssembleDecoder(handle, top_inst, top_pc);
+          AssembleDecoder(handle, top_inst, top_pc);
           printf("exec times: %ld\n",i+1);
           difftest_regcpy(&refstate, 0);
           difftest_exec(1);
