@@ -474,32 +474,6 @@ void cpu_exec(uint64_t n){
           clk_unk_s += inst_clock_time;
         }
 
-        if((WATCHPOINT || !BMODE) && n < 100){
-          // AssembleDecoder(handle, top_inst, top_pc);
-          for(int j = 0; j < 32; j++){
-            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
-          }
-        }
-
-        if(WATCHPOINT){
-
-          if(top_pc == 0xa0000000){
-            func_time = i;
-          }
-          if(top_pc == 0xa00000a4){
-            func_time = i-func_time;
-            printf("pc time: %ld\n",func_time);
-          }
-
-          // if(top_pc == 0xa0000000){
-          //   func_time = i;
-          // }
-          // if(top_pc == 0xa00002dc){
-          //   func_time = i-func_time;
-          //   printf("pc time: %ld\n",func_time);
-          // }
-        }
-
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
           printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
@@ -774,7 +748,7 @@ int main(int argc, char *argv[]) {
   load_img_flash();
 
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
+    difftest_memcpy(CONFIG_MBASE_SOC, flash, PMEM_SIZE_SOC, 1);
     void* dut;
     difftest_regcpy(dut, 1);
   }
