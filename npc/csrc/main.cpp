@@ -758,7 +758,7 @@ void cpu_exec(uint64_t n){
            //printf("0x%08x\n",top_pc);
           }
           
-          for(int j = 0; j < 32; j++){
+          for(int j = 0; j < 16; j++){
             printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
             if(refstate.gpr[j] != gpr[j]){
               //AssembleDecoder(handle, top_inst, top_pc);
