@@ -72,6 +72,7 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		--autoflush \
+		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
