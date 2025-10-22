@@ -206,31 +206,31 @@ static long load_img_to_flash(char *img) {
   return size;
 }
 
-// bool capstone_init(csh *handle) {
-//     if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
-//         printf("Failed to initialize Capstone\n");
-//         return false;
-//     }
-//     return true;
-// }
+bool capstone_init(csh *handle) {
+    if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
+        printf("Failed to initialize Capstone\n");
+        return false;
+    }
+    return true;
+}
 
-// void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
-//     cs_insn *insn;
-//     size_t count;
+void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
+    cs_insn *insn;
+    size_t count;
 
-//     count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
-//     if (count > 0) {
-//         for (size_t i = 0; i < count; i++) {
-//             printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
-//             // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
-//         }
-//         cs_free(insn, count);
-//     } else {
-//         printf("Failed to disassemble given code!\n");
-//         printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
+    count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
+    if (count > 0) {
+        for (size_t i = 0; i < count; i++) {
+            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
+            // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+        }
+        cs_free(insn, count);
+    } else {
+        printf("Failed to disassemble given code!\n");
+        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
 
-//     }
-// }
+    }
+}
 
 
 int nvboard_update_count = 0;
@@ -1020,9 +1020,9 @@ int main(int argc, char *argv[]) {
   // 示例 RISC-V 指令
   //uint32_t instruction = 0x00000013; // NOP 指令
   
-  // if (!capstone_init(&handle)) {
-  //     return -1;
-  // }
+  if (!capstone_init(&handle)) {
+      return -1;
+  }
 
   // AssembleDecoder(handle, instruction);
   
