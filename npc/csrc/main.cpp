@@ -175,10 +175,7 @@ void system_rst(){
   dut.reset = 0;
 }
 
-uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
-uint8_t* guest_to_host_soc(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE_SOC; }
 uint8_t* guest_to_host_flash(uint32_t paddr) { return flash + paddr - CONFIG_FLASHBASE; }
-uint8_t* guest_to_host_psram(uint32_t paddr) { return psram + paddr - CONFIG_PSRAMBASE; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
@@ -196,11 +193,6 @@ static inline void host_write(void *addr, int len, uint32_t data) {
     case 4: *(uint32_t *)addr = data; return;
     default: assert(0); return;
   }
-}
-
-static uint32_t pmem_read(uint32_t addr, int len) {
-  uint32_t ret = host_read(guest_to_host(addr), len);
-  return ret;
 }
 
 static int parse_args(int argc, char *argv[]) {
