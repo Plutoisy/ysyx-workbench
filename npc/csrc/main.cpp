@@ -338,33 +338,6 @@ extern "C" void reg_out(const int array[32]) {
   }
 }
 
-extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
-  if(M_W_TRACE){
-    printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
-  }
-  if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    if (w_mem_addr == 0x000003f8) { 
-      //putchar((char)(w_mem_data & 0xFF)); 
-      if(M_W_ASSERT){
-        assert(0);
-      }
-    }
-    else{
-      if(M_W_ASSERT){
-        assert(0);
-      }
-    }
-  }
-  else{
-    //printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
-    host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
-  }
-}
-extern "C" void sram_write_print (int w_mem_addr, int w_mem_data, char w_mem_len){
-  if(M_W_TRACE){
-    printf("sramW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
-  }
-}
 static uint64_t boot_time = 0;
 
 static uint64_t get_time_internal() {
