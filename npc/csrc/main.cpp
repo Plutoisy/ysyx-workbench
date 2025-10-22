@@ -277,55 +277,6 @@ extern "C" void Performance_Counters(int Performancetype){
   }
 }
 
-// uint64_t jump_type = 0;
-// uint64_t csr_type = 0;
-// uint64_t read_and_store_type = 0;
-// uint64_t cal_type = 0;
-// uint64_t unk = 0;
-// extern "C" void inst_type_Counters(int insttype){
-//   if(insttype == 1){
-//     jump_type++;
-//   }
-//   if(insttype == 2){
-//     csr_type++;
-//   }
-//   if(insttype == 3){
-//     read_and_store_type++;
-//   }
-//   if(insttype == 4){
-//     cal_type++;
-//   }
-//   if(insttype == 5){
-//     unk++;
-//   }
-// }
-
-extern "C" void psram_read(uint32_t addr, uint32_t *data) {
-	if(addr >= 0 && addr <= PSRAM_SIZE){
-		*data = host_read(psram+addr,4);
-    if(M_R_TRACE){
-      printf("psramR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, *data);
-    }
-	}else{
-    if(M_R_ASSERT){
-      assert(0);
-    }
-	}
-}
-extern "C" void psram_write(uint32_t addr, uint32_t data,uint32_t mask) {
-	if(addr >= 0 && addr <= PSRAM_SIZE){
-		uint32_t wdata = data >> ((8-mask)*4);
-		host_write(psram+addr,mask/2,wdata);
-    if(M_R_TRACE){
-      printf("psramW->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, data);
-    }
-	}else{
-		if(M_W_ASSERT){
-      assert(0);
-    }
-	}
-}
-
 extern "C" void flash_read(int32_t addr, int32_t *data) { 
   addr += CONFIG_FLASHBASE;
   if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
@@ -920,7 +871,7 @@ int main(int argc, char *argv[]) {
   else{
     sdb_mainloop();
   }
-  
+
   sim_exit();
   return 0;
 }
