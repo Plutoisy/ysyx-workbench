@@ -1034,7 +1034,7 @@ int main(int argc, char *argv[]) {
     load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
   }
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
+    difftest_memcpy(CONFIG_MBASE_SOC, flash, FLASH_SIZE, 1);
     void* dut;
     difftest_regcpy(dut, 1);
   }
