@@ -286,21 +286,6 @@ extern "C" void flash_read(int32_t addr, int32_t *data) {
   }
 }
 
-extern "C" void mrom_read(int32_t addr, int32_t *data) { 
-  if(addr - CONFIG_MBASE_SOC > 0xfff){
-    if(M_R_ASSERT){
-      assert(0);
-    }
-    return;
-  }
-  else{
-    *data = host_read(guest_to_host_soc(addr & ~0x3), 4);
-    if(M_R_TRACE){
-      printf("mromR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
-    }
-    return;
-  }
-}
 
 extern "C" void ebreak(){
   trap = 1;
