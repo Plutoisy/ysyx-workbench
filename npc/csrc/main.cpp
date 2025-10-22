@@ -14,7 +14,7 @@
 #include <sys/types.h>
 
 #define PMEM_SIZE    0x8000000
-#define FLASH_SIZE    0x10000000
+#define FLASH_SIZE    0x1000000
 #define PSRAM_SIZE    0x20000000
 #define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
