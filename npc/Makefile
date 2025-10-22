@@ -25,7 +25,7 @@ VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
 # LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
-# LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
+LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
 
 # rules for NVBoard
 include $(NVBOARD_HOME)/scripts/nvboard.mk
