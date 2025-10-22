@@ -244,10 +244,10 @@ void step_and_dump_wave(){
   }
   dut.eval();
   if(WAVE){
-    //if(((top_pc & 0xFF000000) >> 24) == 0xA0){
+    if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
       contextp->timeInc(1);
       tfp->dump(contextp->time());
-    //} 
+    } 
   }
 }
 
