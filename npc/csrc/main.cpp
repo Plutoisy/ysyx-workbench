@@ -744,8 +744,8 @@ void cpu_exec(uint64_t n){
 
         if(DIFFTESE){
           printf("        dut                    | ref                   \n");
-          printf("pc      0x%08x             | 0x%08x\n", top_npc, refstate.pc);
-          if(refstate.pc != top_npc){
+          printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+          if(refstate.pc != top_pc){
            //AssembleDecoder(handle, top_inst, top_pc);
            if(PC_ASSERT){
              assert(0);
