@@ -25,7 +25,7 @@ VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
 # LOADLIBES += -lreadline
 # LDFLAGS += -L$(NEMU_HOME)/build
-LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
+# LDFLAGS += $(NEMU_HOME)/build/lriscv32-nemu-interpreter
 
 # rules for NVBoard
 include $(NVBOARD_HOME)/scripts/nvboard.mk
@@ -74,7 +74,7 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--autoflush \
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
-		-LDFLAGS "-lreadline"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -lreadline -lriscv32-nemu-interpreter"\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
