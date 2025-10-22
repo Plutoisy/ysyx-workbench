@@ -22,6 +22,8 @@
 #define CONFIG_FLASHBASE 0x30000000
 #define CONFIG_PSRAMBASE 0x80000000
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
+#define LOAD_IMG_TO_FLASH 0
+#define START_FROM_MROM 0
 #define M_R_TRACE 0
 #define M_W_TRACE 0
 #define M_R_ASSERT 1
@@ -30,6 +32,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
+#define WATCHPOINT 0
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -52,6 +55,22 @@ int top_dnpc;
 int top_inst;
 int top_IFU_valid_int;
 
+uint8_t pmem[PMEM_SIZE] = {
+  0x13,0x04,0x00,0x00,
+  0x17,0x91,0x00,0x00,
+  0x13,0x01,0xc1,0xff,
+  0xef,0x00,0xc0,0x00,
+  0x13,0x05,0x00,0x00,
+  0x67,0x80,0x00,0x00,
+  0x13,0x01,0x41,0xff,
+  0x17,0x05,0x00,0x00,
+  0x13,0x05,0xc5,0x01,
+  0x23,0x24,0x11,0x00,
+  0xef,0xf0,0x9f,0xfe,
+  0x13,0x05,0x05,0x00,
+  0x73,0x00,0x10,0x00,
+  0x6f,0x00,0x00,0x00,  
+};
 
 uint8_t flash[FLASH_SIZE] = {
   0x13,0x04,0x00,0x00,
@@ -70,6 +89,22 @@ uint8_t flash[FLASH_SIZE] = {
   0x6f,0x00,0x00,0x00,  
 };
 
+uint8_t psram[PSRAM_SIZE] = {
+  0x13,0x04,0x00,0x00,
+  0x17,0x91,0x00,0x00,
+  0x13,0x01,0xc1,0xff,
+  0xef,0x00,0xc0,0x00,
+  0x13,0x05,0x00,0x00,
+  0x67,0x80,0x00,0x00,
+  0x13,0x01,0x41,0xff,
+  0x17,0x05,0x00,0x00,
+  0x13,0x05,0xc5,0x01,
+  0x23,0x24,0x11,0x00,
+  0xef,0xf0,0x9f,0xfe,
+  0x13,0x05,0x05,0x00,
+  0x73,0x00,0x10,0x00,
+  0x6f,0x00,0x00,0x00,  
+};
 
 typedef struct {
   uint32_t gpr[32];
@@ -99,6 +134,30 @@ static char* rl_gets() {
   return line_read;
 }
 
+static long load_img_mrom() {
+  if (img_file == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img_file, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("Start from mrom The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(pmem, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
 static long load_img_flash() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.\n");
@@ -122,6 +181,57 @@ static long load_img_flash() {
   fclose(fp);
   return size;
 }
+
+static long load_img_to_flash(char *img) {
+  if (img == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *fp = fopen(img, "rb");
+  if(!fp){
+    assert(0);
+  }
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  printf("The image is %s, size = %ld\n", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  int ret = fread(flash, size, 1, fp);
+  assert(ret == 1);
+
+  fclose(fp);
+  return size;
+}
+
+// bool capstone_init(csh *handle) {
+//     if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
+//         printf("Failed to initialize Capstone\n");
+//         return false;
+//     }
+//     return true;
+// }
+
+// void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
+//     cs_insn *insn;
+//     size_t count;
+
+//     count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
+//     if (count > 0) {
+//         for (size_t i = 0; i < count; i++) {
+//             printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
+//             // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+//         }
+//         cs_free(insn, count);
+//     } else {
+//         printf("Failed to disassemble given code!\n");
+//         printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
+
+//     }
+// }
+
 
 int nvboard_update_count = 0;
 void step_and_dump_wave(){
@@ -175,7 +285,10 @@ void system_rst(){
   dut.reset = 0;
 }
 
+uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
+uint8_t* guest_to_host_soc(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE_SOC; }
 uint8_t* guest_to_host_flash(uint32_t paddr) { return flash + paddr - CONFIG_FLASHBASE; }
+uint8_t* guest_to_host_psram(uint32_t paddr) { return psram + paddr - CONFIG_PSRAMBASE; }
 
 static inline uint32_t host_read(void *addr, int len) {
   switch (len) {
@@ -193,6 +306,11 @@ static inline void host_write(void *addr, int len, uint32_t data) {
     case 4: *(uint32_t *)addr = data; return;
     default: assert(0); return;
   }
+}
+
+static uint32_t pmem_read(uint32_t addr, int len) {
+  uint32_t ret = host_read(guest_to_host(addr), len);
+  return ret;
 }
 
 static int parse_args(int argc, char *argv[]) {
@@ -269,6 +387,55 @@ extern "C" void Performance_Counters(int Performancetype){
   }
 }
 
+// uint64_t jump_type = 0;
+// uint64_t csr_type = 0;
+// uint64_t read_and_store_type = 0;
+// uint64_t cal_type = 0;
+// uint64_t unk = 0;
+// extern "C" void inst_type_Counters(int insttype){
+//   if(insttype == 1){
+//     jump_type++;
+//   }
+//   if(insttype == 2){
+//     csr_type++;
+//   }
+//   if(insttype == 3){
+//     read_and_store_type++;
+//   }
+//   if(insttype == 4){
+//     cal_type++;
+//   }
+//   if(insttype == 5){
+//     unk++;
+//   }
+// }
+
+extern "C" void psram_read(uint32_t addr, uint32_t *data) {
+	if(addr >= 0 && addr <= PSRAM_SIZE){
+		*data = host_read(psram+addr,4);
+    if(M_R_TRACE){
+      printf("psramR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, *data);
+    }
+	}else{
+    if(M_R_ASSERT){
+      assert(0);
+    }
+	}
+}
+extern "C" void psram_write(uint32_t addr, uint32_t data,uint32_t mask) {
+	if(addr >= 0 && addr <= PSRAM_SIZE){
+		uint32_t wdata = data >> ((8-mask)*4);
+		host_write(psram+addr,mask/2,wdata);
+    if(M_R_TRACE){
+      printf("psramW->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr, 4, data);
+    }
+	}else{
+		if(M_W_ASSERT){
+      assert(0);
+    }
+	}
+}
+
 extern "C" void flash_read(int32_t addr, int32_t *data) { 
   addr += CONFIG_FLASHBASE;
   if(addr - CONFIG_FLASHBASE > FLASH_SIZE){
@@ -286,6 +453,21 @@ extern "C" void flash_read(int32_t addr, int32_t *data) {
   }
 }
 
+extern "C" void mrom_read(int32_t addr, int32_t *data) { 
+  if(addr - CONFIG_MBASE_SOC > 0xfff){
+    if(M_R_ASSERT){
+      assert(0);
+    }
+    return;
+  }
+  else{
+    *data = host_read(guest_to_host_soc(addr & ~0x3), 4);
+    if(M_R_TRACE){
+      printf("mromR->addr: 0x%08x, len: %d, mem: 0x%08x\n", addr & ~0x3, 4, *data);
+    }
+    return;
+  }
+}
 
 extern "C" void ebreak(){
   trap = 1;
@@ -315,6 +497,33 @@ extern "C" void reg_out(const int array[32]) {
   }
 }
 
+extern "C" void rtl_pmem_write (int w_mem_addr, int w_mem_data, char w_mem_len){
+  if(M_W_TRACE){
+    printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+  }
+  if(w_mem_addr - CONFIG_MBASE > PMEM_SIZE){
+    if (w_mem_addr == 0x000003f8) { 
+      //putchar((char)(w_mem_data & 0xFF)); 
+      if(M_W_ASSERT){
+        assert(0);
+      }
+    }
+    else{
+      if(M_W_ASSERT){
+        assert(0);
+      }
+    }
+  }
+  else{
+    //printf("npcW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+    host_write(guest_to_host(w_mem_addr), w_mem_len, w_mem_data);
+  }
+}
+extern "C" void sram_write_print (int w_mem_addr, int w_mem_data, char w_mem_len){
+  if(M_W_TRACE){
+    printf("sramW->addr: 0x%x, len: %d, mem: 0x%08x\n", w_mem_addr, w_mem_len, w_mem_data);
+  }
+}
 static uint64_t boot_time = 0;
 
 static uint64_t get_time_internal() {
@@ -332,6 +541,39 @@ uint64_t get_time() {
 
 static uint32_t rtc_port_base[2];
 
+extern "C" int rtl_pmem_read(int r_mem_addr){
+  if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
+    if(M_R_TRACE){
+      printf("npcR->addr: 0x%x, len: %d\n", r_mem_addr, 4);
+    }
+    // if (r_mem_addr == 0xa0000048 + 4) { 
+    //   uint64_t us = get_time();
+    //   rtc_port_base[0] = (uint32_t)us;
+    //   rtc_port_base[1] = us >> 32;
+    //   return rtc_port_base[1];
+    // }
+    // else if (r_mem_addr == 0xa0000048) {
+    //   return rtc_port_base[0];
+    // }
+    // else{
+    //   if(M_R_ASSERT){
+    //     assert(0);
+    //   }
+    //   return 0;
+    // }
+    if(M_R_ASSERT){
+      assert(0);
+    }
+    return 0;
+  }
+  else{
+    
+    uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
+    //printf("npcR->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
+    return ret;
+  }
+  
+}
 
 int parse_instruction_type(uint32_t top_inst) {
   // 提取opcode（低7位）
@@ -472,6 +714,32 @@ void cpu_exec(uint64_t n){
         if(parse_instruction_type(top_inst) == 5){
           unk_s++;
           clk_unk_s += inst_clock_time;
+        }
+
+        if((WATCHPOINT || !BMODE) && n < 100){
+          // AssembleDecoder(handle, top_inst, top_pc);
+          for(int j = 0; j < 32; j++){
+            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
+          }
+        }
+
+        if(WATCHPOINT){
+
+          if(top_pc == 0xa0000000){
+            func_time = i;
+          }
+          if(top_pc == 0xa00000a4){
+            func_time = i-func_time;
+            printf("pc time: %ld\n",func_time);
+          }
+
+          // if(top_pc == 0xa0000000){
+          //   func_time = i;
+          // }
+          // if(top_pc == 0xa00002dc){
+          //   func_time = i-func_time;
+          //   printf("pc time: %ld\n",func_time);
+          // }
         }
 
         if(DIFFTESE){
@@ -744,11 +1012,29 @@ int main(int argc, char *argv[]) {
   Verilated::commandArgs(argc, argv);
   /* Parse arguments. */
   parse_args(argc, argv);
-  
-  load_img_flash();
+  //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
 
+  // 示例 RISC-V 指令
+  //uint32_t instruction = 0x00000013; // NOP 指令
+  
+  // if (!capstone_init(&handle)) {
+  //     return -1;
+  // }
+
+  // AssembleDecoder(handle, instruction);
+  
+  if(START_FROM_MROM){
+    load_img_mrom();
+  }
+  else{
+    load_img_flash();
+  }
+  
+  if(LOAD_IMG_TO_FLASH){
+    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+  }
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE_SOC, flash, PMEM_SIZE_SOC, 1);
+    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
     void* dut;
     difftest_regcpy(dut, 1);
   }
@@ -756,13 +1042,17 @@ int main(int argc, char *argv[]) {
   system_rst();
   if(BMODE){
     cmd_si("-1");
-    cmd_q(NULL);
+    if(WATCHPOINT){
+      sdb_mainloop();
+    }
+    else{
+      cmd_q(NULL);
+    }
   }
-
   else{
     sdb_mainloop();
   }
-
+  // cs_close(&handle);
   sim_exit();
   return 0;
 }
