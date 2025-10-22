@@ -355,39 +355,6 @@ uint64_t get_time() {
 
 static uint32_t rtc_port_base[2];
 
-extern "C" int rtl_pmem_read(int r_mem_addr){
-  if(r_mem_addr - CONFIG_MBASE > PMEM_SIZE){
-    if(M_R_TRACE){
-      printf("npcR->addr: 0x%x, len: %d\n", r_mem_addr, 4);
-    }
-    // if (r_mem_addr == 0xa0000048 + 4) { 
-    //   uint64_t us = get_time();
-    //   rtc_port_base[0] = (uint32_t)us;
-    //   rtc_port_base[1] = us >> 32;
-    //   return rtc_port_base[1];
-    // }
-    // else if (r_mem_addr == 0xa0000048) {
-    //   return rtc_port_base[0];
-    // }
-    // else{
-    //   if(M_R_ASSERT){
-    //     assert(0);
-    //   }
-    //   return 0;
-    // }
-    if(M_R_ASSERT){
-      assert(0);
-    }
-    return 0;
-  }
-  else{
-    
-    uint32_t ret = host_read(guest_to_host(r_mem_addr), 4);
-    //printf("npcR->addr: 0x%x, len: %d, mem: 0x%08x\n", r_mem_addr, 4, ret);
-    return ret;
-  }
-  
-}
 
 int parse_instruction_type(uint32_t top_inst) {
   // 提取opcode（低7位）
