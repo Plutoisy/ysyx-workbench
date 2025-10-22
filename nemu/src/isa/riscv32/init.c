@@ -16,6 +16,8 @@
 #include <isa.h>
 #include <memory/paddr.h>
 
+#define SOC_DIFF 1
+
 // this is not consistent with uint8_t
 // but it is ok since we do not access the array directly
 static const uint32_t img [] = {
@@ -28,8 +30,12 @@ static const uint32_t img [] = {
 
 static void restart() {
   /* Set the initial program counter. */
-  cpu.pc = RESET_VECTOR;
-
+  if(SOC_DIFF){
+    cpu.pc = SOC_RESET_VECTOR;
+  }
+  else{
+    cpu.pc = RESET_VECTOR;
+  }
   /* The zero register is always 0. */
   cpu.gpr[0] = 0;
 }
