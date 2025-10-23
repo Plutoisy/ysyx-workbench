@@ -629,6 +629,7 @@ extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool directi
 extern "C" void difftest_regcpy(void *dut, bool direction, uint32_t pc); 
 
 CPU_state refstate;
+CPU_state dutstate;
 int old_pc = 0;
 int pc_count = 0;
 uint64_t inst_count = 0;
@@ -649,6 +650,7 @@ uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
 uint32_t access_addr = 0;
+int detect_read_device = 0;
 
 uint32_t decode_load_instruction(uint32_t instruction) {
   // 提取opcode（最低7位）
@@ -781,16 +783,26 @@ void cpu_exec(uint64_t n){
         }
 
         if(DIFFTESE){
-          difftest_regcpy(&refstate, 0, 0x30000000);
-          difftest_exec(1);
+          if(detect_read_device){
+            dutstate.pc = top_pc;
+            dutstate.gpr = gpr;
+            difftest_regcpy(&dutstate, 1, top_inst);
+          }
+          else{
+            difftest_regcpy(&refstate, 0, 0x30000000);
+            difftest_exec(1);
+          }
+          
 
           access_addr = decode_load_instruction(top_inst);
           if((access_addr != 0) && 
               !(access_addr - CONFIG_FLASHBASE < FLASH_SIZE ||
-                access_addr - CONFIG_SRAMBASE  < SRAM_SIZE ||
+                access_addr - CONFIG_SRAMBASE  < SRAM_SIZE  ||
                 access_addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
                 printf("Access address: 0x%08x\n", access_addr);
+                detect_read_device = 1;
           }
+          
 
           if(refstate.pc != top_pc){
            if(PC_ASSERT){
@@ -1087,7 +1099,7 @@ int main(int argc, char *argv[]) {
   }
   if(DIFFTESE){
     difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
-    void* dut;
+    void* dut = NULL;
     difftest_regcpy(dut, 1, 0x30000000);
   }
   
