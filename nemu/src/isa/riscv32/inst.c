@@ -79,7 +79,7 @@ uint32_t csr_read(uint32_t csr_addr){
     return cpu.csr.marchid;
   }
   else{
-    panic("unsupported csr_addr = %x", csr_addr_12bit);
+    panic("unsupported csr_addr = %x", 0);
   }
 }
 
