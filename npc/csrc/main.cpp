@@ -800,7 +800,7 @@ void cpu_exec(uint64_t n){
               !(access_addr - CONFIG_FLASHBASE < FLASH_SIZE ||
                 access_addr - CONFIG_SRAMBASE  < SRAM_SIZE  ||
                 access_addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
-                printf("Access address: 0x%08x\n", access_addr);
+                //printf("Access address: 0x%08x\n", access_addr);
                 detect_read_device = 1;
           }
           
@@ -851,7 +851,7 @@ void cpu_exec(uint64_t n){
           if(pc_count > 15000){
             printf("\33[1;31mProgram pc has not change for 1.5w clk. Stuck at 0x%08x\033[0m\n",top_pc);
             // AssembleDecoder(handle, top_inst, top_pc);
-            for(int j = 0; j < 32; j++){
+            for(int j = 0; j < 16; j++){
               printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
             }
             printf("exec times: %ld\n",i+1);
