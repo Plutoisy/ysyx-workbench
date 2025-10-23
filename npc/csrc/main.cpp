@@ -648,7 +648,9 @@ uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
-void decode_load_instruction(uint32_t instruction) {
+uint32_t access_addr = 0;
+
+uint32_t decode_load_instruction(uint32_t instruction) {
   // 提取opcode（最低7位）
   uint8_t opcode = instruction & 0x7F;
   
@@ -675,11 +677,7 @@ void decode_load_instruction(uint32_t instruction) {
       const char* load_types[] = {
           "LB", "LH", "LW", "LBU", "LHU"
       };
-      if(!(addr - CONFIG_FLASHBASE < FLASH_SIZE ||
-           addr - CONFIG_SRAMBASE  < SRAM_SIZE ||
-           addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
-          printf("Access address: 0x%08x\n", addr);
-      }
+      return addr;
   }
 }
 void cpu_exec(uint64_t n){
@@ -782,7 +780,14 @@ void cpu_exec(uint64_t n){
         if(DIFFTESE){
           difftest_regcpy(&refstate, 0, 0x30000000);
           difftest_exec(1);
-          decode_load_instruction(top_inst);
+          
+          access_addr = decode_load_instruction(top_inst);
+          if(!(access_addr - CONFIG_FLASHBASE < FLASH_SIZE ||
+               access_addr - CONFIG_SRAMBASE  < SRAM_SIZE ||
+               access_addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
+                printf("Access address: 0x%08x\n", addr);
+          }
+
           if(refstate.pc != top_pc){
            if(PC_ASSERT){
             AssembleDecoder(handle, top_inst, top_pc);
