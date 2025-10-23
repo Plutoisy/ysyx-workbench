@@ -103,8 +103,8 @@ word_t paddr_read(paddr_t addr, int len) {
     if (likely(in_flash(addr))) return flash_read(addr, len);
     if (likely(in_sram(addr)))  return sram_read(addr, len);
     if (likely(in_sdram(addr))) return sdram_read(addr, len);
-    panic("read address = " FMT_PADDR " is out of bound of flash|sram|sdram at pc = " FMT_WORD,
-      addr, cpu.pc);
+    //panic("read address = " FMT_PADDR " is out of bound of flash|sram|sdram at pc = " FMT_WORD,
+    //  addr, cpu.pc);
     return 0;
   }
   else{
