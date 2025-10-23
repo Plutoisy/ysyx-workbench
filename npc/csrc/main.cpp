@@ -785,7 +785,7 @@ void cpu_exec(uint64_t n){
         if(DIFFTESE){
           if(detect_read_device){
             dutstate.pc = top_pc;
-            dutstate.gpr = gpr;
+            memcpy(dutstate.gpr, gpr, sizeof(gpr));
             difftest_regcpy(&dutstate, 1, top_inst);
           }
           else{
