@@ -54,7 +54,7 @@ void nvboard_bind_all_pins(VysyxSoCFull* top);
 int trap = 0;
 static char *img_file = NULL;
 csh handle;
-int gpr[32];
+uint32_t gpr[32];
 int top_pc;
 int top_dnpc;
 int top_inst;
