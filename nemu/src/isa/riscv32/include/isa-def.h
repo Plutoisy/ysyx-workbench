@@ -23,6 +23,8 @@ typedef struct {
   uint32_t mstatus;
   uint32_t mcause;
   uint32_t mtvec;
+  uint32_t mvendorid;
+  uint32_t marchid;
 } CSR;
 
 typedef struct {

@@ -69,6 +69,14 @@ uint32_t csr_read(uint32_t csr_addr){
   else if(csr_addr == 0x341){
     return cpu.csr.mepc;
   }
+  else if(csr_addr == 0xf11){
+    cpu.csr.mvendorid = 0x79737978;
+    return cpu.csr.mvendorid;
+  }
+  else if(csr_addr == 0xf12){
+    cpu.csr.marchid = 0x01700ACB;
+    return cpu.csr.marchid;
+  }
   else{
     panic("unsupported csr_addr = %x", csr_addr);
   }
