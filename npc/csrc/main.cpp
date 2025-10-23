@@ -38,12 +38,13 @@
 #define DIFFTESE 1
 #define BMODE 1
 #define WATCHPOINT 0
-#define WAVE 0
+#define WAVE 1
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE 0
+#define PRINT_REG 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -782,6 +783,8 @@ void cpu_exec(uint64_t n){
           // }
         }
 
+        
+
         if(DIFFTESE){
           if(detect_read_device){
             dutstate.pc = top_pc;
@@ -805,8 +808,16 @@ void cpu_exec(uint64_t n){
                 //printf("Access address: 0x%08x\n", access_addr);
                 detect_read_device = 1;
           }
-          
-
+          if(PRINT_REG){
+            if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
+              AssembleDecoder(handle, top_inst, top_pc);
+              printf("        dut                    | ref                   \n");
+              printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+              for(int j = 0; j < 16; j++){
+                printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+              }
+            } 
+          }
           if(refstate.pc != top_pc){
            if(PC_ASSERT){
             AssembleDecoder(handle, top_inst, top_pc);
