@@ -621,7 +621,7 @@ int parse_instruction_type(uint32_t top_inst) {
 
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
-extern "C" void difftest_regcpy(void *dut, bool direction, vaddr_t pc); 
+extern "C" void difftest_regcpy(void *dut, bool direction, uint32_t pc); 
 
 CPU_state refstate;
 int old_pc = 0;

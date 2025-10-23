@@ -29,7 +29,7 @@ __EXPORT void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction)
   }
 }
 
-__EXPORT void difftest_regcpy(void *dut, bool direction, vaddr_t pc) {
+__EXPORT void difftest_regcpy(void *dut, bool direction, uint32_t pc) {
   if (direction == DIFFTEST_TO_REF) {
     cpu.pc = pc;
     for(int i = 0; i < 32; i++){
