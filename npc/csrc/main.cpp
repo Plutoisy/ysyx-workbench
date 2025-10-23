@@ -679,6 +679,9 @@ uint32_t decode_load_instruction(uint32_t instruction) {
       };
       return addr;
   }
+  else{
+    return 0;
+  }
 }
 void cpu_exec(uint64_t n){
   FILE *itracefile;
