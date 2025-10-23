@@ -780,12 +780,12 @@ void cpu_exec(uint64_t n){
         if(DIFFTESE){
           difftest_regcpy(&refstate, 0, 0x30000000);
           difftest_exec(1);
-          
+
           access_addr = decode_load_instruction(top_inst);
           if(!(access_addr - CONFIG_FLASHBASE < FLASH_SIZE ||
                access_addr - CONFIG_SRAMBASE  < SRAM_SIZE ||
                access_addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
-                printf("Access address: 0x%08x\n", addr);
+                printf("Access address: 0x%08x\n", access_addr);
           }
 
           if(refstate.pc != top_pc){
