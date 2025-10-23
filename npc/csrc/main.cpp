@@ -643,6 +643,41 @@ uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
+void decode_load_instruction(uint32_t instruction) {
+  // 提取opcode（最低7位）
+  uint8_t opcode = instruction & 0x7F;
+  
+  // 检查是否为load指令（opcode = 0000011）
+  if (opcode == 0x03) {
+      // 提取寄存器索引
+      uint8_t rs1 = (instruction >> 15) & 0x1F;  // 基址寄存器
+      uint8_t rd  = (instruction >> 7)  & 0x1F;  // 目标寄存器
+      
+      // 提取12位立即数（符号扩展）
+      int32_t imm = (int32_t)(instruction & 0xFFF00000) >> 20;
+      // 如果立即数的最高位是1，进行符号扩展
+      if (imm & 0x800) {
+          imm |= 0xFFFFF000;
+      }
+      
+      // 计算访问地址
+      uint32_t addr = gpr[rs1] + (uint32_t)imm;
+      
+      // 提取funct3用于确定load类型
+      uint8_t funct3 = (instruction >> 12) & 0x7;
+      
+      // 打印结果
+      const char* load_types[] = {
+          "LB", "LH", "LW", "LBU", "LHU"
+      };
+      
+      printf("Load Instruction: %s\n", load_types[funct3]);
+      printf("Base register: x%d (value: 0x%08x)\n", rs1, gpr[rs1]);
+      printf("Immediate: %d (0x%08x)\n", imm, (uint32_t)imm);
+      printf("Target register: x%d\n", rd);
+      printf("Access address: 0x%08x\n", addr);
+  }
+}
 void cpu_exec(uint64_t n){
   FILE *itracefile;
   // FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
@@ -741,11 +776,9 @@ void cpu_exec(uint64_t n){
         }
 
         if(DIFFTESE){
-          //AssembleDecoder(handle, top_inst, top_pc);
-          //printf("exec times: %ld\n",i+1);
           difftest_regcpy(&refstate, 0, 0x30000000);
           difftest_exec(1);
-
+          decode_load_instruction(top_inst);
           if(refstate.pc != top_pc){
            if(PC_ASSERT){
             AssembleDecoder(handle, top_inst, top_pc);
