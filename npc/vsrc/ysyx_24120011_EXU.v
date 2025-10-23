@@ -55,7 +55,7 @@ always @(posedge clk ) begin
     branch_count(all_counter_branch,miss_counter_branch);
 end
 always@(negedge clk) begin
-    get_pc_inst(pc,npc,0,EXU_valid_int);
+    get_pc_inst(pc,npc,1,EXU_valid_int);
 end
 always @(posedge clk) begin
     if (rst) begin
