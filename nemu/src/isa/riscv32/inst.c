@@ -84,17 +84,24 @@ uint32_t csr_read(uint32_t csr_addr){
 }
 
 void csr_write(uint32_t csr_addr, uint32_t csr_wdata){
-  if(csr_addr == 0x305){
+  uint32_t csr_addr_12bit = csr_addr & 0x00000FFF;
+  if(csr_addr_12bit == 0x305){
     cpu.csr.mtvec = csr_wdata;
   }
-  else if(csr_addr == 0x342){
+  else if(csr_addr_12bit == 0x342){
     cpu.csr.mcause = csr_wdata;
   }
-  else if(csr_addr == 0x300){
+  else if(csr_addr_12bit == 0x300){
     cpu.csr.mstatus = csr_wdata;
   }
-  else if(csr_addr == 0x341){
+  else if(csr_addr_12bit == 0x341){
     cpu.csr.mepc = csr_wdata;
+  }
+  else if(csr_addr_12bit == 0xf11){
+    cpu.csr.mvendorid = csr_wdata;
+  }
+  else if(csr_addr_12bit == 0xf12){
+    cpu.csr.marchid = csr_wdata;
   }
   else{
     panic("unsupported write csr_addr = %x", csr_addr);
