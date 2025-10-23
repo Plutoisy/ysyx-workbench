@@ -57,28 +57,29 @@ static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_
   }
 }
 uint32_t csr_read(uint32_t csr_addr){
-  if(csr_addr == 0x305){
+  uint32_t csr_addr_12bit = csr_addr & 0x00000FFF;
+  if(csr_addr_12bit == 0x305){
     return cpu.csr.mtvec;
   }
-  else if(csr_addr == 0x342){
+  else if(csr_addr_12bit == 0x342){
     return cpu.csr.mcause;
   }
-  else if(csr_addr == 0x300){
+  else if(csr_addr_12bit == 0x300){
     return cpu.csr.mstatus;
   }
-  else if(csr_addr == 0x341){
+  else if(csr_addr_12bit == 0x341){
     return cpu.csr.mepc;
   }
-  else if(csr_addr == 0xf11){
+  else if(csr_addr_12bit == 0xf11){
     cpu.csr.mvendorid = 0x79737978;
     return cpu.csr.mvendorid;
   }
-  else if(csr_addr == 0xf12){
+  else if(csr_addr_12bit == 0xf12){
     cpu.csr.marchid = 0x01700ACB;
     return cpu.csr.marchid;
   }
   else{
-    panic("unsupported csr_addr = %x", csr_addr);
+    panic("unsupported csr_addr = %x", csr_addr_12bit);
   }
 }
 
@@ -148,12 +149,12 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 101 ????? 00000 11", lhu    , I, R(rd) = Mr(src1 + imm, 2));
   INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw  , I, {
     if(rd != 0){
-      R(rd) = csr_read(imm & 0x00000FFF);
+      R(rd) = csr_read(imm);
     }
     csr_write(imm,src1);
   });
   INSTPAT("??????? ????? ????? 010 ????? 11100 11", csrrs  , I, {
-    uint32_t initial_csr_value = csr_read(imm & 0x00000FFF);
+    uint32_t initial_csr_value = csr_read(imm);
     uint32_t mask = src1;
     csr_write(imm, initial_csr_value | mask);
     R(rd) = initial_csr_value;
