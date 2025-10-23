@@ -669,12 +669,7 @@ void cpu_exec(uint64_t n){
       if(top_IFU_valid_int){
         inst_clock_time = i - last_clock;
         last_clock = i;
-        if(DIFFTESE){
-          AssembleDecoder(handle, top_inst, top_pc);
-          printf("exec times: %ld\n",i+1);
-          difftest_regcpy(&refstate, 0, 0x30000000);
-          difftest_exec(1);
-        }
+        
 
         step_and_dump_wave();
         inst_count++;
@@ -746,10 +741,14 @@ void cpu_exec(uint64_t n){
         }
 
         if(DIFFTESE){
-          
+          //AssembleDecoder(handle, top_inst, top_pc);
+          //printf("exec times: %ld\n",i+1);
+          difftest_regcpy(&refstate, 0, 0x30000000);
+          difftest_exec(1);
+
           if(refstate.pc != top_pc){
-           AssembleDecoder(handle, top_inst, top_pc);
            if(PC_ASSERT){
+            AssembleDecoder(handle, top_inst, top_pc);
             printf("        dut                    | ref                   \n");
             printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
             for(int j = 0; j < 16; j++){
@@ -762,6 +761,7 @@ void cpu_exec(uint64_t n){
           for(int j = 0; j < 16; j++){
             if(refstate.gpr[j] != gpr[j]){
               if(REG_ASSERT){
+                AssembleDecoder(handle, top_inst, top_pc);
                 printf("        dut                    | ref                   \n");
                 printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
                 for(int j = 0; j < 16; j++){
@@ -772,6 +772,7 @@ void cpu_exec(uint64_t n){
             }
           }
         }
+
         if(INST_NOT_VALID_CHECK){
           if(top_inst==0x00000000 && top_IFU_valid_int){
             printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
