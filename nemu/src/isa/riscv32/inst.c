@@ -79,7 +79,7 @@ uint32_t csr_read(uint32_t csr_addr){
     return cpu.csr.marchid;
   }
   else{
-    panic("unsupported csr_addr = %x", 0);
+    panic("unsupported read csr_addr = %x", csr_addr_12bit);
   }
 }
 
@@ -97,7 +97,7 @@ void csr_write(uint32_t csr_addr, uint32_t csr_wdata){
     cpu.csr.mepc = csr_wdata;
   }
   else{
-    panic("unsupported csr_addr = %x", csr_addr);
+    panic("unsupported write csr_addr = %x", csr_addr);
   }
 }
 
