@@ -621,7 +621,7 @@ int parse_instruction_type(uint32_t top_inst) {
 
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
-extern "C" void difftest_regcpy(void *dut, bool direction);
+extern "C" void difftest_regcpy(void *dut, bool direction, vaddr_t pc); 
 
 CPU_state refstate;
 int old_pc = 0;
@@ -672,7 +672,7 @@ void cpu_exec(uint64_t n){
         if(DIFFTESE){
           AssembleDecoder(handle, top_inst, top_pc);
           printf("exec times: %ld\n",i+1);
-          difftest_regcpy(&refstate, 0);
+          difftest_regcpy(&refstate, 0, 0x30000000);
           difftest_exec(1);
         }
 
@@ -1039,7 +1039,7 @@ int main(int argc, char *argv[]) {
   if(DIFFTESE){
     difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
     void* dut;
-    difftest_regcpy(dut, 1);
+    difftest_regcpy(dut, 1, 0x30000000);
   }
   
   system_rst();
