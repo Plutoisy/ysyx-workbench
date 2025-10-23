@@ -16,6 +16,11 @@
 #define PMEM_SIZE    0x8000000
 #define FLASH_SIZE    0x1000000
 #define PSRAM_SIZE    0x20000000
+#define SDRAM_SIZE    0x20000000
+#define SRAM_SIZE     0x1000000
+
+#define CONFIG_SRAMBASE 0x0f000000
+#define CONFIG_SDRAMBASE 0xa0000000
 #define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
@@ -670,12 +675,11 @@ void decode_load_instruction(uint32_t instruction) {
       const char* load_types[] = {
           "LB", "LH", "LW", "LBU", "LHU"
       };
-      
-      printf("Load Instruction: %s\n", load_types[funct3]);
-      printf("Base register: x%d (value: 0x%08x)\n", rs1, gpr[rs1]);
-      printf("Immediate: %d (0x%08x)\n", imm, (uint32_t)imm);
-      printf("Target register: x%d\n", rd);
-      printf("Access address: 0x%08x\n", addr);
+      if(!(addr - CONFIG_FLASHBASE < FLASH_SIZE ||
+           addr - CONFIG_SRAMBASE  < SRAM_SIZE ||
+           addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
+          printf("Access address: 0x%08x\n", addr);
+      }
   }
 }
 void cpu_exec(uint64_t n){
