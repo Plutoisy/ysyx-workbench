@@ -788,6 +788,7 @@ void cpu_exec(uint64_t n){
             memcpy(dutstate.gpr, gpr, sizeof(gpr));
             difftest_regcpy(&dutstate, 1, top_pc);
             difftest_regcpy(&refstate, 0, 0x30000000);
+            detect_read_device = 0;
           }
           else{
             difftest_regcpy(&refstate, 0, 0x30000000);
