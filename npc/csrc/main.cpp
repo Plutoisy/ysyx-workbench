@@ -746,25 +746,27 @@ void cpu_exec(uint64_t n){
         }
 
         if(DIFFTESE){
-          printf("        dut                    | ref                   \n");
-          printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+          
           if(refstate.pc != top_pc){
            AssembleDecoder(handle, top_inst, top_pc);
            if(PC_ASSERT){
+            printf("        dut                    | ref                   \n");
+            printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+            for(int j = 0; j < 16; j++){
+              printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+            }
              assert(0);
            }
-           
-           //printf("0x%08x\n",refstate.pc );
-           //printf("0x%08x\n",top_pc);
           }
           
           for(int j = 0; j < 16; j++){
-            printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
             if(refstate.gpr[j] != gpr[j]){
-              //AssembleDecoder(handle, top_inst, top_pc);
-              //printf("exec times: %d\n",i+1);
-              //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
               if(REG_ASSERT){
+                printf("        dut                    | ref                   \n");
+                printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+                for(int j = 0; j < 16; j++){
+                  printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+                }
                 assert(0);
               }
             }
