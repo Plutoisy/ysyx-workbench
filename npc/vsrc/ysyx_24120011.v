@@ -375,7 +375,9 @@ wire [31:0] IDU_GPR_src1;
 wire [31:0] IDU_GPR_src2;
 wire [11:0] IDU_CSR_r_csr_addr;
 wire [31:0] IDU_CSR_r_csr_data;
-
+//======================dpic========================//
+wire [31:0] IDU_EXU_inst;
+//======================dpic========================//
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .clk          ( clock          ),
     .rst          ( reset          ),
@@ -407,6 +409,9 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_rd_data    ( DATAHAZARD_IDU_r_ddata),
     .i_rs1_or_rs2 ( DATAHAZARD_IDU_rs1_or_rs2),
     .i_bypass     ( DATAHAZARD_IDU_bypass),
+    //======================dpic========================//
+    .o_inst       ( IDU_EXU_inst),
+    //======================dpic========================//
     .i_flush      ( flush )
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
@@ -511,6 +516,9 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .o_EXU_valid   ( EXU_valid   ),
     .o_flush       ( flush ),
     .i_IDU_empty   ( IDU_ready ),
+    //======================dpic========================//
+    .i_inst        ( IDU_EXU_inst),
+    //======================dpic========================//
     .i_IFU_pc      ( IFU_IDU_pc)
 );
 wire [2:0]  EXMEM_MEM_rd_ctrl;
