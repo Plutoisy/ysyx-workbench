@@ -104,5 +104,5 @@ SECTIONS {
 
     . = ALIGN(8);
     _stack_pointer = .;
-  } > sram
+  } > sdram
 }
