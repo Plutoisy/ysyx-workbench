@@ -809,7 +809,7 @@ void cpu_exec(uint64_t n){
               !(access_addr - CONFIG_FLASHBASE < FLASH_SIZE ||
                 access_addr - CONFIG_SRAMBASE  < SRAM_SIZE  ||
                 access_addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
-                printf("Read address: 0x%08x\n", access_addr);
+                //printf("Read address: 0x%08x\n", access_addr);
                 detect_read_device = 1;
           }
           if(PRINT_REG){
