@@ -5,7 +5,7 @@ MEMORY {
   mrom  (r x) : ORIGIN = 0x20000000, LENGTH = 4K
   flash (rwx) : ORIGIN = 0x30000000, LENGTH = 16M
   psram (rwx) : ORIGIN = 0x80000000, LENGTH = 4M
-  sdram (rwx) : ORIGIN = 0xa0000000, LENGTH = 32M
+  sdram (rwx) : ORIGIN = 0xa0000000, LENGTH = 64M
 }
 
 SECTIONS {
@@ -24,7 +24,7 @@ SECTIONS {
 
   .bl.f : ALIGN(4) {
     *(.bl.f*)
-    *(.text.fsbl)
+
     . = ALIGN(4);
   } > flash
 
@@ -32,10 +32,7 @@ SECTIONS {
     _bl_s = .;
 
     *(.bl.s*)
-    *(.text.ssbl)
-    *(.text.bl_memory_copy)
-    *(.text.bl_memory_set)
-    
+
     . = ALIGN(4);
     _ebl_s = .;
   } > sram AT> flash
@@ -95,7 +92,7 @@ SECTIONS {
   _end = .;
 
   . = ALIGN(8);
-  _heap_start = .;
+  _heap_start = _psram_start;
 
   .stack (NOLOAD) : ALIGN(8) {
     _stack_top = .;
