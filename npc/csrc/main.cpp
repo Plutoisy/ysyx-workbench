@@ -38,13 +38,13 @@
 #define DIFFTESE 1
 #define BMODE 1
 #define WATCHPOINT 0
-#define WAVE 1
+#define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE 0
-#define PRINT_REG 0
+#define PRINT_REG 1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -765,6 +765,10 @@ void cpu_exec(uint64_t n){
         }
 
         if(WATCHPOINT){
+          
+          if(top_pc == 0xa0000000){
+            func_time = i;
+          }
 
           if(top_pc == 0xa0000000){
             func_time = i;
