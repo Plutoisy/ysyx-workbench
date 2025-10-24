@@ -37,14 +37,14 @@
 #define REG_ASSERT 1
 #define DIFFTESE 1
 #define BMODE 1
-#define WATCHPOINT 1
+#define WATCHPOINT 0
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE 0
-#define PRINT_REG 1
+#define PRINT_REG 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
