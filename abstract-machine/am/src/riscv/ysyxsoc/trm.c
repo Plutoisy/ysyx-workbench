@@ -70,9 +70,9 @@ void fsbl(void) {
 
 
 void putch(char ch) {
-  while (!(inb(UART_REG_LSR) & 0x20)) {
-  }
-  outb(SERIAL_PORT, ch);
+  // while (!(inb(UART_REG_LSR) & 0x20)) {
+  // }
+  // outb(SERIAL_PORT, ch);
 }
 
 void halt(int code) {
