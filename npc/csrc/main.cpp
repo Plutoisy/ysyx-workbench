@@ -37,7 +37,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 1
 #define BMODE 1
-#define WATCHPOINT 0
+#define WATCHPOINT 1
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
@@ -769,7 +769,7 @@ void cpu_exec(uint64_t n){
           // if(top_pc == 0xa0000518){
           //   return;
           // }
-          if(top_pc == 0xa0056c84){
+          if(top_pc == 0xa002cd28){
             return;
           }
           
