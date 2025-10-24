@@ -769,7 +769,7 @@ void cpu_exec(uint64_t n){
           // if(top_pc == 0xa0000518){
           //   return;
           // }
-          if(top_pc == 0xa002cd28){
+          if(top_pc == 0xa00214ac){
             return;
           }
           
