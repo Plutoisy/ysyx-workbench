@@ -765,13 +765,9 @@ void cpu_exec(uint64_t n){
         }
 
         if(WATCHPOINT){
-          
-          if(top_pc == 0xa0000000){
-            func_time = i;
-          }
 
-          if(top_pc == 0xa0000000){
-            func_time = i;
+          if(top_pc == 0xa0000518){
+            return;
           }
           if(top_pc == 0xa00000a4){
             func_time = i-func_time;
