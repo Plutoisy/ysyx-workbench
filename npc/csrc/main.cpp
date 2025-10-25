@@ -393,29 +393,6 @@ extern "C" void Performance_Counters(int Performancetype){
   }
 }
 
-// uint64_t jump_type = 0;
-// uint64_t csr_type = 0;
-// uint64_t read_and_store_type = 0;
-// uint64_t cal_type = 0;
-// uint64_t unk = 0;
-// extern "C" void inst_type_Counters(int insttype){
-//   if(insttype == 1){
-//     jump_type++;
-//   }
-//   if(insttype == 2){
-//     csr_type++;
-//   }
-//   if(insttype == 3){
-//     read_and_store_type++;
-//   }
-//   if(insttype == 4){
-//     cal_type++;
-//   }
-//   if(insttype == 5){
-//     unk++;
-//   }
-// }
-
 extern "C" void psram_read(uint32_t addr, uint32_t *data) {
 	if(addr >= 0 && addr <= PSRAM_SIZE){
 		*data = host_read(psram+addr,4);
@@ -655,32 +632,16 @@ int detect_read_device = 0;
 int gpr_diff_test_failed = 0;
 
 uint32_t decode_load_instruction(uint32_t instruction) {
-  // 提取opcode（最低7位）
+  // 检查是否为load指令
   uint8_t opcode = instruction & 0x7F;
-  
-  // 检查是否为load指令（opcode = 0000011）
   if (opcode == 0x03) {
-      // 提取寄存器索引
-      uint8_t rs1 = (instruction >> 15) & 0x1F;  // 基址寄存器
-      uint8_t rd  = (instruction >> 7)  & 0x1F;  // 目标寄存器
-      
-      // 提取12位立即数（符号扩展）
+      uint8_t rs1 = (instruction >> 15) & 0x1F;  
+      uint8_t rd  = (instruction >> 7)  & 0x1F;  
       int32_t imm = (int32_t)(instruction & 0xFFF00000) >> 20;
-      // 如果立即数的最高位是1，进行符号扩展
       if (imm & 0x800) {
           imm |= 0xFFFFF000;
       }
-      
-      // 计算访问地址
       uint32_t addr = gpr[rs1] + (uint32_t)imm;
-      
-      // 提取funct3用于确定load类型
-      uint8_t funct3 = (instruction >> 12) & 0x7;
-      
-      // 打印结果
-      const char* load_types[] = {
-          "LB", "LH", "LW", "LBU", "LHU"
-      };
       return addr;
   }
   else{
@@ -688,18 +649,35 @@ uint32_t decode_load_instruction(uint32_t instruction) {
   }
 }
 void cpu_exec(uint64_t n){
-  FILE *itracefile;
-  // FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
-  // if (itracefile == NULL) {
-  //     printf("无法打开文件\n");
-  //     return;
-  // }
-  FILE *btracefile;
-  // FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/btrace.txt", "w");
-  // if (btracefile == NULL) {
-  //     printf("无法打开文件\n");
-  //     return;
-  // }
+  const char *NPC_HOME = getenv("NPC_HOME");
+  const char *itrace = "/log/itrace.txt";
+  const char *btrace = "/log/btrace.txt";
+  char itracePath[512];
+  char btracePath[512];
+  if (NPC_HOME != NULL) {
+      snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
+      snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
+      FILE *itracefile;
+      FILE *btracefile;
+      if(ITRACE_FILE){
+        itracefile = fopen(itracePath, "w");
+        if (itracefile == NULL) {
+          printf("Failed to open itrace file\n");
+          return;
+        } 
+      }
+      if(BTRACE_FILE){
+        btracefile = fopen(btracePath, "w");
+        if (btracefile == NULL) {
+          printf("Failed to open btrace file\n");
+          return;
+        } 
+      }
+  } else {
+    printf("NPC_HOME is NULL\n");
+    return;
+  }
+  
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
@@ -707,8 +685,6 @@ void cpu_exec(uint64_t n){
         step_and_dump_wave();
         dut.clock ^= 1;
       }
-      //printf("top_inst_valid:%d\n",top_inst_valid);
-      //AssembleDecoder(handle, top_inst, top_pc);
 
       if(top_inst_valid){
         inst_clock_time = i - last_clock;
