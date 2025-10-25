@@ -68,16 +68,9 @@ config TARGET_AM
   bool "Application on Abstract-Machine (DON'T CHOOSE)"
 endchoice
 
-
-
-choice
-  prompt "Difftest for NPC or SOC"
-  default SOC_DIFF
-config SOC_DIFF
-  bool "SOC"
-config NPC_DIFF
-  bool "NPC"
-endchoice
+config PADDR_MODE 
+  int "paddr mode 0 for normal, 1 for SOC, 2 for NPC"
+  default 0
 
 menu "Build Options"
 choice

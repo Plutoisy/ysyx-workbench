@@ -97,7 +97,7 @@ void init_mem() {
 
 word_t paddr_read(paddr_t addr, int len) {
   IFDEF(CONFIG_MTRACE, printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, pmem_read(addr,len)));
-  if(CONFIG_SOC_DIFF){
+  if(CONFIG_PADDR_MODE == 1){
     if (likely(in_flash(addr))) return flash_read(addr, len);
     if (likely(in_sram(addr)))  return sram_read(addr, len);
     if (likely(in_sdram(addr))) return sdram_read(addr, len);
@@ -115,7 +115,7 @@ word_t paddr_read(paddr_t addr, int len) {
 
 void paddr_write(paddr_t addr, int len, word_t data) {
   IFDEF(CONFIG_MTRACE, printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, data));
-  if(CONFIG_SOC_DIFF){
+  if(CONFIG_PADDR_MODE == 1){
     if (likely(in_flash(addr))) { flash_write(addr, len, data); return; }
     if (likely(in_sram(addr)))  { sram_write(addr, len, data); return; }
     if (likely(in_sdram(addr))) { sdram_write(addr, len, data); return; }
