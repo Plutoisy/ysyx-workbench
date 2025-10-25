@@ -43,7 +43,7 @@
 #define WAVE                 0
 #define NVBOARD              1
 #define PC_NO_CHANGE_DECETE  1
-#define ITRACE_FILE          1
+#define ITRACE_FILE          0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE          0
 #define PRINT_REG            0
@@ -682,7 +682,6 @@ void cpu_exec(uint64_t n){
   
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
-      dut.clock ^= 1;
       if (dut.clock != 1){
         step_and_dump_wave();
         dut.clock ^= 1;
