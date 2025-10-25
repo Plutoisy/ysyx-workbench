@@ -62,7 +62,7 @@ always@(posedge clk)begin
             if (i_rd == 'd0) begin
                 GPRs[0]  <= 32'h0000_0000;
             end else begin
-                GPRs[i_rd] <= 0;
+                GPRs[i_rd] <= i_rd_data;
             end
         end
     end
