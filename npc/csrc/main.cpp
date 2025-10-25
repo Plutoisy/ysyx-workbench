@@ -654,11 +654,11 @@ void cpu_exec(uint64_t n){
   const char *btrace = "/log/btrace.txt";
   char itracePath[512];
   char btracePath[512];
+  FILE *itracefile;
+  FILE *btracefile;
   if (NPC_HOME != NULL) {
       snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
       snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
-      FILE *itracefile;
-      FILE *btracefile;
       if(ITRACE_FILE){
         itracefile = fopen(itracePath, "w");
         if (itracefile == NULL) {
