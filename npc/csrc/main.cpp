@@ -682,6 +682,7 @@ void cpu_exec(uint64_t n){
   
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
+      dut.clock ^= 1;
       if (dut.clock != 1){
         step_and_dump_wave();
         dut.clock ^= 1;
