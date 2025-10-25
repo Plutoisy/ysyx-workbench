@@ -10,10 +10,5 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
 }
 
 void __am_uart_rx(AM_UART_RX_T *rx) {
-  AM_INPUT_KEYBRD_T kbd;
-  __am_input_keybrd(&kbd);
-  if(kbd.keydown){
-    printf("%x",kbd.keycode);
-  }
   rx->data = 0xff;
 }
