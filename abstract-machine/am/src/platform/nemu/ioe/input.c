@@ -10,5 +10,5 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
 }
 
 void __am_uart_rx(AM_UART_RX_T *rx) {
-  rx->data = 0x01;
+  rx->data = 0x12;
 }
