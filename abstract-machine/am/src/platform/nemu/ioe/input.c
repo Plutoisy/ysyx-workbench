@@ -8,3 +8,7 @@ void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
   kbd->keydown = (kbd_out & KEYDOWN_MASK ? true : false);
   kbd->keycode = kbd_out & ~KEYDOWN_MASK;
 }
+
+void __am_uart_rx(AM_UART_RX_T *rx) {
+  
+}
