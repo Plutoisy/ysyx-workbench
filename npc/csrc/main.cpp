@@ -7,15 +7,20 @@
 #include <getopt.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-// #include <capstone/capstone.h>
+#include <capstone/capstone.h>
 #include <sys/time.h>
 #include <nvboard.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
 #define PMEM_SIZE    0x8000000
-#define FLASH_SIZE    0x10000000
+#define FLASH_SIZE    0x1000000
 #define PSRAM_SIZE    0x20000000
+#define SDRAM_SIZE    0x20000000
+#define SRAM_SIZE     0x1000000
+
+#define CONFIG_SRAMBASE 0x0f000000
+#define CONFIG_SDRAMBASE 0xa0000000
 #define PMEM_SIZE_SOC    0x1000
 #define CONFIG_MBASE 0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
@@ -32,13 +37,14 @@
 #define REG_ASSERT 1
 #define DIFFTESE 0
 #define BMODE 1
-#define WATCHPOINT 0
+#define WATCHPOINT 1
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
 #define ITRACE_FILE 0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE 0
+#define PRINT_REG 0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -48,8 +54,8 @@ void nvboard_bind_all_pins(VysyxSoCFull* top);
 
 int trap = 0;
 static char *img_file = NULL;
-// csh handle;
-int gpr[32];
+csh handle;
+uint32_t gpr[32];
 int top_pc;
 int top_dnpc;
 int top_inst;
@@ -114,8 +120,8 @@ typedef struct {
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
-  "sd0", "sd1", "sd2", "sd3", "wd0", "wd1", "wd2", "wd3",
-  "mod", "imm", "od0", "od1", "od2", "od3", "t5", "t6"
+  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
 };
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -206,31 +212,31 @@ static long load_img_to_flash(char *img) {
   return size;
 }
 
-// bool capstone_init(csh *handle) {
-//     if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
-//         printf("Failed to initialize Capstone\n");
-//         return false;
-//     }
-//     return true;
-// }
+bool capstone_init(csh *handle) {
+    if (cs_open(CS_ARCH_RISCV, CS_MODE_RISCV32, handle) != CS_ERR_OK) {
+        printf("Failed to initialize Capstone\n");
+        return false;
+    }
+    return true;
+}
 
-// void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
-//     cs_insn *insn;
-//     size_t count;
+void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
+    cs_insn *insn;
+    size_t count;
 
-//     count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
-//     if (count > 0) {
-//         for (size_t i = 0; i < count; i++) {
-//             printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
-//             // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
-//         }
-//         cs_free(insn, count);
-//     } else {
-//         printf("Failed to disassemble given code!\n");
-//         printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
+    count = cs_disasm(handle, reinterpret_cast<uint8_t*>(&instruction), sizeof(instruction), 0x1000, 1, &insn);
+    if (count > 0) {
+        for (size_t i = 0; i < count; i++) {
+            printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x,\t%s\t%s\033[0m\n",top_pc, top_inst, insn[i].mnemonic, insn[i].op_str);
+            // printf("0x%lx:\t%s\t%s\n", insn[i].address, insn[i].mnemonic, insn[i].op_str);
+        }
+        cs_free(insn, count);
+    } else {
+        printf("Failed to disassemble given code!\n");
+        printf("\33[1;34mnpc execute pc = 0x%08x, inst = 0x%08x\033[0m\n",top_pc, top_inst);
 
-//     }
-// }
+    }
+}
 
 
 int nvboard_update_count = 0;
@@ -492,8 +498,11 @@ extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int){
 }
 
 extern "C" void reg_out(const int array[32]) {
-  for (int i = 0; i < 32; ++i) {
+  for (int i = 0; i < 16; ++i) {
     gpr[i] = array[i];
+  }
+  for (int i = 16; i < 31; ++i) {
+    gpr[i] = 0;
   }
 }
 
@@ -618,9 +627,10 @@ int parse_instruction_type(uint32_t top_inst) {
 
 extern "C" void difftest_exec(uint64_t n);
 extern "C" void difftest_memcpy(uint32_t addr, void *buf, size_t n, bool direction);
-extern "C" void difftest_regcpy(void *dut, bool direction);
+extern "C" void difftest_regcpy(void *dut, bool direction, uint32_t pc); 
 
 CPU_state refstate;
+CPU_state dutstate;
 int old_pc = 0;
 int pc_count = 0;
 uint64_t inst_count = 0;
@@ -640,6 +650,42 @@ uint64_t clk_unk_s = 0;
 uint64_t func_time = 0;
 uint64_t detect_btype = 0;
 int      btype_pc = 0;
+uint32_t access_addr = 0;
+int detect_read_device = 0;
+
+uint32_t decode_load_instruction(uint32_t instruction) {
+  // 提取opcode（最低7位）
+  uint8_t opcode = instruction & 0x7F;
+  
+  // 检查是否为load指令（opcode = 0000011）
+  if (opcode == 0x03) {
+      // 提取寄存器索引
+      uint8_t rs1 = (instruction >> 15) & 0x1F;  // 基址寄存器
+      uint8_t rd  = (instruction >> 7)  & 0x1F;  // 目标寄存器
+      
+      // 提取12位立即数（符号扩展）
+      int32_t imm = (int32_t)(instruction & 0xFFF00000) >> 20;
+      // 如果立即数的最高位是1，进行符号扩展
+      if (imm & 0x800) {
+          imm |= 0xFFFFF000;
+      }
+      
+      // 计算访问地址
+      uint32_t addr = gpr[rs1] + (uint32_t)imm;
+      
+      // 提取funct3用于确定load类型
+      uint8_t funct3 = (instruction >> 12) & 0x7;
+      
+      // 打印结果
+      const char* load_types[] = {
+          "LB", "LH", "LW", "LBU", "LHU"
+      };
+      return addr;
+  }
+  else{
+    return 0;
+  }
+}
 void cpu_exec(uint64_t n){
   FILE *itracefile;
   // FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
@@ -666,12 +712,7 @@ void cpu_exec(uint64_t n){
       if(top_IFU_valid_int){
         inst_clock_time = i - last_clock;
         last_clock = i;
-        if(DIFFTESE){
-          // AssembleDecoder(handle, top_inst, top_pc);
-          printf("exec times: %ld\n",i+1);
-          difftest_exec(1);
-          difftest_regcpy(&refstate, 0);
-        }
+        
 
         step_and_dump_wave();
         inst_count++;
@@ -718,16 +759,20 @@ void cpu_exec(uint64_t n){
 
         if((WATCHPOINT || !BMODE) && n < 100){
           // AssembleDecoder(handle, top_inst, top_pc);
-          for(int j = 0; j < 32; j++){
+          for(int j = 0; j < 16; j++){
             printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
           }
         }
 
         if(WATCHPOINT){
 
-          if(top_pc == 0xa0000000){
-            func_time = i;
+          // if(top_pc == 0xa0000518){
+          //   return;
+          // }
+          if(top_pc == 0xa00214ac){
+            return;
           }
+          
           if(top_pc == 0xa00000a4){
             func_time = i-func_time;
             printf("pc time: %ld\n",func_time);
@@ -742,31 +787,68 @@ void cpu_exec(uint64_t n){
           // }
         }
 
+        
+
         if(DIFFTESE){
-          printf("        dut                    | ref                   \n");
-          printf("pc      0x%08x             | 0x%08x\n", top_dnpc, refstate.pc);
-          if(refstate.pc != top_dnpc){
-           //AssembleDecoder(handle, top_inst, top_pc);
-           if(PC_ASSERT){
-             assert(0);
-           }
-           
-           //printf("0x%08x\n",refstate.pc );
-           //printf("0x%08x\n",top_pc);
+          if(detect_read_device){
+            dutstate.pc = top_pc;
+            memcpy(dutstate.gpr, gpr, sizeof(gpr));
+            difftest_regcpy(&dutstate, 1, top_pc);
+            difftest_regcpy(&refstate, 0, 0x30000000);
+            difftest_exec(1);
+            detect_read_device = 0;
+          }
+          else{
+            difftest_regcpy(&refstate, 0, 0x30000000);
+            difftest_exec(1);
           }
           
-          for(int j = 0; j < 32; j++){
-            printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+
+          access_addr = decode_load_instruction(top_inst);
+          if((access_addr != 0) && 
+              !(access_addr - CONFIG_FLASHBASE < FLASH_SIZE ||
+                access_addr - CONFIG_SRAMBASE  < SRAM_SIZE  ||
+                access_addr - CONFIG_SDRAMBASE < SDRAM_SIZE)){
+                //printf("Read address: 0x%08x\n", access_addr);
+                detect_read_device = 1;
+          }
+          if(PRINT_REG){
+            if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
+              AssembleDecoder(handle, top_inst, top_pc);
+              printf("        dut                    | ref                   \n");
+              printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+              for(int j = 0; j < 16; j++){
+                printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+              }
+            } 
+          }
+          if(refstate.pc != top_pc){
+           if(PC_ASSERT){
+            AssembleDecoder(handle, top_inst, top_pc);
+            printf("        dut                    | ref                   \n");
+            printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+            for(int j = 0; j < 16; j++){
+              printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+            }
+             assert(0);
+           }
+          }
+          
+          for(int j = 0; j < 16; j++){
             if(refstate.gpr[j] != gpr[j]){
-              //AssembleDecoder(handle, top_inst, top_pc);
-              //printf("exec times: %d\n",i+1);
-              //printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
               if(REG_ASSERT){
+                AssembleDecoder(handle, top_inst, top_pc);
+                printf("        dut                    | ref                   \n");
+                printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+                for(int j = 0; j < 16; j++){
+                  printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+                }
                 assert(0);
               }
             }
           }
         }
+
         if(INST_NOT_VALID_CHECK){
           if(top_inst==0x00000000 && top_IFU_valid_int){
             printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
@@ -786,7 +868,7 @@ void cpu_exec(uint64_t n){
           if(pc_count > 15000){
             printf("\33[1;31mProgram pc has not change for 1.5w clk. Stuck at 0x%08x\033[0m\n",top_pc);
             // AssembleDecoder(handle, top_inst, top_pc);
-            for(int j = 0; j < 32; j++){
+            for(int j = 0; j < 16; j++){
               printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
             }
             printf("exec times: %ld\n",i+1);
@@ -1017,9 +1099,9 @@ int main(int argc, char *argv[]) {
   // 示例 RISC-V 指令
   //uint32_t instruction = 0x00000013; // NOP 指令
   
-  // if (!capstone_init(&handle)) {
-  //     return -1;
-  // }
+  if (!capstone_init(&handle)) {
+      return -1;
+  }
 
   // AssembleDecoder(handle, instruction);
   
@@ -1034,9 +1116,9 @@ int main(int argc, char *argv[]) {
     load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
   }
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_MBASE_SOC, pmem, PMEM_SIZE_SOC, 1);
-    void* dut;
-    difftest_regcpy(dut, 1);
+    difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
+    void* dut = NULL;
+    difftest_regcpy(dut, 1, 0x30000000);
   }
   
   system_rst();
@@ -1052,7 +1134,7 @@ int main(int argc, char *argv[]) {
   else{
     sdb_mainloop();
   }
-  // cs_close(&handle);
+  cs_close(&handle);
   sim_exit();
   return 0;
 }

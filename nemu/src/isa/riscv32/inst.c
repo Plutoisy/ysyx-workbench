@@ -57,38 +57,54 @@ static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_
   }
 }
 uint32_t csr_read(uint32_t csr_addr){
-  if(csr_addr == 0x305){
+  uint32_t csr_addr_12bit = csr_addr & 0x00000FFF;
+  if(csr_addr_12bit == 0x305){
     return cpu.csr.mtvec;
   }
-  else if(csr_addr == 0x342){
+  else if(csr_addr_12bit == 0x342){
     return cpu.csr.mcause;
   }
-  else if(csr_addr == 0x300){
+  else if(csr_addr_12bit == 0x300){
     return cpu.csr.mstatus;
   }
-  else if(csr_addr == 0x341){
+  else if(csr_addr_12bit == 0x341){
     return cpu.csr.mepc;
   }
+  else if(csr_addr_12bit == 0xf11){
+    cpu.csr.mvendorid = 0x79737978;
+    return cpu.csr.mvendorid;
+  }
+  else if(csr_addr_12bit == 0xf12){
+    cpu.csr.marchid = 0x01700ACB;
+    return cpu.csr.marchid;
+  }
   else{
-    panic("unsupported csr_addr = %x", csr_addr);
+    panic("unsupported read csr_addr = %x", csr_addr_12bit);
   }
 }
 
 void csr_write(uint32_t csr_addr, uint32_t csr_wdata){
-  if(csr_addr == 0x305){
+  uint32_t csr_addr_12bit = csr_addr & 0x00000FFF;
+  if(csr_addr_12bit == 0x305){
     cpu.csr.mtvec = csr_wdata;
   }
-  else if(csr_addr == 0x342){
+  else if(csr_addr_12bit == 0x342){
     cpu.csr.mcause = csr_wdata;
   }
-  else if(csr_addr == 0x300){
+  else if(csr_addr_12bit == 0x300){
     cpu.csr.mstatus = csr_wdata;
   }
-  else if(csr_addr == 0x341){
+  else if(csr_addr_12bit == 0x341){
     cpu.csr.mepc = csr_wdata;
   }
+  else if(csr_addr_12bit == 0xf11){
+    cpu.csr.mvendorid = csr_wdata;
+  }
+  else if(csr_addr_12bit == 0xf12){
+    cpu.csr.marchid = csr_wdata;
+  }
   else{
-    panic("unsupported csr_addr = %x", csr_addr);
+    panic("unsupported write csr_addr = %x", csr_addr);
   }
 }
 

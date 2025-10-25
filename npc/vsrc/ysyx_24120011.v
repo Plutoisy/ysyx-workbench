@@ -1,6 +1,5 @@
 import "DPI-C" function void ebreak ();
 import "DPI-C" function void npc_trap(input int pc, input int ret);
-import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
 import "DPI-C" function void Performance_Counters(input int Performancetype);
 module ysyx_24120011 (
     input clock,
@@ -243,17 +242,13 @@ wire             clint_bready;
 wire [3:0]	  clint_bid;
 
 //======================dpic========================//
-wire [31:0] IFU_valid_int;
-assign IFU_valid_int    = {31'b0,IFU_valid};
 always@(posedge clock)begin
     if (IFU_IDU_inst == 32'b00000000000100000000000001110011)begin
         npc_trap(IFU_IDU_pc,a0);
         ebreak();
     end
 end
-always@(negedge clock) begin
-    get_pc_inst(IFU_IDU_pc,EXU_IFU_npc,IFU_IDU_inst,IFU_valid_int);
-end
+
 reg IFU_valid_delay;
 reg IFU_valid_rising_edge;
 reg LSU_rready_delay;
@@ -380,7 +375,9 @@ wire [31:0] IDU_GPR_src1;
 wire [31:0] IDU_GPR_src2;
 wire [11:0] IDU_CSR_r_csr_addr;
 wire [31:0] IDU_CSR_r_csr_data;
-
+//======================dpic========================//
+wire [31:0] IDU_EXU_inst;
+//======================dpic========================//
 ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .clk          ( clock          ),
     .rst          ( reset          ),
@@ -412,6 +409,9 @@ ysyx_24120011_IDU u_ysyx_24120011_IDU(
     .i_rd_data    ( DATAHAZARD_IDU_r_ddata),
     .i_rs1_or_rs2 ( DATAHAZARD_IDU_rs1_or_rs2),
     .i_bypass     ( DATAHAZARD_IDU_bypass),
+    //======================dpic========================//
+    .o_inst       ( IDU_EXU_inst),
+    //======================dpic========================//
     .i_flush      ( flush )
 );
 wire [2:0]  IDEX_EXU_pc_ctrl;
@@ -516,6 +516,9 @@ ysyx_24120011_EXU u_ysyx_24120011_EXU(
     .o_EXU_valid   ( EXU_valid   ),
     .o_flush       ( flush ),
     .i_IDU_empty   ( IDU_ready ),
+    //======================dpic========================//
+    .i_inst        ( IDU_EXU_inst),
+    //======================dpic========================//
     .i_IFU_pc      ( IFU_IDU_pc)
 );
 wire [2:0]  EXMEM_MEM_rd_ctrl;

@@ -1,4 +1,5 @@
 import "DPI-C" function void branch_count(input int all_counter_branch,input int miss_counter_branch);
+import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
 module ysyx_24120011_EXU (
     input  clk,
     input  rst,
@@ -40,16 +41,24 @@ module ysyx_24120011_EXU (
     output o_EXU_ready,
     input  i_MEM_ready,
     output o_EXU_valid,
+    //======================dpic========================//
+    input [31:0] i_inst,
+    //======================dpic========================//
     //flush
     output o_flush,
     input [31:0] i_IFU_pc,
     input  i_IDU_empty
 );
 //======================dpic========================//
+wire [31:0] EXU_valid_int;
+assign EXU_valid_int    = {31'b0,o_EXU_valid};
 reg [31:0] miss_counter_branch;
 reg [31:0] all_counter_branch;
 always @(posedge clk ) begin
     branch_count(all_counter_branch,miss_counter_branch);
+end
+always@(negedge clk) begin
+    get_pc_inst(pc,npc,inst,EXU_valid_int);
 end
 always @(posedge clk) begin
     if (rst) begin
@@ -88,7 +97,9 @@ reg [31:0] imm;
 reg [3:0]  rd;
 reg [11:0] w_csr_addr;
 
-
+//======================dpic========================//
+reg [31:0] inst;
+//======================dpic========================//
 
 reg [1:0] state;
 reg [1:0] next_state;
@@ -167,6 +178,9 @@ always @(posedge clk) begin
             imm        <=  i_imm       ;
             rd         <=  i_rd        ;
             w_csr_addr <=  i_w_csr_addr;
+            //======================dpic========================//
+            inst       <= i_inst;
+            //======================dpic========================//
         end
     //end
 end

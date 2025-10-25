@@ -33,6 +33,9 @@ module ysyx_24120011_IDU (
     input [31:0] i_rd_data,
     input i_rs1_or_rs2,
     input i_bypass,
+    //======================dpic========================//
+    output [31:0] o_inst,
+    //======================dpic========================//
     //冲刷流水线
     input i_flush
 );
@@ -48,7 +51,9 @@ reg [1:0] next_state;
 
 assign o_IDU_ready  = (state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
 assign o_IDU_valid  = !i_flush && (state == ysyx_24120011_IDU_IDLE_FULL && next_state == ysyx_24120011_IDU_IDLE_EMPTY) ? 1'b1 : 1'b0;
-
+//======================dpic========================//
+assign o_inst       = inst;
+//======================dpic========================//
 assign o_rs1        = rs1;
 assign o_rs2        = rs2;
 assign o_r_csr_addr = r_csr_addr;
