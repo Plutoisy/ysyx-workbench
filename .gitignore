@@ -4,8 +4,6 @@
 !/patch/**
 !/nemu/*
 !/nexus-am/*
-!/nanos-lite/*
-!/navy-apps/*
 !/npc/*
 !/ysyxSoC/*
 !Makefile
