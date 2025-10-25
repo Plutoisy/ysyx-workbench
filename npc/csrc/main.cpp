@@ -59,7 +59,7 @@ uint32_t gpr[32];
 int top_pc;
 int top_dnpc;
 int top_inst;
-int top_IFU_valid_int;
+int top_inst_valid;
 
 uint8_t pmem[PMEM_SIZE] = {
   0x13,0x04,0x00,0x00,
@@ -490,11 +490,11 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int){
+extern "C" void get_pc_inst(int pc, int dnpc, int inst, int EXU_valid_int){
   top_pc = pc;
   top_dnpc = dnpc;
   top_inst = inst;
-  top_IFU_valid_int = IFU_valid_int;
+  top_inst_valid = EXU_valid_int;
 }
 
 extern "C" void reg_out(const int array[32]) {
@@ -652,6 +652,7 @@ uint64_t detect_btype = 0;
 int      btype_pc = 0;
 uint32_t access_addr = 0;
 int detect_read_device = 0;
+int gpr_diff_test_failed = 0;
 
 uint32_t decode_load_instruction(uint32_t instruction) {
   // 提取opcode（最低7位）
@@ -706,10 +707,10 @@ void cpu_exec(uint64_t n){
         step_and_dump_wave();
         dut.clock ^= 1;
       }
-      //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
+      //printf("top_inst_valid:%d\n",top_inst_valid);
       //AssembleDecoder(handle, top_inst, top_pc);
 
-      if(top_IFU_valid_int){
+      if(top_inst_valid){
         inst_clock_time = i - last_clock;
         last_clock = i;
         
@@ -757,37 +758,11 @@ void cpu_exec(uint64_t n){
           clk_unk_s += inst_clock_time;
         }
 
-        if((WATCHPOINT || !BMODE) && n < 100){
-          // AssembleDecoder(handle, top_inst, top_pc);
-          for(int j = 0; j < 16; j++){
-            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
-          }
-        }
-
         if(WATCHPOINT){
-
-          // if(top_pc == 0xa0000518){
-          //   return;
-          // }
           if(top_pc == 0xa00214ac){
             return;
           }
-          
-          if(top_pc == 0xa00000a4){
-            func_time = i-func_time;
-            printf("pc time: %ld\n",func_time);
-          }
-
-          // if(top_pc == 0xa0000000){
-          //   func_time = i;
-          // }
-          // if(top_pc == 0xa00002dc){
-          //   func_time = i-func_time;
-          //   printf("pc time: %ld\n",func_time);
-          // }
         }
-
-        
 
         if(DIFFTESE){
           if(detect_read_device){
@@ -812,6 +787,37 @@ void cpu_exec(uint64_t n){
                 //printf("Read address: 0x%08x\n", access_addr);
                 detect_read_device = 1;
           }
+          
+          if(refstate.pc != top_pc){
+           if(PC_ASSERT){
+            AssembleDecoder(handle, top_inst, top_pc);
+            printf("        dut                    | ref                   \n");
+            printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+            for(int j = 0; j < 16; j++){
+              printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+            }
+            assert(0);
+           }
+          }
+
+          if(REG_ASSERT){
+            gpr_diff_test_failed = 0;
+            for(int j = 0; j < 16; j++){
+              if(refstate.gpr[j] != gpr[j]){
+                gpr_diff_test_failed = 1;
+              }
+            }
+            if(gpr_diff_test_failed){
+              AssembleDecoder(handle, top_inst, top_pc);
+              printf("        dut                    | ref                   \n");
+              printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+              for(int j = 0; j < 16; j++){
+                printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+              }
+              assert(0);
+            }
+          }
+
           if(PRINT_REG){
             if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
               AssembleDecoder(handle, top_inst, top_pc);
@@ -822,35 +828,10 @@ void cpu_exec(uint64_t n){
               }
             } 
           }
-          if(refstate.pc != top_pc){
-           if(PC_ASSERT){
-            AssembleDecoder(handle, top_inst, top_pc);
-            printf("        dut                    | ref                   \n");
-            printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
-            for(int j = 0; j < 16; j++){
-              printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-            }
-             assert(0);
-           }
-          }
-          
-          for(int j = 0; j < 16; j++){
-            if(refstate.gpr[j] != gpr[j]){
-              if(REG_ASSERT){
-                AssembleDecoder(handle, top_inst, top_pc);
-                printf("        dut                    | ref                   \n");
-                printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
-                for(int j = 0; j < 16; j++){
-                  printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-                }
-                assert(0);
-              }
-            }
-          }
         }
 
         if(INST_NOT_VALID_CHECK){
-          if(top_inst==0x00000000 && top_IFU_valid_int){
+          if(top_inst==0x00000000 && top_inst_valid){
             printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
             return;
           }
@@ -1092,18 +1073,12 @@ int main(int argc, char *argv[]) {
     nvboard_init();
   }
   Verilated::commandArgs(argc, argv);
-  /* Parse arguments. */
-  parse_args(argc, argv);
-  //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
 
-  // 示例 RISC-V 指令
-  //uint32_t instruction = 0x00000013; // NOP 指令
+  parse_args(argc, argv);
   
   if (!capstone_init(&handle)) {
       return -1;
   }
-
-  // AssembleDecoder(handle, instruction);
   
   if(START_FROM_MROM){
     load_img_mrom();
@@ -1113,8 +1088,9 @@ int main(int argc, char *argv[]) {
   }
   
   if(LOAD_IMG_TO_FLASH){
-    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+    //load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
   }
+
   if(DIFFTESE){
     difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
     void* dut = NULL;
@@ -1122,6 +1098,7 @@ int main(int argc, char *argv[]) {
   }
   
   system_rst();
+
   if(BMODE){
     cmd_si("-1");
     if(WATCHPOINT){
@@ -1134,6 +1111,7 @@ int main(int argc, char *argv[]) {
   else{
     sdb_mainloop();
   }
+
   cs_close(&handle);
   sim_exit();
   return 0;

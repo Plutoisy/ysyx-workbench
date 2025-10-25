@@ -50,7 +50,7 @@ int gpr[32];
 int top_pc;
 int top_dnpc;
 int top_inst;
-int top_IFU_valid_int;
+int top_inst_valid;
 
 uint8_t pmem[PMEM_SIZE] = {
   0x13,0x04,0x00,0x00,
@@ -472,11 +472,11 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int){
+extern "C" void get_pc_inst(int pc, int dnpc, int inst, int EXU_valid_int){
   top_pc = pc;
   top_dnpc = dnpc;
   top_inst = inst;
-  top_IFU_valid_int = IFU_valid_int;
+  top_inst_valid = EXU_valid_int;
 }
 
 extern "C" void reg_out(const int array[32]) {
@@ -648,10 +648,10 @@ void cpu_exec(uint64_t n){
         step_and_dump_wave();
         dut.clock ^= 1;
       }
-      //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
+      //printf("top_inst_valid:%d\n",top_inst_valid);
       //AssembleDecoder(handle, top_inst, top_pc);
 
-      if(top_IFU_valid_int){
+      if(top_inst_valid){
         inst_clock_time = i - last_clock;
         last_clock = i;
         if(DIFFTESE){
@@ -756,7 +756,7 @@ void cpu_exec(uint64_t n){
           }
         }
         if(INST_NOT_VALID_CHECK){
-          if(top_inst==0x00000000 && top_IFU_valid_int){
+          if(top_inst==0x00000000 && top_inst_valid){
             printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
             return;
           }
