@@ -13,38 +13,40 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define PMEM_SIZE    0x8000000
-#define FLASH_SIZE    0x1000000
-#define PSRAM_SIZE    0x20000000
-#define SDRAM_SIZE    0x20000000
-#define SRAM_SIZE     0x1000000
+#define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 
-#define CONFIG_SRAMBASE 0x0f000000
+#define PMEM_SIZE        0x8000000
+#define FLASH_SIZE       0x1000000
+#define PSRAM_SIZE       0x20000000
+#define SDRAM_SIZE       0x20000000
+#define SRAM_SIZE        0x1000000
+
+#define CONFIG_SRAMBASE  0x0f000000
 #define CONFIG_SDRAMBASE 0xa0000000
 #define PMEM_SIZE_SOC    0x1000
-#define CONFIG_MBASE 0x80000000
+#define CONFIG_MBASE     0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
 #define CONFIG_PSRAMBASE 0x80000000
-#define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define LOAD_IMG_TO_FLASH 0
-#define START_FROM_MROM 0
-#define M_R_TRACE 0
-#define M_W_TRACE 0
-#define M_R_ASSERT 1
-#define M_W_ASSERT 1
-#define PC_ASSERT 1
-#define REG_ASSERT 1
-#define DIFFTESE 1
-#define BMODE 1
-#define WATCHPOINT 0
-#define WAVE 0
-#define NVBOARD 1
-#define PC_NO_CHANGE_DECETE 1
-#define ITRACE_FILE 0
+
+#define LOAD_IMG_TO_FLASH    0
+#define START_FROM_MROM      0
+#define M_R_TRACE            0
+#define M_W_TRACE            0
+#define M_R_ASSERT           1
+#define M_W_ASSERT           1
+#define PC_ASSERT            1
+#define REG_ASSERT           1
+#define DIFFTESE             1
+#define BMODE                1
+#define WATCHPOINT           0
+#define WAVE                 0
+#define NVBOARD              1
+#define PC_NO_CHANGE_DECETE  1
+#define ITRACE_FILE          1
 #define INST_NOT_VALID_CHECK 1
-#define BTRACE_FILE 0
-#define PRINT_REG 0
+#define BTRACE_FILE          0
+#define PRINT_REG            0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
