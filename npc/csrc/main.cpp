@@ -37,7 +37,7 @@
 #define REG_ASSERT 1
 #define DIFFTESE 1
 #define BMODE 1
-#define WATCHPOINT 1
+#define WATCHPOINT 0
 #define WAVE 0
 #define NVBOARD 1
 #define PC_NO_CHANGE_DECETE 1
