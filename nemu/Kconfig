@@ -68,6 +68,16 @@ config TARGET_AM
   bool "Application on Abstract-Machine (DON'T CHOOSE)"
 endchoice
 
+choice
+  depends on TARGET_SHARE
+  prompt "Difftest for NPC or SOC"
+  default SOC_DIFF
+config SOC_DIFF
+  bool "SOC"
+config NPC_DIFF
+  bool "NPC"
+endchoice
+
 menu "Build Options"
 choice
   prompt "Compiler"
