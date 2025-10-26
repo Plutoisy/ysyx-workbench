@@ -1066,9 +1066,14 @@ int main(int argc, char *argv[]) {
   }
 
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
     void* dut = NULL;
-    difftest_regcpy(dut, 1, 0x30000000);
+    #ifdef SOC
+      difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
+      difftest_regcpy(dut, 1, 0x30000000);
+    #else
+      difftest_memcpy(CONFIG_MBASE, flash, PMEM_SIZE, 1);
+      difftest_regcpy(dut, 1, 0x80000000);
+    #endif
   }
   
   system_rst();
