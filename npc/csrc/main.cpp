@@ -54,7 +54,7 @@ VerilatedVcdC* tfp = NULL;
 static VysyxSoCFull dut;
 void nvboard_bind_all_pins(VysyxSoCFull* top);
 
-int NVBOARD = 1;
+int NVBOARD = 0;
 
 int trap = 0;
 static char *img_file = NULL;
