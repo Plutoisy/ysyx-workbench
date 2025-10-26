@@ -40,14 +40,14 @@
 #define DIFFTESE             1
 #define BMODE                1
 #define WATCHPOINT           0
-#define WAVE                 0
+#define WAVE                 1
 #define NVBOARD              1
 #define PC_NO_CHANGE_DECETE  1
-#define ITRACE_FILE          0
+#define ITRACE_FILE          1
 #define INST_NOT_VALID_CHECK 1
-#define BTRACE_FILE          0
+#define BTRACE_FILE          1
 #define PRINT_REG            0
-#define PERF_FILE            0
+#define PERF_FILE            1
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -255,17 +255,22 @@ void step_and_dump_wave(){
 FILE *itracefile;
 FILE *btracefile;
 FILE *perffile;
+char wavePath[512];
 void open_log_file(){
   const char *NPC_HOME = getenv("NPC_HOME");
   const char *itrace = "/log/itrace.txt";
   const char *btrace = "/log/btrace.txt";
   const char *perf =   "/log/perf.txt";
+  const char *wave =   "/log/dump.vcd";
   char itracePath[512];
   char btracePath[512];
   char perfPath[512];
+  
   if (NPC_HOME != NULL) {
       snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
       snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
+      snprintf(perfPath,   sizeof(perfPath),   "%s%s", NPC_HOME, perf);
+      snprintf(wavePath,   sizeof(wavePath),   "%s%s", NPC_HOME, wave);
       if(ITRACE_FILE){
         itracefile = fopen(itracePath, "w");
         if (itracefile == NULL) {
@@ -300,7 +305,7 @@ void sim_init(){
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
   if(WAVE){
-    tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
+    tfp->open(wavePath);
   }
 }
 
