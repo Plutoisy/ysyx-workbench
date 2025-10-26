@@ -677,7 +677,9 @@ void cpu_exec(uint64_t n){
       //   step_and_dump_wave();
       //   dut.clock ^= 1;
       // }
-      step_and_dump_wave();
+      if(dut.clock == 1){
+        step_and_dump_wave();
+      }
 
       if(top_inst_valid && dut.clock == 1){
         inst_clock_time = i - last_clock;
@@ -740,7 +742,6 @@ void cpu_exec(uint64_t n){
             detect_read_device = 0;
           }
           else{
-            printf("123\n");
             difftest_regcpy(&refstate, 0, 0x30000000);
             difftest_exec(1);
           }
