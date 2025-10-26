@@ -105,6 +105,10 @@ word_t paddr_read(paddr_t addr, int len) {
     //  addr, cpu.pc);
     return 0;
   }
+  else if(CONFIG_PADDR_MODE == 2){
+    if (likely(in_pmem(addr))) return pmem_read(addr, len);
+    return 0;
+  }
   else{
     if (likely(in_pmem(addr))) return pmem_read(addr, len);
     IFDEF(CONFIG_DEVICE, return mmio_read(addr, len));
@@ -121,6 +125,9 @@ void paddr_write(paddr_t addr, int len, word_t data) {
     if (likely(in_sdram(addr))) { sdram_write(addr, len, data); return; }
     // panic("write address = " FMT_PADDR " is out of bound of flash|sram|sdram at pc = " FMT_WORD,
     //   addr, cpu.pc);
+  }
+  else if(CONFIG_PADDR_MODE == 2){
+    if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
   }
   else{
     if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
