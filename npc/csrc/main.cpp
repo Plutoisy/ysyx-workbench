@@ -178,7 +178,7 @@ long load_img_txt_flash() {
 
   FILE *file = fopen(img_file, "r");
   if (!file) {
-      printf("无法打开文件: %s\n", filename);
+      printf("无法打开文件: %s\n", img_file);
       return -1;
   }
 
