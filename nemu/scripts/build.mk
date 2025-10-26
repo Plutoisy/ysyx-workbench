@@ -5,7 +5,7 @@ ifeq ($(SHARE),1)
 DOTSO = .so
 ifeq ($(PADDR_MODE), 1)
     DOTSO = -soc.so
-else ifeq ($(VAR), other_value)
+else ifeq ($(PADDR_MODE), 2)
     DOTSO = -npc.so
 else
     DOTSO = xxx.so
