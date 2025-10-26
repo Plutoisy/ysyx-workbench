@@ -75,6 +75,11 @@ sim:$(VSRCS) $(CSRCS)
 nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(MAKE) -C $(NEMU_HOME)/tools/capstone
+	cp $(NPC_HOME)/tools/nemu-soc.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) syncconfig
+	$(MAKE) -C $(NEMU_HOME)
+	cp $(NPC_HOME)/tools/nemu.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) syncconfig
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
