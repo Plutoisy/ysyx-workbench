@@ -47,6 +47,7 @@
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE          0
 #define PRINT_REG            0
+#define PERF_FILE            0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
@@ -241,16 +242,8 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 }
 
 
-int nvboard_update_count = 0;
 void step_and_dump_wave(){
   dut.eval();
-  //if(NVBOARD && nvboard_update_count == 0){
-  //nvboard_update();
-  //  nvboard_update_count = 1;
-  //}
-  //else if(NVBOARD && nvboard_update_count == 1){
-  //  nvboard_update_count = 0;
-  //}
   if(WAVE){
     if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
       contextp->timeInc(1);
@@ -640,14 +633,19 @@ uint32_t decode_load_instruction(uint32_t instruction) {
     return 0;
   }
 }
-void cpu_exec(uint64_t n){
+
+FILE *itracefile;
+FILE *btracefile;
+FILE *perffile;
+
+void open_log_file(){
   const char *NPC_HOME = getenv("NPC_HOME");
   const char *itrace = "/log/itrace.txt";
   const char *btrace = "/log/btrace.txt";
+  const char *perf =   "/log/perf.txt";
   char itracePath[512];
   char btracePath[512];
-  FILE *itracefile;
-  FILE *btracefile;
+  char perfPath[512];
   if (NPC_HOME != NULL) {
       snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
       snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
@@ -665,18 +663,25 @@ void cpu_exec(uint64_t n){
           return;
         } 
       }
+      if(PERF_FILE){
+        perffile = fopen(perfPath, "w");
+        if (perffile == NULL) {
+          printf("Failed to open perf file\n");
+          return;
+        } 
+      }
   } else {
     printf("NPC_HOME is NULL\n");
     return;
   }
+}
+
+void cpu_exec(uint64_t n){
+  
   
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
-      // if (dut.clock != 1){
-      //   step_and_dump_wave();
-      //   dut.clock ^= 1;
-      // }
       step_and_dump_wave();
       if(dut.clock == 1){
         nvboard_update();
@@ -815,9 +820,7 @@ void cpu_exec(uint64_t n){
           if(pc_count > 15000){
             printf("\33[1;31mProgram pc has not change for 1.5w clk. Stuck at 0x%08x\033[0m\n",top_pc);
             // AssembleDecoder(handle, top_inst, top_pc);
-            for(int j = 0; j < 16; j++){
-              printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
-            }
+            isa_reg_display();
             printf("exec times: %ld\n",i+1);
             return;
           }
@@ -858,17 +861,10 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       printf("\33[1;34msum_lsu_clock_time: %ld\033[0m\n",sum_lsu_clock_time);
       printf("\33[1;34mlsu_clock_time_num: %ld\033[0m\n",lsu_clock_time_num);
-      // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
       printf("\33[1;34mmiss_counter_branch_c: %ld\033[0m\n",miss_counter_branch_c);
       printf("\33[1;34mall_counter_branch_c: %ld\033[0m\n",all_counter_branch_c);
       printf("\33[1;34mbranch hit rate: %f\033[0m\n",1-((double)miss_counter_branch_c/(double)all_counter_branch_c));
-      // printf("\33[1;34mTYPE COUNT:\033[0m\n");
-      // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
-      // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
-      // printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
-      // printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
-      // printf("\33[1;34munk: %ld\033[0m\n",unk);
       printf("\33[1;34mTYPE COUNT SOFTWARE:\033[0m\n");
       printf("\33[1;34mjump: %ld\033[0m\n",jump_type_s);
       printf("\33[1;34mcsr: %ld\033[0m\n",csr_type_s);
@@ -881,34 +877,35 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
       printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
       printf("\33[1;34munk: %lf\033[0m\n",avg_unk);
-      // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
-      // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
 
-      // FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/log/perf.txt", "w");
-      // if (file == NULL) {
-      //     printf("无法打开文件\n");
-      //     return;
-      // }
-      // fprintf(file, "clk: %ld\n",i+1);
-      // fprintf(file, "inst: %ld\n",inst_count);
-      // fprintf(file, "IPC: %f\n",ipc);
-      // fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
-      // fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
-      // fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
-      // fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      // fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
-      // fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
-      // fprintf(file, "jump: %ld\n",jump_type_s);
-      // fprintf(file, "csr: %ld\n",csr_type_s);
-      // fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
-      // fprintf(file, "calculate: %ld\n",cal_type_s);
-      // fprintf(file, "unk: %ld\n",unk_s);
-      // fprintf(file, "jump time: %lf\n",avg_jump);
-      // fprintf(file, "csr time: %lf\n",avg_csr);
-      // fprintf(file, "read_and_store time: %lf\n",avg_read_and_store);
-      // fprintf(file, "calculate time: %lf\n",avg_cal);
-      // fprintf(file, "unk time: %lf\n",avg_unk);
-      // fclose(file);
+      if(PERF_FILE){
+        fprintf(perffile, "clk: %ld\n",i+1);
+        fprintf(perffile, "inst: %ld\n",inst_count);
+        fprintf(perffile, "IPC: %f\n",ipc);
+        fprintf(perffile, "IFU_get_inst: %ld\n",IFU_getinst);
+        fprintf(perffile, "LSU_get_data: %ld\n",LSU_getdata);
+        fprintf(perffile, "EXU_finish_calculate: %ld\n",EXU_fincal);
+        fprintf(perffile, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+        fprintf(perffile, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
+        fprintf(perffile, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
+        fprintf(perffile, "jump: %ld\n",jump_type_s);
+        fprintf(perffile, "csr: %ld\n",csr_type_s);
+        fprintf(perffile, "read_and_store: %ld\n",read_and_store_type_s);
+        fprintf(perffile, "calculate: %ld\n",cal_type_s);
+        fprintf(perffile, "unk: %ld\n",unk_s);
+        fprintf(perffile, "jump time: %lf\n",avg_jump);
+        fprintf(perffile, "csr time: %lf\n",avg_csr);
+        fprintf(perffile, "read_and_store time: %lf\n",avg_read_and_store);
+        fprintf(perffile, "calculate time: %lf\n",avg_cal);
+        fprintf(perffile, "unk time: %lf\n",avg_unk);
+        fclose(perffile);
+      }
+      if(BTRACE_FILE){
+        fclose(btracefile);
+      }
+      if(ITRACE_FILE){
+        fclose(itracefile);
+      }
       return;
     }
   }
