@@ -206,7 +206,6 @@ long load_img_txt_flash() {
               unsigned int value;
               sscanf(token, "%x", &value);
               flash[data_count++] = (unsigned char)value;
-              printf("读取数据: %02X\n", value);
           }
           
           token = strtok(NULL, " \t\n");
