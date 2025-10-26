@@ -44,8 +44,8 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		--autoflush \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter-npc -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter-npc -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) $(IMG) +IMG="$(IMG)"
@@ -75,11 +75,11 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		--autoflush \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include"\
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter-soc -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter-soc -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME) CXXFLAGS="-DSOC"
 	./obj_dir/V$(TOPNAME) $(IMG)	
