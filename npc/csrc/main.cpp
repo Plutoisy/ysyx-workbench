@@ -170,6 +170,53 @@ static long load_img_mrom() {
   return size;
 }
 
+long load_img_txt_flash() {
+  if (img_file == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *file = fopen(img_file, "r");
+  if (!file) {
+      printf("无法打开文件: %s\n", filename);
+      return -1;
+  }
+
+  char line[256];
+  long data_count = 0;
+  
+  while (fgets(line, sizeof(line), file)) {
+      if (strlen(line) <= 1) continue;
+      if (line[0] == '@') {
+          printf("发现地址: %s", line);
+          continue;
+      }
+      
+      char* token = strtok(line, " \t\n");
+      while (token != NULL) {
+          int valid = 1;
+          for (int i = 0; token[i] != '\0'; i++) {
+              if (!isxdigit(token[i])) {
+                  valid = 0;
+                  break;
+              }
+          }
+          
+          if (valid && strlen(token) <= 2) {
+              unsigned int value;
+              sscanf(token, "%x", &value);
+              flash[data_count++] = (unsigned char)value;
+              printf("读取数据: %02X\n", value);
+          }
+          
+          token = strtok(NULL, " \t\n");
+      }
+  }
+  
+  fclose(file);
+  return data_count;
+}
+
 static long load_img_flash() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.\n");
@@ -1066,12 +1113,16 @@ int main(int argc, char *argv[]) {
       return -1;
   }
 
-  if(START_FROM_MROM){
-    load_img_mrom();
-  }
-  else{
-    load_img_flash();
-  }
+  #ifdef SOC
+    if(START_FROM_MROM){
+      load_img_mrom();
+    }
+    else{
+      load_img_flash();
+    }
+  #else
+    load_img_txt_flash();
+  #endif
   
   if(LOAD_IMG_TO_FLASH){
     //load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
