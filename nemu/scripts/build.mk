@@ -3,6 +3,13 @@
 # Add necessary options if the target is a shared library
 ifeq ($(SHARE),1)
 DOTSO = .so
+ifeq ($(PADDR_MODE), 1)
+    DOTSO = -soc.so
+else ifeq ($(VAR), other_value)
+    DOTSO = -npc.so
+else
+    DOTSO = xxx.so
+endif
 SO = -so
 LIB = lib
 CFLAGS  += -fPIC -fvisibility=hidden
