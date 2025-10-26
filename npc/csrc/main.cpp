@@ -1054,14 +1054,12 @@ int main(int argc, char *argv[]) {
       return -1;
   }
 
-  #ifdef SOC
-    if(START_FROM_MROM){
-      load_img_mrom();
-    }
-    else{
-      load_img_flash();
-    }
-  #endif
+  if(START_FROM_MROM){
+    load_img_mrom();
+  }
+  else{
+    load_img_flash();
+  }
   
   if(LOAD_IMG_TO_FLASH){
     //load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");

@@ -48,7 +48,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
-	./obj_dir/V$(TOPNAME) +IMG="$(IMG)"
+	./obj_dir/V$(TOPNAME) $(IMG) +IMG="$(IMG)"
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
