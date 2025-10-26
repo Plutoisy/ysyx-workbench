@@ -243,6 +243,7 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 
 int nvboard_update_count = 0;
 void step_and_dump_wave(){
+  dut.eval();
   if(NVBOARD && nvboard_update_count == 0){
     nvboard_update();
     nvboard_update_count = 1;
@@ -250,7 +251,6 @@ void step_and_dump_wave(){
   else if(NVBOARD && nvboard_update_count == 1){
     nvboard_update_count = 0;
   }
-  dut.eval();
   if(WAVE){
     if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
       contextp->timeInc(1);
@@ -285,10 +285,10 @@ void system_rst(){
   dut.clock = 0;
   step_and_dump_wave();
   for(int i = 0; i < 20; i++){
-	dut.clock = 1;
-	step_and_dump_wave();
-	dut.clock = 0;
-	step_and_dump_wave();
+    dut.clock = 1;
+    step_and_dump_wave();
+    dut.clock = 0;
+    step_and_dump_wave();
   }
   dut.reset = 0;
 }
@@ -564,36 +564,25 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
 }
 
 int parse_instruction_type(uint32_t top_inst) {
-  // 提取opcode（低7位）
   uint32_t opcode = top_inst & 0x7F;
-  
   switch (opcode) {
-      // R型和I型计算类指令
       case 0x33:  // R型：add, sub, sll, slt, sltu, xor, srl, sra, or, and
       case 0x13:  // I型：addi, slti, sltiu, xori, ori, andi, slli, srli, srai
       case 0x17:  // U型：auipc
       case 0x37:  // U型：lui
           return 4;
-      
-      // 访存指令
       case 0x03:  // I型：lb, lh, lw, lbu, lhu
       case 0x23:  // S型：sb, sh, sw
       case 0x0F:  // fence指令
           return 3;
-      
-      // CSR指令
       case 0x73: {
-          // 对于0x73 opcode，需要进一步检查funct3字段来确定是CSR指令还是其他系统指令
           uint32_t funct3 = (top_inst >> 12) & 0x7;
           if (funct3 != 0) {
               return 2;  // CSR指令 (csrrw, csrrs, csrrc等)
           } else {
-              // 可能是ecall, ebreak等系统指令，这里归类为未知类型
               return 99;
           }
       }
-      
-      // 跳转指令
       case 0x6F:  // J型：jal
       case 0x67:  // I型：jalr
       case 0x63:  // B型：beq, bne, blt, bge, bltu, bgeu
