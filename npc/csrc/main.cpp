@@ -39,7 +39,7 @@
 #define M_W_ASSERT           1
 #define PC_ASSERT            1
 #define REG_ASSERT           1
-#define DIFFTESE             1
+#define DIFFTESE             0
 #define BMODE                1
 #define WATCHPOINT           0
 #define WAVE                 0
