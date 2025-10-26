@@ -43,7 +43,9 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--prefix V$(TOPNAME) \
 		--timescale "1ns/1ns" \
 		--no-timing \
-		-LDFLAGS "-lreadline"\
+		--autoflush \
+		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main_npc.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
 	./obj_dir/V$(TOPNAME) -n +IMG="$(IMG)"
