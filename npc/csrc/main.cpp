@@ -739,8 +739,8 @@ void cpu_exec(uint64_t n){
             detect_read_device = 0;
           }
           else{
-            difftest_regcpy(&refstate, 0, 0x30000000);
             difftest_exec(1);
+            difftest_regcpy(&refstate, 0, 0x30000000);
           }
           
 
