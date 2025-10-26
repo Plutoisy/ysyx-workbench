@@ -34,7 +34,7 @@ include $(NVBOARD_HOME)/scripts/nvboard.mk
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
-npc:$(VSRCS_NPC) $(CSRCS)
+npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	rm -rf ./obj_dir
 	mkdir -p log
