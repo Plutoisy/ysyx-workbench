@@ -859,7 +859,11 @@ void cpu_exec(uint64_t n){
           }
 
           if(PRINT_REG){
-            if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
+            #ifdef SOC
+              if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
+            #else
+              if(((top_pc & 0xF0000000) >> 28) == 0x8){
+            #endif
               AssembleDecoder(handle, top_inst, top_pc);
               printf("        dut                    | ref                   \n");
               printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
