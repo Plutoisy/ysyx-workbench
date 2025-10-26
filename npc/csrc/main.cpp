@@ -9,7 +9,9 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
-#include <nvboard.h>
+#ifdef NVBOARD
+  #include <nvboard.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -41,7 +43,6 @@
 #define BMODE                1
 #define WATCHPOINT           0
 #define WAVE                 0
-// #define NVBOARD              1
 #define PC_NO_CHANGE_DECETE  1
 #define ITRACE_FILE          0
 #define INST_NOT_VALID_CHECK 1
@@ -52,9 +53,10 @@
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static VysyxSoCFull dut;
-void nvboard_bind_all_pins(VysyxSoCFull* top);
+#ifdef NVBOARD
+  void nvboard_bind_all_pins(VysyxSoCFull* top);
+#endif
 
-int NVBOARD = 0;
 
 int trap = 0;
 static char *img_file = NULL;
@@ -64,10 +66,6 @@ int top_pc;
 int top_dnpc;
 int top_inst;
 int top_inst_valid;
-
-void npc_mode(){
-  NVBOARD = 0;
-}
 
 uint8_t pmem[PMEM_SIZE] = {
   0x13,0x04,0x00,0x00,
@@ -367,14 +365,12 @@ static uint32_t pmem_read(uint32_t addr, int len) {
 
 static int parse_args(int argc, char *argv[]) {
   const struct option table[] = {
-    {"npc"      , no_argument      , NULL, 'n'},
     {"help"     , no_argument      , NULL, 'h'},
     {0          , 0                , NULL,  0 },
   };
   int o;
-  while ( (o = getopt_long(argc, argv, "-nh", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-h", table, NULL)) != -1) {
     switch (o) {
-      case 'n': npc_mode(); break;
       case 1: img_file = optarg; return 0;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
@@ -1044,10 +1040,10 @@ int main(int argc, char *argv[]) {
   Verilated::traceEverOn(true);
   open_log_file();
   sim_init();
-  if(NVBOARD){
+  #ifdef NVBOARD
     nvboard_bind_all_pins(&dut);
     nvboard_init();
-  }
+  #endif
   Verilated::commandArgs(argc, argv);
 
   parse_args(argc, argv);
