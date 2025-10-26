@@ -105,6 +105,6 @@ SECTIONS {
     . = ALIGN(8);
     _stack_pointer = .;
   } > sram
-  /* _stack_top = ORIGIN(sram);
-  _stack_pointer = ORIGIN(sram) + LENGTH(sram); */
+  _stack_top = ORIGIN(sram);
+  _stack_pointer = ORIGIN(sram) + LENGTH(sram);
 }
