@@ -740,6 +740,7 @@ void cpu_exec(uint64_t n){
             detect_read_device = 0;
           }
           else{
+            printf("123\n");
             difftest_regcpy(&refstate, 0, 0x30000000);
             difftest_exec(1);
           }
