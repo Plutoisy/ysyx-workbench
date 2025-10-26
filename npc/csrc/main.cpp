@@ -252,6 +252,47 @@ void step_and_dump_wave(){
   }
 }
 
+FILE *itracefile;
+FILE *btracefile;
+FILE *perffile;
+void open_log_file(){
+  const char *NPC_HOME = getenv("NPC_HOME");
+  const char *itrace = "/log/itrace.txt";
+  const char *btrace = "/log/btrace.txt";
+  const char *perf =   "/log/perf.txt";
+  char itracePath[512];
+  char btracePath[512];
+  char perfPath[512];
+  if (NPC_HOME != NULL) {
+      snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
+      snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
+      if(ITRACE_FILE){
+        itracefile = fopen(itracePath, "w");
+        if (itracefile == NULL) {
+          printf("Failed to open itrace file\n");
+          return;
+        } 
+      }
+      if(BTRACE_FILE){
+        btracefile = fopen(btracePath, "w");
+        if (btracefile == NULL) {
+          printf("Failed to open btrace file\n");
+          return;
+        } 
+      }
+      if(PERF_FILE){
+        perffile = fopen(perfPath, "w");
+        if (perffile == NULL) {
+          printf("Failed to open perf file\n");
+          return;
+        } 
+      }
+  } else {
+    printf("NPC_HOME is NULL\n");
+    return;
+  }
+}
+
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
@@ -634,47 +675,7 @@ uint32_t decode_load_instruction(uint32_t instruction) {
   }
 }
 
-FILE *itracefile;
-FILE *btracefile;
-FILE *perffile;
 
-void open_log_file(){
-  const char *NPC_HOME = getenv("NPC_HOME");
-  const char *itrace = "/log/itrace.txt";
-  const char *btrace = "/log/btrace.txt";
-  const char *perf =   "/log/perf.txt";
-  char itracePath[512];
-  char btracePath[512];
-  char perfPath[512];
-  if (NPC_HOME != NULL) {
-      snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
-      snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
-      if(ITRACE_FILE){
-        itracefile = fopen(itracePath, "w");
-        if (itracefile == NULL) {
-          printf("Failed to open itrace file\n");
-          return;
-        } 
-      }
-      if(BTRACE_FILE){
-        btracefile = fopen(btracePath, "w");
-        if (btracefile == NULL) {
-          printf("Failed to open btrace file\n");
-          return;
-        } 
-      }
-      if(PERF_FILE){
-        perffile = fopen(perfPath, "w");
-        if (perffile == NULL) {
-          printf("Failed to open perf file\n");
-          return;
-        } 
-      }
-  } else {
-    printf("NPC_HOME is NULL\n");
-    return;
-  }
-}
 
 void cpu_exec(uint64_t n){
   
