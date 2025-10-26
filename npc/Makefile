@@ -19,7 +19,7 @@ VSRCS += $(shell find $(abspath $(YSYX_HOME)/ysyxSoC/perip) -name "*.v")
 VSRCS += $(YSYX_HOME)/ysyxSoC/build/ysyxSoCFull.v
 CSRCS = $(abspath ./csrc/main.cpp)
 CSRCS += $(SRC_AUTO_BIND)
-CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
+CSRCS_NPC = $(abspath ./csrc/main.cpp)
 VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
@@ -45,7 +45,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		-LDFLAGS "-lreadline"\
 		--exe main_npc.cpp
 	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
-	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
+	./obj_dir/Vysyx_24120011_tb -n +IMG="$(IMG)"
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
