@@ -53,7 +53,6 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	$(MAKE) -C $(NEMU_HOME)/tools/capstone
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
@@ -70,6 +69,7 @@ sim:$(VSRCS) $(CSRCS)
 
 nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	$(MAKE) -C $(NEMU_HOME)/tools/capstone
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
