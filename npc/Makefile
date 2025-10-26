@@ -36,6 +36,7 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
 npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	$(MAKE) -C $(NEMU_HOME)/tools/capstone
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
@@ -52,6 +53,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	$(MAKE) -C $(NEMU_HOME)/tools/capstone
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
