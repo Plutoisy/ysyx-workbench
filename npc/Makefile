@@ -40,6 +40,7 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module ysyx_24120011_tb $^ \
+		--prefix $(TOPNAME) \
 		--timescale "1ns/1ns" \
 		--no-timing \
 		-LDFLAGS "-lreadline"\
