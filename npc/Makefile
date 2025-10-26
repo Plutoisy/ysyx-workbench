@@ -37,11 +37,11 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(MAKE) -C $(NEMU_HOME)/tools/capstone
-	rm -rf $(NEMU_HOME)/.config $(NEMU_HOME)/.config.old && \
-	cp $(NPC_HOME)/tools/nemu-npc.config $(NEMU_HOME)/.config && \
-	$(MAKE) -C $(NEMU_HOME) && \
-	rm -rf $(NEMU_HOME)/.config $(NEMU_HOME)/.config.old && \
-	cp $(NPC_HOME)/tools/nemu.config $(NEMU_HOME)/.config && \
+	cp $(NPC_HOME)/tools/nemu-npc.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) oldconfig
+	$(MAKE) -C $(NEMU_HOME)
+	cp $(NPC_HOME)/tools/nemu.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) oldconfig
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
