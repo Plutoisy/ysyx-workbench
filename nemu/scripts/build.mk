@@ -3,6 +3,7 @@
 # Add necessary options if the target is a shared library
 ifeq ($(SHARE),1)
 DOTSO = .so
+$(info VAR is $(PADDR_MODE))
 ifeq ($(PADDR_MODE), 1)
     DOTSO = -soc.so
 else ifeq ($(PADDR_MODE), 2)
