@@ -45,6 +45,7 @@ npc:$(VSRCS_NPC) $(CSRCS)
 		--no-timing \
 		--autoflush \
 		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main_npc.cpp
 	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
