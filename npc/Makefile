@@ -45,8 +45,8 @@ npc:$(VSRCS_NPC) $(CSRCS_NPC)
 		--no-timing \
 		-LDFLAGS "-lreadline"\
 		--exe main_npc.cpp
-	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
-	./obj_dir/Vysyx_24120011_tb -n +IMG="$(IMG)"
+	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
+	./obj_dir/V$(TOPNAME) -n +IMG="$(IMG)"
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
