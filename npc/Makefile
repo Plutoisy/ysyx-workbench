@@ -81,7 +81,7 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
 		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
-	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
+	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME) CXXFLAGS="-DSOC"
 	./obj_dir/V$(TOPNAME) $(IMG)	
 
 perf:
