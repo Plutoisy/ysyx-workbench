@@ -679,7 +679,7 @@ void cpu_exec(uint64_t n){
       // }
       step_and_dump_wave();
 
-      if(top_inst_valid){
+      if(top_inst_valid && dut.clock == 1){
         inst_clock_time = i - last_clock;
         last_clock = i;
         inst_count++;
