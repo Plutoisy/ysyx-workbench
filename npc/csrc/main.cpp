@@ -753,6 +753,13 @@ void cpu_exec(uint64_t n){
           if(DIFFTESE){
         #else
           if(DIFFTESE && (top_pc & 0xF0000000) >> 28 == 0x8){
+            if(top_pc == 0x80000000){
+              dutstate.pc = top_pc;
+              memcpy(dutstate.gpr, gpr, sizeof(gpr));
+              difftest_regcpy(&dutstate, 1, top_pc);
+              difftest_regcpy(&refstate, 0, 0x30000000);
+              difftest_exec(1);
+            }
         #endif
           if(detect_read_device){
             dutstate.pc = top_pc;
