@@ -1030,6 +1030,7 @@ void sdb_mainloop() {
 
 int main(int argc, char *argv[]) {
   Verilated::traceEverOn(true);
+  open_log_file();
   sim_init();
   if(NVBOARD){
     nvboard_bind_all_pins(&dut);
