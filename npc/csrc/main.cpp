@@ -245,7 +245,7 @@ int nvboard_update_count = 0;
 void step_and_dump_wave(){
   dut.eval();
   //if(NVBOARD && nvboard_update_count == 0){
-    nvboard_update();
+  //nvboard_update();
   //  nvboard_update_count = 1;
   //}
   //else if(NVBOARD && nvboard_update_count == 1){
@@ -677,8 +677,9 @@ void cpu_exec(uint64_t n){
       //   step_and_dump_wave();
       //   dut.clock ^= 1;
       // }
+      step_and_dump_wave();
       if(dut.clock == 1){
-        step_and_dump_wave();
+        nvboard_update();
       }
 
       if(top_inst_valid && dut.clock == 1){
