@@ -9,7 +9,7 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
-#ifdef NVBOARD
+#ifdef SOC
   #include <nvboard.h>
 #endif
 #include <sys/stat.h>
@@ -53,7 +53,7 @@
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static VysyxSoCFull dut;
-#ifdef NVBOARD
+#ifdef SOC
   void nvboard_bind_all_pins(VysyxSoCFull* top);
 #endif
 
@@ -691,7 +691,7 @@ void cpu_exec(uint64_t n){
     if(trap != 1){
       dut.clock ^= 1;
       step_and_dump_wave();
-      #ifdef  NVBOARD
+      #ifdef  SOC
         if(dut.clock == 1){
           nvboard_update();
         }
@@ -1042,7 +1042,7 @@ int main(int argc, char *argv[]) {
   Verilated::traceEverOn(true);
   open_log_file();
   sim_init();
-  #ifdef NVBOARD
+  #ifdef SOC
     nvboard_bind_all_pins(&dut);
     nvboard_init();
   #endif
