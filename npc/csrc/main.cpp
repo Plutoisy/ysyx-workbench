@@ -244,13 +244,13 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 int nvboard_update_count = 0;
 void step_and_dump_wave(){
   dut.eval();
-  if(NVBOARD && nvboard_update_count == 0){
+  //if(NVBOARD && nvboard_update_count == 0){
     nvboard_update();
-    nvboard_update_count = 1;
-  }
-  else if(NVBOARD && nvboard_update_count == 1){
-    nvboard_update_count = 0;
-  }
+  //  nvboard_update_count = 1;
+  //}
+  //else if(NVBOARD && nvboard_update_count == 1){
+  //  nvboard_update_count = 0;
+  //}
   if(WAVE){
     if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
       contextp->timeInc(1);
@@ -672,17 +672,15 @@ void cpu_exec(uint64_t n){
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
-      if (dut.clock != 1){
-        step_and_dump_wave();
-        dut.clock ^= 1;
-      }
+      // if (dut.clock != 1){
+      //   step_and_dump_wave();
+      //   dut.clock ^= 1;
+      // }
+      step_and_dump_wave();
 
       if(top_inst_valid){
         inst_clock_time = i - last_clock;
         last_clock = i;
-        
-
-        step_and_dump_wave();
         inst_count++;
         if(ITRACE_FILE){
           fprintf(itracefile, "%08x\n",top_pc);
@@ -803,9 +801,6 @@ void cpu_exec(uint64_t n){
             return;
           }
         }
-      }
-      else{
-        step_and_dump_wave();
       }
 
       
