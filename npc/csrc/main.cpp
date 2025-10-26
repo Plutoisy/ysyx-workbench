@@ -291,6 +291,7 @@ void system_rst(){
     step_and_dump_wave();
   }
   dut.reset = 0;
+  step_and_dump_wave();
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
@@ -739,8 +740,8 @@ void cpu_exec(uint64_t n){
             detect_read_device = 0;
           }
           else{
-            difftest_exec(1);
             difftest_regcpy(&refstate, 0, 0x30000000);
+            difftest_exec(1);
           }
           
 
