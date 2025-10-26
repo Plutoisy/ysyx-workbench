@@ -1053,7 +1053,7 @@ int main(int argc, char *argv[]) {
   if (!capstone_init(&handle)) {
       return -1;
   }
-  
+
   #ifdef SOC
     if(START_FROM_MROM){
       load_img_mrom();
@@ -1070,7 +1070,11 @@ int main(int argc, char *argv[]) {
   if(DIFFTESE){
     difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
     void* dut = NULL;
-    difftest_regcpy(dut, 1, 0x30000000);
+    #ifdef SOC
+      difftest_regcpy(dut, 1, 0x30000000);
+    #else
+      difftest_regcpy(dut, 1, 0x80000000);
+    #endif
   }
   
   system_rst();
