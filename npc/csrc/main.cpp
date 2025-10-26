@@ -691,9 +691,11 @@ void cpu_exec(uint64_t n){
     if(trap != 1){
       dut.clock ^= 1;
       step_and_dump_wave();
-      if(dut.clock == 1){
-        nvboard_update();
-      }
+      #ifdef  NVBOARD
+        if(dut.clock == 1){
+          nvboard_update();
+        }
+      #endif
 
       if(top_inst_valid && dut.clock == 1){
         inst_clock_time = i - last_clock;
