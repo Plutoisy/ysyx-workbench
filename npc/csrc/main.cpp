@@ -748,7 +748,12 @@ void cpu_exec(uint64_t n){
           }
         }
 
-        if(DIFFTESE){
+
+        #ifdef SOC
+          if(DIFFTESE){
+        #else
+          if(DIFFTESE && (top_pc & 0xF0000000) >> 28 == 0x8){
+        #endif
           if(detect_read_device){
             dutstate.pc = top_pc;
             memcpy(dutstate.gpr, gpr, sizeof(gpr));
