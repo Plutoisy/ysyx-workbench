@@ -97,14 +97,14 @@ SECTIONS {
   . = ALIGN(8);
   _heap_start = .;
 
-  /* .stack (NOLOAD) : ALIGN(8) {
-    _stack_top = .;
-
-    . += _stack_size;
-
+  . = ORIGIN(sram) + LENGTH(sram) - _stack_size;
+  .stack (NOLOAD) : ALIGN(8)
+  {
+    _stack_top = .;         /* 栈顶部（低地址或高地址依你的约定）*/
+    . += _stack_size;       /* 占位 */
     . = ALIGN(8);
-    _stack_pointer = .;
-  } > sram */
-  _stack_top = ORIGIN(sram) + LENGTH(sram) - _stack_size;
-  _stack_pointer = ORIGIN(sram) + LENGTH(sram);
+    _stack_pointer = .;     /* 栈指针初值（高地址）*/
+  } > sram
+  /* _stack_top = ORIGIN(sram) + LENGTH(sram) - _stack_size;
+  _stack_pointer = ORIGIN(sram) + LENGTH(sram); */
 }
