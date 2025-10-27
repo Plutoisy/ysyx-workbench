@@ -99,7 +99,11 @@ SECTIONS {
 
   .stack (NOLOAD) : ALIGN(8) {
     _stack_top = ORIGIN(sram) + LENGTH(sram) - _stack_size;
-    _stack_pointer = ORIGIN(sram) + LENGTH(sram);
+
+    . += _stack_size;
+
+    . = ALIGN(8);
+    _stack_pointer = .;
   } > sram
   /* _stack_top = ORIGIN(sram) + LENGTH(sram) - _stack_size;
   _stack_pointer = ORIGIN(sram) + LENGTH(sram); */
