@@ -96,15 +96,33 @@ SECTIONS {
 
   . = ALIGN(8);
   _heap_start = .;
+  /* ---- stack 配置（请放在 SECTIONS 中合适位置） ---- */
+  /* 明确定义栈大小（1K = 0x400）*/
 
-  . = ORIGIN(sram) + LENGTH(sram) - _stack_size;
-  .stack (NOLOAD) : ALIGN(8)
-  {
-    _stack_top = .;         /* 栈顶部（低地址或高地址依你的约定）*/
-    . += _stack_size;       /* 占位 */
+  /* 计算栈区边界并检验不会越界 */
+  _stack_pointer_calc = ORIGIN(sram) + LENGTH(sram);      /* 理想的初始 SP（first-past-end） */
+  _stack_top_calc     = _stack_pointer_calc - _stack_size; /* 栈底（低地址） */
+
+  . = _stack_top_calc;
+  .stack (NOLOAD) : ALIGN(8) {
+    _stack_top = .;            /* 栈底（低地址） */
+    . += _stack_size;          /* 占位 _stack_size */
     . = ALIGN(8);
-    _stack_pointer = .;     /* 栈指针初值（高地址）*/
+    /* 初始 SP：放在 SRAM 最末端，但为了保险减 4 字节（避免 "one-past-end" 被某些运行时/仿真判断为非法） */
+    _stack_pointer = _stack_pointer_calc - 4;
   } > sram
+
+  /* 恢复 . 到 end（如果要在 sram 之后继续放其它节，按需调整） */
+  . = ALIGN(8);
+
+  /* .stack (NOLOAD) : ALIGN(8) {
+    _stack_top = .;
+
+    . += _stack_size;
+
+    . = ALIGN(8);
+    _stack_pointer = .;
+  } > sram */
   /* _stack_top = ORIGIN(sram) + LENGTH(sram) - _stack_size;
   _stack_pointer = ORIGIN(sram) + LENGTH(sram); */
 }
