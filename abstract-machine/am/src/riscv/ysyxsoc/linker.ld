@@ -97,6 +97,8 @@ SECTIONS {
   . = ALIGN(8);
   _heap_start = .;
 
+  . = ORIGIN(sram) + LENGTH(sram) - _stack_size;
+  
   .stack (NOLOAD) : ALIGN(8) {
     _stack_top = ORIGIN(sram) + LENGTH(sram) - _stack_size;
 
