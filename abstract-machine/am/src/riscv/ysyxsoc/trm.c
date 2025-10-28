@@ -109,9 +109,13 @@ void print_csr() {
 
 void _trm_init() {
   uart_init();
-  
-  outl(0x21000000L, 0x00ffffff);
   print_csr();
   int ret = main(mainargs);
+  outl(0x21000000L, 0x00ffffff);
+  while (1)
+  {
+    /* code */
+  }
+  
   halt(ret);
 }
