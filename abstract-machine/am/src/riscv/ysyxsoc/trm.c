@@ -111,13 +111,5 @@ void _trm_init() {
   uart_init();
   print_csr();
   int ret = main(mainargs);
-  outl(0x21000000L, 0x00ffffff);
-  outl(0x21000000L+4*(1*2048+1), 0x00ffffff);
-  //outl(0x21000008L, 0x00ffffff);
-  while (1)
-  {
-    /* code */
-  }
-  
   halt(ret);
 }
