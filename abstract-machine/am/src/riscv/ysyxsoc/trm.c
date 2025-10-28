@@ -113,6 +113,7 @@ void _trm_init() {
   int ret = main(mainargs);
   outl(0x21000000L, 0x00ffffff);
   outl(0x21000004L, 0x00ffffff);
+  outl(0x21000008L, 0x00ffffff);
   while (1)
   {
     /* code */
