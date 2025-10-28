@@ -112,7 +112,7 @@ void _trm_init() {
   print_csr();
   int ret = main(mainargs);
   outl(0x21000000L, 0x00ffffff);
-  outl(0x21000000L+480*5*4 + 4*240, 0x00ffffff);
+  outl(0x21000000L+4*480, 0x00ffffff);
   //outl(0x21000008L, 0x00ffffff);
   while (1)
   {
