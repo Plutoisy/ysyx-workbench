@@ -34,7 +34,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
   *cfg = (AM_GPU_CONFIG_T) {
     .present = true, .has_accel = false,
-    .width = disp_w, .height = 240,
+    .width = disp_w, .height = disp_h,
     .vmemsz = 0
   };
 }
