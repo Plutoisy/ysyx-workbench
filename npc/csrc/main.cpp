@@ -9,47 +9,53 @@
 #include <readline/history.h>
 #include <capstone/capstone.h>
 #include <sys/time.h>
-#include <nvboard.h>
+#ifdef SOC
+  #include <nvboard.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define PMEM_SIZE    0x8000000
-#define FLASH_SIZE    0x1000000
-#define PSRAM_SIZE    0x20000000
-#define SDRAM_SIZE    0x20000000
-#define SRAM_SIZE     0x1000000
+#define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 
-#define CONFIG_SRAMBASE 0x0f000000
+#define PMEM_SIZE        0x8000000
+#define FLASH_SIZE       0x1000000
+#define PSRAM_SIZE       0x20000000
+#define SDRAM_SIZE       0x20000000
+#define SRAM_SIZE        0x1000000
+
+#define CONFIG_SRAMBASE  0x0f000000
 #define CONFIG_SDRAMBASE 0xa0000000
 #define PMEM_SIZE_SOC    0x1000
-#define CONFIG_MBASE 0x80000000
+#define CONFIG_MBASE     0x80000000
 #define CONFIG_MBASE_SOC 0x20000000
 #define CONFIG_FLASHBASE 0x30000000
 #define CONFIG_PSRAMBASE 0x80000000
-#define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define LOAD_IMG_TO_FLASH 0
-#define START_FROM_MROM 0
-#define M_R_TRACE 0
-#define M_W_TRACE 0
-#define M_R_ASSERT 1
-#define M_W_ASSERT 1
-#define PC_ASSERT 1
-#define REG_ASSERT 1
-#define DIFFTESE 0
-#define BMODE 1
-#define WATCHPOINT 1
-#define WAVE 0
-#define NVBOARD 1
-#define PC_NO_CHANGE_DECETE 1
-#define ITRACE_FILE 0
+
+#define LOAD_IMG_TO_FLASH    0
+#define START_FROM_MROM      0
+#define M_R_TRACE            0
+#define M_W_TRACE            0
+#define M_R_ASSERT           1
+#define M_W_ASSERT           1
+#define PC_ASSERT            1
+#define REG_ASSERT           1
+#define DIFFTESE             0
+#define BMODE                1
+#define WATCHPOINT           0
+#define WAVE                 0
+#define PC_NO_CHANGE_DECETE  0
+#define ITRACE_FILE          0
 #define INST_NOT_VALID_CHECK 1
-#define BTRACE_FILE 0
-#define PRINT_REG 0
+#define BTRACE_FILE          0
+#define PRINT_REG            0
+#define PERF_FILE            0
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* tfp = NULL;
 static VysyxSoCFull dut;
-void nvboard_bind_all_pins(VysyxSoCFull* top);
+#ifdef SOC
+  void nvboard_bind_all_pins(VysyxSoCFull* top);
+#endif
 
 
 int trap = 0;
@@ -59,7 +65,7 @@ uint32_t gpr[32];
 int top_pc;
 int top_dnpc;
 int top_inst;
-int top_IFU_valid_int;
+int top_inst_valid;
 
 uint8_t pmem[PMEM_SIZE] = {
   0x13,0x04,0x00,0x00,
@@ -164,6 +170,52 @@ static long load_img_mrom() {
   return size;
 }
 
+long load_img_txt_flash() {
+  if (img_file == NULL) {
+    printf("No image is given. Use the default build-in image.\n");
+    return 4096; // built-in image size
+  }
+
+  FILE *file = fopen(img_file, "r");
+  if (!file) {
+      printf("无法打开文件: %s\n", img_file);
+      return -1;
+  }
+
+  char line[256];
+  long data_count = 0;
+  
+  while (fgets(line, sizeof(line), file)) {
+      if (strlen(line) <= 1) continue;
+      if (line[0] == '@') {
+          printf("发现地址: %s", line);
+          continue;
+      }
+      
+      char* token = strtok(line, " \t\n");
+      while (token != NULL) {
+          int valid = 1;
+          for (int i = 0; token[i] != '\0'; i++) {
+              if (!isxdigit(token[i])) {
+                  valid = 0;
+                  break;
+              }
+          }
+          
+          if (valid && strlen(token) <= 2) {
+              unsigned int value;
+              sscanf(token, "%x", &value);
+              flash[data_count++] = (unsigned char)value;
+          }
+          
+          token = strtok(NULL, " \t\n");
+      }
+  }
+  
+  fclose(file);
+  return data_count;
+}
+
 static long load_img_flash() {
   if (img_file == NULL) {
     printf("No image is given. Use the default build-in image.\n");
@@ -239,15 +291,7 @@ void AssembleDecoder(csh handle, uint32_t instruction, uint32_t pc) {
 }
 
 
-int nvboard_update_count = 0;
 void step_and_dump_wave(){
-  if(NVBOARD && nvboard_update_count == 0){
-    nvboard_update();
-    nvboard_update_count = 1;
-  }
-  else if(NVBOARD && nvboard_update_count == 1){
-    nvboard_update_count = 0;
-  }
   dut.eval();
   if(WAVE){
     if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
@@ -257,14 +301,59 @@ void step_and_dump_wave(){
   }
 }
 
+FILE *itracefile;
+FILE *btracefile;
+FILE *perffile;
+char wavePath[512];
+void open_log_file(){
+  const char *NPC_HOME = getenv("NPC_HOME");
+  const char *itrace = "/log/itrace.txt";
+  const char *btrace = "/log/btrace.txt";
+  const char *perf =   "/log/perf.txt";
+  const char *wave =   "/log/dump.vcd";
+  char itracePath[512];
+  char btracePath[512];
+  char perfPath[512];
+  
+  if (NPC_HOME != NULL) {
+      snprintf(itracePath, sizeof(itracePath), "%s%s", NPC_HOME, itrace);
+      snprintf(btracePath, sizeof(btracePath), "%s%s", NPC_HOME, btrace);
+      snprintf(perfPath,   sizeof(perfPath),   "%s%s", NPC_HOME, perf);
+      snprintf(wavePath,   sizeof(wavePath),   "%s%s", NPC_HOME, wave);
+      if(ITRACE_FILE){
+        itracefile = fopen(itracePath, "w");
+        if (itracefile == NULL) {
+          printf("Failed to open itrace file\n");
+          return;
+        } 
+      }
+      if(BTRACE_FILE){
+        btracefile = fopen(btracePath, "w");
+        if (btracefile == NULL) {
+          printf("Failed to open btrace file\n");
+          return;
+        } 
+      }
+      if(PERF_FILE){
+        perffile = fopen(perfPath, "w");
+        if (perffile == NULL) {
+          printf("Failed to open perf file\n");
+          return;
+        } 
+      }
+  } else {
+    printf("NPC_HOME is NULL\n");
+    return;
+  }
+}
+
 void sim_init(){
   contextp = new VerilatedContext;
   tfp = new VerilatedVcdC;
-  // top = new VysyxSoCFull;
   contextp->traceEverOn(true);
   dut.trace(tfp, 99);
   if(WAVE){
-    tfp->open("/home/plutoisy/ysyx-workbench/npc/log/dump.vcd");
+    tfp->open(wavePath);
   }
 }
 
@@ -283,12 +372,13 @@ void system_rst(){
   dut.clock = 0;
   step_and_dump_wave();
   for(int i = 0; i < 20; i++){
-	dut.clock = 1;
-	step_and_dump_wave();
-	dut.clock = 0;
-	step_and_dump_wave();
+    dut.clock = 1;
+    step_and_dump_wave();
+    dut.clock = 0;
+    step_and_dump_wave();
   }
   dut.reset = 0;
+  step_and_dump_wave();
 }
 
 uint8_t* guest_to_host(uint32_t paddr) { return pmem + paddr - CONFIG_MBASE; }
@@ -393,29 +483,6 @@ extern "C" void Performance_Counters(int Performancetype){
   }
 }
 
-// uint64_t jump_type = 0;
-// uint64_t csr_type = 0;
-// uint64_t read_and_store_type = 0;
-// uint64_t cal_type = 0;
-// uint64_t unk = 0;
-// extern "C" void inst_type_Counters(int insttype){
-//   if(insttype == 1){
-//     jump_type++;
-//   }
-//   if(insttype == 2){
-//     csr_type++;
-//   }
-//   if(insttype == 3){
-//     read_and_store_type++;
-//   }
-//   if(insttype == 4){
-//     cal_type++;
-//   }
-//   if(insttype == 5){
-//     unk++;
-//   }
-// }
-
 extern "C" void psram_read(uint32_t addr, uint32_t *data) {
 	if(addr >= 0 && addr <= PSRAM_SIZE){
 		*data = host_read(psram+addr,4);
@@ -490,11 +557,11 @@ extern "C" void npc_trap(int pc, int ret){
   }
 }
 
-extern "C" void get_pc_inst(int pc, int dnpc, int inst, int IFU_valid_int){
+extern "C" void get_pc_inst(int pc, int dnpc, int inst, int EXU_valid_int){
   top_pc = pc;
   top_dnpc = dnpc;
   top_inst = inst;
-  top_IFU_valid_int = IFU_valid_int;
+  top_inst_valid = EXU_valid_int;
 }
 
 extern "C" void reg_out(const int array[32]) {
@@ -585,36 +652,25 @@ extern "C" int rtl_pmem_read(int r_mem_addr){
 }
 
 int parse_instruction_type(uint32_t top_inst) {
-  // 提取opcode（低7位）
   uint32_t opcode = top_inst & 0x7F;
-  
   switch (opcode) {
-      // R型和I型计算类指令
       case 0x33:  // R型：add, sub, sll, slt, sltu, xor, srl, sra, or, and
       case 0x13:  // I型：addi, slti, sltiu, xori, ori, andi, slli, srli, srai
       case 0x17:  // U型：auipc
       case 0x37:  // U型：lui
           return 4;
-      
-      // 访存指令
       case 0x03:  // I型：lb, lh, lw, lbu, lhu
       case 0x23:  // S型：sb, sh, sw
       case 0x0F:  // fence指令
           return 3;
-      
-      // CSR指令
       case 0x73: {
-          // 对于0x73 opcode，需要进一步检查funct3字段来确定是CSR指令还是其他系统指令
           uint32_t funct3 = (top_inst >> 12) & 0x7;
           if (funct3 != 0) {
               return 2;  // CSR指令 (csrrw, csrrs, csrrc等)
           } else {
-              // 可能是ecall, ebreak等系统指令，这里归类为未知类型
               return 99;
           }
       }
-      
-      // 跳转指令
       case 0x6F:  // J型：jal
       case 0x67:  // I型：jalr
       case 0x63:  // B型：beq, bne, blt, bge, bltu, bgeu
@@ -652,69 +708,44 @@ uint64_t detect_btype = 0;
 int      btype_pc = 0;
 uint32_t access_addr = 0;
 int detect_read_device = 0;
+int gpr_diff_test_failed = 0;
 
 uint32_t decode_load_instruction(uint32_t instruction) {
-  // 提取opcode（最低7位）
+  // 检查是否为load指令
   uint8_t opcode = instruction & 0x7F;
-  
-  // 检查是否为load指令（opcode = 0000011）
   if (opcode == 0x03) {
-      // 提取寄存器索引
-      uint8_t rs1 = (instruction >> 15) & 0x1F;  // 基址寄存器
-      uint8_t rd  = (instruction >> 7)  & 0x1F;  // 目标寄存器
-      
-      // 提取12位立即数（符号扩展）
+      uint8_t rs1 = (instruction >> 15) & 0x1F;  
+      uint8_t rd  = (instruction >> 7)  & 0x1F;  
       int32_t imm = (int32_t)(instruction & 0xFFF00000) >> 20;
-      // 如果立即数的最高位是1，进行符号扩展
       if (imm & 0x800) {
           imm |= 0xFFFFF000;
       }
-      
-      // 计算访问地址
       uint32_t addr = gpr[rs1] + (uint32_t)imm;
-      
-      // 提取funct3用于确定load类型
-      uint8_t funct3 = (instruction >> 12) & 0x7;
-      
-      // 打印结果
-      const char* load_types[] = {
-          "LB", "LH", "LW", "LBU", "LHU"
-      };
       return addr;
   }
   else{
     return 0;
   }
 }
+
+
+
 void cpu_exec(uint64_t n){
-  FILE *itracefile;
-  // FILE *itracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/itrace.txt", "w");
-  // if (itracefile == NULL) {
-  //     printf("无法打开文件\n");
-  //     return;
-  // }
-  FILE *btracefile;
-  // FILE *btracefile = fopen("/home/plutoisy/ysyx-workbench/npc/log/btrace.txt", "w");
-  // if (btracefile == NULL) {
-  //     printf("无法打开文件\n");
-  //     return;
-  // }
+  
+  
   for(uint64_t i = 0; i < n; i++){
     if(trap != 1){
       dut.clock ^= 1;
-      if (dut.clock != 1){
-        step_and_dump_wave();
-        dut.clock ^= 1;
-      }
-      //printf("top_IFU_valid_int:%d\n",top_IFU_valid_int);
-      //AssembleDecoder(handle, top_inst, top_pc);
+      step_and_dump_wave();
+      #ifdef  SOC
+        if(dut.clock == 1){
+          nvboard_update();
+        }
+      #endif
 
-      if(top_IFU_valid_int){
+      if(top_inst_valid && dut.clock == 1){
         inst_clock_time = i - last_clock;
         last_clock = i;
-        
-
-        step_and_dump_wave();
         inst_count++;
         if(ITRACE_FILE){
           fprintf(itracefile, "%08x\n",top_pc);
@@ -757,39 +788,23 @@ void cpu_exec(uint64_t n){
           clk_unk_s += inst_clock_time;
         }
 
-        if((WATCHPOINT || !BMODE) && n < 100){
-          // AssembleDecoder(handle, top_inst, top_pc);
-          for(int j = 0; j < 16; j++){
-            printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
-          }
-        }
-
         if(WATCHPOINT){
-
-          // if(top_pc == 0xa0000518){
-          //   return;
-          // }
           if(top_pc == 0xa00214ac){
             return;
           }
-          
-          if(top_pc == 0xa00000a4){
-            func_time = i-func_time;
-            printf("pc time: %ld\n",func_time);
-          }
-
-          // if(top_pc == 0xa0000000){
-          //   func_time = i;
-          // }
-          // if(top_pc == 0xa00002dc){
-          //   func_time = i-func_time;
-          //   printf("pc time: %ld\n",func_time);
-          // }
         }
 
-        
 
-        if(DIFFTESE){
+        #ifdef SOC
+          if(DIFFTESE){
+        #else
+          if(DIFFTESE && (top_pc & 0xF0000000) >> 28 == 0x8){
+            if(top_pc == 0x80000000){
+              dutstate.pc = top_pc;
+              memcpy(dutstate.gpr, gpr, sizeof(gpr));
+              difftest_regcpy(&dutstate, 1, top_pc);
+            }
+        #endif
           if(detect_read_device){
             dutstate.pc = top_pc;
             memcpy(dutstate.gpr, gpr, sizeof(gpr));
@@ -812,16 +827,7 @@ void cpu_exec(uint64_t n){
                 //printf("Read address: 0x%08x\n", access_addr);
                 detect_read_device = 1;
           }
-          if(PRINT_REG){
-            if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
-              AssembleDecoder(handle, top_inst, top_pc);
-              printf("        dut                    | ref                   \n");
-              printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
-              for(int j = 0; j < 16; j++){
-                printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-              }
-            } 
-          }
+          
           if(refstate.pc != top_pc){
            if(PC_ASSERT){
             AssembleDecoder(handle, top_inst, top_pc);
@@ -830,34 +836,50 @@ void cpu_exec(uint64_t n){
             for(int j = 0; j < 16; j++){
               printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
             }
-             assert(0);
+            assert(0);
            }
           }
-          
-          for(int j = 0; j < 16; j++){
-            if(refstate.gpr[j] != gpr[j]){
-              if(REG_ASSERT){
-                AssembleDecoder(handle, top_inst, top_pc);
-                printf("        dut                    | ref                   \n");
-                printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
-                for(int j = 0; j < 16; j++){
-                  printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
-                }
-                assert(0);
+
+          if(REG_ASSERT){
+            gpr_diff_test_failed = 0;
+            for(int j = 0; j < 16; j++){
+              if(refstate.gpr[j] != gpr[j]){
+                gpr_diff_test_failed = 1;
               }
             }
+            if(gpr_diff_test_failed){
+              AssembleDecoder(handle, top_inst, top_pc);
+              printf("        dut                    | ref                   \n");
+              printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+              for(int j = 0; j < 16; j++){
+                printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+              }
+              assert(0);
+            }
+          }
+
+          if(PRINT_REG){
+            #ifdef SOC
+              if(((top_pc & 0xF0000000) >> 28) == 0xA || ((top_pc & 0xF0000000) >> 28) == 0xB){
+            #else
+              if(((top_pc & 0xF0000000) >> 28) == 0x8){
+            #endif
+              AssembleDecoder(handle, top_inst, top_pc);
+              printf("        dut                    | ref                   \n");
+              printf("pc      0x%08x             | 0x%08x\n", top_pc, refstate.pc);
+              for(int j = 0; j < 16; j++){
+                printf("%-3s     %-10u  0x%08x | %-10u  0x%08x\n", regs[j], gpr[j], gpr[j], refstate.gpr[j], refstate.gpr[j]);
+              }
+            } 
           }
         }
 
         if(INST_NOT_VALID_CHECK){
-          if(top_inst==0x00000000 && top_IFU_valid_int){
+          if(top_inst==0x00000000 && top_inst_valid){
             printf("\33[1;31mProgram inst is 0x00000000. Stuck at 0x%08x\033[0m\n",top_pc);
             return;
           }
         }
-      }
-      else{
-        step_and_dump_wave();
       }
 
       
@@ -868,9 +890,7 @@ void cpu_exec(uint64_t n){
           if(pc_count > 15000){
             printf("\33[1;31mProgram pc has not change for 1.5w clk. Stuck at 0x%08x\033[0m\n",top_pc);
             // AssembleDecoder(handle, top_inst, top_pc);
-            for(int j = 0; j < 16; j++){
-              printf("%-3s     %-10u  0x%08x\n", regs[j], gpr[j], gpr[j]);
-            }
+            isa_reg_display();
             printf("exec times: %ld\n",i+1);
             return;
           }
@@ -911,17 +931,10 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mLSU clock time: %f\033[0m\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
       printf("\33[1;34msum_lsu_clock_time: %ld\033[0m\n",sum_lsu_clock_time);
       printf("\33[1;34mlsu_clock_time_num: %ld\033[0m\n",lsu_clock_time_num);
-      // printf("\33[1;34msum_ifu_clock_time: %ld\033[0m\n",sum_ifu_clock_time);
       printf("\33[1;34mifu_clock_time_num: %ld\033[0m\n",ifu_clock_time_num);
       printf("\33[1;34mmiss_counter_branch_c: %ld\033[0m\n",miss_counter_branch_c);
       printf("\33[1;34mall_counter_branch_c: %ld\033[0m\n",all_counter_branch_c);
       printf("\33[1;34mbranch hit rate: %f\033[0m\n",1-((double)miss_counter_branch_c/(double)all_counter_branch_c));
-      // printf("\33[1;34mTYPE COUNT:\033[0m\n");
-      // printf("\33[1;34mjump: %ld\033[0m\n",jump_type);
-      // printf("\33[1;34mcsr: %ld\033[0m\n",csr_type);
-      // printf("\33[1;34mread_and_store: %ld\033[0m\n",read_and_store_type);
-      // printf("\33[1;34mcalculate: %ld\033[0m\n",cal_type);
-      // printf("\33[1;34munk: %ld\033[0m\n",unk);
       printf("\33[1;34mTYPE COUNT SOFTWARE:\033[0m\n");
       printf("\33[1;34mjump: %ld\033[0m\n",jump_type_s);
       printf("\33[1;34mcsr: %ld\033[0m\n",csr_type_s);
@@ -934,34 +947,35 @@ void cpu_exec(uint64_t n){
       printf("\33[1;34mread_and_store: %lf\033[0m\n",avg_read_and_store);
       printf("\33[1;34mcalculate: %lf\033[0m\n",avg_cal);
       printf("\33[1;34munk: %lf\033[0m\n",avg_unk);
-      // printf("\33[1;34mFUNC TIME COUNT:\033[0m\n");
-      // printf("\33[1;34mtransformer: %ld\033[0m\n",func_time);
 
-      // FILE *file = fopen("/home/plutoisy/ysyx-workbench/npc/log/perf.txt", "w");
-      // if (file == NULL) {
-      //     printf("无法打开文件\n");
-      //     return;
-      // }
-      // fprintf(file, "clk: %ld\n",i+1);
-      // fprintf(file, "inst: %ld\n",inst_count);
-      // fprintf(file, "IPC: %f\n",ipc);
-      // fprintf(file, "IFU_get_inst: %ld\n",IFU_getinst);
-      // fprintf(file, "LSU_get_data: %ld\n",LSU_getdata);
-      // fprintf(file, "EXU_finish_calculate: %ld\n",EXU_fincal);
-      // fprintf(file, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
-      // fprintf(file, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
-      // fprintf(file, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
-      // fprintf(file, "jump: %ld\n",jump_type_s);
-      // fprintf(file, "csr: %ld\n",csr_type_s);
-      // fprintf(file, "read_and_store: %ld\n",read_and_store_type_s);
-      // fprintf(file, "calculate: %ld\n",cal_type_s);
-      // fprintf(file, "unk: %ld\n",unk_s);
-      // fprintf(file, "jump time: %lf\n",avg_jump);
-      // fprintf(file, "csr time: %lf\n",avg_csr);
-      // fprintf(file, "read_and_store time: %lf\n",avg_read_and_store);
-      // fprintf(file, "calculate time: %lf\n",avg_cal);
-      // fprintf(file, "unk time: %lf\n",avg_unk);
-      // fclose(file);
+      if(PERF_FILE){
+        fprintf(perffile, "clk: %ld\n",i+1);
+        fprintf(perffile, "inst: %ld\n",inst_count);
+        fprintf(perffile, "IPC: %f\n",ipc);
+        fprintf(perffile, "IFU_get_inst: %ld\n",IFU_getinst);
+        fprintf(perffile, "LSU_get_data: %ld\n",LSU_getdata);
+        fprintf(perffile, "EXU_finish_calculate: %ld\n",EXU_fincal);
+        fprintf(perffile, "IFU_clock_time: %f\n",(double)sum_ifu_clock_time/(double)ifu_clock_time_num);
+        fprintf(perffile, "icache hit rate: %f\n",1-((double)icache_miss_count/(double)ifu_clock_time_num));
+        fprintf(perffile, "LSU_clock_time: %f\n",(double)sum_lsu_clock_time/(double)lsu_clock_time_num);
+        fprintf(perffile, "jump: %ld\n",jump_type_s);
+        fprintf(perffile, "csr: %ld\n",csr_type_s);
+        fprintf(perffile, "read_and_store: %ld\n",read_and_store_type_s);
+        fprintf(perffile, "calculate: %ld\n",cal_type_s);
+        fprintf(perffile, "unk: %ld\n",unk_s);
+        fprintf(perffile, "jump time: %lf\n",avg_jump);
+        fprintf(perffile, "csr time: %lf\n",avg_csr);
+        fprintf(perffile, "read_and_store time: %lf\n",avg_read_and_store);
+        fprintf(perffile, "calculate time: %lf\n",avg_cal);
+        fprintf(perffile, "unk time: %lf\n",avg_unk);
+        fclose(perffile);
+      }
+      if(BTRACE_FILE){
+        fclose(btracefile);
+      }
+      if(ITRACE_FILE){
+        fclose(itracefile);
+      }
       return;
     }
   }
@@ -1086,42 +1100,48 @@ void sdb_mainloop() {
 
 int main(int argc, char *argv[]) {
   Verilated::traceEverOn(true);
+  open_log_file();
   sim_init();
-  if(NVBOARD){
+  #ifdef SOC
     nvboard_bind_all_pins(&dut);
     nvboard_init();
-  }
+  #endif
   Verilated::commandArgs(argc, argv);
-  /* Parse arguments. */
-  parse_args(argc, argv);
-  //const char *filename = "/home/plutoisy/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin";
 
-  // 示例 RISC-V 指令
-  //uint32_t instruction = 0x00000013; // NOP 指令
+  parse_args(argc, argv);
   
   if (!capstone_init(&handle)) {
       return -1;
   }
 
-  // AssembleDecoder(handle, instruction);
-  
-  if(START_FROM_MROM){
-    load_img_mrom();
-  }
-  else{
-    load_img_flash();
-  }
+  #ifdef SOC
+    if(START_FROM_MROM){
+      load_img_mrom();
+    }
+    else{
+      load_img_flash();
+    }
+  #else
+    load_img_txt_flash();
+  #endif
   
   if(LOAD_IMG_TO_FLASH){
-    load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
+    //load_img_to_flash("/home/plutoisy/ysyx-workbench/npc/npc_test/build/char_test.bin");
   }
+
   if(DIFFTESE){
-    difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
     void* dut = NULL;
-    difftest_regcpy(dut, 1, 0x30000000);
+    #ifdef SOC
+      difftest_memcpy(CONFIG_FLASHBASE, flash, FLASH_SIZE, 1);
+      difftest_regcpy(dut, 1, 0x30000000);
+    #else
+      difftest_memcpy(CONFIG_MBASE, flash, PMEM_SIZE, 1);
+      difftest_regcpy(dut, 1, 0x80000000);
+    #endif
   }
   
   system_rst();
+
   if(BMODE){
     cmd_si("-1");
     if(WATCHPOINT){
@@ -1134,6 +1154,7 @@ int main(int argc, char *argv[]) {
   else{
     sdb_mainloop();
   }
+
   cs_close(&handle);
   sim_exit();
   return 0;

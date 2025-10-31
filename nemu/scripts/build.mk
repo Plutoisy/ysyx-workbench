@@ -2,7 +2,16 @@
 
 # Add necessary options if the target is a shared library
 ifeq ($(SHARE),1)
+DOTSO = .so
+ifeq ($(CONFIG_PADDR_MODE), 1)
+    DOTSO = -soc.so
+else ifeq ($(CONFIG_PADDR_MODE), 2)
+    DOTSO = -npc.so
+else
+    DOTSO = xxx.so
+endif
 SO = -so
+LIB = lib
 CFLAGS  += -fPIC -fvisibility=hidden
 LDFLAGS += -shared -fPIC
 endif
@@ -12,7 +21,7 @@ BUILD_DIR = $(WORK_DIR)/build
 
 INC_PATH := $(WORK_DIR)/include $(INC_PATH)
 OBJ_DIR  = $(BUILD_DIR)/obj-$(NAME)$(SO)
-BINARY   = $(BUILD_DIR)/lib$(NAME).so
+BINARY   = $(BUILD_DIR)/$(LIB)$(NAME)$(DOTSO)
 
 # Compilation flags
 ifeq ($(CC),clang)

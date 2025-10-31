@@ -19,7 +19,7 @@ VSRCS += $(shell find $(abspath $(YSYX_HOME)/ysyxSoC/perip) -name "*.v")
 VSRCS += $(YSYX_HOME)/ysyxSoC/build/ysyxSoCFull.v
 CSRCS = $(abspath ./csrc/main.cpp)
 CSRCS += $(SRC_AUTO_BIND)
-CSRCS_NPC = $(abspath ./csrc/main_npc.cpp)
+CSRCS_NPC = $(abspath ./csrc/main.cpp)
 VSRCS_NPC = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS_NPC += $(shell find $(abspath ./npc_specific) -name "*.v")
 
@@ -36,16 +36,25 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
 npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	$(MAKE) -C $(NEMU_HOME)/tools/capstone
+	cp $(NPC_HOME)/tools/nemu-npc.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) syncconfig
+	$(MAKE) -C $(NEMU_HOME)
+	cp $(NPC_HOME)/tools/nemu.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) syncconfig
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
 		--top-module ysyx_24120011_tb $^ \
+		--prefix V$(TOPNAME) \
 		--timescale "1ns/1ns" \
 		--no-timing \
-		-LDFLAGS "-lreadline"\
-		--exe main_npc.cpp
-	make -C obj_dir -f Vysyx_24120011_tb.mk Vysyx_24120011_tb
-	./obj_dir/Vysyx_24120011_tb +IMG="$(IMG)"
+		--autoflush \
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter-npc -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		--exe main.cpp
+	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
+	./obj_dir/V$(TOPNAME) $(IMG) +IMG="$(IMG)"
 	
 sim:$(VSRCS) $(CSRCS)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
@@ -65,6 +74,12 @@ sim:$(VSRCS) $(CSRCS)
 
 nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	$(MAKE) -C $(NEMU_HOME)/tools/capstone
+	cp $(NPC_HOME)/tools/nemu-soc.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) syncconfig
+	$(MAKE) -C $(NEMU_HOME)
+	cp $(NPC_HOME)/tools/nemu.config $(NEMU_HOME)/.config
+	$(MAKE) -C $(NEMU_HOME) syncconfig
 	rm -rf ./obj_dir
 	mkdir -p log
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
@@ -72,13 +87,13 @@ nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 		--timescale "1ns/1ns" \
 		--no-timing \
 		--autoflush \
-		-CFLAGS "-I $(NPC_HOME)/tools/capstone/repo/include"\
+		-CFLAGS "-I $(NEMU_HOME)/tools/capstone/repo/include"\
 		-I$(YSYX_HOME)/ysyxSoC/perip/uart16550/rtl\
 		-I$(YSYX_HOME)/ysyxSoC/perip/spi/rtl\
 		$(addprefix -CFLAGS , $(CXXFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
-		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NPC_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
+		-LDFLAGS "-L$(NEMU_HOME)/build -L$(NEMU_HOME)/tools/capstone/repo -lriscv32-nemu-interpreter-soc -lcapstone -lreadline -Wl,-rpath,$(NEMU_HOME)/build"\
 		--exe main.cpp
-	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME)
+	make -C obj_dir -f V$(TOPNAME).mk V$(TOPNAME) CXXFLAGS="-DSOC"
 	./obj_dir/V$(TOPNAME) $(IMG)	
 
 perf:

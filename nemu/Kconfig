@@ -68,6 +68,10 @@ config TARGET_AM
   bool "Application on Abstract-Machine (DON'T CHOOSE)"
 endchoice
 
+config PADDR_MODE 
+  int "paddr mode 0 for normal, 1 for SOC, 2 for NPC"
+  default 0
+
 menu "Build Options"
 choice
   prompt "Compiler"

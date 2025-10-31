@@ -1,5 +1,5 @@
 import "DPI-C" function void branch_count(input int all_counter_branch,input int miss_counter_branch);
-import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int IFU_valid_int);
+import "DPI-C" function void get_pc_inst(input int pc, input int dnpc, input int inst, input int EXU_valid_int);
 module ysyx_24120011_EXU (
     input  clk,
     input  rst,

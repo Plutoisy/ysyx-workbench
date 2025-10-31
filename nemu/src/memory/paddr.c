@@ -18,8 +18,6 @@
 #include <device/mmio.h>
 #include <isa.h>
 
-#define SOC_DIFF 0
-
 #if   defined(CONFIG_PMEM_MALLOC)
 static uint8_t *pmem = NULL;
 #else // CONFIG_PMEM_GARRAY
@@ -99,12 +97,16 @@ void init_mem() {
 
 word_t paddr_read(paddr_t addr, int len) {
   IFDEF(CONFIG_MTRACE, printf("R->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, pmem_read(addr,len)));
-  if(SOC_DIFF){
+  if(CONFIG_PADDR_MODE == 1){
     if (likely(in_flash(addr))) return flash_read(addr, len);
     if (likely(in_sram(addr)))  return sram_read(addr, len);
     if (likely(in_sdram(addr))) return sdram_read(addr, len);
     //panic("read address = " FMT_PADDR " is out of bound of flash|sram|sdram at pc = " FMT_WORD,
     //  addr, cpu.pc);
+    return 0;
+  }
+  else if(CONFIG_PADDR_MODE == 2){
+    if (likely(in_pmem(addr))) return pmem_read(addr, len);
     return 0;
   }
   else{
@@ -117,12 +119,15 @@ word_t paddr_read(paddr_t addr, int len) {
 
 void paddr_write(paddr_t addr, int len, word_t data) {
   IFDEF(CONFIG_MTRACE, printf("W->addr: 0x%x, len: %d, mem: 0x%08x\n", addr, len, data));
-  if(SOC_DIFF){
+  if(CONFIG_PADDR_MODE == 1){
     if (likely(in_flash(addr))) { flash_write(addr, len, data); return; }
     if (likely(in_sram(addr)))  { sram_write(addr, len, data); return; }
     if (likely(in_sdram(addr))) { sdram_write(addr, len, data); return; }
     // panic("write address = " FMT_PADDR " is out of bound of flash|sram|sdram at pc = " FMT_WORD,
     //   addr, cpu.pc);
+  }
+  else if(CONFIG_PADDR_MODE == 2){
+    if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
   }
   else{
     if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
