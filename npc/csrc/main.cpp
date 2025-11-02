@@ -47,7 +47,7 @@
 #define ITRACE_FILE          0
 #define INST_NOT_VALID_CHECK 1
 #define BTRACE_FILE          0
-#define PRINT_REG            0
+#define PRINT_REG            1
 #define PERF_FILE            0
 
 VerilatedContext* contextp = NULL;
