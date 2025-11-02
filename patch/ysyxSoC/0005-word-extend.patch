@@ -1,7 +1,7 @@
 From 4b608750a9538cd557994765fa26ca827c8ed6fc Mon Sep 17 00:00:00 2001
 From: 211180120-Yu Bingyao <211180120@smail.nju.edu.cn>
 Date: Wed, 26 Mar 2025 12:07:29 +0800
-Subject: [PATCH 05/20] word extend
+Subject: [PATCH 05/21] word extend
 
 ---
  build/ysyxSoCFull.v                           |  21 +-
