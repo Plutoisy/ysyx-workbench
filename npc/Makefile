@@ -37,6 +37,7 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 npc:$(VSRCS_NPC) $(CSRCS_NPC)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(MAKE) -C $(NEMU_HOME)/tools/capstone
+	$(MAKE) -C $(NEMU_HOME)/tools/fixdep
 	cp $(NPC_HOME)/tools/nemu-npc.config $(NEMU_HOME)/.config
 	$(MAKE) -C $(NEMU_HOME) syncconfig
 	$(MAKE) -C $(NEMU_HOME)
@@ -75,6 +76,7 @@ sim:$(VSRCS) $(CSRCS)
 nvboard:$(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(MAKE) -C $(NEMU_HOME)/tools/capstone
+	$(MAKE) -C $(NEMU_HOME)/tools/fixdep
 	cp $(NPC_HOME)/tools/nemu-soc.config $(NEMU_HOME)/.config
 	$(MAKE) -C $(NEMU_HOME) syncconfig
 	$(MAKE) -C $(NEMU_HOME)
