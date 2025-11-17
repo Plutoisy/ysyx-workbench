@@ -92,35 +92,20 @@ static const int LUT_EXTEND[256] = {
     SCANCODE(UP, 0x75),
 };
 
-uint8_t up_recv = 0;
-uint8_t extend = 0;
-
 void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
+  uint32_t next_after_f0;
   uint32_t kbd_out = inl(KBD_ADDR) ;
-  if(kbd_out == 0x000000f0){
-    up_recv = 1;
+  bool extend = false;
+  if((kbd_out & 0xFF) == 0xE0){
+    extend = true;
+    kbd_out = inl(KBD_ADDR) ;
   }
-  else if(kbd_out == 0x000000e0){
-    extend = 1;
+  if((kbd_out & 0xFF) == 0xF0){
+    next_after_f0 = inl(KBD_ADDR);
+    kbd_out = (kbd_out << 8) | next_after_f0;
   }
-  else {
-    if(up_recv){
-      kbd->keydown = false;
-      up_recv = 0;
-    }
-    else{
-      kbd->keydown = true;
-    }
-    //printf("%x\n",kbd_out&0xff);
-    if(extend){
-      kbd->keycode = LUT_EXTEND[kbd_out];
-      extend = 0;
-    }
-    else{
-      kbd->keycode = LUT[kbd_out];
-    }
-  }
-  
+  kbd->keydown = ((((kbd_out >> 8) & 0xFF) == 0xF0) ? false : true);
+  kbd->keycode = extend ? LUT_EXTEND[kbd_out & 0x00FF] : LUT[kbd_out & 0x00FF];
 }
 
 void __am_uart_rx(AM_UART_RX_T *rx) {
