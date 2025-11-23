@@ -1,13 +1,101 @@
+From 0cb10bd59ce2e4bf1aef0151d06f55d80f3f6b5d Mon Sep 17 00:00:00 2001
+From: 211180120-Yu Bingyao <211180120@smail.nju.edu.cn>
+Date: Mon, 10 Mar 2025 23:16:38 +0800
+Subject: [PATCH] Save current content
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+ysyxsoc commit
+
+commit
+
+sram 32bit
+
+word extend
+
+uart tx
+
+uart rx
+
+ps2
+
+github_makefile_test
+
+nvboard启动rtt和mario
+
+add
+
+校准访存延迟
+
+fix
+
+保存perf
+
+sdram的apb改axi
+
+校准axi延迟
+
+保留soc的axi和apb不延迟代码
+
+修改soc的sdram源码
+
+修改uart
+
+把chiplink和axi关了
+
+修改了nvboard翻倍更新导致的显示bug
+
+修复键盘错误
+
+清理soc的git
+
+清理
+---
+ .gitignore                                    |   5 +-
+ constr/auto_bind.cpp                          |  25 +
+ constr/ysyxSoCFull.nxdc                       |  21 +
+ perip/amba/apb_delayer.v                      |  99 ++-
+ perip/amba/axi4_delayer.v                     | 181 ++++-
+ perip/bitrev/bitrev.v                         |  44 +-
+ perip/gpio/gpio_top_apb.v                     | 111 +++
+ perip/ps2/ps2_top_apb.v                       | 100 +++
+ perip/psram/efabless/EF_PSRAM_CTRL.v          | 267 ++++---
+ perip/psram/efabless/EF_PSRAM_CTRL_wb.v       | 323 +++++---
+ perip/psram/psram.v                           | 181 ++++-
+ perip/sdram/core_sdram_axi4/sdram_axi.v       |  12 +-
+ perip/sdram/core_sdram_axi4/sdram_axi_core.v  |  88 ++-
+ .../core_sdram_axi4/sdram_axi_core_back16.v   | 742 +++++++++++++++++
+ .../core_sdram_axi4/sdram_axi_core_back32.v   | 748 ++++++++++++++++++
+ perip/sdram/sdram.v                           |  54 +-
+ perip/sdram/sdram_16.v                        | 187 +++++
+ perip/sdram/sdram_32.v                        |  40 +
+ perip/sdram/sdram_top_apb.v                   |  15 +-
+ perip/sdram/sdram_top_axi.v                   |  16 +-
+ perip/spi/rtl/spi_top_apb.v                   | 286 ++++++-
+ perip/uart16550/rtl/uart_tfifo.v              |   2 +-
+ perip/vga/vga_top_apb.v                       |  95 +++
+ src/CPU.scala                                 |   4 +-
+ src/device/SDRAM.scala                        |   6 +-
+ 25 files changed, 3307 insertions(+), 345 deletions(-)
+ create mode 100644 constr/auto_bind.cpp
+ create mode 100644 constr/ysyxSoCFull.nxdc
+ create mode 100644 perip/sdram/core_sdram_axi4/sdram_axi_core_back16.v
+ create mode 100644 perip/sdram/core_sdram_axi4/sdram_axi_core_back32.v
+ create mode 100644 perip/sdram/sdram_16.v
+ create mode 100644 perip/sdram/sdram_32.v
+
 diff --git a/.gitignore b/.gitignore
-index 3c0160d..866d414 100644
+index 3c0160d..072a417 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -1,2 +1,4 @@
+@@ -1,2 +1,5 @@
 -build/
  out/
 +build
 +.metals
 +.vscode
++patch/
 diff --git a/constr/auto_bind.cpp b/constr/auto_bind.cpp
 new file mode 100644
 index 0000000..acc7138
@@ -67,14 +155,6 @@ index 0000000..6a1e690
 +externalPins_vga_g (VGA_G7, VGA_G6, VGA_G5, VGA_G4, VGA_G3, VGA_G2, VGA_G1, VGA_G0)
 +externalPins_vga_b (VGA_B7, VGA_B6, VGA_B5, VGA_B4, VGA_B3, VGA_B2, VGA_B1, VGA_B0)
 \ No newline at end of file
-diff --git a/patch/firtool/firtool-1.105.0/bin/firtool b/patch/firtool/firtool-1.105.0/bin/firtool
-new file mode 100755
-index 0000000..7acfdd1
-Binary files /dev/null and b/patch/firtool/firtool-1.105.0/bin/firtool differ
-diff --git a/patch/firtool/firtool-1.105.0/bin/om-linker b/patch/firtool/firtool-1.105.0/bin/om-linker
-new file mode 100755
-index 0000000..ddf2dce
-Binary files /dev/null and b/patch/firtool/firtool-1.105.0/bin/om-linker differ
 diff --git a/perip/amba/apb_delayer.v b/perip/amba/apb_delayer.v
 index c0d2076..f7c2609 100644
 --- a/perip/amba/apb_delayer.v
@@ -1639,10 +1719,6 @@ index d9bdd88..947d8e3 100644
 +    end
 +  end
  endmodule
-diff --git a/perip/sdram.zip b/perip/sdram.zip
-new file mode 100644
-index 0000000..f2240be
-Binary files /dev/null and b/perip/sdram.zip differ
 diff --git a/perip/sdram/core_sdram_axi4/sdram_axi.v b/perip/sdram/core_sdram_axi4/sdram_axi.v
 index 64641f5..7904b92 100644
 --- a/perip/sdram/core_sdram_axi4/sdram_axi.v
@@ -4268,3 +4344,6 @@ index a823c71..7621c33 100644
  }
  
  class sdram_top_axi extends BlackBox {
+-- 
+2.34.1
+
