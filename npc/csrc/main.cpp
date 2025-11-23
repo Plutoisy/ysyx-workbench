@@ -1097,7 +1097,6 @@ void sdb_mainloop() {
 
 
 
-
 int main(int argc, char *argv[]) {
   Verilated::traceEverOn(true);
   open_log_file();
